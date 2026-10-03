@@ -1,0 +1,63 @@
+{
+  "generated_utc": "2026-10-03T11:44:08.577894+00:00",
+  "device": "Xiaomi MIX Flip (ruyi)",
+  "firmware": "OS3.0.303.0.WNIEUXM",
+  "android": "16",
+  "inspection": "read_only",
+  "ui_operated": false,
+  "phone_files_written": false,
+  "helper_installed": false,
+  "wallpaper_or_private_image_copied": false,
+  "packages": {
+    "com.miui.miwallpaper": {
+      "version_name": "6.3.2-flip-ALPHA-04251408",
+      "apk_sha256": "37b76ea7766dc5ac0dd9c3d00769c9cb0373c11411344cd2304c6d39c97e0c00",
+      "apk_bytes": 17924291
+    },
+    "com.android.thememanager": {
+      "version_name": "3.0.6.8-global",
+      "apk_sha256": "ab8e25a33b63a8c145a289c478c86c5893f37bbafe755630460bc3efda3f57c7",
+      "apk_bytes": 122157995
+    },
+    "com.miui.aod": {
+      "version_name": "DEV-FLIP-2335.1.2.1-05070145",
+      "apk_sha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+      "apk_bytes": 64110088
+    }
+  },
+  "shell_set_wallpaper_granted": true,
+  "native_cover_lock": {
+    "which": 8,
+    "observed_type": "rotation_image",
+    "native_service_dump_available": true,
+    "current_small_video_file_exists": false,
+    "current_small_video_thumbnail_exists": false,
+    "metadata_stat_available": true,
+    "directory_posix_mode": "0777",
+    "metadata_posix_mode": "0777",
+    "selinux_type": "theme_data_file",
+    "access_checks": {
+      "video_directory": {
+        "read_access_check": true,
+        "write_access_check": false,
+        "execute_access_check": true
+      },
+      "metadata_directory": {
+        "read_access_check": true,
+        "write_access_check": false,
+        "execute_access_check": true
+      },
+      "small_lock_metadata": {
+        "read_access_check": true,
+        "write_access_check": false,
+        "execute_access_check": false
+      }
+    },
+    "access_check_caveat": "POSIX access checks do not prove SELinux add_name/create/open or an actual write; no writes attempted",
+    "config_metadata_copied_locally": true,
+    "config_metadata_xml_valid": true
+  },
+  "native_binder_getters_invoked": false,
+  "native_sdk_version_code_from_byte_identical_apk": 300341,
+  "conclusion": "Native which=8 and shell SET_WALLPAPER are confirmed, but shell write-access checks fail on the theme_data_file directories and metadata despite mode0777. Direct Shizuku SDK-copy is blocked; investigate a native Themes import/provider or write-FD gateway before any setter."
+}

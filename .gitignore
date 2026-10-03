@@ -18,6 +18,16 @@
 __pycache__/
 *.pyc
 /work/tests/classes/
+*.class
+/work/ui-check/
+/work/uiqa-build/
+/work/*-check/
+!/work/qa-final/
+/work/qa-final/*
+!/work/qa-final/controller-tests.json
+!/work/qa-v02/
+/work/qa-v02/*
+!/work/qa-v02/supervisor-tests.json
 
 # Raw phone dumps may contain identifiers and other applications' UI.
 /work/phone-qa/
@@ -37,3 +47,11 @@ __pycache__/
 /outputs/checksums.sha256
 /outputs/FlipPets.sha256.txt
 /work/research/range-test.bin
+/work/folded-research/
+
+!/work/qa-final/
+/work/qa-final/*
+!/work/qa-final/controller-tests.json
+!/work/qa-v02/
+/work/qa-v02/*
+!/work/qa-v02/supervisor-tests.json

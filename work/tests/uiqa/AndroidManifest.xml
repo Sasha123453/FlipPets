@@ -1,0 +1,5 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.flippets.uiqa">
+  <uses-sdk android:minSdkVersion="30" android:targetSdkVersion="35"/>
+  <application android:label="Flip Pets UI tests"/>
+  <instrumentation android:name=".DumpUi" android:targetPackage="org.flippets.uiqa"/>
+</manifest>

@@ -1,0 +1,62 @@
+{
+  "environment": "emulator-5554, stubbed device-state/display/power/keyguard commands; no physical MIX Flip",
+  "controller_sha256": "91c923d909f5c404480843ab5b006ab2503c87d88274cd4310c36b378163e853",
+  "results": [
+    {
+      "case": "detached supervisor remains enabled",
+      "ok": true
+    },
+    {
+      "case": "second enable does not duplicate supervisor",
+      "ok": true
+    },
+    {
+      "case": "sensor-backed fade keeps the existing cover during HALF_OPENED",
+      "ok": true
+    },
+    {
+      "case": "tent returns stock and clears fade handshake",
+      "ok": true
+    },
+    {
+      "case": "without a registered sensor HALF_OPENED preserves the stock transition",
+      "ok": true
+    },
+    {
+      "case": "fold closes only own cover session and keeps waiting",
+      "ok": true
+    },
+    {
+      "case": "unfold resumes without a connected client",
+      "ok": true
+    },
+    {
+      "case": "sleep returns stock mode",
+      "ok": true
+    },
+    {
+      "case": "locked phone is not activated",
+      "ok": true
+    },
+    {
+      "case": "unlock restores presentation",
+      "ok": true
+    },
+    {
+      "case": "missing cover activity is restarted after bounded delay",
+      "ok": true
+    },
+    {
+      "case": "ordinary APK stop request disables supervisor and resets display",
+      "ok": true
+    },
+    {
+      "case": "foreign override remains untouched",
+      "ok": true
+    },
+    {
+      "case": "three failed start batches use at most three attempts each, disable retry loop and restore stock mode",
+      "ok": true
+    }
+  ]
+}

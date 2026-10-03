@@ -1,106 +1,105 @@
-Flip Pets 0.4 — source and resource bundle
+Flip Pets 0.8 — source/build bundle
 
-Generated Java/Python/shell/PowerShell implementation: MIT, see CODE-LICENSE.txt.
-Xiaomi artwork, fonts, MAML, PAG and MP4 assets retain their original ownership.
-They were extracted for this user's local experiment; they are not covered by
-the code's MIT license. Provenance is in work/research/portable-resource-provenance.json.
+Generated Java/Python/shell/PowerShell code: MIT, see work/CODE-LICENSE.txt.
+Xiaomi artwork/fonts/MAML/PAG/MP4 retain their original ownership; the code license
+does not cover them. Provenance: work/research/portable-resource-provenance.json.
 
-Runtime: Android >= 10 / API 29, target API 35; arm64-v8a and x86_64.
-Renderer: Tencent libpag 4.5.98 standard Android AAR with ffavc software decoder.
-Licenses of native dependencies are in work/app/assets/licenses.
-Unmodified library source: https://github.com/Tencent/libpag/tree/v4.5.98
-ffavc source: https://github.com/libpag/ffavc/tree/1.0.1
-The app uses replaceable shared native libraries; no obfuscation or network code.
+Android >=10/API29; target API35; arm64-v8a and x86_64. Tencent libpag4.5.98
+standard Android AAR and ffavc1.0.1; dependency notices in app/assets/licenses.
+Sources: https://github.com/Tencent/libpag/tree/v4.5.98
+         https://github.com/libpag/ffavc/tree/1.0.1
+         https://github.com/RikkaApps/Shizuku-API
+No obfuscation, network permission, root module or firmware flashing.
 
-Build on this PC:
+Build from project root:
   python -X utf8 work/build_apk.py
-Use the bundled Python path if python is not in PATH.
-The JDK and Android SDK were downloaded into the original work/tools folder.
-They are intentionally not duplicated in this source ZIP.
-Required paths, relative to the bundle root:
+Portable dependencies expected relative to project root:
   work/tools/jdk/jdk-17.0.20.1+1/bin/{java,javac,keytool}.exe
   work/tools/sdk/platforms/android-36/android.jar
   work/tools/sdk/build-tools/android-16/{aapt2,zipalign}.exe
   work/tools/sdk/build-tools/android-16/lib/{d8,apksigner}.jar
-  work/tools/libpag/classes.jar and jni/{arm64-v8a,x86_64}/*.so (included)
+  work/tools/libpag/classes.jar and jni/{arm64-v8a,x86_64}/*.so
+  work/tools/shizuku/{api,provider,aidl,shared,annotation}.jar
+SDK/JDK and firmware images are not duplicated in the source ZIP. Libpag/Shizuku
+runtime dependency files are included. No Gradle or network access is required
+once the local tools exist. Git clones require git lfs pull for binary resources.
 
-No Gradle or online repository access is required once these tools exist.
-Build script assembles resources, compiles Java, produces DEX, adds native libs,
-aligns for 16 KiB pages, signs, verifies and writes outputs/FlipPets.apk.
-The signing key is kept only in the original work/local-signing.p12.
-It is excluded from this ZIP. A fresh build in another folder creates a new key;
-that APK cannot replace the original APK without uninstalling it first.
+Build compiles resources/Java/DEX, adds native libs, aligns/signs/verifies APK.
+Original signing key: work/local-signing.p12, deliberately excluded from bundles.
+A fresh build elsewhere creates a different key and cannot update the installed
+original without uninstalling it. Private photos/settings can be lost on uninstall.
 
-Checks:
-  javac -d work/tests/classes work/app/src/org/flippets/app/PetState.java work/tests/PetStateTest.java
-  java -cp work/tests/classes org.flippets.app.PetStateTest
-  python work/check_native.py
-  python work/tests/run_controller_tests.py
-The last test explicitly targets emulator-5554, asserts ro.kernel.qemu=1, and
-uses fixture functions for phone state/display commands. It does not test hardware.
-Full asset QA:
+Current runtime QA (emulator only; execute separately, wait for each fresh file):
   adb -s emulator-5554 shell am start -n org.flippets.app/.PetActivity --ez qa true
-  adb -s emulator-5554 pull /sdcard/Android/data/org.flippets.app/files/qa.json
-Wait for this file to be written after the complete run. Do not reuse an old result.
-PAG QA renders two different timeline points offscreen; MP4 QA uses Android's
-MediaMetadataRetriever. UI, wallpaper and dual-display checks are separate.
+    -> qa.json, 170 clip checks
+  adb -s emulator-5554 shell am start -n org.flippets.app/.PetActivity --ez qaComposition true
+    -> composition-qa.json, 68 checks
+  adb -s emulator-5554 shell am start -n org.flippets.app/.PetActivity --ez qaSwitch true
+    -> ui-switch-qa.json, 15 transitions
+  adb -s emulator-5554 shell am start -n org.flippets.app/.PetActivity --ez qaUtilities true
+    -> utility-qa.json, 15 checks with an enabled notification listener
+Files: /sdcard/Android/data/org.flippets.app/files/. Pull each named file explicitly.
+QA extras are gated to ranchu/goldfish. Utility QA uses its own synthetic MediaSession
+without audio/network, exercises real callbacks, and restores utility/timer/selection
+preferences. Missing notification-listener discovery is a failure, not mocked success.
 
-Resource preparation (optional; APK assets already included):
-Unpack Original-Xiaomi-Resources.zip into work/original-resources and place
-its pandora-subscreencenter.apk in work/jars; run python work/prepare_catalog.py.
-The archive has the original MRC/MRM and manifests, including presets that
-need proprietary services and are not exposed in this app.
+Packaging (run only after all fresh outputs exist):
+  python -X utf8 work/package_release.py --qa-dir work/qa-v03/device-files
+  optional: --profile work/qa-v03/resource-profile-v08.json
+  optional: --current-evidence PATH_TO_SHA_BOUND_JSON [MORE_JSON...]
+This replaces report.html, Verification.json/zip and source/resources ZIPs. It checks
+APK version0.8, exact QA SHA/count/failures, APK asset equality, composition image
+hashes, signature, zipalign and native ELF page alignment. Historical hardware,
+resource and lifecycle data are labelled with their original SHA, not current evidence.
+Only explicit public evidence/source files are bundled; no raw phone dumps or keys.
 
-New offline compositions:
-  python work/inspect_compositions.py
-  python work/prepare_compositions.py
-Run prepare_catalog.py first. Raw MRC inputs are needed only for regeneration.
-Five original Xiaomi fonts are already included in work/app/assets/fonts;
-font-provenance.json records their product.img paths and SHA-256 hashes.
+Pure logic tests can be compiled into ignored work/tests/classes:
+  PetStateTest, PlaybackPolicyTest, StepLedgerTest, SceneGeometryTest,
+  TimerStateTest, HingeOpacityTest (where present).
+  python -X utf8 work/check_native.py
+  python -X utf8 work/tests/run_controller_tests.py
+  python -X utf8 work/tests/run_supervisor_tests.py
+Controller/supervisor tests use stubbed device signals on emulator-5554, not physical
+fold/display hardware. SHA-bound renderer QA does not prove HyperOS behavior.
+
+Resource regeneration is optional; APK assets already exist:
+  python -X utf8 work/prepare_catalog.py
+  python -X utf8 work/inspect_compositions.py
+  python -X utf8 work/prepare_compositions.py
+Inputs: work/original-resources and work/jars/pandora-subscreencenter.apk.
 CompositionRenderer is a selective Canvas adaptation, not a complete MAML interpreter.
-Cloud providers, image-generation services and Folme are not bundled.
-Compiled Xiaomi nine-patch PNGs are drawn by Android NinePatch.
+Cloud/Folme/AON services are not bundled. Original font paths/hashes are recorded.
 
-Additional tests:
-  javac -d work/tests/classes work/app/src/org/flippets/app/StepLedger.java work/tests/StepLedgerTest.java work/app/src/org/flippets/app/SceneGeometry.java work/tests/SceneGeometryTest.java
-  java -cp work/tests/classes StepLedgerTest
-  java -cp work/tests/classes SceneGeometryTest
-  adb -s emulator-5554 shell am force-stop org.flippets.app
-  adb -s emulator-5554 shell am start -n org.flippets.app/.PetActivity --ez qaComposition true --ez qaSwitch true
-  adb -s emulator-5554 pull /sdcard/Android/data/org.flippets.app/files/composition-qa.json
-  adb -s emulator-5554 pull /sdcard/Android/data/org.flippets.app/files/ui-switch-qa.json
-Wait for fresh outputs. QA extras are gated to ranchu/goldfish emulators.
-The scene tests cover all original image decoding, native fonts/nine-patches,
-three device aspect ratios, spring/layout changes, text layouts and private photo import.
-Source ZIP excludes the signing key, firmware ZIPs, portable SDK and legacy root module.
+Native folded-screen priority:
+Preserve Xiaomi's secure cover lock screen/AOD by default. Optional native animated
+cover-lock wallpaper through stock Xiaomi editor/engine is the next stage, not an
+implemented0.8 export/apply feature. See docs/folded-wallpaper-options.md and donor
+roadmap in docs/cover-screen-research.md. Utility cards are secondary, default off.
 
-Rootless Shizuku bridge:
-API/provider/aidl/shared 13.1.5 and androidx.annotation 1.3.0 jars are included
-under work/tools/shizuku. The MIT license is in app/assets/licenses.
-Official sources: https://github.com/RikkaApps/Shizuku-API
-ControllerService only allows fixed operations from this application's UID,
-requires shell UID 2000 and refuses a root backend. Provider is protected.
-Its script uses stock system commands with a ruyi firmware/model guard.
-On the emulator, a real Shizuku shell UserService was bound, UID 2000 verified,
-and the non-ruyi model was refused. Device-state behavior uses test fixtures.
-Run python -X utf8 work/tests/run_supervisor_tests.py for 11 supervisor cases.
-Run python -X utf8 work/tests/profile_resources.py 12 for CPU/PSS measurements.
-Both are explicitly restricted to emulator-5554, never a physical device.
+0.8 behavior:
+Material You settings/gallery; optional battery/media/visual-timer compact overlay.
+The timer has no audible/exact background alarm. CoverGuard is a user-enabled
+specialUse foreground service with quiet notification and Stop action; cover activity
+uses a separate task. It does not hold a wake lock or render while the panel is hidden.
+Closing settings is separated from the cover session. Sensor-based hinge fade uses
+continuous degrees only when an angle sensor exists; discrete flip states are not angles.
 
-Persistence is SharedPreferences/private image files, selected by stable IDs.
-Shizuku and the temporary display controller need re-enabling after reboot.
-The app contains no boot receiver, foreground wakelock, network permission,
-root module, binary patch, vendor-service replacement or firmware flashing.
+Rootless Shizuku runs at shell UID2000 and needs restarting after a device reboot;
+then re-enable the cover session. Appearance/favorites/private photos persist. No boot
+receiver makes a claim of automatic rootless two-panel startup. HyperOS force-stop,
+battery restrictions and foreground-service policies can still stop the session.
+The temporary Shizuku Java UserService is removed after each fixed RPC.
 
-The shell UserService is removed after every RPC to avoid keeping a second
-Android Java process resident. The nohup shell supervisor survives removal.
-Repeated commands are serialized and binding has a 25-second timeout.
+0.5 physical baseline: two panels/fold return/hardware decoder/photo persistence were
+verified on MIX Flip EEA OS3.0.303.0.WNIEUXM. Historical0.7 phone validation
+confirmed installed APK hash, Shizuku UID2000, state5/two panels, foreground service
+and real hinge-angle sensor registration (5 observed checks). The user confirmed
+Main removal retained the cover session, but fold recovery could take20seconds
+(firststate5 rollback to3 plus old10second backoff). Version0.8 adds bounded
+readiness/startup retry; its fresh268-check emulator run is pending. Version0.8
+is not being installed/tested on the phone for this release; the phone stays on0.7. Utility controls, long stability and battery drain are unconfirmed.
 
-Diagnostics: AppLog stores rare events in two bounded 64KiB private files,
-with duplicate suppression. A separate shell status snapshot is capped at
-32KiB. Logcat collection filters this application's UID and is executed only
-on explicit export, with a 3-second timeout and 32KiB output limit. There is
-no READ_LOGS permission or automatic telemetry. A Java uncaught exception
-handler records an event then delegates to Android's original handler.
-Native crashes are not guaranteed to be captured in the private journal.
-The report is exported through ACTION_CREATE_DOCUMENT, surviving rotation.
+Diagnostics: rare events in bounded private AppLog files, duplicate suppression,
+bounded controller snapshot, and own-UID logcat only on explicit export. No READ_LOGS
+permission or telemetry; no media titles are explicitly written to AppLog. Export uses
+ACTION_CREATE_DOCUMENT. Native crashes are not guaranteed in the private journal.

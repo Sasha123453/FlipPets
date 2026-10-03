@@ -1,12 +1,12 @@
 {
-  "apkSha256": "4c309ae3010587d9c80c8652ee2f070d10ac29a6cb34b78bd6cf8cc9f618906a",
+  "apkSha256": "10b6473165f0bba0d2be11c5cf588b715f97e324773130915cd4a376e7d2ba40",
   "tested": 170,
   "failed": 0,
   "results": [
     {
       "pet": "Bubbles",
       "clip": "0",
-      "path": "pets\/koala-archived-presets\/pag_0.pag",
+      "path": "pets/koala-archived-presets/pag_0.pag",
       "width": 976,
       "height": 596,
       "durationUs": 2200000,
@@ -21,7 +21,7 @@
     {
       "pet": "Bubbles",
       "clip": "1",
-      "path": "pets\/koala-archived-presets\/pag_1.pag",
+      "path": "pets/koala-archived-presets/pag_1.pag",
       "width": 976,
       "height": 596,
       "durationUs": 4000000,
@@ -36,7 +36,7 @@
     {
       "pet": "Bubbles",
       "clip": "2",
-      "path": "pets\/koala-archived-presets\/pag_2.pag",
+      "path": "pets/koala-archived-presets/pag_2.pag",
       "width": 976,
       "height": 596,
       "durationUs": 4000000,
@@ -51,13 +51,13 @@
     {
       "pet": "Bubbles",
       "clip": "3",
-      "path": "pets\/koala-archived-presets\/pag_3.pag",
+      "path": "pets/koala-archived-presets/pag_3.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3533334,
       "frameHashes": [
         "9b99f394c4b4fe955b8455bc735f4c48aeeb6b0e542d092d49ea9b0eb72c32a3",
-        "ff6335069b6e140eb47149d847aea80bf7e2b06bd80ae9708aa382efb3ae21ee"
+        "a1ae0bccbb67fe239a3ebe7559e1e0bd4cbefdc2707cdc57af77a93606f32261"
       ],
       "visible": true,
       "framesDiffer": true,
@@ -66,7 +66,7 @@
     {
       "pet": "Bubbles",
       "clip": "4",
-      "path": "pets\/koala-archived-presets\/pag_4.pag",
+      "path": "pets/koala-archived-presets/pag_4.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3500000,
@@ -81,7 +81,7 @@
     {
       "pet": "Bubbles",
       "clip": "5",
-      "path": "pets\/koala-archived-presets\/pag_5.pag",
+      "path": "pets/koala-archived-presets/pag_5.pag",
       "width": 976,
       "height": 596,
       "durationUs": 5000000,
@@ -96,7 +96,7 @@
     {
       "pet": "Bubbles",
       "clip": "6",
-      "path": "pets\/koala-archived-presets\/pag_6.pag",
+      "path": "pets/koala-archived-presets/pag_6.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3000000,
@@ -111,7 +111,7 @@
     {
       "pet": "Bubbles",
       "clip": "7",
-      "path": "pets\/koala-archived-presets\/pag_7.pag",
+      "path": "pets/koala-archived-presets/pag_7.pag",
       "width": 976,
       "height": 596,
       "durationUs": 5000000,
@@ -126,7 +126,7 @@
     {
       "pet": "Bubbles",
       "clip": "8",
-      "path": "pets\/koala-archived-presets\/pag_8.pag",
+      "path": "pets/koala-archived-presets/pag_8.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3200000,
@@ -141,7 +141,7 @@
     {
       "pet": "Bubbles",
       "clip": "9",
-      "path": "pets\/koala-archived-presets\/pag_9.pag",
+      "path": "pets/koala-archived-presets/pag_9.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3333334,
@@ -156,7 +156,7 @@
     {
       "pet": "Bubbles",
       "clip": "10",
-      "path": "pets\/koala-archived-presets\/pag_10.pag",
+      "path": "pets/koala-archived-presets/pag_10.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3333334,
@@ -171,7 +171,7 @@
     {
       "pet": "Bubbles",
       "clip": "11",
-      "path": "pets\/koala-archived-presets\/pag_11.pag",
+      "path": "pets/koala-archived-presets/pag_11.pag",
       "width": 976,
       "height": 596,
       "durationUs": 5666667,
@@ -186,7 +186,7 @@
     {
       "pet": "Bubbles",
       "clip": "12",
-      "path": "pets\/koala-archived-presets\/pag_12.pag",
+      "path": "pets/koala-archived-presets/pag_12.pag",
       "width": 976,
       "height": 596,
       "durationUs": 4233334,
@@ -201,7 +201,7 @@
     {
       "pet": "Bubbles",
       "clip": "13",
-      "path": "pets\/koala-archived-presets\/pag_13.pag",
+      "path": "pets/koala-archived-presets/pag_13.pag",
       "width": 976,
       "height": 596,
       "durationUs": 4333334,
@@ -216,7 +216,7 @@
     {
       "pet": "Bubbles",
       "clip": "14",
-      "path": "pets\/koala-archived-presets\/pag_14.pag",
+      "path": "pets/koala-archived-presets/pag_14.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3666667,
@@ -231,7 +231,7 @@
     {
       "pet": "Bubbles",
       "clip": "15",
-      "path": "pets\/koala-archived-presets\/pag_15.pag",
+      "path": "pets/koala-archived-presets/pag_15.pag",
       "width": 904,
       "height": 572,
       "durationUs": 7033334,
@@ -246,7 +246,7 @@
     {
       "pet": "Bubbles",
       "clip": "16",
-      "path": "pets\/koala-archived-presets\/nfc_pin_show.pag",
+      "path": "pets/koala-archived-presets/nfc_pin_show.pag",
       "width": 976,
       "height": 596,
       "durationUs": 2000000,
@@ -261,7 +261,7 @@
     {
       "pet": "Roe",
       "clip": "0",
-      "path": "pets\/roedeer-archived-presets\/pag_0.pag",
+      "path": "pets/roedeer-archived-presets/pag_0.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3600000,
@@ -276,7 +276,7 @@
     {
       "pet": "Roe",
       "clip": "1",
-      "path": "pets\/roedeer-archived-presets\/pag_1.pag",
+      "path": "pets/roedeer-archived-presets/pag_1.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3633334,
@@ -291,7 +291,7 @@
     {
       "pet": "Roe",
       "clip": "2",
-      "path": "pets\/roedeer-archived-presets\/pag_2.pag",
+      "path": "pets/roedeer-archived-presets/pag_2.pag",
       "width": 976,
       "height": 596,
       "durationUs": 2800000,
@@ -306,7 +306,7 @@
     {
       "pet": "Roe",
       "clip": "3",
-      "path": "pets\/roedeer-archived-presets\/pag_3.pag",
+      "path": "pets/roedeer-archived-presets/pag_3.pag",
       "width": 976,
       "height": 596,
       "durationUs": 1900000,
@@ -321,7 +321,7 @@
     {
       "pet": "Roe",
       "clip": "4",
-      "path": "pets\/roedeer-archived-presets\/pag_4.pag",
+      "path": "pets/roedeer-archived-presets/pag_4.pag",
       "width": 976,
       "height": 596,
       "durationUs": 6666667,
@@ -336,7 +336,7 @@
     {
       "pet": "Roe",
       "clip": "5",
-      "path": "pets\/roedeer-archived-presets\/pag_5.pag",
+      "path": "pets/roedeer-archived-presets/pag_5.pag",
       "width": 976,
       "height": 596,
       "durationUs": 6366667,
@@ -351,7 +351,7 @@
     {
       "pet": "Roe",
       "clip": "6",
-      "path": "pets\/roedeer-archived-presets\/pag_6.pag",
+      "path": "pets/roedeer-archived-presets/pag_6.pag",
       "width": 976,
       "height": 596,
       "durationUs": 5000000,
@@ -366,7 +366,7 @@
     {
       "pet": "Roe",
       "clip": "7",
-      "path": "pets\/roedeer-archived-presets\/pag_7.pag",
+      "path": "pets/roedeer-archived-presets/pag_7.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3733334,
@@ -381,7 +381,7 @@
     {
       "pet": "Roe",
       "clip": "8",
-      "path": "pets\/roedeer-archived-presets\/pag_8.pag",
+      "path": "pets/roedeer-archived-presets/pag_8.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3200000,
@@ -396,7 +396,7 @@
     {
       "pet": "Roe",
       "clip": "9",
-      "path": "pets\/roedeer-archived-presets\/pag_9.pag",
+      "path": "pets/roedeer-archived-presets/pag_9.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3166667,
@@ -411,7 +411,7 @@
     {
       "pet": "Roe",
       "clip": "10",
-      "path": "pets\/roedeer-archived-presets\/pag_10.pag",
+      "path": "pets/roedeer-archived-presets/pag_10.pag",
       "width": 976,
       "height": 596,
       "durationUs": 4333334,
@@ -426,7 +426,7 @@
     {
       "pet": "Roe",
       "clip": "11",
-      "path": "pets\/roedeer-archived-presets\/pag_11.pag",
+      "path": "pets/roedeer-archived-presets/pag_11.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3333334,
@@ -441,7 +441,7 @@
     {
       "pet": "Roe",
       "clip": "12",
-      "path": "pets\/roedeer-archived-presets\/pag_12.pag",
+      "path": "pets/roedeer-archived-presets/pag_12.pag",
       "width": 976,
       "height": 596,
       "durationUs": 5033334,
@@ -456,7 +456,7 @@
     {
       "pet": "Roe",
       "clip": "13",
-      "path": "pets\/roedeer-archived-presets\/pag_13.pag",
+      "path": "pets/roedeer-archived-presets/pag_13.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3666667,
@@ -471,7 +471,7 @@
     {
       "pet": "Roe",
       "clip": "14",
-      "path": "pets\/roedeer-archived-presets\/pag_14.pag",
+      "path": "pets/roedeer-archived-presets/pag_14.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3233334,
@@ -486,7 +486,7 @@
     {
       "pet": "Roe",
       "clip": "15",
-      "path": "pets\/roedeer-archived-presets\/pag_15.pag",
+      "path": "pets/roedeer-archived-presets/pag_15.pag",
       "width": 976,
       "height": 596,
       "durationUs": 7333334,
@@ -501,7 +501,7 @@
     {
       "pet": "Roe",
       "clip": "16",
-      "path": "pets\/roedeer-archived-presets\/nfc_pin_show.pag",
+      "path": "pets/roedeer-archived-presets/nfc_pin_show.pag",
       "width": 976,
       "height": 596,
       "durationUs": 2000000,
@@ -516,7 +516,7 @@
     {
       "pet": "Butterfly carp",
       "clip": "0",
-      "path": "pets\/q_carp-pandora\/pag_0.pag",
+      "path": "pets/q_carp-pandora/pag_0.pag",
       "width": 904,
       "height": 572,
       "durationUs": 11983334,
@@ -531,7 +531,7 @@
     {
       "pet": "Butterfly carp",
       "clip": "1",
-      "path": "pets\/q_carp-pandora\/pag_1.pag",
+      "path": "pets/q_carp-pandora/pag_1.pag",
       "width": 904,
       "height": 572,
       "durationUs": 11983334,
@@ -546,7 +546,7 @@
     {
       "pet": "Butterfly carp",
       "clip": "2",
-      "path": "pets\/q_carp-pandora\/pag_2.pag",
+      "path": "pets/q_carp-pandora/pag_2.pag",
       "width": 904,
       "height": 572,
       "durationUs": 10000000,
@@ -561,7 +561,7 @@
     {
       "pet": "Butterfly carp",
       "clip": "3",
-      "path": "pets\/q_carp-pandora\/pag_3.pag",
+      "path": "pets/q_carp-pandora/pag_3.pag",
       "width": 904,
       "height": 572,
       "durationUs": 9933334,
@@ -576,7 +576,7 @@
     {
       "pet": "Charlie",
       "clip": "0",
-      "path": "pets\/bird-pandora\/pag_0.pag",
+      "path": "pets/bird-pandora/pag_0.pag",
       "width": 976,
       "height": 596,
       "durationUs": 6000000,
@@ -591,7 +591,7 @@
     {
       "pet": "Charlie",
       "clip": "1",
-      "path": "pets\/bird-pandora\/pag_1.pag",
+      "path": "pets/bird-pandora/pag_1.pag",
       "width": 976,
       "height": 596,
       "durationUs": 6000000,
@@ -606,7 +606,7 @@
     {
       "pet": "Charlie",
       "clip": "2",
-      "path": "pets\/bird-pandora\/pag_2.pag",
+      "path": "pets/bird-pandora/pag_2.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3000000,
@@ -621,7 +621,7 @@
     {
       "pet": "Charlie",
       "clip": "3",
-      "path": "pets\/bird-pandora\/pag_3.pag",
+      "path": "pets/bird-pandora/pag_3.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3366667,
@@ -636,7 +636,7 @@
     {
       "pet": "Charlie",
       "clip": "4",
-      "path": "pets\/bird-pandora\/pag_4.pag",
+      "path": "pets/bird-pandora/pag_4.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3666667,
@@ -651,7 +651,7 @@
     {
       "pet": "Charlie",
       "clip": "5",
-      "path": "pets\/bird-pandora\/pag_5.pag",
+      "path": "pets/bird-pandora/pag_5.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3000000,
@@ -666,7 +666,7 @@
     {
       "pet": "Charlie",
       "clip": "6",
-      "path": "pets\/bird-pandora\/pag_6.pag",
+      "path": "pets/bird-pandora/pag_6.pag",
       "width": 976,
       "height": 596,
       "durationUs": 1666667,
@@ -681,7 +681,7 @@
     {
       "pet": "Charlie",
       "clip": "7",
-      "path": "pets\/bird-pandora\/pag_7.pag",
+      "path": "pets/bird-pandora/pag_7.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3666667,
@@ -696,7 +696,7 @@
     {
       "pet": "Charlie",
       "clip": "8",
-      "path": "pets\/bird-pandora\/pag_8.pag",
+      "path": "pets/bird-pandora/pag_8.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3333334,
@@ -711,7 +711,7 @@
     {
       "pet": "Charlie",
       "clip": "9",
-      "path": "pets\/bird-pandora\/pag_9.pag",
+      "path": "pets/bird-pandora/pag_9.pag",
       "width": 976,
       "height": 596,
       "durationUs": 5333334,
@@ -726,7 +726,7 @@
     {
       "pet": "Charlie",
       "clip": "10",
-      "path": "pets\/bird-pandora\/pag_10.pag",
+      "path": "pets/bird-pandora/pag_10.pag",
       "width": 976,
       "height": 596,
       "durationUs": 6000000,
@@ -741,7 +741,7 @@
     {
       "pet": "Charlie",
       "clip": "11",
-      "path": "pets\/bird-pandora\/pag_11.pag",
+      "path": "pets/bird-pandora/pag_11.pag",
       "width": 976,
       "height": 596,
       "durationUs": 4666667,
@@ -756,7 +756,7 @@
     {
       "pet": "Coco",
       "clip": "0",
-      "path": "pets\/seal-archived-presets\/pag_0.pag",
+      "path": "pets/seal-archived-presets/pag_0.pag",
       "width": 976,
       "height": 596,
       "durationUs": 5333334,
@@ -771,7 +771,7 @@
     {
       "pet": "Coco",
       "clip": "1",
-      "path": "pets\/seal-archived-presets\/pag_1.pag",
+      "path": "pets/seal-archived-presets/pag_1.pag",
       "width": 976,
       "height": 596,
       "durationUs": 6000000,
@@ -786,7 +786,7 @@
     {
       "pet": "Coco",
       "clip": "2",
-      "path": "pets\/seal-archived-presets\/pag_2.pag",
+      "path": "pets/seal-archived-presets/pag_2.pag",
       "width": 976,
       "height": 596,
       "durationUs": 5000000,
@@ -801,7 +801,7 @@
     {
       "pet": "Coco",
       "clip": "3",
-      "path": "pets\/seal-archived-presets\/pag_3.pag",
+      "path": "pets/seal-archived-presets/pag_3.pag",
       "width": 976,
       "height": 596,
       "durationUs": 4666667,
@@ -816,7 +816,7 @@
     {
       "pet": "Coco",
       "clip": "4",
-      "path": "pets\/seal-archived-presets\/pag_4.pag",
+      "path": "pets/seal-archived-presets/pag_4.pag",
       "width": 976,
       "height": 596,
       "durationUs": 4333334,
@@ -831,7 +831,7 @@
     {
       "pet": "Coco",
       "clip": "5",
-      "path": "pets\/seal-archived-presets\/pag_5.pag",
+      "path": "pets/seal-archived-presets/pag_5.pag",
       "width": 976,
       "height": 596,
       "durationUs": 4000000,
@@ -846,7 +846,7 @@
     {
       "pet": "Coco",
       "clip": "6",
-      "path": "pets\/seal-archived-presets\/pag_6.pag",
+      "path": "pets/seal-archived-presets/pag_6.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3666667,
@@ -861,7 +861,7 @@
     {
       "pet": "Coco",
       "clip": "7",
-      "path": "pets\/seal-archived-presets\/pag_7.pag",
+      "path": "pets/seal-archived-presets/pag_7.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3333334,
@@ -876,7 +876,7 @@
     {
       "pet": "Coco",
       "clip": "8",
-      "path": "pets\/seal-archived-presets\/pag_8.pag",
+      "path": "pets/seal-archived-presets/pag_8.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3666667,
@@ -891,7 +891,7 @@
     {
       "pet": "Coco",
       "clip": "9",
-      "path": "pets\/seal-archived-presets\/pag_9.pag",
+      "path": "pets/seal-archived-presets/pag_9.pag",
       "width": 976,
       "height": 596,
       "durationUs": 2766667,
@@ -906,7 +906,7 @@
     {
       "pet": "Coco",
       "clip": "10",
-      "path": "pets\/seal-archived-presets\/pag_10.pag",
+      "path": "pets/seal-archived-presets/pag_10.pag",
       "width": 976,
       "height": 596,
       "durationUs": 4333334,
@@ -921,7 +921,7 @@
     {
       "pet": "Coco",
       "clip": "11",
-      "path": "pets\/seal-archived-presets\/pag_11.pag",
+      "path": "pets/seal-archived-presets/pag_11.pag",
       "width": 976,
       "height": 596,
       "durationUs": 6666667,
@@ -936,7 +936,7 @@
     {
       "pet": "Coco",
       "clip": "12",
-      "path": "pets\/seal-archived-presets\/nfc_pin_show.pag",
+      "path": "pets/seal-archived-presets/nfc_pin_show.pag",
       "width": 976,
       "height": 596,
       "durationUs": 2000000,
@@ -949,9 +949,9 @@
       "ok": true
     },
     {
-      "pet": "Coco · классический",
+      "pet": "Coco \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "0",
-      "path": "pets\/seal-pandora\/pag_0.pag",
+      "path": "pets/seal-pandora/pag_0.pag",
       "width": 976,
       "height": 596,
       "durationUs": 5333334,
@@ -964,9 +964,9 @@
       "ok": true
     },
     {
-      "pet": "Coco · классический",
+      "pet": "Coco \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "1",
-      "path": "pets\/seal-pandora\/pag_1.pag",
+      "path": "pets/seal-pandora/pag_1.pag",
       "width": 976,
       "height": 596,
       "durationUs": 6000000,
@@ -979,9 +979,9 @@
       "ok": true
     },
     {
-      "pet": "Coco · классический",
+      "pet": "Coco \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "2",
-      "path": "pets\/seal-pandora\/pag_2.pag",
+      "path": "pets/seal-pandora/pag_2.pag",
       "width": 976,
       "height": 596,
       "durationUs": 5000000,
@@ -994,9 +994,9 @@
       "ok": true
     },
     {
-      "pet": "Coco · классический",
+      "pet": "Coco \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "3",
-      "path": "pets\/seal-pandora\/pag_3.pag",
+      "path": "pets/seal-pandora/pag_3.pag",
       "width": 976,
       "height": 596,
       "durationUs": 4666667,
@@ -1009,9 +1009,9 @@
       "ok": true
     },
     {
-      "pet": "Coco · классический",
+      "pet": "Coco \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "4",
-      "path": "pets\/seal-pandora\/pag_4.pag",
+      "path": "pets/seal-pandora/pag_4.pag",
       "width": 976,
       "height": 596,
       "durationUs": 4333334,
@@ -1024,9 +1024,9 @@
       "ok": true
     },
     {
-      "pet": "Coco · классический",
+      "pet": "Coco \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "5",
-      "path": "pets\/seal-pandora\/pag_5.pag",
+      "path": "pets/seal-pandora/pag_5.pag",
       "width": 976,
       "height": 596,
       "durationUs": 4000000,
@@ -1039,9 +1039,9 @@
       "ok": true
     },
     {
-      "pet": "Coco · классический",
+      "pet": "Coco \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "6",
-      "path": "pets\/seal-pandora\/pag_6.pag",
+      "path": "pets/seal-pandora/pag_6.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3666667,
@@ -1054,9 +1054,9 @@
       "ok": true
     },
     {
-      "pet": "Coco · классический",
+      "pet": "Coco \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "7",
-      "path": "pets\/seal-pandora\/pag_7.pag",
+      "path": "pets/seal-pandora/pag_7.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3333334,
@@ -1069,9 +1069,9 @@
       "ok": true
     },
     {
-      "pet": "Coco · классический",
+      "pet": "Coco \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "8",
-      "path": "pets\/seal-pandora\/pag_8.pag",
+      "path": "pets/seal-pandora/pag_8.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3666667,
@@ -1084,9 +1084,9 @@
       "ok": true
     },
     {
-      "pet": "Coco · классический",
+      "pet": "Coco \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "9",
-      "path": "pets\/seal-pandora\/pag_9.pag",
+      "path": "pets/seal-pandora/pag_9.pag",
       "width": 976,
       "height": 596,
       "durationUs": 2766667,
@@ -1099,9 +1099,9 @@
       "ok": true
     },
     {
-      "pet": "Coco · классический",
+      "pet": "Coco \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "10",
-      "path": "pets\/seal-pandora\/pag_10.pag",
+      "path": "pets/seal-pandora/pag_10.pag",
       "width": 976,
       "height": 596,
       "durationUs": 4333334,
@@ -1116,7 +1116,7 @@
     {
       "pet": "Flowing glitter",
       "clip": "0",
-      "path": "pets\/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora\/blue976x596.pag",
+      "path": "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/blue976x596.pag",
       "width": 976,
       "height": 596,
       "durationUs": 10000000,
@@ -1131,7 +1131,7 @@
     {
       "pet": "Flowing glitter",
       "clip": "1",
-      "path": "pets\/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora\/gold976x596.pag",
+      "path": "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/gold976x596.pag",
       "width": 976,
       "height": 596,
       "durationUs": 10000000,
@@ -1146,7 +1146,7 @@
     {
       "pet": "Flowing glitter",
       "clip": "2",
-      "path": "pets\/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora\/pink976x596.pag",
+      "path": "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/pink976x596.pag",
       "width": 976,
       "height": 596,
       "durationUs": 10000000,
@@ -1161,7 +1161,7 @@
     {
       "pet": "Flowing glitter",
       "clip": "3",
-      "path": "pets\/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora\/white976x596.pag",
+      "path": "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/white976x596.pag",
       "width": 976,
       "height": 596,
       "durationUs": 10000000,
@@ -1176,7 +1176,7 @@
     {
       "pet": "Jumbo",
       "clip": "0",
-      "path": "pets\/capybara-archived-presets\/pag_0.pag",
+      "path": "pets/capybara-archived-presets/pag_0.pag",
       "width": 976,
       "height": 596,
       "durationUs": 7500000,
@@ -1191,7 +1191,7 @@
     {
       "pet": "Jumbo",
       "clip": "1",
-      "path": "pets\/capybara-archived-presets\/pag_1.pag",
+      "path": "pets/capybara-archived-presets/pag_1.pag",
       "width": 976,
       "height": 596,
       "durationUs": 5833334,
@@ -1206,7 +1206,7 @@
     {
       "pet": "Jumbo",
       "clip": "2",
-      "path": "pets\/capybara-archived-presets\/pag_2.pag",
+      "path": "pets/capybara-archived-presets/pag_2.pag",
       "width": 976,
       "height": 596,
       "durationUs": 10000000,
@@ -1221,7 +1221,7 @@
     {
       "pet": "Jumbo",
       "clip": "3",
-      "path": "pets\/capybara-archived-presets\/pag_3.pag",
+      "path": "pets/capybara-archived-presets/pag_3.pag",
       "width": 976,
       "height": 596,
       "durationUs": 7666667,
@@ -1236,7 +1236,7 @@
     {
       "pet": "Jumbo",
       "clip": "4",
-      "path": "pets\/capybara-archived-presets\/nfc_pin_show.pag",
+      "path": "pets/capybara-archived-presets/nfc_pin_show.pag",
       "width": 976,
       "height": 596,
       "durationUs": 2000000,
@@ -1251,7 +1251,7 @@
     {
       "pet": "Lola",
       "clip": "0",
-      "path": "pets\/sheep-archived-presets\/pag_0.pag",
+      "path": "pets/sheep-archived-presets/pag_0.pag",
       "width": 976,
       "height": 596,
       "durationUs": 6466667,
@@ -1266,7 +1266,7 @@
     {
       "pet": "Lola",
       "clip": "1",
-      "path": "pets\/sheep-archived-presets\/pag_1.pag",
+      "path": "pets/sheep-archived-presets/pag_1.pag",
       "width": 976,
       "height": 596,
       "durationUs": 6500000,
@@ -1281,7 +1281,7 @@
     {
       "pet": "Lola",
       "clip": "2",
-      "path": "pets\/sheep-archived-presets\/pag_2.pag",
+      "path": "pets/sheep-archived-presets/pag_2.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3733334,
@@ -1296,7 +1296,7 @@
     {
       "pet": "Lola",
       "clip": "3",
-      "path": "pets\/sheep-archived-presets\/pag_3.pag",
+      "path": "pets/sheep-archived-presets/pag_3.pag",
       "width": 976,
       "height": 596,
       "durationUs": 2666667,
@@ -1311,7 +1311,7 @@
     {
       "pet": "Lola",
       "clip": "4",
-      "path": "pets\/sheep-archived-presets\/pag_4.pag",
+      "path": "pets/sheep-archived-presets/pag_4.pag",
       "width": 976,
       "height": 596,
       "durationUs": 4466667,
@@ -1326,7 +1326,7 @@
     {
       "pet": "Lola",
       "clip": "5",
-      "path": "pets\/sheep-archived-presets\/pag_5.pag",
+      "path": "pets/sheep-archived-presets/pag_5.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3833334,
@@ -1341,7 +1341,7 @@
     {
       "pet": "Lola",
       "clip": "6",
-      "path": "pets\/sheep-archived-presets\/pag_6.pag",
+      "path": "pets/sheep-archived-presets/pag_6.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3900000,
@@ -1356,7 +1356,7 @@
     {
       "pet": "Lola",
       "clip": "7",
-      "path": "pets\/sheep-archived-presets\/pag_7.pag",
+      "path": "pets/sheep-archived-presets/pag_7.pag",
       "width": 976,
       "height": 596,
       "durationUs": 5133334,
@@ -1371,7 +1371,7 @@
     {
       "pet": "Lola",
       "clip": "8",
-      "path": "pets\/sheep-archived-presets\/pag_8.pag",
+      "path": "pets/sheep-archived-presets/pag_8.pag",
       "width": 976,
       "height": 596,
       "durationUs": 5000000,
@@ -1386,7 +1386,7 @@
     {
       "pet": "Lola",
       "clip": "9",
-      "path": "pets\/sheep-archived-presets\/pag_9.pag",
+      "path": "pets/sheep-archived-presets/pag_9.pag",
       "width": 976,
       "height": 596,
       "durationUs": 2466667,
@@ -1401,7 +1401,7 @@
     {
       "pet": "Lola",
       "clip": "10",
-      "path": "pets\/sheep-archived-presets\/pag_10.pag",
+      "path": "pets/sheep-archived-presets/pag_10.pag",
       "width": 976,
       "height": 596,
       "durationUs": 5466667,
@@ -1416,7 +1416,7 @@
     {
       "pet": "Lola",
       "clip": "11",
-      "path": "pets\/sheep-archived-presets\/pag_11.pag",
+      "path": "pets/sheep-archived-presets/pag_11.pag",
       "width": 976,
       "height": 596,
       "durationUs": 6333334,
@@ -1431,7 +1431,7 @@
     {
       "pet": "Lola",
       "clip": "12",
-      "path": "pets\/sheep-archived-presets\/pag_12.pag",
+      "path": "pets/sheep-archived-presets/pag_12.pag",
       "width": 976,
       "height": 596,
       "durationUs": 6333334,
@@ -1446,7 +1446,7 @@
     {
       "pet": "Lola",
       "clip": "13",
-      "path": "pets\/sheep-archived-presets\/nfc_pin_show.pag",
+      "path": "pets/sheep-archived-presets/nfc_pin_show.pag",
       "width": 976,
       "height": 596,
       "durationUs": 2000000,
@@ -1459,9 +1459,9 @@
       "ok": true
     },
     {
-      "pet": "Lola · классический",
+      "pet": "Lola \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "0",
-      "path": "pets\/sheep-pandora\/pag_0.pag",
+      "path": "pets/sheep-pandora/pag_0.pag",
       "width": 976,
       "height": 596,
       "durationUs": 6466667,
@@ -1474,9 +1474,9 @@
       "ok": true
     },
     {
-      "pet": "Lola · классический",
+      "pet": "Lola \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "1",
-      "path": "pets\/sheep-pandora\/pag_1.pag",
+      "path": "pets/sheep-pandora/pag_1.pag",
       "width": 976,
       "height": 596,
       "durationUs": 6500000,
@@ -1489,9 +1489,9 @@
       "ok": true
     },
     {
-      "pet": "Lola · классический",
+      "pet": "Lola \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "2",
-      "path": "pets\/sheep-pandora\/pag_2.pag",
+      "path": "pets/sheep-pandora/pag_2.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3733334,
@@ -1504,9 +1504,9 @@
       "ok": true
     },
     {
-      "pet": "Lola · классический",
+      "pet": "Lola \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "3",
-      "path": "pets\/sheep-pandora\/pag_3.pag",
+      "path": "pets/sheep-pandora/pag_3.pag",
       "width": 976,
       "height": 596,
       "durationUs": 2666667,
@@ -1519,9 +1519,9 @@
       "ok": true
     },
     {
-      "pet": "Lola · классический",
+      "pet": "Lola \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "4",
-      "path": "pets\/sheep-pandora\/pag_4.pag",
+      "path": "pets/sheep-pandora/pag_4.pag",
       "width": 976,
       "height": 596,
       "durationUs": 4466667,
@@ -1534,9 +1534,9 @@
       "ok": true
     },
     {
-      "pet": "Lola · классический",
+      "pet": "Lola \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "5",
-      "path": "pets\/sheep-pandora\/pag_5.pag",
+      "path": "pets/sheep-pandora/pag_5.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3833334,
@@ -1549,9 +1549,9 @@
       "ok": true
     },
     {
-      "pet": "Lola · классический",
+      "pet": "Lola \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "6",
-      "path": "pets\/sheep-pandora\/pag_6.pag",
+      "path": "pets/sheep-pandora/pag_6.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3900000,
@@ -1564,9 +1564,9 @@
       "ok": true
     },
     {
-      "pet": "Lola · классический",
+      "pet": "Lola \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "7",
-      "path": "pets\/sheep-pandora\/pag_7.pag",
+      "path": "pets/sheep-pandora/pag_7.pag",
       "width": 976,
       "height": 596,
       "durationUs": 5133334,
@@ -1579,9 +1579,9 @@
       "ok": true
     },
     {
-      "pet": "Lola · классический",
+      "pet": "Lola \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "8",
-      "path": "pets\/sheep-pandora\/pag_8.pag",
+      "path": "pets/sheep-pandora/pag_8.pag",
       "width": 976,
       "height": 596,
       "durationUs": 5000000,
@@ -1594,9 +1594,9 @@
       "ok": true
     },
     {
-      "pet": "Lola · классический",
+      "pet": "Lola \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "9",
-      "path": "pets\/sheep-pandora\/pag_9.pag",
+      "path": "pets/sheep-pandora/pag_9.pag",
       "width": 976,
       "height": 596,
       "durationUs": 2466667,
@@ -1609,9 +1609,9 @@
       "ok": true
     },
     {
-      "pet": "Lola · классический",
+      "pet": "Lola \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "10",
-      "path": "pets\/sheep-pandora\/pag_10.pag",
+      "path": "pets/sheep-pandora/pag_10.pag",
       "width": 976,
       "height": 596,
       "durationUs": 5466667,
@@ -1624,9 +1624,9 @@
       "ok": true
     },
     {
-      "pet": "Lola · классический",
+      "pet": "Lola \u00b7 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439",
       "clip": "11",
-      "path": "pets\/sheep-pandora\/pag_11.pag",
+      "path": "pets/sheep-pandora/pag_11.pag",
       "width": 976,
       "height": 596,
       "durationUs": 3800000,
@@ -1641,7 +1641,7 @@
     {
       "pet": "Pip",
       "clip": "0",
-      "path": "pets\/otter-archived-presets\/pag_0.pag",
+      "path": "pets/otter-archived-presets/pag_0.pag",
       "width": 976,
       "height": 596,
       "durationUs": 5833334,
@@ -1656,7 +1656,7 @@
     {
       "pet": "Pip",
       "clip": "1",
-      "path": "pets\/otter-archived-presets\/pag_1.pag",
+      "path": "pets/otter-archived-presets/pag_1.pag",
       "width": 976,
       "height": 596,
       "durationUs": 7166667,
@@ -1671,7 +1671,7 @@
     {
       "pet": "Pip",
       "clip": "2",
-      "path": "pets\/otter-archived-presets\/pag_2.pag",
+      "path": "pets/otter-archived-presets/pag_2.pag",
       "width": 976,
       "height": 596,
       "durationUs": 5666667,
@@ -1686,7 +1686,7 @@
     {
       "pet": "Pip",
       "clip": "3",
-      "path": "pets\/otter-archived-presets\/pag_3.pag",
+      "path": "pets/otter-archived-presets/pag_3.pag",
       "width": 976,
       "height": 596,
       "durationUs": 7000000,
@@ -1701,7 +1701,7 @@
     {
       "pet": "Pip",
       "clip": "4",
-      "path": "pets\/otter-archived-presets\/nfc_pin_show.pag",
+      "path": "pets/otter-archived-presets/nfc_pin_show.pag",
       "width": 976,
       "height": 596,
       "durationUs": 2000000,
@@ -1714,9 +1714,9 @@
       "ok": true
     },
     {
-      "pet": "Системные эффекты",
+      "pet": "\u0421\u0438\u0441\u0442\u0435\u043c\u043d\u044b\u0435 \u044d\u0444\u0444\u0435\u043a\u0442\u044b",
       "clip": "0",
-      "path": "pets\/system-effects\/pin_show_pandora.pag",
+      "path": "pets/system-effects/pin_show_pandora.pag",
       "width": 708,
       "height": 447,
       "durationUs": 1000000,
@@ -1729,9 +1729,9 @@
       "ok": true
     },
     {
-      "pet": "Системные эффекты",
+      "pet": "\u0421\u0438\u0441\u0442\u0435\u043c\u043d\u044b\u0435 \u044d\u0444\u0444\u0435\u043a\u0442\u044b",
       "clip": "1",
-      "path": "pets\/system-effects\/pin_show_popsicle.pag",
+      "path": "pets/system-effects/pin_show_popsicle.pag",
       "width": 976,
       "height": 596,
       "durationUs": 1000000,
@@ -1746,7 +1746,7 @@
     {
       "pet": "3D cartoon",
       "clip": "0",
-      "path": "pets\/46e72f3e-8f51-4db8-8db9-1c9e2a847b2a-pandora\/ai.mp4",
+      "path": "pets/46e72f3e-8f51-4db8-8db9-1c9e2a847b2a-pandora/ai.mp4",
       "width": "1808",
       "height": "1144",
       "durationUs": 4215000,
@@ -1761,7 +1761,7 @@
     {
       "pet": "AI Pets",
       "clip": "0",
-      "path": "pets\/84ae8006-804f-4df3-bad9-413d5ea64799-pandora\/ai.mp4",
+      "path": "pets/84ae8006-804f-4df3-bad9-413d5ea64799-pandora/ai.mp4",
       "width": "1808",
       "height": "1144",
       "durationUs": 5042000,
@@ -1776,7 +1776,7 @@
     {
       "pet": "Anime 2",
       "clip": "0",
-      "path": "pets\/cdcebb9f-2fdb-4532-af77-1ee5ed742e12-pandora\/ai.mp4",
+      "path": "pets/cdcebb9f-2fdb-4532-af77-1ee5ed742e12-pandora/ai.mp4",
       "width": "1808",
       "height": "1144",
       "durationUs": 5042000,
@@ -1791,7 +1791,7 @@
     {
       "pet": "Lumi",
       "clip": "0",
-      "path": "pets\/lumi-archived-presets\/idle_0.mp4",
+      "path": "pets/lumi-archived-presets/idle_0.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -1806,7 +1806,7 @@
     {
       "pet": "Lumi",
       "clip": "1",
-      "path": "pets\/lumi-archived-presets\/idle_1.mp4",
+      "path": "pets/lumi-archived-presets/idle_1.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -1821,7 +1821,7 @@
     {
       "pet": "Lumi",
       "clip": "2",
-      "path": "pets\/lumi-archived-presets\/idle_2.mp4",
+      "path": "pets/lumi-archived-presets/idle_2.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -1836,7 +1836,7 @@
     {
       "pet": "Lumi",
       "clip": "3",
-      "path": "pets\/lumi-archived-presets\/dance.mp4",
+      "path": "pets/lumi-archived-presets/dance.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -1851,7 +1851,7 @@
     {
       "pet": "Lumi",
       "clip": "4",
-      "path": "pets\/lumi-archived-presets\/dragon_a.mp4",
+      "path": "pets/lumi-archived-presets/dragon_a.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -1866,7 +1866,7 @@
     {
       "pet": "Lumi",
       "clip": "5",
-      "path": "pets\/lumi-archived-presets\/dragon_b.mp4",
+      "path": "pets/lumi-archived-presets/dragon_b.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5155000,
@@ -1881,7 +1881,7 @@
     {
       "pet": "Lumi",
       "clip": "6",
-      "path": "pets\/lumi-archived-presets\/greet.mp4",
+      "path": "pets/lumi-archived-presets/greet.mp4",
       "width": "2560",
       "height": "1440",
       "durationUs": 5038000,
@@ -1896,7 +1896,7 @@
     {
       "pet": "Lumi",
       "clip": "7",
-      "path": "pets\/lumi-archived-presets\/happy.mp4",
+      "path": "pets/lumi-archived-presets/happy.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5085000,
@@ -1911,7 +1911,7 @@
     {
       "pet": "Lumi",
       "clip": "8",
-      "path": "pets\/lumi-archived-presets\/listen.mp4",
+      "path": "pets/lumi-archived-presets/listen.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 4034000,
@@ -1926,7 +1926,7 @@
     {
       "pet": "Lumi",
       "clip": "9",
-      "path": "pets\/lumi-archived-presets\/midautumn_a.mp4",
+      "path": "pets/lumi-archived-presets/midautumn_a.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -1941,7 +1941,7 @@
     {
       "pet": "Lumi",
       "clip": "10",
-      "path": "pets\/lumi-archived-presets\/midautumn_b.mp4",
+      "path": "pets/lumi-archived-presets/midautumn_b.mp4",
       "width": "3840",
       "height": "2160",
       "durationUs": 4834000,
@@ -1956,7 +1956,7 @@
     {
       "pet": "Lumi",
       "clip": "11",
-      "path": "pets\/lumi-archived-presets\/nationalday_a.mp4",
+      "path": "pets/lumi-archived-presets/nationalday_a.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -1971,7 +1971,7 @@
     {
       "pet": "Lumi",
       "clip": "12",
-      "path": "pets\/lumi-archived-presets\/nationalday_b.mp4",
+      "path": "pets/lumi-archived-presets/nationalday_b.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -1986,7 +1986,7 @@
     {
       "pet": "Lumi",
       "clip": "13",
-      "path": "pets\/lumi-archived-presets\/newyear_a.mp4",
+      "path": "pets/lumi-archived-presets/newyear_a.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2001,7 +2001,7 @@
     {
       "pet": "Lumi",
       "clip": "14",
-      "path": "pets\/lumi-archived-presets\/newyear_b.mp4",
+      "path": "pets/lumi-archived-presets/newyear_b.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2016,7 +2016,7 @@
     {
       "pet": "Lumi",
       "clip": "15",
-      "path": "pets\/lumi-archived-presets\/rain_a.mp4",
+      "path": "pets/lumi-archived-presets/rain_a.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2031,7 +2031,7 @@
     {
       "pet": "Lumi",
       "clip": "16",
-      "path": "pets\/lumi-archived-presets\/rain_b.mp4",
+      "path": "pets/lumi-archived-presets/rain_b.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2046,7 +2046,7 @@
     {
       "pet": "Lumi",
       "clip": "17",
-      "path": "pets\/lumi-archived-presets\/sad.mp4",
+      "path": "pets/lumi-archived-presets/sad.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2061,7 +2061,7 @@
     {
       "pet": "Lumi",
       "clip": "18",
-      "path": "pets\/lumi-archived-presets\/sing.mp4",
+      "path": "pets/lumi-archived-presets/sing.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2076,7 +2076,7 @@
     {
       "pet": "Lumi",
       "clip": "19",
-      "path": "pets\/lumi-archived-presets\/snow_a.mp4",
+      "path": "pets/lumi-archived-presets/snow_a.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2091,7 +2091,7 @@
     {
       "pet": "Lumi",
       "clip": "20",
-      "path": "pets\/lumi-archived-presets\/snow_b.mp4",
+      "path": "pets/lumi-archived-presets/snow_b.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2106,7 +2106,7 @@
     {
       "pet": "Lumi",
       "clip": "21",
-      "path": "pets\/lumi-archived-presets\/speak.mp4",
+      "path": "pets/lumi-archived-presets/speak.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 4033000,
@@ -2121,7 +2121,7 @@
     {
       "pet": "Lumi",
       "clip": "22",
-      "path": "pets\/lumi-archived-presets\/spring_a.mp4",
+      "path": "pets/lumi-archived-presets/spring_a.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 4110000,
@@ -2136,7 +2136,7 @@
     {
       "pet": "Lumi",
       "clip": "23",
-      "path": "pets\/lumi-archived-presets\/spring_b.mp4",
+      "path": "pets/lumi-archived-presets/spring_b.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2151,7 +2151,7 @@
     {
       "pet": "Needle felting",
       "clip": "0",
-      "path": "pets\/e97f1f85-9ca6-47d3-ba16-89bad4f3cc7f-pandora\/ai.mp4",
+      "path": "pets/e97f1f85-9ca6-47d3-ba16-89bad4f3cc7f-pandora/ai.mp4",
       "width": "1808",
       "height": "1144",
       "durationUs": 5042000,
@@ -2166,7 +2166,7 @@
     {
       "pet": "Peeko",
       "clip": "0",
-      "path": "pets\/peeko-archived-presets\/idle_0.mp4",
+      "path": "pets/peeko-archived-presets/idle_0.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2181,7 +2181,7 @@
     {
       "pet": "Peeko",
       "clip": "1",
-      "path": "pets\/peeko-archived-presets\/idle_1.mp4",
+      "path": "pets/peeko-archived-presets/idle_1.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 8033000,
@@ -2196,7 +2196,7 @@
     {
       "pet": "Peeko",
       "clip": "2",
-      "path": "pets\/peeko-archived-presets\/idle_2.mp4",
+      "path": "pets/peeko-archived-presets/idle_2.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2211,7 +2211,7 @@
     {
       "pet": "Peeko",
       "clip": "3",
-      "path": "pets\/peeko-archived-presets\/dance.mp4",
+      "path": "pets/peeko-archived-presets/dance.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 8033000,
@@ -2226,7 +2226,7 @@
     {
       "pet": "Peeko",
       "clip": "4",
-      "path": "pets\/peeko-archived-presets\/dragon_a.mp4",
+      "path": "pets/peeko-archived-presets/dragon_a.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2241,7 +2241,7 @@
     {
       "pet": "Peeko",
       "clip": "5",
-      "path": "pets\/peeko-archived-presets\/dragon_b.mp4",
+      "path": "pets/peeko-archived-presets/dragon_b.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2256,7 +2256,7 @@
     {
       "pet": "Peeko",
       "clip": "6",
-      "path": "pets\/peeko-archived-presets\/greet.mp4",
+      "path": "pets/peeko-archived-presets/greet.mp4",
       "width": "3840",
       "height": "2160",
       "durationUs": 2333000,
@@ -2271,7 +2271,7 @@
     {
       "pet": "Peeko",
       "clip": "7",
-      "path": "pets\/peeko-archived-presets\/happy.mp4",
+      "path": "pets/peeko-archived-presets/happy.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2286,7 +2286,7 @@
     {
       "pet": "Peeko",
       "clip": "8",
-      "path": "pets\/peeko-archived-presets\/listen.mp4",
+      "path": "pets/peeko-archived-presets/listen.mp4",
       "width": "3840",
       "height": "2160",
       "durationUs": 6014000,
@@ -2301,7 +2301,7 @@
     {
       "pet": "Peeko",
       "clip": "9",
-      "path": "pets\/peeko-archived-presets\/midautumn_a.mp4",
+      "path": "pets/peeko-archived-presets/midautumn_a.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2316,7 +2316,7 @@
     {
       "pet": "Peeko",
       "clip": "10",
-      "path": "pets\/peeko-archived-presets\/midautumn_b.mp4",
+      "path": "pets/peeko-archived-presets/midautumn_b.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2331,7 +2331,7 @@
     {
       "pet": "Peeko",
       "clip": "11",
-      "path": "pets\/peeko-archived-presets\/nationalday_a.mp4",
+      "path": "pets/peeko-archived-presets/nationalday_a.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2346,7 +2346,7 @@
     {
       "pet": "Peeko",
       "clip": "12",
-      "path": "pets\/peeko-archived-presets\/nationalday_b.mp4",
+      "path": "pets/peeko-archived-presets/nationalday_b.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2361,7 +2361,7 @@
     {
       "pet": "Peeko",
       "clip": "13",
-      "path": "pets\/peeko-archived-presets\/newyear_a.mp4",
+      "path": "pets/peeko-archived-presets/newyear_a.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2376,7 +2376,7 @@
     {
       "pet": "Peeko",
       "clip": "14",
-      "path": "pets\/peeko-archived-presets\/newyear_b.mp4",
+      "path": "pets/peeko-archived-presets/newyear_b.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2391,7 +2391,7 @@
     {
       "pet": "Peeko",
       "clip": "15",
-      "path": "pets\/peeko-archived-presets\/rain_a.mp4",
+      "path": "pets/peeko-archived-presets/rain_a.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2406,7 +2406,7 @@
     {
       "pet": "Peeko",
       "clip": "16",
-      "path": "pets\/peeko-archived-presets\/rain_b.mp4",
+      "path": "pets/peeko-archived-presets/rain_b.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 8033000,
@@ -2421,7 +2421,7 @@
     {
       "pet": "Peeko",
       "clip": "17",
-      "path": "pets\/peeko-archived-presets\/sad.mp4",
+      "path": "pets/peeko-archived-presets/sad.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2436,7 +2436,7 @@
     {
       "pet": "Peeko",
       "clip": "18",
-      "path": "pets\/peeko-archived-presets\/sing.mp4",
+      "path": "pets/peeko-archived-presets/sing.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2451,7 +2451,7 @@
     {
       "pet": "Peeko",
       "clip": "19",
-      "path": "pets\/peeko-archived-presets\/snow_a.mp4",
+      "path": "pets/peeko-archived-presets/snow_a.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2466,7 +2466,7 @@
     {
       "pet": "Peeko",
       "clip": "20",
-      "path": "pets\/peeko-archived-presets\/snow_b.mp4",
+      "path": "pets/peeko-archived-presets/snow_b.mp4",
       "width": "3840",
       "height": "2160",
       "durationUs": 4226000,
@@ -2481,7 +2481,7 @@
     {
       "pet": "Peeko",
       "clip": "21",
-      "path": "pets\/peeko-archived-presets\/speak.mp4",
+      "path": "pets/peeko-archived-presets/speak.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2496,7 +2496,7 @@
     {
       "pet": "Peeko",
       "clip": "22",
-      "path": "pets\/peeko-archived-presets\/spring_a.mp4",
+      "path": "pets/peeko-archived-presets/spring_a.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2511,7 +2511,7 @@
     {
       "pet": "Peeko",
       "clip": "23",
-      "path": "pets\/peeko-archived-presets\/spring_b.mp4",
+      "path": "pets/peeko-archived-presets/spring_b.mp4",
       "width": "1280",
       "height": "720",
       "durationUs": 5033000,
@@ -2526,7 +2526,7 @@
     {
       "pet": "Vortex core",
       "clip": "0",
-      "path": "pets\/119f090b-b625-4b3e-9ffd-107927c360c6-pandora\/P2.mp4",
+      "path": "pets/119f090b-b625-4b3e-9ffd-107927c360c6-pandora/P2.mp4",
       "width": "1090",
       "height": "666",
       "durationUs": 5067000,
@@ -2541,7 +2541,7 @@
     {
       "pet": "Vortex core",
       "clip": "1",
-      "path": "pets\/119f090b-b625-4b3e-9ffd-107927c360c6-pandora\/Q200.mp4",
+      "path": "pets/119f090b-b625-4b3e-9ffd-107927c360c6-pandora/Q200.mp4",
       "width": "1008",
       "height": "640",
       "durationUs": 5067000,

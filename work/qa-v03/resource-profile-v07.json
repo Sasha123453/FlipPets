@@ -1,0 +1,32 @@
+{
+  "apkSha256": "59668c8a20c7833d70ee1bc944b928faa14eb494ee590eadc24ddabb0ee191d4",
+  "environment": "Android16 x86_64 emulator SwiftShader two virtual cores; synthetic stopwatch, no phone battery/thermal measurement; 100% CPU is one core",
+  "results": [
+    {
+      "scenario": "Private photo composition + visible running stopwatch + foreground guard",
+      "durationSeconds": 8,
+      "cpuPercentOneCore": 0.85,
+      "cpuSamples": [
+        0.97,
+        1.45,
+        0.49,
+        0.49
+      ],
+      "pssKiB": 42058,
+      "rssKiB": 141396
+    },
+    {
+      "scenario": "Hidden composition/timer + foreground guard",
+      "durationSeconds": 8,
+      "cpuPercentOneCore": 0.12,
+      "cpuSamples": [
+        0.0,
+        0.49,
+        0.0,
+        0.0
+      ],
+      "pssKiB": 48157,
+      "rssKiB": 149660
+    }
+  ]
+}

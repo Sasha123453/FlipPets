@@ -1,0 +1,46 @@
+{
+  "apkSha256": "59668c8a20c7833d70ee1bc944b928faa14eb494ee590eadc24ddabb0ee191d4",
+  "environment": "Physical Xiaomi MIX Flip ruyi EEA HyperOS3.0.303.0.WNIEUXM Android16; limited targeted validation",
+  "phoneConnected": true,
+  "tested": 5,
+  "failed": 0,
+  "results": [
+    {
+      "test": "installed_binary_matches_release",
+      "ok": true
+    },
+    {
+      "test": "shizuku_start_shell_uid2000",
+      "ok": true
+    },
+    {
+      "test": "simultaneous_physical_displays_state5",
+      "ok": true
+    },
+    {
+      "test": "foreground_service_on_physical_phone",
+      "ok": true
+    },
+    {
+      "test": "standard_hinge_angle_sensor_registered",
+      "ok": true,
+      "detail": "android.sensor.hinge_angle on-change Wakeup, source=degrees observed in own log"
+    }
+  ],
+  "pending": [
+    "User validation: remove Main from recents, fold and reopen alignment/fade",
+    "Native custom folded wallpaper installation/backup permission route",
+    "Long stability/battery and utility controls on real players"
+  ],
+  "usbStayAwakeRestoredToOriginal": 0,
+  "userObserved": {
+    "mainTaskSwipeForegroundRetained": true,
+    "foldRecovery": "Returns, but intermittent delay around20seconds; subsequentcycle returned promptly",
+    "fade": "not separately timed/confirmed"
+  },
+  "limitations": [
+    "Intermittent first launch rollback observed before readiness fix; physicalfold recovery not marked stable",
+    "No native customfoldedwallpaperinstall tested",
+    "No long battery/thermal run"
+  ]
+}

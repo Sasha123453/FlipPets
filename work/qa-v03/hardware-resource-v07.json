@@ -1,0 +1,15 @@
+{
+  "label": "Version0.7 Charlie held frame, Main absent, physical cover + foreground guard",
+  "apkSha256": "59668c8a20c7833d70ee1bc944b928faa14eb494ee590eadc24ddabb0ee191d4",
+  "durationSeconds": 8.0,
+  "cpuPercentOneCore": 0.0,
+  "cpuSamples": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "pssKiB": 125871,
+  "rssKiB": 259316,
+  "scope": "Application process only; 100% CPU is one core. Does not measure battery or system decoder/GPU cost."
+}

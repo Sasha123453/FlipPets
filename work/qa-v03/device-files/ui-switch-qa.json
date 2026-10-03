@@ -1,5 +1,5 @@
 {
-  "apkSha256": "4c309ae3010587d9c80c8652ee2f070d10ac29a6cb34b78bd6cf8cc9f618906a",
+  "apkSha256": "10b6473165f0bba0d2be11c5cf588b715f97e324773130915cd4a376e7d2ba40",
   "tested": 15,
   "failed": 0,
   "results": [
@@ -9,7 +9,7 @@
       "ok": true
     },
     {
-      "pet": "Силикон · фиолетовый",
+      "pet": "\u0421\u0438\u043b\u0438\u043a\u043e\u043d \u00b7 \u0444\u0438\u043e\u043b\u0435\u0442\u043e\u0432\u044b\u0439",
       "kind": "composition",
       "ok": true
     },
@@ -19,7 +19,7 @@
       "ok": true
     },
     {
-      "pet": "Stretch · упругие часы",
+      "pet": "Stretch \u00b7 \u0443\u043f\u0440\u0443\u0433\u0438\u0435 \u0447\u0430\u0441\u044b",
       "kind": "composition",
       "ok": true
     },
@@ -29,7 +29,7 @@
       "ok": true
     },
     {
-      "pet": "Шагомер",
+      "pet": "\u0428\u0430\u0433\u043e\u043c\u0435\u0440",
       "kind": "composition",
       "ok": true
     },
@@ -39,7 +39,7 @@
       "ok": true
     },
     {
-      "pet": "Кинокалендарь · локальный",
+      "pet": "\u041a\u0438\u043d\u043e\u043a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044c \u00b7 \u043b\u043e\u043a\u0430\u043b\u044c\u043d\u044b\u0439",
       "kind": "composition",
       "ok": true
     },
@@ -49,27 +49,27 @@
       "ok": true
     },
     {
-      "pet": "Волокно дракона · часы",
+      "pet": "\u0412\u043e\u043b\u043e\u043a\u043d\u043e \u0434\u0440\u0430\u043a\u043e\u043d\u0430 \u00b7 \u0447\u0430\u0441\u044b",
       "kind": "composition",
       "ok": true
     },
     {
-      "pet": "Подпись",
+      "pet": "\u041f\u043e\u0434\u043f\u0438\u0441\u044c",
       "kind": "composition",
       "ok": true
     },
     {
-      "pet": "Градиент · часы",
+      "pet": "\u0413\u0440\u0430\u0434\u0438\u0435\u043d\u0442 \u00b7 \u0447\u0430\u0441\u044b",
       "kind": "composition",
       "ok": true
     },
     {
-      "pet": "Новогодняя бумага",
+      "pet": "\u041d\u043e\u0432\u043e\u0433\u043e\u0434\u043d\u044f\u044f \u0431\u0443\u043c\u0430\u0433\u0430",
       "kind": "composition",
       "ok": true
     },
     {
-      "pet": "Своя фотография",
+      "pet": "\u0421\u0432\u043e\u044f \u0444\u043e\u0442\u043e\u0433\u0440\u0430\u0444\u0438\u044f",
       "kind": "composition",
       "ok": true
     },

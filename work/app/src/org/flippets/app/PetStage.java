@@ -23,6 +23,7 @@ public final class PetStage extends FrameLayout implements SensorEventListener {
     boolean gravityRegistered;
     final TextView clock;
     final PetBackdrop backdrop;
+    final UtilityCardView utility;
     final boolean full;
     final Handler handler=new Handler(Looper.getMainLooper());
     final SensorManager sensors;
@@ -31,7 +32,7 @@ public final class PetStage extends FrameLayout implements SensorEventListener {
     int tap;
     long lastPlayRevision=-1;
     String lastGeometry="";
-    final BroadcastReceiver receiver=new BroadcastReceiver(){public void onReceive(Context c,Intent i){Pets.battery(c);update();}};
+    final BroadcastReceiver receiver=new BroadcastReceiver(){public void onReceive(Context c,Intent i){Pets.battery(c);utility.batteryChanged(i);update();}};
     final Runnable ticker=new Runnable(){public void run(){if(!running)return;update();handler.postDelayed(this,composition.getVisibility()==VISIBLE?composition.nextDelay():250);}};
     public PetStage(Context c,boolean showClock){
         super(c);full=showClock;sensors=(SensorManager)c.getSystemService(Context.SENSOR_SERVICE);
@@ -45,7 +46,8 @@ public final class PetStage extends FrameLayout implements SensorEventListener {
         composition=new CompositionView(c);addView(composition,new LayoutParams(-1,-1));composition.setVisibility(GONE);
         clock=new TextView(c);clock.setTextColor(Color.WHITE);clock.setTextSize(34);clock.setGravity(Gravity.CENTER);clock.setShadowLayer(4,0,1,0x33000000);
         LayoutParams cp=new LayoutParams(-1,-2,Gravity.TOP|Gravity.CENTER_HORIZONTAL);cp.topMargin=24;addView(clock,cp);clock.setVisibility(GONE);
-        setOnApplyWindowInsetsListener((v,insets)->{android.view.DisplayCutout cutout=insets.getDisplayCutout();backdrop.cameraRight=0;if(cutout!=null)for(android.graphics.Rect rect:cutout.getBoundingRects())if(rect.left==0)backdrop.cameraRight=Math.max(backdrop.cameraRight,rect.right);composition.renderer.cameraRight=backdrop.cameraRight;return insets;});
+        utility=new UtilityCardView(c,true);addView(utility,new LayoutParams(-2,-2,Gravity.RIGHT|Gravity.BOTTOM));
+        setOnApplyWindowInsetsListener((v,insets)->{android.view.DisplayCutout cutout=insets.getDisplayCutout();backdrop.cameraRight=0;if(cutout!=null)for(android.graphics.Rect rect:cutout.getBoundingRects())if(rect.left==0)backdrop.cameraRight=Math.max(backdrop.cameraRight,rect.right);composition.renderer.cameraRight=backdrop.cameraRight;utility.windowBounds(getWidth(),full?Math.max(backdrop.cameraRight,getWidth()*.34f):0);return insets;});
         View.OnClickListener clicked=v->{JSONObject pet=Pets.current(c);if(pet.optString("kind").equals("reactive")){if(Pets.stageIndex(c)>=8&&pag.isPlaying())return;Pets.override(c,12+(tap++%3),4500);}else{JSONObject clips=pet.optJSONObject("clips");int count=clips==null?0:clips.length();if(PlaybackPolicy.classic(pet.optString("id"))){if(pag.isPlaying())return;count=pet.optInt("touchSceneCount",count);int current=Pets.stageIndex(c),next=current;if(!pet.optString("id").startsWith("bird-")&&count>1)next=(current+1+new Random().nextInt(count-1))%count;Pets.choose(c,next);}else if(count>0)Pets.choose(c,(Pets.scene+1)%count);}};
         pag.setOnClickListener(clicked);video.setOnClickListener(clicked);
         setContentDescription("Анимированный питомец. Коснись для реакции.");
@@ -55,9 +57,9 @@ public final class PetStage extends FrameLayout implements SensorEventListener {
         IntentFilter f=new IntentFilter(Pets.EVENT);f.addAction(Intent.ACTION_BATTERY_CHANGED);
         if(Build.VERSION.SDK_INT>=33)getContext().registerReceiver(receiver,f,Context.RECEIVER_NOT_EXPORTED);else getContext().registerReceiver(receiver,f);
         if(getContext().checkSelfPermission(Manifest.permission.ACTIVITY_RECOGNITION)==PackageManager.PERMISSION_GRANTED){Sensor step=sensors.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);if(step!=null)sensors.registerListener(this,step,SensorManager.SENSOR_DELAY_NORMAL);}
-        Pets.battery(getContext());requestApplyInsets();requestLayout();handler.post(ticker);video.start();
+        Pets.battery(getContext());utility.start();requestApplyInsets();requestLayout();handler.post(ticker);video.start();
     }
-    public void stop(){if(!running)return;running=false;AppLog.event(getContext(),"STAGE_STOP","full="+full);handler.removeCallbacks(ticker);getContext().unregisterReceiver(receiver);sensors.unregisterListener(this);gravityRegistered=false;pag.pause();pag.setComposition(null);pag.freeCache();video.pause();video.load("");loaded="";composition.renderer.release();backdrop.release();photo.release();front.release();}
+    public void stop(){if(!running)return;running=false;utility.stop();AppLog.event(getContext(),"STAGE_STOP","full="+full);handler.removeCallbacks(ticker);getContext().unregisterReceiver(receiver);sensors.unregisterListener(this);gravityRegistered=false;pag.pause();pag.setComposition(null);pag.freeCache();video.pause();video.load("");loaded="";composition.renderer.release();backdrop.release();photo.release();front.release();}
     public void destroy(){stop();pag.setComposition(null);pag.freeCache();video.destroy();composition.renderer.release();backdrop.release();photo.release();front.release();}
     public void reload(){loaded="";visualStamp=-1;if(running)update();}
     private void update(){
@@ -78,7 +80,7 @@ public final class PetStage extends FrameLayout implements SensorEventListener {
     }
     private boolean repeats(JSONObject pet,int index){boolean enabled=android.provider.Settings.Global.getFloat(getContext().getContentResolver(),"animator_duration_scale",1f)!=0;return enabled&&PlaybackPolicy.repeats(pet.optString("id"),pet.optString("kind"),index,getContext().getSharedPreferences(Pets.PREFS,0).getBoolean("calmPets",false));}
     static float renderHeight(int w,int h){float height=h*(w/(float)h<1.55f?1.05f:1f);return w/(float)h<.75f?Math.min(height,w*1.05f):height;}
-    protected void onSizeChanged(int w,int h,int oldW,int oldH){super.onSizeChanged(w,h,oldW,oldH);if(full&&w>0&&h>0){float height=renderHeight(w,h);int width=w/(float)h<1.55f?Math.round(height*976/596):w;LayoutParams lp=new LayoutParams(width,Math.round(height),Gravity.RIGHT|Gravity.BOTTOM);lp.rightMargin=-Math.round(w/336f);lp.bottomMargin=-Math.round(4*h/213f);pag.setLayoutParams(lp);}}
+    protected void onSizeChanged(int w,int h,int oldW,int oldH){super.onSizeChanged(w,h,oldW,oldH);utility.windowBounds(w,full?Math.max(backdrop.cameraRight,w*.34f):0);if(full&&w>0&&h>0){float height=renderHeight(w,h);int width=w/(float)h<1.55f?Math.round(height*976/596):w;LayoutParams lp=new LayoutParams(width,Math.round(height),Gravity.RIGHT|Gravity.BOTTOM);lp.rightMargin=-Math.round(w/336f);lp.bottomMargin=-Math.round(4*h/213f);pag.setLayoutParams(lp);}}
     protected void onLayout(boolean changed,int left,int top,int right,int bottom){super.onLayout(changed,left,top,right,bottom);if(!full||getWidth()<=0||getHeight()<=0)return;int w=getWidth(),h=getHeight(),ph=Math.round(renderHeight(w,h)),pw=w/(float)h<1.55f?Math.round(renderHeight(w,h)*976/596):w;int pr=w+Math.round(w/336f),pb=h+Math.round(4*h/213f);if(pag.getVisibility()!=GONE)pag.layout(pr-pw,pb-ph,pr,pb);String geometry="display="+(getDisplay()==null?-1:getDisplay().getDisplayId())+" rotation="+(getDisplay()==null?-1:getDisplay().getRotation())+" stage="+w+"x"+h+" pag="+pag.getLeft()+","+pag.getTop()+","+pag.getRight()+","+pag.getBottom()+" camera="+backdrop.cameraRight;if(!geometry.equals(lastGeometry)){lastGeometry=geometry;AppLog.event(getContext(),"GEOMETRY",geometry);}}
     int parseColor(String s){try{return Color.parseColor(s);}catch(Exception e){return 0xff444e70;}}
     public void onSensorChanged(SensorEvent e){if(e.sensor.getType()==Sensor.TYPE_STEP_DETECTOR){Pets.state.sensorStep(e.timestamp,SystemClock.elapsedRealtime());StepStore.step(getContext(),e.timestamp);}else if(e.sensor.getType()==Sensor.TYPE_ACCELEROMETER){Pets.tiltX=Pets.tiltX*.85f+e.values[0]/9.81f*.15f;Pets.tiltY=Pets.tiltY*.85f+e.values[1]/9.81f*.15f;}}

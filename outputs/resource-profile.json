@@ -1,173 +1,231 @@
 {
-  "apkSha256": "b46ea0d57da9c5714c8af67a73e259e0c78d5c5cd75d008838fc837789c10e09",
-  "environment": "Android 16 API 36 x86_64 emulator, two virtual CPU cores, SwiftShader GPU, PAG software decoding; 100% CPU is one core. No physical MIX Flip or battery measurement.",
-  "clockTicksPerSecond": 100,
-  "results": [
+  "releaseVersion": "0.8",
+  "currentApkSha256": "10b6473165f0bba0d2be11c5cf588b715f97e324773130915cd4a376e7d2ba40",
+  "currentProfile": null,
+  "historicalProfiles": [
     {
-      "scenario": "PAG Bubbles visible",
-      "pid": 16003,
-      "durationSeconds": 12.0,
-      "cpuPercentOneCore": 76.58,
-      "cpuSamples": [
-        68.3,
-        70.78,
-        75.73,
-        91.53
-      ],
-      "pssKiB": 63725,
-      "rssKiB": 156336
+      "file": "resource-profile.json",
+      "scope": "Earlier emulator resource profile; not a current 0.8 profile",
+      "originalApkSha256": "4c309ae3010587d9c80c8652ee2f070d10ac29a6cb34b78bd6cf8cc9f618906a",
+      "sourceFileSha256": "0546321f1477b162804a137a35d282dcd1b5a880df3755de9555f635ee2b555a",
+      "data": {
+        "apkSha256": "4c309ae3010587d9c80c8652ee2f070d10ac29a6cb34b78bd6cf8cc9f618906a",
+        "environment": "Android 16 API 36 x86_64 emulator, two virtual CPU cores, SwiftShader GPU, PAG software decoding; 100% CPU is one core. No physical MIX Flip or battery measurement.",
+        "clockTicksPerSecond": 100,
+        "results": [
+          {
+            "scenario": "PAG Bubbles visible",
+            "pid": 4829,
+            "durationSeconds": 8.0,
+            "cpuPercentOneCore": 75.67,
+            "cpuSamples": [
+              78.26,
+              71.77,
+              74.4,
+              78.26
+            ],
+            "pssKiB": 75937,
+            "rssKiB": 170108
+          },
+          {
+            "scenario": "PAG Bubbles visible hidden",
+            "pid": 4829,
+            "durationSeconds": 8.0,
+            "cpuPercentOneCore": 0.0,
+            "cpuSamples": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "pssKiB": 67895,
+            "rssKiB": 164272
+          },
+          {
+            "scenario": "Analog clock visible",
+            "pid": 4829,
+            "durationSeconds": 8.0,
+            "cpuPercentOneCore": 16.28,
+            "cpuSamples": [
+              15.05,
+              15.05,
+              19.42,
+              15.61
+            ],
+            "pssKiB": 85479,
+            "rssKiB": 185256
+          },
+          {
+            "scenario": "Analog clock visible hidden",
+            "pid": 4829,
+            "durationSeconds": 8.0,
+            "cpuPercentOneCore": 0.0,
+            "cpuSamples": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "pssKiB": 71591,
+            "rssKiB": 171412
+          },
+          {
+            "scenario": "Signature static visible",
+            "pid": 4829,
+            "durationSeconds": 8.0,
+            "cpuPercentOneCore": 0.12,
+            "cpuSamples": [
+              0.49,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "pssKiB": 91970,
+            "rssKiB": 191972
+          },
+          {
+            "scenario": "Signature static visible hidden",
+            "pid": 4829,
+            "durationSeconds": 8.0,
+            "cpuPercentOneCore": 0.0,
+            "cpuSamples": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "pssKiB": 91718,
+            "rssKiB": 191684
+          },
+          {
+            "scenario": "MP4 cartoon visible",
+            "pid": 4829,
+            "durationSeconds": 8.0,
+            "cpuPercentOneCore": 22.78,
+            "cpuSamples": [
+              25.6,
+              21.84,
+              21.74,
+              21.95
+            ],
+            "pssKiB": 74100,
+            "rssKiB": 176264
+          },
+          {
+            "scenario": "MP4 cartoon visible hidden",
+            "pid": 4829,
+            "durationSeconds": 8.0,
+            "cpuPercentOneCore": 0.0,
+            "cpuSamples": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "pssKiB": 73837,
+            "rssKiB": 175948
+          },
+          {
+            "scenario": "After 20 switches hidden",
+            "pid": 4829,
+            "durationSeconds": 8.0,
+            "cpuPercentOneCore": 0.0,
+            "cpuSamples": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "pssKiB": 81897,
+            "rssKiB": 183764
+          }
+        ],
+        "cycleBaseline": {
+          "pssKiB": 100073,
+          "rssKiB": 202240
+        },
+        "memoryCycles": [
+          {
+            "cycle": 5,
+            "pssKiB": 171625,
+            "rssKiB": 273532
+          },
+          {
+            "cycle": 10,
+            "pssKiB": 152164,
+            "rssKiB": 254072
+          },
+          {
+            "cycle": 15,
+            "pssKiB": 168192,
+            "rssKiB": 270104
+          },
+          {
+            "cycle": 20,
+            "pssKiB": 167100,
+            "rssKiB": 268968
+          }
+        ]
+      }
     },
     {
-      "scenario": "PAG Bubbles visible hidden",
-      "pid": 16003,
-      "durationSeconds": 12.0,
-      "cpuPercentOneCore": 0.0,
-      "cpuSamples": [
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "pssKiB": 66349,
-      "rssKiB": 160740
+      "file": "hardware-resource-v07.json",
+      "scope": "Short physical version0.7 CPU/PSS sample; not current0.8 resource use",
+      "originalApkSha256": "59668c8a20c7833d70ee1bc944b928faa14eb494ee590eadc24ddabb0ee191d4",
+      "sourceFileSha256": "d0412ee9056f0abebc3272314053e250bc1a58de1353ba20b435bae9b23ab933",
+      "data": {
+        "label": "Version0.7 Charlie held frame, Main absent, physical cover + foreground guard",
+        "apkSha256": "59668c8a20c7833d70ee1bc944b928faa14eb494ee590eadc24ddabb0ee191d4",
+        "durationSeconds": 8.0,
+        "cpuPercentOneCore": 0.0,
+        "cpuSamples": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pssKiB": 125871,
+        "rssKiB": 259316,
+        "scope": "Application process only; 100% CPU is one core. Does not measure battery or system decoder/GPU cost."
+      }
     },
     {
-      "scenario": "Analog clock visible",
-      "pid": 16003,
-      "durationSeconds": 12.0,
-      "cpuPercentOneCore": 15.14,
-      "cpuSamples": [
-        14.75,
-        14.71,
-        16.34,
-        14.75
-      ],
-      "pssKiB": 80582,
-      "rssKiB": 178932
-    },
-    {
-      "scenario": "Analog clock visible hidden",
-      "pid": 16003,
-      "durationSeconds": 12.0,
-      "cpuPercentOneCore": 0.0,
-      "cpuSamples": [
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "pssKiB": 72426,
-      "rssKiB": 170964
-    },
-    {
-      "scenario": "Signature static visible",
-      "pid": 16003,
-      "durationSeconds": 12.0,
-      "cpuPercentOneCore": 0.08,
-      "cpuSamples": [
-        0.33,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "pssKiB": 92917,
-      "rssKiB": 191536
-    },
-    {
-      "scenario": "Signature static visible hidden",
-      "pid": 16003,
-      "durationSeconds": 12.0,
-      "cpuPercentOneCore": 0.0,
-      "cpuSamples": [
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "pssKiB": 92609,
-      "rssKiB": 191220
-    },
-    {
-      "scenario": "MP4 cartoon visible",
-      "pid": 16003,
-      "durationSeconds": 12.0,
-      "cpuPercentOneCore": 22.02,
-      "cpuSamples": [
-        21.5,
-        23.45,
-        22.95,
-        20.2
-      ],
-      "pssKiB": 74880,
-      "rssKiB": 175524
-    },
-    {
-      "scenario": "MP4 cartoon visible hidden",
-      "pid": 16003,
-      "durationSeconds": 12.0,
-      "cpuPercentOneCore": 0.0,
-      "cpuSamples": [
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "pssKiB": 74559,
-      "rssKiB": 175196
-    },
-    {
-      "scenario": "After 20 switches hidden",
-      "pid": 16003,
-      "durationSeconds": 12.0,
-      "cpuPercentOneCore": 0.0,
-      "cpuSamples": [
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "pssKiB": 98074,
-      "rssKiB": 198884
-    },
-    {
-      "scenario": "shizuku_server idle",
-      "pid": 2093,
-      "durationSeconds": 12.0,
-      "cpuPercentOneCore": 0.0,
-      "cpuSamples": [
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "pssKiB": 48269,
-      "rssKiB": 59512
-    }
-  ],
-  "cycleBaseline": {
-    "pssKiB": 103475,
-    "rssKiB": 204120
-  },
-  "memoryCycles": [
-    {
-      "cycle": 5,
-      "pssKiB": 190792,
-      "rssKiB": 291580
-    },
-    {
-      "cycle": 10,
-      "pssKiB": 168044,
-      "rssKiB": 268848
-    },
-    {
-      "cycle": 15,
-      "pssKiB": 152473,
-      "rssKiB": 253284
-    },
-    {
-      "cycle": 20,
-      "pssKiB": 170618,
-      "rssKiB": 271428
+      "file": "resource-profile-v07.json",
+      "scope": "Version0.7 emulator profile; not current0.8 resource use",
+      "originalApkSha256": "59668c8a20c7833d70ee1bc944b928faa14eb494ee590eadc24ddabb0ee191d4",
+      "sourceFileSha256": "f0125a4dd88dafebb8ac44d1e628c43acd0d33c569a56f75d766fe12de93b069",
+      "data": {
+        "apkSha256": "59668c8a20c7833d70ee1bc944b928faa14eb494ee590eadc24ddabb0ee191d4",
+        "environment": "Android16 x86_64 emulator SwiftShader two virtual cores; synthetic stopwatch, no phone battery/thermal measurement; 100% CPU is one core",
+        "results": [
+          {
+            "scenario": "Private photo composition + visible running stopwatch + foreground guard",
+            "durationSeconds": 8,
+            "cpuPercentOneCore": 0.85,
+            "cpuSamples": [
+              0.97,
+              1.45,
+              0.49,
+              0.49
+            ],
+            "pssKiB": 42058,
+            "rssKiB": 141396
+          },
+          {
+            "scenario": "Hidden composition/timer + foreground guard",
+            "durationSeconds": 8,
+            "cpuPercentOneCore": 0.12,
+            "cpuSamples": [
+              0.0,
+              0.49,
+              0.0,
+              0.0
+            ],
+            "pssKiB": 48157,
+            "rssKiB": 149660
+          }
+        ]
+      }
     }
   ]
 }

@@ -1,0 +1,23 @@
+{
+  "apkSha256": "59668c8a20c7833d70ee1bc944b928faa14eb494ee590eadc24ddabb0ee191d4",
+  "environment": "Android16 emulator only; hinge angles explicitly injected QA extras, not real sensor/hardware",
+  "tested": 3,
+  "failed": 0,
+  "results": [
+    {
+      "test": "simulated_closed_black",
+      "ok": true,
+      "detail": "mean RGB 0.0"
+    },
+    {
+      "test": "simulated_half_angle_half_brightness",
+      "ok": true,
+      "detail": "90/180 mean RGB ratio 0.4999"
+    },
+    {
+      "test": "utility_controls_at_font_150_percent",
+      "ok": true,
+      "detail": "Same15UI/APIchecks re-run at font_scale1.5; all passed"
+    }
+  ]
+}

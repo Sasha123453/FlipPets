@@ -1,0 +1,85 @@
+{
+  "apkSha256": "59668c8a20c7833d70ee1bc944b928faa14eb494ee590eadc24ddabb0ee191d4",
+  "environment": "Android emulator; no HyperOS\/hardware claim",
+  "tested": 15,
+  "failed": 0,
+  "durationMs": 6351,
+  "results": [
+    {
+      "test": "battery_percent",
+      "ok": true,
+      "detail": "100%"
+    },
+    {
+      "test": "card_bounds_camera_safe",
+      "ok": true,
+      "detail": "card=597,1197,1182,1366 stage=1208x1392 safeLeft=411"
+    },
+    {
+      "test": "timer_start_button",
+      "ok": true,
+      "detail": "running=true"
+    },
+    {
+      "test": "timer_advances_visible",
+      "ok": true,
+      "detail": "elapsedDeltaMs=1302 displayChanged=true"
+    },
+    {
+      "test": "timer_pause_button",
+      "ok": true,
+      "detail": "running=false"
+    },
+    {
+      "test": "timer_pause_stable",
+      "ok": true,
+      "detail": "elapsed unchanged=true"
+    },
+    {
+      "test": "timer_reset_button",
+      "ok": true,
+      "detail": "elapsed=0"
+    },
+    {
+      "test": "focus_25_display",
+      "ok": true,
+      "detail": "Settings-like mode change; only rendered display checked"
+    },
+    {
+      "test": "media_discovery_notification_listener",
+      "ok": true,
+      "detail": "Synthetic session discovered through real listener"
+    },
+    {
+      "test": "media_card_metadata",
+      "ok": true,
+      "detail": "Only synthetic title compared"
+    },
+    {
+      "test": "media_pause_callback",
+      "ok": true,
+      "detail": "syntheticPauseCallbacks=1"
+    },
+    {
+      "test": "media_next_callback",
+      "ok": true,
+      "detail": "syntheticNextCallbacks=1"
+    },
+    {
+      "test": "media_play_button",
+      "ok": true,
+      "detail": "syntheticPlayCallbacks=1"
+    },
+    {
+      "test": "media_unsupported_next",
+      "ok": true,
+      "detail": "unsupported next disabled; callbacks=1"
+    },
+    {
+      "test": "preferences_restored",
+      "ok": true,
+      "detail": "Utility\/timer and scene selection keys restored"
+    }
+  ],
+  "skipped": []
+}

@@ -1,0 +1,66 @@
+{
+  "environment": "emulator-5554; stubbed stock command responses, not a physical MIX Flip",
+  "controller_sha256": "91c923d909f5c404480843ab5b006ab2503c87d88274cd4310c36b378163e853",
+  "results": [
+    {
+      "case": "start activates presentation",
+      "ok": true
+    },
+    {
+      "case": "start targets cover display",
+      "ok": true
+    },
+    {
+      "case": "stop resets base state",
+      "ok": true
+    },
+    {
+      "case": "fold watcher restores folded state",
+      "ok": true
+    },
+    {
+      "case": "sleep watcher resets override",
+      "ok": true
+    },
+    {
+      "case": "display OFF to ON transition waits before launch and reapplies package compatibility",
+      "ok": true
+    },
+    {
+      "case": "first refused launch retries once and succeeds in same owned request",
+      "ok": true
+    },
+    {
+      "case": "exact first refusal remains in independent history after success",
+      "ok": true
+    },
+    {
+      "case": "permanent refusal uses exactly three bounded attempts and restores stock",
+      "ok": true
+    },
+    {
+      "case": "permanent refusal removes owned marker",
+      "ok": true
+    },
+    {
+      "case": "display never ON times out without attempting an activity and restores stock",
+      "ok": true
+    },
+    {
+      "case": "foreign override arriving after refusal is preserved without retry or reset",
+      "ok": true
+    },
+    {
+      "case": "failure history is bounded to 64 KiB and retains latest refusal",
+      "ok": true
+    },
+    {
+      "case": "existing override is refused",
+      "ok": true
+    },
+    {
+      "case": "wrong device is refused",
+      "ok": true
+    }
+  ]
+}
