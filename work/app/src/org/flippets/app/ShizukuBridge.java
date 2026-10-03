@@ -39,7 +39,7 @@ public final class ShizukuBridge {
         final Shizuku.UserServiceArgs args;
         final Runnable timeout=()->finish("Shizuku не ответил за 25 секунд. Проверь его запуск и попробуй снова.");
         ControlRequest(MainActivity a,int c){this(a,c,null);}
-        ControlRequest(MainActivity a,int c,Runnable next){activity=a;code=c;continuation=next;args=new Shizuku.UserServiceArgs(new ComponentName(a,ControllerService.class)).daemon(true).processNameSuffix("controller").version(8);}
+        ControlRequest(MainActivity a,int c,Runnable next){activity=a;code=c;continuation=next;args=new Shizuku.UserServiceArgs(new ComponentName(a,ControllerService.class)).daemon(true).processNameSuffix("controller").version(10);}
         public void onServiceConnected(ComponentName name,IBinder binder){if(done)return;new Thread(()->{
             String message;Parcel in=Parcel.obtain(),out=Parcel.obtain();
             try{in.writeInterfaceToken(ControllerService.DESCRIPTOR);if(!binder.transact(code,in,out,0))throw new IllegalStateException("Unknown controller transaction");out.readException();int exit=out.readInt();controllerExit=exit;String detail=out.readString();AppLog.event(activity,"CONTROLLER_RAW op="+code,"exit="+exit+" "+detail);if(code==3)AppLog.storeStatus(activity,detail);

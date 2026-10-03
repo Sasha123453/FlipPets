@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "method": "Read-only extraction of /framework/miui-services.jar from previously downloaded system_ext images, byte identity and SHA256 comparison",
+  "actualPhoneFrameworkExtracted": false,
+  "actualPhoneFirmware": "MIX Flip EEA OS3.0.303.0.WNIEUXM Android16",
+  "frameworks": [
+    {
+      "device": "ruyi",
+      "archive": "ruyi-miui-services-verified.jar",
+      "partition": "system_ext",
+      "filesystemPath": "/framework/miui-services.jar",
+      "sha256": "3ee0c554ec6f92da3176e258781bd5dca269fea921ba893a8af8bce4177a329b",
+      "bytes": 12557750,
+      "byteIdenticalHistoricalImageExtraction": true,
+      "matchesWorkJarsMiuiServices": true,
+      "otaArchive": "ruyi_global-ota_full-OS3.0.303.0.WNIMIXM-user-16.0-0200f61ca8.zip",
+      "archiveVersion": "OS3.0.303.0.WNIMIXM",
+      "otaMetadataIncremental": "16OS3.1.260805.171151286.QCPEGL.S",
+      "role": "Downloaded MIX Flip Global framework; not actual EEA phone framework"
+    },
+    {
+      "device": "pandora",
+      "archive": "pandora-miui-services-verified.jar",
+      "partition": "system_ext",
+      "filesystemPath": "/framework/miui-services.jar",
+      "sha256": "0ca8bee568f2d4607aa6393764338d5b52fcd0101cdce49c39d8051a3fdc4c70",
+      "bytes": 12754786,
+      "byteIdenticalHistoricalImageExtraction": true,
+      "matchesWorkJarsMiuiServices": false,
+      "otaArchive": "pandora-ota_full-OS3.0.319.0.WBLCNXM-user-16.0-2d01cf4d66.zip",
+      "archiveVersion": "OS3.0.319.0.WBLCNXM",
+      "otaMetadataIncremental": "16OS3.1.260824.101335611.QCPECN.S",
+      "role": "Downloaded Xiaomi 17 Pro CN donor framework"
+    }
+  ],
+  "sourceEvidence": [
+    "work/download_firmware.py",
+    "work/research/ruyi-metadata.txt",
+    "work/research/pandora-metadata.txt",
+    "work/research/pandora-system_ext-list.txt"
+  ],
+  "limits": "Framework code availability and feature gates do not establish active independent rear powerGroup on MIX Flip or exact user-visible 17 Pro pet lifecycle. No phone commands, setters or new firmware downloads in this audit.",
+  "privacy": "No phone serial, personal settings JSON, photos, raw dumps or framework binary in public evidence"
+}

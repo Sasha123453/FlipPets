@@ -1,0 +1,37 @@
+{
+  "version": "0.9.1",
+  "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+  "passed": true,
+  "failed": 0,
+  "scope": "Current source binding of582 host geometry assertions and provenance check against116 previously sampled unchanged donor PAG files. Not continuous motion, physical camera clearance, GPU mask or wallpaper parity validation. Current APK screenshots/runtime are separate.",
+  "source_sha256": {
+    "work/app/src/org/flippets/app/CoverGeometry.java": "cbb3f05560b7359abf66e043f30242d1423ce04e751b616b73da87a243bda22c",
+    "work/app/src/org/flippets/app/PetStage.java": "cd35363f8528fbd9c3f9738a11c9912bcfa855de2a4217b1df3c2daaa86b4eec",
+    "work/app/src/org/flippets/app/PetSceneFrame.java": "3ea94767d0bace164354eaafaca445a7b761e65223c02b4af47e54bf4e977aba",
+    "work/app/src/org/flippets/app/PetBackdrop.java": "d64a47ee9ac3c23e2fa721d6066c63256f2c31d47f9de3d9f45d8c7ce36cb0ab",
+    "work/app/src/org/flippets/app/CoverPreview.java": "f53be84994d7586272b9b8c00273e88cccc358983c76c10b3f8df69f89ca53a2",
+    "work/app/src/org/flippets/app/PetEnvelopes.java": "df1583916ce94d572046f3dde78c00918e2a2161bf26f36a164cad3d0b437008",
+    "work/app/src/org/flippets/app/PetVideo.java": "f77ab17df08a101c44b36203d7590c986371f5ec1edbbf1699c8584e4d97b9fb",
+    "work/app/src/org/flippets/app/PetWallpaper.java": "9c487e9d79503e10cfc8fc326cd210ba16de58fad3c99b0fe33096c2b722f7da",
+    "work/app/src/org/flippets/app/MainActivity.java": "eaad5d28c45343f9b2adf3ee565b5b6b88b933c016a409ae5c0a06c81bd1c096",
+    "work/tests/CoverGeometryTest.java": "b43c1f99f5a3b279f81a3168c3404bd9668d3cf099d7678d7b83adbcfbf2018c",
+    "work/app/assets/pet-envelopes.json": "dcb75b7ab4f13a04d2d73752bf90f0e7c67c4f28cdf12b9d08418d86b37c6e42"
+  },
+  "geometryAssertions": 582,
+  "sampledPAGFiles": 116,
+  "results": [
+    {
+      "test": "host fit/focused geometry and reviewed idle face core invariants",
+      "ok": true
+    },
+    {
+      "test": "116 previously sampled original PAG hashes unchanged",
+      "ok": true
+    }
+  ],
+  "limitations": [
+    "Wide effects may cross camera area or screen edges.",
+    "Scenery-edge feather applies to activity only; ordinary wallpaper lacks foreground feather.",
+    "Charlie original PAG has a crest slice in intermediate frames; not repaired."
+  ]
+}

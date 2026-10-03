@@ -1,0 +1,104 @@
+{
+  "apkSha256": "3d3618e0dd871cbaea2f8a03959df75ed95038e2d79b14ccef90c4c382eacc06",
+  "environment": "Android16 API36 x86_64 emulator; virtual cover1208x1392/520, Main1224x2912/520; no HyperOS/camera-hole hardware",
+  "scope": "Own APK screenshots with stock donor assets, no private photos or other applications. Wallpaper MP4 placement unchanged and excluded.",
+  "captured": 8,
+  "reviewCompleted": true,
+  "results": [
+    {
+      "petIndex": 3,
+      "petId": "bird-pandora",
+      "pet": "Charlie",
+      "screenshot": "cover-charlie-v09.png",
+      "loadedAsset": "pets/bird-pandora/pag_0.pag",
+      "geometry": "display=8 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.4669095 translate=-18.791138,517.7219",
+      "reviewed": true,
+      "visualQualityAccepted": false,
+      "observations": "Face/core right of camera column and appropriately sized; hard branch trim at viewport edge and crest truncation visible during motion. User rejected visual quality."
+    },
+    {
+      "petIndex": 0,
+      "petId": "koala-archived-presets",
+      "pet": "Bubbles",
+      "screenshot": "cover-bubbles-v09.png",
+      "loadedAsset": "pets/koala-archived-presets/pag_0.pag",
+      "geometry": "display=8 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.41452 translate=-141.50867,565.8071",
+      "reviewed": true,
+      "visualQualityAccepted": true,
+      "observations": "Face and both ears visible; source sunglasses intentional. Lower body partly obscured by inherited optional timer."
+    },
+    {
+      "petIndex": 1,
+      "petId": "roedeer-archived-presets",
+      "pet": "Roe",
+      "screenshot": "cover-roe-v09.png",
+      "loadedAsset": "pets/roedeer-archived-presets/pag_0.pag",
+      "geometry": "display=8 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.41452 translate=-58.674316,548.94604",
+      "reviewed": true,
+      "visualQualityAccepted": true,
+      "observations": "Face and ears visible/right-positioned; lower prop/body obscured by inherited timer."
+    },
+    {
+      "petIndex": 7,
+      "petId": "capybara-archived-presets",
+      "pet": "Jumbo",
+      "screenshot": "cover-jumbo-v09.png",
+      "loadedAsset": "pets/capybara-archived-presets/pag_0.pag",
+      "geometry": "display=8 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.5233291 translate=-228.59082,484.09583",
+      "reviewed": true,
+      "visualQualityAccepted": true,
+      "observations": "Face and orange props visible, right/bottom anchored; inherited timer obscures lower body."
+    },
+    {
+      "petIndex": 8,
+      "petId": "sheep-archived-presets",
+      "pet": "Lola",
+      "screenshot": "cover-lola-v09.png",
+      "loadedAsset": "pets/sheep-archived-presets/pag_0.pag",
+      "geometry": "display=8 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.3202187 translate=24.159912,605.14966",
+      "reviewed": true,
+      "visualQualityAccepted": false,
+      "observations": "Face visible but severe rectangular scenery/background mismatch. User rejected visual quality."
+    },
+    {
+      "petIndex": 12,
+      "petId": "46e72f3e-8f51-4db8-8db9-1c9e2a847b2a-pandora",
+      "pet": "3D cartoon",
+      "screenshot": "cover-mp4-cartoon-v09.png",
+      "loadedAsset": "pets/46e72f3e-8f51-4db8-8db9-1c9e2a847b2a-pandora/ai.mp4",
+      "geometry": "display=8 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=1808x1144 scale=0.4276106 translate=410.71997,902.8135",
+      "reviewed": true,
+      "visualQualityAccepted": true,
+      "observations": "Full opaque widescreen MP4 frame fitted below cameras; explicit rectangular scene presentation, lower source partly covered by inherited timer."
+    },
+    {
+      "petIndex": 15,
+      "petId": "lumi-archived-presets",
+      "pet": "Lumi",
+      "screenshot": "cover-mp4-lumi-v09.png",
+      "loadedAsset": "pets/lumi-archived-presets/idle_0.mp4",
+      "geometry": "display=8 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=1280x720 scale=0.604 translate=410.71997,957.12",
+      "reviewed": true,
+      "visualQualityAccepted": true,
+      "observations": "Full opaque widescreen MP4 fitted below cameras; character visible; inherited timer covers lower portion."
+    },
+    {
+      "screen": "Main Charlie preview",
+      "screenshot": "main-charlie-preview-v09.png",
+      "mainDimensions": [
+        1224,
+        2912
+      ],
+      "previewAccessibilityBounds": null,
+      "reviewed": true,
+      "visualQualityAccepted": true,
+      "observations": "Main preview has matching portrait aspect and schematic cameras; inherited timer remains visible."
+    }
+  ],
+  "historical": true,
+  "visualQualityIssues": 2,
+  "utilityCardAtCapture": "timer inherited from preceding test configuration; not default product state",
+  "supersededBy": "0.9.1 geometry redesign pending exact-APK QA",
+  "resourceProfileRun": false,
+  "resourceProfileReason": "Further emulator profiling stopped when user rejected intermediate visual quality; physical0.9 data is historical only"
+}

@@ -1,0 +1,72 @@
+{
+  "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+  "version": "0.9.1",
+  "environment": "Physical MIX Flip EEA HyperOS3.0.303 Android16; rootless Shizuku enabled through app UI",
+  "tested": 5,
+  "failed": 0,
+  "results": [
+    {
+      "test": "Installed APK SHA equals final release",
+      "ok": true
+    },
+    {
+      "test": "Own Main and cover activities simultaneously visible on display0/1",
+      "ok": true
+    },
+    {
+      "test": "Own cover session foreground service active",
+      "ok": true
+    },
+    {
+      "test": "Actual activity geometry1208x1392 with focused source transform",
+      "ok": true,
+      "geometry": "display=1 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.5559721 translate=-274.04358,483.1878"
+    },
+    {
+      "test": "Unchanged Charlie geometry and original assets vs user-reviewed size; no rectangular camera-column crop",
+      "ok": true
+    }
+  ],
+  "resourceSample": {
+    "label": "Charlie visible after startup settled; Main and cover visible",
+    "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+    "durationSeconds": 8.0,
+    "cpuPercentOneCore": 0.48,
+    "cpuSamples": [
+      0.47,
+      0.48,
+      0.0,
+      0.96
+    ],
+    "pssKiB": 258938,
+    "rssKiB": 406788,
+    "scope": "Application process only; 100% CPU is one core. Does not measure battery or system decoder/GPU cost."
+  },
+  "userFeedbackScope": "User reviewed previous0.9.1 build: current final changes only Coco focus, Charlie geometry/artwork unchanged.",
+  "userFeedback": [
+    "Charlie size acceptable.",
+    "Crest still slices during motion; confirmed also in standalone donor PAG probe."
+  ],
+  "limitations": [
+    "No fresh physical fold-cycle, reboot, notification Stop, media controls or long-stability test for0.9.1.",
+    "Physical camera-hole clearance is not proved for all reactions.",
+    "Charlie intermediate source crest remains sliced.",
+    "Short process-only completed-frame CPU/PSS sample does not measure total decoder/GPU cost or battery.",
+    "Folded native wallpaper and any-main-off continuation remain deferred."
+  ],
+  "startupResourceSample": {
+    "label": "Startup settling interval after enabling; includes initial decoding",
+    "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+    "durationSeconds": 8.0,
+    "cpuPercentOneCore": 15.62,
+    "cpuSamples": [
+      46.63,
+      15.38,
+      0.0,
+      0.48
+    ],
+    "pssKiB": 254969,
+    "rssKiB": 400108,
+    "scope": "Application process only; 100% CPU is one core. Does not measure battery or system decoder/GPU cost."
+  }
+}

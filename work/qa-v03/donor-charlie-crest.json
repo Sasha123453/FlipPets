@@ -1,0 +1,134 @@
+{
+  "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+  "scope": "Original donor PAG rendered by standalone libpag on guarded emulator, not physical Xiaomi17Pro behavior. Probe used unchanged asset bytes; current APK asset hash binding only.",
+  "source_sha256": {
+    "work/tests/HairPaddingProbe.java": "094735e09ea80e498c471464eea58da5b959051b355eab725a1abfb579aa940e",
+    "work/app/assets/pets/bird-pandora/pag_0.pag": "3bb7533fd7506cdfcd6b0ad48a7027fe8b37353ee7723547a18a6b7e5518dc14"
+  },
+  "originalProbe": {
+    "results": [
+      {
+        "variant": 0,
+        "padding": 0,
+        "expandInner": false,
+        "layers": [
+          {
+            "name": "",
+            "type": 6,
+            "bounds": "RectF(0.0, 0.0, 813.0, 596.0)",
+            "children": 0
+          }
+        ],
+        "frames": [
+          {
+            "progress": 0.55,
+            "topInSubjectColumns": 0,
+            "recoveredTopPixels": 0
+          },
+          {
+            "progress": 0.7,
+            "topInSubjectColumns": 0,
+            "recoveredTopPixels": 0
+          },
+          {
+            "progress": 0.98,
+            "topInSubjectColumns": 104,
+            "recoveredTopPixels": 0
+          },
+          {
+            "progress": 0.999,
+            "topInSubjectColumns": 104,
+            "recoveredTopPixels": 0
+          },
+          {
+            "progress": 1,
+            "topInSubjectColumns": 104,
+            "recoveredTopPixels": 0
+          }
+        ]
+      },
+      {
+        "variant": 1,
+        "padding": 64,
+        "expandInner": false,
+        "layers": [
+          {
+            "name": "",
+            "type": 6,
+            "bounds": "RectF(0.0, 0.0, 813.0, 596.0)",
+            "children": 0
+          }
+        ],
+        "frames": [
+          {
+            "progress": 0.55,
+            "topInSubjectColumns": 0,
+            "recoveredTopPixels": 0
+          },
+          {
+            "progress": 0.7,
+            "topInSubjectColumns": 0,
+            "recoveredTopPixels": 0
+          },
+          {
+            "progress": 0.98,
+            "topInSubjectColumns": 104,
+            "recoveredTopPixels": 0
+          },
+          {
+            "progress": 0.999,
+            "topInSubjectColumns": 104,
+            "recoveredTopPixels": 0
+          },
+          {
+            "progress": 1,
+            "topInSubjectColumns": 104,
+            "recoveredTopPixels": 0
+          }
+        ]
+      },
+      {
+        "variant": 2,
+        "padding": 64,
+        "expandInner": true,
+        "layers": [
+          {
+            "name": "",
+            "type": 6,
+            "bounds": "RectF(0.0, 0.0, 813.0, 596.0)",
+            "children": 0
+          }
+        ],
+        "frames": [
+          {
+            "progress": 0.55,
+            "topInSubjectColumns": 0,
+            "recoveredTopPixels": 0
+          },
+          {
+            "progress": 0.7,
+            "topInSubjectColumns": 0,
+            "recoveredTopPixels": 0
+          },
+          {
+            "progress": 0.98,
+            "topInSubjectColumns": 104,
+            "recoveredTopPixels": 0
+          },
+          {
+            "progress": 0.999,
+            "topInSubjectColumns": 104,
+            "recoveredTopPixels": 0
+          },
+          {
+            "progress": 1,
+            "topInSubjectColumns": 104,
+            "recoveredTopPixels": 0
+          }
+        ]
+      }
+    ]
+  },
+  "observation": "Intermediate0.55/0.70 crest reaches source top. Adding64px to root and inner video composition restores zero top pixels. Completed1.0 frame has whole crest.",
+  "limitation": "Does not prove exact physical17Pro rendering; only sampled original scene0."
+}

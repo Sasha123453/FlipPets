@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "scope": "Folded native lockscreen deferred; preview only, NOT a verified animated import/apply feature. Opened-main-off continuation separately deferred after rootless feasibility audit.",
+  "source": "Actual MIX Flip EEA com.miui.aod DEV-FLIP-2335.1.2.1-05070145 APK plus sanitized observations reported by parent agent",
+  "nativeApkSha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+  "nativeContract": {
+    "package": "com.miui.aod",
+    "activity": "com.miui.tinykeyguard.editor.edit.EditActivity",
+    "exported": true,
+    "action": "miui.tinykeyguard.editor.EDIT",
+    "stringExtra": "param_template_item_json",
+    "schemaClass": "com.miui.tinykeyguard.editor.data.template.TemplateItem",
+    "clockInfoTemplateId": "ai_pets",
+    "petCategory": 2,
+    "petTypeFixture": 1,
+    "requiredAiPetsData": [
+      "bizId",
+      "resourcePag",
+      "resourcePic",
+      "firstFrameCoordinateAxes",
+      "lastFrameCoordinateAxes"
+    ],
+    "axesFields": [
+      "leftX",
+      "leftY",
+      "rightX",
+      "rightY"
+    ],
+    "sourceProtocol": "Readable regular filesystem paths; no content URI parser in native copy",
+    "nativeCopy": "On Confirm: TemplateApiImpl.fileCopy uses FileUtils.copyFile; writes AI_PAG under native tiny_keyguard/<timestamp>",
+    "nativeSelection": "On Confirm: saveCurrentTemplateToDatabase updates current_tiny_keyguard_info and history through AOD UID",
+    "render": "AiPetsPagView loads caller-provided PAG and makes1208x1392 composition; translation matrix only, no donor scale"
+  },
+  "fixture": {
+    "donorPag": "work/app/assets/pets/bird-pandora/pag_0.pag",
+    "donorPagSha256": "3bb7533fd7506cdfcd6b0ad48a7027fe8b37353ee7723547a18a6b7e5518dc14",
+    "width": 976,
+    "height": 596,
+    "poster": "Own original gallery thumbnail resampled to976x596 for preview; not exact PAG frame",
+    "fileUnmodified": true,
+    "newOwnBizIdUsed": true
+  },
+  "observations": {
+    "nativePreviewAcceptedJson": true,
+    "ownCharlieVisible": true,
+    "previewAppearance": "Mostly flattened/poster-like in captured view; actual animation not verified",
+    "currentTinyKeyguardInfoByteUnchanged": true,
+    "allTinyKeyguardInfoByteUnchanged": true,
+    "applyPressed": false,
+    "nativeAnimatedInstallationVerified": false,
+    "backupRestoreVerified": false
+  },
+  "codeEvidence": {
+    "editor": "EditActivity.f: Gson import; ai_pets refresh creates wallpapers from resourcePic",
+    "render": "TinyEditorPetsPagView category2 -> AiPetsPagView.preInit with supplied PAG path",
+    "copy": "TemplateApiImpl$fileCopy$2 + TemplateFilePathGenerator.copyFile",
+    "bytecodeCondition": "Null/blank skips via if-eqz at0a06 and if-ne at0a0e; successful copied path reaches setResourcePag at0a1e",
+    "settingsSchema": "Native loadCurrentTemplate reads same TemplateItem schema; private current snapshot was not published",
+    "permissionEvidence": "Manifest sharedUserId android.uid.system + WRITE_SECURE_SETTINGS; actual shared-UID package dump MANAGE_EXTERNAL_STORAGE grantedtrue; effective file read still depends on storage/SELinux"
+  },
+  "remainingTodo": [
+    "Exact native backup/semantic rollback and history preservation before any Apply",
+    "Render original PAG animation/alpha and camera-safe placement in native composition; axes cannot arbitrarily scale donor",
+    "Replace approximate poster with exact frame matched to source PAG; check both native orientations",
+    "Verify native system-owned copy, selection, real animation and persistent secure lock/AOD lifecycle only when task resumes",
+    "Determine whether custom file/template format can retain original17Pro states beyond a single PAG"
+  ],
+  "privacy": "No serials, private current/all settings JSON, personal wallpaper paths, photos, raw phone dumps or screenshots in this report",
+  "separatelyDeferredOpenedMainOff": "User requires natural Power-button main-off and allowed deferral if complex. Physical panel OFF while PMS Awake proved; reliable rootless sleep continuation not proved. See independent-display-power.md."
+}

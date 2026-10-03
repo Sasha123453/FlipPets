@@ -1,0 +1,8305 @@
+{
+  "environment": "emulator-5554 standalone app_process, this app donor assets only; no phone UI/data",
+  "scope": "PAG loading and sampled alpha bounds, not continuous motion or physical camera clearance. Canonical subject focus is fixed renderer metadata, not an exact silhouette mask.",
+  "attemptedSamplesPerScene": 8,
+  "alphaThreshold": 8,
+  "tested": 116,
+  "failed": 0,
+  "sourceSha256": {
+    "pets/koala-archived-presets/pag_0.pag": "13592716f3602d35c7a18af3f75be2825904c4148025bdc48eeb0d219c7c97db",
+    "pets/koala-archived-presets/pag_1.pag": "cf87d51ac5de2ee7a170819769d3bcf0cd8ddb08e991999b4e424d79d6a4274f",
+    "pets/koala-archived-presets/pag_2.pag": "9095ba936b613d205a403b5fd6f2a6df39682c925a3a2823b30fbe2d3a321c1b",
+    "pets/koala-archived-presets/pag_3.pag": "eb2ff2af6bbe27d63f339f24d619a6bd15bd8746906868d66c328102b1355c6d",
+    "pets/koala-archived-presets/pag_4.pag": "91ca33b62051859fc21402273e0c71bca4308eb0e8c6925ae3621485560dc022",
+    "pets/koala-archived-presets/pag_5.pag": "f8c4f58edd867cc6f5bd84eb9fbb98a262afd471ba87d85455b6ad6b768cb3b9",
+    "pets/koala-archived-presets/pag_6.pag": "da838f25d23086f25b503b6f2c52e4cd115cca1614df428ab9a6de5a9d9078f9",
+    "pets/koala-archived-presets/pag_7.pag": "06aa740eb24aa25c393c55f75c6e026c982006320d314086abefc066f62e18d4",
+    "pets/koala-archived-presets/pag_8.pag": "400ddf97ff6e1e041d3ee449d1d42f2d5606b7262d6f445327727fb4d640091d",
+    "pets/koala-archived-presets/pag_9.pag": "2d40501a1683ed90cd13f8698f869ec3cac1b9025ca33c8450213fb1d0f2aa14",
+    "pets/koala-archived-presets/pag_10.pag": "52e80d85c8d50b42fb8f49d8d2b714085753a2c3479bca51a02e8cb4e9b74301",
+    "pets/koala-archived-presets/pag_11.pag": "e24f9f3ce24e7465b8df8057c06c57e92fc8737fd376bdfcff7a9390b5cc1fae",
+    "pets/koala-archived-presets/pag_12.pag": "db1a47ba4d83e4a32d8eeb32d61b2222168dc95ee709087691b9135244f4272c",
+    "pets/koala-archived-presets/pag_13.pag": "0767998e4689ce988db997af05ee6fbd90b8c82e4b5ef105b93a26bbeedef31e",
+    "pets/koala-archived-presets/pag_14.pag": "c7ae168d8af9607fffc874a302b004ba0630e34157f6bcbb13c68966a7ecd934",
+    "pets/koala-archived-presets/pag_15.pag": "faad6673b68fc96c311d2348bf5ed582d7c61edf79badcb3f8a9921852852df5",
+    "pets/koala-archived-presets/nfc_pin_show.pag": "8017a6aa5dc99101f98a958dcd7ec0da2478818e57cc74e0c2f35b4b3ee2e1eb",
+    "pets/roedeer-archived-presets/pag_0.pag": "4c11156007575c17a1ab1b7911fd0ac955a84319490ae3fdaa3422f9fb6a6cae",
+    "pets/roedeer-archived-presets/pag_1.pag": "682b2920697d910a7d6e89ae691c4dc89380c65697ac3c3d88dcd61deeec81aa",
+    "pets/roedeer-archived-presets/pag_2.pag": "492c0255a9006ce54966207a38fbf493966d6da7758c779e0d6b13d07a8ad280",
+    "pets/roedeer-archived-presets/pag_3.pag": "07d111affc38763e48bdd81f77abc63e6734be220827a382e314c1cdc9f28d5f",
+    "pets/roedeer-archived-presets/pag_4.pag": "e06fa4b47e19cd4de81c8cdfd00d2b4e9107cd682be93ea35aacb536dc1c31b3",
+    "pets/roedeer-archived-presets/pag_5.pag": "7f7b24397b26becfb76876c94f02ebcba21a4930f5c2b36289e0a6cde93c272d",
+    "pets/roedeer-archived-presets/pag_6.pag": "b497aceb0861de7b681d7ffd5f3c24c34de14de65f07510a909aeef6e0bf887c",
+    "pets/roedeer-archived-presets/pag_7.pag": "8c3e6c110e0d35a49ca5eac10eeee47a1b0f3ff9accd8922311607367c2a892f",
+    "pets/roedeer-archived-presets/pag_8.pag": "bb71dc24e5a7d184d608b466d9a193cbefe619faca24c70b47c6848945bc6eb3",
+    "pets/roedeer-archived-presets/pag_9.pag": "49dcd24f3f5ee5d907a2d127d1e16b9cb37ead2e432aeb238eff542320da70d6",
+    "pets/roedeer-archived-presets/pag_10.pag": "ae7d8be25bd18f50b6f60317933c3604d025a4ce00676a48c69eda5920cb6609",
+    "pets/roedeer-archived-presets/pag_11.pag": "d9d29c5c960eeb6e8edfc8ef947525f8d676ea3e240e2490aaae8f984063a85e",
+    "pets/roedeer-archived-presets/pag_12.pag": "04a2656afc63c32ed6960a03cbc62797bc3bdf2b30c33d36a21713ac5278a767",
+    "pets/roedeer-archived-presets/pag_13.pag": "ed40a7bfeb01c8ee668a28fe70b466265374f722f86609bd34f907f65507c07b",
+    "pets/roedeer-archived-presets/pag_14.pag": "392f18fa5f0bd42d0b5b38f50318290dd3d2529a22e31a1e0a3ca3da5608e577",
+    "pets/roedeer-archived-presets/pag_15.pag": "384a8f6c60cd7fbff5df88118914c398ca1a3580f9789928e8016d6d558dce2d",
+    "pets/roedeer-archived-presets/nfc_pin_show.pag": "8017a6aa5dc99101f98a958dcd7ec0da2478818e57cc74e0c2f35b4b3ee2e1eb",
+    "pets/q_carp-pandora/pag_0.pag": "352d95bbf6b90a2cc4460a7899b184b41e1cd6c13efe7f3a997066e805dacaa7",
+    "pets/q_carp-pandora/pag_1.pag": "a023c6718796aa849d4e9e13619c9244838933c00b6428ff5ee06ac239f2065f",
+    "pets/q_carp-pandora/pag_2.pag": "72fccaffe56ede893abff7dc1bb18ac9d443d5530700fc4cb81863b92f27b7db",
+    "pets/q_carp-pandora/pag_3.pag": "355506f5ad3159aa100928468f3cfb79fa0ca197fe916c9f758e93bddddae374",
+    "pets/bird-pandora/pag_0.pag": "3bb7533fd7506cdfcd6b0ad48a7027fe8b37353ee7723547a18a6b7e5518dc14",
+    "pets/bird-pandora/pag_1.pag": "14eb2f96bbf83f44038952e00a5f6629d01bed37e7406f72712bdd1df1d9e7b2",
+    "pets/bird-pandora/pag_2.pag": "4568635ac671b2fd1365ffcac7e82e52d48872251af73ba2a7480d381ff79e1e",
+    "pets/bird-pandora/pag_3.pag": "027f3c74226f13877f6f44725dcaeae8b811beb9f1a95ba7198a9b466a069fad",
+    "pets/bird-pandora/pag_4.pag": "c8c97c4801d7ff7a5993b9f124ba78abd18fb05692c43f4059fc7d50848c16c4",
+    "pets/bird-pandora/pag_5.pag": "7e5bf40abf57c0e889b35bfb96ca1362a4373ec40a14bb181e4c638f343a3219",
+    "pets/bird-pandora/pag_6.pag": "2d488e4c03a3dd7c87c5c64d5ec86fcef93cc0a76acdaa59c9facb34a17b1012",
+    "pets/bird-pandora/pag_7.pag": "fa77bee5382915d1aa77d68fa4f9cfeb52afdd452d7ca66446b87abbaf11f60d",
+    "pets/bird-pandora/pag_8.pag": "be3cc5263c87373a5acffbb6755897f22e9146f2cfd684f247dca6244c72c459",
+    "pets/bird-pandora/pag_9.pag": "c574f19c8bd17c09bb688b68d3dd8b1684e950e9d4768507c4dfbc83b532c1bc",
+    "pets/bird-pandora/pag_10.pag": "595615566fa016bc1fc619a7ca505548ecb8f7d5f3a8276d70afd554a97e7443",
+    "pets/bird-pandora/pag_11.pag": "cb5b39f6c0088ab46bc2b41cbb2cdb75ea46bd414e227329ffd800e3a54c8aca",
+    "pets/seal-archived-presets/pag_0.pag": "cf1cfc10454e8ac52942cc36dfa52edea06d9aad874075fe7c191c6e6d5656ab",
+    "pets/seal-archived-presets/pag_1.pag": "9a79309c78b31841fb2866ee1c823eab4ed88f305cae2998bcad8a59d8dd8f01",
+    "pets/seal-archived-presets/pag_2.pag": "fe6c6a4002e56d3dfe0fc0757122804f1dbdf8fccd5dd80c477319588a52eadc",
+    "pets/seal-archived-presets/pag_3.pag": "2154c008e874cdb5afbd1beae4463621f7bd7af5e48738fbcf3f0c4a4b65f345",
+    "pets/seal-archived-presets/pag_4.pag": "a1e851892638152aaa29cb8f314431faccda2631c7d7b42b74f22aca78cb9c05",
+    "pets/seal-archived-presets/pag_5.pag": "e1fe1b6d0daf52335cc13f4232e7f71924d87efbcc052dd25e61721bbc4fe909",
+    "pets/seal-archived-presets/pag_6.pag": "d62ddfbc15d3afb6c4a1a1def33a6865a03330be587b90a12366c21c966f66f6",
+    "pets/seal-archived-presets/pag_7.pag": "71120ec07a1e81e3b48a1bcecd8fd3e6f361c0db4ffe44467f54c25d3330a2d4",
+    "pets/seal-archived-presets/pag_8.pag": "7c5edc8a2915536a15760a53d94d48ffc27c3fd9ad5e715dbfcc23ca96f86e30",
+    "pets/seal-archived-presets/pag_9.pag": "881116dc843423d1bf3c852b29810ed8b143a93a75c76c2a4046f6ea12ba8249",
+    "pets/seal-archived-presets/pag_10.pag": "a971d7ad512013bcdace52103e25a448e2538a0b69cd503223e317e70e8ece50",
+    "pets/seal-archived-presets/pag_11.pag": "1e1c3a4bcfc6a5aa9775b0c3a45d526fc785feba9dfaf57def002bac72bc346b",
+    "pets/seal-archived-presets/nfc_pin_show.pag": "8017a6aa5dc99101f98a958dcd7ec0da2478818e57cc74e0c2f35b4b3ee2e1eb",
+    "pets/seal-pandora/pag_0.pag": "cf1cfc10454e8ac52942cc36dfa52edea06d9aad874075fe7c191c6e6d5656ab",
+    "pets/seal-pandora/pag_1.pag": "9a79309c78b31841fb2866ee1c823eab4ed88f305cae2998bcad8a59d8dd8f01",
+    "pets/seal-pandora/pag_2.pag": "fe6c6a4002e56d3dfe0fc0757122804f1dbdf8fccd5dd80c477319588a52eadc",
+    "pets/seal-pandora/pag_3.pag": "2154c008e874cdb5afbd1beae4463621f7bd7af5e48738fbcf3f0c4a4b65f345",
+    "pets/seal-pandora/pag_4.pag": "a1e851892638152aaa29cb8f314431faccda2631c7d7b42b74f22aca78cb9c05",
+    "pets/seal-pandora/pag_5.pag": "e1fe1b6d0daf52335cc13f4232e7f71924d87efbcc052dd25e61721bbc4fe909",
+    "pets/seal-pandora/pag_6.pag": "d62ddfbc15d3afb6c4a1a1def33a6865a03330be587b90a12366c21c966f66f6",
+    "pets/seal-pandora/pag_7.pag": "71120ec07a1e81e3b48a1bcecd8fd3e6f361c0db4ffe44467f54c25d3330a2d4",
+    "pets/seal-pandora/pag_8.pag": "7c5edc8a2915536a15760a53d94d48ffc27c3fd9ad5e715dbfcc23ca96f86e30",
+    "pets/seal-pandora/pag_9.pag": "881116dc843423d1bf3c852b29810ed8b143a93a75c76c2a4046f6ea12ba8249",
+    "pets/seal-pandora/pag_10.pag": "a971d7ad512013bcdace52103e25a448e2538a0b69cd503223e317e70e8ece50",
+    "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/blue976x596.pag": "013c492b37913fefeac25556785d12e34b1eda7f9ef9cbbf8ed3505d7020afd2",
+    "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/gold976x596.pag": "fe36e0bee95024a6a6005e83c43edb6b5c4da0ed6adbca9d84881b57511274aa",
+    "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/pink976x596.pag": "438aefd660f557c75c06619634c7ea5cc82731463b998d230a8033681fd3acc9",
+    "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/white976x596.pag": "ccf376bb7035dd5d3e324ccf2b3bcf0b3ab22df705c08db1e6cbba486d973820",
+    "pets/capybara-archived-presets/pag_0.pag": "4f242d2ef59111127c5c767b6be84ddf07982e1da56539d8137329dd85e1d6bf",
+    "pets/capybara-archived-presets/pag_1.pag": "0d636b4dec10672ed7b4a15fc7a33a96b124c4b3d58f8ef71e5287ffcbeb4623",
+    "pets/capybara-archived-presets/pag_2.pag": "e0de8fa8d6e103ba2e38c4e91f9500787aa1d2b85ec6a7aa2bf0ee841d238782",
+    "pets/capybara-archived-presets/pag_3.pag": "73afac6b8018adbe3e6e03c760ca4354a32646853a8ed41094f02da84e921c1e",
+    "pets/capybara-archived-presets/nfc_pin_show.pag": "8017a6aa5dc99101f98a958dcd7ec0da2478818e57cc74e0c2f35b4b3ee2e1eb",
+    "pets/sheep-archived-presets/pag_0.pag": "3858680513cdcff7b12890dcffef2e2c7673148908ab4c8b69eef64c7ad42124",
+    "pets/sheep-archived-presets/pag_1.pag": "53a562500f133b9c702c9aff467342ef6d5a192cf523219f5a47821bc0985baf",
+    "pets/sheep-archived-presets/pag_2.pag": "56168256bb2f7b1fed9db78ca589c056ffa590b4ee5db94071397e4f38febfd9",
+    "pets/sheep-archived-presets/pag_3.pag": "062c249a8613ea93b34cd52ce173c0f5ad9f44856072988343666b3d55fbaade",
+    "pets/sheep-archived-presets/pag_4.pag": "c3a5a35a3a8e165d4b4998ef6cd4047061367d84e6e2678e65bc5fb04f9a340d",
+    "pets/sheep-archived-presets/pag_5.pag": "1da49526fe345a58dbb74c4830f62436932e7a04e5c93e1b684869a72287b62a",
+    "pets/sheep-archived-presets/pag_6.pag": "34a939c2b91c3c0e257c8a9c48989f2ab364497c0f579b6ba2f01ae298a5e76a",
+    "pets/sheep-archived-presets/pag_7.pag": "7b4bb3d88055d5161fd14a4a56664c433bdcf1004d170ff6150c3864963b192f",
+    "pets/sheep-archived-presets/pag_8.pag": "f1f4f445daba5424ae7127bafb4b6d6af94e0d1d818ab6d752bd5271a3fa51f3",
+    "pets/sheep-archived-presets/pag_9.pag": "24f27062ff29652df75f6fa350cf280394e60313ecfcfedcbe9532da2f9f5b8f",
+    "pets/sheep-archived-presets/pag_10.pag": "b9683c7f6d0f25af60cfae549aad09e1a72d2333cc5cabea37703b8bd08874a6",
+    "pets/sheep-archived-presets/pag_11.pag": "aa7c7c6c5f1b95434a608641908653c2d1e21255985b59191a8bbe5e2ce15676",
+    "pets/sheep-archived-presets/pag_12.pag": "aa7c7c6c5f1b95434a608641908653c2d1e21255985b59191a8bbe5e2ce15676",
+    "pets/sheep-archived-presets/nfc_pin_show.pag": "8017a6aa5dc99101f98a958dcd7ec0da2478818e57cc74e0c2f35b4b3ee2e1eb",
+    "pets/sheep-pandora/pag_0.pag": "3858680513cdcff7b12890dcffef2e2c7673148908ab4c8b69eef64c7ad42124",
+    "pets/sheep-pandora/pag_1.pag": "53a562500f133b9c702c9aff467342ef6d5a192cf523219f5a47821bc0985baf",
+    "pets/sheep-pandora/pag_2.pag": "56168256bb2f7b1fed9db78ca589c056ffa590b4ee5db94071397e4f38febfd9",
+    "pets/sheep-pandora/pag_3.pag": "062c249a8613ea93b34cd52ce173c0f5ad9f44856072988343666b3d55fbaade",
+    "pets/sheep-pandora/pag_4.pag": "c3a5a35a3a8e165d4b4998ef6cd4047061367d84e6e2678e65bc5fb04f9a340d",
+    "pets/sheep-pandora/pag_5.pag": "1da49526fe345a58dbb74c4830f62436932e7a04e5c93e1b684869a72287b62a",
+    "pets/sheep-pandora/pag_6.pag": "34a939c2b91c3c0e257c8a9c48989f2ab364497c0f579b6ba2f01ae298a5e76a",
+    "pets/sheep-pandora/pag_7.pag": "7b4bb3d88055d5161fd14a4a56664c433bdcf1004d170ff6150c3864963b192f",
+    "pets/sheep-pandora/pag_8.pag": "f1f4f445daba5424ae7127bafb4b6d6af94e0d1d818ab6d752bd5271a3fa51f3",
+    "pets/sheep-pandora/pag_9.pag": "24f27062ff29652df75f6fa350cf280394e60313ecfcfedcbe9532da2f9f5b8f",
+    "pets/sheep-pandora/pag_10.pag": "b9683c7f6d0f25af60cfae549aad09e1a72d2333cc5cabea37703b8bd08874a6",
+    "pets/sheep-pandora/pag_11.pag": "1323f14afe5329a9437895299a2c567aa6a4159f2397ea17f58f72b8d1ad219a",
+    "pets/otter-archived-presets/pag_0.pag": "785cfa9ec56bcb3f4cecd7e5e4261de3320b88332a8f7624e06ad8928536f540",
+    "pets/otter-archived-presets/pag_1.pag": "29028703a0c826b59dee002cadc51409862de5ec676037dc380e03a6eb37bf52",
+    "pets/otter-archived-presets/pag_2.pag": "3103442f880bdb4aa95b98b82e1d38d3d959468336cc6259fca101c5ef52ab41",
+    "pets/otter-archived-presets/pag_3.pag": "c344b5a94183b364e387ed3582c81454607c89f134964110e838f31d9c99b5c1",
+    "pets/otter-archived-presets/nfc_pin_show.pag": "8017a6aa5dc99101f98a958dcd7ec0da2478818e57cc74e0c2f35b4b3ee2e1eb",
+    "pets/system-effects/pin_show_pandora.pag": "54a34b11a8f1b5852bb90f4520489bf25f655ba3a0675c85c2ef90d14f8ea45e",
+    "pets/system-effects/pin_show_popsicle.pag": "244c6aeb20bef19b4e0d75317b45c3a9a85b9ce7545ca29ae63572d24dcfcb78"
+  },
+  "sampledArtworkEnvelopes": {
+    "80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "bird-pandora": [
+      0.151934,
+      0,
+      1,
+      1
+    ],
+    "capybara-archived-presets": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "koala-archived-presets": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "otter-archived-presets": [
+      0.283082,
+      0,
+      1,
+      1
+    ],
+    "q_carp-pandora": [
+      0.085345,
+      0,
+      1,
+      0.959552
+    ],
+    "roedeer-archived-presets": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "seal-archived-presets": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "seal-pandora": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "sheep-archived-presets": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "sheep-pandora": [
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "runtimeSubjectFocus": {
+    "bird-pandora": [
+      0.3,
+      0,
+      0.84,
+      1
+    ],
+    "koala-archived-presets": [
+      0.4,
+      0.08,
+      0.96,
+      0.98
+    ],
+    "roedeer-archived-presets": [
+      0.34,
+      0.1,
+      0.9,
+      1
+    ],
+    "seal-archived-presets": [
+      0.27,
+      0.12,
+      0.91,
+      0.98
+    ],
+    "seal-pandora": [
+      0.27,
+      0.12,
+      0.91,
+      0.98
+    ],
+    "capybara-archived-presets": [
+      0.43,
+      0,
+      0.95,
+      1
+    ],
+    "sheep-archived-presets": [
+      0.3,
+      0,
+      0.9,
+      1
+    ],
+    "sheep-pandora": [
+      0.3,
+      0,
+      0.9,
+      1
+    ],
+    "otter-archived-presets": [
+      0.34,
+      0.1,
+      0.94,
+      1
+    ],
+    "q_carp-pandora": [
+      0.3,
+      0,
+      1,
+      0.97
+    ]
+  },
+  "results": [
+    {
+      "pet": "koala-archived-presets",
+      "clip": "0",
+      "path": "pets/koala-archived-presets/pag_0.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.4405737704918033,
+          0.1610738255033557,
+          0.9077868852459017,
+          0.9161073825503355
+        ],
+        [
+          0.1,
+          0.4405737704918033,
+          0.15771812080536912,
+          0.9077868852459017,
+          0.9161073825503355
+        ],
+        [
+          0.25,
+          0.45081967213114754,
+          0.14429530201342283,
+          0.9118852459016393,
+          0.9161073825503355
+        ],
+        [
+          0.4,
+          0.4487704918032787,
+          0.13758389261744966,
+          0.9139344262295082,
+          0.9161073825503355
+        ],
+        [
+          0.55,
+          0.44672131147540983,
+          0.13758389261744966,
+          0.9159836065573771,
+          0.9161073825503355
+        ],
+        [
+          0.7,
+          0.4487704918032787,
+          0.13758389261744966,
+          0.9180327868852459,
+          0.9161073825503355
+        ],
+        [
+          0.85,
+          0.44672131147540983,
+          0.14429530201342283,
+          0.9180327868852459,
+          0.9161073825503355
+        ],
+        [
+          0.98,
+          0.4405737704918033,
+          0.15771812080536912,
+          0.9057377049180327,
+          0.9161073825503355
+        ]
+      ],
+      "bounds": [
+        0.4405737704918033,
+        0.13758389261744966,
+        0.9180327868852459,
+        0.9161073825503355
+      ]
+    },
+    {
+      "pet": "koala-archived-presets",
+      "clip": "1",
+      "path": "pets/koala-archived-presets/pag_1.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.9959016393442623,
+          0.43288590604026844,
+          1,
+          0.47315436241610737
+        ],
+        [
+          0.1,
+          0.7745901639344263,
+          0.29194630872483224,
+          0.9897540983606558,
+          0.697986577181208
+        ],
+        [
+          0.25,
+          0.47540983606557374,
+          0.22483221476510068,
+          0.7684426229508197,
+          0.7684563758389261
+        ],
+        [
+          0.4,
+          0.3135245901639344,
+          0.22483221476510068,
+          0.8217213114754098,
+          0.9429530201342282
+        ],
+        [
+          0.55,
+          0.3790983606557377,
+          0.18456375838926176,
+          0.8565573770491803,
+          0.9664429530201343
+        ],
+        [
+          0.7,
+          0.36885245901639346,
+          0.19463087248322147,
+          0.860655737704918,
+          0.9630872483221476
+        ],
+        [
+          0.85,
+          0.36885245901639346,
+          0.19463087248322147,
+          0.8627049180327869,
+          0.9630872483221476
+        ],
+        [
+          0.98,
+          0.9569672131147541,
+          0.26174496644295303,
+          1,
+          0.9429530201342282
+        ]
+      ],
+      "bounds": [
+        0.3135245901639344,
+        0.18456375838926176,
+        1,
+        0.9664429530201343
+      ]
+    },
+    {
+      "pet": "koala-archived-presets",
+      "clip": "2",
+      "path": "pets/koala-archived-presets/pag_2.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0.1,
+          0.819672131147541,
+          0.24496644295302014,
+          1,
+          0.8590604026845637
+        ],
+        [
+          0.25,
+          0.5963114754098361,
+          0.16778523489932887,
+          0.9877049180327869,
+          0.8758389261744967
+        ],
+        [
+          0.4,
+          0.4344262295081967,
+          0.20134228187919462,
+          0.9200819672131147,
+          0.9194630872483222
+        ],
+        [
+          0.55,
+          0.3975409836065574,
+          0.2080536912751678,
+          0.8852459016393442,
+          0.9194630872483222
+        ],
+        [
+          0.7,
+          0.48155737704918034,
+          0.2080536912751678,
+          0.9426229508196722,
+          0.9228187919463087
+        ],
+        [
+          0.85,
+          0.819672131147541,
+          0.2483221476510067,
+          1,
+          0.8993288590604027
+        ]
+      ],
+      "bounds": [
+        0.3975409836065574,
+        0.16778523489932887,
+        1,
+        0.9228187919463087
+      ]
+    },
+    {
+      "pet": "koala-archived-presets",
+      "clip": "3",
+      "path": "pets/koala-archived-presets/pag_3.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.4262295081967213,
+          0.1040268456375839,
+          0.9733606557377049,
+          0.9261744966442953
+        ],
+        [
+          0.1,
+          0.4262295081967213,
+          0.1040268456375839,
+          0.9897540983606558,
+          0.9161073825503355
+        ],
+        [
+          0.25,
+          0.4323770491803279,
+          0.13087248322147652,
+          0.9795081967213115,
+          0.9161073825503355
+        ],
+        [
+          0.4,
+          0.3975409836065574,
+          0.10738255033557047,
+          0.9610655737704918,
+          0.9161073825503355
+        ],
+        [
+          0.55,
+          0.4139344262295082,
+          0.12416107382550336,
+          0.9836065573770492,
+          0.9194630872483222
+        ],
+        [
+          0.7,
+          0.4344262295081967,
+          0.12416107382550336,
+          0.9795081967213115,
+          0.9194630872483222
+        ],
+        [
+          0.85,
+          0.42008196721311475,
+          0.09731543624161074,
+          0.9897540983606558,
+          0.9194630872483222
+        ],
+        [
+          0.98,
+          0.4180327868852459,
+          0.1040268456375839,
+          0.9877049180327869,
+          0.9261744966442953
+        ]
+      ],
+      "bounds": [
+        0.3975409836065574,
+        0.09731543624161074,
+        0.9897540983606558,
+        0.9261744966442953
+      ]
+    },
+    {
+      "pet": "koala-archived-presets",
+      "clip": "4",
+      "path": "pets/koala-archived-presets/pag_4.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.3524590163934426,
+          0.2080536912751678,
+          0.930327868852459,
+          1
+        ],
+        [
+          0.1,
+          0.036885245901639344,
+          0,
+          0.9405737704918032,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          0.8995901639344263,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          0.8934426229508197,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          0.8995901639344263,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          0.8995901639344263,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          0.9036885245901639,
+          0.9798657718120806
+        ],
+        [
+          0.98,
+          0.3422131147540984,
+          0.20469798657718122,
+          0.9282786885245902,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        0.9405737704918032,
+        1
+      ]
+    },
+    {
+      "pet": "koala-archived-presets",
+      "clip": "5",
+      "path": "pets/koala-archived-presets/pag_5.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.17827868852459017,
+          0,
+          0.9569672131147541,
+          1
+        ],
+        [
+          0.1,
+          0.3709016393442623,
+          0.1912751677852349,
+          0.9569672131147541,
+          1
+        ],
+        [
+          0.25,
+          0.1557377049180328,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.36885245901639346,
+          0.16778523489932887,
+          0.9918032786885246,
+          1
+        ],
+        [
+          0.55,
+          0.3360655737704918,
+          0.15436241610738255,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.36885245901639346,
+          0,
+          0.9795081967213115,
+          1
+        ],
+        [
+          0.85,
+          0.36885245901639346,
+          0.19798657718120805,
+          0.9979508196721312,
+          1
+        ],
+        [
+          0.98,
+          0.36885245901639346,
+          0.1610738255033557,
+          0.9549180327868853,
+          1
+        ]
+      ],
+      "bounds": [
+        0.1557377049180328,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "koala-archived-presets",
+      "clip": "6",
+      "path": "pets/koala-archived-presets/pag_6.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.36475409836065575,
+          0.174496644295302,
+          1,
+          0.9765100671140939
+        ],
+        [
+          0.1,
+          0.36475409836065575,
+          0,
+          1,
+          0.9765100671140939
+        ],
+        [
+          0.25,
+          0.36475409836065575,
+          0.087248322147651,
+          1,
+          0.9765100671140939
+        ],
+        [
+          0.4,
+          0.14344262295081966,
+          0,
+          1,
+          0.9765100671140939
+        ],
+        [
+          0.55,
+          0.2151639344262295,
+          0,
+          1,
+          0.9765100671140939
+        ],
+        [
+          0.7,
+          0.36475409836065575,
+          0.07718120805369127,
+          1,
+          0.9765100671140939
+        ],
+        [
+          0.85,
+          0.36475409836065575,
+          0.18791946308724833,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.1290983606557377,
+          0.174496644295302,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.1290983606557377,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "koala-archived-presets",
+      "clip": "7",
+      "path": "pets/koala-archived-presets/pag_7.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.06557377049180328,
+          0,
+          0.9897540983606558,
+          1
+        ],
+        [
+          0.1,
+          0.06557377049180328,
+          0.08389261744966443,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.2069672131147541,
+          0.05704697986577181,
+          0.9979508196721312,
+          1
+        ],
+        [
+          0.4,
+          0.00819672131147541,
+          0,
+          0.9918032786885246,
+          1
+        ],
+        [
+          0.55,
+          0.006147540983606557,
+          0.0738255033557047,
+          0.9795081967213115,
+          1
+        ],
+        [
+          0.7,
+          0.07991803278688525,
+          0,
+          0.9631147540983607,
+          1
+        ],
+        [
+          0.85,
+          0.13934426229508196,
+          0.026845637583892617,
+          0.9836065573770492,
+          1
+        ],
+        [
+          0.98,
+          0.06762295081967214,
+          0.08053691275167785,
+          0.9897540983606558,
+          1
+        ]
+      ],
+      "bounds": [
+        0.006147540983606557,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "koala-archived-presets",
+      "clip": "8",
+      "path": "pets/koala-archived-presets/pag_8.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.3975409836065574,
+          0.174496644295302,
+          0.8422131147540983,
+          0.87248322147651
+        ],
+        [
+          0.1,
+          0.38729508196721313,
+          0.15436241610738255,
+          0.8360655737704918,
+          0.87248322147651
+        ],
+        [
+          0.25,
+          0.38934426229508196,
+          0.18791946308724833,
+          0.8340163934426229,
+          0.87248322147651
+        ],
+        [
+          0.4,
+          0.36885245901639346,
+          0.1610738255033557,
+          0.9077868852459017,
+          0.87248322147651
+        ],
+        [
+          0.55,
+          0.33811475409836067,
+          0.174496644295302,
+          0.9180327868852459,
+          0.8859060402684564
+        ],
+        [
+          0.7,
+          0.36270491803278687,
+          0.1644295302013423,
+          0.9036885245901639,
+          0.87248322147651
+        ],
+        [
+          0.85,
+          0.36065573770491804,
+          0.16778523489932887,
+          0.8360655737704918,
+          0.87248322147651
+        ],
+        [
+          0.98,
+          0.36475409836065575,
+          0.20134228187919462,
+          0.8442622950819673,
+          0.87248322147651
+        ]
+      ],
+      "bounds": [
+        0.33811475409836067,
+        0.15436241610738255,
+        0.9180327868852459,
+        0.8859060402684564
+      ]
+    },
+    {
+      "pet": "koala-archived-presets",
+      "clip": "9",
+      "path": "pets/koala-archived-presets/pag_9.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.375,
+          0.19798657718120805,
+          1,
+          0.9194630872483222
+        ],
+        [
+          0.1,
+          0.4077868852459016,
+          0.19798657718120805,
+          1,
+          0.9161073825503355
+        ],
+        [
+          0.25,
+          0.41188524590163933,
+          0.20469798657718122,
+          1,
+          0.9194630872483222
+        ],
+        [
+          0.4,
+          0.39344262295081966,
+          0.21140939597315436,
+          1,
+          0.9194630872483222
+        ],
+        [
+          0.55,
+          0.42213114754098363,
+          0.19798657718120805,
+          1,
+          0.912751677852349
+        ],
+        [
+          0.7,
+          0.4139344262295082,
+          0.2080536912751678,
+          1,
+          0.9161073825503355
+        ],
+        [
+          0.85,
+          0.39549180327868855,
+          0.21476510067114093,
+          1,
+          0.912751677852349
+        ],
+        [
+          0.98,
+          0.3831967213114754,
+          0.2181208053691275,
+          1,
+          0.9161073825503355
+        ]
+      ],
+      "bounds": [
+        0.375,
+        0.19798657718120805,
+        1,
+        0.9194630872483222
+      ]
+    },
+    {
+      "pet": "koala-archived-presets",
+      "clip": "10",
+      "path": "pets/koala-archived-presets/pag_10.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.39959016393442626,
+          0.1174496644295302,
+          0.9590163934426229,
+          0.9093959731543624
+        ],
+        [
+          0.1,
+          0.4077868852459016,
+          0.12751677852348994,
+          1,
+          0.9093959731543624
+        ],
+        [
+          0.25,
+          0.39959016393442626,
+          0.12416107382550336,
+          0.9918032786885246,
+          0.9093959731543624
+        ],
+        [
+          0.4,
+          0.38934426229508196,
+          0.12416107382550336,
+          0.9405737704918032,
+          0.9093959731543624
+        ],
+        [
+          0.55,
+          0.3442622950819672,
+          0.12416107382550336,
+          0.9426229508196722,
+          0.9093959731543624
+        ],
+        [
+          0.7,
+          0.35450819672131145,
+          0.1174496644295302,
+          0.9385245901639344,
+          0.9093959731543624
+        ],
+        [
+          0.85,
+          0.3483606557377049,
+          0.003355704697986577,
+          0.9836065573770492,
+          1
+        ],
+        [
+          0.98,
+          0.36065573770491804,
+          0.1342281879194631,
+          0.9159836065573771,
+          0.912751677852349
+        ]
+      ],
+      "bounds": [
+        0.3442622950819672,
+        0.003355704697986577,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "koala-archived-presets",
+      "clip": "11",
+      "path": "pets/koala-archived-presets/pag_11.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.39344262295081966,
+          0.14429530201342283,
+          0.9549180327868853,
+          0.9161073825503355
+        ],
+        [
+          0.1,
+          0.4139344262295082,
+          0.1174496644295302,
+          0.9590163934426229,
+          0.912751677852349
+        ],
+        [
+          0.25,
+          0.4262295081967213,
+          0.14429530201342283,
+          0.9795081967213115,
+          0.9161073825503355
+        ],
+        [
+          0.4,
+          0.4139344262295082,
+          0.13758389261744966,
+          0.9344262295081968,
+          0.9161073825503355
+        ],
+        [
+          0.55,
+          0.42827868852459017,
+          0.09731543624161074,
+          1,
+          0.912751677852349
+        ],
+        [
+          0.7,
+          0.33811475409836067,
+          0.1342281879194631,
+          0.9754098360655737,
+          0.912751677852349
+        ],
+        [
+          0.85,
+          0.3401639344262295,
+          0.1342281879194631,
+          0.9774590163934426,
+          0.912751677852349
+        ],
+        [
+          0.98,
+          0.33811475409836067,
+          0.1342281879194631,
+          0.9774590163934426,
+          0.912751677852349
+        ]
+      ],
+      "bounds": [
+        0.33811475409836067,
+        0.09731543624161074,
+        1,
+        0.9161073825503355
+      ]
+    },
+    {
+      "pet": "koala-archived-presets",
+      "clip": "12",
+      "path": "pets/koala-archived-presets/pag_12.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.375,
+          0.13087248322147652,
+          0.8811475409836066,
+          0.9026845637583892
+        ],
+        [
+          0.1,
+          0.38524590163934425,
+          0.13087248322147652,
+          0.875,
+          0.9026845637583892
+        ],
+        [
+          0.25,
+          0.4016393442622951,
+          0.14093959731543623,
+          0.8913934426229508,
+          0.9026845637583892
+        ],
+        [
+          0.4,
+          0.36885245901639346,
+          0.1610738255033557,
+          0.8668032786885246,
+          0.9026845637583892
+        ],
+        [
+          0.55,
+          0.5122950819672131,
+          0.1174496644295302,
+          0.9139344262295082,
+          0.8993288590604027
+        ],
+        [
+          0.7,
+          0.4385245901639344,
+          0.13087248322147652,
+          0.9118852459016393,
+          0.9161073825503355
+        ],
+        [
+          0.85,
+          0.41188524590163933,
+          0.14093959731543623,
+          0.9077868852459017,
+          0.9429530201342282
+        ],
+        [
+          0.98,
+          0.4098360655737705,
+          0.1174496644295302,
+          0.930327868852459,
+          0.9429530201342282
+        ]
+      ],
+      "bounds": [
+        0.36885245901639346,
+        0.1174496644295302,
+        0.930327868852459,
+        0.9429530201342282
+      ]
+    },
+    {
+      "pet": "koala-archived-presets",
+      "clip": "13",
+      "path": "pets/koala-archived-presets/pag_13.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.3360655737704918,
+          0.12080536912751678,
+          1,
+          0.9932885906040269
+        ],
+        [
+          0.1,
+          0.33811475409836067,
+          0.12416107382550336,
+          0.9959016393442623,
+          0.9899328859060402
+        ],
+        [
+          0.25,
+          0.35860655737704916,
+          0.09395973154362416,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.35860655737704916,
+          0.11409395973154363,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.35450819672131145,
+          0.1174496644295302,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.29918032786885246,
+          0.09060402684563758,
+          0.9795081967213115,
+          0.9865771812080537
+        ],
+        [
+          0.85,
+          0.36065573770491804,
+          0.10067114093959731,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.33401639344262296,
+          0.12751677852348994,
+          0.9959016393442623,
+          1
+        ]
+      ],
+      "bounds": [
+        0.29918032786885246,
+        0.09060402684563758,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "koala-archived-presets",
+      "clip": "14",
+      "path": "pets/koala-archived-presets/pag_14.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.41188524590163933,
+          0.1610738255033557,
+          0.9139344262295082,
+          0.9429530201342282
+        ],
+        [
+          0.1,
+          0.4139344262295082,
+          0.1610738255033557,
+          0.9139344262295082,
+          0.9429530201342282
+        ],
+        [
+          0.25,
+          0.4077868852459016,
+          0.17785234899328858,
+          0.9180327868852459,
+          0.9429530201342282
+        ],
+        [
+          0.4,
+          0.42008196721311475,
+          0.1644295302013423,
+          0.9180327868852459,
+          0.9429530201342282
+        ],
+        [
+          0.55,
+          0.41598360655737704,
+          0.13758389261744966,
+          0.9139344262295082,
+          0.9429530201342282
+        ],
+        [
+          0.7,
+          0.42008196721311475,
+          0.14093959731543623,
+          0.9159836065573771,
+          0.9429530201342282
+        ],
+        [
+          0.85,
+          0.42213114754098363,
+          0.12416107382550336,
+          0.9180327868852459,
+          0.9429530201342282
+        ],
+        [
+          0.98,
+          0.4057377049180328,
+          0.14429530201342283,
+          0.9200819672131147,
+          0.9429530201342282
+        ]
+      ],
+      "bounds": [
+        0.4057377049180328,
+        0.12416107382550336,
+        0.9200819672131147,
+        0.9429530201342282
+      ]
+    },
+    {
+      "pet": "koala-archived-presets",
+      "clip": "15",
+      "path": "pets/koala-archived-presets/pag_15.pag",
+      "width": 904,
+      "height": 572,
+      "samples": [
+        [
+          0,
+          0.4026548672566372,
+          0.10839160839160839,
+          0.9380530973451328,
+          0.9020979020979021
+        ],
+        [
+          0.1,
+          0.42035398230088494,
+          0.11888111888111888,
+          0.9535398230088495,
+          0.9020979020979021
+        ],
+        [
+          0.25,
+          0.38495575221238937,
+          0.11188811188811189,
+          0.9292035398230089,
+          0.9020979020979021
+        ],
+        [
+          0.4,
+          0.4247787610619469,
+          0.15034965034965034,
+          0.9402654867256637,
+          0.9020979020979021
+        ],
+        [
+          0.55,
+          0.3805309734513274,
+          0.17132867132867133,
+          0.918141592920354,
+          0.9020979020979021
+        ],
+        [
+          0.7,
+          0.39601769911504425,
+          0.11538461538461539,
+          0.9336283185840708,
+          0.9020979020979021
+        ],
+        [
+          0.85,
+          0.3805309734513274,
+          0.09090909090909091,
+          0.9557522123893806,
+          0.9020979020979021
+        ],
+        [
+          0.98,
+          0.4092920353982301,
+          0.10839160839160839,
+          0.9380530973451328,
+          0.9020979020979021
+        ]
+      ],
+      "bounds": [
+        0.3805309734513274,
+        0.09090909090909091,
+        0.9557522123893806,
+        0.9020979020979021
+      ]
+    },
+    {
+      "pet": "koala-archived-presets",
+      "clip": "16",
+      "path": "pets/koala-archived-presets/nfc_pin_show.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0.1,
+          0.0471311475409836,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "roedeer-archived-presets",
+      "clip": "0",
+      "path": "pets/roedeer-archived-presets/pag_0.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.33401639344262296,
+          0.18456375838926176,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0.33401639344262296,
+          0.18456375838926176,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.33401639344262296,
+          0.18791946308724833,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.33401639344262296,
+          0.18456375838926176,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.33401639344262296,
+          0.1912751677852349,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.33401639344262296,
+          0.18456375838926176,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0.33401639344262296,
+          0.1912751677852349,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.33401639344262296,
+          0.18456375838926176,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.33401639344262296,
+        0.18456375838926176,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "roedeer-archived-presets",
+      "clip": "1",
+      "path": "pets/roedeer-archived-presets/pag_1.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.4344262295081967,
+          0.03355704697986577,
+          0.7684426229508197,
+          0.9496644295302014
+        ],
+        [
+          0.1,
+          0.4774590163934426,
+          0.040268456375838924,
+          0.7561475409836066,
+          0.8422818791946308
+        ],
+        [
+          0.25,
+          0.4344262295081967,
+          0.03355704697986577,
+          0.7684426229508197,
+          0.9496644295302014
+        ],
+        [
+          0.4,
+          0.4610655737704918,
+          0.09060402684563758,
+          0.7336065573770492,
+          0.9429530201342282
+        ],
+        [
+          0.55,
+          0.44672131147540983,
+          0.13758389261744966,
+          0.7397540983606558,
+          0.9463087248322147
+        ],
+        [
+          0.7,
+          0.4651639344262295,
+          0.053691275167785234,
+          0.7602459016393442,
+          0.8691275167785235
+        ],
+        [
+          0.85,
+          0.4774590163934426,
+          0.030201342281879196,
+          0.7520491803278688,
+          0.8557046979865772
+        ],
+        [
+          0.98,
+          0.4426229508196721,
+          0.040268456375838924,
+          0.7766393442622951,
+          0.8624161073825504
+        ]
+      ],
+      "bounds": [
+        0.4344262295081967,
+        0.030201342281879196,
+        0.7766393442622951,
+        0.9496644295302014
+      ]
+    },
+    {
+      "pet": "roedeer-archived-presets",
+      "clip": "2",
+      "path": "pets/roedeer-archived-presets/pag_2.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.5491803278688525,
+          0.19463087248322147,
+          0.7807377049180327,
+          0.9966442953020134
+        ],
+        [
+          0.1,
+          0.5389344262295082,
+          0.20134228187919462,
+          0.7581967213114754,
+          0.9966442953020134
+        ],
+        [
+          0.25,
+          0.5430327868852459,
+          0.18791946308724833,
+          0.764344262295082,
+          0.9966442953020134
+        ],
+        [
+          0.4,
+          0.5409836065573771,
+          0.20134228187919462,
+          0.7581967213114754,
+          0.9966442953020134
+        ],
+        [
+          0.55,
+          0.5389344262295082,
+          0.1912751677852349,
+          0.764344262295082,
+          0.9966442953020134
+        ],
+        [
+          0.7,
+          0.5450819672131147,
+          0.18791946308724833,
+          0.764344262295082,
+          0.9966442953020134
+        ],
+        [
+          0.85,
+          0.5245901639344263,
+          0.17785234899328858,
+          0.7909836065573771,
+          1
+        ],
+        [
+          0.98,
+          0.5286885245901639,
+          0.18791946308724833,
+          0.7848360655737705,
+          1
+        ]
+      ],
+      "bounds": [
+        0.5245901639344263,
+        0.17785234899328858,
+        0.7909836065573771,
+        1
+      ]
+    },
+    {
+      "pet": "roedeer-archived-presets",
+      "clip": "3",
+      "path": "pets/roedeer-archived-presets/pag_3.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.32581967213114754,
+          0.11409395973154363,
+          0.7684426229508197,
+          1
+        ],
+        [
+          0.1,
+          0.4180327868852459,
+          0.09395973154362416,
+          0.8176229508196722,
+          1
+        ],
+        [
+          0.25,
+          0.5307377049180327,
+          0.12080536912751678,
+          0.9692622950819673,
+          1
+        ],
+        [
+          0.4,
+          0.4262295081967213,
+          0.13087248322147652,
+          0.8237704918032787,
+          1
+        ],
+        [
+          0.55,
+          0.36475409836065575,
+          0.10067114093959731,
+          0.7889344262295082,
+          1
+        ],
+        [
+          0.7,
+          0.5163934426229508,
+          0.13087248322147652,
+          0.9159836065573771,
+          1
+        ],
+        [
+          0.85,
+          0.4651639344262295,
+          0.12416107382550336,
+          0.8668032786885246,
+          1
+        ],
+        [
+          0.98,
+          0.32991803278688525,
+          0.1174496644295302,
+          0.7663934426229508,
+          1
+        ]
+      ],
+      "bounds": [
+        0.32581967213114754,
+        0.09395973154362416,
+        0.9692622950819673,
+        1
+      ]
+    },
+    {
+      "pet": "roedeer-archived-presets",
+      "clip": "4",
+      "path": "pets/roedeer-archived-presets/pag_4.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.3319672131147541,
+          0.2080536912751678,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0.3319672131147541,
+          0.14093959731543623,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.3319672131147541,
+          0.20469798657718122,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.3319672131147541,
+          0.19463087248322147,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.3319672131147541,
+          0.15771812080536912,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.3319672131147541,
+          0.13758389261744966,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0.3319672131147541,
+          0.20134228187919462,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.3319672131147541,
+          0.20469798657718122,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.3319672131147541,
+        0.13758389261744966,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "roedeer-archived-presets",
+      "clip": "5",
+      "path": "pets/roedeer-archived-presets/pag_5.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.3319672131147541,
+          0.2348993288590604,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0.3319672131147541,
+          0.23825503355704697,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.3319672131147541,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.3319672131147541,
+          0.13758389261744966,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.3319672131147541,
+          0.1342281879194631,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.3319672131147541,
+          0.14093959731543623,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0.3319672131147541,
+          0.28187919463087246,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.3319672131147541,
+          0.23825503355704697,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.3319672131147541,
+        0.1342281879194631,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "roedeer-archived-presets",
+      "clip": "6",
+      "path": "pets/roedeer-archived-presets/pag_6.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.33401639344262296,
+          0.20134228187919462,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0.33401639344262296,
+          0.1912751677852349,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.33401639344262296,
+          0.1912751677852349,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.33401639344262296,
+          0.22483221476510068,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.33401639344262296,
+          0.25838926174496646,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.33401639344262296,
+          0.2516778523489933,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0.33401639344262296,
+          0.2080536912751678,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.33401639344262296,
+          0.19798657718120805,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.33401639344262296,
+        0.1912751677852349,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "roedeer-archived-presets",
+      "clip": "7",
+      "path": "pets/roedeer-archived-presets/pag_7.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          0.9979508196721312,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          0.9836065573770492,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.003355704697986577,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "roedeer-archived-presets",
+      "clip": "8",
+      "path": "pets/roedeer-archived-presets/pag_8.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0.1,
+          0.5081967213114754,
+          0.4563758389261745,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.5040983606557377,
+          0.053691275167785234,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.5102459016393442,
+          0.03691275167785235,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.5348360655737705,
+          0.0738255033557047,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.5081967213114754,
+          0.050335570469798654,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0.5286885245901639,
+          0.053691275167785234,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.41598360655737704,
+          0.06375838926174497,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.41598360655737704,
+        0.03691275167785235,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "roedeer-archived-presets",
+      "clip": "9",
+      "path": "pets/roedeer-archived-presets/pag_9.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.5327868852459017,
+          0.18120805369127516,
+          0.8934426229508197,
+          1
+        ],
+        [
+          0.1,
+          0.5122950819672131,
+          0.19798657718120805,
+          0.8627049180327869,
+          1
+        ],
+        [
+          0.25,
+          0.35040983606557374,
+          0.1342281879194631,
+          0.7848360655737705,
+          1
+        ],
+        [
+          0.4,
+          0.3463114754098361,
+          0.1644295302013423,
+          0.7725409836065574,
+          1
+        ],
+        [
+          0.55,
+          0.3524590163934426,
+          0.14429530201342283,
+          0.7725409836065574,
+          1
+        ],
+        [
+          0.7,
+          0.3483606557377049,
+          0.14429530201342283,
+          0.7725409836065574,
+          1
+        ],
+        [
+          0.85,
+          0.3483606557377049,
+          0.15771812080536912,
+          0.7745901639344263,
+          1
+        ],
+        [
+          0.98,
+          0.35040983606557374,
+          0.14429530201342283,
+          0.7725409836065574,
+          1
+        ]
+      ],
+      "bounds": [
+        0.3463114754098361,
+        0.1342281879194631,
+        0.8934426229508197,
+        1
+      ]
+    },
+    {
+      "pet": "roedeer-archived-presets",
+      "clip": "10",
+      "path": "pets/roedeer-archived-presets/pag_10.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.4672131147540984,
+          0.15436241610738255,
+          0.9221311475409836,
+          1
+        ],
+        [
+          0.1,
+          0.45491803278688525,
+          0.14429530201342283,
+          0.8852459016393442,
+          1
+        ],
+        [
+          0.25,
+          0.3709016393442623,
+          0.10738255033557047,
+          0.8483606557377049,
+          1
+        ],
+        [
+          0.4,
+          0.35655737704918034,
+          0.12416107382550336,
+          0.8483606557377049,
+          1
+        ],
+        [
+          0.55,
+          0.3790983606557377,
+          0.12416107382550336,
+          0.8463114754098361,
+          1
+        ],
+        [
+          0.7,
+          0.3483606557377049,
+          0.12080536912751678,
+          0.8463114754098361,
+          1
+        ],
+        [
+          0.85,
+          0.3770491803278688,
+          0.12416107382550336,
+          0.8463114754098361,
+          1
+        ],
+        [
+          0.98,
+          0.375,
+          0.1174496644295302,
+          0.8463114754098361,
+          1
+        ]
+      ],
+      "bounds": [
+        0.3483606557377049,
+        0.10738255033557047,
+        0.9221311475409836,
+        1
+      ]
+    },
+    {
+      "pet": "roedeer-archived-presets",
+      "clip": "11",
+      "path": "pets/roedeer-archived-presets/pag_11.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.4651639344262295,
+          0.13758389261744966,
+          0.8811475409836066,
+          1
+        ],
+        [
+          0.1,
+          0.5266393442622951,
+          0.06711409395973154,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.4426229508196721,
+          0.07718120805369127,
+          0.8524590163934426,
+          1
+        ],
+        [
+          0.4,
+          0.4610655737704918,
+          0.06375838926174497,
+          0.889344262295082,
+          1
+        ],
+        [
+          0.55,
+          0.4774590163934426,
+          0.22483221476510068,
+          0.8586065573770492,
+          1
+        ],
+        [
+          0.7,
+          0.47540983606557374,
+          0.12416107382550336,
+          0.8586065573770492,
+          1
+        ],
+        [
+          0.85,
+          0.48155737704918034,
+          0.12080536912751678,
+          0.8524590163934426,
+          1
+        ],
+        [
+          0.98,
+          0.4774590163934426,
+          0.1174496644295302,
+          0.8545081967213115,
+          1
+        ]
+      ],
+      "bounds": [
+        0.4426229508196721,
+        0.06375838926174497,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "roedeer-archived-presets",
+      "clip": "12",
+      "path": "pets/roedeer-archived-presets/pag_12.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.3319672131147541,
+          0.18791946308724833,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0.3319672131147541,
+          0.18120805369127516,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.3319672131147541,
+          0.18791946308724833,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.3319672131147541,
+          0.26174496644295303,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.3319672131147541,
+          0.2181208053691275,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.3319672131147541,
+          0.17785234899328858,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0.3319672131147541,
+          0.17114093959731544,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.3319672131147541,
+          0.17785234899328858,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.3319672131147541,
+        0.17114093959731544,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "roedeer-archived-presets",
+      "clip": "13",
+      "path": "pets/roedeer-archived-presets/pag_13.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.44672131147540983,
+          0.21140939597315436,
+          0.8565573770491803,
+          1
+        ],
+        [
+          0.1,
+          0.41188524590163933,
+          0.31543624161073824,
+          0.8319672131147541,
+          1
+        ],
+        [
+          0.25,
+          0.45901639344262296,
+          0.19463087248322147,
+          0.8647540983606558,
+          1
+        ],
+        [
+          0.4,
+          0.42418032786885246,
+          0.2751677852348993,
+          0.8422131147540983,
+          1
+        ],
+        [
+          0.55,
+          0.35655737704918034,
+          0.15100671140939598,
+          0.7663934426229508,
+          1
+        ],
+        [
+          0.7,
+          0.35860655737704916,
+          0.15771812080536912,
+          0.7581967213114754,
+          1
+        ],
+        [
+          0.85,
+          0.45901639344262296,
+          0.24161073825503357,
+          0.8831967213114754,
+          1
+        ],
+        [
+          0.98,
+          0.44672131147540983,
+          0.2080536912751678,
+          0.8565573770491803,
+          1
+        ]
+      ],
+      "bounds": [
+        0.35655737704918034,
+        0.15100671140939598,
+        0.8831967213114754,
+        1
+      ]
+    },
+    {
+      "pet": "roedeer-archived-presets",
+      "clip": "14",
+      "path": "pets/roedeer-archived-presets/pag_14.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.4672131147540984,
+          0.2214765100671141,
+          0.8954918032786885,
+          1
+        ],
+        [
+          0.1,
+          0.4385245901639344,
+          0.2181208053691275,
+          0.8524590163934426,
+          1
+        ],
+        [
+          0.25,
+          0.45491803278688525,
+          0.23825503355704697,
+          0.8852459016393442,
+          1
+        ],
+        [
+          0.4,
+          0.45491803278688525,
+          0.1912751677852349,
+          0.9139344262295082,
+          1
+        ],
+        [
+          0.55,
+          0.47540983606557374,
+          0.21476510067114093,
+          0.8647540983606558,
+          1
+        ],
+        [
+          0.7,
+          0.47950819672131145,
+          0.22818791946308725,
+          0.9057377049180327,
+          1
+        ],
+        [
+          0.85,
+          0.5040983606557377,
+          0.2080536912751678,
+          0.9139344262295082,
+          1
+        ],
+        [
+          0.98,
+          0.4692622950819672,
+          0.2214765100671141,
+          0.8934426229508197,
+          1
+        ]
+      ],
+      "bounds": [
+        0.4385245901639344,
+        0.1912751677852349,
+        0.9139344262295082,
+        1
+      ]
+    },
+    {
+      "pet": "roedeer-archived-presets",
+      "clip": "15",
+      "path": "pets/roedeer-archived-presets/pag_15.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.4672131147540984,
+          0.1476510067114094,
+          0.930327868852459,
+          1
+        ],
+        [
+          0.1,
+          0.4344262295081967,
+          0.18120805369127516,
+          0.9323770491803278,
+          1
+        ],
+        [
+          0.25,
+          0.48565573770491804,
+          0.12080536912751678,
+          0.9098360655737705,
+          1
+        ],
+        [
+          0.4,
+          0.2889344262295082,
+          0.06375838926174497,
+          0.8360655737704918,
+          1
+        ],
+        [
+          0.55,
+          0.39959016393442626,
+          0.06375838926174497,
+          0.860655737704918,
+          1
+        ],
+        [
+          0.7,
+          0.32581967213114754,
+          0.28523489932885904,
+          0.7868852459016393,
+          1
+        ],
+        [
+          0.85,
+          0.3975409836065574,
+          0.087248322147651,
+          0.8770491803278688,
+          1
+        ],
+        [
+          0.98,
+          0.42418032786885246,
+          0.02348993288590604,
+          0.9508196721311475,
+          1
+        ]
+      ],
+      "bounds": [
+        0.2889344262295082,
+        0.02348993288590604,
+        0.9508196721311475,
+        1
+      ]
+    },
+    {
+      "pet": "roedeer-archived-presets",
+      "clip": "16",
+      "path": "pets/roedeer-archived-presets/nfc_pin_show.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0.1,
+          0.0471311475409836,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "q_carp-pandora",
+      "clip": "0",
+      "path": "pets/q_carp-pandora/pag_0.pag",
+      "width": 904,
+      "height": 572,
+      "samples": [
+        [
+          0,
+          0.46238938053097345,
+          0.055944055944055944,
+          0.9247787610619469,
+          0.8986013986013986
+        ],
+        [
+          0.1,
+          0.3827433628318584,
+          0.05944055944055944,
+          0.9889380530973452,
+          0.8111888111888111
+        ],
+        [
+          0.25,
+          0.37610619469026546,
+          0.08741258741258741,
+          1,
+          0.8111888111888111
+        ],
+        [
+          0.4,
+          0.42920353982300885,
+          0.0944055944055944,
+          1,
+          0.7692307692307693
+        ],
+        [
+          0.55,
+          0.32964601769911506,
+          0.1048951048951049,
+          0.8938053097345132,
+          0.7272727272727273
+        ],
+        [
+          0.7,
+          0.4756637168141593,
+          0,
+          0.8362831858407079,
+          0.8951048951048951
+        ],
+        [
+          0.85,
+          0.4668141592920354,
+          0.0979020979020979,
+          0.915929203539823,
+          0.9090909090909091
+        ],
+        [
+          0.98,
+          0.46238938053097345,
+          0.11888111888111888,
+          0.8716814159292036,
+          0.9195804195804196
+        ]
+      ],
+      "bounds": [
+        0.32964601769911506,
+        0,
+        1,
+        0.9195804195804196
+      ]
+    },
+    {
+      "pet": "q_carp-pandora",
+      "clip": "1",
+      "path": "pets/q_carp-pandora/pag_1.pag",
+      "width": 904,
+      "height": 572,
+      "samples": [
+        [
+          0,
+          0.4469026548672566,
+          0.09090909090909091,
+          0.9092920353982301,
+          0.8671328671328671
+        ],
+        [
+          0.1,
+          0.33185840707964603,
+          0.15734265734265734,
+          0.9646017699115044,
+          0.8881118881118881
+        ],
+        [
+          0.25,
+          0.3893805309734513,
+          0.2097902097902098,
+          0.9933628318584071,
+          0.9055944055944056
+        ],
+        [
+          0.4,
+          0.19469026548672566,
+          0.12237762237762238,
+          0.8672566371681416,
+          0.7797202797202797
+        ],
+        [
+          0.55,
+          0.26548672566371684,
+          0.017482517482517484,
+          0.8827433628318584,
+          0.6993006993006993
+        ],
+        [
+          0.7,
+          0.47345132743362833,
+          0.12937062937062938,
+          0.9380530973451328,
+          0.8601398601398601
+        ],
+        [
+          0.85,
+          0.46238938053097345,
+          0.13636363636363635,
+          0.9712389380530974,
+          0.9020979020979021
+        ],
+        [
+          0.98,
+          0.43805309734513276,
+          0.16783216783216784,
+          0.9712389380530974,
+          0.9440559440559441
+        ]
+      ],
+      "bounds": [
+        0.19469026548672566,
+        0.017482517482517484,
+        0.9933628318584071,
+        0.9440559440559441
+      ]
+    },
+    {
+      "pet": "q_carp-pandora",
+      "clip": "2",
+      "path": "pets/q_carp-pandora/pag_2.pag",
+      "width": 904,
+      "height": 572,
+      "samples": [
+        [
+          0,
+          0.12168141592920353,
+          0,
+          0.6858407079646017,
+          0.46503496503496505
+        ],
+        [
+          0.1,
+          0.10176991150442478,
+          0,
+          0.7389380530973452,
+          0.4195804195804196
+        ],
+        [
+          0.25,
+          0.09734513274336283,
+          0,
+          0.7809734513274337,
+          0.5734265734265734
+        ],
+        [
+          0.4,
+          0.28761061946902655,
+          0,
+          0.8606194690265486,
+          0.7412587412587412
+        ],
+        [
+          0.55,
+          0.37831858407079644,
+          0,
+          0.8982300884955752,
+          0.8776223776223776
+        ],
+        [
+          0.7,
+          0.4646017699115044,
+          0.1048951048951049,
+          0.8827433628318584,
+          0.8496503496503497
+        ],
+        [
+          0.85,
+          0.4690265486725664,
+          0.10139860139860139,
+          0.9203539823008849,
+          0.9090909090909091
+        ],
+        [
+          0.98,
+          0.4646017699115044,
+          0.11538461538461539,
+          0.9491150442477876,
+          0.9475524475524476
+        ]
+      ],
+      "bounds": [
+        0.09734513274336283,
+        0,
+        0.9491150442477876,
+        0.9475524475524476
+      ]
+    },
+    {
+      "pet": "q_carp-pandora",
+      "clip": "3",
+      "path": "pets/q_carp-pandora/pag_3.pag",
+      "width": 904,
+      "height": 572,
+      "samples": [
+        [
+          0,
+          0.7234513274336283,
+          0,
+          1,
+          0.5314685314685315
+        ],
+        [
+          0.1,
+          0.6836283185840708,
+          0,
+          1,
+          0.5874125874125874
+        ],
+        [
+          0.25,
+          0.584070796460177,
+          0,
+          1,
+          0.7272727272727273
+        ],
+        [
+          0.4,
+          0.5154867256637168,
+          0,
+          1,
+          0.7832167832167832
+        ],
+        [
+          0.55,
+          0.4778761061946903,
+          0,
+          1,
+          0.8286713286713286
+        ],
+        [
+          0.7,
+          0.4579646017699115,
+          0,
+          1,
+          0.8391608391608392
+        ],
+        [
+          0.85,
+          0.4646017699115044,
+          0.0034965034965034965,
+          1,
+          0.8356643356643356
+        ],
+        [
+          0.98,
+          0.47345132743362833,
+          0,
+          1,
+          0.8566433566433567
+        ]
+      ],
+      "bounds": [
+        0.4579646017699115,
+        0,
+        1,
+        0.8566433566433567
+      ]
+    },
+    {
+      "pet": "bird-pandora",
+      "clip": "0",
+      "path": "pets/bird-pandora/pag_0.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.16598360655737704,
+          0.18791946308724833,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0.1680327868852459,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.1680327868852459,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.16598360655737704,
+          0.05704697986577181,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.1721311475409836,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.1680327868852459,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0.1721311475409836,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.16598360655737704,
+          0.17785234899328858,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.16598360655737704,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "bird-pandora",
+      "clip": "1",
+      "path": "pets/bird-pandora/pag_1.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.1680327868852459,
+          0.15771812080536912,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0.16598360655737704,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.16598360655737704,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.1721311475409836,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.17418032786885246,
+          0.11073825503355705,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.1680327868852459,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0.17008196721311475,
+          0.2516778523489933,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.16598360655737704,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.16598360655737704,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "bird-pandora",
+      "clip": "2",
+      "path": "pets/bird-pandora/pag_2.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.16598360655737704,
+          0.17785234899328858,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0.17008196721311475,
+          0.19463087248322147,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.16598360655737704,
+          0.20134228187919462,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.16598360655737704,
+          0.20134228187919462,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.1680327868852459,
+          0.21476510067114093,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.16598360655737704,
+          0.2214765100671141,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0.16598360655737704,
+          0.2181208053691275,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.16598360655737704,
+          0.17785234899328858,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.16598360655737704,
+        0.17785234899328858,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "bird-pandora",
+      "clip": "3",
+      "path": "pets/bird-pandora/pag_3.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.16598360655737704,
+          0.174496644295302,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0.17418032786885246,
+          0.020134228187919462,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.16598360655737704,
+          0.087248322147651,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.16598360655737704,
+          0.02348993288590604,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.16598360655737704,
+          0.030201342281879196,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.1721311475409836,
+          0.20469798657718122,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0.16598360655737704,
+          0.18456375838926176,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.16598360655737704,
+          0.174496644295302,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.16598360655737704,
+        0.020134228187919462,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "bird-pandora",
+      "clip": "4",
+      "path": "pets/bird-pandora/pag_4.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.16598360655737704,
+          0.174496644295302,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0.1721311475409836,
+          0.2181208053691275,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.1680327868852459,
+          0.21140939597315436,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.16598360655737704,
+          0.18791946308724833,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.16598360655737704,
+          0.19463087248322147,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.16598360655737704,
+          0.18791946308724833,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0.16598360655737704,
+          0.17785234899328858,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.16598360655737704,
+          0.17785234899328858,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.16598360655737704,
+        0.174496644295302,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "bird-pandora",
+      "clip": "5",
+      "path": "pets/bird-pandora/pag_5.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.16598360655737704,
+          0.174496644295302,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0.1721311475409836,
+          0.20134228187919462,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.16598360655737704,
+          0.1610738255033557,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.1721311475409836,
+          0.24161073825503357,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.16598360655737704,
+          0.23154362416107382,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.16598360655737704,
+          0.12751677852348994,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0.1721311475409836,
+          0.18120805369127516,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.16598360655737704,
+          0.17785234899328858,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.16598360655737704,
+        0.12751677852348994,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "bird-pandora",
+      "clip": "6",
+      "path": "pets/bird-pandora/pag_6.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.1680327868852459,
+          0.174496644295302,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0.17418032786885246,
+          0.06040268456375839,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.16598360655737704,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.16598360655737704,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.1721311475409836,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.1721311475409836,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0.1680327868852459,
+          0.17785234899328858,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.1680327868852459,
+          0.174496644295302,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.16598360655737704,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "bird-pandora",
+      "clip": "7",
+      "path": "pets/bird-pandora/pag_7.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.1680327868852459,
+          0.174496644295302,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0.1721311475409836,
+          0.08389261744966443,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.1762295081967213,
+          0.08389261744966443,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.17418032786885246,
+          0.14093959731543623,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.1721311475409836,
+          0.15100671140939598,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.1680327868852459,
+          0.14429530201342283,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0.1680327868852459,
+          0.19463087248322147,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.1680327868852459,
+          0.174496644295302,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.1680327868852459,
+        0.08389261744966443,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "bird-pandora",
+      "clip": "8",
+      "path": "pets/bird-pandora/pag_8.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.1680327868852459,
+          0.174496644295302,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0.1680327868852459,
+          0.11073825503355705,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.17008196721311475,
+          0.12080536912751678,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.17008196721311475,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.17008196721311475,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.1680327868852459,
+          0.04697986577181208,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0.16598360655737704,
+          0.174496644295302,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.16598360655737704,
+          0.174496644295302,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.16598360655737704,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "bird-pandora",
+      "clip": "9",
+      "path": "pets/bird-pandora/pag_9.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.16598360655737704,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0.1680327868852459,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.17418032786885246,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.16598360655737704,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.17418032786885246,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.16393442622950818,
+          0.2181208053691275,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0.16598360655737704,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.1680327868852459,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.16393442622950818,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "bird-pandora",
+      "clip": "10",
+      "path": "pets/bird-pandora/pag_10.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.1680327868852459,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0.17418032786885246,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.16598360655737704,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.17418032786885246,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.17008196721311475,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.16598360655737704,
+          0.18791946308724833,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0.1680327868852459,
+          0.18120805369127516,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.1680327868852459,
+          0.17785234899328858,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.16598360655737704,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "bird-pandora",
+      "clip": "11",
+      "path": "pets/bird-pandora/pag_11.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.1680327868852459,
+          0.003355704697986577,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0.1680327868852459,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.1680327868852459,
+          0.020134228187919462,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.1680327868852459,
+          0.040268456375838924,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.17008196721311475,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0.17008196721311475,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0.17008196721311475,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.1680327868852459,
+          0.17785234899328858,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.1680327868852459,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-archived-presets",
+      "clip": "0",
+      "path": "pets/seal-archived-presets/pag_0.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.17785234899328858,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.23825503355704697,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.44966442953020136,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.40604026845637586,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.16778523489932887,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.1644295302013423,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-archived-presets",
+      "clip": "1",
+      "path": "pets/seal-archived-presets/pag_1.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.18456375838926176,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.37583892617449666,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.2751677852348993,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.23825503355704697,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.2550335570469799,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.19463087248322147,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.1644295302013423,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-archived-presets",
+      "clip": "2",
+      "path": "pets/seal-archived-presets/pag_2.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.17114093959731544,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.22818791946308725,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.3053691275167785,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.17785234899328858,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.3053691275167785,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.1476510067114094,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.1476510067114094,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-archived-presets",
+      "clip": "3",
+      "path": "pets/seal-archived-presets/pag_3.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.412751677852349,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.42953020134228187,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.412751677852349,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.24161073825503357,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.15436241610738255,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.16778523489932887,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.15436241610738255,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-archived-presets",
+      "clip": "4",
+      "path": "pets/seal-archived-presets/pag_4.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.17785234899328858,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.1912751677852349,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.2080536912751678,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.15436241610738255,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.15436241610738255,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-archived-presets",
+      "clip": "5",
+      "path": "pets/seal-archived-presets/pag_5.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.20134228187919462,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.18791946308724833,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.18120805369127516,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.174496644295302,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.1644295302013423,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-archived-presets",
+      "clip": "6",
+      "path": "pets/seal-archived-presets/pag_6.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.17114093959731544,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.174496644295302,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.17785234899328858,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.18120805369127516,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.17785234899328858,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.1610738255033557,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.1610738255033557,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-archived-presets",
+      "clip": "7",
+      "path": "pets/seal-archived-presets/pag_7.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.174496644295302,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.17114093959731544,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.174496644295302,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.17114093959731544,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.15100671140939598,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.15771812080536912,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.15100671140939598,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-archived-presets",
+      "clip": "8",
+      "path": "pets/seal-archived-presets/pag_8.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.14429530201342283,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.04697986577181208,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.13758389261744966,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.1912751677852349,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.15771812080536912,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.1610738255033557,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.04697986577181208,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-archived-presets",
+      "clip": "9",
+      "path": "pets/seal-archived-presets/pag_9.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.174496644295302,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.16778523489932887,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.17114093959731544,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.15771812080536912,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.15771812080536912,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-archived-presets",
+      "clip": "10",
+      "path": "pets/seal-archived-presets/pag_10.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.17114093959731544,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.2651006711409396,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.18120805369127516,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-archived-presets",
+      "clip": "11",
+      "path": "pets/seal-archived-presets/pag_11.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.1610738255033557,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.2080536912751678,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.1476510067114094,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.13758389261744966,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.016778523489932886,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.21476510067114093,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.03691275167785235,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.016778523489932886,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-archived-presets",
+      "clip": "12",
+      "path": "pets/seal-archived-presets/nfc_pin_show.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0.1,
+          0.0471311475409836,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-pandora",
+      "clip": "0",
+      "path": "pets/seal-pandora/pag_0.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.17785234899328858,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.23825503355704697,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.44966442953020136,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.40604026845637586,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.16778523489932887,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.1644295302013423,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-pandora",
+      "clip": "1",
+      "path": "pets/seal-pandora/pag_1.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.18456375838926176,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.37583892617449666,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.2751677852348993,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.23825503355704697,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.2550335570469799,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.19463087248322147,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.1644295302013423,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-pandora",
+      "clip": "2",
+      "path": "pets/seal-pandora/pag_2.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.17114093959731544,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.22818791946308725,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.3053691275167785,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.17785234899328858,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.3053691275167785,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.1476510067114094,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.1476510067114094,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-pandora",
+      "clip": "3",
+      "path": "pets/seal-pandora/pag_3.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.412751677852349,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.42953020134228187,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.412751677852349,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.24161073825503357,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.15436241610738255,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.16778523489932887,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.15436241610738255,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-pandora",
+      "clip": "4",
+      "path": "pets/seal-pandora/pag_4.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.17785234899328858,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.1912751677852349,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.2080536912751678,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.15436241610738255,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.15436241610738255,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-pandora",
+      "clip": "5",
+      "path": "pets/seal-pandora/pag_5.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.20134228187919462,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.18791946308724833,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.18120805369127516,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.174496644295302,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.1644295302013423,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-pandora",
+      "clip": "6",
+      "path": "pets/seal-pandora/pag_6.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.17114093959731544,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.174496644295302,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.17785234899328858,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.18120805369127516,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.17785234899328858,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.1610738255033557,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.1610738255033557,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-pandora",
+      "clip": "7",
+      "path": "pets/seal-pandora/pag_7.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.174496644295302,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.17114093959731544,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.174496644295302,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.17114093959731544,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.15100671140939598,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.15771812080536912,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.15100671140939598,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-pandora",
+      "clip": "8",
+      "path": "pets/seal-pandora/pag_8.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.14429530201342283,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.04697986577181208,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.13758389261744966,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.1912751677852349,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.15771812080536912,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.1610738255033557,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.04697986577181208,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-pandora",
+      "clip": "9",
+      "path": "pets/seal-pandora/pag_9.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.174496644295302,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.16778523489932887,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.17114093959731544,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.15771812080536912,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.15771812080536912,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "seal-pandora",
+      "clip": "10",
+      "path": "pets/seal-pandora/pag_10.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.17114093959731544,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.2651006711409396,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.18120805369127516,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.1644295302013423,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora",
+      "clip": "0",
+      "path": "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/blue976x596.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          0.2181208053691275
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          0.6174496644295302
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          0.9798657718120806
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.006147540983606557,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora",
+      "clip": "1",
+      "path": "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/gold976x596.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          0.9836065573770492,
+          0.22818791946308725
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          0.6073825503355704
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          0.9832214765100671
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.1912751677852349,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora",
+      "clip": "2",
+      "path": "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/pink976x596.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          0.2181208053691275
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          0.6174496644295302
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          0.9832214765100671
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora",
+      "clip": "3",
+      "path": "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/white976x596.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          0.23154362416107382
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          0.6174496644295302
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          0.9832214765100671
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "capybara-archived-presets",
+      "clip": "0",
+      "path": "pets/capybara-archived-presets/pag_0.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.4487704918032787,
+          0.25838926174496646,
+          0.9241803278688525,
+          1
+        ],
+        [
+          0.1,
+          0.4487704918032787,
+          0.08389261744966443,
+          0.9282786885245902,
+          1
+        ],
+        [
+          0.25,
+          0.4487704918032787,
+          0,
+          0.9282786885245902,
+          1
+        ],
+        [
+          0.4,
+          0.4487704918032787,
+          0,
+          0.9098360655737705,
+          1
+        ],
+        [
+          0.55,
+          0.4487704918032787,
+          0.07718120805369127,
+          0.9077868852459017,
+          1
+        ],
+        [
+          0.7,
+          0.44672131147540983,
+          0.18456375838926176,
+          0.9016393442622951,
+          1
+        ],
+        [
+          0.85,
+          0.44672131147540983,
+          0.2953020134228188,
+          0.9077868852459017,
+          1
+        ],
+        [
+          0.98,
+          0.444672131147541,
+          0.30201342281879195,
+          0.9077868852459017,
+          1
+        ]
+      ],
+      "bounds": [
+        0.444672131147541,
+        0,
+        0.9282786885245902,
+        1
+      ]
+    },
+    {
+      "pet": "capybara-archived-presets",
+      "clip": "1",
+      "path": "pets/capybara-archived-presets/pag_1.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.35040983606557374,
+          0.22818791946308725,
+          0.8647540983606558,
+          1
+        ],
+        [
+          0.1,
+          0.35040983606557374,
+          0.22818791946308725,
+          0.8647540983606558,
+          1
+        ],
+        [
+          0.25,
+          0.35040983606557374,
+          0.20469798657718122,
+          0.8524590163934426,
+          1
+        ],
+        [
+          0.4,
+          0.33401639344262296,
+          0.2348993288590604,
+          0.9180327868852459,
+          1
+        ],
+        [
+          0.55,
+          0.36065573770491804,
+          0.23154362416107382,
+          0.9672131147540983,
+          1
+        ],
+        [
+          0.7,
+          0.36065573770491804,
+          0.22483221476510068,
+          0.9713114754098361,
+          1
+        ],
+        [
+          0.85,
+          0.36065573770491804,
+          0.23825503355704697,
+          0.9118852459016393,
+          1
+        ],
+        [
+          0.98,
+          0.36475409836065575,
+          0.2348993288590604,
+          0.9118852459016393,
+          1
+        ]
+      ],
+      "bounds": [
+        0.33401639344262296,
+        0.20469798657718122,
+        0.9713114754098361,
+        1
+      ]
+    },
+    {
+      "pet": "capybara-archived-presets",
+      "clip": "2",
+      "path": "pets/capybara-archived-presets/pag_2.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.4077868852459016,
+          0.2550335570469799,
+          0.9200819672131147,
+          1
+        ],
+        [
+          0.1,
+          0.4098360655737705,
+          0.24496644295302014,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.41188524590163933,
+          0.15100671140939598,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.4139344262295082,
+          0.23825503355704697,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.4139344262295082,
+          0.23154362416107382,
+          0.9549180327868853,
+          1
+        ],
+        [
+          0.7,
+          0.4139344262295082,
+          0.2516778523489933,
+          0.9651639344262295,
+          1
+        ],
+        [
+          0.85,
+          0.4139344262295082,
+          0.24496644295302014,
+          0.9590163934426229,
+          1
+        ],
+        [
+          0.98,
+          0.4139344262295082,
+          0.23825503355704697,
+          0.9569672131147541,
+          1
+        ]
+      ],
+      "bounds": [
+        0.4077868852459016,
+        0.15100671140939598,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "capybara-archived-presets",
+      "clip": "3",
+      "path": "pets/capybara-archived-presets/pag_3.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0.14093959731543623,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0.12751677852348994,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0.11073825503355705,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0.2181208053691275,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0.348993288590604,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0.3422818791946309,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0.1476510067114094,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0.14093959731543623,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0.11073825503355705,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "capybara-archived-presets",
+      "clip": "4",
+      "path": "pets/capybara-archived-presets/nfc_pin_show.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0.1,
+          0.0471311475409836,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-archived-presets",
+      "clip": "0",
+      "path": "pets/sheep-archived-presets/pag_0.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-archived-presets",
+      "clip": "1",
+      "path": "pets/sheep-archived-presets/pag_1.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-archived-presets",
+      "clip": "2",
+      "path": "pets/sheep-archived-presets/pag_2.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-archived-presets",
+      "clip": "3",
+      "path": "pets/sheep-archived-presets/pag_3.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-archived-presets",
+      "clip": "4",
+      "path": "pets/sheep-archived-presets/pag_4.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-archived-presets",
+      "clip": "5",
+      "path": "pets/sheep-archived-presets/pag_5.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-archived-presets",
+      "clip": "6",
+      "path": "pets/sheep-archived-presets/pag_6.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-archived-presets",
+      "clip": "7",
+      "path": "pets/sheep-archived-presets/pag_7.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-archived-presets",
+      "clip": "8",
+      "path": "pets/sheep-archived-presets/pag_8.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-archived-presets",
+      "clip": "9",
+      "path": "pets/sheep-archived-presets/pag_9.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-archived-presets",
+      "clip": "10",
+      "path": "pets/sheep-archived-presets/pag_10.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-archived-presets",
+      "clip": "11",
+      "path": "pets/sheep-archived-presets/pag_11.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-archived-presets",
+      "clip": "12",
+      "path": "pets/sheep-archived-presets/pag_12.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-archived-presets",
+      "clip": "13",
+      "path": "pets/sheep-archived-presets/nfc_pin_show.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0.1,
+          0.0471311475409836,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-pandora",
+      "clip": "0",
+      "path": "pets/sheep-pandora/pag_0.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-pandora",
+      "clip": "1",
+      "path": "pets/sheep-pandora/pag_1.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-pandora",
+      "clip": "2",
+      "path": "pets/sheep-pandora/pag_2.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-pandora",
+      "clip": "3",
+      "path": "pets/sheep-pandora/pag_3.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-pandora",
+      "clip": "4",
+      "path": "pets/sheep-pandora/pag_4.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-pandora",
+      "clip": "5",
+      "path": "pets/sheep-pandora/pag_5.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-pandora",
+      "clip": "6",
+      "path": "pets/sheep-pandora/pag_6.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-pandora",
+      "clip": "7",
+      "path": "pets/sheep-pandora/pag_7.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-pandora",
+      "clip": "8",
+      "path": "pets/sheep-pandora/pag_8.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-pandora",
+      "clip": "9",
+      "path": "pets/sheep-pandora/pag_9.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-pandora",
+      "clip": "10",
+      "path": "pets/sheep-pandora/pag_10.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "sheep-pandora",
+      "clip": "11",
+      "path": "pets/sheep-pandora/pag_11.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "otter-archived-presets",
+      "clip": "0",
+      "path": "pets/otter-archived-presets/pag_0.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.3524590163934426,
+          0.2483221476510067,
+          0.9057377049180327,
+          1
+        ],
+        [
+          0.1,
+          0.33811475409836067,
+          0.2483221476510067,
+          0.9057377049180327,
+          1
+        ],
+        [
+          0.25,
+          0.35655737704918034,
+          0.21476510067114093,
+          0.9180327868852459,
+          1
+        ],
+        [
+          0.4,
+          0.35860655737704916,
+          0.21140939597315436,
+          0.9180327868852459,
+          1
+        ],
+        [
+          0.55,
+          0.35450819672131145,
+          0.2080536912751678,
+          0.9159836065573771,
+          1
+        ],
+        [
+          0.7,
+          0.375,
+          0.20134228187919462,
+          0.9180327868852459,
+          1
+        ],
+        [
+          0.85,
+          0.3770491803278688,
+          0.20134228187919462,
+          0.9241803278688525,
+          1
+        ],
+        [
+          0.98,
+          0.3770491803278688,
+          0.19798657718120805,
+          0.9282786885245902,
+          1
+        ]
+      ],
+      "bounds": [
+        0.33811475409836067,
+        0.19798657718120805,
+        0.9282786885245902,
+        1
+      ]
+    },
+    {
+      "pet": "otter-archived-presets",
+      "clip": "1",
+      "path": "pets/otter-archived-presets/pag_1.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0.1,
+          0.30327868852459017,
+          0.13758389261744966,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.45081967213114754,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0.5061475409836066,
+          0.087248322147651,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.5020491803278688,
+          0,
+          0.9487704918032787,
+          1
+        ],
+        [
+          0.7,
+          0.4713114754098361,
+          0.24161073825503357,
+          0.9692622950819673,
+          1
+        ],
+        [
+          0.85,
+          0.3770491803278688,
+          0.1610738255033557,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.3360655737704918,
+          0.14429530201342283,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.30327868852459017,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "otter-archived-presets",
+      "clip": "2",
+      "path": "pets/otter-archived-presets/pag_2.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0.1,
+          0.42827868852459017,
+          0.48322147651006714,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0.39959016393442626,
+          0.3523489932885906,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0.4692622950819672,
+          0.050335570469798654,
+          0.9631147540983607,
+          1
+        ],
+        [
+          0.7,
+          0.38934426229508196,
+          0.1644295302013423,
+          0.9631147540983607,
+          1
+        ],
+        [
+          0.85,
+          0.3668032786885246,
+          0.14093959731543623,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.36065573770491804,
+          0.15100671140939598,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0.36065573770491804,
+        0.050335570469798654,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "otter-archived-presets",
+      "clip": "3",
+      "path": "pets/otter-archived-presets/pag_3.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0,
+          0.444672131147541,
+          0.18456375838926176,
+          0.9487704918032787,
+          1
+        ],
+        [
+          0.1,
+          0.444672131147541,
+          0.1912751677852349,
+          0.9528688524590164,
+          1
+        ],
+        [
+          0.25,
+          0.45286885245901637,
+          0.18791946308724833,
+          0.9487704918032787,
+          1
+        ],
+        [
+          0.4,
+          0.4733606557377049,
+          0.17785234899328858,
+          0.944672131147541,
+          1
+        ],
+        [
+          0.55,
+          0.29508196721311475,
+          0.2080536912751678,
+          0.7766393442622951,
+          1
+        ],
+        [
+          0.7,
+          0.4139344262295082,
+          0.1174496644295302,
+          0.8360655737704918,
+          1
+        ],
+        [
+          0.85,
+          0.45286885245901637,
+          0.16778523489932887,
+          0.9241803278688525,
+          1
+        ],
+        [
+          0.98,
+          0.444672131147541,
+          0.18120805369127516,
+          0.944672131147541,
+          1
+        ]
+      ],
+      "bounds": [
+        0.29508196721311475,
+        0.1174496644295302,
+        0.9528688524590164,
+        1
+      ]
+    },
+    {
+      "pet": "otter-archived-presets",
+      "clip": "4",
+      "path": "pets/otter-archived-presets/nfc_pin_show.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0.1,
+          0.0471311475409836,
+          0,
+          1,
+          1
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "system-effects",
+      "clip": "0",
+      "path": "pets/system-effects/pin_show_pandora.pag",
+      "width": 708,
+      "height": 447,
+      "samples": [
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0.002824858757062147,
+          0,
+          0.9971751412429378,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "pet": "system-effects",
+      "clip": "1",
+      "path": "pets/system-effects/pin_show_popsicle.pag",
+      "width": 976,
+      "height": 596,
+      "samples": [
+        [
+          0.1,
+          0.4139344262295082,
+          0.27181208053691275,
+          0.694672131147541,
+          0.7281879194630873
+        ],
+        [
+          0.25,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.4,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.55,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.7,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.85,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0.98,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "bounds": [
+        0,
+        0,
+        1,
+        1
+      ]
+    }
+  ]
+}

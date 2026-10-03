@@ -41,6 +41,15 @@ animations and native integration. New modes must be explicit user choices.
 - Cover hardware observed: 1208x1392, density 520, rotation 2. Main screen:
   1224x2912, density 520. Use actual Window bounds/insets; cover screenshot pixel
   proportions alone do not prove physical camera clearance.
+- Version0.9.1 uses `CoverGeometry`, fixed subject focus per family and bottom-right
+  placement, most10% larger than intermediate0.9; Coco fills the opaque scene width. There is no rectangular camera-column
+  crop. Opaque scenery aligns with the source transform and blends at its top edge.
+  `CoverPreview` renders the same virtual cover before scaling. Wide effects may
+  cross the camera area or crop at screen edges; camera circles are schematic.
+  Charlie has a source crest slice in intermediate frames; padding did not recover
+  pixels. Do not describe it as fixed. MP4 avatars retain opaque source rectangles.
+  Ordinary PAG live wallpaper shares that geometry; its direct-Surface MP4 path
+  still has the earlier placement and must not be claimed camera-safe.
 - Keep the cover task separate from Main. `CoverGuard` is an enabled-session
   foreground service, not a frame loop. Closing Main should retain the cover;
   explicit Stop must close only our tasks and signal the shell supervisor.
@@ -106,3 +115,11 @@ The actual wallpaper engine has outer lock target 8, but shell's filesystem
 write-access checks fail despite 0777 directories. Themes' known video import
 applies inner targets 1/2/3. Do not call it a working outer video import or modify
 wallpaper type before a verified resource-copy and exact restore path exist.
+
+The tiny editor accepted a donor-based JSON preview via `param_template_item_json`;
+PAG animation/apply/rollback are not verified. Folded native wallpaper is deferred.
+The user also deferred continuation after **any** main-screen shutdown (Power or
+timeout) after the rootless power audit. An app-only launch button is not acceptable.
+`cmd display power-off 0` left mainOFF/coverON while PowerManager remained Awake;
+it is not secure sleep/AOD proof. Preserve native Power semantics, avoid repeated
+wake/ON/brightness hacks, and consult `docs/independent-display-power.md`/`TODO.md`.

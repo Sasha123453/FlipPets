@@ -1,4 +1,4 @@
-"""Package release 0.8 only after fresh, successful APK-bound emulator QA.
+"""Package release 0.9.1 only after fresh, successful APK-bound emulator QA.
 
 No device/network operations. Public bundles use explicit allowlists; historical
 results retain their own SHA and never become evidence for the current APK.
@@ -18,8 +18,8 @@ import zipfile
 WORK = pathlib.Path(__file__).resolve().parent
 ROOT = WORK.parent
 OUT = ROOT / "outputs"
-VERSION = "0.8"
-VERSION_CODE = 8
+VERSION = "0.9.1"
+VERSION_CODE = 10
 COUNTS = {"qa.json": 170, "composition-qa.json": 68,
           "ui-switch-qa.json": 15, "utility-qa.json": 15}
 RESEARCH = ["MRC-coverage.json", "composition-provenance.json", "font-provenance.json",
@@ -27,16 +27,16 @@ RESEARCH = ["MRC-coverage.json", "composition-provenance.json", "font-provenance
             "pandora-rearscreen-inventory.json", "ruyi-display_layout_configuration.xml",
             "ruyi-product-device_state_configuration.xml", "ruyi-device_state_configuration.xml",
             "ruyi-DeviceStateManagerShellCommand.java"]
-HISTORICAL = {"hardware-validation.json": "Physical MIX Flip version 0.5; not 0.8 hardware QA",
-              "resource-profile.json": "Earlier emulator resource profile; not a current 0.8 profile",
+HISTORICAL = {"hardware-validation.json": "Physical MIX Flip version 0.5; not current hardware QA",
+              "resource-profile.json": "Earlier emulator resource profile; not a current profile",
               "lifecycle.json": "Earlier emulator lifecycle/wallpaper/reboot evidence; no new run claimed",
               "playback-validation.json": "Earlier finite-playback validation; not retested by packaging",
-              "hardware-v07.json": "Limited physical version0.7 observations before startup retry fix; not0.8 phone QA",
-              "hardware-resource-v07.json": "Short physical version0.7 CPU/PSS sample; not current0.8 resource use",
-              "resource-profile-v07.json": "Version0.7 emulator profile; not current0.8 resource use",
-              "runtime-v07.json": "Version0.7 emulator task/service lifecycle; not current0.8 runtime QA",
+              "hardware-v07.json": "Limited physical version0.7 observations before startup retry fix; not current phone QA",
+              "hardware-resource-v07.json": "Short physical version0.7 CPU/PSS sample; not current release resource use",
+              "resource-profile-v07.json": "Version0.7 emulator profile; not current release resource use",
+              "runtime-v07.json": "Version0.7 emulator task/service lifecycle; not current release runtime QA",
               "pure-tests-v07.json": "Version0.7 source-bound pure tests; original source hashes retained",
-              "visual-simulation-v07.json": "Version0.7 virtual cover/large-font observations; not current0.8 visuals"}
+              "visual-simulation-v07.json": "Version0.7 virtual cover/large-font observations; not current release visuals"}
 DENIED_PARTS = {"phone-qa", "firmware", "images", "extracted", "emulator", "logs", "build", "ksu"}
 
 
@@ -155,12 +155,12 @@ def apk_checks(apk, catalog, paths):
 
 def source_entries():
     entries = [(p, p.relative_to(ROOT)) for p in (WORK / "app").rglob("*") if p.is_file()]
-    for name in ["README.md", "CHANGELOG.md", "AGENTS.md", ".gitattributes", ".gitignore"]:
+    for name in ["README.md", "CHANGELOG.md", "AGENTS.md", "TODO.md", ".gitattributes", ".gitignore"]:
         if (ROOT / name).is_file():
             entries.append((ROOT / name, name))
     entries += [(p, p.relative_to(ROOT)) for p in (ROOT / "docs").glob("*.md")]
     # Sanitized OEM inspection only; never glob raw phone dumps.
-    for name in ["folded-wallpaper-phone-inspection.json"]:
+    for name in ["folded-wallpaper-phone-inspection.json", "native-tiny-preview-evidence.json", "framework-power-provenance.json"]:
         path = ROOT / "docs" / name
         if path.is_file():
             entries.append((path, path.relative_to(ROOT)))
@@ -212,7 +212,7 @@ def original_entries():
 def report(verification, catalog):
     e = html.escape
     physical = verification["currentApk"].get("physicalEvidence")
-    notice = ("0.8 прошла актуальные эмуляторные проверки и ограниченную проверку на реальном MIX Flip. Точные физические наблюдения/ограничения находятся в current physical evidence; длительная стабильность, расход батареи и нативное применение анимированных обоев сложенного экрана этим не подтверждены." if physical else "0.8 прошла актуальные проверки на стандартном Android16 в эмуляторе. Физические результаты0.8 в этот пакет ещё не включены. На реальном MIX Flip EEA HyperOS3 ранее подтверждены два экрана, fold-return, аппаратный декодер и собственные фото в версии0.5; это историческая базовая проверка.")
+    notice = ("0.9.1 прошла актуальные эмуляторные проверки и ограниченную проверку на реальном MIX Flip. Точные физические наблюдения/ограничения находятся в current physical evidence; длительная стабильность, расход батареи и нативное применение анимированных обоев сложенного экрана этим не подтверждены." if physical else "0.9.1 прошла актуальные проверки на стандартном Android16 в эмуляторе. Физические результаты0.9.1 в этот пакет ещё не включены. На реальном MIX Flip EEA HyperOS3 ранее подтверждены два экрана, fold-return, аппаратный декодер и собственные фото в версии0.5; это историческая базовая проверка.")
     cards = []
     for pet in catalog:
         thumb = WORK / "app/assets/thumbs" / (pet["id"] + ".webp")
@@ -280,8 +280,7 @@ def main():
                     f"Composition image provenance mismatch: {path}")
     profile_path = args.profile
     if profile_path is None:
-        candidates = [args.qa_dir / "resource-profile-v08.json", args.qa_dir.parent / "resource-profile-v08.json",
-                      WORK / "qa-v03/resource-profile-v08.json"]
+        candidates = [args.qa_dir / "resource-profile-v091.json", args.qa_dir.parent / "resource-profile-v091.json"]
         profile_path = next((p for p in candidates if p.is_file()), None)
     profile = None
     if profile_path is not None:
@@ -359,13 +358,13 @@ def main():
                                   "mp4Clips": sum(p.endswith('.mp4') for p in paths), "offlineCompositions": 11,
                                   "originalImages": 497, "compiledNinePatches": 110, "originalFonts": 5},
                     "historicalEvidence": historical, "controllerFixtures": fixtures,
-                    "physicalReleaseValidation": {"version08Tested": physical is not None,
-                        "phoneInstalledVersionAtHandoff": "0.7" if physical is None else VERSION,
-                        "phoneVersionScope": "Phone remains on0.7;0.8 emulator-only release does not include a phone installation" if physical is None else "See explicit current physical report", "scope": "Limited physical observations only" if physical else "No current physical evidence included",
+                    "physicalReleaseValidation": {"releaseVersion": VERSION, "currentVersionTested": physical is not None,
+                        "phoneInstalledVersionAtHandoff": None if physical is None else VERSION,
+                        "phoneVersionScope": "No current installation evidence included" if physical is None else "See explicit current physical report", "scope": "Limited physical observations only" if physical else "No current physical evidence included",
                         "baseline": "Version0.5 fold/photo/two-screen and limited0.7 phone observations retain their original SHA above",
                         "remaining": ["Native custom animated folded wallpaper application is not implemented/tested",
                                       "Long stability/battery run not demonstrated by short checks"],
-                        "reportLimitations": (physical["data"].get("limitations", []) + physical["data"].get("pending", [])) if physical else ["Version0.8 was not installed/tested on the physical phone; this release concludes after emulator checks"]},
+                        "reportLimitations": (physical["data"].get("limitations", []) + physical["data"].get("pending", [])) if physical else ["Current physical observations are not included"]},
                     "firmware": firmware, "coverage": read(WORK / "research/MRC-coverage.json"),
                     "fontProvenance": read(WORK / "research/font-provenance.json"),
                     "privacy": "No raw phone dumps, private photos, signing keys or collected notification/media text in these bundles"}
@@ -387,7 +386,7 @@ def main():
     print(json.dumps({"version": VERSION, "apkSha256": binary, "runtimeChecks": sum(COUNTS.values()),
                       "sourceZipEntries": source_count, "evidenceZipEntries": evidence_count,
                       "originalZipEntries": original_count, "currentProfileIncluded": profile is not None,
-                      "physical08Tested": physical is not None}, indent=2))
+                      "currentPhysicalTested": physical is not None}, indent=2))
 
 
 if __name__ == "__main__":

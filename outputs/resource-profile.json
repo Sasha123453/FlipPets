@@ -1,11 +1,46 @@
 {
-  "releaseVersion": "0.8",
-  "currentApkSha256": "10b6473165f0bba0d2be11c5cf588b715f97e324773130915cd4a376e7d2ba40",
-  "currentProfile": null,
+  "releaseVersion": "0.9.1",
+  "currentApkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+  "currentProfile": {
+    "file": "resource-profile-v091.json",
+    "data": {
+      "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+      "environment": "Standard Android16 x86_64 emulator, software decoding/SwiftShader GPU; 100% CPU is one core. Scoped activity scenery-mask sample, not phone battery cost.",
+      "results": [
+        {
+          "scenario": "Lola held scenery frame after observed PLAYBACK_END",
+          "durationSeconds": 4.07,
+          "cpuPercentOneCore": 0.25,
+          "pssKiB": 62999,
+          "rssKiB": 152552
+        },
+        {
+          "scenario": "Lola touch reaction interval; may include completed frame",
+          "durationSeconds": 4.08,
+          "cpuPercentOneCore": 51.23,
+          "pssKiB": 72200,
+          "rssKiB": 162972
+        },
+        {
+          "scenario": "Lola hidden behind Settings",
+          "durationSeconds": 4.08,
+          "cpuPercentOneCore": 0.0,
+          "pssKiB": 52614,
+          "rssKiB": 143648
+        }
+      ],
+      "hardwareCanvasObserved": true,
+      "sceneFeather": "hardware=true top=526.4646 length=48",
+      "limitations": [
+        "4-second samples; no long memory-leak or thermal/battery test.",
+        "Main and folded native wallpaper engines excluded."
+      ]
+    }
+  },
   "historicalProfiles": [
     {
       "file": "resource-profile.json",
-      "scope": "Earlier emulator resource profile; not a current 0.8 profile",
+      "scope": "Earlier emulator resource profile; not a current profile",
       "originalApkSha256": "4c309ae3010587d9c80c8652ee2f070d10ac29a6cb34b78bd6cf8cc9f618906a",
       "sourceFileSha256": "0546321f1477b162804a137a35d282dcd1b5a880df3755de9555f635ee2b555a",
       "data": {
@@ -170,7 +205,7 @@
     },
     {
       "file": "hardware-resource-v07.json",
-      "scope": "Short physical version0.7 CPU/PSS sample; not current0.8 resource use",
+      "scope": "Short physical version0.7 CPU/PSS sample; not current release resource use",
       "originalApkSha256": "59668c8a20c7833d70ee1bc944b928faa14eb494ee590eadc24ddabb0ee191d4",
       "sourceFileSha256": "d0412ee9056f0abebc3272314053e250bc1a58de1353ba20b435bae9b23ab933",
       "data": {
@@ -191,7 +226,7 @@
     },
     {
       "file": "resource-profile-v07.json",
-      "scope": "Version0.7 emulator profile; not current0.8 resource use",
+      "scope": "Version0.7 emulator profile; not current release resource use",
       "originalApkSha256": "59668c8a20c7833d70ee1bc944b928faa14eb494ee590eadc24ddabb0ee191d4",
       "sourceFileSha256": "f0125a4dd88dafebb8ac44d1e628c43acd0d33c569a56f75d766fe12de93b069",
       "data": {

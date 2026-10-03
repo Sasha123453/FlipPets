@@ -32,11 +32,11 @@ try:
     task=re.search(r'id=(\d+)',owned[0])[1]
     shell('am stack remove '+task);time.sleep(1)
     check('main_task_removed_cover_continues',cover_visible() and foreground() and not any('org.flippets.app.MainActivity' in b for b in stacks()),'Only own Main root task removed through Android task manager; cover survives')
-    shell(f'screencap -d {physical} -p /sdcard/flip-cover.png');adb('pull','/sdcard/flip-cover.png',QA/'photo-battery-final-v08.png')
+    shell(f'screencap -d {physical} -p /sdcard/flip-cover.png');adb('pull','/sdcard/flip-cover.png',QA/'photo-battery-runtime-v091.png')
     shell('am broadcast -a org.flippets.app.STOP_COVER -n org.flippets.app/.StopCover');time.sleep(1)
     check('fold_close_retains_foreground_session',foreground() and not cover_visible(),'Simulated fold receiver closes owned cover task; no physical hinge claim')
     shell('cmd statusbar expand-notifications');time.sleep(.7)
-    tree=ui('guard-notification-v08')
+    tree=ui('guard-notification-v091')
     if not any(n.get('text')=='Выключить' for n in tree.iter('node')):
         title=next(n for n in tree.iter('node') if n.get('text')=='Внешний экран · Flip Pets')
         _,top,_,bottom=map(int,re.findall(r'\d+',title.get('bounds')))
@@ -55,4 +55,4 @@ finally:
     shell('cmd statusbar collapse',check=False)
     shell('settings put global overlay_display_devices ""',check=False)
     report=dict(apkSha256=hashlib.sha256((ROOT.parent/'outputs/FlipPets.apk').read_bytes()).hexdigest(),environment='Standard Android16 API36 x86_64 emulator; virtual cover1208x1392/520 and Main1224x2912/520, not HyperOS',tested=len(rows),failed=sum(not r['ok'] for r in rows),results=rows)
-    (QA/'runtime-v08.json').write_text(json.dumps(report,indent=2),encoding='utf8')
+    (QA/'runtime-v091.json').write_text(json.dumps(report,indent=2),encoding='utf8')

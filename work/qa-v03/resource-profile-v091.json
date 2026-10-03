@@ -1,0 +1,33 @@
+{
+  "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+  "environment": "Standard Android16 x86_64 emulator, software decoding/SwiftShader GPU; 100% CPU is one core. Scoped activity scenery-mask sample, not phone battery cost.",
+  "results": [
+    {
+      "scenario": "Lola held scenery frame after observed PLAYBACK_END",
+      "durationSeconds": 4.07,
+      "cpuPercentOneCore": 0.25,
+      "pssKiB": 62999,
+      "rssKiB": 152552
+    },
+    {
+      "scenario": "Lola touch reaction interval; may include completed frame",
+      "durationSeconds": 4.08,
+      "cpuPercentOneCore": 51.23,
+      "pssKiB": 72200,
+      "rssKiB": 162972
+    },
+    {
+      "scenario": "Lola hidden behind Settings",
+      "durationSeconds": 4.08,
+      "cpuPercentOneCore": 0.0,
+      "pssKiB": 52614,
+      "rssKiB": 143648
+    }
+  ],
+  "hardwareCanvasObserved": true,
+  "sceneFeather": "hardware=true top=526.4646 length=48",
+  "limitations": [
+    "4-second samples; no long memory-leak or thermal/battery test.",
+    "Main and folded native wallpaper engines excluded."
+  ]
+}

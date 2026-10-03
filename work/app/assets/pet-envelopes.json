@@ -1,0 +1,358 @@
+{
+  "schema": 2,
+  "method": "Fixed per-family subject focus reviewed from donor snapshots, independent of decorative branches/ground/effects. Renderer owns placement and background blending; focus metadata does not assert continuous-motion camera clearance. All-artwork alpha union retained separately: 8 attempted samples per scene at half native resolution, alpha >= 8, 1.2% padding. Transparent sample frames omitted. NFC/payment effects use full-source fit. No per-frame focus changes.",
+  "pets": {
+    "80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "bird-pandora": [
+      0.3,
+      0,
+      0.84,
+      1
+    ],
+    "capybara-archived-presets": [
+      0.43,
+      0,
+      0.95,
+      1
+    ],
+    "koala-archived-presets": [
+      0.4,
+      0.08,
+      0.96,
+      0.98
+    ],
+    "otter-archived-presets": [
+      0.34,
+      0.1,
+      0.94,
+      1
+    ],
+    "q_carp-pandora": [
+      0.3,
+      0,
+      1,
+      0.97
+    ],
+    "roedeer-archived-presets": [
+      0.34,
+      0.1,
+      0.9,
+      1
+    ],
+    "seal-archived-presets": [
+      0.27,
+      0.12,
+      0.91,
+      0.98
+    ],
+    "seal-pandora": [
+      0.27,
+      0.12,
+      0.91,
+      0.98
+    ],
+    "sheep-archived-presets": [
+      0.3,
+      0,
+      0.9,
+      1
+    ],
+    "sheep-pandora": [
+      0.3,
+      0,
+      0.9,
+      1
+    ]
+  },
+  "sampledArtworkEnvelopes": {
+    "80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "bird-pandora": [
+      0.151934,
+      0,
+      1,
+      1
+    ],
+    "capybara-archived-presets": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "koala-archived-presets": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "otter-archived-presets": [
+      0.283082,
+      0,
+      1,
+      1
+    ],
+    "q_carp-pandora": [
+      0.085345,
+      0,
+      1,
+      0.959552
+    ],
+    "roedeer-archived-presets": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "seal-archived-presets": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "seal-pandora": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "sheep-archived-presets": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "sheep-pandora": [
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "videos": {
+    "pets/46e72f3e-8f51-4db8-8db9-1c9e2a847b2a-pandora/ai.mp4": [
+      1808,
+      1144
+    ],
+    "pets/84ae8006-804f-4df3-bad9-413d5ea64799-pandora/ai.mp4": [
+      1808,
+      1144
+    ],
+    "pets/cdcebb9f-2fdb-4532-af77-1ee5ed742e12-pandora/ai.mp4": [
+      1808,
+      1144
+    ],
+    "pets/lumi-archived-presets/idle_0.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/idle_1.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/idle_2.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/dance.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/dragon_a.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/dragon_b.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/greet.mp4": [
+      2560,
+      1440
+    ],
+    "pets/lumi-archived-presets/happy.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/listen.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/midautumn_a.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/midautumn_b.mp4": [
+      3840,
+      2160
+    ],
+    "pets/lumi-archived-presets/nationalday_a.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/nationalday_b.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/newyear_a.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/newyear_b.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/rain_a.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/rain_b.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/sad.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/sing.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/snow_a.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/snow_b.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/speak.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/spring_a.mp4": [
+      1280,
+      720
+    ],
+    "pets/lumi-archived-presets/spring_b.mp4": [
+      1280,
+      720
+    ],
+    "pets/e97f1f85-9ca6-47d3-ba16-89bad4f3cc7f-pandora/ai.mp4": [
+      1808,
+      1144
+    ],
+    "pets/peeko-archived-presets/idle_0.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/idle_1.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/idle_2.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/dance.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/dragon_a.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/dragon_b.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/greet.mp4": [
+      3840,
+      2160
+    ],
+    "pets/peeko-archived-presets/happy.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/listen.mp4": [
+      3840,
+      2160
+    ],
+    "pets/peeko-archived-presets/midautumn_a.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/midautumn_b.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/nationalday_a.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/nationalday_b.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/newyear_a.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/newyear_b.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/rain_a.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/rain_b.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/sad.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/sing.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/snow_a.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/snow_b.mp4": [
+      3840,
+      2160
+    ],
+    "pets/peeko-archived-presets/speak.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/spring_a.mp4": [
+      1280,
+      720
+    ],
+    "pets/peeko-archived-presets/spring_b.mp4": [
+      1280,
+      720
+    ],
+    "pets/119f090b-b625-4b3e-9ffd-107927c360c6-pandora/P2.mp4": [
+      1090,
+      666
+    ],
+    "pets/119f090b-b625-4b3e-9ffd-107927c360c6-pandora/Q200.mp4": [
+      1008,
+      640
+    ]
+  }
+}

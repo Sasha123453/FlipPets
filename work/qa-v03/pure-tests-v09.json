@@ -1,0 +1,40 @@
+{
+  "artifact": "FlipPets.apk",
+  "apk_version": "0.9",
+  "apk_sha256": "3d3618e0dd871cbaea2f8a03959df75ed95038e2d79b14ccef90c4c382eacc06",
+  "generated_utc": "2026-10-03T18:54:58.606268+00:00",
+  "scope": "Host JVM pure timer and hinge-opacity logic only; no Android lifecycle, display hardware, or UI automation",
+  "compile": {
+    "passed": true,
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "source_sha256": {
+    "work/app/src/org/flippets/app/TimerState.java": "51b8ad19ac02969d63effbae04d54eaa4527074d0da2391af7427facfc017d46",
+    "work/app/src/org/flippets/app/HingeOpacity.java": "bab6ce08b467d88e40d1a64c8b10719c1da36b01437f0cf45f9ba0cdee952961",
+    "work/tests/TimerStateTest.java": "61f94ecf0a308d263e0cd51e8deb2253d5d3ff9959a135d54e3cc29e40b17882",
+    "work/tests/HingeOpacityTest.java": "2f4de609d90244206379870d5af3e1818120bd5b38044a126e02c38f81760b26"
+  },
+  "suites": [
+    {
+      "suite": "TimerStateTest",
+      "passed": true,
+      "exit_code": 0,
+      "stdout": "TimerState: 24 assertions passed",
+      "stderr": "",
+      "assertions": 24
+    },
+    {
+      "suite": "HingeOpacityTest",
+      "passed": true,
+      "exit_code": 0,
+      "stdout": "Hinge opacity: endpoints, monotonic range, midpoint and invalid-sample fallback passed",
+      "stderr": ""
+    }
+  ],
+  "total_suites": 2,
+  "passed_suites": 2,
+  "apk_unchanged_during_run": true,
+  "passed": true
+}

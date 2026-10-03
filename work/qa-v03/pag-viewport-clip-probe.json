@@ -1,0 +1,98 @@
+{
+  "results": [
+    {
+      "id": "charlie",
+      "scale": 1.4635398387908936,
+      "translateX": -16.0284423828125,
+      "translateY": 519.7302856445312,
+      "viewport": [
+        413,
+        432,
+        1183,
+        1392
+      ],
+      "frames": [
+        {
+          "progress": 0,
+          "outsideViewport": 0,
+          "visiblePixels": 365669,
+          "frameHash": -2054273159
+        },
+        {
+          "progress": 0.2,
+          "outsideViewport": 0,
+          "visiblePixels": 381524,
+          "frameHash": 540600100
+        },
+        {
+          "progress": 0.4,
+          "outsideViewport": 0,
+          "visiblePixels": 396477,
+          "frameHash": 1946001416
+        },
+        {
+          "progress": 0.7,
+          "outsideViewport": 0,
+          "visiblePixels": 316296,
+          "frameHash": -1123917094
+        },
+        {
+          "progress": 0.98,
+          "outsideViewport": 0,
+          "visiblePixels": 371090,
+          "frameHash": 1382900107
+        }
+      ]
+    },
+    {
+      "id": "bubbles",
+      "scale": 1.4112706184387207,
+      "translateX": -138.464111328125,
+      "translateY": 567.7050170898438,
+      "viewport": [
+        413,
+        432,
+        1183,
+        1392
+      ],
+      "frames": [
+        {
+          "progress": 0,
+          "outsideViewport": 0,
+          "visiblePixels": 274901,
+          "frameHash": -385444197
+        },
+        {
+          "progress": 0.2,
+          "outsideViewport": 0,
+          "visiblePixels": 277977,
+          "frameHash": 2054207653
+        },
+        {
+          "progress": 0.4,
+          "outsideViewport": 0,
+          "visiblePixels": 286879,
+          "frameHash": 1796973845
+        },
+        {
+          "progress": 0.7,
+          "outsideViewport": 0,
+          "visiblePixels": 288591,
+          "frameHash": 1426978686
+        },
+        {
+          "progress": 0.98,
+          "outsideViewport": 0,
+          "visiblePixels": 275471,
+          "frameHash": 1601199678
+        }
+      ]
+    }
+  ],
+  "scope": "Pre-build standalone native libpag nested-composition clipping probe, not APK or physical-phone validation",
+  "allClipped": true,
+  "sourceSha256": {
+    "work/tests/CoverGraphProbe.java": "2d11f610f28562a5a4ec5be3c955c3fade07f2dd3c33241ea7a2499fb455f8df",
+    "work/app/src/org/flippets/app/CoverGeometry.java": "160843cc97d45e58b9fd8800826b03a2decdd376036f2f27e4afd8865a39c328"
+  }
+}

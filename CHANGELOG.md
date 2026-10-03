@@ -1,11 +1,28 @@
 # Changes
 
+## 0.9.1
+
+- Bottom-right placement with stable per-family subject focus and uniform scale.
+  Most pets are10% larger than intermediate0.9; Coco fills the opaque scene width.
+  Removed the rectangular scenery crop;
+  opaque backgrounds align with their animation and blend at the source edge.
+  Wide effects may still cross the camera area or crop at screen edges.
+- Charlie's donor video already truncates the crest in some intermediate frames;
+  the completed frame is whole. The original finite playback policy is preserved.
+- Accurate1208:1392 cover preview using the same renderer; schematic camera overlay.
+  Optional34–55% left camera margin, saved only on explicit Apply.
+- Offline alpha sampling of116 PAG assets and pure geometry invariants. Fresh APK
+  runtime/UI and physical visual validation are recorded separately.
+- Native folded-lock PAG preview route and independent display-power limits saved
+  in docs/TODO. Neither folded native Apply nor automatic Power-button/AOD mode is
+  released; the user deferred these while camera placement is completed.
+
 ## 0.8
 
 - Bounded cover-display readiness/startup retry after unfolding; steady polling
   remains2seconds. Addresses0.7 trace evidence: the first state5 request rolled
   back to3, then the supervisor waited10seconds before restarting.
-- Fresh exact-SHA268-check emulator QA is pending. Version0.8 is not being installed
+- Fresh exact-SHA268-check emulator QA passed. Version0.8 was not installed
   or tested on the phone for this release; the phone remains on0.7.
   No claim of instant fold recovery or uninterrupted rootless reboot startup.
 - Release packaging validates versionCode8 and keeps0.7 physical/runtime/profile

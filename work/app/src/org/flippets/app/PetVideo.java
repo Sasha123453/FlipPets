@@ -20,7 +20,7 @@ public final class PetVideo extends TextureView implements TextureView.SurfaceTe
     public void start(){active=true;if(prepared&&player!=null)player.start();}
     public void pause(){active=false;if(prepared&&player!=null&&player.isPlaying())player.pause();}
     void fit(){if(videoW<=0||videoH<=0||getWidth()==0||getHeight()==0)return;float scale=Math.min(getWidth()/(float)videoW,getHeight()/(float)videoH);Matrix matrix=new Matrix();matrix.setScale(videoW*scale/getWidth(),videoH*scale/getHeight(),getWidth()/2f,getHeight()/2f);setTransform(matrix);}
-    void releasePlayer(){prepared=false;if(player!=null){player.release();player=null;}}
+    void releasePlayer(){prepared=false;videoW=videoH=0;if(player!=null){player.release();player=null;}}
     public void destroy(){pause();releasePlayer();if(surface!=null){surface.release();surface=null;}}
     public void onSurfaceTextureAvailable(SurfaceTexture texture,int w,int h){surface=new Surface(texture);if(!wanted.isEmpty())load(wanted);}
     public void onSurfaceTextureSizeChanged(SurfaceTexture texture,int w,int h){fit();}

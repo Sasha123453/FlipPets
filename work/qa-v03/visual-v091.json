@@ -1,0 +1,118 @@
+{
+  "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+  "environment": "Android16 API36 x86_64 emulator; virtual cover1208x1392/520, Main1224x2912/520; no HyperOS/camera-hole hardware",
+  "scope": "Own APK screenshots with stock donor assets, no private photos or other applications. Wallpaper MP4 placement unchanged and excluded.",
+  "captured": 9,
+  "reviewCompleted": true,
+  "results": [
+    {
+      "petIndex": 3,
+      "petId": "bird-pandora",
+      "pet": "Charlie",
+      "screenshot": "cover-charlie-v091.png",
+      "loadedAsset": "pets/bird-pandora/pag_0.pag",
+      "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.6136005 translate=-139.0542,430.29413",
+      "sceneFeather": null,
+      "reviewed": true,
+      "assessment": "No rectangular camera-column crop. Original source crest truncation in other intermediate frames remains."
+    },
+    {
+      "petIndex": 0,
+      "petId": "koala-archived-presets",
+      "pet": "Bubbles",
+      "screenshot": "cover-bubbles-v091.png",
+      "loadedAsset": "pets/koala-archived-presets/pag_0.pag",
+      "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.5559721 translate=-274.04358,483.1878",
+      "sceneFeather": null,
+      "reviewed": true,
+      "assessment": "Sampled composition reviewed; not all reactions or physical camera holes."
+    },
+    {
+      "petIndex": 1,
+      "petId": "roedeer-archived-presets",
+      "pet": "Roe",
+      "screenshot": "cover-roe-v091.png",
+      "loadedAsset": "pets/roedeer-archived-presets/pag_0.pag",
+      "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.5559721 translate=-182.9259,464.64062",
+      "sceneFeather": null,
+      "reviewed": true,
+      "assessment": "Sampled composition reviewed; not all reactions or physical camera holes."
+    },
+    {
+      "petIndex": 7,
+      "petId": "capybara-archived-presets",
+      "pet": "Jumbo",
+      "screenshot": "cover-jumbo-v091.png",
+      "loadedAsset": "pets/capybara-archived-presets/pag_0.pag",
+      "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.675662 translate=-369.83386,393.30542",
+      "sceneFeather": null,
+      "reviewed": true,
+      "assessment": "Sampled composition reviewed; not all reactions or physical camera holes."
+    },
+    {
+      "petIndex": 8,
+      "petId": "sheep-archived-presets",
+      "pet": "Lola",
+      "screenshot": "cover-lola-v091.png",
+      "loadedAsset": "pets/sheep-archived-presets/pag_8.pag",
+      "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.4522406 translate=-91.808105,526.4646",
+      "sceneFeather": "hardware=true top=526.4646 length=48",
+      "reviewed": true,
+      "assessment": "Continuous scenery, soft top edge; sampled motion pose only."
+    },
+    {
+      "petIndex": 4,
+      "petId": "seal-archived-presets",
+      "pet": "Coco",
+      "screenshot": "cover-coco-v091.png",
+      "loadedAsset": "pets/seal-archived-presets/pag_0.pag",
+      "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.3614753 translate=-25.368042,596.7894",
+      "sceneFeather": "hardware=true top=596.7894 length=48",
+      "reviewed": true,
+      "assessment": "Scenery spans full panel width; old narrow left edge removed. Soft top edge; sampled motion pose only."
+    },
+    {
+      "petIndex": 12,
+      "petId": "46e72f3e-8f51-4db8-8db9-1c9e2a847b2a-pandora",
+      "pet": "3D cartoon",
+      "screenshot": "cover-mp4-cartoon-v091.png",
+      "loadedAsset": "pets/46e72f3e-8f51-4db8-8db9-1c9e2a847b2a-pandora/ai.mp4",
+      "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=1808x1144 scale=0.47037166 translate=333.40802,853.89484",
+      "sceneFeather": null,
+      "reviewed": true,
+      "assessment": "Opaque MP4 source rectangle remains visible; decoder/placement works, natural blending not implemented."
+    },
+    {
+      "petIndex": 15,
+      "petId": "lumi-archived-presets",
+      "pet": "Lumi",
+      "screenshot": "cover-mp4-lumi-v091.png",
+      "loadedAsset": "pets/lumi-archived-presets/idle_0.mp4",
+      "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=1280x720 scale=0.6644 translate=333.40796,913.632",
+      "sceneFeather": null,
+      "reviewed": true,
+      "assessment": "Opaque MP4 source rectangle remains visible; decoder/placement works, natural blending not implemented."
+    },
+    {
+      "screen": "Main Charlie preview",
+      "screenshot": "main-charlie-preview-v091.png",
+      "mainDimensions": [
+        1224,
+        2912
+      ],
+      "previewAccessibilityBounds": [
+        124,
+        873,
+        1099,
+        1997
+      ],
+      "reviewed": true,
+      "assessment": "Sampled composition reviewed; not all reactions or physical camera holes."
+    }
+  ],
+  "limitations": [
+    "MP4 avatar source rectangles remain visible; no transparency/background continuation for these videos.",
+    "Charlie crest slice remains in original intermediate frames.",
+    "Camera circles schematic; screenshots do not prove physical clearance of every gesture."
+  ]
+}

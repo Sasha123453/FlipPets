@@ -1,0 +1,44 @@
+{
+  "apkSha256": "3d3618e0dd871cbaea2f8a03959df75ed95038e2d79b14ccef90c4c382eacc06",
+  "version": "0.9",
+  "passed": true,
+  "failed": 0,
+  "scope": "Exact release source/asset binding of independent host geometry and native libpag graph probes. These are source-level evidence, not physical-camera or APK Window tests; current APK runtime and screenshots are separate.",
+  "source_sha256": {
+    "work/app/src/org/flippets/app/CoverGeometry.java": "160843cc97d45e58b9fd8800826b03a2decdd376036f2f27e4afd8865a39c328",
+    "work/tests/CoverGeometryTest.java": "677b8928f4f36b7c0aca606d46e9052eed008e7e63e4a34a477cc647b9e7d3d9",
+    "work/app/assets/pet-envelopes.json": "1c2e9e3434d377030406f973fd0937a0414c66ec911f818485ee46d7280e31e2",
+    "work/tests/CoverGraphProbe.java": "2d11f610f28562a5a4ec5be3c955c3fade07f2dd3c33241ea7a2499fb455f8df",
+    "work/app/src/org/flippets/app/PetStage.java": "69f374c657c0bb47ded1d9a6cdc75523d2603e8b08b05fef31783fcca42f46e7",
+    "work/app/src/org/flippets/app/CoverPreview.java": "f53be84994d7586272b9b8c00273e88cccc358983c76c10b3f8df69f89ca53a2",
+    "work/app/src/org/flippets/app/PetEnvelopes.java": "4395606f8da2281387b59e503f2fe9f06adbf9fdf93c48a0efb6ebb84d6af655",
+    "work/app/src/org/flippets/app/PetWallpaper.java": "e5ef576039d604c38f9b7971f5fcdc84c35ad5b32cc0ce9c2e909bb7ca6ef4a3",
+    "work/app/src/org/flippets/app/PetVideo.java": "f77ab17df08a101c44b36203d7590c986371f5ec1edbbf1699c8584e4d97b9fb",
+    "work/app/src/org/flippets/app/MainActivity.java": "eaad5d28c45343f9b2adf3ee565b5b6b88b933c016a409ae5c0a06c81bd1c096"
+  },
+  "geometryAssertions": 360,
+  "sampledPAGFiles": 116,
+  "attemptedSamplesPerPAG": 8,
+  "sampleCaveat": "Transparent frames omitted; all animation frames were not sampled. Canonical subject focus may clip decorations/wide gestures.",
+  "viewportProbeFrames": 10,
+  "viewportPixelsOutside": 0,
+  "results": [
+    {
+      "test": "host geometry invariants",
+      "ok": true
+    },
+    {
+      "test": "all 116 original PAG sample sources unchanged",
+      "ok": true
+    },
+    {
+      "test": "native nested composition clamps sampled alpha",
+      "ok": true
+    }
+  ],
+  "probeReports": [
+    "cover-geometry-tests.json",
+    "pet-envelope-samples.json",
+    "pag-viewport-clip-probe.json"
+  ]
+}

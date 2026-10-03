@@ -1,0 +1,13 @@
+{
+  "scope": "Pre-build source tests: pure aspect/placement invariants and offline donor-asset provenance; not APK/UI or physical camera validation",
+  "compilePassed": true,
+  "testsPassed": true,
+  "stdout": "CoverGeometry: 582 assertions passed",
+  "sourceSha256": {
+    "work/app/src/org/flippets/app/CoverGeometry.java": "cbb3f05560b7359abf66e043f30242d1423ce04e751b616b73da87a243bda22c",
+    "work/tests/CoverGeometryTest.java": "b43c1f99f5a3b279f81a3168c3404bd9668d3cf099d7678d7b83adbcfbf2018c",
+    "work/app/assets/pet-envelopes.json": "dcb75b7ab4f13a04d2d73752bf90f0e7c67c4f28cdf12b9d08418d86b37c6e42"
+  },
+  "sampledPAGAssets": 116,
+  "allSampledSourceHashesMatch": true
+}
