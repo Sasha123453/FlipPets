@@ -1,26 +1,26 @@
 {
-  "apkSha256": "b46ea0d57da9c5714c8af67a73e259e0c78d5c5cd75d008838fc837789c10e09",
+  "apkSha256": "4c309ae3010587d9c80c8652ee2f070d10ac29a6cb34b78bd6cf8cc9f618906a",
   "environment": "Android 16 API 36 x86_64 emulator, two virtual CPU cores, SwiftShader GPU, PAG software decoding; 100% CPU is one core. No physical MIX Flip or battery measurement.",
   "clockTicksPerSecond": 100,
   "results": [
     {
       "scenario": "PAG Bubbles visible",
-      "pid": 16003,
-      "durationSeconds": 12.0,
-      "cpuPercentOneCore": 76.58,
+      "pid": 4829,
+      "durationSeconds": 8.0,
+      "cpuPercentOneCore": 75.67,
       "cpuSamples": [
-        68.3,
-        70.78,
-        75.73,
-        91.53
+        78.26,
+        71.77,
+        74.4,
+        78.26
       ],
-      "pssKiB": 63725,
-      "rssKiB": 156336
+      "pssKiB": 75937,
+      "rssKiB": 170108
     },
     {
       "scenario": "PAG Bubbles visible hidden",
-      "pid": 16003,
-      "durationSeconds": 12.0,
+      "pid": 4829,
+      "durationSeconds": 8.0,
       "cpuPercentOneCore": 0.0,
       "cpuSamples": [
         0.0,
@@ -28,27 +28,27 @@
         0.0,
         0.0
       ],
-      "pssKiB": 66349,
-      "rssKiB": 160740
+      "pssKiB": 67895,
+      "rssKiB": 164272
     },
     {
       "scenario": "Analog clock visible",
-      "pid": 16003,
-      "durationSeconds": 12.0,
-      "cpuPercentOneCore": 15.14,
+      "pid": 4829,
+      "durationSeconds": 8.0,
+      "cpuPercentOneCore": 16.28,
       "cpuSamples": [
-        14.75,
-        14.71,
-        16.34,
-        14.75
+        15.05,
+        15.05,
+        19.42,
+        15.61
       ],
-      "pssKiB": 80582,
-      "rssKiB": 178932
+      "pssKiB": 85479,
+      "rssKiB": 185256
     },
     {
       "scenario": "Analog clock visible hidden",
-      "pid": 16003,
-      "durationSeconds": 12.0,
+      "pid": 4829,
+      "durationSeconds": 8.0,
       "cpuPercentOneCore": 0.0,
       "cpuSamples": [
         0.0,
@@ -56,27 +56,27 @@
         0.0,
         0.0
       ],
-      "pssKiB": 72426,
-      "rssKiB": 170964
+      "pssKiB": 71591,
+      "rssKiB": 171412
     },
     {
       "scenario": "Signature static visible",
-      "pid": 16003,
-      "durationSeconds": 12.0,
-      "cpuPercentOneCore": 0.08,
+      "pid": 4829,
+      "durationSeconds": 8.0,
+      "cpuPercentOneCore": 0.12,
       "cpuSamples": [
-        0.33,
+        0.49,
         0.0,
         0.0,
         0.0
       ],
-      "pssKiB": 92917,
-      "rssKiB": 191536
+      "pssKiB": 91970,
+      "rssKiB": 191972
     },
     {
       "scenario": "Signature static visible hidden",
-      "pid": 16003,
-      "durationSeconds": 12.0,
+      "pid": 4829,
+      "durationSeconds": 8.0,
       "cpuPercentOneCore": 0.0,
       "cpuSamples": [
         0.0,
@@ -84,27 +84,27 @@
         0.0,
         0.0
       ],
-      "pssKiB": 92609,
-      "rssKiB": 191220
+      "pssKiB": 91718,
+      "rssKiB": 191684
     },
     {
       "scenario": "MP4 cartoon visible",
-      "pid": 16003,
-      "durationSeconds": 12.0,
-      "cpuPercentOneCore": 22.02,
+      "pid": 4829,
+      "durationSeconds": 8.0,
+      "cpuPercentOneCore": 22.78,
       "cpuSamples": [
-        21.5,
-        23.45,
-        22.95,
-        20.2
+        25.6,
+        21.84,
+        21.74,
+        21.95
       ],
-      "pssKiB": 74880,
-      "rssKiB": 175524
+      "pssKiB": 74100,
+      "rssKiB": 176264
     },
     {
       "scenario": "MP4 cartoon visible hidden",
-      "pid": 16003,
-      "durationSeconds": 12.0,
+      "pid": 4829,
+      "durationSeconds": 8.0,
       "cpuPercentOneCore": 0.0,
       "cpuSamples": [
         0.0,
@@ -112,13 +112,13 @@
         0.0,
         0.0
       ],
-      "pssKiB": 74559,
-      "rssKiB": 175196
+      "pssKiB": 73837,
+      "rssKiB": 175948
     },
     {
       "scenario": "After 20 switches hidden",
-      "pid": 16003,
-      "durationSeconds": 12.0,
+      "pid": 4829,
+      "durationSeconds": 8.0,
       "cpuPercentOneCore": 0.0,
       "cpuSamples": [
         0.0,
@@ -126,48 +126,34 @@
         0.0,
         0.0
       ],
-      "pssKiB": 98074,
-      "rssKiB": 198884
-    },
-    {
-      "scenario": "shizuku_server idle",
-      "pid": 2093,
-      "durationSeconds": 12.0,
-      "cpuPercentOneCore": 0.0,
-      "cpuSamples": [
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "pssKiB": 48269,
-      "rssKiB": 59512
+      "pssKiB": 81897,
+      "rssKiB": 183764
     }
   ],
   "cycleBaseline": {
-    "pssKiB": 103475,
-    "rssKiB": 204120
+    "pssKiB": 100073,
+    "rssKiB": 202240
   },
   "memoryCycles": [
     {
       "cycle": 5,
-      "pssKiB": 190792,
-      "rssKiB": 291580
+      "pssKiB": 171625,
+      "rssKiB": 273532
     },
     {
       "cycle": 10,
-      "pssKiB": 168044,
-      "rssKiB": 268848
+      "pssKiB": 152164,
+      "rssKiB": 254072
     },
     {
       "cycle": 15,
-      "pssKiB": 152473,
-      "rssKiB": 253284
+      "pssKiB": 168192,
+      "rssKiB": 270104
     },
     {
       "cycle": 20,
-      "pssKiB": 170618,
-      "rssKiB": 271428
+      "pssKiB": 167100,
+      "rssKiB": 268968
     }
   ]
 }

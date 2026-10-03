@@ -1,5 +1,5 @@
 {
-  "apkSha256": "b46ea0d57da9c5714c8af67a73e259e0c78d5c5cd75d008838fc837789c10e09",
+  "apkSha256": "4c309ae3010587d9c80c8652ee2f070d10ac29a6cb34b78bd6cf8cc9f618906a",
   "tested": 68,
   "failed": 0,
   "decodedOriginalImages": 497,
@@ -499,8 +499,8 @@
       "aspect": "cover 1392x1208",
       "visible": true,
       "framesDiffer": true,
-      "hash1": "e250fbd19cf9d47a56062dba2b757b51f47fbc97b718c813fa0dd3e52fabeb7c",
-      "hash2": "7a6ade685e71afe09bd4e575f385a8f73b452969ebc1d39033d866587f6fa083",
+      "hash1": "8bdff4727b1ad8908c41828795f1dd25feadf01691761a725f00c6df88e606ca",
+      "hash2": "92cfb93af0ce220afe2a38d10580fcfbd52d2d960822c6e77000e947dc962118",
       "ok": true
     },
     {
@@ -509,8 +509,8 @@
       "aspect": "cover 1208x1392",
       "visible": true,
       "framesDiffer": true,
-      "hash1": "6b3688f8313dc74af9e24da772dde94581ffd1f580ad0308de1b1d71b8d3ddae",
-      "hash2": "4c20c794a8f5d09aff4485cef0e7418eca24d44874c2f571f5a44c153531885e",
+      "hash1": "ca4fdfc8cebdad1a364d4f4a95906966d8347227cd753fa53af2ccccdd28979e",
+      "hash2": "4f98d27cf962184bd6693162383c33c98e714e6e6a88fe3c718a1632d46684c5",
       "ok": true
     },
     {
@@ -519,8 +519,8 @@
       "aspect": "inner 1224x2912",
       "visible": true,
       "framesDiffer": true,
-      "hash1": "80bc2287bda79e609f9d9659eeecfc3b8072d40b98997a9492162bac473d52c4",
-      "hash2": "a87e39ba29cfe3898f66f4b9dec8b588efe25287dfca059cabc21d7d5983ea42",
+      "hash1": "c7b66def269c7fa5e25e934aba0944900eeb9555111afe329c15263c9ab62d88",
+      "hash2": "473f7026eb782fc2f77b8a752476dc18553e14cc7bb2054832ac63121605bb45",
       "ok": true
     },
     {
@@ -559,8 +559,8 @@
       "aspect": "cover 1392x1208",
       "visible": true,
       "framesDiffer": true,
-      "hash1": "7d25b9e370f95617f54c06cf4c610eae8c3bf6e807988cb55cad0e19949c61ae",
-      "hash2": "730464034782db888c0d961c8469f34add59f90fd7b73d5bcf666f6235836994",
+      "hash1": "39d6d2dc781cdd357581a03ba6532966ade342aa231274598f494afa0be738fa",
+      "hash2": "a8324da420a2fd851d50a2a8745346ccc22482f84688a04f7b30c9f006f2d1e2",
       "ok": true
     },
     {
@@ -569,8 +569,8 @@
       "aspect": "cover 1208x1392",
       "visible": true,
       "framesDiffer": true,
-      "hash1": "06a18f685f14ef02d8177c7442e7f02d484d46af6fdb604764b411095cffd77b",
-      "hash2": "012663761382a62e92684919b2933c27a003154da5c9a3fc52ee8a0e4a0fc954",
+      "hash1": "28984cd7e7ab69c8773b9fee31da04e68ab5bb73224fc255fa165837dd83cc9f",
+      "hash2": "ff8a474efb9ddf5a39cb7659931500576cb4503e7778166f548e8896b03368fc",
       "ok": true
     },
     {
@@ -579,8 +579,8 @@
       "aspect": "inner 1224x2912",
       "visible": true,
       "framesDiffer": true,
-      "hash1": "8c88a2668ea5b5150c556a3a7c87317214d8ac18902a675e4a7a4d748a8a7678",
-      "hash2": "d18551034552389d489aae1c9b2f2464218bb609ea8a366511e2fdad7c401667",
+      "hash1": "ab87a5fad8977ebc8108e0059df7ae1db2a17d0747cf7aba2d9b0583b7aa02aa",
+      "hash2": "fd61df34d82c5ec454ba6128b0fa1714a725f94441ce4a5baab44c2a367d8a48",
       "ok": true
     },
     {

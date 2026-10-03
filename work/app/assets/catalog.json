@@ -28,7 +28,26 @@
     "timeColor": "#DBFF5A",
     "source": "Archive of Xiaomi presets",
     "originalFile": "ff37b3ed-214a-483c-a196-33889cafc2d9.mrc",
-    "originalSha256": "48d6628fde52c06ad07f8ee7fd4a3b690a4bf74b8d3b6b871981c17a02c67eb2"
+    "originalSha256": "48d6628fde52c06ad07f8ee7fd4a3b690a4bf74b8d3b6b871981c17a02c67eb2",
+    "durationMs": {
+      "0": 2200,
+      "1": 4000,
+      "2": 4000,
+      "3": 3534,
+      "4": 3500,
+      "5": 5000,
+      "6": 3000,
+      "7": 5000,
+      "8": 3200,
+      "9": 3334,
+      "10": 3334,
+      "11": 5667,
+      "12": 4234,
+      "13": 4334,
+      "14": 3667,
+      "15": 7034,
+      "16": 2000
+    }
   },
   {
     "id": "roedeer-archived-presets",
@@ -59,7 +78,26 @@
     "timeColor": "#DBFF5A",
     "source": "Archive of Xiaomi presets",
     "originalFile": "b0337e5d-516d-4fa6-8a1e-0722116cfd81.mrc",
-    "originalSha256": "d16ec489ea33b6925fd1ea56b17f1ddbde07a5e6fb7fa3cfb0101d64e60e7d3d"
+    "originalSha256": "d16ec489ea33b6925fd1ea56b17f1ddbde07a5e6fb7fa3cfb0101d64e60e7d3d",
+    "durationMs": {
+      "0": 3600,
+      "1": 3634,
+      "2": 2800,
+      "3": 1900,
+      "4": 6667,
+      "5": 6367,
+      "6": 5000,
+      "7": 3734,
+      "8": 3200,
+      "9": 3167,
+      "10": 4334,
+      "11": 3334,
+      "12": 5034,
+      "13": 3667,
+      "14": 3234,
+      "15": 7334,
+      "16": 2000
+    }
   },
   {
     "id": "q_carp-pandora",
@@ -77,7 +115,13 @@
     "timeColor": "#DBFF5A",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "6eca3137-153e-4eed-827e-e8f89e51fb8a.mrc",
-    "originalSha256": "fd86494bba210e2e6109b31a287c745a6b3830898784f637eed74aa84aba24fa"
+    "originalSha256": "fd86494bba210e2e6109b31a287c745a6b3830898784f637eed74aa84aba24fa",
+    "durationMs": {
+      "0": 11984,
+      "1": 11984,
+      "2": 10000,
+      "3": 9934
+    }
   },
   {
     "id": "bird-pandora",
@@ -103,7 +147,22 @@
     "timeColor": "#DBFF5A",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "26f4a446-8125-407d-a255-3dbcd8c12eae.mrc",
-    "originalSha256": "9147868c42edcec122dfb5c5e497506bc2d7dd487b27110cc8bb32b9a6c6e52e"
+    "originalSha256": "9147868c42edcec122dfb5c5e497506bc2d7dd487b27110cc8bb32b9a6c6e52e",
+    "durationMs": {
+      "0": 6000,
+      "1": 6000,
+      "2": 3000,
+      "3": 3367,
+      "4": 3667,
+      "5": 3000,
+      "6": 1667,
+      "7": 3667,
+      "8": 3334,
+      "9": 5334,
+      "10": 6000,
+      "11": 4667
+    },
+    "touchSceneCount": 12
   },
   {
     "id": "seal-archived-presets",
@@ -130,7 +189,23 @@
     "timeColor": "#DBFF5A",
     "source": "Archive of Xiaomi presets",
     "originalFile": "e543e1cc-b795-44f0-abb2-862194d53750.mrc",
-    "originalSha256": "40c31d78fce237e648322efdc113e61f8393ece221582c793a16d5cfa57b9dab"
+    "originalSha256": "40c31d78fce237e648322efdc113e61f8393ece221582c793a16d5cfa57b9dab",
+    "durationMs": {
+      "0": 5334,
+      "1": 6000,
+      "2": 5000,
+      "3": 4667,
+      "4": 4334,
+      "5": 4000,
+      "6": 3667,
+      "7": 3334,
+      "8": 3667,
+      "9": 2767,
+      "10": 4334,
+      "11": 6667,
+      "12": 2000
+    },
+    "touchSceneCount": 11
   },
   {
     "id": "seal-pandora",
@@ -155,7 +230,21 @@
     "timeColor": "#DBFF5A",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "9a873f92-3e7a-4335-9001-5f7e51da03e9.mrc",
-    "originalSha256": "4f5c18e0fa243c68fd8840643c7f8fd013b9a3a6e986c2ea44ee36482b4e9e78"
+    "originalSha256": "4f5c18e0fa243c68fd8840643c7f8fd013b9a3a6e986c2ea44ee36482b4e9e78",
+    "durationMs": {
+      "0": 5334,
+      "1": 6000,
+      "2": 5000,
+      "3": 4667,
+      "4": 4334,
+      "5": 4000,
+      "6": 3667,
+      "7": 3334,
+      "8": 3667,
+      "9": 2767,
+      "10": 4334
+    },
+    "touchSceneCount": 11
   },
   {
     "id": "80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora",
@@ -173,7 +262,13 @@
     "timeColor": "#DBFF5A",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "80489ec0-3f8c-4ed8-a106-a121fe1ebad4.mrc",
-    "originalSha256": "675152f258be5372f5dfebfa519e4393764c706e7af73a295b5e5a8218a4baed"
+    "originalSha256": "675152f258be5372f5dfebfa519e4393764c706e7af73a295b5e5a8218a4baed",
+    "durationMs": {
+      "0": 10000,
+      "1": 10000,
+      "2": 10000,
+      "3": 10000
+    }
   },
   {
     "id": "capybara-archived-presets",
@@ -192,7 +287,15 @@
     "timeColor": "#FFC93D",
     "source": "Archive of Xiaomi presets",
     "originalFile": "fb026285-632c-42d7-8268-a588015b1ff4.mrc",
-    "originalSha256": "c52fc4d97ba3ae5f08c2ae031c122a839892282ffca3bba9f177650c36a26d29"
+    "originalSha256": "c52fc4d97ba3ae5f08c2ae031c122a839892282ffca3bba9f177650c36a26d29",
+    "durationMs": {
+      "0": 7500,
+      "1": 5834,
+      "2": 10000,
+      "3": 7667,
+      "4": 2000
+    },
+    "touchSceneCount": 4
   },
   {
     "id": "sheep-archived-presets",
@@ -220,7 +323,24 @@
     "timeColor": "#DBFF5A",
     "source": "Archive of Xiaomi presets",
     "originalFile": "325d3be8-5f5d-4956-841a-3ee136085b1e.mrc",
-    "originalSha256": "f1dc238f9807158949799413b6354ae2d23e9a8faf7c8d6c1140b438325488d5"
+    "originalSha256": "f1dc238f9807158949799413b6354ae2d23e9a8faf7c8d6c1140b438325488d5",
+    "durationMs": {
+      "0": 6467,
+      "1": 6500,
+      "2": 3734,
+      "3": 2667,
+      "4": 4467,
+      "5": 3834,
+      "6": 3900,
+      "7": 5134,
+      "8": 5000,
+      "9": 2467,
+      "10": 5467,
+      "11": 6334,
+      "12": 6334,
+      "13": 2000
+    },
+    "touchSceneCount": 12
   },
   {
     "id": "sheep-pandora",
@@ -246,7 +366,22 @@
     "timeColor": "#DBFF5A",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "dd1639ed-306d-4f73-8f78-d26ed6dda77f.mrc",
-    "originalSha256": "9ac10c3be62e525e3e9f4ed02a9dd74c5ff6137e0254950e739fc43aa275f8c9"
+    "originalSha256": "9ac10c3be62e525e3e9f4ed02a9dd74c5ff6137e0254950e739fc43aa275f8c9",
+    "durationMs": {
+      "0": 6467,
+      "1": 6500,
+      "2": 3734,
+      "3": 2667,
+      "4": 4467,
+      "5": 3834,
+      "6": 3900,
+      "7": 5134,
+      "8": 5000,
+      "9": 2467,
+      "10": 5467,
+      "11": 3800
+    },
+    "touchSceneCount": 12
   },
   {
     "id": "otter-archived-presets",
@@ -265,7 +400,15 @@
     "timeColor": "#FFC93D",
     "source": "Archive of Xiaomi presets",
     "originalFile": "4c5bdda5-82d3-440c-9978-b3085fc30eaa.mrc",
-    "originalSha256": "5caad3a52058f8c8a8cb96f614c70dd3e95822f1869a3dbccd256ea4140d1c17"
+    "originalSha256": "5caad3a52058f8c8a8cb96f614c70dd3e95822f1869a3dbccd256ea4140d1c17",
+    "durationMs": {
+      "0": 5834,
+      "1": 7167,
+      "2": 5667,
+      "3": 7000,
+      "4": 2000
+    },
+    "touchSceneCount": 4
   },
   {
     "id": "system-effects",
@@ -281,7 +424,11 @@
     "timeColor": "#DBFF5A",
     "source": "Xiaomi 17 Pro SubScreenCenter APK",
     "originalFile": "pandora-subscreencenter.apk",
-    "originalSha256": "22b7d153b523d80fb79f9e1730d776a9a3421c317025d6b190e235f5e4ce2507"
+    "originalSha256": "22b7d153b523d80fb79f9e1730d776a9a3421c317025d6b190e235f5e4ce2507",
+    "durationMs": {
+      "0": 1000,
+      "1": 1000
+    }
   },
   {
     "id": "46e72f3e-8f51-4db8-8db9-1c9e2a847b2a-pandora",
@@ -301,7 +448,10 @@
     "timeColor": "#DBFF5A",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "46e72f3e-8f51-4db8-8db9-1c9e2a847b2a.mrc",
-    "originalSha256": "0c8bed2ad75f3bd6b620e9c6b13ee96066af1f3af12801d0f688b4e2836cd15b"
+    "originalSha256": "0c8bed2ad75f3bd6b620e9c6b13ee96066af1f3af12801d0f688b4e2836cd15b",
+    "durationMs": {
+      "0": 4215
+    }
   },
   {
     "id": "84ae8006-804f-4df3-bad9-413d5ea64799-pandora",
@@ -321,7 +471,10 @@
     "timeColor": "#DBFF5A",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "84ae8006-804f-4df3-bad9-413d5ea64799.mrc",
-    "originalSha256": "3f02f7acac8edf44e8b3ccebaa11a9457d2837c981fc545d23a41fac6d8709db"
+    "originalSha256": "3f02f7acac8edf44e8b3ccebaa11a9457d2837c981fc545d23a41fac6d8709db",
+    "durationMs": {
+      "0": 5042
+    }
   },
   {
     "id": "cdcebb9f-2fdb-4532-af77-1ee5ed742e12-pandora",
@@ -341,7 +494,10 @@
     "timeColor": "#DBFF5A",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "cdcebb9f-2fdb-4532-af77-1ee5ed742e12.mrc",
-    "originalSha256": "34e9c892fb0445212d55ab480d8d978d30db0779daebf5cf60e1846d7cdeb313"
+    "originalSha256": "34e9c892fb0445212d55ab480d8d978d30db0779daebf5cf60e1846d7cdeb313",
+    "durationMs": {
+      "0": 5042
+    }
   },
   {
     "id": "lumi-archived-presets",
@@ -476,7 +632,33 @@
     "timeColor": "#DBFF5A",
     "source": "Archive of Xiaomi presets",
     "originalFile": "b4deb767-f817-4376-b965-dd037e21953b.mrc",
-    "originalSha256": "9e257af198065cc70c630bb07741618ba59899d67784ba8eccc109e8a9816d66"
+    "originalSha256": "9e257af198065cc70c630bb07741618ba59899d67784ba8eccc109e8a9816d66",
+    "durationMs": {
+      "0": 5033,
+      "1": 5033,
+      "2": 5033,
+      "3": 5033,
+      "4": 5033,
+      "5": 5155,
+      "6": 5038,
+      "7": 5085,
+      "8": 4034,
+      "9": 5033,
+      "10": 4834,
+      "11": 5033,
+      "12": 5033,
+      "13": 5033,
+      "14": 5033,
+      "15": 5033,
+      "16": 5033,
+      "17": 5033,
+      "18": 5033,
+      "19": 5033,
+      "20": 5033,
+      "21": 4033,
+      "22": 4110,
+      "23": 5033
+    }
   },
   {
     "id": "e97f1f85-9ca6-47d3-ba16-89bad4f3cc7f-pandora",
@@ -496,7 +678,10 @@
     "timeColor": "#DBFF5A",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "e97f1f85-9ca6-47d3-ba16-89bad4f3cc7f.mrc",
-    "originalSha256": "a7ad5c29be211e581065beb5bbfd07e9d96ab3bec1defcdf7394e9ac605a6c10"
+    "originalSha256": "a7ad5c29be211e581065beb5bbfd07e9d96ab3bec1defcdf7394e9ac605a6c10",
+    "durationMs": {
+      "0": 5042
+    }
   },
   {
     "id": "peeko-archived-presets",
@@ -631,7 +816,33 @@
     "timeColor": "#DBFF5A",
     "source": "Archive of Xiaomi presets",
     "originalFile": "317d9477-3731-4636-b526-15f914647826.mrc",
-    "originalSha256": "047545feab265128218dc2e2241bb1af912488be8ebaf45f4f1673a2a5dae837"
+    "originalSha256": "047545feab265128218dc2e2241bb1af912488be8ebaf45f4f1673a2a5dae837",
+    "durationMs": {
+      "0": 5033,
+      "1": 8033,
+      "2": 5033,
+      "3": 8033,
+      "4": 5033,
+      "5": 5033,
+      "6": 2333,
+      "7": 5033,
+      "8": 6014,
+      "9": 5033,
+      "10": 5033,
+      "11": 5033,
+      "12": 5033,
+      "13": 5033,
+      "14": 5033,
+      "15": 5033,
+      "16": 8033,
+      "17": 5033,
+      "18": 5033,
+      "19": 5033,
+      "20": 4226,
+      "21": 5033,
+      "22": 5033,
+      "23": 5033
+    }
   },
   {
     "id": "119f090b-b625-4b3e-9ffd-107927c360c6-pandora",
@@ -656,7 +867,11 @@
     "timeColor": "#DBFF5A",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "119f090b-b625-4b3e-9ffd-107927c360c6.mrc",
-    "originalSha256": "ac5f0c44c2091ef32232786e44ededec22bd97900f94ec9d38458d49563a8336"
+    "originalSha256": "ac5f0c44c2091ef32232786e44ededec22bd97900f94ec9d38458d49563a8336",
+    "durationMs": {
+      "0": 5067,
+      "1": 5067
+    }
   },
   {
     "id": "09cb4aa8-8e8d-4f2c-a6cd-2a7e2648d790",
@@ -671,7 +886,8 @@
     "gradientTo": "#31495D",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "09cb4aa8-8e8d-4f2c-a6cd-2a7e2648d790.mrc",
-    "originalSha256": "267563694a47b6b4c80fb0c90f7c1785b9dc57a86850b09af67fe63682fb8bf0"
+    "originalSha256": "267563694a47b6b4c80fb0c90f7c1785b9dc57a86850b09af67fe63682fb8bf0",
+    "durationMs": {}
   },
   {
     "id": "5cb92fb9-812b-4c3a-ac75-ec203034f03a",
@@ -686,7 +902,8 @@
     "gradientTo": "#31495D",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "5cb92fb9-812b-4c3a-ac75-ec203034f03a.mrc",
-    "originalSha256": "2917146b3a0545482dc4990375d9e7b583f6046282aa9d8280c3e7a09dc2f4d7"
+    "originalSha256": "2917146b3a0545482dc4990375d9e7b583f6046282aa9d8280c3e7a09dc2f4d7",
+    "durationMs": {}
   },
   {
     "id": "c5b24c5e-716a-445d-bca9-9bc078b50199",
@@ -701,7 +918,8 @@
     "gradientTo": "#31495D",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "c5b24c5e-716a-445d-bca9-9bc078b50199.mrc",
-    "originalSha256": "89504b9c8fd1edf244a90a6251895cd3d679d9e2561177e137119ddd4bcfa79a"
+    "originalSha256": "89504b9c8fd1edf244a90a6251895cd3d679d9e2561177e137119ddd4bcfa79a",
+    "durationMs": {}
   },
   {
     "id": "cc8f8283-037f-4608-a0fd-b4c0a9a7eb34",
@@ -716,7 +934,8 @@
     "gradientTo": "#31495D",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "cc8f8283-037f-4608-a0fd-b4c0a9a7eb34.mrc",
-    "originalSha256": "ccc3bd78a223eb89f36c4fbbb0cfdfdbc7cc0bfc492f6f276a821e6f4ae0c4d5"
+    "originalSha256": "ccc3bd78a223eb89f36c4fbbb0cfdfdbc7cc0bfc492f6f276a821e6f4ae0c4d5",
+    "durationMs": {}
   },
   {
     "id": "c9ad6b5a-1462-460d-8033-b6c407db1290",
@@ -731,7 +950,8 @@
     "gradientTo": "#31495D",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "c9ad6b5a-1462-460d-8033-b6c407db1290.mrc",
-    "originalSha256": "95e3c59776080d19bb4e0dadf7d71fbc800f1f7fa2aae2f6c160a8452f1ec48d"
+    "originalSha256": "95e3c59776080d19bb4e0dadf7d71fbc800f1f7fa2aae2f6c160a8452f1ec48d",
+    "durationMs": {}
   },
   {
     "id": "96af4ce9-72b5-451d-aba8-bc3282aeaa34",
@@ -746,7 +966,8 @@
     "gradientTo": "#31495D",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "96af4ce9-72b5-451d-aba8-bc3282aeaa34.mrc",
-    "originalSha256": "c94b559c6a8ac4cb9f92b416deb57e46c84e11c651649e3eaaadf535f3d833d6"
+    "originalSha256": "c94b559c6a8ac4cb9f92b416deb57e46c84e11c651649e3eaaadf535f3d833d6",
+    "durationMs": {}
   },
   {
     "id": "3adb17eb-f46b-4270-8a26-670c1e71d08f",
@@ -761,7 +982,8 @@
     "gradientTo": "#31495D",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "3adb17eb-f46b-4270-8a26-670c1e71d08f.mrc",
-    "originalSha256": "5f7cfb056bdee98ed33606f937fcbe893e2b8b7fe9774b5c12712edffe24e43f"
+    "originalSha256": "5f7cfb056bdee98ed33606f937fcbe893e2b8b7fe9774b5c12712edffe24e43f",
+    "durationMs": {}
   },
   {
     "id": "0714c784-0cc9-440b-8c69-d959adc989db",
@@ -776,7 +998,8 @@
     "gradientTo": "#31495D",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "0714c784-0cc9-440b-8c69-d959adc989db.mrc",
-    "originalSha256": "c00d1d0b8ffd6348164c7d01362424dbdbdbffcba9e975fcbc0ff16015b0a787"
+    "originalSha256": "c00d1d0b8ffd6348164c7d01362424dbdbdbffcba9e975fcbc0ff16015b0a787",
+    "durationMs": {}
   },
   {
     "id": "a1f032b7-aee9-4af5-a614-c71ee8432c73",
@@ -791,7 +1014,8 @@
     "gradientTo": "#31495D",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "a1f032b7-aee9-4af5-a614-c71ee8432c73.mrc",
-    "originalSha256": "91ea32b8bd7a4c5122debd0af9d193cb07e9b607100300f22bc20e761511f7c0"
+    "originalSha256": "91ea32b8bd7a4c5122debd0af9d193cb07e9b607100300f22bc20e761511f7c0",
+    "durationMs": {}
   },
   {
     "id": "26d6b38e-6e11-4573-b449-29bcf5ad1477",
@@ -806,7 +1030,8 @@
     "gradientTo": "#31495D",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "26d6b38e-6e11-4573-b449-29bcf5ad1477.mrc",
-    "originalSha256": "a702d3d04b28c6d733fb38704c7673c9202b834b65bf74de970077a0ee2a97e0"
+    "originalSha256": "a702d3d04b28c6d733fb38704c7673c9202b834b65bf74de970077a0ee2a97e0",
+    "durationMs": {}
   },
   {
     "id": "8668591f-a278-4c5f-a5e0-e75539b2168f",
@@ -821,6 +1046,7 @@
     "gradientTo": "#31495D",
     "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
     "originalFile": "8668591f-a278-4c5f-a5e0-e75539b2168f.mrc",
-    "originalSha256": "a88457de881af94b395f09b4f7a2c97ac92615f335a89b171dfbb276d12f3d9d"
+    "originalSha256": "a88457de881af94b395f09b4f7a2c97ac92615f335a89b171dfbb276d12f3d9d",
+    "durationMs": {}
   }
 ]

@@ -37,8 +37,12 @@ The 0.4 baseline passed 170 clip, 68 composition and 15 UI-transition checks on
 standard Android 16, plus emulator lifecycle/Shizuku tests. These are not HyperOS
 emulation. On the physical MIX Flip (EEA HyperOS 3.0.303), simultaneous main/cover
 operation and returning after a fold were observed. Position drift after folding
-is under investigation. Hardware decoding was observed; sustained CPU/battery
-and final playback behavior still require verification.
+was addressed in 0.5; the user reported a correct return after folding, and logged
+layout coordinates matched. Hardware decoding was observed. Version 0.5 repeated
+all 253 asset/composition/UI checks; finite playback and touch replay were tested.
+On the phone, photo import survived process restart and deleting the source test
+image. See `work/qa-v03/hardware-validation.json` for measurements and limitations.
+Extended stability and battery measurements remain unverified.
 
 Shizuku and the controller need restarting after a phone reboot. Appearance,
 favorites and imported pictures persist. The port does not reproduce proprietary

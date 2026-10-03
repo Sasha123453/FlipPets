@@ -1,0 +1,48 @@
+{
+  "apkSha256": "4c309ae3010587d9c80c8652ee2f070d10ac29a6cb34b78bd6cf8cc9f618906a",
+  "device": "Xiaomi MIX Flip, EEA HyperOS 3.0.303.0.WNIEUXM",
+  "rootlessTwoPhysicalScreens": true,
+  "foldReturnUserReported": "Looks correct after version 0.5",
+  "geometryBeforeAndAfter": "display=1 rotation=2 stage=1208x1392 pag=-1181,-44,1212,1418",
+  "hardwareDecoderObserved": "c2.qti.avc.decoder",
+  "photoImportedThroughSystemPicker": true,
+  "photoSurvivesOwnProcessRestartAndSourceDeletion": true,
+  "photoCropPixelDifference": 0,
+  "profiles": [
+    {
+      "label": "Bubbles cover active; main launcher; 30fps",
+      "apkSha256": "4c309ae3010587d9c80c8652ee2f070d10ac29a6cb34b78bd6cf8cc9f618906a",
+      "durationSeconds": 12.0,
+      "cpuPercentOneCore": 38.75,
+      "cpuSamples": [
+        38.64,
+        38.51,
+        39.22,
+        38.64
+      ],
+      "pssKiB": 149150,
+      "rssKiB": 292524,
+      "scope": "Application process only; 100% CPU is one core. Does not measure battery or system decoder/GPU cost."
+    },
+    {
+      "label": "Bubbles calm held; main launcher",
+      "apkSha256": "4c309ae3010587d9c80c8652ee2f070d10ac29a6cb34b78bd6cf8cc9f618906a",
+      "durationSeconds": 12.0,
+      "cpuPercentOneCore": 0.16,
+      "cpuSamples": [
+        0.0,
+        0.0,
+        0.65,
+        0.0
+      ],
+      "pssKiB": 189062,
+      "rssKiB": 338132,
+      "scope": "Application process only; 100% CPU is one core. Does not measure battery or system decoder/GPU cost."
+    }
+  ],
+  "limitations": [
+    "One manually observed fold cycle; no extended stability or battery run",
+    "Firmware MAML analysis does not reproduce the complete 17 Pro system service",
+    "Shizuku and controller must restart after reboot"
+  ]
+}

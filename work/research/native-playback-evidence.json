@@ -1,0 +1,56 @@
+[
+  {
+    "id": "koala-archived-presets",
+    "source": "research/compositions/archived-presets-ff37b3ed-214a-483c-a196-33889cafc2d9.xml",
+    "nativePolicy": "replay ordinary state while active; finite interaction then return after 1000 ms",
+    "inferenceLimit": "MAML behavior; not a complete observation of 17 Pro system screen service"
+  },
+  {
+    "id": "roedeer-archived-presets",
+    "source": "research/compositions/archived-presets-b0337e5d-516d-4fa6-8a1e-0722116cfd81.xml",
+    "nativePolicy": "replay ordinary state while active; finite interaction then return after 1000 ms",
+    "inferenceLimit": "MAML behavior; not a complete observation of 17 Pro system screen service"
+  },
+  {
+    "id": "bird-pandora",
+    "source": "research/compositions/pandora-26f4a446-8125-407d-a255-3dbcd8c12eae.xml",
+    "nativePolicy": "one cycle then hold until touch/resume",
+    "inferenceLimit": "MAML behavior; not a complete observation of 17 Pro system screen service"
+  },
+  {
+    "id": "seal-archived-presets",
+    "source": "research/compositions/archived-presets-e543e1cc-b795-44f0-abb2-862194d53750.xml",
+    "nativePolicy": "one cycle then hold until touch/resume",
+    "inferenceLimit": "MAML behavior; not a complete observation of 17 Pro system screen service"
+  },
+  {
+    "id": "seal-pandora",
+    "source": "research/compositions/pandora-9a873f92-3e7a-4335-9001-5f7e51da03e9.xml",
+    "nativePolicy": "one cycle then hold until touch/resume",
+    "inferenceLimit": "MAML behavior; not a complete observation of 17 Pro system screen service"
+  },
+  {
+    "id": "capybara-archived-presets",
+    "source": "research/compositions/archived-presets-fb026285-632c-42d7-8268-a588015b1ff4.xml",
+    "nativePolicy": "one cycle then hold until touch/resume",
+    "inferenceLimit": "MAML behavior; not a complete observation of 17 Pro system screen service"
+  },
+  {
+    "id": "sheep-archived-presets",
+    "source": "research/compositions/archived-presets-325d3be8-5f5d-4956-841a-3ee136085b1e.xml",
+    "nativePolicy": "one cycle then hold until touch/resume",
+    "inferenceLimit": "MAML behavior; not a complete observation of 17 Pro system screen service"
+  },
+  {
+    "id": "sheep-pandora",
+    "source": "research/compositions/pandora-dd1639ed-306d-4f73-8f78-d26ed6dda77f.xml",
+    "nativePolicy": "one cycle then hold until touch/resume",
+    "inferenceLimit": "MAML behavior; not a complete observation of 17 Pro system screen service"
+  },
+  {
+    "id": "otter-archived-presets",
+    "source": "research/compositions/archived-presets-4c5bdda5-82d3-440c-9978-b3085fc30eaa.xml",
+    "nativePolicy": "one cycle then hold until touch/resume",
+    "inferenceLimit": "MAML behavior; not a complete observation of 17 Pro system screen service"
+  }
+]

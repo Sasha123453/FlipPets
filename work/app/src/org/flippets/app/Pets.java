@@ -12,6 +12,7 @@ public final class Pets {
     public static final String[] EVENTS={"Ожидание","Бег","Ходьба","Музыка","Уведомление","Зарядка","Низкий заряд","Дождь","Победа ✌","Лайк","Сердечко","Большое сердце","Касание 1","Касание 2","Касание 3","Появление","NFC (просмотр)"};
     static JSONArray catalog;
     public static int scene;
+    public static long playRevision;
     public static volatile float tiltX,tiltY;
     public static synchronized JSONArray catalog(Context c) {
         if(catalog==null) try(InputStream s=c.getAssets().open("catalog.json")) {
@@ -31,7 +32,7 @@ public final class Pets {
     public static int stageIndex(Context c){long now=SystemClock.elapsedRealtime();JSONObject pet=current(c);if(pet.optString("kind").equals("reactive"))return state.index(now);if(state.overrideIndex>=0&&now<state.overrideUntil&& !path(c,state.overrideIndex).isEmpty())return state.overrideIndex;if(pet.optString("name").equals("Flowing glitter")&&SceneSettings.prefs(c,pet.optString("id")).getBoolean("gravity",true)){if(Math.abs(tiltX)+Math.abs(tiltY)<.25f)return 0;return Math.abs(tiltX)>Math.abs(tiltY)?(tiltX>0?1:2):3;}return SceneSettings.prefs(c,pet.optString("id")).getInt("scene",0);}
     public static void choose(Context c,int index){scene=index;if(!current(c).optString("kind").equals("reactive"))SceneSettings.prefs(c,current(c).optString("id")).edit().putInt("scene",index).apply();override(c,index,8000);}
     public static void signal(Context c){c.getSharedPreferences(PREFS,0).edit().putLong("changeRevision",SystemClock.elapsedRealtimeNanos()).apply();c.sendBroadcast(new Intent(EVENT).setPackage(c.getPackageName()));}
-    public static void override(Context c,int index,long ms){state.overrideIndex=index;state.overrideUntil=SystemClock.elapsedRealtime()+ms;signal(c);}
+    public static void override(Context c,int index,long ms){JSONObject pet=current(c);if(pet.optString("kind").equals("reactive")&&index>=8){JSONObject durations=pet.optJSONObject("durationMs");if(durations!=null)ms=durations.optLong(Integer.toString(index),ms)+1000;}state.overrideIndex=index;state.overrideUntil=SystemClock.elapsedRealtime()+ms;playRevision++;signal(c);}
     public static int battery(Context c){Intent i=c.registerReceiver(null,new IntentFilter(Intent.ACTION_BATTERY_CHANGED));if(i==null)return 0;state.charging=i.getIntExtra(BatteryManager.EXTRA_PLUGGED,0)!=0;int level=i.getIntExtra(BatteryManager.EXTRA_LEVEL,0),scale=i.getIntExtra(BatteryManager.EXTRA_SCALE,100);int pct=scale>0 ? level*100/scale:0;state.lowBattery=pct<20;return pct;}
     public static String displayReport(Context c){
         StringBuilder b=new StringBuilder("Flip Pets — диагностика\n");

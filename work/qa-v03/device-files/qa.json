@@ -1,5 +1,5 @@
 {
-  "apkSha256": "b46ea0d57da9c5714c8af67a73e259e0c78d5c5cd75d008838fc837789c10e09",
+  "apkSha256": "4c309ae3010587d9c80c8652ee2f070d10ac29a6cb34b78bd6cf8cc9f618906a",
   "tested": 170,
   "failed": 0,
   "results": [
@@ -57,7 +57,7 @@
       "durationUs": 3533334,
       "frameHashes": [
         "9b99f394c4b4fe955b8455bc735f4c48aeeb6b0e542d092d49ea9b0eb72c32a3",
-        "a1ae0bccbb67fe239a3ebe7559e1e0bd4cbefdc2707cdc57af77a93606f32261"
+        "ff6335069b6e140eb47149d847aea80bf7e2b06bd80ae9708aa382efb3ae21ee"
       ],
       "visible": true,
       "framesDiffer": true,

@@ -17,6 +17,7 @@ public class PetActivity extends Activity {
         if(emulator&&getIntent().getBooleanExtra("qa",false))new Thread(()->Qa.run(this),"pag-qa").start();
     }
     protected void onStart(){super.onStart();stage.start();}
+    public void onConfigurationChanged(android.content.res.Configuration config){super.onConfigurationChanged(config);getWindow().getDecorView().setSystemUiVisibility(5894);stage.requestApplyInsets();stage.requestLayout();AppLog.event(this,"CONFIGURATION","display="+getWindowManager().getDefaultDisplay().getDisplayId()+" orientation="+config.orientation);}
     protected void onStop(){stage.stop();super.onStop();}
     protected void onDestroy(){covers.remove(this);stage.destroy();super.onDestroy();}
 }
