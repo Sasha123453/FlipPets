@@ -1,0 +1,10 @@
+ota-property-files=payload_metadata.bin:4927:272360,payload.bin:4927:7144274483,payload_properties.txt:7144279468:156,apex_info.pb:2470:1306,care_map.pb:3823:1037,metadata:69:723,metadata.pb:860:1562                        
+ota-required-cache=0
+ota-streaming-property-files=payload.bin:4927:7144274483,payload_properties.txt:7144279468:156,apex_info.pb:2470:1306,care_map.pb:3823:1037,metadata:69:723,metadata.pb:860:1562                          
+ota-type=AB
+post-build=Xiaomi/ruyi_global/ruyi:16/BP2A.250605.031.A3/16OS3.1.260805.171151286.QCPEGL.S:user/release-keys
+post-build-incremental=16OS3.1.260805.171151286.QCPEGL.S
+post-sdk-level=36
+post-security-patch-level=2026-07-01
+post-timestamp=1785990237
+pre-device=ruyi

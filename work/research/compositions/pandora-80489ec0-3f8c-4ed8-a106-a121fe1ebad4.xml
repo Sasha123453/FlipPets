@@ -1,0 +1,180 @@
+<Widget frameRate="0" scaleByDensity="false" screenWidth="1080" version="2" useVariableUpdater="DateTime.Hour,DateTime.Minute">
+  <Var name="isP2" type="number" expression="ifelse(((#view_width / #view_height) } 1.6),1,0)"/>
+  <Var name="dpdx" type="number" expression="ifelse(#isP2,2.97,3.23)"/>
+  <Var name="_scale" type="number" expression="(#view_width / 1080)"/>
+  <Var name="misansVF" type="string" expression="'/product/fonts/MiSansVF.ttf'" const="true"/>
+  <Var name="timeRectW" type="number" expression="(ifelse(#isP2,(55 * #dpdx),(55 * #dpdx)) * #_scale)" const="true"/>
+  <Var name="timeRectH" type="number" expression="(ifelse(#isP2,(26 * #dpdx),(26 * #dpdx)) * #_scale)" const="true"/>
+  <Var name="_depth" type="number" expression="#depth"/>
+  <Var name="_show_time" type="number" expression="#showTime"/>
+  <Var name="_sand_index" type="number" expression="ifelse((#sand_select[1] == 1),1,ifelse((#sand_select[2] == 1),2,ifelse((#sand_select[3] == 1),3,0)))"/>
+  <Var name="_sand_srcs" type="string[]" values="'assets/ani_pag/pink976x596.pag','assets/ani_pag/gold976x596.pag','assets/ani_pag/white976x596.pag','assets/ani_pag/blue976x596.pag'"/>
+  <Var name="_sand_src" type="string" expression="@_sand_srcs[#_sand_index]" const="true"/>
+  <Var name="_sand_src2" type="string" expression="@_sand_srcs[#_sand_index]"/>
+  <Var name="_tintWatch" expression="#_sand_index" threshold="1">
+    <Trigger>
+      <MultiCommand condition="#_in_preview">
+        <FrameRateCommand rate="60"/>
+        <VariableCommand name="_sand_src" expression="@_sand_srcs[#_sand_index]" type="string"/>
+        <FolmeCommand target="pag_group" config="'folme_config_0'" states="'folme_state_0'" command="to"/>
+      </MultiCommand>
+    </Trigger>
+  </Var>
+  <Var name="_in_preview" type="boolean" expression="eqs(@isPreviewMode,'true')"/>
+  <Var name="aod_state" type="number" expression="0" const="true"/>
+  <Var name="_fps" type="number" expression="(#time_sys % 1000)"/>
+  <Var name="_is_paused" type="number" expression="0" const="true"/>
+  <Var name="_bgSrc" type="string" expression="ifelse(strIsEmpty(@bgarr_uriList[0]), 'assets/backgroud.png', @bgarr_uriList[0])"/>
+  <Var name="_fgSrc" type="string" expression="ifelse(strIsEmpty(@bgarr_foregroundUriList[0]), 'assets/foreground.png', @bgarr_foregroundUriList[0])"/>
+  <Var name="_is_file_sys" type="number" expression="ifelse(eqs(@_bgSrc,'assets/backgroud.png'),0,1)"/>
+  <Var name="aniX" type="number" expression="#aniVar_x"/>
+  <Var name="aniY" type="number" expression="#aniVar_y"/>
+  <Var name="aniScaleX" type="number" expression="#aniVar_scaleX"/>
+  <Var name="aniScaleY" type="number" expression="#aniVar_scaleY"/>
+  <Var name="aniDisplayScale" type="number" expression="#aniVar_displayScale"/>
+  <Var name="scaleFactor" type="number" expression="#__scale_factor"/>
+  <Var name="img_x" type="number" expression="((#aniX * #aniDisplayScale) / #scaleFactor)"/>
+  <Var name="img_y" type="number" expression="((#aniY * #aniDisplayScale) / #scaleFactor)"/>
+  <Var name="_img_scaleX" type="number" expression="(#aniScaleX * #aniDisplayScale)"/>
+  <Var name="_img_scaleY" type="number" expression="(#aniScaleY * #aniDisplayScale)"/>
+  <Var name="img_scaleX" type="number" expression="ifelse(#_is_file_sys,ifelse((#_img_scaleX } 0),#_img_scaleX,1),(#view_width / 1654))"/>
+  <Var name="img_scaleY" type="number" expression="ifelse(#_is_file_sys,ifelse((#_img_scaleY } 0),#_img_scaleY,1),(#view_height / 1043))"/>
+  <Var name="time_bg_color" type="string" expression="ifelse(strIsEmpty(@_time_bg_color),'#ff42474e',@_time_bg_color)"/>
+  <Var name="pag_state" type="number" expression="0" const="true"/>
+  <Function name="pausePag">
+    <PagCommand target="_pag" command="pause"/>
+    <VariableCommand name="pag_state" expression="2" type="number"/>
+  </Function>
+  <Function name="playPag">
+    <MultiCommand condition="(#pag_state == 0)">
+      <VariableCommand name="pag_state" expression="1" type="number"/>
+      <PagCommand target="_pag" command="play"/>
+    </MultiCommand>
+    <MultiCommand condition="(#pag_state == 2)">
+      <VariableCommand name="pag_state" expression="1" type="number"/>
+      <PagCommand target="_pag" command="resume"/>
+    </MultiCommand>
+  </Function>
+  <Function name="_close_frame">
+    <FrameRateCommand rate="0"/>
+  </Function>
+  <Function name="onPagComplete">
+    <VariableCommand name="pag_state" expression="0" type="number"/>
+    <MultiCommand condition="(#aod_state }= 1)">
+      <FrameRateCommand rate="30"/>
+      <FunctionCommand target="_close_frame" delay="90"/>
+    </MultiCommand>
+  </Function>
+  <Group visibility="(! #_in_preview)">
+    <Image visibility="#_is_file_sys" x="#img_x" y="#img_y" scaleX="#img_scaleX" scaleY="#img_scaleY" srcExp="@_bgSrc" name="_bg_img" srcType="FileSystem"/>
+    <Image visibility="(! #_is_file_sys)" x="#img_x" y="#img_y" scaleX="#img_scaleX" scaleY="#img_scaleY" srcExp="@_bgSrc" name="_bg_img2"/>
+  </Group>
+  <Group alpha="ifelse(#_in_preview,255,ifelse((#pag_state == 1),'255','0'))">
+    <Group folmeMode="true" name="pag_group">
+      <PagView w="#view_width" h="#view_height" srcExp="ifelse(#_in_preview,@_sand_src,@_sand_src2)" touchable="true" name="_pag" autoPlay="false" layerType="top" x="0" y="0" setPath="false" scaleMode="1" loop="1">
+        <Triggers>
+          <Trigger action="complete">
+            <FunctionCommand target="onPagComplete"/>
+          </Trigger>
+        </Triggers>
+      </PagView>
+    </Group>
+  </Group>
+  <Layer name="fg_layer" frameRate="-1">
+    <Group visibility="((! #_in_preview) ** (#_depth == 1))">
+      <Image visibility="#_is_file_sys" x="#img_x" y="#img_y" scaleX="#img_scaleX" scaleY="#img_scaleY" srcExp="@_fgSrc" srcType="FileSystem"/>
+      <Image visibility="(! #_is_file_sys)" x="#img_x" y="#img_y" scaleX="#img_scaleX" scaleY="#img_scaleY" srcExp="@_fgSrc"/>
+    </Group>
+    <Group visibility="(#_show_time == 1)" x="(#view_width - (ifelse(#isP2,(16 * #dpdx),(16 * #dpdx)) * #_scale))" y="(ifelse(#isP2,(16 * #dpdx),(16 * #dpdx)) * #_scale)" w="#timeRectW" h="#timeRectH" align="right" alignV="top">
+      <Rectangle w="(#timeRectW - 2)" h="#timeRectH" cornerRadiusExp="(#timeRectH / 2)" contentDescriptionExp="formatDate(ifelse(#time_format,'HH:mm','h:mm'),#time_sys)" fillColor2="@time_bg_color" fillColor="#000000" alpha="255*0.3"/>
+      <Text x="(#timeRectW / 2)" y="((#timeRectH / 2) + 1)" fontPath="@misansVF" size="((14 * #dpdx) * #_scale)" color="#ffffff" textExp="formatDate(ifelse(#time_format,'HH:mm','h:mm'), #time_sys)" fontPathWeight="500" alignV="center" align="center"/>
+    </Group>
+    <Group alpha="0" folmeMode="true" name="aod_mask">
+      <Rectangle w="#view_width" h="#view_height" fillColor="#000000"/>
+    </Group>
+    <Group visibility="0" x="(#view_width / 2)">
+      <Text x="0" y="0" textExp="((('pag_state: ' + #pag_state) + ', fps: ') + #_fps)" size="24" color="#ffffff"/>
+    </Group>
+  </Layer>
+  <Group>
+    <FolmeState name="folme_state_0" alpha="0"/>
+    <FolmeConfig name="folme_config_0" ease="-2, 1,0.15" onComplete="'folme_oncomplete_1'"/>
+    <Function name="folme_oncomplete_1">
+      <FolmeCommand target="pag_group" config="'folme_config_1'" states="'folme_state_1'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_1" alpha="255"/>
+    <FolmeConfig name="folme_config_1" ease="-2, 1,0.25" onComplete="'folme_oncomplete_2'"/>
+    <Function name="folme_oncomplete_2">
+      <FrameRateCommand rate="0"/>
+    </Function>
+    <FolmeState name="folme_state_2" alpha="(255 * 0.4)"/>
+    <FolmeConfig name="folme_config_2" ease="-2, 1,0.72" onComplete="'folme_oncomplete_3'"/>
+    <Function name="folme_oncomplete_3">
+      <VariableCommand name="aod_state" expression="1" type="number"/>
+      <FrameRateCommand rate="0"/>
+    </Function>
+    <FolmeState name="folme_state_3" alpha="0"/>
+    <FolmeConfig name="folme_config_3" ease="-2, 1,0.5" onComplete="'folme_oncomplete_4'"/>
+    <Function name="folme_oncomplete_4">
+      <VariableCommand name="aod_state" expression="0" type="number"/>
+      <FrameRateCommand rate="30"/>
+    </Function>
+    <FolmeState name="folme_state_4" alpha="0"/>
+    <FolmeConfig name="folme_config_4" onComplete="'folme_oncomplete_5'"/>
+    <Function name="folme_oncomplete_5">
+      <VariableCommand name="aod_state" expression="0" type="number"/>
+      <FrameRateCommand rate="0"/>
+    </Function>
+  </Group>
+  <ExternalCommands>
+    <Trigger action="init">
+      <MultiCommand condition="#_in_preview">
+        <PagCommand target="_pag" command="setLoopCount" params="'-1'"/>
+        <PagCommand target="_pag" command="play"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="resume">
+      <VariableCommand name="_is_paused" expression="0" type="number"/>
+      <MultiCommand condition="(! #_in_preview)">
+        <PagCommand target="_pag" command="setProgress" params="'0'"/>
+        <IfCommand ifCondition="(#aod_state } 0.5)">
+          <Consequent>
+            <FunctionCommand target="pausePag"/>
+          </Consequent>
+          <Alternate>
+            <FrameRateCommand rate="30"/>
+            <FunctionCommand target="playPag"/>
+          </Alternate>
+        </IfCommand>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="pause">
+      <VariableCommand name="_is_paused" expression="1" type="number"/>
+      <PagCommand target="_pag" command="setProgress" params="'0'"/>
+      <FunctionCommand target="pausePag"/>
+    </Trigger>
+    <Trigger action="enterAod">
+      <FrameRateCommand rate="60"/>
+      <VariableCommand name="aod_state" expression="0.9" type="number"/>
+      <FolmeCommand target="aod_mask" config="'folme_config_2'" states="'folme_state_2'" command="to"/>
+    </Trigger>
+    <Trigger action="exitAod">
+      <IfCommand ifCondition="(! #_is_paused)">
+        <Consequent>
+          <FrameRateCommand rate="60"/>
+          <VariableCommand name="aod_state" expression="0.1" type="number"/>
+          <FunctionCommand target="playPag"/>
+          <FolmeCommand target="aod_mask" config="'folme_config_3'" states="'folme_state_3'" command="to"/>
+        </Consequent>
+        <Alternate>
+          <VariableCommand name="aod_state" expression="0" type="number"/>
+          <FrameRateCommand rate="0"/>
+          <FolmeCommand target="aod_mask" config="'folme_config_4'" states="'folme_state_4'" command="setTo"/>
+        </Alternate>
+      </IfCommand>
+    </Trigger>
+    <Trigger action="exitEdit">
+      <FunctionCommand target="playPag"/>
+    </Trigger>
+  </ExternalCommands>
+</Widget>

@@ -1,0 +1,26 @@
+[
+  {
+    "device": "pandora",
+    "name": "pandora-ota_full-OS3.0.319.0.WBLCNXM-user-16.0-2d01cf4d66.zip",
+    "version": "OS3.0.319.0.WBLCNXM",
+    "size": 8782889002,
+    "md5": "2d01cf4d668c034e7be94b4772595d70",
+    "path": "C:\\Users\\shelk\\Documents\\Codex\\2026-10-03\\mi-mix-flip-xiaomi-xia\\work\\firmware\\pandora-ota_full-OS3.0.319.0.WBLCNXM-user-16.0-2d01cf4d66.zip",
+    "verified_md5": "2d01cf4d668c034e7be94b4772595d70",
+    "sha256": "df05e94766ed44cf32df76ef50e87a9fc356f2592e3a481f48dbc07a304043e7",
+    "official_url": "https://bigota.d.miui.com/OS3.0.319.0.WBLCNXM/pandora-ota_full-OS3.0.319.0.WBLCNXM-user-16.0-2d01cf4d66.zip",
+    "downloaded_file_relative_to_outputs": "../work/firmware/pandora-ota_full-OS3.0.319.0.WBLCNXM-user-16.0-2d01cf4d66.zip"
+  },
+  {
+    "device": "ruyi",
+    "name": "ruyi_global-ota_full-OS3.0.303.0.WNIMIXM-user-16.0-0200f61ca8.zip",
+    "version": "OS3.0.303.0.WNIMIXM",
+    "size": 7144283082,
+    "md5": "0200f61ca8f28dcdf5a4b31e08e05c41",
+    "path": "C:\\Users\\shelk\\Documents\\Codex\\2026-10-03\\mi-mix-flip-xiaomi-xia\\work\\firmware\\ruyi_global-ota_full-OS3.0.303.0.WNIMIXM-user-16.0-0200f61ca8.zip",
+    "verified_md5": "0200f61ca8f28dcdf5a4b31e08e05c41",
+    "sha256": "173ee2a6b33a924d2783b1d59b38d9816717fbb944fa141e391b5e56fde509f8",
+    "official_url": "https://bigota.d.miui.com/OS3.0.303.0.WNIMIXM/ruyi_global-ota_full-OS3.0.303.0.WNIMIXM-user-16.0-0200f61ca8.zip",
+    "downloaded_file_relative_to_outputs": "../work/firmware/ruyi_global-ota_full-OS3.0.303.0.WNIMIXM-user-16.0-0200f61ca8.zip"
+  }
+]

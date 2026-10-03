@@ -1,0 +1,200 @@
+<Widget scaleByDensity="false" screenWidth="1080" version="2" useVariableUpdater="DateTime.Minute">
+  <Var name="pause_state" type="number" expression="0" const="true"/>
+  <Var name="aod_state" type="number" expression="0" const="true"/>
+  <Var name="base_data" type="string" expression="'{&quot;title&quot;:&quot;&quot;,&quot;content&quot;:&quot;&quot;,&quot;rating&quot;:&quot;&quot;,&quot;location&quot;:0}'"/>
+  <Var name="check_status" type="number" expression="0" const="true"/>
+  <Var name="json_string" type="string" expression="''" const="true"/>
+  <Var name="title" type="string" expression="''" const="true"/>
+  <Var name="content" type="string" expression="''" const="true"/>
+  <Var name="rating_value" type="string" expression="''" const="true"/>
+  <Var name="image_url" type="jsonO" expression="newJsonObject()" const="true"/>
+  <Var name="location" type="number" expression="0" const="true"/>
+  <Var name="hasTheme" type="number" expression="0" const="true"/>
+  <Var name="prompt_ui" type="number" expression="0" const="true"/>
+  <Var name="provider_frame_down" type="number" expression="0" const="true"/>
+  <Var name="aod_frame_down" type="number" expression="0" const="true"/>
+  <Var name="sr" type="number" expression="(#view_width / 336)"/>
+  <Var name="date_margin" type="number" expression="(#view_width - (20 * #sr))"/>
+  <Var name="text_size_title" type="number" expression="(14 * #sr)"/>
+  <Var name="deco_width" type="number" expression="(111 * #sr)"/>
+  <Var name="content_width" type="number" expression="(213 * #sr)"/>
+  <Var name="max_title_width" type="number" expression="(140 * #sr)"/>
+  <Var name="blur_height" type="number" expression="ifelse(eq(#prompt_ui,0),ifelse(#content_text.text_height ** #title_text_alpha.text_width,(((40 * #sr) + #content_text.text_height) + ifelse(le(#title_text_alpha.text_width,#max_title_width),#title_text_normal.text_height,ifelse(le(#title_text_alpha.text_width,#content_width),(#title_text_normal.text_height + (16 * #sr)),#title_text_long.text_height))),0),0)"/>
+  <Var name="text_color" type="string" expression="'#F2FFFFFF'"/>
+  <Var name="linear_gradient_0" type="string" expression="ifelse(eq(#location,0),'#00000000','#000000')"/>
+  <Var name="linear_gradient_1" type="string" expression="ifelse(eq(#location,1),'#00000000','#000000')"/>
+  <Var name="date_time_talkback" type="string" expression="((((formatDate('dd',#time_sys) + ' ') + formatDate(@date_time,#time_sys)) + ' ') + formatDate(ifelse(#time_format,'HH:mm','hh:mm'),#time_sys))"/>
+  <Var name="movie_content_talkback" type="string" expression="(((((@title + ' ') + '豆瓣评分') + @rating_value) + ' ') + @content)"/>
+  <Var name="login_talkback" type="string" expression="((@login_tip_title + ' ') + @login_tip_content)"/>
+  <Var name="cta_talkback" type="string" expression="((@cta_tip_title + ' ') + @cta_tip_content)"/>
+  <Var name="content_arr" type="string[]" values="@movie_content_talkback,@cta_talkback,@login_talkback"/>
+  <Var name="data" type="jsonO" expression="newJsonObject()" const="true"/>
+  <Var name="time_change" type="string" expression="formatDate('yyyy-MM-dd',#time_sys)"/>
+  <Var name="watch_theme_minute" expression="@time_change" threshold="'1'" type="string">
+    <Trigger>
+      <FunctionCommand target="requestProvider"/>
+    </Trigger>
+  </Var>
+  <Function name="updatePromptUI">
+    <MultiCommand condition="(eq(#check_status,0) || (eq(#check_status,1) ** len(@json_string)))">
+      <VariableCommand name="prompt_ui" expression="0" type="number"/>
+    </MultiCommand>
+    <MultiCommand condition="(((eq(#check_status,2) || eq(#check_status,3)) || eq(#check_status,6)) || eq(#check_status,7))">
+      <VariableCommand name="prompt_ui" expression="1" type="number"/>
+    </MultiCommand>
+    <MultiCommand condition="eq(#check_status,4)">
+      <VariableCommand name="prompt_ui" expression="2" type="number"/>
+    </MultiCommand>
+  </Function>
+  <Function name="initData">
+    <VariableCommand name="title" expression="ifelse(strIsEmpty(jsonGetString($data, 'title')),'',(('《' + jsonGetString($data, 'title')) + '》'))" type="string"/>
+    <VariableCommand name="content" expression="jsonGetString($data, 'content')" type="string"/>
+    <VariableCommand name="rating_value" expression="jsonGetString($data, 'rating')" type="string"/>
+    <VariableCommand name="location" expression="jsonGetInt($data, 'location')" type="number"/>
+  </Function>
+  <Function name="recoverFrame">
+    <VariableCommand name="provider_frame_down" expression="0" type="number"/>
+    <MultiCommand condition="(! #aod_frame_down)">
+      <FrameRateCommand rate="0"/>
+    </MultiCommand>
+  </Function>
+  <Function name="requestProvider">
+    <BinderCommand name="MiTheme" command="refresh"/>
+  </Function>
+  <Function name="switchStateAod">
+    <VariableCommand name="aod_frame_down" expression="1" type="number"/>
+    <FrameRateCommand rate="60"/>
+    <FolmeCommand target="aod_bg" config="'folme_config_0'" states="'folme_state_0'" command="to"/>
+  </Function>
+  <Function name="switchStateDesk">
+    <VariableCommand name="aod_frame_down" expression="1" type="number"/>
+    <FrameRateCommand rate="60"/>
+    <FolmeCommand target="aod_bg" config="'folme_config_1'" states="'folme_state_1'" command="to"/>
+  </Function>
+  <Image w="#view_width" h="#view_height" src="assets/bg.png"/>
+  <Image w="#view_width" h="#view_height" visibility="#blur_height" name="image_url"/>
+  <Group>
+    <Group y="ifelse(eq(#location,0),(2 * #sr),(#view_height - (109 * #sr)))" name="date_ui">
+      <Group x="((#view_width - max(#week_text.text_width,#date_text.text_width)) - (40 * #sr))" w="(max(#week_text.text_width,#date_text.text_width) + (40 * #sr))" h="(100 * #sr)" contentDescriptionExp="@date_time_talkback" visibility="(eq(#aod_state,0) ** eq(#prompt_ui,0))" interceptTouch="true" touchable="true"/>
+      <DateTime x="#date_margin" size="(50 * #sr)" color="@text_color" name="date_text" format="d" fontFamily="mipro" align="right"/>
+      <DateTime x="#date_margin" y="(59 * #sr)" format="@date_time" size="(12 * #sr)" color="@text_color" name="week_text" fontFamily="mipro-semibold" align="right"/>
+      <DateTime x="#date_margin" y="(75 * #sr)" formatExp="ifelse(#time_format,'HH:mm','hh:mm')" size="(12 * #sr)" color="@text_color" name="time_text" fontFamily="mipro-semibold" align="right"/>
+    </Group>
+    <Group y="ifelse(eq(#prompt_ui,0),ifelse(eq(#location,0),(#view_height - #blur_height),0),0)" w="#view_width" h="ifelse(eq(#prompt_ui,0),ifelse((! strIsEmpty(@title)),#blur_height,0),#view_height)" contentDescriptionExp="@content_arr[#prompt_ui]" visibility="eq(#aod_state,0)" interceptTouch="true" touchable="true"/>
+    <Group y="ifelse(eq(#location,0),(#view_height - #blur_height),0)" name="movie_ui">
+      <Group x="#deco_width" y="ifelse(eq(#location,0),(24 * #sr),(12 * #sr))" visibility="(eq(#prompt_ui,0) ** (! strIsEmpty(@title)))" name="movie_info">
+        <Rectangle x="(- #deco_width)" w="#view_width" h="#blur_height" y="ifelse(eq(#location,0),((- 24) * #sr),((- 12) * #sr))" alpha="(0.6 * 255)" name="bg">
+          <FillShaders>
+            <LinearGradient x="(#view_width / 2)" x1="(#view_width / 2)" y1="#blur_height" y="0" tile="clamp">
+              <GradientStop color="@linear_gradient_0" position="0"/>
+              <GradientStop color="@linear_gradient_1" position="1"/>
+            </LinearGradient>
+          </FillShaders>
+        </Rectangle>
+        <Text textExp="@title" size="#text_size_title" name="title_text_alpha" fontFamily="mipro-semibold" alpha="0"/>
+        <Text y="(((16 * #sr) - (#title_text_normal.text_height)) / 2)" textExp="@title" size="#text_size_title" color="@text_color" visibility="le(#title_text_alpha.text_width,#content_width)" name="title_text_normal" fontFamily="mipro-semibold"/>
+        <Text textExp="@title" size="#text_size_title" w="#content_width" visibility="gt(#title_text_alpha.text_width,#content_width)" name="title_text_long_alpha" fontFamily="mipro-semibold" textAlign="right" ellipsis="true" multiLine="true" lineClamp="2" alpha="0"/>
+        <Text textExp="@title" size="#text_size_title" color="@text_color" w="#content_width" visibility="gt(#title_text_alpha.text_width,#content_width)" name="title_text_long" fontFamily="mipro-semibold" ellipsis="true" multiLine="true" lineClamp="2"/>
+        <Group x="ifelse(le(#title_text_alpha.text_width,#max_title_width),#title_text_normal.text_width,ifelse(le(#title_text_alpha.text_width,#content_width),0,(#title_text_alpha.text_width+#title_text_long_alpha.text_left - #content_width)))" y="ifelse(le(#title_text_alpha.text_width,#max_title_width),0,#title_text_alpha.text_height)">
+          <Rectangle x="0" y="0" w="(68 * #sr)" h="(16 * #sr)" fillColor="#FFB84C" cornerRadius="50">
+            <FillShaders>
+              <LinearGradient x="0" x1="(68 * #sr)" y="((- 5) * #sr)" y1="(24.8 * #sr)" tile="clamp">
+                <GradientStop color="#FFB846" position="0"/>
+                <GradientStop color="#FF9F05" position="1"/>
+              </LinearGradient>
+            </FillShaders>
+          </Rectangle>
+          <Text x="(((68 * #sr) - (#grade_text.text_width)) / 2)" y="(((16 * #sr) - (#grade_text.text_height)) / 2)" textExp="('豆瓣评分' + @rating_value)" size="(10 * #sr)" name="grade_text" fontFamily="mipro-demibold" textAlign="center" color="#4B2309"/>
+        </Group>
+        <Text y="((4 * #sr) + ifelse(le(#title_text_alpha.text_width,#max_title_width),#title_text_normal.text_height,ifelse(le(#title_text_alpha.text_width,#content_width),(#title_text_normal.text_height + (16 * #sr)),#title_text_long.text_height)))" textExp="@content" size="(12 * #sr)" w="#content_width" color="@text_color" alpha="(0.75 * 255)" name="content_text" fontFamily="mipro" ellipsis="true" multiLine="true" lineClamp="2"/>
+      </Group>
+    </Group>
+    <Group visibility="(eq(#prompt_ui,1) || eq(#prompt_ui,2))" name="guide_info">
+      <Rectangle w="#view_width" h="#view_height" alpha="(255 * 0.6)" name="guide_mask" fillColor="#000000"/>
+      <Group x="(119 * #sr)" y="((#view_height - #guide_content.text_height) / 2)">
+        <Text textExp="ifelse(eq(#prompt_ui,1),@cta_tip_content,@login_tip_content)" w="(201 * #sr)" size="(17 * #sr)" lineClamp="ifelse(eqs(@local,'ug_CN'),8,6)" color="@text_color" name="guide_content" fontFamily="mipro-medium" textAlign="center" ellipsis="true" multiLine="true"/>
+      </Group>
+    </Group>
+  </Group>
+  <Layer frameRate="-1">
+    <Rectangle w="#view_width" h="#view_height" x="0" y="0" alpha="(#aod_state * 255)" folmeMode="true" name="aod_bg" fillColor="#000000"/>
+  </Layer>
+  <Group>
+    <FolmeState name="folme_state_0" alpha="(255 * 0.57)"/>
+    <FolmeConfig name="folme_config_0" ease="-2, 1,0.72" onComplete="'folme_oncomplete_1'"/>
+    <Function name="folme_oncomplete_1">
+      <VariableCommand name="aod_frame_down" expression="0" type="number"/>
+      <MultiCommand condition="(! #provider_frame_down)">
+        <FrameRateCommand rate="0"/>
+      </MultiCommand>
+    </Function>
+    <FolmeState name="folme_state_1" alpha="0"/>
+    <FolmeConfig name="folme_config_1" ease="-2, 1,0.5" onComplete="'folme_oncomplete_2'"/>
+    <Function name="folme_oncomplete_2">
+      <VariableCommand name="aod_frame_down" expression="0" type="number"/>
+      <MultiCommand condition="(! #provider_frame_down)">
+        <FrameRateCommand rate="0"/>
+      </MultiCommand>
+    </Function>
+  </Group>
+  <VariableBinders>
+    <ContentProviderBinder name="MiTheme" uriExp="'content://com.android.thememanager.widget_resource'" columns="check_status,json_string,image_bitmap" countName="hasTheme">
+      <Variable name="check_status" column="check_status" type="number"/>
+      <Variable name="json_string" column="json_string" type="string"/>
+      <Variable name="image_url" column="image_bitmap" type="blob.bitmap"/>
+      <Trigger>
+        <VariableCommand name="provider_frame_down" expression="1" type="number"/>
+        <FrameRateCommand rate="60"/>
+        <FunctionCommand target="updatePromptUI"/>
+        <IfCommand ifCondition="((eq(#check_status,0) || eq(#check_status,1)) ** len(@json_string))">
+          <Consequent>
+            <VariableCommand name="data" expression="strToJson(@json_string)" type="jsonO"/>
+            <FunctionCommand target="initData"/>
+          </Consequent>
+          <Alternate>
+            <VariableCommand name="data" expression="strToJson(@base_data)" type="jsonO"/>
+            <FunctionCommand target="initData"/>
+          </Alternate>
+        </IfCommand>
+        <FunctionCommand target="recoverFrame" delay="2000"/>
+      </Trigger>
+    </ContentProviderBinder>
+    <BroadcastBinder action="android.intent.action.USER_UNLOCKED">
+      <Trigger>
+        <FunctionCommand target="requestProvider"/>
+      </Trigger>
+    </BroadcastBinder>
+    <BroadcastBinder action="android.accounts.LOGIN_ACCOUNTS_POST_CHANGED">
+      <Trigger>
+        <FunctionCommand target="requestProvider" delay="1000"/>
+      </Trigger>
+    </BroadcastBinder>
+  </VariableBinders>
+  <ExternalCommands>
+    <Trigger action="init">
+      <VariableCommand name="data" expression="strToJson(@base_data)" type="jsonO"/>
+      <FunctionCommand target="initData"/>
+    </Trigger>
+    <Trigger action="resume">
+      <VariableCommand name="pause_state" expression="0" type="number"/>
+      <MultiCommand condition="(! #aod_state)">
+        <FunctionCommand target="requestProvider"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="pause">
+      <VariableCommand name="pause_state" expression="1" type="number"/>
+      <FrameRateCommand rate="0"/>
+    </Trigger>
+    <Trigger action="enterAod">
+      <FunctionCommand target="switchStateAod"/>
+      <VariableCommand name="aod_state" expression="1" type="number"/>
+    </Trigger>
+    <Trigger action="exitAod">
+      <FunctionCommand target="switchStateDesk"/>
+      <VariableCommand name="aod_state" expression="0" type="number"/>
+      <MultiCommand condition="strIsEmpty(@title)">
+        <FunctionCommand target="requestProvider"/>
+      </MultiCommand>
+    </Trigger>
+  </ExternalCommands>
+</Widget>

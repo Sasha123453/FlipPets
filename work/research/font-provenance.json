@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Coca-ColaCareFontKaiTi.TTF",
+    "bytes": 4248772,
+    "sha256": "10895705d96e7cc2ec63f6ecfa9c2a522896aaf6b89b1872b9ca707547a472b2",
+    "partition": "pandora product.img",
+    "path": "/fonts/Coca-ColaCareFontKaiTi.TTF"
+  },
+  {
+    "name": "FZFWZhuZiAYuanJWB.TTF",
+    "bytes": 4258388,
+    "sha256": "7a29de3b6af883233f8c38fc9d9fd32f0950ac12ca4d83e427fec916f94cdd85",
+    "partition": "pandora product.img",
+    "path": "/fonts/FZFWZhuZiAYuanJWB.TTF"
+  },
+  {
+    "name": "MiSansRoundedSC.ttf",
+    "bytes": 78664,
+    "sha256": "db8c5090ce8b6056b0f8bfa4329876b96ef7bcfa0bd095e05ef64d701dab107b",
+    "partition": "pandora product.img",
+    "path": "/fonts/MiSansRoundedSC.ttf"
+  },
+  {
+    "name": "MiSansVF.ttf",
+    "bytes": 20093424,
+    "sha256": "0ddef90648998900175cfdca9a6f087a2544c182f130b0ad4f7e94a03a115e79",
+    "partition": "pandora product.img",
+    "path": "/fonts/MiSansVF.ttf"
+  },
+  {
+    "name": "Qinghe.otf",
+    "bytes": 3943236,
+    "sha256": "4e5cbf7c4a8bdb8f5e38b3b272b20369542e446a918839470ac4c266d09a3283",
+    "partition": "pandora product.img",
+    "path": "/fonts/Qinghe.otf"
+  }
+]

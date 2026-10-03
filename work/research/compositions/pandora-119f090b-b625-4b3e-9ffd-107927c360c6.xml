@@ -1,0 +1,176 @@
+<Widget frameRate="0" scaleByDensity="false" screenWidth="1080" version="2" useVariableUpdater="Battery,DateTime.Minute">
+  <Var name="w" type="number" expression="#view_width"/>
+  <Var name="h" type="number" expression="#view_height"/>
+  <Var name="assetColorDir" type="string" expression="'assets/red'" const="true"/>
+  <Var name="isP2" type="number" expression="ifelse(((#w / #h) } 1.6),1,0)"/>
+  <Var name="dpdx" type="number" expression="ifelse(#isP2,2.97,3.214)"/>
+  <Var name="_scale" type="number" expression="(#view_width / 1080)"/>
+  <Var name="centerX" type="number" expression="(ifelse(#isP2,(238 * #dpdx),(229 * #dpdx)) * #_scale)"/>
+  <Var name="centerY" type="number" expression="(#h / 2)"/>
+  <Var name="batteryX" type="number" expression="(ifelse(#isP2,(146 * #dpdx),(137 * #dpdx)) * #_scale)"/>
+  <Var name="_time_sys" type="number" expression="0"/>
+  <Var name="angle_second" type="number" expression="((#second + ((#_time_sys % 1000) / 1000)) * 6)"/>
+  <Var name="angle_minute" type="number" expression="((#minute + ((#second + ((#_time_sys % 1000) / 1000)) / 60)) * 6)"/>
+  <Var name="angle_hour" type="number" expression="(((#hour12 + (#minute / 60)) * 30) + ((#second / 3600) * 30))"/>
+  <Var name="monthHigh" type="number" expression="int(((#month + 1) / 10))"/>
+  <Var name="monthLow" type="number" expression="((#month + 1) % 10)"/>
+  <Var name="dateHigh" type="number" expression="int((#date / 10))"/>
+  <Var name="dateLow" type="number" expression="(#date % 10)"/>
+  <Var name="week" type="number" expression="(#day_of_week - 1)"/>
+  <Var name="pointerNormalDir" type="string" expression="'assets/common/pointer'" const="true"/>
+  <Var name="assetsCommonDir" type="string" expression="'assets/common'" const="true"/>
+  <Var name="_battery_level" type="number" expression="#battery_level"/>
+  <Var name="angle_battery_0" type="number" expression="(- 128)" const="true"/>
+  <Var name="angle_battery_100" type="number" expression="128" const="true"/>
+  <Var name="angle_battery" type="number" expression="(#angle_battery_0 + (((#angle_battery_100 - #angle_battery_0) / 100) * #_battery_level))"/>
+  <Var name="isAod" type="number" expression="0" const="true"/>
+  <Var name="initCount" type="number" expression="0" const="true"/>
+  <Var name="resumeCount" type="number" expression="0" const="true"/>
+  <Var name="pauseCount" type="number" expression="0" const="true"/>
+  <Var name="aod_state" type="number" expression="0" const="true"/>
+  <Function name="_setBaseRate">
+    <FrameRateCommand rate="30"/>
+  </Function>
+  <Function name="_setRate0">
+    <FrameRateCommand rate="0"/>
+  </Function>
+  <Function name="_closeRate50ms">
+    <FunctionCommand target="_setRate0" delay="500"/>
+  </Function>
+  <Function name="playVideo">
+    <VideoCommand target="bgVideo" command="play"/>
+  </Function>
+  <Function name="pauseVideo">
+    <VideoCommand target="bgVideo" command="pause"/>
+  </Function>
+  <Video w="#view_width" h="#view_height" name="bgVideo" layerType="bottom"/>
+  <Group visibility="(! #isAod)">
+    <Rectangle x="(#centerX - ((125 * #dpdx) * #_scale))" y="(#centerY - ((95 * #dpdx) * #_scale))" w="((225 * #dpdx) * #_scale)" h="(((95 * 2) * #dpdx) * #_scale)" contentDescriptionExp="formatDate(ifelse(#time_format,'HH:mm','hh:mm'),#time_sys)" alpha="0" fillColor="#000000" interceptTouch="true" touchable="true"/>
+  </Group>
+  <Group scale="#_scale" pivotX="#batteryX" pivotY="#centerY">
+    <Image x="#batteryX" y="(#centerY + (3 * #dpdx))" w="(16 * #dpdx)" h="(74 * #dpdx)" srcExp="(@assetColorDir + '/battery/pointer_shadow.png')" rotation="#angle_battery" pivotX="((16 * #dpdx) / 2)" pivotY="((74 * #dpdx) / 2)" align="center" alignV="center"/>
+    <Image x="#batteryX" y="#centerY" w="(12 * #dpdx)" h="(74 * #dpdx)" srcExp="((@assetColorDir + '/battery') + ifelse((#angle_battery } 0),'/pointer_right.png','/pointer_left.png'))" rotation="#angle_battery" pivotX="((12 * #dpdx) / 2)" pivotY="((74 * #dpdx) / 2)" align="center" alignV="center"/>
+    <Image x="#batteryX" y="#centerY" w="(8 * #dpdx)" h="(8 * #dpdx)" srcExp="(@assetColorDir + '/center.png')" align="center" alignV="center"/>
+    <Group x="(#batteryX - ((8 * #dpdx) / 2))" y="(#centerY + (30.5 * #dpdx))">
+      <Image w="(8 * #dpdx)" h="(4 * #dpdx)" srcExp="(@assetsCommonDir + '/battery_bg.png')" name="_battery_bg" alignV="center"/>
+      <Image y="ifelse(#isP2,0,0)" w="((5 * #dpdx) * (#_battery_level / 100))" h="(1.9 * #dpdx)" srcExp="(@assetsCommonDir + '/battery.png')" x="3" alignV="center"/>
+    </Group>
+  </Group>
+  <Group scale="#_scale" x="((#w - ((ifelse(#isP2,35,17) * #dpdx) * #_scale)) + ifelse(((#week == 3) || (#week == 4)),(6 * #dpdx),0))" y="(#centerY - (6 * #dpdx))" w="#_week.bmp_width * 1.07" h="18 * #dpdx" pivotX="#_week.bmp_width * 1.07" pivotY="18 * #dpdx /2" align="right">
+    <Group x="0" y="0">
+      <Image srcExp="(((@assetsCommonDir + '/week/') + #week) + '.png')" name="_week" w="#_week.bmp_width * 1.07" h="#_week.bmp_height* 1.07"/>
+    </Group>
+    <Group y="(6 * #dpdx)" x="#_week.bmp_width * 1.07 - 6*#dpdx">
+      <Image w="(8 * #dpdx)" h="(12 * #dpdx)" srcExp="(((@assetColorDir + '/date/') + #dateLow) + '.png')" x="0" align="right"/>
+      <Image w="(8 * #dpdx)" h="(12 * #dpdx)" srcExp="(((@assetColorDir + '/date/') + #dateHigh) + '.png')" x="0 - 6.3*#dpdx" align="right"/>
+      <Group x="0 - 6.3 * #dpdx * 2 + ifelse(#dateHigh == 1, 1*#dpdx, 0)">
+        <Image w="(8 * #dpdx)" h="(12 * #dpdx)" srcExp="(@assetColorDir + '/date/sep.png')" align="right"/>
+        <Group x="0 - 6.3 * #dpdx + 1.5*#dpdx + ifelse(#monthLow == 1, 1*#dpdx, 0)">
+          <Image w="(8 * #dpdx)" h="(12 * #dpdx)" srcExp="(((@assetColorDir + '/date/') + #monthLow) + '.png')" align="right"/>
+          <Image w="(8 * #dpdx)" h="(12 * #dpdx)" srcExp="(((@assetColorDir + '/date/') + #monthHigh) + '.png')" alpha="ifelse((#monthHigh } 0),255,0)" x="0 - 6.3 * #dpdx" align="right"/>
+        </Group>
+      </Group>
+    </Group>
+  </Group>
+  <Group scale="#_scale" pivotX="#centerX" pivotY="#centerY">
+    <Group name="group_hour">
+      <Image x="#centerX" y="(#centerY + (7 * #dpdx))" w="(30 * #dpdx)" h="(218 * #dpdx)" srcExp="(@pointerNormalDir + '/hour_shadow.png')" rotation="#angle_hour" pivotX="((30 * #dpdx) / 2)" pivotY="((218 * #dpdx) / 2)" align="center" alignV="center"/>
+      <Image x="#centerX" y="#centerY" w="(24 * #dpdx)" h="(218 * #dpdx)" srcExp="(@pointerNormalDir + ifelse((#angle_hour {= 180),'/hour_right.png','/hour_left.png'))" rotation="#angle_hour" pivotX="((24 * #dpdx) / 2)" pivotY="((218 * #dpdx) / 2)" align="center" alignV="center"/>
+    </Group>
+    <Group name="group_minute">
+      <Image x="#centerX" y="(#centerY + (7 * #dpdx))" w="(28 * #dpdx)" h="(218 * #dpdx)" srcExp="(@pointerNormalDir + '/minute_shadow.png')" rotation="#angle_minute" pivotX="((28 * #dpdx) / 2)" pivotY="((218 * #dpdx) / 2)" align="center" alignV="center"/>
+      <Image x="#centerX" y="#centerY" w="(22 * #dpdx)" h="(218 * #dpdx)" srcExp="(@pointerNormalDir + ifelse((#angle_minute {= 180),'/minute_right.png','/minute_left.png'))" rotation="#angle_minute" pivotX="((22 * #dpdx) / 2)" pivotY="((218 * #dpdx) / 2)" align="center" alignV="center"/>
+    </Group>
+    <Group folmeMode="true" name="group_second">
+      <Image x="#centerX" y="(#centerY + (8 * #dpdx))" w="(22 * #dpdx)" h="(218 * #dpdx)" srcExp="(@assetColorDir + '/second_shadow.png')" rotation="#angle_second" pivotX="((22 * #dpdx) / 2)" pivotY="((218 * #dpdx) / 2)" align="center" alignV="center"/>
+      <Image x="#centerX" y="#centerY" w="(14 * #dpdx)" h="(218 * #dpdx)" srcExp="(@assetColorDir + ifelse((#angle_second {= 180),'/second.png','/second.png'))" rotation="#angle_second" pivotX="((14 * #dpdx) / 2)" pivotY="((218 * #dpdx) / 2)" align="center" alignV="center"/>
+    </Group>
+    <Image x="#centerX" y="#centerY" w="(8 * #dpdx)" h="(8 * #dpdx)" srcExp="(@assetColorDir + '/center.png')" align="center" alignV="center"/>
+    <Image x="#centerX" y="#centerY" w="(8 * #dpdx)" h="(8 * #dpdx)" srcExp="(@assetsCommonDir + '/aod_center.png')" folmeMode="true" name="aod_center_time" alpha="0" align="center" alignV="center"/>
+  </Group>
+  <Group folmeMode="true" name="aod_bg_group" alpha="0">
+    <Rectangle w="#view_width" h="#view_height" fillColor="#000000"/>
+  </Group>
+  <Group>
+    <FolmeState name="folme_state_0" alpha="0"/>
+    <FolmeConfig name="folme_config_0" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_1" alpha="255"/>
+    <FolmeConfig name="folme_config_1" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_2" alpha="(255 * 0.4)"/>
+    <FolmeConfig name="folme_config_2" ease="-2, 1,0.72" onComplete="'folme_oncomplete_3'"/>
+    <Function name="folme_oncomplete_3">
+      <VariableCommand name="aod_state" expression="1" type="number"/>
+      <FunctionCommand target="pauseVideo"/>
+      <FrameRateCommand rate="0"/>
+    </Function>
+    <FolmeState name="folme_state_3" alpha="255"/>
+    <FolmeConfig name="folme_config_3" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_4" alpha="0"/>
+    <FolmeConfig name="folme_config_4" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_5" alpha="0"/>
+    <FolmeConfig name="folme_config_5" ease="-2, 1,0.5" onComplete="'folme_oncomplete_6'"/>
+    <Function name="folme_oncomplete_6">
+      <FunctionCommand target="_setBaseRate"/>
+      <VariableCommand name="aod_state" expression="0" type="number"/>
+    </Function>
+  </Group>
+  <ExternalCommands>
+    <Trigger action="enterAod">
+      <VariableCommand name="isAod" expression="1" type="number"/>
+      <VariableCommand name="aod_state" expression="0.9" type="number"/>
+      <FrameRateCommand rate="120"/>
+      <FolmeCommand target="group_second" states="'folme_state_0'" config="'folme_config_0'" command="to"/>
+      <FolmeCommand target="aod_center_time" states="'folme_state_1'" config="'folme_config_1'" command="to"/>
+      <FolmeCommand target="aod_bg_group" states="'folme_state_2'" config="'folme_config_2'" command="to"/>
+      <ExternCommand command="__clearTalkback"/>
+    </Trigger>
+    <Trigger action="exitAod">
+      <VariableCommand name="isAod" expression="0" type="number"/>
+      <VariableCommand name="aod_state" expression="0.1" type="number"/>
+      <FrameRateCommand rate="120"/>
+      <FunctionCommand target="playVideo"/>
+      <FolmeCommand target="group_second" states="'folme_state_3'" config="'folme_config_3'" command="to"/>
+      <FolmeCommand target="aod_center_time" states="'folme_state_4'" config="'folme_config_4'" command="to"/>
+      <FolmeCommand target="aod_bg_group" states="'folme_state_5'" config="'folme_config_5'" command="to"/>
+    </Trigger>
+    <Trigger action="init">
+      <VariableCommand name="initCount" expression="(#initCount + 1)" type="number"/>
+      <FunctionCommand target="_setBaseRate"/>
+      <IfCommand ifCondition="#isP2">
+        <Consequent>
+          <VideoCommand target="bgVideo" command="config" path="'assets/red/P2.mp4'" loop="1" scaleMode="2"/>
+        </Consequent>
+        <Alternate>
+          <VideoCommand target="bgVideo" command="config" path="'assets/red/Q200.mp4'" loop="1" scaleMode="2"/>
+        </Alternate>
+      </IfCommand>
+      <MultiCommand condition="eqs(@isPreviewMode,'true')">
+        <FunctionCommand target="playVideo"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="resume">
+      <IfCommand ifCondition="#isAod">
+        <Consequent>
+          <IfCommand ifCondition="(#aod_state == 1)">
+            <Consequent>
+              <FrameRateCommand rate="0"/>
+              <FunctionCommand target="pauseVideo"/>
+            </Consequent>
+            <Alternate>
+              <FunctionCommand target="playVideo"/>
+            </Alternate>
+          </IfCommand>
+        </Consequent>
+        <Alternate>
+          <FunctionCommand target="_setBaseRate"/>
+          <FunctionCommand target="playVideo"/>
+        </Alternate>
+      </IfCommand>
+      <VariableCommand name="resumeCount" expression="(#resumeCount + 1)" type="number"/>
+    </Trigger>
+    <Trigger action="pause">
+      <VariableCommand name="pauseCount" expression="(#pauseCount + 1)" type="number"/>
+      <FunctionCommand target="pauseVideo"/>
+    </Trigger>
+  </ExternalCommands>
+</Widget>

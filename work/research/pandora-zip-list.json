@@ -1,0 +1,51 @@
+[
+  {
+    "name": "META-INF/com/android/metadata",
+    "size": 725,
+    "compressed": 725,
+    "offset": 0,
+    "method": 0
+  },
+  {
+    "name": "META-INF/com/android/metadata.pb",
+    "size": 1663,
+    "compressed": 1663,
+    "offset": 794,
+    "method": 0
+  },
+  {
+    "name": "apex_info.pb",
+    "size": 1299,
+    "compressed": 1299,
+    "offset": 2525,
+    "method": 0
+  },
+  {
+    "name": "care_map.pb",
+    "size": 1101,
+    "compressed": 1101,
+    "offset": 3872,
+    "method": 0
+  },
+  {
+    "name": "payload.bin",
+    "size": 8782880243,
+    "compressed": 8782880243,
+    "offset": 5020,
+    "method": 0
+  },
+  {
+    "name": "payload_properties.txt",
+    "size": 156,
+    "compressed": 156,
+    "offset": 8782885330,
+    "method": 0
+  },
+  {
+    "name": "META-INF/com/android/otacert",
+    "size": 1594,
+    "compressed": 1077,
+    "offset": 8782885544,
+    "method": 8
+  }
+]

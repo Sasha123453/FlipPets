@@ -1,0 +1,826 @@
+[
+  {
+    "id": "koala-archived-presets",
+    "name": "Bubbles",
+    "kind": "reactive",
+    "clips": {
+      "0": "pets/koala-archived-presets/pag_0.pag",
+      "1": "pets/koala-archived-presets/pag_1.pag",
+      "2": "pets/koala-archived-presets/pag_2.pag",
+      "3": "pets/koala-archived-presets/pag_3.pag",
+      "4": "pets/koala-archived-presets/pag_4.pag",
+      "5": "pets/koala-archived-presets/pag_5.pag",
+      "6": "pets/koala-archived-presets/pag_6.pag",
+      "7": "pets/koala-archived-presets/pag_7.pag",
+      "8": "pets/koala-archived-presets/pag_8.pag",
+      "9": "pets/koala-archived-presets/pag_9.pag",
+      "10": "pets/koala-archived-presets/pag_10.pag",
+      "11": "pets/koala-archived-presets/pag_11.pag",
+      "12": "pets/koala-archived-presets/pag_12.pag",
+      "13": "pets/koala-archived-presets/pag_13.pag",
+      "14": "pets/koala-archived-presets/pag_14.pag",
+      "15": "pets/koala-archived-presets/pag_15.pag",
+      "16": "pets/koala-archived-presets/nfc_pin_show.pag"
+    },
+    "extra": [],
+    "gradientFrom": "#554ED9",
+    "gradientTo": "#8C85FF",
+    "timeColor": "#DBFF5A",
+    "source": "Archive of Xiaomi presets",
+    "originalFile": "ff37b3ed-214a-483c-a196-33889cafc2d9.mrc",
+    "originalSha256": "48d6628fde52c06ad07f8ee7fd4a3b690a4bf74b8d3b6b871981c17a02c67eb2"
+  },
+  {
+    "id": "roedeer-archived-presets",
+    "name": "Roe",
+    "kind": "reactive",
+    "clips": {
+      "0": "pets/roedeer-archived-presets/pag_0.pag",
+      "1": "pets/roedeer-archived-presets/pag_1.pag",
+      "2": "pets/roedeer-archived-presets/pag_2.pag",
+      "3": "pets/roedeer-archived-presets/pag_3.pag",
+      "4": "pets/roedeer-archived-presets/pag_4.pag",
+      "5": "pets/roedeer-archived-presets/pag_5.pag",
+      "6": "pets/roedeer-archived-presets/pag_6.pag",
+      "7": "pets/roedeer-archived-presets/pag_7.pag",
+      "8": "pets/roedeer-archived-presets/pag_8.pag",
+      "9": "pets/roedeer-archived-presets/pag_9.pag",
+      "10": "pets/roedeer-archived-presets/pag_10.pag",
+      "11": "pets/roedeer-archived-presets/pag_11.pag",
+      "12": "pets/roedeer-archived-presets/pag_12.pag",
+      "13": "pets/roedeer-archived-presets/pag_13.pag",
+      "14": "pets/roedeer-archived-presets/pag_14.pag",
+      "15": "pets/roedeer-archived-presets/pag_15.pag",
+      "16": "pets/roedeer-archived-presets/nfc_pin_show.pag"
+    },
+    "extra": [],
+    "gradientFrom": "#E6A543",
+    "gradientTo": "#EBC054",
+    "timeColor": "#DBFF5A",
+    "source": "Archive of Xiaomi presets",
+    "originalFile": "b0337e5d-516d-4fa6-8a1e-0722116cfd81.mrc",
+    "originalSha256": "d16ec489ea33b6925fd1ea56b17f1ddbde07a5e6fb7fa3cfb0101d64e60e7d3d"
+  },
+  {
+    "id": "q_carp-pandora",
+    "name": "Butterfly carp",
+    "kind": "ambient",
+    "clips": {
+      "0": "pets/q_carp-pandora/pag_0.pag",
+      "1": "pets/q_carp-pandora/pag_1.pag",
+      "2": "pets/q_carp-pandora/pag_2.pag",
+      "3": "pets/q_carp-pandora/pag_3.pag"
+    },
+    "extra": [],
+    "gradientFrom": "#444E70",
+    "gradientTo": "#647D98",
+    "timeColor": "#DBFF5A",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "6eca3137-153e-4eed-827e-e8f89e51fb8a.mrc",
+    "originalSha256": "fd86494bba210e2e6109b31a287c745a6b3830898784f637eed74aa84aba24fa"
+  },
+  {
+    "id": "bird-pandora",
+    "name": "Charlie",
+    "kind": "ambient",
+    "clips": {
+      "0": "pets/bird-pandora/pag_0.pag",
+      "1": "pets/bird-pandora/pag_1.pag",
+      "2": "pets/bird-pandora/pag_2.pag",
+      "3": "pets/bird-pandora/pag_3.pag",
+      "4": "pets/bird-pandora/pag_4.pag",
+      "5": "pets/bird-pandora/pag_5.pag",
+      "6": "pets/bird-pandora/pag_6.pag",
+      "7": "pets/bird-pandora/pag_7.pag",
+      "8": "pets/bird-pandora/pag_8.pag",
+      "9": "pets/bird-pandora/pag_9.pag",
+      "10": "pets/bird-pandora/pag_10.pag",
+      "11": "pets/bird-pandora/pag_11.pag"
+    },
+    "extra": [],
+    "gradientFrom": "#444E70",
+    "gradientTo": "#647D98",
+    "timeColor": "#DBFF5A",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "26f4a446-8125-407d-a255-3dbcd8c12eae.mrc",
+    "originalSha256": "9147868c42edcec122dfb5c5e497506bc2d7dd487b27110cc8bb32b9a6c6e52e"
+  },
+  {
+    "id": "seal-archived-presets",
+    "name": "Coco",
+    "kind": "ambient",
+    "clips": {
+      "0": "pets/seal-archived-presets/pag_0.pag",
+      "1": "pets/seal-archived-presets/pag_1.pag",
+      "2": "pets/seal-archived-presets/pag_2.pag",
+      "3": "pets/seal-archived-presets/pag_3.pag",
+      "4": "pets/seal-archived-presets/pag_4.pag",
+      "5": "pets/seal-archived-presets/pag_5.pag",
+      "6": "pets/seal-archived-presets/pag_6.pag",
+      "7": "pets/seal-archived-presets/pag_7.pag",
+      "8": "pets/seal-archived-presets/pag_8.pag",
+      "9": "pets/seal-archived-presets/pag_9.pag",
+      "10": "pets/seal-archived-presets/pag_10.pag",
+      "11": "pets/seal-archived-presets/pag_11.pag",
+      "12": "pets/seal-archived-presets/nfc_pin_show.pag"
+    },
+    "extra": [],
+    "gradientFrom": "#444E70",
+    "gradientTo": "#647D98",
+    "timeColor": "#DBFF5A",
+    "source": "Archive of Xiaomi presets",
+    "originalFile": "e543e1cc-b795-44f0-abb2-862194d53750.mrc",
+    "originalSha256": "40c31d78fce237e648322efdc113e61f8393ece221582c793a16d5cfa57b9dab"
+  },
+  {
+    "id": "seal-pandora",
+    "name": "Coco · классический",
+    "kind": "ambient",
+    "clips": {
+      "0": "pets/seal-pandora/pag_0.pag",
+      "1": "pets/seal-pandora/pag_1.pag",
+      "2": "pets/seal-pandora/pag_2.pag",
+      "3": "pets/seal-pandora/pag_3.pag",
+      "4": "pets/seal-pandora/pag_4.pag",
+      "5": "pets/seal-pandora/pag_5.pag",
+      "6": "pets/seal-pandora/pag_6.pag",
+      "7": "pets/seal-pandora/pag_7.pag",
+      "8": "pets/seal-pandora/pag_8.pag",
+      "9": "pets/seal-pandora/pag_9.pag",
+      "10": "pets/seal-pandora/pag_10.pag"
+    },
+    "extra": [],
+    "gradientFrom": "#444E70",
+    "gradientTo": "#647D98",
+    "timeColor": "#DBFF5A",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "9a873f92-3e7a-4335-9001-5f7e51da03e9.mrc",
+    "originalSha256": "4f5c18e0fa243c68fd8840643c7f8fd013b9a3a6e986c2ea44ee36482b4e9e78"
+  },
+  {
+    "id": "80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora",
+    "name": "Flowing glitter",
+    "kind": "ambient",
+    "clips": {
+      "0": "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/blue976x596.pag",
+      "1": "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/gold976x596.pag",
+      "2": "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/pink976x596.pag",
+      "3": "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/white976x596.pag"
+    },
+    "extra": [],
+    "gradientFrom": "#444E70",
+    "gradientTo": "#647D98",
+    "timeColor": "#DBFF5A",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "80489ec0-3f8c-4ed8-a106-a121fe1ebad4.mrc",
+    "originalSha256": "675152f258be5372f5dfebfa519e4393764c706e7af73a295b5e5a8218a4baed"
+  },
+  {
+    "id": "capybara-archived-presets",
+    "name": "Jumbo",
+    "kind": "ambient",
+    "clips": {
+      "0": "pets/capybara-archived-presets/pag_0.pag",
+      "1": "pets/capybara-archived-presets/pag_1.pag",
+      "2": "pets/capybara-archived-presets/pag_2.pag",
+      "3": "pets/capybara-archived-presets/pag_3.pag",
+      "4": "pets/capybara-archived-presets/nfc_pin_show.pag"
+    },
+    "extra": [],
+    "gradientFrom": "#323752",
+    "gradientTo": "#323752",
+    "timeColor": "#FFC93D",
+    "source": "Archive of Xiaomi presets",
+    "originalFile": "fb026285-632c-42d7-8268-a588015b1ff4.mrc",
+    "originalSha256": "c52fc4d97ba3ae5f08c2ae031c122a839892282ffca3bba9f177650c36a26d29"
+  },
+  {
+    "id": "sheep-archived-presets",
+    "name": "Lola",
+    "kind": "ambient",
+    "clips": {
+      "0": "pets/sheep-archived-presets/pag_0.pag",
+      "1": "pets/sheep-archived-presets/pag_1.pag",
+      "2": "pets/sheep-archived-presets/pag_2.pag",
+      "3": "pets/sheep-archived-presets/pag_3.pag",
+      "4": "pets/sheep-archived-presets/pag_4.pag",
+      "5": "pets/sheep-archived-presets/pag_5.pag",
+      "6": "pets/sheep-archived-presets/pag_6.pag",
+      "7": "pets/sheep-archived-presets/pag_7.pag",
+      "8": "pets/sheep-archived-presets/pag_8.pag",
+      "9": "pets/sheep-archived-presets/pag_9.pag",
+      "10": "pets/sheep-archived-presets/pag_10.pag",
+      "11": "pets/sheep-archived-presets/pag_11.pag",
+      "12": "pets/sheep-archived-presets/pag_12.pag",
+      "13": "pets/sheep-archived-presets/nfc_pin_show.pag"
+    },
+    "extra": [],
+    "gradientFrom": "#444E70",
+    "gradientTo": "#647D98",
+    "timeColor": "#DBFF5A",
+    "source": "Archive of Xiaomi presets",
+    "originalFile": "325d3be8-5f5d-4956-841a-3ee136085b1e.mrc",
+    "originalSha256": "f1dc238f9807158949799413b6354ae2d23e9a8faf7c8d6c1140b438325488d5"
+  },
+  {
+    "id": "sheep-pandora",
+    "name": "Lola · классический",
+    "kind": "ambient",
+    "clips": {
+      "0": "pets/sheep-pandora/pag_0.pag",
+      "1": "pets/sheep-pandora/pag_1.pag",
+      "2": "pets/sheep-pandora/pag_2.pag",
+      "3": "pets/sheep-pandora/pag_3.pag",
+      "4": "pets/sheep-pandora/pag_4.pag",
+      "5": "pets/sheep-pandora/pag_5.pag",
+      "6": "pets/sheep-pandora/pag_6.pag",
+      "7": "pets/sheep-pandora/pag_7.pag",
+      "8": "pets/sheep-pandora/pag_8.pag",
+      "9": "pets/sheep-pandora/pag_9.pag",
+      "10": "pets/sheep-pandora/pag_10.pag",
+      "11": "pets/sheep-pandora/pag_11.pag"
+    },
+    "extra": [],
+    "gradientFrom": "#444E70",
+    "gradientTo": "#647D98",
+    "timeColor": "#DBFF5A",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "dd1639ed-306d-4f73-8f78-d26ed6dda77f.mrc",
+    "originalSha256": "9ac10c3be62e525e3e9f4ed02a9dd74c5ff6137e0254950e739fc43aa275f8c9"
+  },
+  {
+    "id": "otter-archived-presets",
+    "name": "Pip",
+    "kind": "ambient",
+    "clips": {
+      "0": "pets/otter-archived-presets/pag_0.pag",
+      "1": "pets/otter-archived-presets/pag_1.pag",
+      "2": "pets/otter-archived-presets/pag_2.pag",
+      "3": "pets/otter-archived-presets/pag_3.pag",
+      "4": "pets/otter-archived-presets/nfc_pin_show.pag"
+    },
+    "extra": [],
+    "gradientFrom": "#41ADC5",
+    "gradientTo": "#41ADC5",
+    "timeColor": "#FFC93D",
+    "source": "Archive of Xiaomi presets",
+    "originalFile": "4c5bdda5-82d3-440c-9978-b3085fc30eaa.mrc",
+    "originalSha256": "5caad3a52058f8c8a8cb96f614c70dd3e95822f1869a3dbccd256ea4140d1c17"
+  },
+  {
+    "id": "system-effects",
+    "name": "Системные эффекты",
+    "kind": "ambient",
+    "clips": {
+      "0": "pets/system-effects/pin_show_pandora.pag",
+      "1": "pets/system-effects/pin_show_popsicle.pag"
+    },
+    "extra": [],
+    "gradientFrom": "#444E70",
+    "gradientTo": "#647D98",
+    "timeColor": "#DBFF5A",
+    "source": "Xiaomi 17 Pro SubScreenCenter APK",
+    "originalFile": "pandora-subscreencenter.apk",
+    "originalSha256": "22b7d153b523d80fb79f9e1730d776a9a3421c317025d6b190e235f5e4ce2507"
+  },
+  {
+    "id": "46e72f3e-8f51-4db8-8db9-1c9e2a847b2a-pandora",
+    "name": "3D cartoon",
+    "kind": "video",
+    "clips": {
+      "0": "pets/46e72f3e-8f51-4db8-8db9-1c9e2a847b2a-pandora/ai.mp4"
+    },
+    "extra": [
+      {
+        "index": 0,
+        "label": "ai"
+      }
+    ],
+    "gradientFrom": "#444E70",
+    "gradientTo": "#647D98",
+    "timeColor": "#DBFF5A",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "46e72f3e-8f51-4db8-8db9-1c9e2a847b2a.mrc",
+    "originalSha256": "0c8bed2ad75f3bd6b620e9c6b13ee96066af1f3af12801d0f688b4e2836cd15b"
+  },
+  {
+    "id": "84ae8006-804f-4df3-bad9-413d5ea64799-pandora",
+    "name": "AI Pets",
+    "kind": "video",
+    "clips": {
+      "0": "pets/84ae8006-804f-4df3-bad9-413d5ea64799-pandora/ai.mp4"
+    },
+    "extra": [
+      {
+        "index": 0,
+        "label": "ai"
+      }
+    ],
+    "gradientFrom": "#444E70",
+    "gradientTo": "#647D98",
+    "timeColor": "#DBFF5A",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "84ae8006-804f-4df3-bad9-413d5ea64799.mrc",
+    "originalSha256": "3f02f7acac8edf44e8b3ccebaa11a9457d2837c981fc545d23a41fac6d8709db"
+  },
+  {
+    "id": "cdcebb9f-2fdb-4532-af77-1ee5ed742e12-pandora",
+    "name": "Anime 2",
+    "kind": "video",
+    "clips": {
+      "0": "pets/cdcebb9f-2fdb-4532-af77-1ee5ed742e12-pandora/ai.mp4"
+    },
+    "extra": [
+      {
+        "index": 0,
+        "label": "ai"
+      }
+    ],
+    "gradientFrom": "#444E70",
+    "gradientTo": "#647D98",
+    "timeColor": "#DBFF5A",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "cdcebb9f-2fdb-4532-af77-1ee5ed742e12.mrc",
+    "originalSha256": "34e9c892fb0445212d55ab480d8d978d30db0779daebf5cf60e1846d7cdeb313"
+  },
+  {
+    "id": "lumi-archived-presets",
+    "name": "Lumi",
+    "kind": "video",
+    "clips": {
+      "0": "pets/lumi-archived-presets/idle_0.mp4",
+      "1": "pets/lumi-archived-presets/idle_1.mp4",
+      "2": "pets/lumi-archived-presets/idle_2.mp4",
+      "3": "pets/lumi-archived-presets/dance.mp4",
+      "4": "pets/lumi-archived-presets/dragon_a.mp4",
+      "5": "pets/lumi-archived-presets/dragon_b.mp4",
+      "6": "pets/lumi-archived-presets/greet.mp4",
+      "7": "pets/lumi-archived-presets/happy.mp4",
+      "8": "pets/lumi-archived-presets/listen.mp4",
+      "9": "pets/lumi-archived-presets/midautumn_a.mp4",
+      "10": "pets/lumi-archived-presets/midautumn_b.mp4",
+      "11": "pets/lumi-archived-presets/nationalday_a.mp4",
+      "12": "pets/lumi-archived-presets/nationalday_b.mp4",
+      "13": "pets/lumi-archived-presets/newyear_a.mp4",
+      "14": "pets/lumi-archived-presets/newyear_b.mp4",
+      "15": "pets/lumi-archived-presets/rain_a.mp4",
+      "16": "pets/lumi-archived-presets/rain_b.mp4",
+      "17": "pets/lumi-archived-presets/sad.mp4",
+      "18": "pets/lumi-archived-presets/sing.mp4",
+      "19": "pets/lumi-archived-presets/snow_a.mp4",
+      "20": "pets/lumi-archived-presets/snow_b.mp4",
+      "21": "pets/lumi-archived-presets/speak.mp4",
+      "22": "pets/lumi-archived-presets/spring_a.mp4",
+      "23": "pets/lumi-archived-presets/spring_b.mp4"
+    },
+    "extra": [
+      {
+        "index": 0,
+        "label": "idle_0"
+      },
+      {
+        "index": 1,
+        "label": "idle_1"
+      },
+      {
+        "index": 2,
+        "label": "idle_2"
+      },
+      {
+        "index": 3,
+        "label": "dance"
+      },
+      {
+        "index": 4,
+        "label": "dragon_a"
+      },
+      {
+        "index": 5,
+        "label": "dragon_b"
+      },
+      {
+        "index": 6,
+        "label": "greet"
+      },
+      {
+        "index": 7,
+        "label": "happy"
+      },
+      {
+        "index": 8,
+        "label": "listen"
+      },
+      {
+        "index": 9,
+        "label": "midautumn_a"
+      },
+      {
+        "index": 10,
+        "label": "midautumn_b"
+      },
+      {
+        "index": 11,
+        "label": "nationalday_a"
+      },
+      {
+        "index": 12,
+        "label": "nationalday_b"
+      },
+      {
+        "index": 13,
+        "label": "newyear_a"
+      },
+      {
+        "index": 14,
+        "label": "newyear_b"
+      },
+      {
+        "index": 15,
+        "label": "rain_a"
+      },
+      {
+        "index": 16,
+        "label": "rain_b"
+      },
+      {
+        "index": 17,
+        "label": "sad"
+      },
+      {
+        "index": 18,
+        "label": "sing"
+      },
+      {
+        "index": 19,
+        "label": "snow_a"
+      },
+      {
+        "index": 20,
+        "label": "snow_b"
+      },
+      {
+        "index": 21,
+        "label": "speak"
+      },
+      {
+        "index": 22,
+        "label": "spring_a"
+      },
+      {
+        "index": 23,
+        "label": "spring_b"
+      }
+    ],
+    "gradientFrom": "#444E70",
+    "gradientTo": "#647D98",
+    "timeColor": "#DBFF5A",
+    "source": "Archive of Xiaomi presets",
+    "originalFile": "b4deb767-f817-4376-b965-dd037e21953b.mrc",
+    "originalSha256": "9e257af198065cc70c630bb07741618ba59899d67784ba8eccc109e8a9816d66"
+  },
+  {
+    "id": "e97f1f85-9ca6-47d3-ba16-89bad4f3cc7f-pandora",
+    "name": "Needle felting",
+    "kind": "video",
+    "clips": {
+      "0": "pets/e97f1f85-9ca6-47d3-ba16-89bad4f3cc7f-pandora/ai.mp4"
+    },
+    "extra": [
+      {
+        "index": 0,
+        "label": "ai"
+      }
+    ],
+    "gradientFrom": "#444E70",
+    "gradientTo": "#647D98",
+    "timeColor": "#DBFF5A",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "e97f1f85-9ca6-47d3-ba16-89bad4f3cc7f.mrc",
+    "originalSha256": "a7ad5c29be211e581065beb5bbfd07e9d96ab3bec1defcdf7394e9ac605a6c10"
+  },
+  {
+    "id": "peeko-archived-presets",
+    "name": "Peeko",
+    "kind": "video",
+    "clips": {
+      "0": "pets/peeko-archived-presets/idle_0.mp4",
+      "1": "pets/peeko-archived-presets/idle_1.mp4",
+      "2": "pets/peeko-archived-presets/idle_2.mp4",
+      "3": "pets/peeko-archived-presets/dance.mp4",
+      "4": "pets/peeko-archived-presets/dragon_a.mp4",
+      "5": "pets/peeko-archived-presets/dragon_b.mp4",
+      "6": "pets/peeko-archived-presets/greet.mp4",
+      "7": "pets/peeko-archived-presets/happy.mp4",
+      "8": "pets/peeko-archived-presets/listen.mp4",
+      "9": "pets/peeko-archived-presets/midautumn_a.mp4",
+      "10": "pets/peeko-archived-presets/midautumn_b.mp4",
+      "11": "pets/peeko-archived-presets/nationalday_a.mp4",
+      "12": "pets/peeko-archived-presets/nationalday_b.mp4",
+      "13": "pets/peeko-archived-presets/newyear_a.mp4",
+      "14": "pets/peeko-archived-presets/newyear_b.mp4",
+      "15": "pets/peeko-archived-presets/rain_a.mp4",
+      "16": "pets/peeko-archived-presets/rain_b.mp4",
+      "17": "pets/peeko-archived-presets/sad.mp4",
+      "18": "pets/peeko-archived-presets/sing.mp4",
+      "19": "pets/peeko-archived-presets/snow_a.mp4",
+      "20": "pets/peeko-archived-presets/snow_b.mp4",
+      "21": "pets/peeko-archived-presets/speak.mp4",
+      "22": "pets/peeko-archived-presets/spring_a.mp4",
+      "23": "pets/peeko-archived-presets/spring_b.mp4"
+    },
+    "extra": [
+      {
+        "index": 0,
+        "label": "idle_0"
+      },
+      {
+        "index": 1,
+        "label": "idle_1"
+      },
+      {
+        "index": 2,
+        "label": "idle_2"
+      },
+      {
+        "index": 3,
+        "label": "dance"
+      },
+      {
+        "index": 4,
+        "label": "dragon_a"
+      },
+      {
+        "index": 5,
+        "label": "dragon_b"
+      },
+      {
+        "index": 6,
+        "label": "greet"
+      },
+      {
+        "index": 7,
+        "label": "happy"
+      },
+      {
+        "index": 8,
+        "label": "listen"
+      },
+      {
+        "index": 9,
+        "label": "midautumn_a"
+      },
+      {
+        "index": 10,
+        "label": "midautumn_b"
+      },
+      {
+        "index": 11,
+        "label": "nationalday_a"
+      },
+      {
+        "index": 12,
+        "label": "nationalday_b"
+      },
+      {
+        "index": 13,
+        "label": "newyear_a"
+      },
+      {
+        "index": 14,
+        "label": "newyear_b"
+      },
+      {
+        "index": 15,
+        "label": "rain_a"
+      },
+      {
+        "index": 16,
+        "label": "rain_b"
+      },
+      {
+        "index": 17,
+        "label": "sad"
+      },
+      {
+        "index": 18,
+        "label": "sing"
+      },
+      {
+        "index": 19,
+        "label": "snow_a"
+      },
+      {
+        "index": 20,
+        "label": "snow_b"
+      },
+      {
+        "index": 21,
+        "label": "speak"
+      },
+      {
+        "index": 22,
+        "label": "spring_a"
+      },
+      {
+        "index": 23,
+        "label": "spring_b"
+      }
+    ],
+    "gradientFrom": "#444E70",
+    "gradientTo": "#647D98",
+    "timeColor": "#DBFF5A",
+    "source": "Archive of Xiaomi presets",
+    "originalFile": "317d9477-3731-4636-b526-15f914647826.mrc",
+    "originalSha256": "047545feab265128218dc2e2241bb1af912488be8ebaf45f4f1673a2a5dae837"
+  },
+  {
+    "id": "119f090b-b625-4b3e-9ffd-107927c360c6-pandora",
+    "name": "Vortex core",
+    "kind": "video",
+    "clips": {
+      "0": "pets/119f090b-b625-4b3e-9ffd-107927c360c6-pandora/P2.mp4",
+      "1": "pets/119f090b-b625-4b3e-9ffd-107927c360c6-pandora/Q200.mp4"
+    },
+    "extra": [
+      {
+        "index": 0,
+        "label": "P2"
+      },
+      {
+        "index": 1,
+        "label": "Q200"
+      }
+    ],
+    "gradientFrom": "#444E70",
+    "gradientTo": "#647D98",
+    "timeColor": "#DBFF5A",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "119f090b-b625-4b3e-9ffd-107927c360c6.mrc",
+    "originalSha256": "ac5f0c44c2091ef32232786e44ededec22bd97900f94ec9d38458d49563a8336"
+  },
+  {
+    "id": "09cb4aa8-8e8d-4f2c-a6cd-2a7e2648d790",
+    "name": "Силикон · фиолетовый",
+    "kind": "composition",
+    "renderer": "analog",
+    "assetRoot": "compositions/09cb4aa8-8e8d-4f2c-a6cd-2a7e2648d790/",
+    "defaultColor": "purple",
+    "clips": {},
+    "extra": [],
+    "gradientFrom": "#182432",
+    "gradientTo": "#31495D",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "09cb4aa8-8e8d-4f2c-a6cd-2a7e2648d790.mrc",
+    "originalSha256": "267563694a47b6b4c80fb0c90f7c1785b9dc57a86850b09af67fe63682fb8bf0"
+  },
+  {
+    "id": "5cb92fb9-812b-4c3a-ac75-ec203034f03a",
+    "name": "Силикон · зелёный",
+    "kind": "composition",
+    "renderer": "analog",
+    "assetRoot": "compositions/5cb92fb9-812b-4c3a-ac75-ec203034f03a/",
+    "defaultColor": "green",
+    "clips": {},
+    "extra": [],
+    "gradientFrom": "#182432",
+    "gradientTo": "#31495D",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "5cb92fb9-812b-4c3a-ac75-ec203034f03a.mrc",
+    "originalSha256": "2917146b3a0545482dc4990375d9e7b583f6046282aa9d8280c3e7a09dc2f4d7"
+  },
+  {
+    "id": "c5b24c5e-716a-445d-bca9-9bc078b50199",
+    "name": "Силикон · красный",
+    "kind": "composition",
+    "renderer": "analog",
+    "assetRoot": "compositions/c5b24c5e-716a-445d-bca9-9bc078b50199/",
+    "defaultColor": "red",
+    "clips": {},
+    "extra": [],
+    "gradientFrom": "#182432",
+    "gradientTo": "#31495D",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "c5b24c5e-716a-445d-bca9-9bc078b50199.mrc",
+    "originalSha256": "89504b9c8fd1edf244a90a6251895cd3d679d9e2561177e137119ddd4bcfa79a"
+  },
+  {
+    "id": "cc8f8283-037f-4608-a0fd-b4c0a9a7eb34",
+    "name": "Градиент · часы",
+    "kind": "composition",
+    "renderer": "analog",
+    "assetRoot": "compositions/cc8f8283-037f-4608-a0fd-b4c0a9a7eb34/",
+    "defaultColor": "blue",
+    "clips": {},
+    "extra": [],
+    "gradientFrom": "#182432",
+    "gradientTo": "#31495D",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "cc8f8283-037f-4608-a0fd-b4c0a9a7eb34.mrc",
+    "originalSha256": "ccc3bd78a223eb89f36c4fbbb0cfdfdbc7cc0bfc492f6f276a821e6f4ae0c4d5"
+  },
+  {
+    "id": "c9ad6b5a-1462-460d-8033-b6c407db1290",
+    "name": "Волокно дракона · часы",
+    "kind": "composition",
+    "renderer": "dragon",
+    "assetRoot": "compositions/c9ad6b5a-1462-460d-8033-b6c407db1290/",
+    "defaultColor": "black",
+    "clips": {},
+    "extra": [],
+    "gradientFrom": "#182432",
+    "gradientTo": "#31495D",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "c9ad6b5a-1462-460d-8033-b6c407db1290.mrc",
+    "originalSha256": "95e3c59776080d19bb4e0dadf7d71fbc800f1f7fa2aae2f6c160a8452f1ec48d"
+  },
+  {
+    "id": "96af4ce9-72b5-451d-aba8-bc3282aeaa34",
+    "name": "Stretch · упругие часы",
+    "kind": "composition",
+    "renderer": "stretch",
+    "assetRoot": "compositions/96af4ce9-72b5-451d-aba8-bc3282aeaa34/",
+    "defaultColor": "blue",
+    "clips": {},
+    "extra": [],
+    "gradientFrom": "#182432",
+    "gradientTo": "#31495D",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "96af4ce9-72b5-451d-aba8-bc3282aeaa34.mrc",
+    "originalSha256": "c94b559c6a8ac4cb9f92b416deb57e46c84e11c651649e3eaaadf535f3d833d6"
+  },
+  {
+    "id": "3adb17eb-f46b-4270-8a26-670c1e71d08f",
+    "name": "Шагомер",
+    "kind": "composition",
+    "renderer": "steps",
+    "assetRoot": "compositions/3adb17eb-f46b-4270-8a26-670c1e71d08f/",
+    "defaultColor": "",
+    "clips": {},
+    "extra": [],
+    "gradientFrom": "#182432",
+    "gradientTo": "#31495D",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "3adb17eb-f46b-4270-8a26-670c1e71d08f.mrc",
+    "originalSha256": "5f7cfb056bdee98ed33606f937fcbe893e2b8b7fe9774b5c12712edffe24e43f"
+  },
+  {
+    "id": "0714c784-0cc9-440b-8c69-d959adc989db",
+    "name": "Подпись",
+    "kind": "composition",
+    "renderer": "signature",
+    "assetRoot": "compositions/0714c784-0cc9-440b-8c69-d959adc989db/",
+    "defaultColor": "",
+    "clips": {},
+    "extra": [],
+    "gradientFrom": "#182432",
+    "gradientTo": "#31495D",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "0714c784-0cc9-440b-8c69-d959adc989db.mrc",
+    "originalSha256": "c00d1d0b8ffd6348164c7d01362424dbdbdbffcba9e975fcbc0ff16015b0a787"
+  },
+  {
+    "id": "a1f032b7-aee9-4af5-a614-c71ee8432c73",
+    "name": "Новогодняя бумага",
+    "kind": "composition",
+    "renderer": "paper",
+    "assetRoot": "compositions/a1f032b7-aee9-4af5-a614-c71ee8432c73/",
+    "defaultColor": "",
+    "clips": {},
+    "extra": [],
+    "gradientFrom": "#182432",
+    "gradientTo": "#31495D",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "a1f032b7-aee9-4af5-a614-c71ee8432c73.mrc",
+    "originalSha256": "91ea32b8bd7a4c5122debd0af9d193cb07e9b607100300f22bc20e761511f7c0"
+  },
+  {
+    "id": "26d6b38e-6e11-4573-b449-29bcf5ad1477",
+    "name": "Кинокалендарь · локальный",
+    "kind": "composition",
+    "renderer": "calendar",
+    "assetRoot": "compositions/26d6b38e-6e11-4573-b449-29bcf5ad1477/",
+    "defaultColor": "",
+    "clips": {},
+    "extra": [],
+    "gradientFrom": "#182432",
+    "gradientTo": "#31495D",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "26d6b38e-6e11-4573-b449-29bcf5ad1477.mrc",
+    "originalSha256": "a702d3d04b28c6d733fb38704c7673c9202b834b65bf74de970077a0ee2a97e0"
+  },
+  {
+    "id": "8668591f-a278-4c5f-a5e0-e75539b2168f",
+    "name": "Своя фотография",
+    "kind": "composition",
+    "renderer": "photo",
+    "assetRoot": "compositions/8668591f-a278-4c5f-a5e0-e75539b2168f/",
+    "defaultColor": "",
+    "clips": {},
+    "extra": [],
+    "gradientFrom": "#182432",
+    "gradientTo": "#31495D",
+    "source": "Xiaomi 17 Pro OS3.0.319.0.WBLCNXM product.img",
+    "originalFile": "8668591f-a278-4c5f-a5e0-e75539b2168f.mrc",
+    "originalSha256": "a88457de881af94b395f09b4f7a2c97ac92615f335a89b171dfbb276d12f3d9d"
+  }
+]

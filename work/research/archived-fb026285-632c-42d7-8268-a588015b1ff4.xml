@@ -1,0 +1,243 @@
+<Widget frameRate="0" scaleByDensity="false" screenWidth="1080" version="2" useVariableUpdater="HyperMaterial,DateTime.Minute">
+  <Var name="assets" expression="'capybara'" type="string"/>
+  <Var name="bgColor" expression="'#323752'" type="string"/>
+  <Var name="timeColor" expression="'#FFC93D'" type="string"/>
+  <Var name="sepAodTimeColor" expression="'#D0A538'" type="string"/>
+  <Var name="zhTitle" expression="'墩墩'" type="string"/>
+  <Var name="enTitle" expression="'SAM'" type="string"/>
+  <Var name="enDesc" expression="'CAPYBARA'" type="string"/>
+  <Var name="titleDescColor" expression="'#5667C1'" type="string"/>
+  <Var name="sr" type="number" expression="(#view_width / 336)"/>
+  <Var name="pagWidth" type="number" expression="(350 * #sr)"/>
+  <Var name="pagHeight" type="number" expression="(215 * #sr)"/>
+  <Var name="_name_title_top_y" type="number" expression="(#view_height - ((22 + 104) * #sr))"/>
+  <Var name="_time_block_height" type="number" expression="((75 + 3) * #sr)"/>
+  <Var name="_time_name_gap" type="number" expression="(8 * #sr)"/>
+  <Var name="_time_y_candidate" type="number" expression="((#_name_title_top_y - #_time_block_height) - #_time_name_gap)"/>
+  <Var name="time_layer_y" type="number" expression="ifelse((#_time_y_candidate } 0),#_time_y_candidate,0)"/>
+  <Var name="title_text_width" type="number" expression="(208 * #sr)"/>
+  <Var name="title_text_default_size" type="number" expression="(104 * #sr)"/>
+  <Var name="title_size" type="number" expression="ifelse((#title_text_alpha.text_width } #title_text_width),((#title_text_width / #title_text_alpha.text_width) * #title_text_default_size),#title_text_default_size)"/>
+  <Var name="desc_text_width" type="number" expression="(209 * #sr)"/>
+  <Var name="desc_text_default_size" type="number" expression="(50 * #sr)"/>
+  <Var name="desc_size" type="number" expression="ifelse((#desc_text_alpha.text_width } #desc_text_width),((#desc_text_width / #desc_text_alpha.text_width) * #desc_text_default_size),#desc_text_default_size)"/>
+  <Var name="hourHigh" type="number" expression="int((ifelse(#time_format,#hour24,#hour12) / 10))"/>
+  <Var name="hourLow" type="number" expression="(ifelse(#time_format,#hour24,#hour12) % 10)"/>
+  <Var name="minHigh" type="number" expression="int((#minute / 10))"/>
+  <Var name="minLow" type="number" expression="(#minute % 10)"/>
+  <Var name="pet_complete" type="number" expression="0" const="true"/>
+  <Var name="aod_state" type="number" expression="0" const="true"/>
+  <Var name="pause_state" type="number" expression="0" const="true"/>
+  <Var name="pagIndex" type="number" expression="3" const="true"/>
+  <Var name="nextPag" type="number" expression="#pagIndex" const="true"/>
+  <Var name="disablePlay" type="number" expression="1" const="true"/>
+  <Var name="frame_down" type="number" expression="0" const="true"/>
+  <Function name="switchStateAod">
+    <VariableCommand name="frame_down" expression="1" type="number"/>
+    <FrameRateCommand rate="120"/>
+    <FolmeCommand target="time_desk" config="'folme_config_0'" states="'folme_state_0'" command="to"/>
+    <FolmeCommand target="time_aod" config="'folme_config_1'" states="'folme_state_1'" command="to"/>
+    <FolmeCommand target="aod_bg" config="'folme_config_2'" states="'folme_state_2'" command="to"/>
+  </Function>
+  <Function name="switchStateDesk">
+    <VariableCommand name="frame_down" expression="1" type="number"/>
+    <FrameRateCommand rate="120"/>
+    <FolmeCommand target="time_desk" config="'folme_config_3'" states="'folme_state_3'" command="to"/>
+    <FolmeCommand target="time_aod" config="'folme_config_4'" states="'folme_state_4'" command="to"/>
+    <FolmeCommand target="aod_bg" config="'folme_config_5'" states="'folme_state_5'" command="to"/>
+  </Function>
+  <Function name="switchPag">
+    <VariableCommand name="index" type="number" expression="0"/>
+    <LoopCommand loopCondition="((#index { 10) ** eq(#nextPag,#pagIndex))" count="999">
+      <VariableCommand name="nextPag" expression="int((rand() * 4))" type="number"/>
+      <VariableCommand name="index" expression="#index + 1" type="number"/>
+    </LoopCommand>
+    <VariableCommand name="pagIndex" expression="#nextPag" type="number"/>
+  </Function>
+  <Function name="petPagClickCommand">
+    <FrameRateCommand rate="120"/>
+    <FolmeCommand target="cute_pag" config="'folme_config_6'" states="'folme_state_6'" command="to"/>
+  </Function>
+  <Function name="petPagCommand">
+    <FrameRateCommand rate="120"/>
+    <FunctionCommand target="switchPag"/>
+  </Function>
+  <Function name="onComplete">
+    <VariableCommand name="pet_complete" expression="1" type="number"/>
+    <MultiCommand condition="(! #frame_down)">
+      <FrameRateCommand rate="0"/>
+    </MultiCommand>
+  </Function>
+  <Function name="onClick">
+    <MultiCommand condition="((#pet_complete == 1) ** (! #aod_state))">
+      <VariableCommand name="pet_complete" expression="0" type="number"/>
+      <FunctionCommand target="petPagClickCommand"/>
+    </MultiCommand>
+  </Function>
+  <Function name="onNfcPinComplete">
+    <VariableCommand name="disablePlay" expression="0" type="number"/>
+    <PagCommand target="cute_pag" command="setProgress" params="'0'"/>
+    <PagCommand target="cute_pag" command="play"/>
+  </Function>
+  <Function name="delayDisplay">
+    <MultiCommand condition="#aod_state">
+      <VariableCommand name="disablePlay" expression="1" type="number"/>
+    </MultiCommand>
+  </Function>
+  <Rectangle w="#view_width" h="#view_height" fillColor="@bgColor" x="0" y="0"/>
+  <Group x="(#view_width - (227 * #sr))">
+    <Text textExp="ifelse(eqs(@local,'zh_CN'),@zhTitle,@enTitle)" size="(104 * #sr)" alpha="(255 * 0)" name="title_text_alpha" fontPath="/product/fonts/DelaGothicOne.otf" fontPathWeight="400"/>
+    <Text textExp="@enDesc" size="#desc_text_default_size" alpha="(255 * 0)" name="desc_text_alpha" fontPath="/product/fonts/C800.ttf" fontPathWeight="400"/>
+    <Text y="((#view_height - (22 * #sr)) - ((#title_text_default_size - #title_size) / 2))" textExp="ifelse(eqs(@local,'zh_CN'),@zhTitle,@enTitle)" size="#title_size" color="@titleDescColor" name="title_text" fontPath="/product/fonts/DelaGothicOne.otf" fontPathWeight="400" alignV="bottom"/>
+    <Text y="(#view_height - ((#desc_text_default_size - #desc_size) / 2))" textExp="@enDesc" size="#desc_size" color="@titleDescColor" name="desc_text" fontPath="/product/fonts/C800.ttf" fontPathWeight="400" alignV="bottom"/>
+  </Group>
+  <Layer x="(#view_width - (227 * #sr))" y="#time_layer_y" frameRate="-1">
+    <Group folmeMode="true" name="time_desk">
+      <Group x="((- 10) * #sr)" w="(230 * #sr)" h="(80 * #sr)" contentDescriptionExp="formatDate(ifelse(#time_format,'HH:mm','hh:mm'),#time_sys)" visibility="eq(#aod_state,0)" y="0" interceptTouch="true" touchable="true"/>
+      <Text textExp="#hourHigh" size="(75 * #sr)" y="(3 * #sr)" color="@timeColor" w="(54 * #sr)" textAlign="'center'" fontPath="etc/c700_regular.ttf" fontPathWeight="400"/>
+      <Text textExp="#hourLow" size="(75 * #sr)" y="(3 * #sr)" x="(52 * #sr)" color="@timeColor" w="(54 * #sr)" textAlign="'center'" fontPath="etc/c700_regular.ttf" fontPathWeight="400"/>
+      <Image x="(100 * #sr)" y="(23 * #sr)" w="(14 * #sr)" h="(32 * #sr)" srcExp="(('assets/' + @assets) + '/desk_time_sep.png')"/>
+      <Text textExp="#minHigh" size="(75 * #sr)" y="(3 * #sr)" x="(104 * #sr)" color="@timeColor" w="(54 * #sr)" textAlign="'center'" fontPath="etc/c700_regular.ttf" fontPathWeight="400"/>
+      <Text textExp="#minLow" size="(75 * #sr)" y="(3 * #sr)" x="(156 * #sr)" color="@timeColor" w="(54 * #sr)" textAlign="'center'" fontPath="etc/c700_regular.ttf" fontPathWeight="400"/>
+    </Group>
+  </Layer>
+  <Layer frameRate="-1">
+    <PagView w="#view_width" h="#view_height" x="0" y="0" touchable="true" srcExp="(('assets/' + @assets) + '/nfc_pin_show.pag')" name="nfc_pin_pag" loop="1" layerType="top" setPath="true" scaleMode="1">
+      <Triggers>
+        <Trigger action="complete">
+          <FunctionCommand target="onNfcPinComplete"/>
+        </Trigger>
+      </Triggers>
+    </PagView>
+  </Layer>
+  <Layer frameRate="-1">
+    <PagView w="#pagWidth" h="#pagHeight" x="(#view_width + 1)" y="(#view_height + 3)" touchable="true" disablePlay="#disablePlay" srcExp="(((('assets/' + @assets) + '/pag_') + #pagIndex) + '.pag')" folmeMode="true" name="cute_pag" loop="1" autoPlay="true" layerType="top" align="right" alignV="bottom" setPath="true">
+      <Triggers>
+        <Trigger action="complete">
+          <FunctionCommand target="onComplete"/>
+        </Trigger>
+      </Triggers>
+    </PagView>
+    <Button w="#view_width" h="#view_height" x="0" y="0" interceptTouch="true">
+      <Triggers>
+        <Trigger action="up">
+          <FunctionCommand target="onClick"/>
+        </Trigger>
+      </Triggers>
+    </Button>
+  </Layer>
+  <Layer frameRate="-1">
+    <Rectangle w="#view_width" h="#view_height" x="0" y="0" alpha="(#aod_state * 255)" folmeMode="true" name="aod_bg" fillColor="#000000"/>
+  </Layer>
+  <Layer x="(#view_width - (227 * #sr))" y="#time_layer_y" frameRate="-1">
+    <Group alpha="(#aod_state * 255)" folmeMode="true" name="time_aod">
+      <Text textExp="#hourHigh" size="(75 * #sr)" y="(3 * #sr)" color="@sepAodTimeColor" w="(54 * #sr)" textAlign="'center'" fontPath="etc/c700_regular.ttf" fontPathWeight="400"/>
+      <Text textExp="#hourLow" size="(75 * #sr)" y="(3 * #sr)" x="(52 * #sr)" color="@sepAodTimeColor" w="(54 * #sr)" textAlign="'center'" fontPath="etc/c700_regular.ttf" fontPathWeight="400"/>
+      <Image x="(100 * #sr)" y="(23 * #sr)" w="(14 * #sr)" h="(32 * #sr)" srcExp="(('assets/' + @assets) + '/aod_time_sep.png')"/>
+      <Text textExp="#minHigh" size="(75 * #sr)" y="(3 * #sr)" x="(104 * #sr)" color="@sepAodTimeColor" w="(54 * #sr)" textAlign="'center'" fontPath="etc/c700_regular.ttf" fontPathWeight="400"/>
+      <Text textExp="#minLow" size="(75 * #sr)" y="(3 * #sr)" x="(156 * #sr)" color="@sepAodTimeColor" w="(54 * #sr)" textAlign="'center'" fontPath="etc/c700_regular.ttf" fontPathWeight="400"/>
+    </Group>
+  </Layer>
+  <Group>
+    <FolmeState name="folme_state_0" alpha="0"/>
+    <FolmeConfig name="folme_config_0" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_1" alpha="255"/>
+    <FolmeConfig name="folme_config_1" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_2" alpha="(255 * 0.4)"/>
+    <FolmeConfig name="folme_config_2" ease="-2, 1,0.72" onComplete="'folme_oncomplete_3'"/>
+    <Function name="folme_oncomplete_3">
+      <VariableCommand name="frame_down" expression="0" type="number"/>
+      <FrameRateCommand rate="0"/>
+    </Function>
+    <FolmeState name="folme_state_3" alpha="255"/>
+    <FolmeConfig name="folme_config_3" ease="-2, 1,0.72" onComplete="'folme_oncomplete_4'"/>
+    <Function name="folme_oncomplete_4">
+      <VariableCommand name="frame_down" expression="0" type="number"/>
+      <FrameRateCommand rate="0"/>
+    </Function>
+    <FolmeState name="folme_state_4" alpha="0"/>
+    <FolmeConfig name="folme_config_4" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_5" alpha="0"/>
+    <FolmeConfig name="folme_config_5" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_6" alpha="0"/>
+    <FolmeConfig name="folme_config_6" ease="1,125" onComplete="'folme_oncomplete_7'"/>
+    <Function name="folme_oncomplete_7">
+      <FunctionCommand target="switchPag"/>
+      <FolmeCommand target="cute_pag" config="'folme_config_7'" states="'folme_state_7'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_7" alpha="255"/>
+    <FolmeConfig name="folme_config_7" ease="1,200" delay="30"/>
+  </Group>
+  <ExternalCommands>
+    <Trigger action="init">
+      <FrameRateCommand rate="120"/>
+      <ExternCommand command="userActivity" strPara="'1'"/>
+      <VariableCommand name="pagIndex" expression="3" type="number"/>
+      <PagCommand target="cute_pag" command="setProgress" params="'0'"/>
+      <PagCommand target="cute_pag" command="pause"/>
+      <PagCommand target="nfc_pin_pag" command="play"/>
+    </Trigger>
+    <Trigger action="resume">
+      <MultiCommand condition="(! #aod_state)">
+        <MultiCommand condition="#pause_state">
+          <FunctionCommand target="petPagCommand"/>
+        </MultiCommand>
+        <VariableCommand name="pause_state" expression="0" type="number"/>
+        <VariableCommand name="pet_complete" expression="0" type="number"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="enterEdit">
+      <MultiCommand condition="eq(#selected,0)">
+        <FrameRateCommand rate="0"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="exitEdit">
+      <MultiCommand condition="eq(#pet_complete,1)">
+        <FunctionCommand target="petPagClickCommand"/>
+        <VariableCommand name="pet_complete" expression="0" type="number"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="play">
+      <FrameRateCommand rate="120"/>
+      <PagCommand target="cute_pag" command="setProgress" params="'0'"/>
+    </Trigger>
+    <Trigger action="pause">
+      <MultiCommand condition="#disablePlay">
+        <PagCommand target="nfc_pin_pag" command="setProgress" params="'0'"/>
+        <PagCommand target="nfc_pin_pag" command="pause"/>
+        <VariableCommand name="disablePlay" expression="0" type="number"/>
+      </MultiCommand>
+      <VariableCommand name="pause_state" expression="1" type="number"/>
+      <MultiCommand condition="#aod_state">
+        <VariableCommand name="pet_complete" expression="1" type="number"/>
+        <VariableCommand name="pagIndex" expression="0" type="number"/>
+        <VariableCommand name="nextPag" expression="0" type="number"/>
+        <PagCommand target="cute_pag" command="setProgress" params="'0'"/>
+      </MultiCommand>
+      <PagCommand target="cute_pag" command="pause"/>
+      <FrameRateCommand rate="0"/>
+    </Trigger>
+    <Trigger action="enterAod">
+      <FunctionCommand target="switchStateAod"/>
+      <VariableCommand name="aod_state" expression="1" type="number"/>
+      <FunctionCommand target="delayDisplay" delay="160"/>
+    </Trigger>
+    <Trigger action="exitAod">
+      <FunctionCommand target="switchStateDesk"/>
+      <VariableCommand name="aod_state" expression="0" type="number"/>
+      <VariableCommand name="disablePlay" expression="0" type="number"/>
+      <MultiCommand condition="eq(#pet_complete,1)">
+        <IfCommand ifCondition="eq(#pause_state,1)">
+          <Consequent>
+            <PagCommand target="cute_pag" command="resume"/>
+          </Consequent>
+          <Alternate>
+            <FunctionCommand target="switchPag"/>
+          </Alternate>
+        </IfCommand>
+        <VariableCommand name="pause_state" expression="0" type="number"/>
+        <VariableCommand name="pet_complete" expression="0" type="number"/>
+      </MultiCommand>
+    </Trigger>
+  </ExternalCommands>
+</Widget>

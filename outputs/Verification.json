@@ -1,0 +1,3964 @@
+{
+  "version": "0.4",
+  "apkSha256": "b46ea0d57da9c5714c8af67a73e259e0c78d5c5cd75d008838fc837789c10e09",
+  "catalogSets": 30,
+  "originalClips": 170,
+  "pagClips": 116,
+  "mp4Clips": 54,
+  "offlineCompositions": 11,
+  "originalImages": 497,
+  "compiledNinePatches": 110,
+  "originalFonts": 5,
+  "environment": "Android 16 / API 36 x86_64 emulator; virtual displays only; MIX Flip not connected",
+  "assetTests": {
+    "qa.json": {
+      "apkSha256": "b46ea0d57da9c5714c8af67a73e259e0c78d5c5cd75d008838fc837789c10e09",
+      "tested": 170,
+      "failed": 0,
+      "results": [
+        {
+          "pet": "Bubbles",
+          "clip": "0",
+          "path": "pets/koala-archived-presets/pag_0.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 2200000,
+          "frameHashes": [
+            "9f1dc261aa2135c85ddb5d7ead6c63ef6b11ac291de83b6f185443da03eebcac",
+            "47577e45c32f3c40dbe29519fde7e046191356098cf27c0f1e35a5ec68f4b1ed"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Bubbles",
+          "clip": "1",
+          "path": "pets/koala-archived-presets/pag_1.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 4000000,
+          "frameHashes": [
+            "8118de8734cbc7f37831674e983c3dd2955c32781f4ec27c29b32e45673f7b09",
+            "42197cb5cc7493a6a8b49c817cb76e7b405fb7dec9893ad720aa89b081d91e43"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Bubbles",
+          "clip": "2",
+          "path": "pets/koala-archived-presets/pag_2.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 4000000,
+          "frameHashes": [
+            "dce4d3b0f83167f13af69066a4f51b4c1b71df53a58585fb3453860b21daa25f",
+            "2878e978b7492d90ad990a4fa4ca2c4517ffd91668109a9d53ac5670d7bcdd40"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Bubbles",
+          "clip": "3",
+          "path": "pets/koala-archived-presets/pag_3.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3533334,
+          "frameHashes": [
+            "9b99f394c4b4fe955b8455bc735f4c48aeeb6b0e542d092d49ea9b0eb72c32a3",
+            "a1ae0bccbb67fe239a3ebe7559e1e0bd4cbefdc2707cdc57af77a93606f32261"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Bubbles",
+          "clip": "4",
+          "path": "pets/koala-archived-presets/pag_4.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3500000,
+          "frameHashes": [
+            "93d58041f180af2e6b00cfa9ccac9d396ba9c86591d649364cf9248745b8aebc",
+            "2b3500add69b45aba3d3bc84cabc79ad9ef3cd82ae4bb6ba2190d6883c6614e8"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Bubbles",
+          "clip": "5",
+          "path": "pets/koala-archived-presets/pag_5.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 5000000,
+          "frameHashes": [
+            "5fa8b6566ba770896ec2babfba4b7c19bfeff533c014cd6413a8e4bb7018ec37",
+            "ba87d6cb5646f0513a995747c18d8bc37f1dfd015d0bbd9b05de741c91597178"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Bubbles",
+          "clip": "6",
+          "path": "pets/koala-archived-presets/pag_6.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3000000,
+          "frameHashes": [
+            "bca4bb6066263e47e1fa28eafcfe854d53adc9ceaa1f8c0cff439b0ffa823c9f",
+            "0cee3ef0f1edc064048d7a39f46d4191d24b3863eedcde2196609c8c6bed7751"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Bubbles",
+          "clip": "7",
+          "path": "pets/koala-archived-presets/pag_7.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 5000000,
+          "frameHashes": [
+            "9377fa749d3ec6d0814187ece424dc19e5621a865a74467780564b2bdc9f7673",
+            "3661605ebe6259dca5980486b226ee84c705dd4653adc7b25e685b1c8be74bca"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Bubbles",
+          "clip": "8",
+          "path": "pets/koala-archived-presets/pag_8.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3200000,
+          "frameHashes": [
+            "7df95f412bb0423b38849dc346ac6536feb997414f879fd105e83b07caaafa0e",
+            "fdf41dfbf1a80f494b32cb097267116f7467f6463b2da1dc4481f75d95d98bef"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Bubbles",
+          "clip": "9",
+          "path": "pets/koala-archived-presets/pag_9.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3333334,
+          "frameHashes": [
+            "a8f5f43f41abf71facb22d628c3504f564bd57b725f19e6235edba85f109e1fa",
+            "e58c853b3316e4025ccd59c71d05465814172ce70039a8266202846f54293935"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Bubbles",
+          "clip": "10",
+          "path": "pets/koala-archived-presets/pag_10.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3333334,
+          "frameHashes": [
+            "700f87b738274cab53406236dda9d20dc8fd01bd2ade1b85adfe5ccae0c898a5",
+            "fec1088768cd5c6dd797b14a802792ab22a17b7adf848fdb9c3aceec371b7ebc"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Bubbles",
+          "clip": "11",
+          "path": "pets/koala-archived-presets/pag_11.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 5666667,
+          "frameHashes": [
+            "ef50f5c0337721df634c043cfcf262a0d20ba81f7d9e990bea97441fec92b297",
+            "fb866d25f840805c11264aadebd414c8ec8137fff1e04d35614903c9de7646d6"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Bubbles",
+          "clip": "12",
+          "path": "pets/koala-archived-presets/pag_12.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 4233334,
+          "frameHashes": [
+            "fc52a763c82cdadcf36912db11eabf6a2924c8e3aef3b3d02be968bb289f42ee",
+            "ee07e027646c97d5590da39b040904034153df8aefe5e722bdf9f1f275390e8b"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Bubbles",
+          "clip": "13",
+          "path": "pets/koala-archived-presets/pag_13.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 4333334,
+          "frameHashes": [
+            "96c9bc22d50257476ab15380ede6152a92c80683cd05ee5b02a2944d7bda47ee",
+            "bad5d8b905a59dd6ee07f44b861b9fb4f5eb17ae00e7cc151d5c057b3b26a33a"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Bubbles",
+          "clip": "14",
+          "path": "pets/koala-archived-presets/pag_14.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3666667,
+          "frameHashes": [
+            "7a0c4c39144c41863c692ae0a9c87540b2cfcb1f604f5a7647eb7082f109e585",
+            "56337783dc45a5e8357197623a4477323f0457056d76795e9f86ece4eb4ad9f9"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Bubbles",
+          "clip": "15",
+          "path": "pets/koala-archived-presets/pag_15.pag",
+          "width": 904,
+          "height": 572,
+          "durationUs": 7033334,
+          "frameHashes": [
+            "589329ca26b811cf38fe79d434580f091a761f73c743fda5965bfd47243c87bd",
+            "64b5bdeb67a9ed10b81137d26477ab2a30f2c6528046d09b7846557e0f978087"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Bubbles",
+          "clip": "16",
+          "path": "pets/koala-archived-presets/nfc_pin_show.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 2000000,
+          "frameHashes": [
+            "61d0b19055b03d0a3969bd603cc371a544c60d58c09f8fa3195acb74e4c265af",
+            "8fe0db5fc905fa63136863e951c3ad4ad0323efe65579813b54413824ccbdaa5"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Roe",
+          "clip": "0",
+          "path": "pets/roedeer-archived-presets/pag_0.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3600000,
+          "frameHashes": [
+            "a96b9392616c908df578a3d72f57df97fd52baa73b5644332b181b9712c28f82",
+            "a3bb1d1b176061af10e79397c627b001c311d93e04b767dd681a46ef744f80ee"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Roe",
+          "clip": "1",
+          "path": "pets/roedeer-archived-presets/pag_1.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3633334,
+          "frameHashes": [
+            "51f88f39d176c2f3ca1b9b4d880ff09eea1be379e5cd2352048351005ae5bf76",
+            "948aeecd3259ba0fa4651476b093400a466ae4678d222729a2866b5efee39194"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Roe",
+          "clip": "2",
+          "path": "pets/roedeer-archived-presets/pag_2.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 2800000,
+          "frameHashes": [
+            "1ddff28734df2e5d4093ebdccf5a87e1c963bec961feed35045f998a2cf93eb8",
+            "81a83f4a3fea1a7b3cdf6cb899bd22b3a9ae233b3718a076d2a4bb682d13f9ff"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Roe",
+          "clip": "3",
+          "path": "pets/roedeer-archived-presets/pag_3.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 1900000,
+          "frameHashes": [
+            "c149b1daaee0015af27a6ac7551011b74146cb037eec8217314a7c589df19853",
+            "c1b4aa43a1ed3e1883c3b7e80eec4bd8c4a93273d6dbcb6a0da701678c98e7b0"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Roe",
+          "clip": "4",
+          "path": "pets/roedeer-archived-presets/pag_4.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 6666667,
+          "frameHashes": [
+            "ec6abbcf354f5193cb8a98f6e7339b12eee524b601950f0187163f86ebd2f736",
+            "8078de32d119cdaa87f92facfd8fd1a37be762b37f106fd79c3919a1e1165f48"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Roe",
+          "clip": "5",
+          "path": "pets/roedeer-archived-presets/pag_5.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 6366667,
+          "frameHashes": [
+            "4f54564c245c6984cb178dbbb4202799031ac4140ed50693e2abb4f1e809afbe",
+            "e055dfd6fe331318bedace6b4e8f11289cb313fb676ab912b79339aca177021d"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Roe",
+          "clip": "6",
+          "path": "pets/roedeer-archived-presets/pag_6.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 5000000,
+          "frameHashes": [
+            "2fb834c33ad6c21535669f2003485d1e8d341d327eb57cb4422f7b6218c0da1b",
+            "0afe474e6077c340fdd2f198fcfa2e1d7c0a9da74ba3789a05411a035bd8abaf"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Roe",
+          "clip": "7",
+          "path": "pets/roedeer-archived-presets/pag_7.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3733334,
+          "frameHashes": [
+            "ef4d1f7f4130ea1f6a5d6ff8fbe2d73c217728624c3e4278128fb3532e955b6f",
+            "495a2a36364b98cd9fccb148f178b1bbc28380739ad16895c309f3bd97a96da9"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Roe",
+          "clip": "8",
+          "path": "pets/roedeer-archived-presets/pag_8.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3200000,
+          "frameHashes": [
+            "f76c1c2b96facde9aa72dd6456877d86713cd1134b3a53f5d341d9e4bdd41fc8",
+            "77bf8e27e6634d62092b2c1f0dec0ab3e921a77d7006d5a702dd6bb1f021c08c"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Roe",
+          "clip": "9",
+          "path": "pets/roedeer-archived-presets/pag_9.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3166667,
+          "frameHashes": [
+            "a74701d2ecb90288cb3db1addbda74b59e3b758b26a7a9ab97a89b84bd82772c",
+            "f9e723f85a81fe3e047be82ada9becf55570ab96ab163b5eeec4473df0717aac"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Roe",
+          "clip": "10",
+          "path": "pets/roedeer-archived-presets/pag_10.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 4333334,
+          "frameHashes": [
+            "fa663e82f3be152dd9e056e3b4904fc18c219f08acdd453973554da4f093662e",
+            "5ae87b5fe012038d977fe1fc38f89659c9e868deb5bec9d38a7e6bc46f1e3f73"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Roe",
+          "clip": "11",
+          "path": "pets/roedeer-archived-presets/pag_11.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3333334,
+          "frameHashes": [
+            "3bd5a2bc904482f8d0d5909028f237154d082594483a48b906df38f7fa3b3819",
+            "e63b23818f260043d78f9c0d62aa3f2b95fd352db5453c358852ee18b0043b07"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Roe",
+          "clip": "12",
+          "path": "pets/roedeer-archived-presets/pag_12.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 5033334,
+          "frameHashes": [
+            "9da7f12e817a6353d8016ad600641d9589d906f87343c6fa6c2744b773ddc652",
+            "000d8d396c249d828b34fdb71e36d4932c9643549e1b7a3b36c8ddecacc88e85"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Roe",
+          "clip": "13",
+          "path": "pets/roedeer-archived-presets/pag_13.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3666667,
+          "frameHashes": [
+            "90fdaea03caf891682beca117d7cf593849d4e989f4b44f58428f60cf5bcfc34",
+            "931c2d7700416a05a1478fb2a2d9b07c4917298dc9294df497d103cb11d567b9"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Roe",
+          "clip": "14",
+          "path": "pets/roedeer-archived-presets/pag_14.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3233334,
+          "frameHashes": [
+            "6ad631c921014a58901bcccc35e1c97d889d936f66c8d72205c6a650d90d4a99",
+            "9e0a0b3d249c557f773debddeadd05aea8d1df3856fe14e80265aed5b9cbb9a5"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Roe",
+          "clip": "15",
+          "path": "pets/roedeer-archived-presets/pag_15.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 7333334,
+          "frameHashes": [
+            "cddbb8ab3d675e42f940fe40723aef753ebb78a34111ab9c91ff56f21d86d70d",
+            "8ba882a9d171d582b21fbf9963280a3cd79c67146bc218756abdf400925c0d2c"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Roe",
+          "clip": "16",
+          "path": "pets/roedeer-archived-presets/nfc_pin_show.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 2000000,
+          "frameHashes": [
+            "61d0b19055b03d0a3969bd603cc371a544c60d58c09f8fa3195acb74e4c265af",
+            "8fe0db5fc905fa63136863e951c3ad4ad0323efe65579813b54413824ccbdaa5"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Butterfly carp",
+          "clip": "0",
+          "path": "pets/q_carp-pandora/pag_0.pag",
+          "width": 904,
+          "height": 572,
+          "durationUs": 11983334,
+          "frameHashes": [
+            "e02212716404cf2fb14eb8a95dc551caf8c27e2e4d517d37d1b872cd0aecc58d",
+            "5c0cbecefce87c87704c3b8aa33badb44fc166efb28e9e7cef57b7d477334326"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Butterfly carp",
+          "clip": "1",
+          "path": "pets/q_carp-pandora/pag_1.pag",
+          "width": 904,
+          "height": 572,
+          "durationUs": 11983334,
+          "frameHashes": [
+            "ff690338547d29b6a141a2002b0d62a8a5c9e4f55341e170430fb77196c9f0a9",
+            "d4cad7e72a34e1eeddcd50e1d3d9d73bfdfafb68009ebc3ca79d7c2efa076489"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Butterfly carp",
+          "clip": "2",
+          "path": "pets/q_carp-pandora/pag_2.pag",
+          "width": 904,
+          "height": 572,
+          "durationUs": 10000000,
+          "frameHashes": [
+            "36430e5fec5be7f58c0d857f8181fb722434ec862e789cdac2ec02106ac84320",
+            "2c1cf130c8aa9047fdec13e75e350028136916c6c00e9a991eff9b67ddf5b7b0"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Butterfly carp",
+          "clip": "3",
+          "path": "pets/q_carp-pandora/pag_3.pag",
+          "width": 904,
+          "height": 572,
+          "durationUs": 9933334,
+          "frameHashes": [
+            "e387ac85313dadf958088ecf9c85acb3c8631f385695ebdb841a2003ab62e7e6",
+            "1f60e3d4a4efc712057855078eff0bf1dd1ef14cf2bfe26812a2d0f0475cd7be"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Charlie",
+          "clip": "0",
+          "path": "pets/bird-pandora/pag_0.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 6000000,
+          "frameHashes": [
+            "906e7181a10fdf425789fa7549a0fe14350158a485bc994da4ab39a18b8e5dfb",
+            "2c5f42f008743f7a23a0cd7cc1713bc25cb52f83f65309170f1462bc820bfe4e"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Charlie",
+          "clip": "1",
+          "path": "pets/bird-pandora/pag_1.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 6000000,
+          "frameHashes": [
+            "c465d05bfef41c59ab8ce18e6603963b9976c6138a6ea95e5c6b25bc771ccb7d",
+            "e402ccac795353f5f6226f95a3dc4684c120fc29cc3a2ee45afe67838b428f92"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Charlie",
+          "clip": "2",
+          "path": "pets/bird-pandora/pag_2.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3000000,
+          "frameHashes": [
+            "ccf2cc19aa9ac828c5c8a115dcdd1e859d6d80f427e72304376b4115e4edeabb",
+            "6a9e2d2930eb0c9b4236ba0b4bc8be4f42e745dbcbb79003b0493dbde2fc45c4"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Charlie",
+          "clip": "3",
+          "path": "pets/bird-pandora/pag_3.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3366667,
+          "frameHashes": [
+            "196ebbbe45488244548d637e84113f3fc6a30e3c20e24a90b60bb0808ccedc73",
+            "7e052ee3ff7182bf8399ac9abb5a67701953c9c785f763bb19cdd0f1575c998f"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Charlie",
+          "clip": "4",
+          "path": "pets/bird-pandora/pag_4.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3666667,
+          "frameHashes": [
+            "379f7e8110d2a9e637eb5e4f8d692dfbf08f60d5ae451e0b4fe1db1f8241a757",
+            "f9665682b82c803c62a8218522f8aa280cf566579ee816af55ce35743d282965"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Charlie",
+          "clip": "5",
+          "path": "pets/bird-pandora/pag_5.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3000000,
+          "frameHashes": [
+            "e51973480cdad2f1d8e58b74a5ad75afbd73065cc113551a618c9aff16061bf3",
+            "6e04b3f7da8e8fcd46aea887a208bec910e40a2f951ba6fdc08bebcc8d88b470"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Charlie",
+          "clip": "6",
+          "path": "pets/bird-pandora/pag_6.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 1666667,
+          "frameHashes": [
+            "87b7a445663b5a977063e32346df1d44f2d7dfcb10bfef11ad984dfe6f7b4669",
+            "15506e840398c96e731bf3967db9c457fd7db8ec36af272ed6e3e71be25c9702"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Charlie",
+          "clip": "7",
+          "path": "pets/bird-pandora/pag_7.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3666667,
+          "frameHashes": [
+            "70cf44753cfb7966ffb3c1d0ad6ab1341c598c48b4385678307ce439450f6c1f",
+            "0afbf7cee740beed9d5932fbde8c29cba90418c05a189e6d1d6c0e4f2fa86580"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Charlie",
+          "clip": "8",
+          "path": "pets/bird-pandora/pag_8.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3333334,
+          "frameHashes": [
+            "4ef7b6aa6c51c5d9968ef50c589b74b2c80559418b918c100b41195da6372ea2",
+            "e65c8cca4d41e15f94096d3495cf14288cb89dac7bd6cd8f0eaa48431f87b62b"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Charlie",
+          "clip": "9",
+          "path": "pets/bird-pandora/pag_9.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 5333334,
+          "frameHashes": [
+            "15e036234193148625db93c86e6f96dcfee5c5f5450bb5d7854cd8b373ce4656",
+            "f543ef8776050629e0a9ba19bad6c96e299f10c89523b6e73ba679d94b0aad9c"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Charlie",
+          "clip": "10",
+          "path": "pets/bird-pandora/pag_10.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 6000000,
+          "frameHashes": [
+            "5b3d9714e082583d9dc870f39f63fb04ab9d48ab259fecae39229159e94b9c52",
+            "08db06ee68605638440127bd4ffea377f52475392ce1f4751330857d052c5a7c"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Charlie",
+          "clip": "11",
+          "path": "pets/bird-pandora/pag_11.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 4666667,
+          "frameHashes": [
+            "5cc8eefe8e9cc497ba163ebd124b25c3a3eeb66bae31f7cb334f9f644590eda0",
+            "3e1d21b86e12dd79052f2f4d44a3c2fb10a6de3f994573a35decf575235250e7"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco",
+          "clip": "0",
+          "path": "pets/seal-archived-presets/pag_0.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 5333334,
+          "frameHashes": [
+            "882c3d8e09d7b1d9cbbd25b34ecb9d3891e4566ef148354ee19962cae036d716",
+            "2d9915254cc311d434c61f7d042cd754235ecc6be283a49aa3c7d94267ec6210"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco",
+          "clip": "1",
+          "path": "pets/seal-archived-presets/pag_1.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 6000000,
+          "frameHashes": [
+            "cb4c807a6462f2ed2e1a18e919512b78dde2f70d85f930f3bda3d5e3c2087bdd",
+            "1906f1adb3766ec3bc06ca37bb96e7d919074f3d3e9f3c99c649cff3896b070f"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco",
+          "clip": "2",
+          "path": "pets/seal-archived-presets/pag_2.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 5000000,
+          "frameHashes": [
+            "7b8cc5287e1f110a606471b9f29f5f123f7607e49887912c4c9f3a9758bc8f27",
+            "035cccbafb0c806524ccd9114cb3d2251b75f43c9e1fd2c33fc083c853a19cb4"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco",
+          "clip": "3",
+          "path": "pets/seal-archived-presets/pag_3.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 4666667,
+          "frameHashes": [
+            "db4e689bd5a050b2c74c5a72f3b9c194bd3d925ebbb646711aa7dfb327a17e06",
+            "b43d95e8c457634289a34e6f310f245f9daea20e182a712222fa7633c89b03cf"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco",
+          "clip": "4",
+          "path": "pets/seal-archived-presets/pag_4.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 4333334,
+          "frameHashes": [
+            "e99a47780ede506227a4a8c10c839be8f2c0e43d819b2af1fb861ad8a41bc32c",
+            "85a6fbc6781bc499ed54e4943bb1c3bbc26d5590642b7ba62d4a071c3e31edc7"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco",
+          "clip": "5",
+          "path": "pets/seal-archived-presets/pag_5.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 4000000,
+          "frameHashes": [
+            "dffbcffe2a21ae0ff8bc3a638323db9c60cd8efdd316bf0c186687ee2cb06320",
+            "fd009f19233306101d6aa04d5edd730c3b9c8a72236051ec15dfaaffcc03b4d9"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco",
+          "clip": "6",
+          "path": "pets/seal-archived-presets/pag_6.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3666667,
+          "frameHashes": [
+            "81e8ab9e9f188a9574e64ab0f978734dfbf6fd8efb4db7f3537891013c82bc23",
+            "5553474d1447ba191c6bfd2ad5667d2c6b9b5b2d6e09dc318f2ff172abb90f31"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco",
+          "clip": "7",
+          "path": "pets/seal-archived-presets/pag_7.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3333334,
+          "frameHashes": [
+            "d91fb9484079b6b50ce761bc397e1c9c7c6508e402ae8e56b4c3cdebed56a82f",
+            "ca67077eb6aee7b7363560660f09eb5b6fa550915ec921eb3ad700bbc4c76180"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco",
+          "clip": "8",
+          "path": "pets/seal-archived-presets/pag_8.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3666667,
+          "frameHashes": [
+            "24fcd3164141abb6c2c8d94b1150e0697a713905f08c62207d1d7479285a40ae",
+            "191fbc63e4f909549791a95f4eb30724bfb3e9d2af49dfad33090501e52fe3a5"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco",
+          "clip": "9",
+          "path": "pets/seal-archived-presets/pag_9.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 2766667,
+          "frameHashes": [
+            "e993330c3dced38e9c1c29eda0b6beb08117802af911c1d62e02b8d214098ffe",
+            "4b8e1d9c9ac6a9f658c71346720f6d4f0cab1c58cf991fe65c8df8f86194e084"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco",
+          "clip": "10",
+          "path": "pets/seal-archived-presets/pag_10.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 4333334,
+          "frameHashes": [
+            "fe727b31216e7ac5ca8a1b4efdd2e4361a7c8d2ab6bbe1aacb5356f07a06efcb",
+            "9740ac94c8963fb04bc8dd2ff8a6809c494f4c04515349c7b43831ea73b86a83"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco",
+          "clip": "11",
+          "path": "pets/seal-archived-presets/pag_11.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 6666667,
+          "frameHashes": [
+            "4c09d697634c4ce642ab3380d7002f722940ef484a220fdc0b0ac05ccb34e05d",
+            "1f80eb8a51935ff0178b9e1660bf253d1d4b4650915854a434c476d70e203098"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco",
+          "clip": "12",
+          "path": "pets/seal-archived-presets/nfc_pin_show.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 2000000,
+          "frameHashes": [
+            "61d0b19055b03d0a3969bd603cc371a544c60d58c09f8fa3195acb74e4c265af",
+            "8fe0db5fc905fa63136863e951c3ad4ad0323efe65579813b54413824ccbdaa5"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco · классический",
+          "clip": "0",
+          "path": "pets/seal-pandora/pag_0.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 5333334,
+          "frameHashes": [
+            "882c3d8e09d7b1d9cbbd25b34ecb9d3891e4566ef148354ee19962cae036d716",
+            "2d9915254cc311d434c61f7d042cd754235ecc6be283a49aa3c7d94267ec6210"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco · классический",
+          "clip": "1",
+          "path": "pets/seal-pandora/pag_1.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 6000000,
+          "frameHashes": [
+            "cb4c807a6462f2ed2e1a18e919512b78dde2f70d85f930f3bda3d5e3c2087bdd",
+            "1906f1adb3766ec3bc06ca37bb96e7d919074f3d3e9f3c99c649cff3896b070f"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco · классический",
+          "clip": "2",
+          "path": "pets/seal-pandora/pag_2.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 5000000,
+          "frameHashes": [
+            "7b8cc5287e1f110a606471b9f29f5f123f7607e49887912c4c9f3a9758bc8f27",
+            "035cccbafb0c806524ccd9114cb3d2251b75f43c9e1fd2c33fc083c853a19cb4"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco · классический",
+          "clip": "3",
+          "path": "pets/seal-pandora/pag_3.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 4666667,
+          "frameHashes": [
+            "db4e689bd5a050b2c74c5a72f3b9c194bd3d925ebbb646711aa7dfb327a17e06",
+            "b43d95e8c457634289a34e6f310f245f9daea20e182a712222fa7633c89b03cf"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco · классический",
+          "clip": "4",
+          "path": "pets/seal-pandora/pag_4.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 4333334,
+          "frameHashes": [
+            "e99a47780ede506227a4a8c10c839be8f2c0e43d819b2af1fb861ad8a41bc32c",
+            "85a6fbc6781bc499ed54e4943bb1c3bbc26d5590642b7ba62d4a071c3e31edc7"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco · классический",
+          "clip": "5",
+          "path": "pets/seal-pandora/pag_5.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 4000000,
+          "frameHashes": [
+            "dffbcffe2a21ae0ff8bc3a638323db9c60cd8efdd316bf0c186687ee2cb06320",
+            "fd009f19233306101d6aa04d5edd730c3b9c8a72236051ec15dfaaffcc03b4d9"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco · классический",
+          "clip": "6",
+          "path": "pets/seal-pandora/pag_6.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3666667,
+          "frameHashes": [
+            "81e8ab9e9f188a9574e64ab0f978734dfbf6fd8efb4db7f3537891013c82bc23",
+            "5553474d1447ba191c6bfd2ad5667d2c6b9b5b2d6e09dc318f2ff172abb90f31"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco · классический",
+          "clip": "7",
+          "path": "pets/seal-pandora/pag_7.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3333334,
+          "frameHashes": [
+            "d91fb9484079b6b50ce761bc397e1c9c7c6508e402ae8e56b4c3cdebed56a82f",
+            "ca67077eb6aee7b7363560660f09eb5b6fa550915ec921eb3ad700bbc4c76180"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco · классический",
+          "clip": "8",
+          "path": "pets/seal-pandora/pag_8.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3666667,
+          "frameHashes": [
+            "24fcd3164141abb6c2c8d94b1150e0697a713905f08c62207d1d7479285a40ae",
+            "191fbc63e4f909549791a95f4eb30724bfb3e9d2af49dfad33090501e52fe3a5"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco · классический",
+          "clip": "9",
+          "path": "pets/seal-pandora/pag_9.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 2766667,
+          "frameHashes": [
+            "e993330c3dced38e9c1c29eda0b6beb08117802af911c1d62e02b8d214098ffe",
+            "4b8e1d9c9ac6a9f658c71346720f6d4f0cab1c58cf991fe65c8df8f86194e084"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Coco · классический",
+          "clip": "10",
+          "path": "pets/seal-pandora/pag_10.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 4333334,
+          "frameHashes": [
+            "fe727b31216e7ac5ca8a1b4efdd2e4361a7c8d2ab6bbe1aacb5356f07a06efcb",
+            "9740ac94c8963fb04bc8dd2ff8a6809c494f4c04515349c7b43831ea73b86a83"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Flowing glitter",
+          "clip": "0",
+          "path": "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/blue976x596.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 10000000,
+          "frameHashes": [
+            "bc85803ac75a4e1a96dbfbb376b8b815158bde8450f821f2a24de98eeb7f0ca1",
+            "13dd139f6a9a69dfa4597800bde61053661138f9899c31c1856d71813dbfa73e"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Flowing glitter",
+          "clip": "1",
+          "path": "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/gold976x596.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 10000000,
+          "frameHashes": [
+            "00c4fba1c1f4ad07b5cd39cdd430685639051c2fe8d027ad3da96fca55af0eb8",
+            "6a35baedefe957c856f719cb71d3d0b7486c8c569ee65a8e5955b40c5382a693"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Flowing glitter",
+          "clip": "2",
+          "path": "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/pink976x596.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 10000000,
+          "frameHashes": [
+            "8d86031e39de28d66e0fa8ee768387b82d3c445c6097959ce4dcc64a945d56a5",
+            "a012ad4c08fe7eb8c99e9970fbd1b0211d05774a205da9b30dbd66002396cce2"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Flowing glitter",
+          "clip": "3",
+          "path": "pets/80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora/white976x596.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 10000000,
+          "frameHashes": [
+            "056f7726dab532392e852e8f3b2bb3b3dda229452c34a39a41d556ac0adf49e4",
+            "b16f31354add22022bc77007401274ca59872a848a83b6afa5c82edede8d16b7"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Jumbo",
+          "clip": "0",
+          "path": "pets/capybara-archived-presets/pag_0.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 7500000,
+          "frameHashes": [
+            "3d553304d54ac1a2665a463a01713a3c8bad4984f4d9c8e53ade6ee8327f3553",
+            "1fc8f2e3a2efc0dcb06491a24d4419a263ada97b92913a22ed1af06269741d95"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Jumbo",
+          "clip": "1",
+          "path": "pets/capybara-archived-presets/pag_1.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 5833334,
+          "frameHashes": [
+            "2da5f33b35a2793b0df36bbd25c3f0d1eb03217064e34a0f6f7cf21a7ad861b6",
+            "9887b2832c444e49d38eaac50ac23500321349c564aa91f6b3f514b428367b2d"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Jumbo",
+          "clip": "2",
+          "path": "pets/capybara-archived-presets/pag_2.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 10000000,
+          "frameHashes": [
+            "b69f9a3685c58189d7b5f4dd1724ea3f74bc1eb1b226abf18bb27f83dee4b5d1",
+            "922ab23815e1508bd3f780f68e03c8349e622517d35b7caa8b5582778dc902d3"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Jumbo",
+          "clip": "3",
+          "path": "pets/capybara-archived-presets/pag_3.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 7666667,
+          "frameHashes": [
+            "dccff03ac3693ef377854a3d036787a9e3f2aca0e52727f3b3a6d356a7ecfbdc",
+            "b13d8173f6aa63168f74830497456dfe338d31d40edf30f2c770204034459920"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Jumbo",
+          "clip": "4",
+          "path": "pets/capybara-archived-presets/nfc_pin_show.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 2000000,
+          "frameHashes": [
+            "61d0b19055b03d0a3969bd603cc371a544c60d58c09f8fa3195acb74e4c265af",
+            "8fe0db5fc905fa63136863e951c3ad4ad0323efe65579813b54413824ccbdaa5"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola",
+          "clip": "0",
+          "path": "pets/sheep-archived-presets/pag_0.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 6466667,
+          "frameHashes": [
+            "8217e06b66f19b166bda113e4cf67fb9d3366ea9bb8d12aa5162f83a58ebb93c",
+            "39901d043b423fc0b12219b6efaf715e62c63c414ff1546d2a62f580068c6035"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola",
+          "clip": "1",
+          "path": "pets/sheep-archived-presets/pag_1.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 6500000,
+          "frameHashes": [
+            "8a117f1d460510931327f663b23d567e29cee2b6416110e337a3adbe988e7326",
+            "6615846b69315fffa5db4262390adce043c777daf39ed4d7b99e973cf8d33335"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola",
+          "clip": "2",
+          "path": "pets/sheep-archived-presets/pag_2.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3733334,
+          "frameHashes": [
+            "1d630757ca002d3b012eb55c2e06925e9c58a9e998faeb7d2a6351ff5b013543",
+            "01028506dd3eb28cdc9f393e85ef274a2916b63fd04034823d52c5696b674dde"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola",
+          "clip": "3",
+          "path": "pets/sheep-archived-presets/pag_3.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 2666667,
+          "frameHashes": [
+            "8f0ead4d955d14cc388ea53e6300139d551e431647c69d196789861bcd8aa2a9",
+            "1e1435c7e046efb77483cf85800c4cc5982ff71dc531151c5cde606610a26da9"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola",
+          "clip": "4",
+          "path": "pets/sheep-archived-presets/pag_4.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 4466667,
+          "frameHashes": [
+            "8a7e471d76ce96c406e1c4fbb69c0174a3115f8c156273a094e517442a9244c9",
+            "4ee73113aaac64210a8b0bb1081e8ca63a99e7b5b23b0328f4b376a167e5e6e8"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola",
+          "clip": "5",
+          "path": "pets/sheep-archived-presets/pag_5.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3833334,
+          "frameHashes": [
+            "1f9afa399e696d349f163294a4c0edbf1e4888618a987792bd59aff0dfaf9e55",
+            "b78b93bc5ea850904e1df74ff24e28308bc32c265bc3385eeffe006c3ec49640"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola",
+          "clip": "6",
+          "path": "pets/sheep-archived-presets/pag_6.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3900000,
+          "frameHashes": [
+            "9dfd7c1366734891866837ebefbedf5e705a809ac7d9ba9847c2505321054ef4",
+            "a3d63f9ba482be3057b64dafaeca70f8b52f73c76d364954f71c85da2cb96a84"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola",
+          "clip": "7",
+          "path": "pets/sheep-archived-presets/pag_7.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 5133334,
+          "frameHashes": [
+            "d02cb111217cff8529cb9d783a8a6f844733e8e56caf2f31472982165f359a30",
+            "0eeb9bf3c78ffad572c9c9c0135b9f0267d0364cca7c1119549b3dfc7d1c5924"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola",
+          "clip": "8",
+          "path": "pets/sheep-archived-presets/pag_8.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 5000000,
+          "frameHashes": [
+            "44eca3ffab885f6a614f7888607fbf26f60793aa6a4e25a6619bb4aea5757214",
+            "d3c0efa6319c10278c7e185ba43ddf293ed998484c703b824a2034487ec2b177"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola",
+          "clip": "9",
+          "path": "pets/sheep-archived-presets/pag_9.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 2466667,
+          "frameHashes": [
+            "10d0c651a6b5a3d9d5473c5c11b914a37da117d852259d284413d009eedf69cc",
+            "9d8876ffb4acb291300e4e62eb9ab3345d86850b70f3b8f622d4d67f1cde82d8"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola",
+          "clip": "10",
+          "path": "pets/sheep-archived-presets/pag_10.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 5466667,
+          "frameHashes": [
+            "e4b998a9dd96ddf6017a18adfc256cf6a0ecb3662c984c8b3962a43525325bdf",
+            "13313fa431901898729ebd362bf23d182a815a1f2adb4d78251b0ecde8892f87"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola",
+          "clip": "11",
+          "path": "pets/sheep-archived-presets/pag_11.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 6333334,
+          "frameHashes": [
+            "0d301b7811dc39651176e9dc0c7f15448d2e77529b2460928c2c08a31c39c65d",
+            "8e22a8810b8e41e572b90cd57d2e664e602c33b6a57a24763fb406d03bb466fc"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola",
+          "clip": "12",
+          "path": "pets/sheep-archived-presets/pag_12.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 6333334,
+          "frameHashes": [
+            "0d301b7811dc39651176e9dc0c7f15448d2e77529b2460928c2c08a31c39c65d",
+            "8e22a8810b8e41e572b90cd57d2e664e602c33b6a57a24763fb406d03bb466fc"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola",
+          "clip": "13",
+          "path": "pets/sheep-archived-presets/nfc_pin_show.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 2000000,
+          "frameHashes": [
+            "61d0b19055b03d0a3969bd603cc371a544c60d58c09f8fa3195acb74e4c265af",
+            "8fe0db5fc905fa63136863e951c3ad4ad0323efe65579813b54413824ccbdaa5"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola · классический",
+          "clip": "0",
+          "path": "pets/sheep-pandora/pag_0.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 6466667,
+          "frameHashes": [
+            "8217e06b66f19b166bda113e4cf67fb9d3366ea9bb8d12aa5162f83a58ebb93c",
+            "39901d043b423fc0b12219b6efaf715e62c63c414ff1546d2a62f580068c6035"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola · классический",
+          "clip": "1",
+          "path": "pets/sheep-pandora/pag_1.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 6500000,
+          "frameHashes": [
+            "8a117f1d460510931327f663b23d567e29cee2b6416110e337a3adbe988e7326",
+            "6615846b69315fffa5db4262390adce043c777daf39ed4d7b99e973cf8d33335"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola · классический",
+          "clip": "2",
+          "path": "pets/sheep-pandora/pag_2.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3733334,
+          "frameHashes": [
+            "1d630757ca002d3b012eb55c2e06925e9c58a9e998faeb7d2a6351ff5b013543",
+            "01028506dd3eb28cdc9f393e85ef274a2916b63fd04034823d52c5696b674dde"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola · классический",
+          "clip": "3",
+          "path": "pets/sheep-pandora/pag_3.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 2666667,
+          "frameHashes": [
+            "8f0ead4d955d14cc388ea53e6300139d551e431647c69d196789861bcd8aa2a9",
+            "1e1435c7e046efb77483cf85800c4cc5982ff71dc531151c5cde606610a26da9"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola · классический",
+          "clip": "4",
+          "path": "pets/sheep-pandora/pag_4.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 4466667,
+          "frameHashes": [
+            "8a7e471d76ce96c406e1c4fbb69c0174a3115f8c156273a094e517442a9244c9",
+            "4ee73113aaac64210a8b0bb1081e8ca63a99e7b5b23b0328f4b376a167e5e6e8"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola · классический",
+          "clip": "5",
+          "path": "pets/sheep-pandora/pag_5.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3833334,
+          "frameHashes": [
+            "1f9afa399e696d349f163294a4c0edbf1e4888618a987792bd59aff0dfaf9e55",
+            "b78b93bc5ea850904e1df74ff24e28308bc32c265bc3385eeffe006c3ec49640"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola · классический",
+          "clip": "6",
+          "path": "pets/sheep-pandora/pag_6.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3900000,
+          "frameHashes": [
+            "9dfd7c1366734891866837ebefbedf5e705a809ac7d9ba9847c2505321054ef4",
+            "a3d63f9ba482be3057b64dafaeca70f8b52f73c76d364954f71c85da2cb96a84"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola · классический",
+          "clip": "7",
+          "path": "pets/sheep-pandora/pag_7.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 5133334,
+          "frameHashes": [
+            "d02cb111217cff8529cb9d783a8a6f844733e8e56caf2f31472982165f359a30",
+            "0eeb9bf3c78ffad572c9c9c0135b9f0267d0364cca7c1119549b3dfc7d1c5924"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola · классический",
+          "clip": "8",
+          "path": "pets/sheep-pandora/pag_8.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 5000000,
+          "frameHashes": [
+            "44eca3ffab885f6a614f7888607fbf26f60793aa6a4e25a6619bb4aea5757214",
+            "d3c0efa6319c10278c7e185ba43ddf293ed998484c703b824a2034487ec2b177"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola · классический",
+          "clip": "9",
+          "path": "pets/sheep-pandora/pag_9.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 2466667,
+          "frameHashes": [
+            "10d0c651a6b5a3d9d5473c5c11b914a37da117d852259d284413d009eedf69cc",
+            "9d8876ffb4acb291300e4e62eb9ab3345d86850b70f3b8f622d4d67f1cde82d8"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola · классический",
+          "clip": "10",
+          "path": "pets/sheep-pandora/pag_10.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 5466667,
+          "frameHashes": [
+            "e4b998a9dd96ddf6017a18adfc256cf6a0ecb3662c984c8b3962a43525325bdf",
+            "13313fa431901898729ebd362bf23d182a815a1f2adb4d78251b0ecde8892f87"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lola · классический",
+          "clip": "11",
+          "path": "pets/sheep-pandora/pag_11.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 3800000,
+          "frameHashes": [
+            "335345e50ce55c3196d4db1661a505649cbe9b1525a509288671cf1c7c79c4c3",
+            "99ddab33bcdd50dc8d172e583ceaaeaa69e860622afc22e295068db6aaedffad"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Pip",
+          "clip": "0",
+          "path": "pets/otter-archived-presets/pag_0.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 5833334,
+          "frameHashes": [
+            "9cbf19643595965ca414ae437bf41ff527938bb2a2f1830d388f02a5d58859a0",
+            "7f0c39b312483659697893a49ff5db055c14904bac90f08c13d87b13394a226a"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Pip",
+          "clip": "1",
+          "path": "pets/otter-archived-presets/pag_1.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 7166667,
+          "frameHashes": [
+            "bc7b95290d918fc37bec7bb47eb8db975ab30fdc63df1cbbb689dfe427c30e57",
+            "e2f3526d0e6dd08bd589e5a2307798a860c77e1b24d753a4bbf715d5aba1a4f5"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Pip",
+          "clip": "2",
+          "path": "pets/otter-archived-presets/pag_2.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 5666667,
+          "frameHashes": [
+            "6a77a22669c29731c0aaae7883e33459a5f134daa39882db47190360b1fc0586",
+            "309fc50af74e6cbd079caffd050af2326af2a06b994c050f9c24e3a0b85d6998"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Pip",
+          "clip": "3",
+          "path": "pets/otter-archived-presets/pag_3.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 7000000,
+          "frameHashes": [
+            "d4b1f6a1d7aec8d09f826a30d6dffd5e4389ee07294437eda1883359c507fd8d",
+            "f61e5b8e0f2bd04b46bc5c6aa7d1e4081008c73d25524170c5c12c17c56b60ca"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Pip",
+          "clip": "4",
+          "path": "pets/otter-archived-presets/nfc_pin_show.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 2000000,
+          "frameHashes": [
+            "61d0b19055b03d0a3969bd603cc371a544c60d58c09f8fa3195acb74e4c265af",
+            "8fe0db5fc905fa63136863e951c3ad4ad0323efe65579813b54413824ccbdaa5"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Системные эффекты",
+          "clip": "0",
+          "path": "pets/system-effects/pin_show_pandora.pag",
+          "width": 708,
+          "height": 447,
+          "durationUs": 1000000,
+          "frameHashes": [
+            "e40cdea9fdd95e6bc5d241c84424f7de5bc55b293b5a439842502adf33e879c1",
+            "28c9ec5f81b84b2b974a7d54ad04dc3314199ce29ea3de34fb27bf2b364fe4f8"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Системные эффекты",
+          "clip": "1",
+          "path": "pets/system-effects/pin_show_popsicle.pag",
+          "width": 976,
+          "height": 596,
+          "durationUs": 1000000,
+          "frameHashes": [
+            "6b2acbb6b7c5049620cb07306e692969b0a149fe5e9fa1ef61b9803d86ed0c0e",
+            "7c8bf73c65b350653b48a48858898e0ee05baee02c44162f771a707b8978af08"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "3D cartoon",
+          "clip": "0",
+          "path": "pets/46e72f3e-8f51-4db8-8db9-1c9e2a847b2a-pandora/ai.mp4",
+          "width": "1808",
+          "height": "1144",
+          "durationUs": 4215000,
+          "frameHashes": [
+            "f2858b7922416d9bacb13531bdb867e78c5a3aafd30f4d9709035b8b793e1e75",
+            "4141ea9f564f7a18ca921fe7d2fe6bed1eb2b6bfc921068e05770ec3950c951a"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "AI Pets",
+          "clip": "0",
+          "path": "pets/84ae8006-804f-4df3-bad9-413d5ea64799-pandora/ai.mp4",
+          "width": "1808",
+          "height": "1144",
+          "durationUs": 5042000,
+          "frameHashes": [
+            "5184776cac151470225c339d91c23df0591025f376817ad1738de10e7c56ae17",
+            "07f0d03d822f08fd061aef032ffe9b5d527d4f18e76a38d5a916d3fb7d99a1a6"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Anime 2",
+          "clip": "0",
+          "path": "pets/cdcebb9f-2fdb-4532-af77-1ee5ed742e12-pandora/ai.mp4",
+          "width": "1808",
+          "height": "1144",
+          "durationUs": 5042000,
+          "frameHashes": [
+            "efcda7b9e6e70fd5f21ff1bc2d82cc5aaf9d9d4eeb2061053fb64f74fb2859c6",
+            "468a4afc5940bc687ed9ca4b1dda333e99ecb51b6b202ce08ae0138531faf9d3"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "0",
+          "path": "pets/lumi-archived-presets/idle_0.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "4b15712a7efa656a937d850c1c1217dae5ec7213abbd2af80d899589fd334383",
+            "0b33056edbca83444941cca96be3ccede8185df44b4846f714c97571f0300eaf"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "1",
+          "path": "pets/lumi-archived-presets/idle_1.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "27ef1297e2e67cef4b8bf3f376ab42e809c32fbb81a93c18fe56f219ad7d62b0",
+            "2ff94ada29636c0d30e85cfbe41299c834a28a143525b381d46719a181bbdfea"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "2",
+          "path": "pets/lumi-archived-presets/idle_2.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "579f7c9e4c5bc4c2ddb0f73bbfe91dd05ad5fc43bf27500aa71547d153806166",
+            "5e533487a79c7075e83e017dc6691d0e6a64304870cdde6dd8580cdb79952ca9"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "3",
+          "path": "pets/lumi-archived-presets/dance.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "3bd1ed80fba155fe7ca1219adea1307aaa3ced92c902647e722fac92bba76077",
+            "cd1e1ca7425c7995320b38dd77b7dc9269f25cdccb250aff178a3bda476e1e12"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "4",
+          "path": "pets/lumi-archived-presets/dragon_a.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "61a8298dc8ca1f806832cd07bc03641e826622bf304da9364bc8e06e52328492",
+            "705a3167a3ae98e6bba3672e601401c8372b4d036b6f05ca735d7e6a44df21e9"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "5",
+          "path": "pets/lumi-archived-presets/dragon_b.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5155000,
+          "frameHashes": [
+            "69815bc21304d6fceee1f643054a3f76aa790550385fda5186d810eaa526e31e",
+            "8c311614836942aa8048c52b89a658c7087dd5c6355165b07948ab548e634da0"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "6",
+          "path": "pets/lumi-archived-presets/greet.mp4",
+          "width": "2560",
+          "height": "1440",
+          "durationUs": 5038000,
+          "frameHashes": [
+            "0682acf176e40b6059b05efac994ce26aa388de1ccd3a181e71884fcac8f5c67",
+            "40b8813a5aa5148c71fb8a6e2644f21888e05fd91e01908535823387d04f61ae"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "7",
+          "path": "pets/lumi-archived-presets/happy.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5085000,
+          "frameHashes": [
+            "95e0c9be7f2c5004cc9a936f11e3992b3667b5a60ef65743e11d01dc599ff530",
+            "930a9ad73ce22c5ffce0f5f99938f33ed3460eb157edf7f7ded48d222e9895d2"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "8",
+          "path": "pets/lumi-archived-presets/listen.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 4034000,
+          "frameHashes": [
+            "f71309a556fc8760cb754e4f8945d5f7b83602ea9f1e5d929f41440512047a8c",
+            "e76d3e25370efd2ed4690e23c4b032ea21e646203c2a8c763e8ced0225951cf3"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "9",
+          "path": "pets/lumi-archived-presets/midautumn_a.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "2c19e28be9ca51ceea618b3cc27d2af1711df7a16a7c74760f1999e6093d233c",
+            "59d8b17e9a724701408eff16703d37c1163f517e7e1e97e45eef8b38e6a580e8"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "10",
+          "path": "pets/lumi-archived-presets/midautumn_b.mp4",
+          "width": "3840",
+          "height": "2160",
+          "durationUs": 4834000,
+          "frameHashes": [
+            "d98e037279bddb2d0cb91aae4db09e277094f300276cbe54e6d412f564f84076",
+            "c01be9938601d455d54613f3ac82dd1c1c2f2df2dc3465e4ccb25f5329c59708"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "11",
+          "path": "pets/lumi-archived-presets/nationalday_a.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "f3dd69d75440c0f04e5fb491bfc33b24901953741034bb047da2eb2ed2293aea",
+            "04ba3d6ede3315144c63bc696340713249f76184f9a5ec58d76ab10fbc2bc661"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "12",
+          "path": "pets/lumi-archived-presets/nationalday_b.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "597a8f80f9c66d9d062539b04de833bad27cbf9d29b3b5cf01a0a7ec5c2118c2",
+            "3684d4817a1814c418074dc5a214fd741ffdd20a9e8f0d4186bf303c32a4b09b"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "13",
+          "path": "pets/lumi-archived-presets/newyear_a.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "f51b5417b2c95e3cb3b73850ebce5b8181cdf239b543c8cd7b83e3e613fbb026",
+            "04023909a26d6fb3adaed0aef390e4fb3f36d3bd8be53f8b396094d0a14ef6ab"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "14",
+          "path": "pets/lumi-archived-presets/newyear_b.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "a67456560458e7d376c992fb0c603d33562f715f07f87ee02263baa953da6f8b",
+            "f2f509553a81da226942b9123e2aacba8202bbd2545548207f7095b35b9a179f"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "15",
+          "path": "pets/lumi-archived-presets/rain_a.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "66c2d32d3e6b29bba7903de23fbc4b3dde5c3c03e8b3f86f457cb0f66c9b058d",
+            "013d04596f00bac6427a3a95f323d6d45782cd3ae39b452d9571a34c86ee522a"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "16",
+          "path": "pets/lumi-archived-presets/rain_b.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "cd1151a9a1cf3b2fa4e3023bd02dd993e173adc09c7ff4518863c8ec79a93853",
+            "e585fa8544a85a33c793850fa3ff75b42453bac81ff2f0ceb74567e37e8e7d4c"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "17",
+          "path": "pets/lumi-archived-presets/sad.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "f64c8e1697f01f5bb7b317edb78584fcf4d051bc9bba1108589e88f6b0a4f447",
+            "8dedcb047a36f30f238bbcf90eb2d956faf62c7aa94fb602e5a02b90fa601bf5"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "18",
+          "path": "pets/lumi-archived-presets/sing.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "66260099c3c0c06dd381eefdb33632bbf2770377f3273b888268d73cc8d95ebd",
+            "4f9fa543062441c5a994d302fdbfd8c7d42ee7b96723eb0c757f1fee222dae60"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "19",
+          "path": "pets/lumi-archived-presets/snow_a.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "4b71bfc3764739bbc67873dc7426c6bb73c5a3df7c1487b591f1a7eef1ba9ce2",
+            "ba8562d8d710da34bac6d161434cdcafe947551d9185a4c962dfe6458babf989"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "20",
+          "path": "pets/lumi-archived-presets/snow_b.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "fceafcdb9a4cda14b955ee4ac3f54c7eed4e26229caa30968ab3f040272fc657",
+            "7e6e2d09d4bccf4e1f65a781d7c07db297c3ca8fa5a2f3c23ded5cd624df4c21"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "21",
+          "path": "pets/lumi-archived-presets/speak.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 4033000,
+          "frameHashes": [
+            "2364b76fbd78dd975e9877b448db0e1f236707b2567365674d9d26b086f42de3",
+            "ba31416c40fb966db666f8f51a093163ba70492cdb554a4465720a6ce67c3688"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "22",
+          "path": "pets/lumi-archived-presets/spring_a.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 4110000,
+          "frameHashes": [
+            "f8a53d6eca2db1e816dce8060be7d7a19f0d4dcc02b8d64b74bf5ea65ad887da",
+            "701a495307ecffaa9ccdd7282bb25c8ef8dcb15796a561fc477a1be2a7d71355"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "clip": "23",
+          "path": "pets/lumi-archived-presets/spring_b.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "ff5c4f2278167c52d65c2723e22b4acce6bd26fa4422bf3d3b17d1d6917d9389",
+            "ba25239752c5b545f34c512d9319c30d4c88f20fdab3ceed29c4c102146ff089"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Needle felting",
+          "clip": "0",
+          "path": "pets/e97f1f85-9ca6-47d3-ba16-89bad4f3cc7f-pandora/ai.mp4",
+          "width": "1808",
+          "height": "1144",
+          "durationUs": 5042000,
+          "frameHashes": [
+            "8156eea961470216c6bf618a96d6759d4ec0f05ad6d259281277609a3e118818",
+            "0a61efdc982662e4a68813902f4f64ff9692d191b27950ccf60c2782fe6ecdab"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "0",
+          "path": "pets/peeko-archived-presets/idle_0.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "9bca5b049c71d568b8bd9659bf6709c2a1fb11d723914389e8bab6fd6f1c0eca",
+            "6d97dff5b1824f542bd4a50c1c66f72fc953b15cbb2b41c78de5a03337ee5577"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "1",
+          "path": "pets/peeko-archived-presets/idle_1.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 8033000,
+          "frameHashes": [
+            "e697e0b58558808e51acc98becb3e03c4813f3dfa78105672eeeed7ad8faa08b",
+            "6e50a32bbc2a253fd35a7a60912ae056240d70ddc56e211e1193f05c7ef990ce"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "2",
+          "path": "pets/peeko-archived-presets/idle_2.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "75c9526043ca265b6c22882455704cd90ce00354779a030e8db06c24d249a1e4",
+            "29022a3adab8c6247adc5d297d51f13afa98f71d600eb6644477016f089fe162"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "3",
+          "path": "pets/peeko-archived-presets/dance.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 8033000,
+          "frameHashes": [
+            "07b904df35e0fc1f40db611d3f4ca000ecc0889ee05914a8eec59561fcf29cb9",
+            "6967403dba306f17d98b3117af7146bacf60c514f5f54474c9ffb44cea60e826"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "4",
+          "path": "pets/peeko-archived-presets/dragon_a.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "51a80db07b96a04ef1ce5d2ee575d6731b7c2182a5437df73ae373898917b8d1",
+            "00b88d4a5f620445488d32b483e75893dd3e229c85061319002f74c5986ce911"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "5",
+          "path": "pets/peeko-archived-presets/dragon_b.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "13fc43c496c5928b2e8f9f2909c40e5e4e9355bd7fc980ae57e15195acb1cb4b",
+            "dc5ac404df9645bec9ed105f77467015cc14a36335213022f0318e8e8e68c052"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "6",
+          "path": "pets/peeko-archived-presets/greet.mp4",
+          "width": "3840",
+          "height": "2160",
+          "durationUs": 2333000,
+          "frameHashes": [
+            "904be44a6a70cb1b6416e54d63bf721fe5a20bacda69ff57df935527fd9c2e1d",
+            "797a3e4eecc0d122be55a53686be2839ca73755010bfa59296a0da75c4cd94f2"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "7",
+          "path": "pets/peeko-archived-presets/happy.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "2ef6474d72bd275ceba227507d2f35b745ff9e106212fe62ff7ea4bc1dffd48c",
+            "39c20429e7f58dde40190a70fe8d4909f769a1e4bdefc72faaa21a0a972d9589"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "8",
+          "path": "pets/peeko-archived-presets/listen.mp4",
+          "width": "3840",
+          "height": "2160",
+          "durationUs": 6014000,
+          "frameHashes": [
+            "d3f9b3c51484c179bc21a414fecb22d2f662d6f3c1e491908e3e8f44e35cc6b9",
+            "40e369028cc87fac99e217b60bf6c0e2fdd66b1cbb3bc5ae41f52cc0681e4240"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "9",
+          "path": "pets/peeko-archived-presets/midautumn_a.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "db6dc0125f4d0d2b3a39f13900cbde825f564d687b71cd1012e0477622eefc9d",
+            "f99fb7dc404e8b39e0bce6d8f381856febf620082296369013f98737b9abdd04"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "10",
+          "path": "pets/peeko-archived-presets/midautumn_b.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "0da7c4ad4a5e7fa30f2c9b766ea3e84a1e0aba9fc3f307682d0f4e4d6dfdf04f",
+            "8dff1cb473d96bc8b935c013d642ac5a5c8e6bb109fec92178a4d31b19913912"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "11",
+          "path": "pets/peeko-archived-presets/nationalday_a.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "eaa1d5470a16b862a9eabb5cd84c5f8793531cfce218d60c5df80efe78827fde",
+            "794b4f508593a5578be039cd444b06b87e9ca293cde3f274e3685f7420033016"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "12",
+          "path": "pets/peeko-archived-presets/nationalday_b.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "ecac540aecd678a1f16b47bb4797d0f77c298de6d8d1368fc5a1ca46f6dd5147",
+            "a9a7474c14cd2056e0506a8dd3f100c65402e1ef66f3f46b3e580d9b02427c75"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "13",
+          "path": "pets/peeko-archived-presets/newyear_a.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "36d6e6772f413da7ad58843ee5345ac370f2c196967199251a6b07b0150d67e0",
+            "c9c0f53e9df0e1054cbd3e561c63b0c6f02152ac1b18831d996a30c3b3b46187"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "14",
+          "path": "pets/peeko-archived-presets/newyear_b.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "9b594f05835af6d78b6ecba4bf699634490c089559e46d39fdf5747b806dc583",
+            "b0ac3820ef065ee76b4ff6dfb849211b91057b4df9fa08553692e32fa416906b"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "15",
+          "path": "pets/peeko-archived-presets/rain_a.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "947aa200eca9a85bb0a23bb7329ed4b8bdcdf01476c80d4bf3d50247ebe54524",
+            "1ac7fd4bfc4b336faa052640faa0c45608d129c8786e6372d96549602910c3b4"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "16",
+          "path": "pets/peeko-archived-presets/rain_b.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 8033000,
+          "frameHashes": [
+            "091ab709bc82a35dfe62d7e11dc5acff677f20be755b2569263c1b2871f27984",
+            "6593cba503b51e711227fc60b6fbb1f0deb8a81485958de5d1d224a704bf8623"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "17",
+          "path": "pets/peeko-archived-presets/sad.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "72752e216e074ef8b3c7d6f97fbb3f93cb3a9e1878e8ce9cc09c1ecb596150b1",
+            "239068048685d32d51137b34f9f8c5ed9217f77a55b3c0dc4f222d3df1a4c1e7"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "18",
+          "path": "pets/peeko-archived-presets/sing.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "96e2b407145906b88c8abcc4ac9257ce8a35ab7d24f56a6aa92c807e61b216d7",
+            "e88445d4cc4d18230dc14bd1002b81c1a3bbcc3f060cb146b126a2d6763167bf"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "19",
+          "path": "pets/peeko-archived-presets/snow_a.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "b7cc7c80c85f38f95e18f1d48cebfadc02fc6a31c45d9f852d6c473a67327018",
+            "94a704bd53bd311f30e93efe7332cfe642935b0c43c93de622cd32407eb64f13"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "20",
+          "path": "pets/peeko-archived-presets/snow_b.mp4",
+          "width": "3840",
+          "height": "2160",
+          "durationUs": 4226000,
+          "frameHashes": [
+            "607d778fa10dfbb3bbfb9f20d9e04712147455175749d109b44cd53924783819",
+            "3916f018864bf5cec0db1619222cab4e10a7b2d3b9e030f12ec67984c4a3510d"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "21",
+          "path": "pets/peeko-archived-presets/speak.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "29756dd29cfb7f33ff4e2e4d7b70d056dfdfdeb15069d3f773c966f7c0742263",
+            "2e4c35542d2744b9bfbf03f05ac6daf86fdd4a055561967946cf8f5ead5dbe28"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "22",
+          "path": "pets/peeko-archived-presets/spring_a.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "0af7ca65625e217812a30b74b4323846da7ea905d55a29e58b91042b88cef6dc",
+            "966ea8a168c1033a13f25510ca1e71a18c2bf39c86e2eb891903e2e113c1dd09"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Peeko",
+          "clip": "23",
+          "path": "pets/peeko-archived-presets/spring_b.mp4",
+          "width": "1280",
+          "height": "720",
+          "durationUs": 5033000,
+          "frameHashes": [
+            "4472241cb392042659e8772e3bb40e88f890bd6a434baa81e540cd2d43ad596f",
+            "14d861d2421fd4929c3ad0d7b03cb240727cbe3db27410a62b1ca6fe357f1c26"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Vortex core",
+          "clip": "0",
+          "path": "pets/119f090b-b625-4b3e-9ffd-107927c360c6-pandora/P2.mp4",
+          "width": "1090",
+          "height": "666",
+          "durationUs": 5067000,
+          "frameHashes": [
+            "cbacbad3211de9fe81645ff16efaf87ebc28639e053339f0d31ac622bf7d76b3",
+            "07c5717edfb63a133660080d8a55c0edcd05942d7fcf3400e4b2944537369ae7"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        },
+        {
+          "pet": "Vortex core",
+          "clip": "1",
+          "path": "pets/119f090b-b625-4b3e-9ffd-107927c360c6-pandora/Q200.mp4",
+          "width": "1008",
+          "height": "640",
+          "durationUs": 5067000,
+          "frameHashes": [
+            "38f6472413b236f7eb8c414d8a259dbb8e6706530952a8626c3f432bad6f8f84",
+            "5bbca9eeee54887b1a3fb361831c28085cb18f7e7e716a5e693871c52465efef"
+          ],
+          "visible": true,
+          "framesDiffer": true,
+          "ok": true
+        }
+      ]
+    },
+    "composition-qa.json": {
+      "apkSha256": "b46ea0d57da9c5714c8af67a73e259e0c78d5c5cd75d008838fc837789c10e09",
+      "tested": 68,
+      "failed": 0,
+      "decodedOriginalImages": 497,
+      "validCompiledNinePatches": 110,
+      "results": [
+        {
+          "pet": "Силикон · фиолетовый",
+          "color": "purple",
+          "aspect": "cover 1392x1208",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "fcbf0f26ec60525e27b5740b8fa69dcae4973dfbdf921dbcc0d1850adf8a6757",
+          "hash2": "fa569e806ac502ceec68cac621b33b447c870e33362675dec637894f29dfef82",
+          "ok": true
+        },
+        {
+          "pet": "Силикон · фиолетовый",
+          "color": "purple",
+          "aspect": "cover 1208x1392",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "91739e0da531537f092bc0f19ccd1240db9dedceec0f0b52316c075b1a60968e",
+          "hash2": "6c9dfe77fdc568b399ac150a45e0d015d8bcac7a17adfc9e40ee04adfa2d7909",
+          "ok": true
+        },
+        {
+          "pet": "Силикон · фиолетовый",
+          "color": "purple",
+          "aspect": "inner 1224x2912",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "051877686cabff563db34de036e207e51e267ace707dcbf8015b1d706fb5ad8e",
+          "hash2": "229816bbdde9be9f4b60ee403357703c3b1d77206209f4ad9d566ab94be1c921",
+          "ok": true
+        },
+        {
+          "pet": "Силикон · зелёный",
+          "color": "green",
+          "aspect": "cover 1392x1208",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "8b89b5593b8eb533421a4a0c32949e4f13a596833cc62f120c45ef3873fdcf0f",
+          "hash2": "80dfafa0b5db33caa361c0b42ed1a149317a03f20549ac04efdce75e914552ef",
+          "ok": true
+        },
+        {
+          "pet": "Силикон · зелёный",
+          "color": "green",
+          "aspect": "cover 1208x1392",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "c14792084fbab9ce6a9d118aca7cc71689823d589f71cba6e087589b25ae176e",
+          "hash2": "54520c6ad9555ca4fc9673f5027400889893bc136b2791bf1b336e8d4f208d1a",
+          "ok": true
+        },
+        {
+          "pet": "Силикон · зелёный",
+          "color": "green",
+          "aspect": "inner 1224x2912",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "c501f9c1e2334fdb13f6457d865db0419bcf6a6fc4e1394258d8e228abff1d8b",
+          "hash2": "c453253cfcc6b3f5491a0de46a06194b7106623eeb3b7725d8ab7884e713611a",
+          "ok": true
+        },
+        {
+          "pet": "Силикон · красный",
+          "color": "red",
+          "aspect": "cover 1392x1208",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "55db9731bfc32103fbdbb7298c5d8222358efd74614c070665ec8b56bd973260",
+          "hash2": "54399927ddae2bb709fbb81ac7091f20fe033437725a1eac0203f01119323c3e",
+          "ok": true
+        },
+        {
+          "pet": "Силикон · красный",
+          "color": "red",
+          "aspect": "cover 1208x1392",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "a007e5dd4e4a77cc2f488b22df765c239147314187b8f531972bb8fc9fec4a05",
+          "hash2": "d292be241d92d438910a5ad63671aa90959822e778b0090e6f8791429cd08dff",
+          "ok": true
+        },
+        {
+          "pet": "Силикон · красный",
+          "color": "red",
+          "aspect": "inner 1224x2912",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "4b86075e0e5426faa0eccc84ac99db85d0c9a37cc379a7503f2f7a6057fc93b6",
+          "hash2": "5459ad21a0ef56eca3b74e8552efa51563341df828121a829dcd0b572c9f4f4f",
+          "ok": true
+        },
+        {
+          "pet": "Градиент · часы",
+          "color": "blue",
+          "aspect": "cover 1392x1208",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "d258ca20d01a4059033ef339c6a2e9485c287fe1862f4fed46832167d16b8682",
+          "hash2": "771cadca6392cff0287a3bdccdb702f87c559c40d5e2eaeeab809a6a8f0d03fd",
+          "ok": true
+        },
+        {
+          "pet": "Градиент · часы",
+          "color": "blue",
+          "aspect": "cover 1208x1392",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "5fde4d98daab6cc70b02818a9d70273cd8127fe8b6db59bac030fc75782b1619",
+          "hash2": "fb1c34bace4059808c8c1e0e8cc4d0f9097efa8b73ec31a6a57666f2a452529f",
+          "ok": true
+        },
+        {
+          "pet": "Градиент · часы",
+          "color": "blue",
+          "aspect": "inner 1224x2912",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "121c8c712d2cbb51790be4c4491e80c35eaa543be14fd4d7de6d3d788ec2b76a",
+          "hash2": "eab7125b622ae2d6b6544c310decc93b419edc94dcc56e1b511c3834b3fe3539",
+          "ok": true
+        },
+        {
+          "pet": "Градиент · часы",
+          "color": "purple",
+          "aspect": "cover 1392x1208",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "fcbf0f26ec60525e27b5740b8fa69dcae4973dfbdf921dbcc0d1850adf8a6757",
+          "hash2": "fa569e806ac502ceec68cac621b33b447c870e33362675dec637894f29dfef82",
+          "ok": true
+        },
+        {
+          "pet": "Градиент · часы",
+          "color": "purple",
+          "aspect": "cover 1208x1392",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "91739e0da531537f092bc0f19ccd1240db9dedceec0f0b52316c075b1a60968e",
+          "hash2": "6c9dfe77fdc568b399ac150a45e0d015d8bcac7a17adfc9e40ee04adfa2d7909",
+          "ok": true
+        },
+        {
+          "pet": "Градиент · часы",
+          "color": "purple",
+          "aspect": "inner 1224x2912",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "051877686cabff563db34de036e207e51e267ace707dcbf8015b1d706fb5ad8e",
+          "hash2": "229816bbdde9be9f4b60ee403357703c3b1d77206209f4ad9d566ab94be1c921",
+          "ok": true
+        },
+        {
+          "pet": "Градиент · часы",
+          "color": "green",
+          "aspect": "cover 1392x1208",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "8b89b5593b8eb533421a4a0c32949e4f13a596833cc62f120c45ef3873fdcf0f",
+          "hash2": "80dfafa0b5db33caa361c0b42ed1a149317a03f20549ac04efdce75e914552ef",
+          "ok": true
+        },
+        {
+          "pet": "Градиент · часы",
+          "color": "green",
+          "aspect": "cover 1208x1392",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "c14792084fbab9ce6a9d118aca7cc71689823d589f71cba6e087589b25ae176e",
+          "hash2": "54520c6ad9555ca4fc9673f5027400889893bc136b2791bf1b336e8d4f208d1a",
+          "ok": true
+        },
+        {
+          "pet": "Градиент · часы",
+          "color": "green",
+          "aspect": "inner 1224x2912",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "c501f9c1e2334fdb13f6457d865db0419bcf6a6fc4e1394258d8e228abff1d8b",
+          "hash2": "c453253cfcc6b3f5491a0de46a06194b7106623eeb3b7725d8ab7884e713611a",
+          "ok": true
+        },
+        {
+          "pet": "Градиент · часы",
+          "color": "orange",
+          "aspect": "cover 1392x1208",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "f7ebeefa0805ef8cb465bde01df7dfb329c23565275111a005747f624e9d3b7b",
+          "hash2": "0f0693f27703578c8597997266e88edeede9dfee9b669dd5798081ce1ec46ad9",
+          "ok": true
+        },
+        {
+          "pet": "Градиент · часы",
+          "color": "orange",
+          "aspect": "cover 1208x1392",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "bb67fcf82866afeb516e0471c241be8465d7aa4f3672be68d5d13ce856de340c",
+          "hash2": "5fff573000ceeec4bcf0a9c14c931a946b415d0ca6dee7ee72a833618dbc82ca",
+          "ok": true
+        },
+        {
+          "pet": "Градиент · часы",
+          "color": "orange",
+          "aspect": "inner 1224x2912",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "2b2d3dac6e4200a65f7189c8f78d67703a1b0534193418c8ca73357728110fb7",
+          "hash2": "c6ae4ca9ad0ddfbe5feb814d5777ffe14fade05099430b8cd180aa4a089953eb",
+          "ok": true
+        },
+        {
+          "pet": "Градиент · часы",
+          "color": "red",
+          "aspect": "cover 1392x1208",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "55db9731bfc32103fbdbb7298c5d8222358efd74614c070665ec8b56bd973260",
+          "hash2": "54399927ddae2bb709fbb81ac7091f20fe033437725a1eac0203f01119323c3e",
+          "ok": true
+        },
+        {
+          "pet": "Градиент · часы",
+          "color": "red",
+          "aspect": "cover 1208x1392",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "a007e5dd4e4a77cc2f488b22df765c239147314187b8f531972bb8fc9fec4a05",
+          "hash2": "d292be241d92d438910a5ad63671aa90959822e778b0090e6f8791429cd08dff",
+          "ok": true
+        },
+        {
+          "pet": "Градиент · часы",
+          "color": "red",
+          "aspect": "inner 1224x2912",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "4b86075e0e5426faa0eccc84ac99db85d0c9a37cc379a7503f2f7a6057fc93b6",
+          "hash2": "5459ad21a0ef56eca3b74e8552efa51563341df828121a829dcd0b572c9f4f4f",
+          "ok": true
+        },
+        {
+          "pet": "Волокно дракона · часы",
+          "color": "black",
+          "aspect": "cover 1392x1208",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "5e9ceecdca3f19e459a86a59e8bbfdda43a8dd500736b4cac188d84c30b75c70",
+          "hash2": "a62078f36d3d9b008487e01a9c620451ebb58b9e12eb064992817ecab6f81049",
+          "ok": true
+        },
+        {
+          "pet": "Волокно дракона · часы",
+          "color": "black",
+          "aspect": "cover 1208x1392",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "40af5febc698927d25bd9bfde403d50ee464aa594ffd14a9a6333f22aba39c3d",
+          "hash2": "04473a335ad684a21f8d956f4a0410ae1f9d67b12ca918813ecefd3653285a25",
+          "ok": true
+        },
+        {
+          "pet": "Волокно дракона · часы",
+          "color": "black",
+          "aspect": "inner 1224x2912",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "b3c25123e5e6a4daaa32e78e64024cc2f96f11f6f920271755ecc10fc07e7e56",
+          "hash2": "a57076e9db23e4bb38a2eddfc3ae67675b5734891e904014f153a0b45d070c6b",
+          "ok": true
+        },
+        {
+          "pet": "Stretch · упругие часы",
+          "color": "blue",
+          "aspect": "cover 1392x1208",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "be59b940c4a22d3a8fde146f0316ddb40e7acb4fa684cb6bee1a1357b65bf01f",
+          "hash2": "761bcb520348f1b67026a4509ca4cce6ad800afea339a7e2c01e2dd5764a8bea",
+          "ok": true
+        },
+        {
+          "pet": "Stretch · упругие часы",
+          "color": "blue",
+          "aspect": "cover 1208x1392",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "769bfe6b2cf352060f9199eede93e16c46cb9c715b4fa0598755b8508a61b326",
+          "hash2": "61eba4ea1942a3f4c6846e1b661020131c78501e62a8c2b6eee237dc48285e0e",
+          "ok": true
+        },
+        {
+          "pet": "Stretch · упругие часы",
+          "color": "blue",
+          "aspect": "inner 1224x2912",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "d15aab81e4ec5e7af2dfa5ce19d6d26ff9d994a13876d0c9478067ae78927ad4",
+          "hash2": "b52118eb6f43c4f07496dca761d6cd661dd249004f081a0b7bf619f31147bf36",
+          "ok": true
+        },
+        {
+          "pet": "Stretch · упругие часы",
+          "color": "purple",
+          "aspect": "cover 1392x1208",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "a5830429b4a870bf690af6c8d6e603020bb7f4099c66c5775ee0c3bbf5c668bc",
+          "hash2": "5595761a4084730d193915ad36b029c109f29845893072bbda972e41129b1887",
+          "ok": true
+        },
+        {
+          "pet": "Stretch · упругие часы",
+          "color": "purple",
+          "aspect": "cover 1208x1392",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "471270ae438c670170719c4d15ac16b70a0cdbef295f28471eb340cedff62195",
+          "hash2": "2c7193f08d1d7071d92b9c99e35ee87a256472765e7310277f0dfc755aed6dd0",
+          "ok": true
+        },
+        {
+          "pet": "Stretch · упругие часы",
+          "color": "purple",
+          "aspect": "inner 1224x2912",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "1a1d87220136a9c29c779ef5c649469c6132e9a4caadfc7798f64531371811f0",
+          "hash2": "2d98423dc29b01b85164404a03b177aafd03da9401933036f1545b015b074ba4",
+          "ok": true
+        },
+        {
+          "pet": "Stretch · упругие часы",
+          "color": "green",
+          "aspect": "cover 1392x1208",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "f4151d58ac94bf25b2a77a1ce09a239ead8c58bf0512f0d667e431da784d0590",
+          "hash2": "b9db5c34d1114f0b2f57cf8ba8845f74e50f5f94a3567c310c2927caa1af36cb",
+          "ok": true
+        },
+        {
+          "pet": "Stretch · упругие часы",
+          "color": "green",
+          "aspect": "cover 1208x1392",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "367675b819e1a45d91bc306fd65ab62853e7179106d78b9e36565b9463c277d6",
+          "hash2": "4b02d8341211232013a16a102ee2006387b7b6e009c30802fcf20789eddbb91e",
+          "ok": true
+        },
+        {
+          "pet": "Stretch · упругие часы",
+          "color": "green",
+          "aspect": "inner 1224x2912",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "0a93fa4a727ccba2765dc4462f256d7d641c30f5bf90bb7ffd5e84688aa2de5f",
+          "hash2": "c5d5ea857152ab4307ceb50f675d9171251a692667d2abc2b31ed36e64e31f98",
+          "ok": true
+        },
+        {
+          "pet": "Stretch · упругие часы",
+          "color": "orange",
+          "aspect": "cover 1392x1208",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "bf6a44bf060afe27592f7fc1877b09d7a637e6414410b498d218483a6cbf7686",
+          "hash2": "5a0145d16f626396135fdcf00afddecb112bbdcfffe9c916047839df13bfb2a8",
+          "ok": true
+        },
+        {
+          "pet": "Stretch · упругие часы",
+          "color": "orange",
+          "aspect": "cover 1208x1392",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "7db309ef653c965a928a2adffa8131267d76f1302d031b63c12631a569ef555a",
+          "hash2": "f16d6f4dc1814ed39822ff63b409cfd9b7c05bc1cd9209db0d0c47aacbd00fe7",
+          "ok": true
+        },
+        {
+          "pet": "Stretch · упругие часы",
+          "color": "orange",
+          "aspect": "inner 1224x2912",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "56c415d8d9e5d0075a7d1620009273258ccc3ca614627fee538f24f3aa795a60",
+          "hash2": "508867c0d5adea914255051e3bde855cdb7bf97d77d34ed010c455bf59508bef",
+          "ok": true
+        },
+        {
+          "pet": "Stretch · упругие часы",
+          "color": "red",
+          "aspect": "cover 1392x1208",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "15584f2804f75954f54ef2e342015a11767788463916ab51883f741a9c763387",
+          "hash2": "2c5a9690a2898456f9a42d69068ff81d2e50e7ffa23cabb1f391363fcdfc3c23",
+          "ok": true
+        },
+        {
+          "pet": "Stretch · упругие часы",
+          "color": "red",
+          "aspect": "cover 1208x1392",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "e59da093ad408328541147bd729733d3ebc9f8d13dc6e53c1819c0500e763320",
+          "hash2": "793e9b3434932e9744c322140aad967b41d5d9c784f60ffe6bbbac7e9245cf32",
+          "ok": true
+        },
+        {
+          "pet": "Stretch · упругие часы",
+          "color": "red",
+          "aspect": "inner 1224x2912",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "35be82e8121e5d3d1f82b081b1262018e089d78167e5909cc93472ed9422c10f",
+          "hash2": "fa98f83084caba5f36a52b3d0de2ddea577fb6c1d3903c719ca962b56593d8b8",
+          "ok": true
+        },
+        {
+          "test": "touch spring and alternate layout",
+          "ok": true
+        },
+        {
+          "pet": "Шагомер",
+          "color": "",
+          "aspect": "cover 1392x1208",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "2d542b107209cd603f732b33a1530a9c593f74cc2a76a668bb894b483965efb6",
+          "hash2": "754c18b03714f579d5004ab7f66f2dfade540b869758ec882ca41a8a6d5f7b63",
+          "ok": true
+        },
+        {
+          "pet": "Шагомер",
+          "color": "",
+          "aspect": "cover 1208x1392",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "6a344c196d9ed1a6cff1fa9f474d5e3d35c47a70709837848c886619b72fadbd",
+          "hash2": "e097241709deae910ccd1ad0fbe158690c36e80ad00248c39e60252a2c565593",
+          "ok": true
+        },
+        {
+          "pet": "Шагомер",
+          "color": "",
+          "aspect": "inner 1224x2912",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "597ab62d969f3bb50b9ac34cf97c27e49c836adcc7f9da35652ee7835851fd45",
+          "hash2": "2d1450f61e98d5f912e68a012095bd11dc3b7450b5d4d82d07561cfa51fbb54c",
+          "ok": true
+        },
+        {
+          "pet": "Подпись",
+          "color": "",
+          "aspect": "cover 1392x1208",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "56bc95a986e062f34bce6b5ffc4b71db3a430b64b75ab4340938700b3cc3e9b2",
+          "hash2": "abca971c572e36a1f3dc29bdda89b8df6bee3be44725b683641fec72218bcb52",
+          "ok": true
+        },
+        {
+          "pet": "Подпись",
+          "color": "",
+          "aspect": "cover 1208x1392",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "2e0af48a7f0ad7f7c8b4deb771e9c68be3dc9d6b56bc1e9e62ec4a349c1b47b0",
+          "hash2": "f00b03c43be5aad57aa2e866cbe5ca3c6d3d2f108bfc77564187de7328fbabfc",
+          "ok": true
+        },
+        {
+          "pet": "Подпись",
+          "color": "",
+          "aspect": "inner 1224x2912",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "c6b5f9706a544d7bfc06f04c28351301d66f8f5a21846f46c8feffb57fe72f91",
+          "hash2": "184e2da1ef0aff76fea30ccb18f205b64f8add541fda3d1de631ae76240fe055",
+          "ok": true
+        },
+        {
+          "test": "signature text font and vertical layout",
+          "ok": true
+        },
+        {
+          "pet": "Новогодняя бумага",
+          "color": "",
+          "aspect": "cover 1392x1208",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "e250fbd19cf9d47a56062dba2b757b51f47fbc97b718c813fa0dd3e52fabeb7c",
+          "hash2": "7a6ade685e71afe09bd4e575f385a8f73b452969ebc1d39033d866587f6fa083",
+          "ok": true
+        },
+        {
+          "pet": "Новогодняя бумага",
+          "color": "",
+          "aspect": "cover 1208x1392",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "6b3688f8313dc74af9e24da772dde94581ffd1f580ad0308de1b1d71b8d3ddae",
+          "hash2": "4c20c794a8f5d09aff4485cef0e7418eca24d44874c2f571f5a44c153531885e",
+          "ok": true
+        },
+        {
+          "pet": "Новогодняя бумага",
+          "color": "",
+          "aspect": "inner 1224x2912",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "80bc2287bda79e609f9d9659eeecfc3b8072d40b98997a9492162bac473d52c4",
+          "hash2": "a87e39ba29cfe3898f66f4b9dec8b588efe25287dfca059cabc21d7d5983ea42",
+          "ok": true
+        },
+        {
+          "pet": "Кинокалендарь · локальный",
+          "color": "",
+          "aspect": "cover 1392x1208",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "782916d25edbbceb057ad54b92c1ce3caf3afd230aea2c1a49f60b490f624a8a",
+          "hash2": "cadcd60a0fc75c34e672a143d301c7c26071b0b679565aaad68d77695ed84242",
+          "ok": true
+        },
+        {
+          "pet": "Кинокалендарь · локальный",
+          "color": "",
+          "aspect": "cover 1208x1392",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "3b496c5ee66a88d1c9b431b35c89cb0adb8b11fb5bdaba0f4f90250b18db6f53",
+          "hash2": "eb742c1fd92919af5ac3daec8b362c13e1c866032b8eadd9c77af1ad511394e5",
+          "ok": true
+        },
+        {
+          "pet": "Кинокалендарь · локальный",
+          "color": "",
+          "aspect": "inner 1224x2912",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "339cdaa489ad0fd192c7e2b5c1e9bbe9f0a68df7a0693e380fe53a8657930563",
+          "hash2": "3400c4ccd9c934de2931da140e09b486b9738b403ecab9626d3605c70cb69163",
+          "ok": true
+        },
+        {
+          "pet": "Своя фотография",
+          "color": "",
+          "aspect": "cover 1392x1208",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "7d25b9e370f95617f54c06cf4c610eae8c3bf6e807988cb55cad0e19949c61ae",
+          "hash2": "730464034782db888c0d961c8469f34add59f90fd7b73d5bcf666f6235836994",
+          "ok": true
+        },
+        {
+          "pet": "Своя фотография",
+          "color": "",
+          "aspect": "cover 1208x1392",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "06a18f685f14ef02d8177c7442e7f02d484d46af6fdb604764b411095cffd77b",
+          "hash2": "012663761382a62e92684919b2933c27a003154da5c9a3fc52ee8a0e4a0fc954",
+          "ok": true
+        },
+        {
+          "pet": "Своя фотография",
+          "color": "",
+          "aspect": "inner 1224x2912",
+          "visible": true,
+          "framesDiffer": true,
+          "hash1": "8c88a2668ea5b5150c556a3a7c87317214d8ac18902a675e4a7a4d748a8a7678",
+          "hash2": "d18551034552389d489aae1c9b2f2464218bb609ea8a366511e2fdad7c401667",
+          "ok": true
+        },
+        {
+          "test": "load original font MiSansVF.ttf",
+          "ok": true
+        },
+        {
+          "test": "load original font Qinghe.otf",
+          "ok": true
+        },
+        {
+          "test": "load original font Coca-ColaCareFontKaiTi.TTF",
+          "ok": true
+        },
+        {
+          "test": "load original font FZFWZhuZiAYuanJWB.TTF",
+          "ok": true
+        },
+        {
+          "test": "load original font MiSansRoundedSC.ttf",
+          "ok": true
+        },
+        {
+          "test": "import bounds and transparent foreground",
+          "ok": true
+        },
+        {
+          "test": "transparent layer renders over composition",
+          "ok": true
+        },
+        {
+          "test": "JPEG EXIF rotation before crop",
+          "ok": true
+        },
+        {
+          "test": "remove private image",
+          "ok": true
+        }
+      ]
+    },
+    "ui-switch-qa.json": {
+      "apkSha256": "b46ea0d57da9c5714c8af67a73e259e0c78d5c5cd75d008838fc837789c10e09",
+      "tested": 15,
+      "failed": 0,
+      "results": [
+        {
+          "pet": "Bubbles",
+          "kind": "reactive",
+          "ok": true
+        },
+        {
+          "pet": "Силикон · фиолетовый",
+          "kind": "composition",
+          "ok": true
+        },
+        {
+          "pet": "Lumi",
+          "kind": "video",
+          "ok": true
+        },
+        {
+          "pet": "Stretch · упругие часы",
+          "kind": "composition",
+          "ok": true
+        },
+        {
+          "pet": "Flowing glitter",
+          "kind": "ambient",
+          "ok": true
+        },
+        {
+          "pet": "Шагомер",
+          "kind": "composition",
+          "ok": true
+        },
+        {
+          "pet": "Roe",
+          "kind": "reactive",
+          "ok": true
+        },
+        {
+          "pet": "Кинокалендарь · локальный",
+          "kind": "composition",
+          "ok": true
+        },
+        {
+          "pet": "Needle felting",
+          "kind": "video",
+          "ok": true
+        },
+        {
+          "pet": "Волокно дракона · часы",
+          "kind": "composition",
+          "ok": true
+        },
+        {
+          "pet": "Подпись",
+          "kind": "composition",
+          "ok": true
+        },
+        {
+          "pet": "Градиент · часы",
+          "kind": "composition",
+          "ok": true
+        },
+        {
+          "pet": "Новогодняя бумага",
+          "kind": "composition",
+          "ok": true
+        },
+        {
+          "pet": "Своя фотография",
+          "kind": "composition",
+          "ok": true
+        },
+        {
+          "pet": "Bubbles",
+          "kind": "reactive",
+          "ok": true
+        }
+      ]
+    }
+  },
+  "allApkAssetsByteIdenticalToSources": true,
+  "compositionImageHashesVerified": true,
+  "apkSignature": "apksigner verify: v3 RSA-3072 local certificate; zipalign -P 16; 16KiB ELF LOAD alignment both ABIs",
+  "controllerFixtureTests": {
+    "environment": "emulator-5554; stubbed stock command responses, not a physical MIX Flip",
+    "results": [
+      {
+        "case": "start activates presentation",
+        "ok": true
+      },
+      {
+        "case": "start targets cover display",
+        "ok": true
+      },
+      {
+        "case": "stop resets base state",
+        "ok": true
+      },
+      {
+        "case": "fold watcher restores folded state",
+        "ok": true
+      },
+      {
+        "case": "sleep watcher resets override",
+        "ok": true
+      },
+      {
+        "case": "rejected launch rolls back",
+        "ok": true
+      },
+      {
+        "case": "existing override is refused",
+        "ok": true
+      },
+      {
+        "case": "wrong device is refused",
+        "ok": true
+      }
+    ]
+  },
+  "supervisorFixtureTests": {
+    "environment": "emulator-5554, stubbed device-state/display/power/keyguard commands; no physical MIX Flip",
+    "results": [
+      {
+        "case": "detached supervisor remains enabled",
+        "ok": true
+      },
+      {
+        "case": "second enable does not duplicate supervisor",
+        "ok": true
+      },
+      {
+        "case": "fold closes only own cover session and keeps waiting",
+        "ok": true
+      },
+      {
+        "case": "unfold resumes without a connected client",
+        "ok": true
+      },
+      {
+        "case": "sleep returns stock mode",
+        "ok": true
+      },
+      {
+        "case": "locked phone is not activated",
+        "ok": true
+      },
+      {
+        "case": "unlock restores presentation",
+        "ok": true
+      },
+      {
+        "case": "missing cover activity is restarted after bounded delay",
+        "ok": true
+      },
+      {
+        "case": "ordinary APK stop request disables supervisor and resets display",
+        "ok": true
+      },
+      {
+        "case": "foreign override remains untouched",
+        "ok": true
+      },
+      {
+        "case": "three rejected launches disable retry loop and restore stock mode",
+        "ok": true
+      }
+    ]
+  },
+  "shizuku": "Actual official Shizuku shell server and UserService tested on emulator; UID 2000 verified; request from app allowed; non-ruyi start refused; status/stop checked. Fold/display commands themselves use fixtures.",
+  "resourceProfile": {
+    "apkSha256": "b46ea0d57da9c5714c8af67a73e259e0c78d5c5cd75d008838fc837789c10e09",
+    "environment": "Android 16 API 36 x86_64 emulator, two virtual CPU cores, SwiftShader GPU, PAG software decoding; 100% CPU is one core. No physical MIX Flip or battery measurement.",
+    "clockTicksPerSecond": 100,
+    "results": [
+      {
+        "scenario": "PAG Bubbles visible",
+        "pid": 16003,
+        "durationSeconds": 12.0,
+        "cpuPercentOneCore": 76.58,
+        "cpuSamples": [
+          68.3,
+          70.78,
+          75.73,
+          91.53
+        ],
+        "pssKiB": 63725,
+        "rssKiB": 156336
+      },
+      {
+        "scenario": "PAG Bubbles visible hidden",
+        "pid": 16003,
+        "durationSeconds": 12.0,
+        "cpuPercentOneCore": 0.0,
+        "cpuSamples": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pssKiB": 66349,
+        "rssKiB": 160740
+      },
+      {
+        "scenario": "Analog clock visible",
+        "pid": 16003,
+        "durationSeconds": 12.0,
+        "cpuPercentOneCore": 15.14,
+        "cpuSamples": [
+          14.75,
+          14.71,
+          16.34,
+          14.75
+        ],
+        "pssKiB": 80582,
+        "rssKiB": 178932
+      },
+      {
+        "scenario": "Analog clock visible hidden",
+        "pid": 16003,
+        "durationSeconds": 12.0,
+        "cpuPercentOneCore": 0.0,
+        "cpuSamples": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pssKiB": 72426,
+        "rssKiB": 170964
+      },
+      {
+        "scenario": "Signature static visible",
+        "pid": 16003,
+        "durationSeconds": 12.0,
+        "cpuPercentOneCore": 0.08,
+        "cpuSamples": [
+          0.33,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pssKiB": 92917,
+        "rssKiB": 191536
+      },
+      {
+        "scenario": "Signature static visible hidden",
+        "pid": 16003,
+        "durationSeconds": 12.0,
+        "cpuPercentOneCore": 0.0,
+        "cpuSamples": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pssKiB": 92609,
+        "rssKiB": 191220
+      },
+      {
+        "scenario": "MP4 cartoon visible",
+        "pid": 16003,
+        "durationSeconds": 12.0,
+        "cpuPercentOneCore": 22.02,
+        "cpuSamples": [
+          21.5,
+          23.45,
+          22.95,
+          20.2
+        ],
+        "pssKiB": 74880,
+        "rssKiB": 175524
+      },
+      {
+        "scenario": "MP4 cartoon visible hidden",
+        "pid": 16003,
+        "durationSeconds": 12.0,
+        "cpuPercentOneCore": 0.0,
+        "cpuSamples": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pssKiB": 74559,
+        "rssKiB": 175196
+      },
+      {
+        "scenario": "After 20 switches hidden",
+        "pid": 16003,
+        "durationSeconds": 12.0,
+        "cpuPercentOneCore": 0.0,
+        "cpuSamples": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pssKiB": 98074,
+        "rssKiB": 198884
+      },
+      {
+        "scenario": "shizuku_server idle",
+        "pid": 2093,
+        "durationSeconds": 12.0,
+        "cpuPercentOneCore": 0.0,
+        "cpuSamples": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pssKiB": 48269,
+        "rssKiB": 59512
+      }
+    ],
+    "cycleBaseline": {
+      "pssKiB": 103475,
+      "rssKiB": 204120
+    },
+    "memoryCycles": [
+      {
+        "cycle": 5,
+        "pssKiB": 190792,
+        "rssKiB": 291580
+      },
+      {
+        "cycle": 10,
+        "pssKiB": 168044,
+        "rssKiB": 268848
+      },
+      {
+        "cycle": 15,
+        "pssKiB": 152473,
+        "rssKiB": 253284
+      },
+      {
+        "cycle": 20,
+        "pssKiB": 170618,
+        "rssKiB": 271428
+      }
+    ]
+  },
+  "lifecycle": {
+    "shizukuShellUidVerified": 2000,
+    "shizukuStartNonRuyiRefused": true,
+    "shizukuStatusStop": true,
+    "shizukuTemporaryBridgeExitsAfterEachCommand": true,
+    "galleryFavoritesSearch": true,
+    "hardware": "emulator only",
+    "diagnosticExportWithoutRoot": true,
+    "diagnosticExportHasSavedEventsShizukuAndOwnLogcat": true,
+    "wallpaperAppliedComponentVerified": true,
+    "wallpaperPagCanvasMp4Transitions": [
+      {
+        "type": "pag",
+        "visiblePixels": true,
+        "framesDiffer": true,
+        "expectedMotion": true
+      },
+      {
+        "type": "mp4",
+        "visiblePixels": true,
+        "framesDiffer": true,
+        "expectedMotion": true
+      },
+      {
+        "type": "signature",
+        "visiblePixels": true,
+        "framesDiffer": false,
+        "expectedMotion": false
+      },
+      {
+        "type": "clock-return",
+        "visiblePixels": true,
+        "framesDiffer": true,
+        "expectedMotion": true
+      }
+    ],
+    "photoImportThroughAndroidDocumentPicker": true,
+    "twoVirtualDisplays": true,
+    "outerResolution": "1392x1208",
+    "protectedStopClosesCoverPreservesManualPreview": true,
+    "rebootBootCount": 4,
+    "selectionSurvivesReboot": true,
+    "photoSurvivesReboot": true,
+    "photoCropMeanDifference": 0.0,
+    "favoritesSurviveReboot": true,
+    "journalSurvivesReboot": true,
+    "wallpaperSurvivesReboot": true,
+    "shizukuRequiresRestartAfterReboot": true,
+    "exportWorksWithoutShizuku": true,
+    "finalWallpaperHideReleaseResume": [
+      {
+        "type": "pag-final",
+        "resumedVisibleAndMoving": true
+      },
+      {
+        "type": "mp4-final",
+        "resumedVisibleAndMoving": true
+      },
+      {
+        "type": "clock-final",
+        "resumedVisibleAndMoving": true
+      }
+    ]
+  },
+  "hardwareUnverified": "Simultaneous physical displays, Xiaomi activity allowstart, keyguard parsing, fold/sleep timing, physical camera cutouts, hardware video decode, battery and temperature on MIX Flip require a real phone.",
+  "firmware": [
+    {
+      "device": "pandora",
+      "name": "pandora-ota_full-OS3.0.319.0.WBLCNXM-user-16.0-2d01cf4d66.zip",
+      "version": "OS3.0.319.0.WBLCNXM",
+      "size": 8782889002,
+      "md5": "2d01cf4d668c034e7be94b4772595d70",
+      "path": "C:\\Users\\shelk\\Documents\\Codex\\2026-10-03\\mi-mix-flip-xiaomi-xia\\work\\firmware\\pandora-ota_full-OS3.0.319.0.WBLCNXM-user-16.0-2d01cf4d66.zip",
+      "verified_md5": "2d01cf4d668c034e7be94b4772595d70",
+      "sha256": "df05e94766ed44cf32df76ef50e87a9fc356f2592e3a481f48dbc07a304043e7",
+      "official_url": "https://bigota.d.miui.com/OS3.0.319.0.WBLCNXM/pandora-ota_full-OS3.0.319.0.WBLCNXM-user-16.0-2d01cf4d66.zip",
+      "downloaded_file_relative_to_outputs": "../work/firmware/pandora-ota_full-OS3.0.319.0.WBLCNXM-user-16.0-2d01cf4d66.zip"
+    },
+    {
+      "device": "ruyi",
+      "name": "ruyi_global-ota_full-OS3.0.303.0.WNIMIXM-user-16.0-0200f61ca8.zip",
+      "version": "OS3.0.303.0.WNIMIXM",
+      "size": 7144283082,
+      "md5": "0200f61ca8f28dcdf5a4b31e08e05c41",
+      "path": "C:\\Users\\shelk\\Documents\\Codex\\2026-10-03\\mi-mix-flip-xiaomi-xia\\work\\firmware\\ruyi_global-ota_full-OS3.0.303.0.WNIMIXM-user-16.0-0200f61ca8.zip",
+      "verified_md5": "0200f61ca8f28dcdf5a4b31e08e05c41",
+      "sha256": "173ee2a6b33a924d2783b1d59b38d9816717fbb944fa141e391b5e56fde509f8",
+      "official_url": "https://bigota.d.miui.com/OS3.0.303.0.WNIMIXM/ruyi_global-ota_full-OS3.0.303.0.WNIMIXM-user-16.0-0200f61ca8.zip",
+      "downloaded_file_relative_to_outputs": "../work/firmware/ruyi_global-ota_full-OS3.0.303.0.WNIMIXM-user-16.0-0200f61ca8.zip"
+    }
+  ],
+  "coverage": [
+    {
+      "id": "pandora-0714c784-0cc9-440b-8c69-d959adc989db",
+      "name": "Signature",
+      "status": "Transferred as 0714c784-0cc9-440b-8c69-d959adc989db",
+      "sourceImages": 8,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-09cb4aa8-8e8d-4f2c-a6cd-2a7e2648d790",
+      "name": "Liquid silicone",
+      "status": "Transferred as 09cb4aa8-8e8d-4f2c-a6cd-2a7e2648d790",
+      "sourceImages": 9,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-119f090b-b625-4b3e-9ffd-107927c360c6",
+      "name": "Vortex core",
+      "status": "Transferred as 119f090b-b625-4b3e-9ffd-107927c360c6-pandora",
+      "sourceImages": 37,
+      "sourceClips": 2
+    },
+    {
+      "id": "pandora-15647c95-98f6-43e3-81f1-17b350b280c4",
+      "name": "AI Pet Portrait",
+      "status": "Cloud image generation / template; local photos supported by the shared photo composition, AI service unavailable",
+      "sourceImages": 9,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-16f68034-de9f-4901-a4e6-00dfa357b081",
+      "name": "AI Family Portrait",
+      "status": "Cloud image generation / template; local photos supported by the shared photo composition, AI service unavailable",
+      "sourceImages": 9,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-201e979b-9ba5-4931-8388-e01decbfe884",
+      "name": "Oil painting",
+      "status": "Cloud image generation / template; local photos supported by the shared photo composition, AI service unavailable",
+      "sourceImages": 9,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-26d6b38e-6e11-4573-b449-29bcf5ad1477",
+      "name": "Douban movie calendar",
+      "status": "Transferred as 26d6b38e-6e11-4573-b449-29bcf5ad1477",
+      "sourceImages": 1,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-26f4a446-8125-407d-a255-3dbcd8c12eae",
+      "name": "Charlie",
+      "status": "Transferred as bird-pandora",
+      "sourceImages": 61,
+      "sourceClips": 12
+    },
+    {
+      "id": "pandora-3796f192-70e1-40f2-b785-8dd03500b5b3",
+      "name": "Signature",
+      "status": "Combined into the corresponding composition; choose layout/font/color in settings",
+      "sourceImages": 8,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-3adb17eb-f46b-4270-8a26-670c1e71d08f",
+      "name": "Step count",
+      "status": "Transferred as 3adb17eb-f46b-4270-8a26-670c1e71d08f",
+      "sourceImages": 32,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-46e72f3e-8f51-4db8-8db9-1c9e2a847b2a",
+      "name": "3D cartoon",
+      "status": "Transferred as 46e72f3e-8f51-4db8-8db9-1c9e2a847b2a-pandora",
+      "sourceImages": 8,
+      "sourceClips": 1
+    },
+    {
+      "id": "pandora-59fc129a-03f1-45cf-a932-bedfddba963c",
+      "name": "Signature",
+      "status": "Combined into the corresponding composition; choose layout/font/color in settings",
+      "sourceImages": 8,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-5cb92fb9-812b-4c3a-ac75-ec203034f03a",
+      "name": "Liquid silicone",
+      "status": "Transferred as 5cb92fb9-812b-4c3a-ac75-ec203034f03a",
+      "sourceImages": 9,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-6eca3137-153e-4eed-827e-e8f89e51fb8a",
+      "name": "Butterfly carp",
+      "status": "Transferred as q_carp-pandora",
+      "sourceImages": 58,
+      "sourceClips": 4
+    },
+    {
+      "id": "pandora-77abf1e7-9c9b-4441-85af-2d30b73e7957",
+      "name": "Signature",
+      "status": "Combined into the corresponding composition; choose layout/font/color in settings",
+      "sourceImages": 8,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-80489ec0-3f8c-4ed8-a106-a121fe1ebad4",
+      "name": "Flowing glitter",
+      "status": "Transferred as 80489ec0-3f8c-4ed8-a106-a121fe1ebad4-pandora",
+      "sourceImages": 8,
+      "sourceClips": 4
+    },
+    {
+      "id": "pandora-84ae8006-804f-4df3-bad9-413d5ea64799",
+      "name": "AI Pets",
+      "status": "Transferred as 84ae8006-804f-4df3-bad9-413d5ea64799-pandora",
+      "sourceImages": 8,
+      "sourceClips": 1
+    },
+    {
+      "id": "pandora-8668591f-a278-4c5f-a5e0-e75539b2168f",
+      "name": "Custom wallpaper",
+      "status": "Transferred as 8668591f-a278-4c5f-a5e0-e75539b2168f",
+      "sourceImages": 8,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-8da42b39-aa57-4b34-89b6-bef12325c1a5",
+      "name": "AI Caishen",
+      "status": "Cloud image generation / template; local photos supported by the shared photo composition, AI service unavailable",
+      "sourceImages": 9,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-96af4ce9-72b5-451d-aba8-bc3282aeaa34",
+      "name": "Stretch",
+      "status": "Transferred as 96af4ce9-72b5-451d-aba8-bc3282aeaa34",
+      "sourceImages": 334,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-9a873f92-3e7a-4335-9001-5f7e51da03e9",
+      "name": "Coco",
+      "status": "Transferred as seal-pandora",
+      "sourceImages": 61,
+      "sourceClips": 11
+    },
+    {
+      "id": "pandora-a1f032b7-aee9-4af5-a614-c71ee8432c73",
+      "name": "Chinese New Year paper cutting",
+      "status": "Transferred as a1f032b7-aee9-4af5-a614-c71ee8432c73",
+      "sourceImages": 1,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-c5b24c5e-716a-445d-bca9-9bc078b50199",
+      "name": "Liquid silicone",
+      "status": "Transferred as c5b24c5e-716a-445d-bca9-9bc078b50199",
+      "sourceImages": 9,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-c61bcd5d-365f-417d-b295-1e0997b0990b",
+      "name": "Anime 1",
+      "status": "Cloud image generation / template; local photos supported by the shared photo composition, AI service unavailable",
+      "sourceImages": 9,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-c9ad6b5a-1462-460d-8033-b6c407db1290",
+      "name": "Dragon scale fiber",
+      "status": "Transferred as c9ad6b5a-1462-460d-8033-b6c407db1290",
+      "sourceImages": 41,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-cc8f8283-037f-4608-a0fd-b4c0a9a7eb34",
+      "name": "Gradient",
+      "status": "Transferred as cc8f8283-037f-4608-a0fd-b4c0a9a7eb34",
+      "sourceImages": 45,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-cdcebb9f-2fdb-4532-af77-1ee5ed742e12",
+      "name": "Anime 2",
+      "status": "Transferred as cdcebb9f-2fdb-4532-af77-1ee5ed742e12-pandora",
+      "sourceImages": 8,
+      "sourceClips": 1
+    },
+    {
+      "id": "pandora-dd1639ed-306d-4f73-8f78-d26ed6dda77f",
+      "name": "Lola",
+      "status": "Transferred as sheep-pandora",
+      "sourceImages": 61,
+      "sourceClips": 12
+    },
+    {
+      "id": "pandora-e23e7933-0bd7-4d6e-9165-aae505e389cc",
+      "name": "Butterfly carp",
+      "status": "Exact duplicate clip set removed from catalogue",
+      "sourceImages": 58,
+      "sourceClips": 4
+    },
+    {
+      "id": "pandora-e8482faa-d1d0-4439-a67b-0b87cba3bca6",
+      "name": "Stretch",
+      "status": "Combined into the corresponding composition; choose layout/font/color in settings",
+      "sourceImages": 334,
+      "sourceClips": 0
+    },
+    {
+      "id": "pandora-e97f1f85-9ca6-47d3-ba16-89bad4f3cc7f",
+      "name": "Needle felting",
+      "status": "Transferred as e97f1f85-9ca6-47d3-ba16-89bad4f3cc7f-pandora",
+      "sourceImages": 8,
+      "sourceClips": 1
+    },
+    {
+      "id": "archived-presets-317d9477-3731-4636-b526-15f914647826",
+      "name": "Peeko",
+      "status": "Transferred as peeko-archived-presets",
+      "sourceImages": 101,
+      "sourceClips": 24
+    },
+    {
+      "id": "archived-presets-325d3be8-5f5d-4956-841a-3ee136085b1e",
+      "name": "Lola",
+      "status": "Transferred as sheep-archived-presets",
+      "sourceImages": 61,
+      "sourceClips": 14
+    },
+    {
+      "id": "archived-presets-4c5bdda5-82d3-440c-9978-b3085fc30eaa",
+      "name": "Pip",
+      "status": "Transferred as otter-archived-presets",
+      "sourceImages": 3,
+      "sourceClips": 5
+    },
+    {
+      "id": "archived-presets-71991c07-b903-4b99-b5c3-d7eda667be0b",
+      "name": "AI Group Photo",
+      "status": "Cloud image generation / template; local photos supported by the shared photo composition, AI service unavailable",
+      "sourceImages": 9,
+      "sourceClips": 0
+    },
+    {
+      "id": "archived-presets-aabbada0-94be-459c-afe5-371f0dbfba74",
+      "name": "Customize your case wallpaper",
+      "status": "Cloud image generation / template; local photos supported by the shared photo composition, AI service unavailable",
+      "sourceImages": 9,
+      "sourceClips": 0
+    },
+    {
+      "id": "archived-presets-b0337e5d-516d-4fa6-8a1e-0722116cfd81",
+      "name": "Roe",
+      "status": "Transferred as roedeer-archived-presets",
+      "sourceImages": 11,
+      "sourceClips": 17
+    },
+    {
+      "id": "archived-presets-b4deb767-f817-4376-b965-dd037e21953b",
+      "name": "Lumi",
+      "status": "Transferred as lumi-archived-presets",
+      "sourceImages": 101,
+      "sourceClips": 24
+    },
+    {
+      "id": "archived-presets-bc6e2c3a-f148-4b04-9aa5-3383171f1913",
+      "name": "自定义形象",
+      "status": "Static avatar template only; no animation or avatar generation service",
+      "sourceImages": 1,
+      "sourceClips": 0
+    },
+    {
+      "id": "archived-presets-e543e1cc-b795-44f0-abb2-862194d53750",
+      "name": "Coco",
+      "status": "Transferred as seal-archived-presets",
+      "sourceImages": 61,
+      "sourceClips": 13
+    },
+    {
+      "id": "archived-presets-fb026285-632c-42d7-8268-a588015b1ff4",
+      "name": "Jumbo",
+      "status": "Transferred as capybara-archived-presets",
+      "sourceImages": 3,
+      "sourceClips": 5
+    },
+    {
+      "id": "archived-presets-ff37b3ed-214a-483c-a196-33889cafc2d9",
+      "name": "Bubbles",
+      "status": "Transferred as koala-archived-presets",
+      "sourceImages": 10,
+      "sourceClips": 17
+    }
+  ],
+  "fontProvenance": [
+    {
+      "name": "Coca-ColaCareFontKaiTi.TTF",
+      "bytes": 4248772,
+      "sha256": "10895705d96e7cc2ec63f6ecfa9c2a522896aaf6b89b1872b9ca707547a472b2",
+      "partition": "pandora product.img",
+      "path": "/fonts/Coca-ColaCareFontKaiTi.TTF"
+    },
+    {
+      "name": "FZFWZhuZiAYuanJWB.TTF",
+      "bytes": 4258388,
+      "sha256": "7a29de3b6af883233f8c38fc9d9fd32f0950ac12ca4d83e427fec916f94cdd85",
+      "partition": "pandora product.img",
+      "path": "/fonts/FZFWZhuZiAYuanJWB.TTF"
+    },
+    {
+      "name": "MiSansRoundedSC.ttf",
+      "bytes": 78664,
+      "sha256": "db8c5090ce8b6056b0f8bfa4329876b96ef7bcfa0bd095e05ef64d701dab107b",
+      "partition": "pandora product.img",
+      "path": "/fonts/MiSansRoundedSC.ttf"
+    },
+    {
+      "name": "MiSansVF.ttf",
+      "bytes": 20093424,
+      "sha256": "0ddef90648998900175cfdca9a6f087a2544c182f130b0ad4f7e94a03a115e79",
+      "partition": "pandora product.img",
+      "path": "/fonts/MiSansVF.ttf"
+    },
+    {
+      "name": "Qinghe.otf",
+      "bytes": 3943236,
+      "sha256": "4e5cbf7c4a8bdb8f5e38b3b272b20369542e446a918839470ac4c266d09a3283",
+      "partition": "pandora product.img",
+      "path": "/fonts/Qinghe.otf"
+    }
+  ]
+}

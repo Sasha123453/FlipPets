@@ -1,0 +1,630 @@
+<Widget frameRate="60" scaleByDensity="false" screenWidth="1080" version="2" useVariableUpdater="Battery,DateTime.Minute">
+  <Var name="assets" expression="'roedeer'" type="string"/>
+  <Var name="bgGradientFrom" expression="'#E6A543'" type="string"/>
+  <Var name="bgGradientTo" expression="'#EBC054'" type="string"/>
+  <Var name="patternNameTrack" expression="'小狍'" type="string"/>
+  <Var name="sr" type="number" expression="(#view_width / 336)"/>
+  <Var name="srY" type="number" expression="(#view_height / 213)"/>
+  <Var name="log_msg" type="string" expression="''" const="true"/>
+  <Var name="isPanda" type="number" expression="eqs(@assets,'panda')"/>
+  <Var name="isPeanut" type="number" expression="eqs(@assets,'peanut')"/>
+  <Var name="isKoala" type="number" expression="eqs(@assets,'koala')"/>
+  <Var name="is_q5_ratio" type="number" expression="((#view_width / #view_height) { 1.55)"/>
+  <Var name="PAG_DESIGN_RATIO" type="number" expression="(976 / 596)"/>
+  <Var name="pagHeight" type="number" expression="ifelse(#is_q5_ratio,(#view_height * 1.05),#view_height)"/>
+  <Var name="pagWidth" type="number" expression="ifelse(#is_q5_ratio,(#pagHeight * #PAG_DESIGN_RATIO),#view_width)"/>
+  <Var name="time_q5_adjust" type="number" expression="((! #isPanda) ** #is_q5_ratio)"/>
+  <Var name="time_scale" type="number" expression="ifelse(#time_q5_adjust,0.97,1)"/>
+  <Var name="zhTitle" type="string" expression="'胖达'"/>
+  <Var name="enTitle" type="string" expression="'BAM'"/>
+  <Var name="enDesc" type="string" expression="'PANDA'"/>
+  <Var name="timeDeskColor" type="string" expression="'#DBFF5A'"/>
+  <Var name="timeAodColor" type="string" expression="'#B9DB52'"/>
+  <Var name="titleDescColor" type="string" expression="'#4D8D55'"/>
+  <Var name="timeWidth" type="number" expression="((56 * #srY) * #time_scale)"/>
+  <Var name="timeHeight" type="number" expression="((189 * #srY) * #time_scale)"/>
+  <Var name="CAMERA_RIGHT_EDGE" type="number" expression="300"/>
+  <Var name="_time_total_w" type="number" expression="(4 * #timeWidth)"/>
+  <Var name="_time_x_centered" type="number" expression="(#CAMERA_RIGHT_EDGE + (((#view_width - #CAMERA_RIGHT_EDGE) - #_time_total_w) / 2))"/>
+  <Var name="time_layer_x" type="number" expression="ifelse(#time_q5_adjust,#_time_x_centered,(#view_width - (230 * #sr)))"/>
+  <Var name="title_text_width" type="number" expression="(208 * #sr)"/>
+  <Var name="title_text_default_size" type="number" expression="(104 * #sr)"/>
+  <Var name="title_size" type="number" expression="ifelse((#title_text_alpha.text_width } #title_text_width),((#title_text_width / #title_text_alpha.text_width) * #title_text_default_size),#title_text_default_size)"/>
+  <Var name="desc_text_width" type="number" expression="(199 * #sr)"/>
+  <Var name="desc_text_default_size" type="number" expression="(47.68 * #sr)"/>
+  <Var name="desc_size" type="number" expression="ifelse((#desc_text_alpha.text_width } #desc_text_width),((#desc_text_width / #desc_text_alpha.text_width) * #desc_text_default_size),#desc_text_default_size)"/>
+  <Var name="hourHigh" type="number" expression="int((ifelse(#time_format,#hour24,#hour12) / 10))"/>
+  <Var name="hourLow" type="number" expression="(ifelse(#time_format,#hour24,#hour12) % 10)"/>
+  <Var name="minHigh" type="number" expression="int((#minute / 10))"/>
+  <Var name="minLow" type="number" expression="(#minute % 10)"/>
+  <Var name="categoryTrack" type="string" expression="''" const="true"/>
+  <Var name="nameExposeTrack" type="string" expression="''" const="true"/>
+  <Var name="nameReceiveTrack" type="string" expression="''" const="true"/>
+  <Var name="categoryArr" type="string[]" values="'霸屏动画','霸屏动画','霸屏动画','霸屏动画','霸屏动画','霸屏动画','霸屏动画','霸屏动画','隔空手势','隔空手势','隔空手势','隔空手势','单击交互','单击交互','单击交互'"/>
+  <Var name="pandaNameArr" type="string[]" values="'手捧莲花','跑步','走路','听歌','消息通知','充电中','低电量','下雨','比耶','点赞','小比心','大比心','冥想','躺平','挂在树干上'"/>
+  <Var name="peanutNameArr" type="string[]" values="'揉脸','跑步','走路','听歌','消息通知','充电中','低电量','下雨','比耶','点赞','小比心','大比心','贴脸','跳舞','吃点心'"/>
+  <Var name="koalaNameArr" type="string[]" values="'揉脸','跑步','走路','听歌','消息通知','充电中','低电量','下雨','比耶','点赞','小比心','大比心','吃雪糕','抱臂','喝橙汁'"/>
+  <Var name="roedeerNameArr" type="string[]" values="'摸鱼','跑步','走路','听歌','消息通知','充电中','低电量','下雨','比耶','点赞','小比心','大比心','打字','喊口号','举铁'"/>
+  <Var name="nameReceiveArr" type="string[]" values="'','比耶','点赞','','小比心','大比心'"/>
+  <Var name="exposeData" type="string" expression="'{&quot;event&quot;:&quot;expose&quot;,&quot;tip&quot;:&quot;1878.1.4.1.48693&quot;,&quot;pattern_name&quot;:&quot;'+@patternNameTrack+'&quot;,&quot;category&quot;:&quot;'+@categoryTrack+'&quot;,&quot;name&quot;:&quot;'+@nameExposeTrack+'&quot;}'" const="true"/>
+  <Var name="receiveData" type="string" expression="'{&quot;event&quot;:&quot;receive&quot;,&quot;tip&quot;:&quot;1878.1.5.1.48694&quot;,&quot;pattern_name&quot;:&quot;'+@patternNameTrack+'&quot;,&quot;name&quot;:&quot;'+@nameReceiveTrack+'&quot;}'" const="true"/>
+  <Var name="pag_index" type="number" expression="15" const="true"/>
+  <Var name="pet_complete" type="number" expression="0" const="true"/>
+  <Var name="aod_state" type="number" expression="0" const="true"/>
+  <Var name="pause_state" type="number" expression="0" const="true"/>
+  <Var name="disablePlay" type="number" expression="1" const="true"/>
+  <Var name="high_index" type="number" expression="0" const="true"/>
+  <Var name="init_times" type="number" expression="0" const="true"/>
+  <Var name="frame_down" type="number" expression="0" const="true"/>
+  <Var name="anime_switch" type="string" expression="''" const="true"/>
+  <Var name="click_index" type="number" expression="0" const="true"/>
+  <Var name="click_count" type="number" expression="0" const="true"/>
+  <Var name="current_play_click" type="number" expression="0" const="true"/>
+  <Var name="current_aon_state" type="number" expression="0" const="true"/>
+  <Var name="current_play_aon" type="number" expression="0" const="true"/>
+  <Var name="last_aon_time" type="number" expression="0" const="true"/>
+  <Var name="time_aon_diff" type="number" expression="(#time_sys - #last_aon_time)"/>
+  <Var name="event_index" type="number" expression="0" const="true"/>
+  <Var name="is_active" type="number" expression="0" const="true"/>
+  <Var name="level_rule" type="number[]" values="1,8,7,6,5,4,3,2" const="true"/>
+  <Var name="level_event" type="number[]" values="0,0,0,0,0,0,0,0" const="true"/>
+  <Var name="new_high_level" type="number" expression="0" const="true"/>
+  <Var name="high_level" type="number" expression="0" const="true"/>
+  <Var name="current_step_time" type="number" expression="0" const="true"/>
+  <Var name="last_step_time" type="number" expression="0" const="true"/>
+  <Var name="time_interval" type="number" expression="0" const="true"/>
+  <Var name="step_index" type="number" expression="0" const="true"/>
+  <Var name="time_step_diff" type="number" expression="(#time_sys - #last_step_time)"/>
+  <Var name="music_state" type="number" expression="#music_control.music_state"/>
+  <Var name="music_play_state" expression="#music_state" threshold="1">
+    <Trigger>
+      <IfCommand ifCondition="#music_state">
+        <Consequent>
+          <VariableCommand name="event_index" expression="3" type="number"/>
+          <VariableCommand name="is_active" expression="1" type="number"/>
+          <FunctionCommand target="updateEventState"/>
+        </Consequent>
+        <Alternate>
+          <MultiCommand condition="#level_event[3]">
+            <VariableCommand name="event_index" expression="3" type="number"/>
+            <VariableCommand name="is_active" expression="0" type="number"/>
+            <FunctionCommand target="updateEventState"/>
+          </MultiCommand>
+        </Alternate>
+      </IfCommand>
+    </Trigger>
+  </Var>
+  <Var name="package_name" type="string" expression="''" const="true"/>
+  <Var name="battery_plugged_state" expression="#plugged" threshold="1">
+    <Trigger>
+      <IfCommand ifCondition="(((#plugged == 1) || (#plugged == 2)) || (#plugged == 4))">
+        <Consequent>
+          <VariableCommand name="event_index" expression="5" type="number"/>
+          <VariableCommand name="is_active" expression="1" type="number"/>
+          <FunctionCommand target="updateEventState"/>
+        </Consequent>
+        <Alternate>
+          <MultiCommand condition="#level_event[5]">
+            <VariableCommand name="event_index" expression="5" type="number"/>
+            <VariableCommand name="is_active" expression="0" type="number"/>
+            <FunctionCommand target="updateEventState"/>
+          </MultiCommand>
+        </Alternate>
+      </IfCommand>
+    </Trigger>
+  </Var>
+  <Var name="battery_level_state" expression="#battery_level" threshold="1">
+    <Trigger>
+      <MultiCommand condition="((#battery_level { 20) ** eq(#level_event[6],0))">
+        <VariableCommand name="event_index" expression="6" type="number"/>
+        <VariableCommand name="is_active" expression="1" type="number"/>
+        <FunctionCommand target="updateEventState"/>
+      </MultiCommand>
+      <MultiCommand condition="((#battery_level }= 20) ** eq(#level_event[6],1))">
+        <VariableCommand name="event_index" expression="6" type="number"/>
+        <VariableCommand name="is_active" expression="0" type="number"/>
+        <FunctionCommand target="updateEventState"/>
+      </MultiCommand>
+    </Trigger>
+  </Var>
+  <Var name="hasweather" type="number" expression="0" const="true"/>
+  <Var name="weather_type" type="number" expression="0" const="true"/>
+  <Var name="min_change" expression="#minute" threshold="1">
+    <Trigger>
+      <BinderCommand name="WeatherProvider" command="refresh"/>
+    </Trigger>
+  </Var>
+  <Function name="logD">
+    <ExternCommand command="FLLogD" strPara="@log_msg"/>
+  </Function>
+  <Function name="trackEvent">
+    <VariableCommand name="categoryTrack" expression="@categoryArr[#pag_index]" type="string"/>
+    <VariableCommand name="nameExposeTrack" expression="ifelse(#isPanda,@pandaNameArr[#pag_index],ifelse(#isPeanut,@peanutNameArr[#pag_index],ifelse(#isKoala,@koalaNameArr[#pag_index],@roedeerNameArr[#pag_index])))" type="string"/>
+    <VariableCommand name="exposeData" expression="'{&quot;event&quot;:&quot;expose&quot;,&quot;tip&quot;:&quot;1878.1.4.1.48693&quot;,&quot;pattern_name&quot;:&quot;'+@patternNameTrack+'&quot;,&quot;category&quot;:&quot;'+@categoryTrack+'&quot;,&quot;name&quot;:&quot;'+@nameExposeTrack+'&quot;}'" type="string"/>
+    <ExternCommand command="oneTrack" strPara="@exposeData"/>
+  </Function>
+  <Function name="imageDisable">
+    <FolmeCommand target="meditation_bg" config="'folme_config_0'" states="'folme_state_0'" command="to"/>
+  </Function>
+  <Function name="animePag">
+    <VariableCommand name="log_msg" expression="((('LP: animePag start ' + #pag_index) + '->') + #high_index)" type="string"/>
+    <FunctionCommand target="logD"/>
+    <FolmeCommand target="cute_pag" config="'folme_config_1'" states="'folme_state_1'" command="to"/>
+  </Function>
+  <Function name="switchPag">
+    <IfCommand ifCondition="((#pag_index }= 12) ** (! #pet_complete))">
+      <Consequent>
+        <VariableCommand name="log_msg" expression="(('LP: switchPag skip (click pag ' + #pag_index) + ' playing)')" type="string"/>
+        <FunctionCommand target="logD"/>
+      </Consequent>
+      <Alternate>
+        <MultiCommand condition="(! #current_play_aon)">
+          <MultiCommand condition="#step_index">
+            <VariableCommand name="high_index" expression="#step_index" type="number"/>
+          </MultiCommand>
+          <IfCommand ifCondition="(((#pag_index != #high_index) || (#pag_index } 7)) || (((#pag_index == 6) ** (#high_index == 6)) ** #isPanda))">
+            <Consequent>
+              <FunctionCommand target="imageDisable"/>
+              <FunctionCommand target="animePag"/>
+            </Consequent>
+            <Alternate>
+              <VariableCommand name="pag_index" expression="#high_index" type="number"/>
+              <PagCommand target="cute_pag" command="play"/>
+            </Alternate>
+          </IfCommand>
+        </MultiCommand>
+      </Alternate>
+    </IfCommand>
+  </Function>
+  <Function name="onComplete">
+    <MultiCommand condition="((! eqs(@anime_switch,'0.0')) ** (! eqs(@anime_switch,'0')))">
+      <VariableCommand name="pet_complete" expression="1" type="number"/>
+      <VariableCommand name="init_times" expression="0" type="number"/>
+      <VariableCommand name="current_play_aon" expression="0" type="number"/>
+      <VariableCommand name="current_play_click" expression="0" type="number"/>
+      <IfCommand ifCondition="(! #aod_state)">
+        <Consequent>
+          <IfCommand ifCondition="(#pag_index { 12)">
+            <Consequent>
+              <FunctionCommand target="switchPag"/>
+            </Consequent>
+            <Alternate>
+              <FunctionCommand target="switchPag" delay="1000"/>
+            </Alternate>
+          </IfCommand>
+        </Consequent>
+        <Alternate>
+          <VariableCommand name="level_event" expression="0" type="number[]" index="1"/>
+          <VariableCommand name="level_event" expression="0" type="number[]" index="2"/>
+          <VariableCommand name="event_index" expression="#step_index" type="number"/>
+          <VariableCommand name="is_active" expression="0" type="number"/>
+          <FunctionCommand target="updateEventState"/>
+          <VariableCommand name="step_index" expression="0" type="number"/>
+          <VariableCommand name="time_interval" expression="0" type="number"/>
+          <MultiCommand condition="(! #frame_down)">
+            <FrameRateCommand rate="0"/>
+          </MultiCommand>
+        </Alternate>
+      </IfCommand>
+    </MultiCommand>
+  </Function>
+  <Function name="onClick">
+    <MultiCommand condition="(((! #aod_state) ** (! #current_play_click)) ** ((#pag_index {= 7) || (#pag_index }= 12)))">
+      <VariableCommand name="pet_complete" expression="0" type="number"/>
+      <VariableCommand name="current_play_click" expression="1" type="number"/>
+      <VariableCommand name="click_count" expression="(#click_count % 4)" type="number"/>
+      <VariableCommand name="click_index" expression="(12 + #click_count)" type="number"/>
+      <VariableCommand name="click_count" expression="(#click_count + 1)" type="number"/>
+      <VariableCommand name="log_msg" expression="((('LP: click ' + #pag_index) + '->') + #click_index)" type="string"/>
+      <FunctionCommand target="logD"/>
+      <MultiCommand condition="((#click_index == 13) || (#click_index == 14))">
+        <FolmeCommand target="meditation_bg" config="'folme_config_3'" states="'folme_state_3'" command="to"/>
+      </MultiCommand>
+      <FolmeCommand target="cute_pag" config="'folme_config_4'" states="'folme_state_4'" command="to"/>
+    </MultiCommand>
+  </Function>
+  <Function name="updateEventState">
+    <VariableCommand name="level_event" expression="#is_active" type="number[]" index="#event_index"/>
+    <VariableCommand name="new_high_level" expression="0" type="number"/>
+    <VariableCommand name="high_level" expression="(- 1)" type="number"/>
+    <VariableCommand name="i" type="number" expression="1"/>
+    <LoopCommand loopCondition="(#i { 8)" count="999">
+      <MultiCommand condition="(#level_event[(8 - #i)] ** (#level_rule[(8 - #i)] } #high_level))">
+        <VariableCommand name="high_level" expression="#level_rule[(8 - #i)]" type="number"/>
+        <VariableCommand name="new_high_level" expression="(8 - #i)" type="number"/>
+      </MultiCommand>
+      <VariableCommand name="i" expression="#i + 1" type="number"/>
+    </LoopCommand>
+    <VariableCommand name="high_index" expression="ifelse((#high_level } 0),#new_high_level,0)" type="number"/>
+    <MultiCommand condition="(((! #init_times) ** (! #aod_state)) ** (! #current_play_aon))">
+      <MultiCommand condition="((#is_active ** (#pag_index { 8)) ** ne(#pag_index,#event_index))">
+        <VariableCommand name="log_msg" expression="((('LP: event ' + #pag_index) + '->') + #event_index)" type="string"/>
+        <FunctionCommand target="logD"/>
+        <ExternCommand command="userActivity" strPara="'1'"/>
+        <FunctionCommand target="imageDisable"/>
+        <FolmeCommand target="cute_pag" config="'folme_config_7'" states="'folme_state_7'" command="to"/>
+        <VariableCommand name="current_play_click" expression="0" type="number"/>
+        <VariableCommand name="pet_complete" expression="0" type="number"/>
+      </MultiCommand>
+      <MultiCommand condition="((! #is_active) ** (#pag_index { 8))">
+        <MultiCommand condition="((((#pag_index != 1) ** (#pag_index != 2)) ** eq(#level_event[#pag_index],0)) ** (#pag_index != 4))">
+          <FunctionCommand target="imageDisable"/>
+          <FunctionCommand target="animePag"/>
+          <VariableCommand name="pet_complete" expression="0" type="number"/>
+        </MultiCommand>
+        <MultiCommand condition="((((#pag_index == 1) || (#pag_index == 2)) ** eq(#level_event[1],0)) ** eq(#level_event[2],0))">
+          <FunctionCommand target="imageDisable"/>
+          <FunctionCommand target="animePag"/>
+          <VariableCommand name="pet_complete" expression="0" type="number"/>
+        </MultiCommand>
+      </MultiCommand>
+    </MultiCommand>
+  </Function>
+  <Function name="step_empty">
+    <MultiCommand condition="(#time_step_diff } 1900)">
+      <VariableCommand name="level_event" expression="0" type="number[]" index="1"/>
+      <VariableCommand name="level_event" expression="0" type="number[]" index="2"/>
+      <VariableCommand name="event_index" expression="#step_index" type="number"/>
+      <VariableCommand name="is_active" expression="0" type="number"/>
+      <FunctionCommand target="updateEventState"/>
+      <VariableCommand name="step_index" expression="0" type="number"/>
+      <VariableCommand name="time_interval" expression="0" type="number"/>
+    </MultiCommand>
+  </Function>
+  <Function name="messageEmpty">
+    <VariableCommand name="event_index" expression="4" type="number"/>
+    <VariableCommand name="is_active" expression="0" type="number"/>
+    <FunctionCommand target="updateEventState"/>
+  </Function>
+  <Function name="switchStateAod">
+    <VariableCommand name="frame_down" expression="1" type="number"/>
+    <FrameRateCommand rate="60"/>
+    <FolmeCommand target="time_desk" config="'folme_config_9'" states="'folme_state_9'" command="to"/>
+    <FolmeCommand target="time_aod" config="'folme_config_10'" states="'folme_state_10'" command="to"/>
+    <FolmeCommand target="aod_bg" config="'folme_config_11'" states="'folme_state_11'" command="to"/>
+  </Function>
+  <Function name="switchStateDesk">
+    <FrameRateCommand rate="60"/>
+    <FolmeCommand target="time_desk" config="'folme_config_12'" states="'folme_state_12'" command="to"/>
+    <FolmeCommand target="time_aod" config="'folme_config_13'" states="'folme_state_13'" command="to"/>
+    <FolmeCommand target="aod_bg" config="'folme_config_14'" states="'folme_state_14'" command="to"/>
+  </Function>
+  <Function name="onNfcPinComplete">
+    <VariableCommand name="disablePlay" expression="0" type="number"/>
+    <PagCommand target="cute_pag" command="setProgress" params="'0'"/>
+    <PagCommand target="cute_pag" command="play"/>
+  </Function>
+  <Function name="delayDisplay">
+    <MultiCommand condition="#aod_state">
+      <VariableCommand name="disablePlay" expression="1" type="number"/>
+    </MultiCommand>
+  </Function>
+  <Rectangle w="#view_width" h="#view_height" visibility="#isPanda" x="0" y="0" fillColor="#72B279"/>
+  <Rectangle w="#view_width" h="#view_height" visibility="(! #isPanda)" x="0" y="0">
+    <FillShaders>
+      <LinearGradient x="(#view_width / 2)" x1="(#view_width / 2)" y1="#view_height" y="0" tile="clamp">
+        <GradientStop color="@bgGradientFrom" position="0"/>
+        <GradientStop color="@bgGradientTo" position="1"/>
+      </LinearGradient>
+    </FillShaders>
+  </Rectangle>
+  <Group visibility="#isPanda">
+    <Group x="(#view_width - (225 * #sr))">
+      <Text textExp="ifelse(eqs(@local,'zh_CN'),@zhTitle,@enTitle)" size="(104 * #sr)" alpha="(255 * 0)" name="title_text_alpha" fontPath="/product/fonts/DelaGothicOne.otf" fontPathWeight="400"/>
+      <Text textExp="@enDesc" size="#desc_text_default_size" alpha="(255 * 0)" name="desc_text_alpha" fontPath="/product/fonts/C800.ttf" fontPathWeight="400"/>
+      <Text y="((#view_height - (22 * #sr)) - ((#title_text_default_size - #title_size) / 2))" textExp="ifelse(eqs(@local,'zh_CN'),@zhTitle,@enTitle)" w="#title_text_width" size="#title_size" color="@titleDescColor" name="title_text" fontPath="/product/fonts/DelaGothicOne.otf" fontPathWeight="400" textAlign="'center'" alignV="bottom"/>
+      <Text y="(#view_height - ((#desc_text_default_size - #desc_size) / 2))" textExp="@enDesc" w="#desc_text_width" size="#desc_size" color="@titleDescColor" name="desc_text" fontPath="/product/fonts/C800.ttf" fontPathWeight="400" textAlign="'center'" alignV="bottom"/>
+    </Group>
+    <Group folmeMode="true" name="meditation_bg" alpha="0">
+      <Image x="(1.5 * #sr)" w="#view_width" h="#view_height" srcExp="(('assets/' + @assets) + '/meditation.webp')"/>
+    </Group>
+    <Layer x="(#view_width - (229 * #sr))" frameRate="-1">
+      <Group folmeMode="true" name="time_desk">
+        <Group x="((- 10) * #sr)" w="(230 * #sr)" h="(80 * #sr)" contentDescriptionExp="formatDate(ifelse(#time_format,'HH:mm','hh:mm'),#time_sys)" visibility="eq(#aod_state,0)" y="0" interceptTouch="true" touchable="true"/>
+        <Text textExp="#hourHigh" size="(72.51 * #sr)" y="(6 * #srY)" color="@timeDeskColor" w="(54 * #sr)" textAlign="'center'" fontPath="etc/c700_regular.ttf" fontPathWeight="400"/>
+        <Text textExp="#hourLow" size="(72.51 * #sr)" y="(6 * #srY)" x="(52 * #sr)" color="@timeDeskColor" w="(54 * #sr)" textAlign="'center'" fontPath="etc/c700_regular.ttf" fontPathWeight="400"/>
+        <Image x="(98 * #sr)" y="(24 * #sr)" w="(14 * #sr)" h="(32 * #sr)" srcExp="(('assets/' + @assets) + '/desk_time_sep.png')"/>
+        <Text textExp="#minHigh" size="(72.51 * #sr)" y="(6 * #srY)" x="(104 * #sr)" color="@timeDeskColor" w="(54 * #sr)" textAlign="'center'" fontPath="etc/c700_regular.ttf" fontPathWeight="400"/>
+        <Text textExp="#minLow" size="(72.51 * #sr)" y="(6 * #srY)" x="(156 * #sr)" color="@timeDeskColor" w="(54 * #sr)" textAlign="'center'" fontPath="etc/c700_regular.ttf" fontPathWeight="400"/>
+      </Group>
+    </Layer>
+  </Group>
+  <Group visibility="(! #isPanda)">
+    <Layer x="#time_layer_x" frameRate="-1">
+      <Group x="((- 10) * #sr)" w="(230 * #sr)" h="#view_height" contentDescriptionExp="formatDate(ifelse(#time_format,'HH:mm','hh:mm'),#time_sys)" visibility="eq(#aod_state,0)" interceptTouch="true" touchable="true"/>
+      <Group y="((#view_height - #timeHeight) / 2)">
+        <Image w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/temp_') + #hourHigh) + '.png')"/>
+        <Image x="#timeWidth" w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/temp_') + #hourLow) + '.png')"/>
+        <Image x="(#timeWidth * 2)" w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/temp_') + #minHigh) + '.png')"/>
+        <Image x="(#timeWidth * 3)" w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/temp_') + #minLow) + '.png')"/>
+      </Group>
+    </Layer>
+  </Group>
+  <Layer frameRate="-1">
+    <PagView w="#view_width" h="#view_height" x="0" y="0" touchable="true" srcExp="(('assets/' + @assets) + '/pag/nfc_pin_show.pag')" name="nfc_pin_pag" loop="1" layerType="top" setPath="true" scaleMode="1">
+      <Triggers>
+        <Trigger action="complete">
+          <FunctionCommand target="onNfcPinComplete"/>
+        </Trigger>
+      </Triggers>
+    </PagView>
+  </Layer>
+  <Layer frameRate="-1">
+    <PagView w="#pagWidth" h="#pagHeight" x="(#view_width + (1 * #sr))" y="(#view_height + (4 * #srY))" touchable="true" disablePlay="#disablePlay" srcExp="(((('assets/' + @assets) + '/pag/pag_') + #pag_index) + '.pag')" folmeMode="true" name="cute_pag" loop="1" autoPlay="true" layerType="top" align="right" alignV="bottom" setPath="true">
+      <Triggers>
+        <Trigger action="complete">
+          <FunctionCommand target="onComplete"/>
+        </Trigger>
+      </Triggers>
+    </PagView>
+    <Button w="#view_width" h="#view_height" x="0" y="0" interceptTouch="true">
+      <Triggers>
+        <Trigger action="up">
+          <FunctionCommand target="onClick"/>
+        </Trigger>
+      </Triggers>
+    </Button>
+  </Layer>
+  <Layer frameRate="-1">
+    <Rectangle w="#view_width" h="#view_height" x="0" y="0" alpha="(#aod_state * 255)" folmeMode="true" name="aod_bg" fillColor="#000000"/>
+  </Layer>
+  <Layer x="(#view_width - (229 * #sr))" visibility="#isPanda" frameRate="-1">
+    <Group alpha="(#aod_state * 255)" folmeMode="true" name="time_aod">
+      <Text textExp="#hourHigh" size="(72.51 * #sr)" y="(6 * #srY)" color="@timeAodColor" w="(54 * #sr)" textAlign="'center'" fontPath="etc/c700_regular.ttf" fontPathWeight="400"/>
+      <Text textExp="#hourLow" size="(72.51 * #sr)" y="(6 * #srY)" x="(52 * #sr)" color="@timeAodColor" w="(54 * #sr)" textAlign="'center'" fontPath="etc/c700_regular.ttf" fontPathWeight="400"/>
+      <Image x="(98 * #sr)" y="(24 * #sr)" w="(14 * #sr)" h="(32 * #sr)" srcExp="(('assets/' + @assets) + '/aod_time_sep.png')"/>
+      <Text textExp="#minHigh" size="(72.51 * #sr)" y="(6 * #srY)" x="(104 * #sr)" color="@timeAodColor" w="(54 * #sr)" textAlign="'center'" fontPath="etc/c700_regular.ttf" fontPathWeight="400"/>
+      <Text textExp="#minLow" size="(72.51 * #sr)" y="(6 * #srY)" x="(156 * #sr)" color="@timeAodColor" w="(54 * #sr)" textAlign="'center'" fontPath="etc/c700_regular.ttf" fontPathWeight="400"/>
+    </Group>
+  </Layer>
+  <MusicControl name="music_control" autoShow="false" autoRefresh="true" x="0" y="0"/>
+  <Group>
+    <FolmeState name="folme_state_0" alpha="0"/>
+    <FolmeConfig name="folme_config_0" ease="1,125"/>
+    <FolmeState name="folme_state_1" alpha="0"/>
+    <FolmeConfig name="folme_config_1" ease="1,125" onComplete="'folme_oncomplete_2'"/>
+    <Function name="folme_oncomplete_2">
+      <MultiCommand condition="(! #init_times)">
+        <MultiCommand condition="(#pag_index != #high_index)">
+          <VariableCommand name="categoryTrack" expression="@categoryArr[#high_index]" type="string"/>
+          <VariableCommand name="nameExposeTrack" expression="ifelse(#isPanda,@pandaNameArr[#high_index],ifelse(#isPeanut,@peanutNameArr[#high_index],ifelse(#isKoala,@koalaNameArr[#high_index],@roedeerNameArr[#high_index])))" type="string"/>
+          <VariableCommand name="exposeData" expression="'{&quot;event&quot;:&quot;expose&quot;,&quot;tip&quot;:&quot;1878.1.4.1.48693&quot;,&quot;pattern_name&quot;:&quot;'+@patternNameTrack+'&quot;,&quot;category&quot;:&quot;'+@categoryTrack+'&quot;,&quot;name&quot;:&quot;'+@nameExposeTrack+'&quot;}'" type="string"/>
+          <ExternCommand command="oneTrack" strPara="@exposeData"/>
+        </MultiCommand>
+        <VariableCommand name="pag_index" expression="#high_index" type="number"/>
+      </MultiCommand>
+      <FolmeCommand target="cute_pag" config="'folme_config_2'" states="'folme_state_2'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_2" alpha="255"/>
+    <FolmeConfig name="folme_config_2" ease="1,200" delay="100"/>
+    <FolmeState name="folme_state_3" alpha="0"/>
+    <FolmeConfig name="folme_config_3" ease="1,125"/>
+    <FolmeState name="folme_state_4" alpha="0"/>
+    <FolmeConfig name="folme_config_4" ease="1,125" onComplete="'folme_oncomplete_5'"/>
+    <Function name="folme_oncomplete_5">
+      <VariableCommand name="pag_index" expression="#click_index" type="number"/>
+      <FunctionCommand target="trackEvent"/>
+      <PagCommand target="cute_pag" command="setProgress" params="'0'"/>
+      <PagCommand target="cute_pag" command="play"/>
+      <MultiCommand condition="(#pag_index == 12)">
+        <FolmeCommand target="meditation_bg" config="'folme_config_5'" states="'folme_state_5'" command="to"/>
+      </MultiCommand>
+      <FolmeCommand target="cute_pag" config="'folme_config_6'" states="'folme_state_6'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_5" alpha="255"/>
+    <FolmeConfig name="folme_config_5" ease="1,200" delay="100"/>
+    <FolmeState name="folme_state_6" alpha="255"/>
+    <FolmeConfig name="folme_config_6" ease="1,200" delay="100" onComplete="'folme_oncomplete_7'"/>
+    <Function name="folme_oncomplete_7">
+      <VariableCommand name="current_play_click" expression="0" type="number"/>
+    </Function>
+    <FolmeState name="folme_state_7" alpha="0"/>
+    <FolmeConfig name="folme_config_7" ease="1,125" onComplete="'folme_oncomplete_8'"/>
+    <Function name="folme_oncomplete_8">
+      <MultiCommand condition="(! #init_times)">
+        <VariableCommand name="pag_index" expression="#event_index" type="number"/>
+        <FunctionCommand target="trackEvent"/>
+      </MultiCommand>
+      <FolmeCommand target="cute_pag" config="'folme_config_8'" states="'folme_state_8'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_8" alpha="255"/>
+    <FolmeConfig name="folme_config_8" ease="1,200" delay="100"/>
+    <FolmeState name="folme_state_9" alpha="0"/>
+    <FolmeConfig name="folme_config_9" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_10" alpha="255"/>
+    <FolmeConfig name="folme_config_10" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_11" alpha="(255 * 0.4)"/>
+    <FolmeConfig name="folme_config_11" ease="-2, 1,0.72" onComplete="'folme_oncomplete_12'"/>
+    <Function name="folme_oncomplete_12">
+      <VariableCommand name="frame_down" expression="0" type="number"/>
+      <FrameRateCommand rate="0"/>
+    </Function>
+    <FolmeState name="folme_state_12" alpha="255"/>
+    <FolmeConfig name="folme_config_12" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_13" alpha="0"/>
+    <FolmeConfig name="folme_config_13" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_14" alpha="0"/>
+    <FolmeConfig name="folme_config_14" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_15" alpha="0"/>
+    <FolmeConfig name="folme_config_15" ease="1,125" onComplete="'folme_oncomplete_16'"/>
+    <Function name="folme_oncomplete_16">
+      <VariableCommand name="pag_index" expression="(7 + ifelse((#current_aon_state {= 2),#current_aon_state,(#current_aon_state - 1)))" type="number"/>
+      <FunctionCommand target="trackEvent"/>
+      <PagCommand target="cute_pag" command="setProgress" params="'0'"/>
+      <PagCommand target="cute_pag" command="play"/>
+      <FolmeCommand target="cute_pag" config="'folme_config_16'" states="'folme_state_16'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_16" alpha="255"/>
+    <FolmeConfig name="folme_config_16" ease="1,200" delay="100"/>
+  </Group>
+  <VariableBinders>
+    <SettingsBinder name="settings">
+      <Variable name="anime_switch" type="string" category="global" key="animator_duration_scale"/>
+    </SettingsBinder>
+    <BroadcastBinder action="android.intent.action.APPLICATION_MESSAGE_UPDATE">
+      <Variable name="package_name" extra="android.intent.extra.update_application_component_name" type="string"/>
+      <Trigger>
+        <MultiCommand condition="((eqs(@package_name,'com.tencent.mm/') || eqs(@package_name,'com.tencent.mobileqq/')) ** eq(#level_event[4],0))">
+          <VariableCommand name="event_index" expression="4" type="number"/>
+          <VariableCommand name="is_active" expression="1" type="number"/>
+          <FunctionCommand target="updateEventState"/>
+          <FunctionCommand target="messageEmpty" delay="500"/>
+        </MultiCommand>
+      </Trigger>
+    </BroadcastBinder>
+    <BroadcastBinder action="android.intent.action.BATTERY_CHANGED">
+      <Variable name="plugged" extra="plugged" type="int"/>
+    </BroadcastBinder>
+    <ContentProviderBinder name="WeatherProvider" uriExp="('content://weather/weatherData/4/' + @localId)" columns="weather_type" countName="hasweather">
+      <Variable name="weather_type" column="weather_type" type="number"/>
+      <Trigger>
+        <MultiCommand condition="((((#weather_type } 3) ** (#weather_type { 12)) || (#weather_type == 25)) ** eq(#level_event[7],0))">
+          <VariableCommand name="event_index" expression="7" type="number"/>
+          <VariableCommand name="is_active" expression="1" type="number"/>
+          <FunctionCommand target="updateEventState"/>
+        </MultiCommand>
+        <MultiCommand condition="((((#weather_type } 11) ** (#weather_type { 25)) || (#weather_type { 4)) ** eq(#level_event[7],1))">
+          <VariableCommand name="event_index" expression="7" type="number"/>
+          <VariableCommand name="is_active" expression="0" type="number"/>
+          <FunctionCommand target="updateEventState"/>
+        </MultiCommand>
+      </Trigger>
+    </ContentProviderBinder>
+    <SensorBinder type="step_uwb_fv" ignoreThreshold="true">
+      <Variable name="axisX" index="0"/>
+      <Trigger>
+        <MultiCommand condition="(! #aod_state)">
+          <VariableCommand name="current_step_time" expression="#time_sys" type="number"/>
+          <VariableCommand name="time_interval" expression="(#current_step_time - #last_step_time)" type="number"/>
+          <IfCommand ifCondition="(#time_interval {= 375)">
+            <Consequent>
+              <VariableCommand name="step_index" expression="1" type="number"/>
+            </Consequent>
+            <Alternate>
+              <VariableCommand name="step_index" expression="2" type="number"/>
+            </Alternate>
+          </IfCommand>
+          <MultiCommand condition="((#pag_index != 1) ** (#pag_index != 2))">
+            <MultiCommand condition="(eq(#level_event[1],0) ** eq(#level_event[2],0))">
+              <VariableCommand name="event_index" expression="#step_index" type="number"/>
+              <VariableCommand name="is_active" expression="1" type="number"/>
+              <FunctionCommand target="updateEventState"/>
+            </MultiCommand>
+          </MultiCommand>
+          <MultiCommand condition="(#step_index == 1)">
+            <VariableCommand name="level_event" expression="1" type="number[]" index="1"/>
+            <VariableCommand name="level_event" expression="0" type="number[]" index="2"/>
+          </MultiCommand>
+          <MultiCommand condition="(#step_index == 2)">
+            <VariableCommand name="level_event" expression="1" type="number[]" index="2"/>
+            <VariableCommand name="level_event" expression="0" type="number[]" index="1"/>
+          </MultiCommand>
+          <VariableCommand name="last_step_time" expression="#current_step_time" type="number"/>
+          <FunctionCommand target="step_empty" delay="2000"/>
+        </MultiCommand>
+      </Trigger>
+    </SensorBinder>
+  </VariableBinders>
+  <ExternalCommands>
+    <Trigger action="aonUpdate">
+      <MultiCommand condition="ne(#aon_data[0],0)">
+        <VariableCommand name="log_msg" expression="((((((((((('LP: aon d=' + #aon_data[0]) + ' pag=') + #pag_index) + ' cas=') + #current_aon_state) + ' cpa=') + #current_play_aon) + ' diff=') + #time_aon_diff) + ' aod=') + #aod_state)" type="string"/>
+        <FunctionCommand target="logD"/>
+      </MultiCommand>
+      <MultiCommand condition="((! #aod_state) ** ne(#aon_data[0],0))">
+        <VariableCommand name="nameReceiveTrack" expression="@nameReceiveArr[#aon_data[0]]" type="string"/>
+        <VariableCommand name="receiveData" expression="'{&quot;event&quot;:&quot;receive&quot;,&quot;tip&quot;:&quot;1878.1.5.1.48694&quot;,&quot;pattern_name&quot;:&quot;'+@patternNameTrack+'&quot;,&quot;name&quot;:&quot;'+@nameReceiveTrack+'&quot;}'" type="string"/>
+        <ExternCommand command="oneTrack" strPara="@receiveData"/>
+        <MultiCommand condition="(((#time_aon_diff }= 2000) || (#pag_index { 8)) || (#pag_index } 11))">
+          <VariableCommand name="last_aon_time" expression="#time_sys" type="number"/>
+          <VariableCommand name="current_aon_state" expression="#aon_data[0]" type="number"/>
+          <VariableCommand name="current_play_aon" expression="1" type="number"/>
+          <VariableCommand name="pet_complete" expression="0" type="number"/>
+          <ExternCommand command="userActivity" strPara="'1'"/>
+          <FunctionCommand target="imageDisable"/>
+          <FolmeCommand target="cute_pag" config="'folme_config_15'" states="'folme_state_15'" command="to"/>
+        </MultiCommand>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="init">
+      <FrameRateCommand rate="60"/>
+      <VariableCommand name="init_times" expression="1" type="number"/>
+      <ExternCommand command="userActivity" strPara="'1'"/>
+      <VariableCommand name="pag_index" expression="15" type="number"/>
+      <PagCommand target="cute_pag" command="setProgress" params="'0'"/>
+      <PagCommand target="cute_pag" command="pause"/>
+      <PagCommand target="nfc_pin_pag" command="play"/>
+    </Trigger>
+    <Trigger action="resume">
+      <MultiCommand condition="(! #aod_state)">
+        <FrameRateCommand rate="60"/>
+        <MultiCommand condition="(#pause_state ** (! #init_times))">
+          <VariableCommand name="pag_index" expression="#high_index" type="number"/>
+          <PagCommand target="cute_pag" command="play"/>
+        </MultiCommand>
+        <VariableCommand name="pause_state" expression="0" type="number"/>
+        <VariableCommand name="pet_complete" expression="0" type="number"/>
+      </MultiCommand>
+      <FunctionCommand target="imageDisable"/>
+      <BinderCommand name="WeatherProvider" command="refresh"/>
+    </Trigger>
+    <Trigger action="exitEdit">
+      <MultiCommand condition="eq(#pet_complete,1)">
+        <VariableCommand name="pag_index" expression="#high_index" type="number"/>
+        <FunctionCommand target="trackEvent"/>
+        <VariableCommand name="pet_complete" expression="0" type="number"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="play">
+      <FrameRateCommand rate="60"/>
+      <PagCommand target="cute_pag" command="setProgress" params="'0'"/>
+    </Trigger>
+    <Trigger action="pause">
+      <MultiCommand condition="#disablePlay">
+        <PagCommand target="nfc_pin_pag" command="setProgress" params="'0'"/>
+        <PagCommand target="nfc_pin_pag" command="pause"/>
+        <VariableCommand name="disablePlay" expression="0" type="number"/>
+      </MultiCommand>
+      <VariableCommand name="pause_state" expression="1" type="number"/>
+      <VariableCommand name="init_times" expression="0" type="number"/>
+      <VariableCommand name="level_event" expression="0" type="number[]" index="1"/>
+      <VariableCommand name="level_event" expression="0" type="number[]" index="2"/>
+      <VariableCommand name="event_index" expression="#step_index" type="number"/>
+      <VariableCommand name="is_active" expression="0" type="number"/>
+      <FunctionCommand target="updateEventState"/>
+      <VariableCommand name="step_index" expression="0" type="number"/>
+      <VariableCommand name="time_interval" expression="0" type="number"/>
+      <FunctionCommand target="imageDisable"/>
+      <IfCommand ifCondition="#aod_state">
+        <Consequent>
+          <VariableCommand name="pet_complete" expression="1" type="number"/>
+          <VariableCommand name="pag_index" expression="0" type="number"/>
+          <PagCommand target="cute_pag" command="setProgress" params="'0'"/>
+        </Consequent>
+        <Alternate>
+          <VariableCommand name="pag_index" expression="#high_index" type="number"/>
+        </Alternate>
+      </IfCommand>
+      <PagCommand target="cute_pag" command="pause"/>
+      <FrameRateCommand rate="0"/>
+    </Trigger>
+    <Trigger action="enterAod">
+      <FunctionCommand target="switchStateAod"/>
+      <VariableCommand name="aod_state" expression="1" type="number"/>
+      <FunctionCommand target="delayDisplay" delay="160"/>
+    </Trigger>
+    <Trigger action="exitAod">
+      <FunctionCommand target="switchStateDesk"/>
+      <VariableCommand name="aod_state" expression="0" type="number"/>
+      <VariableCommand name="disablePlay" expression="0" type="number"/>
+      <MultiCommand condition="((#pet_complete == 1) || (#pause_state == 1))">
+        <FunctionCommand target="imageDisable"/>
+        <VariableCommand name="pag_index" expression="#high_index" type="number"/>
+        <FunctionCommand target="trackEvent"/>
+        <PagCommand target="cute_pag" command="play"/>
+        <VariableCommand name="pause_state" expression="0" type="number"/>
+        <VariableCommand name="pet_complete" expression="0" type="number"/>
+      </MultiCommand>
+    </Trigger>
+  </ExternalCommands>
+</Widget>

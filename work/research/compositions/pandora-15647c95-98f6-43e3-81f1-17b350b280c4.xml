@@ -1,0 +1,251 @@
+<Widget frameRate="0" scaleByDensity="false" screenWidth="1080" version="2" useVariableUpdater="HyperMaterial,DateTime.Minute">
+  <Var name="is_debug" type="number" expression="0"/>
+  <Var name="isDisplayDefaultBg" type="number" expression="#isDisplayDefaultBg"/>
+  <Group>
+    <!-- Ai.vue -->
+    <Var name="aod_state_0qqWSpyD" type="number" expression="0" const="true"/>
+    <Var name="is_paused_0qqWSpyD" type="number" expression="0" const="true"/>
+    <Var name="is_edit_0qqWSpyD" type="number" expression="0" const="true"/>
+    <Var name="is_finished_0qqWSpyD" type="number" expression="0" const="true"/>
+    <Var name="isDisplayDefaultBg_0qqWSpyD" type="number" expression="#isDisplayDefaultBg"/>
+    <Var name="imageUri_0qqWSpyD" type="string" expression="@bgarr_uriList[0]"/>
+    <Var name="videoUri_0qqWSpyD" type="string" expression="@bgarr_videoUriList[0]"/>
+    <Var name="selected_0qqWSpyD" type="number" expression="#selected"/>
+    <Var name="videoState_0qqWSpyD" type="string" expression="@aiVideo.playState"/>
+    <Var name="aniX_0qqWSpyD" type="number" expression="#aniVar_x"/>
+    <Var name="aniY_0qqWSpyD" type="number" expression="#aniVar_y"/>
+    <Var name="aniScaleX_0qqWSpyD" type="number" expression="#aniVar_scaleX"/>
+    <Var name="aniScaleY_0qqWSpyD" type="number" expression="#aniVar_scaleY"/>
+    <Var name="aniDisplayScale_0qqWSpyD" type="number" expression="#aniVar_displayScale"/>
+    <Var name="resType_0qqWSpyD" type="number" expression="#bgarr_resTypeList[0]"/>
+    <Var name="scaleFactor_0qqWSpyD" type="number" expression="#__scale_factor"/>
+    <Var name="isVideoResType_0qqWSpyD" type="number" expression="(#resType_0qqWSpyD == 1)"/>
+    <Var name="isImageResType_0qqWSpyD" type="number" expression="(#resType_0qqWSpyD == 0)"/>
+    <Var name="cVideoLoop_0qqWSpyD" type="number" expression="ifelse(eqs(@isPreviewMode,'true'),1,0)"/>
+    <Function name="playVideo">
+      <VariableCommand name="is_finished_0qqWSpyD" expression="0" type="number"/>
+      <VariableCommand name="is_paused_0qqWSpyD" expression="0" type="number"/>
+      <VideoCommand target="aiVideo" command="play"/>
+    </Function>
+    <Function name="pauseVideo">
+      <VideoCommand target="aiVideo" command="pause"/>
+    </Function>
+    <Function name="setVideoFirstFrame">
+      <VideoCommand target="aiVideo" command="seekTo" time="0"/>
+    </Function>
+    <Function name="replayVideo">
+      <FunctionCommand target="setVideoFirstFrame"/>
+      <FunctionCommand target="playVideo" delay="1"/>
+    </Function>
+    <Function name="onComplete">
+      <VariableCommand name="is_finished_0qqWSpyD" expression="1" type="number"/>
+    </Function>
+    <Image src="@imageUri_0qqWSpyD" x="((#aniX_0qqWSpyD * #aniDisplayScale_0qqWSpyD) / #scaleFactor_0qqWSpyD)" y="((#aniY_0qqWSpyD * #aniDisplayScale_0qqWSpyD) / #scaleFactor_0qqWSpyD)" scaleX="(#aniScaleX_0qqWSpyD * #aniDisplayScale_0qqWSpyD)" scaleY="(#aniScaleY_0qqWSpyD * #aniDisplayScale_0qqWSpyD)" visibility="(((! eqs(@isPreviewMode,'true')) ** (! strIsEmpty(@imageUri_0qqWSpyD))) ** #isImageResType_0qqWSpyD)" srcType="FileSystem"/>
+    <Video w="#view_width" h="#view_height" touchable="true" name="aiVideo" layerType="bottom">
+      <Triggers>
+        <Trigger action="complete">
+          <FunctionCommand target="onComplete"/>
+        </Trigger>
+      </Triggers>
+    </Video>
+    <Group visibility="0">
+      <Text textExp="((('isDisplayDefaultBg ' + #isDisplayDefaultBg_0qqWSpyD) + ' resType') + #resType_0qqWSpyD)" x="300" y="10" size="30" color="#00ffff"/>
+      <Text textExp="('isPreviewMode ' + eqs(@isPreviewMode,'true'))" x="300" y="50" size="30" color="#00ffff"/>
+      <Text textExp="@imageUri_0qqWSpyD" x="300" y="140" size="30" color="#ff6a05"/>
+      <Text textExp="@videoUri_0qqWSpyD" x="300" y="200" size="30" color="#ff6a05"/>
+      <Text textExp="#isVideoResType_0qqWSpyD" x="300" y="250" size="30" color="#ff6a05"/>
+      <Text textExp="#isImageResType_0qqWSpyD" x="300" y="300" size="30" color="#ff6a05"/>
+    </Group>
+  </Group>
+  <Group visibility="#is_debug">
+    <Text textExp="(('isDisplayDefaultBg ' + #isDisplayDefaultBg) + ' bgarr')" x="300" y="10" size="30" color="#00ffff"/>
+    <Text textExp="('isPreviewMode ' + eqs(@isPreviewMode,'true'))" x="300" y="50" size="30" color="#00ffff"/>
+  </Group>
+  <Group>
+    <!-- Sig.vue -->
+    <Var name="debugMode_XPCYGLNR" type="number" expression="0" const="true"/>
+    <Var name="aod_state_XPCYGLNR" type="number" expression="0" const="true"/>
+    <Var name="timeFormat_XPCYGLNR" type="string" expression="ifelse((#time_format == 1),'HH:mm','hh:mm')"/>
+    <Var name="signatureText_XPCYGLNR" type="string" expression="@signatureText"/>
+    <Var name="textColor_XPCYGLNR" type="string" expression="@textColor"/>
+    <Var name="signatureAlign_XPCYGLNR" type="number" expression="#signatureAlign"/>
+    <Var name="signatureSize_XPCYGLNR" type="number" expression="#signatureSize"/>
+    <Var name="signatureBold_XPCYGLNR" type="number" expression="#signatureBold"/>
+    <Var name="showTime_XPCYGLNR" type="number" expression="#showTime"/>
+    <Var name="bgarr_XPCYGLNR" type="number" expression="#bgarr"/>
+    <Var name="isNoBg_XPCYGLNR" type="number" expression="(#bgarr_XPCYGLNR == 3)"/>
+    <Var name="isDeep_XPCYGLNR" type="number" expression="#isDeep"/>
+    <Var name="defaultBlurColor_XPCYGLNR" type="string" expression="ifelse(#isDeep_XPCYGLNR,'#E6ffffff','#E6ABABAB')"/>
+    <Var name="defaultColorMode_XPCYGLNR" type="string" expression="'15'"/>
+    <Var name="blurTextAlpha_XPCYGLNR" type="string" expression="ifelse(#isDeep_XPCYGLNR,'#7F','#B3')"/>
+    <Var name="blurTextColorMode_XPCYGLNR" type="string" expression="ifelse(#isDeep_XPCYGLNR,'20','120')"/>
+    <Var name="blurTextColor_XPCYGLNR" type="string" expression="ifelse((! strIsEmpty(@textColor_XPCYGLNR)),(@blurTextAlpha_XPCYGLNR + substr(@textColor_XPCYGLNR,1,6)),@defaultBlurColor_XPCYGLNR)"/>
+    <Var name="aodBlurTextAlpha_XPCYGLNR" type="string" expression="ifelse(#isDeep_XPCYGLNR,'#B3','#CC')"/>
+    <Var name="aodBlurTextColorMode_XPCYGLNR" type="string" expression="ifelse(#isDeep_XPCYGLNR,'20','121')"/>
+    <Var name="aodBlurTextColor_XPCYGLNR" type="string" expression="ifelse((! strIsEmpty(@textColor_XPCYGLNR)),(@aodBlurTextAlpha_XPCYGLNR + substr(@textColor_XPCYGLNR,1,6)),@defaultBlurColor_XPCYGLNR)"/>
+    <Var name="aodTextColor_XPCYGLNR" type="string" expression="ifelse(#isDeep_XPCYGLNR,@textColor_XPCYGLNR,'#ffffff')"/>
+    <Var name="designWidth_XPCYGLNR" type="number" expression="336"/>
+    <Var name="scale_XPCYGLNR" type="number" expression="(#view_width / #designWidth_XPCYGLNR)"/>
+    <Var name="fontSize_XPCYGLNR" type="number" expression="(#signatureSize_XPCYGLNR * #scale_XPCYGLNR)"/>
+    <Var name="q200Width_XPCYGLNR" type="number" expression="904"/>
+    <Var name="q200Height_XPCYGLNR" type="number" expression="572"/>
+    <Var name="q200AvailableWidth_XPCYGLNR" type="number" expression="625"/>
+    <Var name="q200MarginLeftRatio_XPCYGLNR" type="number" expression="((#q200Width_XPCYGLNR - #q200AvailableWidth_XPCYGLNR) / #q200Width_XPCYGLNR)"/>
+    <Var name="q200ScreenRatio_XPCYGLNR" type="number" expression="(#q200Width_XPCYGLNR / #q200Height_XPCYGLNR)"/>
+    <Var name="p2Width_XPCYGLNR" type="number" expression="976"/>
+    <Var name="p2Height_XPCYGLNR" type="number" expression="596"/>
+    <Var name="p2AvailableWidth_XPCYGLNR" type="number" expression="696"/>
+    <Var name="p2MarginLeftRatio_XPCYGLNR" type="number" expression="((#p2Width_XPCYGLNR - #p2AvailableWidth_XPCYGLNR) / #p2Width_XPCYGLNR)"/>
+    <Var name="p2ScreenRatio_XPCYGLNR" type="number" expression="(#p2Width_XPCYGLNR / #p2Height_XPCYGLNR)"/>
+    <Var name="realScreenRatio_XPCYGLNR" type="number" expression="(#view_width / #view_height)"/>
+    <Var name="diffWithQ200_XPCYGLNR" type="number" expression="abs((#realScreenRatio_XPCYGLNR - #q200ScreenRatio_XPCYGLNR))"/>
+    <Var name="diffWithP2_XPCYGLNR" type="number" expression="abs((#realScreenRatio_XPCYGLNR - #p2ScreenRatio_XPCYGLNR))"/>
+    <Var name="isQ200_XPCYGLNR" type="number" expression="(#diffWithQ200_XPCYGLNR { #diffWithP2_XPCYGLNR)"/>
+    <Var name="availableMarginLeftRatio_XPCYGLNR" type="number" expression="ifelse(#isQ200_XPCYGLNR,#q200MarginLeftRatio_XPCYGLNR,#p2MarginLeftRatio_XPCYGLNR)"/>
+    <Var name="safeAreaMarginLeft_XPCYGLNR" type="number" expression="(10 * #scale_XPCYGLNR)"/>
+    <Var name="viewMarginLeft_XPCYGLNR" type="number" expression="((#view_width * #availableMarginLeftRatio_XPCYGLNR) + #safeAreaMarginLeft_XPCYGLNR)"/>
+    <Var name="oneLineTextHeight_XPCYGLNR" type="number" expression="(#fontSize_XPCYGLNR * 1.2)"/>
+    <Var name="safeAreaMarginTop_XPCYGLNR" type="number" expression="ifelse(#showTime_XPCYGLNR,(38 * #scale_XPCYGLNR),(28 * #scale_XPCYGLNR))"/>
+    <Var name="timeAreaMarginTop_XPCYGLNR" type="number" expression="(8 * #scale_XPCYGLNR)"/>
+    <Var name="timeAreaHeight_XPCYGLNR" type="number" expression="(30 * #scale_XPCYGLNR)"/>
+    <Var name="safeAreaMarginBottom_XPCYGLNR" type="number" expression="(28 * #scale_XPCYGLNR)"/>
+    <Var name="safeAreaMarginRight_XPCYGLNR" type="number" expression="(15 * #scale_XPCYGLNR)"/>
+    <Var name="safeAreaWidth_XPCYGLNR" type="number" expression="((#view_width - #viewMarginLeft_XPCYGLNR) - #safeAreaMarginRight_XPCYGLNR)"/>
+    <Var name="safeAreaHeight_XPCYGLNR" type="number" expression="((#view_height - #safeAreaMarginTop_XPCYGLNR) - #safeAreaMarginBottom_XPCYGLNR)"/>
+    <Var name="layerLeftBuffer_XPCYGLNR" type="number" expression="#fontSize_XPCYGLNR"/>
+    <Var name="layerBottomBuffer_XPCYGLNR" type="number" expression="(30 * #scale_XPCYGLNR)"/>
+    <Var name="maxRows_XPCYGLNR" type="number" expression="ifelse((#safeAreaHeight_XPCYGLNR }= #oneLineTextHeight_XPCYGLNR),floor((#safeAreaHeight_XPCYGLNR / #oneLineTextHeight_XPCYGLNR)),1)"/>
+    <Var name="timeSize_XPCYGLNR" type="number" expression="(14 * #scale_XPCYGLNR)"/>
+    <Var name="fontPath1_XPCYGLNR" type="string" expression="'/system/fonts/MiSansVF.ttf'"/>
+    <Var name="lineHeight1_XPCYGLNR" type="number" expression="0.9"/>
+    <Var name="fontPath2_XPCYGLNR" type="string" expression="'/product/fonts/Qinghe.otf'"/>
+    <Var name="lineHeight2_XPCYGLNR" type="number" expression="1.2"/>
+    <Var name="fontPath3_XPCYGLNR" type="string" expression="'/product/fonts/Coca-ColaCareFontKaiTi.TTF'"/>
+    <Var name="lineHeight3_XPCYGLNR" type="number" expression="1.05"/>
+    <Var name="fontPath4_XPCYGLNR" type="string" expression="'/product/fonts/FZFWZhuZiAYuanJWB.TTF'"/>
+    <Var name="lineHeight4_XPCYGLNR" type="number" expression="0.985"/>
+    <Var name="fontPath_XPCYGLNR" type="string" expression="ifelse((#fontFamily[0] == 1),@fontPath1_XPCYGLNR,ifelse((#fontFamily[1] == 1),@fontPath2_XPCYGLNR,ifelse((#fontFamily[2] == 1),@fontPath3_XPCYGLNR,ifelse((#fontFamily[3] == 1),@fontPath4_XPCYGLNR,''))))"/>
+    <Var name="lineHeight_XPCYGLNR" type="number" expression="ifelse((#fontFamily[0] == 1),#lineHeight1_XPCYGLNR,ifelse((#fontFamily[1] == 1),#lineHeight2_XPCYGLNR,ifelse((#fontFamily[2] == 1),#lineHeight3_XPCYGLNR,ifelse((#fontFamily[3] == 1),#lineHeight4_XPCYGLNR,0))))"/>
+    <Var name="textAlign_XPCYGLNR" type="string" expression="ifelse((#signatureAlign_XPCYGLNR == 0),'left',ifelse((#signatureAlign_XPCYGLNR == 1),'center','right'))"/>
+    <Function name="switchStateAod">
+      <MultiCommand condition="(! #isNoBg_XPCYGLNR)">
+        <FrameRateCommand rate="120"/>
+        <FolmeCommand target="aod_bg" config="'folme_config_0'" states="'folme_state_0'" command="to"/>
+        <FolmeCommand target="sig_desk" config="'folme_config_1'" states="'folme_state_1'" command="to"/>
+        <FolmeCommand target="sig_aod" config="'folme_config_2'" states="'folme_state_2'" command="to"/>
+      </MultiCommand>
+    </Function>
+    <Function name="switchStateDesk">
+      <MultiCommand condition="(! #isNoBg_XPCYGLNR)">
+        <FrameRateCommand rate="120"/>
+        <FolmeCommand target="aod_bg" config="'folme_config_3'" states="'folme_state_3'" command="to"/>
+        <FolmeCommand target="sig_desk" config="'folme_config_4'" states="'folme_state_4'" command="to"/>
+        <FolmeCommand target="sig_aod" config="'folme_config_5'" states="'folme_state_5'" command="to"/>
+      </MultiCommand>
+    </Function>
+    <Text size="#fontSize_XPCYGLNR" fontPath="@fontPath_XPCYGLNR" fontPathWeight="#signatureBold_XPCYGLNR" name="sig_canary" text="米" alpha="0"/>
+    <Rectangle w="#view_width" h="#view_height" x="0" y="0" folmeMode="true" name="aod_bg" fillColor="#000000" alpha="0"/>
+    <Group x="0" visibility="(#maxRows_XPCYGLNR { 30)">
+      <Group folmeMode="true" name="sig_desk">
+        <Layer blurColors="@defaultBlurColor_XPCYGLNR,@blurTextColor_XPCYGLNR" colorModes="@defaultColorMode_XPCYGLNR,@blurTextColorMode_XPCYGLNR" x="(#viewMarginLeft_XPCYGLNR - #layerLeftBuffer_XPCYGLNR)" y="#timeAreaMarginTop_XPCYGLNR" w="((#view_width - #viewMarginLeft_XPCYGLNR) + #layerLeftBuffer_XPCYGLNR)" h="(((#view_height - #timeAreaMarginTop_XPCYGLNR) - #safeAreaMarginBottom_XPCYGLNR) + #layerBottomBuffer_XPCYGLNR)" frameRate="-1" blurRadius="40">
+          <Text x="#layerLeftBuffer_XPCYGLNR" y="((#safeAreaMarginTop_XPCYGLNR - #timeAreaMarginTop_XPCYGLNR) + ((#safeAreaHeight_XPCYGLNR - #sig_text.text_height) / 2))" size="#fontSize_XPCYGLNR" spacingMultExp="#lineHeight_XPCYGLNR" fontPath="@fontPath_XPCYGLNR" fontPathWeight="#signatureBold_XPCYGLNR" color="@textColor_XPCYGLNR" textExp="@signatureText_XPCYGLNR" w="#safeAreaWidth_XPCYGLNR" textAlign="@textAlign_XPCYGLNR" lineClamp="#maxRows_XPCYGLNR" name="sig_text" multiLine="true" ellipsis="true" enableClip="false"/>
+          <Text visibility="(#showTime_XPCYGLNR == 1)" x="#layerLeftBuffer_XPCYGLNR" y="(#timeAreaHeight_XPCYGLNR / 2)" w="#safeAreaWidth_XPCYGLNR" size="#timeSize_XPCYGLNR" spacingMultExp="#lineHeight_XPCYGLNR" fontPath="@fontPath_XPCYGLNR" color="@textColor_XPCYGLNR" textExp="formatDate(@timeFormat_XPCYGLNR,#time_sys)" textAlign="@textAlign_XPCYGLNR" name="time_text" alignV="center" enableClip="false"/>
+        </Layer>
+      </Group>
+      <Group folmeMode="true" name="sig_aod" alpha="0">
+        <Layer blurColors="@defaultBlurColor_XPCYGLNR,@aodBlurTextColor_XPCYGLNR" colorModes="@defaultColorMode_XPCYGLNR,@aodBlurTextColorMode_XPCYGLNR" x="(#viewMarginLeft_XPCYGLNR - #layerLeftBuffer_XPCYGLNR)" y="#timeAreaMarginTop_XPCYGLNR" w="((#view_width - #viewMarginLeft_XPCYGLNR) + #layerLeftBuffer_XPCYGLNR)" h="(((#view_height - #timeAreaMarginTop_XPCYGLNR) - #safeAreaMarginBottom_XPCYGLNR) + #layerBottomBuffer_XPCYGLNR)" frameRate="-1" blurRadius="40">
+          <Text x="#layerLeftBuffer_XPCYGLNR" y="((#safeAreaMarginTop_XPCYGLNR - #timeAreaMarginTop_XPCYGLNR) + ((#safeAreaHeight_XPCYGLNR - #sig_text.text_height) / 2))" size="#fontSize_XPCYGLNR" spacingMultExp="#lineHeight_XPCYGLNR" fontPath="@fontPath_XPCYGLNR" fontPathWeight="#signatureBold_XPCYGLNR" color="@aodTextColor_XPCYGLNR" textExp="@signatureText_XPCYGLNR" w="#safeAreaWidth_XPCYGLNR" textAlign="@textAlign_XPCYGLNR" lineClamp="#maxRows_XPCYGLNR" name="sig_text" multiLine="true" ellipsis="true" enableClip="false"/>
+          <Text visibility="(#showTime_XPCYGLNR == 1)" x="#layerLeftBuffer_XPCYGLNR" y="(#timeAreaHeight_XPCYGLNR / 2)" w="#safeAreaWidth_XPCYGLNR" size="#timeSize_XPCYGLNR" spacingMultExp="#lineHeight_XPCYGLNR" fontPath="@fontPath_XPCYGLNR" color="@aodTextColor_XPCYGLNR" textExp="formatDate(@timeFormat_XPCYGLNR,#time_sys)" textAlign="@textAlign_XPCYGLNR" name="time_text" alignV="center" enableClip="false"/>
+        </Layer>
+      </Group>
+    </Group>
+    <Group x="#viewMarginLeft_XPCYGLNR" y="#timeAreaMarginTop_XPCYGLNR" w="#safeAreaWidth_XPCYGLNR" h="#timeAreaHeight_XPCYGLNR" contentDescriptionExp="formatDate(@timeFormat_XPCYGLNR,#time_sys)" visibility="(eq(#aod_state_XPCYGLNR,0) ** (#showTime_XPCYGLNR == 1))"/>
+  </Group>
+  <Group>
+    <FolmeState name="folme_state_0" alpha="(255 * 0.4)"/>
+    <FolmeConfig name="folme_config_0" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_1" alpha="0"/>
+    <FolmeConfig name="folme_config_1" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_2" alpha="255"/>
+    <FolmeConfig name="folme_config_2" ease="-2, 1,0.72" onComplete="'folme_oncomplete_3'"/>
+    <Function name="folme_oncomplete_3">
+      <FrameRateCommand rate="0"/>
+    </Function>
+    <FolmeState name="folme_state_3" alpha="0"/>
+    <FolmeConfig name="folme_config_3" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_4" alpha="255"/>
+    <FolmeConfig name="folme_config_4" ease="-2, 1,0.72" onComplete="'folme_oncomplete_5'"/>
+    <Function name="folme_oncomplete_5">
+      <FrameRateCommand rate="0"/>
+    </Function>
+    <FolmeState name="folme_state_5" alpha="0"/>
+    <FolmeConfig name="folme_config_5" ease="-2, 1,0.5"/>
+  </Group>
+  <ExternalCommands>
+    <Trigger action="init">
+      <IfCommand ifCondition="eqs(@isPreviewMode,'true')">
+        <Consequent>
+          <FrameRateCommand rate="120"/>
+        </Consequent>
+        <Alternate>
+          <FrameRateCommand rate="0"/>
+        </Alternate>
+      </IfCommand>
+    </Trigger>
+    <Trigger action="init">
+      <IfCommand ifCondition="eqs(@isPreviewMode,'true')">
+        <Consequent>
+          <VideoCommand target="aiVideo" command="config" path="'assets/ai/ai.mp4'" loop="1" scaleMode="2"/>
+        </Consequent>
+        <Alternate>
+          <VideoCommand target="aiVideo" command="config" path="'assets/ai/ai.mp4'" loop="0" scaleMode="2"/>
+        </Alternate>
+      </IfCommand>
+    </Trigger>
+    <Trigger action="resume">
+      <MultiCommand condition="((! #aod_state_0qqWSpyD) ** #is_paused_0qqWSpyD)">
+        <FunctionCommand target="replayVideo"/>
+      </MultiCommand>
+      <MultiCommand condition="(! #is_paused_0qqWSpyD)">
+        <FunctionCommand target="playVideo"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="pause">
+      <FunctionCommand target="pauseVideo"/>
+      <VariableCommand name="is_paused_0qqWSpyD" expression="1" type="number"/>
+    </Trigger>
+    <Trigger action="enterAod">
+      <VariableCommand name="aod_state_0qqWSpyD" expression="1" type="number"/>
+    </Trigger>
+    <Trigger action="exitAod">
+      <VariableCommand name="aod_state_0qqWSpyD" expression="0" type="number"/>
+      <MultiCommand condition="((#is_finished_0qqWSpyD == 1) || (#is_paused_0qqWSpyD == 1))">
+        <FunctionCommand target="replayVideo"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="enterEdit">
+      <VariableCommand name="is_edit_0qqWSpyD" expression="1" type="number"/>
+      <MultiCommand condition="eq(#selected,0)">
+        <VariableCommand name="is_finished_0qqWSpyD" expression="1" type="number"/>
+        <FunctionCommand target="setVideoFirstFrame"/>
+        <FunctionCommand target="pauseVideo"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="exitEdit">
+      <VariableCommand name="is_edit_0qqWSpyD" expression="0" type="number"/>
+      <MultiCommand condition="(#is_finished_0qqWSpyD == 1)">
+        <FunctionCommand target="replayVideo"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="enterAod">
+      <FunctionCommand target="switchStateAod"/>
+      <VariableCommand name="aod_state_XPCYGLNR" expression="1" type="number"/>
+      <ExternCommand command="__clearTalkback"/>
+    </Trigger>
+    <Trigger action="exitAod">
+      <FunctionCommand target="switchStateDesk"/>
+      <VariableCommand name="aod_state_XPCYGLNR" expression="0" type="number"/>
+      <ExternCommand command="__clearTalkback"/>
+    </Trigger>
+  </ExternalCommands>
+</Widget>

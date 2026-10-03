@@ -1,0 +1,6 @@
+payload.bin: work\firmware\pandora-ota_full-OS3.0.319.0.WBLCNXM-user-16.0-2d01cf4d66.zip
+Payload Version: 2
+Payload Manifest Length: 321761
+Payload Manifest Signature Length: 267
+Found partitions:
+abl (336 kB), aop (389 kB), aop_config (29 kB), bluetooth (8.4 MB), boot (101 MB), cpucp (426 kB), cpucp_dtb (16 kB), dcp (8.4 MB), devcfg (61 kB), dsp (78 MB), dtbo (23 MB), featenabler (106 kB), hyp (1.5 MB), hyp_ac_config (78 kB), idmanager (70 kB), imagefv (6.3 MB), init_boot (8.4 MB), keymaster (3.1 MB), modem (168 MB), modemfirmware (173 MB), multiimgqti (12 kB), odm (3.5 GB), pdp (324 kB), pdp_cdb (12 kB), product (4.5 GB), pvmfw (1.0 MB), qtvm_dtbo (5.2 MB), qupfw (70 kB), recovery (105 MB), secretkeeper (1.1 MB), shrm (184 kB), soccp (8.4 MB), soccp_dcd (16 kB), soccp_debug (74 kB), spuservice (94 kB), system (912 MB), system_dlkm (17 MB), system_ext (710 MB), tme_config (45 kB), tme_fw (205 kB), tme_seq_patch (8.2 kB), tz (4.2 MB), tz_ac_config (66 kB), tz_qti_config (139 kB), uefi (2.8 MB), uefisecapp (205 kB), vbmeta (12 kB), vbmeta_system (4.1 kB), vendor (900 MB), vendor_boot (101 MB), vendor_dlkm (54 MB), vm-bootsys (35 MB), xbl (1.2 MB), xbl_ac_config (45 kB), xbl_config (389 kB), xbl_ramdump (934 kB), mi_ext (111 MB)

@@ -1,0 +1,10 @@
+ota-property-files=payload_metadata.bin:5087:322052,payload.bin:5087:8782880243,payload_properties.txt:8782885388:156,apex_info.pb:2573:1299,care_map.pb:3919:1101,metadata:69:725,metadata.pb:862:1663                        
+ota-required-cache=0
+ota-streaming-property-files=payload.bin:5087:8782880243,payload_properties.txt:8782885388:156,apex_info.pb:2573:1299,care_map.pb:3919:1101,metadata:69:725,metadata.pb:862:1663                          
+ota-type=AB
+post-build=Xiaomi/pandora/pandora:16/BP2A.250605.031.A3/16OS3.1.260824.101335611.QCPECN.S:user/release-keys
+post-build-incremental=16OS3.1.260824.101335611.QCPECN.S
+post-sdk-level=36
+post-security-patch-level=2026-08-01
+post-timestamp=1787543240
+pre-device=pandora

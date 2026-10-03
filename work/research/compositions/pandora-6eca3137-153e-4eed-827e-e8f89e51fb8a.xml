@@ -1,0 +1,176 @@
+<Widget frameRate="0" scaleByDensity="false" screenWidth="1080" version="2" useVariableUpdater="HyperMaterial,DateTime.Minute">
+  <Var name="assets" expression="'q_carp'" type="string"/>
+  <Var name="w" type="number" expression="#view_width"/>
+  <Var name="h" type="number" expression="#view_height"/>
+  <Var name="isQ200" type="number" expression="ifelse(((#w / #h) { 1.6),1,0)"/>
+  <Var name="sr" type="number" expression="(#view_height / 572)"/>
+  <Var name="timeWidth" type="number" expression="(68 * #sr)"/>
+  <Var name="timeHeight" type="number" expression="(126 * #sr)"/>
+  <Var name="is_pause" type="number" expression="0" const="true"/>
+  <Var name="pet_complete" type="number" expression="0" const="true"/>
+  <Var name="aod_state" type="number" expression="0" const="true"/>
+  <Var name="pag_count" type="number" expression="4"/>
+  <Var name="pagIndex" type="number" expression="(- 1)" const="true"/>
+  <Var name="next_pag" type="number" expression="#pagIndex" const="true"/>
+  <Var name="is_desk" type="number" expression="1" const="true"/>
+  <Var name="is_init" type="number" expression="1" const="true"/>
+  <Var name="is_hidden" type="number" expression="0" const="true"/>
+  <Function name="switchStateAod">
+    <FrameRateCommand rate="120"/>
+    <FolmeCommand target="hour_time_desk" config="'folme_config_0'" states="'folme_state_0'" command="to"/>
+    <FolmeCommand target="minute_time_desk" config="'folme_config_1'" states="'folme_state_1'" command="to"/>
+    <FolmeCommand target="time_aod" config="'folme_config_2'" states="'folme_state_2'" command="to"/>
+    <FolmeCommand target="aod_bg" config="'folme_config_3'" states="'folme_state_3'" command="to"/>
+  </Function>
+  <Function name="switchStateDesk">
+    <VariableCommand name="is_desk" expression="1" type="number"/>
+    <FrameRateCommand rate="120"/>
+    <FolmeCommand target="hour_time_desk" config="'folme_config_4'" states="'folme_state_4'" command="to"/>
+    <FolmeCommand target="minute_time_desk" config="'folme_config_5'" states="'folme_state_5'" command="to"/>
+    <FolmeCommand target="time_aod" config="'folme_config_6'" states="'folme_state_6'" command="to"/>
+    <FolmeCommand target="aod_bg" config="'folme_config_7'" states="'folme_state_7'" command="to"/>
+  </Function>
+  <Function name="petPagCommand">
+    <FrameRateCommand rate="120"/>
+    <VariableCommand name="pet_complete" expression="0" type="number"/>
+    <FolmeCommand target="carp_pag" config="'folme_config_8'" states="'folme_state_8'" command="to"/>
+  </Function>
+  <Function name="onComplete">
+    <MultiCommand condition="(((#aod_state == 1) ** (#carp_pag.progress == 1)) ** (#is_hidden == 0))">
+      <VariableCommand name="pet_complete" expression="1" type="number"/>
+      <FrameRateCommand rate="0"/>
+    </MultiCommand>
+  </Function>
+  <Function name="onUpdate">
+    <MultiCommand condition="((#aod_state == 0) ** (#is_pause == 0))">
+      <MultiCommand condition="((#carp_pag.progress } ifelse((#pagIndex == 2),0.95,ifelse((#pagIndex == 3),0.949,0.958))) ** (#is_hidden == 0))">
+        <VariableCommand name="is_hidden" expression="1" type="number"/>
+        <FunctionCommand target="petPagCommand"/>
+      </MultiCommand>
+    </MultiCommand>
+  </Function>
+  <Rectangle w="#view_width" h="#view_height" fillColor="#000000"/>
+  <Group x="(#view_width - (206 * #sr))" y="(131 * #sr)">
+    <Group alpha="(eq(#aod_state,0) * 255)" folmeMode="true" name="minute_time_desk">
+      <Image x="(0 * #sr)" y="(138 * #sr)" w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/desk/minute_0/temp_') + substr(formatDate('mm',#time_sys),0,1)) + '.png')"/>
+      <Image x="(80 * #sr)" y="(138 * #sr)" w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/desk/minute_1/temp_') + substr(formatDate('mm',#time_sys),1,1)) + '.png')"/>
+      <Text y="(276 * #sr)" size="(38 * #sr)" x="ifelse(eqs(@RTL,'1'),((- 2) * #sr),((- 30) * #sr))" w="ifelse(eqs(@RTL,'1'),(152 * #sr),(208 * #sr))" textExp="formatDate(@date,#time_sys)" fontFamily="mipro-medium" textAlign="'center'" color="#AC2D2E"/>
+    </Group>
+  </Group>
+  <Layer frameRate="-1">
+    <PagView w="#view_width" h="#view_height" touchable="true" srcExp="ifelse((#pagIndex == (- 1)),'',(((('assets/' + @assets) + '/pag_') + #pagIndex) + '.pag'))" folmeMode="true" name="carp_pag" loop="1" layerType="top" setPath="true">
+      <Triggers>
+        <Trigger action="complete">
+          <FunctionCommand target="onComplete"/>
+        </Trigger>
+        <Trigger action="update">
+          <FunctionCommand target="onUpdate"/>
+        </Trigger>
+      </Triggers>
+    </PagView>
+  </Layer>
+  <Layer frameRate="-1">
+    <Rectangle w="#view_width" h="#view_height" x="0" y="0" alpha="(eq(#aod_state,1) * 255)" folmeMode="true" name="aod_bg" fillColor="#000000"/>
+  </Layer>
+  <Layer x="(#view_width - (306 * #sr))" y="(131 * #sr)" frameRate="-1">
+    <Group alpha="(eq(#aod_state,1) * 255)" x="(100 * #sr)" folmeMode="true" name="time_aod">
+      <Image w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/aod/hour_0/temp_') + substr(formatDate(ifelse(#time_format,'HH','hh'),#time_sys),0,1)) + '.png')"/>
+      <Image x="(80 * #sr)" y="(0 * #sr)" w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/aod/hour_1/temp_') + substr(formatDate(ifelse(#time_format,'HH','hh'),#time_sys),1,1)) + '.png')"/>
+      <Image x="(0 * #sr)" y="(138 * #sr)" w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/aod/minute_0/temp_') + substr(formatDate('mm',#time_sys),0,1)) + '.png')"/>
+      <Image x="(80 * #sr)" y="(138 * #sr)" w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/aod/minute_1/temp_') + substr(formatDate('mm',#time_sys),1,1)) + '.png')"/>
+      <Text y="(276 * #sr)" size="(38 * #sr)" x="ifelse(eqs(@RTL,'1'),((- 2) * #sr),((- 30) * #sr))" w="ifelse(eqs(@RTL,'1'),(152 * #sr),(208 * #sr))" textExp="formatDate(@date,#time_sys)" fontFamily="mipro-medium" textAlign="'center'" color="#AC2D2E"/>
+    </Group>
+  </Layer>
+  <Layer x="(#view_width - (206 * #sr))" y="(131 * #sr)" frameRate="-1">
+    <Group alpha="(eq(#aod_state,0) * 255)" folmeMode="true" name="hour_time_desk">
+      <Image w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/desk/hour_0/temp_') + substr(formatDate(ifelse(#time_format,'HH','hh'),#time_sys),0,1)) + '.png')"/>
+      <Image x="(80 * #sr)" y="(0 * #sr)" w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/desk/hour_1/temp_') + substr(formatDate(ifelse(#time_format,'HH','hh'),#time_sys),1,1)) + '.png')"/>
+    </Group>
+  </Layer>
+  <Layer x="(#view_width - (206 * #sr))" y="(131 * #sr)" visibility="#is_desk" frameRate="-1">
+    <Group x="((- 60) * #sr)" y="((- 20) * #sr)" w="(308 * #sr)" h="ifelse(eqs(@RTL,'1'),(420 * #sr),(360 * #sr))" contentDescriptionExp="((formatDate(ifelse(#time_format,@talkback_time_24,@talkback_time_12),#time_sys) + ',') + formatDate(@talkback_date,#time_sys))" visibility="eq(#aod_state,0)" interceptTouch="true" touchable="true"/>
+  </Layer>
+  <Group>
+    <FolmeState name="folme_state_0" alpha="0"/>
+    <FolmeConfig name="folme_config_0" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_1" alpha="0"/>
+    <FolmeConfig name="folme_config_1" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_2" alpha="255"/>
+    <FolmeConfig name="folme_config_2" ease="-2, 1,0.72" onComplete="'folme_oncomplete_3'"/>
+    <Function name="folme_oncomplete_3">
+      <VariableCommand name="is_desk" expression="0" type="number"/>
+      <MultiCommand condition="(#pet_complete == 1)">
+        <FrameRateCommand rate="0"/>
+      </MultiCommand>
+    </Function>
+    <FolmeState name="folme_state_3" alpha="(255 * 0.4)"/>
+    <FolmeConfig name="folme_config_3" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_4" alpha="255"/>
+    <FolmeConfig name="folme_config_4" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_5" alpha="255"/>
+    <FolmeConfig name="folme_config_5" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_6" alpha="0"/>
+    <FolmeConfig name="folme_config_6" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_7" alpha="0"/>
+    <FolmeConfig name="folme_config_7" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_8" alpha="0"/>
+    <FolmeConfig name="folme_config_8" ease="1,500" onComplete="'folme_oncomplete_9'"/>
+    <Function name="folme_oncomplete_9">
+      <VariableCommand name="index" type="number" expression="0"/>
+      <LoopCommand loopCondition="((#index { 10) ** eq(#next_pag,#pagIndex))" count="999">
+        <VariableCommand name="next_pag" expression="int((rand() * #pag_count))" type="number"/>
+        <VariableCommand name="index" expression="#index + 1" type="number"/>
+      </LoopCommand>
+      <VariableCommand name="pagIndex" expression="#next_pag" type="number"/>
+      <PagCommand target="carp_pag" command="setProgress" params="'0'"/>
+      <PagCommand target="carp_pag" command="play"/>
+      <FolmeCommand target="carp_pag" config="'folme_config_9'" states="'folme_state_9'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_9" alpha="255"/>
+    <FolmeConfig name="folme_config_9" ease="1,300" delay="100" onComplete="'folme_oncomplete_10'"/>
+    <Function name="folme_oncomplete_10">
+      <VariableCommand name="is_hidden" expression="0" type="number"/>
+    </Function>
+  </Group>
+  <ExternalCommands>
+    <Trigger action="init">
+      <FrameRateCommand rate="120"/>
+      <VariableCommand name="is_init" expression="1" type="number"/>
+      <VariableCommand name="pagIndex" expression="int((rand() * #pag_count))" type="number"/>
+      <VariableCommand name="next_pag" expression="#pagIndex" type="number"/>
+      <PagCommand target="carp_pag" command="play"/>
+    </Trigger>
+    <Trigger action="resume">
+      <VariableCommand name="is_pause" expression="0" type="number"/>
+      <IfCommand ifCondition="(#is_init == 1)">
+        <Consequent>
+          <VariableCommand name="is_init" expression="0" type="number"/>
+        </Consequent>
+        <Alternate>
+          <MultiCommand condition="(#aod_state == 0)">
+            <FunctionCommand target="petPagCommand"/>
+          </MultiCommand>
+        </Alternate>
+      </IfCommand>
+    </Trigger>
+    <Trigger action="pause">
+      <VariableCommand name="is_pause" expression="1" type="number"/>
+      <VariableCommand name="is_hidden" expression="0" type="number"/>
+      <VariableCommand name="pet_complete" expression="1" type="number"/>
+      <PagCommand target="carp_pag" command="setProgress" params="'1'"/>
+      <PagCommand target="carp_pag" command="pause"/>
+      <FrameRateCommand rate="0"/>
+    </Trigger>
+    <Trigger action="enterAod">
+      <FunctionCommand target="switchStateAod"/>
+      <VariableCommand name="aod_state" expression="1" type="number"/>
+    </Trigger>
+    <Trigger action="exitAod">
+      <FunctionCommand target="switchStateDesk"/>
+      <VariableCommand name="aod_state" expression="0" type="number"/>
+      <MultiCommand condition="((#pet_complete == 1) || ((#carp_pag.progress == 1) ** (#is_hidden == 0)))">
+        <FunctionCommand target="petPagCommand"/>
+      </MultiCommand>
+    </Trigger>
+  </ExternalCommands>
+</Widget>

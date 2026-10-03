@@ -1,0 +1,6 @@
+payload.bin: work\firmware\ruyi_global-ota_full-OS3.0.303.0.WNIMIXM-user-16.0-0200f61ca8.zip
+Payload Version: 2
+Payload Manifest Length: 272069
+Payload Manifest Signature Length: 267
+Found partitions:
+abl (307 kB), aop (336 kB), aop_config (29 kB), bluetooth (1.5 MB), boot (101 MB), cpucp (254 kB), cpucp_dtb (16 kB), devcfg (61 kB), dsp (67 MB), dtbo (21 MB), featenabler (106 kB), hyp (1.5 MB), imagefv (6.3 MB), init_boot (8.4 MB), keymaster (442 kB), modem (141 MB), modemfirmware (238 MB), multiimgqti (12 kB), odm (2.5 GB), product (3.8 GB), qupfw (61 kB), recovery (105 MB), shrm (139 kB), spuservice (98 kB), system (717 MB), system_dlkm (15 MB), system_ext (636 MB), tz (4.1 MB), uefi (2.9 MB), uefisecapp (201 kB), vbmeta (8.2 kB), vbmeta_system (4.1 kB), vendor (432 MB), vendor_boot (101 MB), vendor_dlkm (31 MB), vm-bootsys (21 MB), xbl (1.1 MB), xbl_config (225 kB), xbl_ramdump (950 kB), mi_ext (900 MB)

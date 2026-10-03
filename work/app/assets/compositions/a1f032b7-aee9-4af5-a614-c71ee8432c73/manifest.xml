@@ -1,0 +1,374 @@
+<Widget frameRate="0" scaleByDensity="false" screenWidth="1080" version="2" useVariableUpdater="HyperMaterial,DateTime.Minute">
+  <Var name="is_debug" type="number" expression="0"/>
+  <Var name="isDisplayDefaultBg" type="number" expression="#isDisplayDefaultBg"/>
+  <Var name="bgPath" type="string" expression="'assets/bg/bg.png'"/>
+  <Image src="@bgPath" w="#view_width" h="#view_height"/>
+  <Group visibility="#is_debug">
+    <Text textExp="('isDisplayDefaultBg ' + ' bgUrl')" x="300" y="10" size="30" color="#00ffff"/>
+    <Text textExp="('isPreviewMode ' + eqs(@isPreviewMode,'true'))" x="300" y="50" size="30" color="#00ffff"/>
+    <Text x="300" y="140" size="30" color="#ff6a05"/>
+    <Text x="300" y="200" size="30" color="#ff6a05"/>
+    <Text x="300" y="240" size="30" color="#ff6a05"/>
+    <Text x="300" y="300" size="30" color="#ff6a05"/>
+    <Text x="300" y="340" size="30" color="#ff6a05"/>
+    <Text x="300" y="400" size="30" color="#ff6a05"/>
+  </Group>
+  <Group>
+    <!-- Sig.vue -->
+    <Var name="debugMode_bewxO8hL" type="number" expression="0" const="true"/>
+    <Var name="aod_state_bewxO8hL" type="number" expression="0" const="true"/>
+    <Var name="timeFormat_bewxO8hL" type="string" expression="ifelse((#time_format == 1),'HH:mm','hh:mm')"/>
+    <Var name="signatureText_bewxO8hL" type="string" expression="@signatureText"/>
+    <Var name="sigTrim_bewxO8hL" type="string" expression="strTrim(@signatureText_bewxO8hL)"/>
+    <Var name="maxCols_bewxO8hL" type="number" expression="1" const="true"/>
+    <Var name="maxLines_bewxO8hL" type="number" expression="ifelse(((len(@signatureText_bewxO8hL) - len(strReplaceAll(@signatureText_bewxO8hL,'&#xA;',''))) } 0),ifelse(((len(@signatureText_bewxO8hL) - len(strReplaceAll(@signatureText_bewxO8hL,'&#xA;',''))) } 1),ifelse(((len(@signatureText_bewxO8hL) - len(strReplaceAll(@signatureText_bewxO8hL,'&#xA;',''))) } 2),4,3),2),1)"/>
+    <Var name="textColor_bewxO8hL" type="string" expression="@textColor"/>
+    <Var name="signatureAlign_bewxO8hL" type="number" expression="#signatureAlign"/>
+    <Var name="signatureSize_bewxO8hL" type="number" expression="ifelse((#maxCols_bewxO8hL } 1),ifelse((#maxCols_bewxO8hL } 2),ifelse(((#maxLines_bewxO8hL } 3) || (#maxCols_bewxO8hL } 3)),40,48),ifelse((#maxLines_bewxO8hL } 2),ifelse((#maxLines_bewxO8hL } 3),40,48),60)),ifelse((#maxLines_bewxO8hL } 1),ifelse((#maxLines_bewxO8hL } 2),ifelse((#maxLines_bewxO8hL } 3),40,48),60),108))"/>
+    <Var name="signatureBold_bewxO8hL" type="number" expression="450"/>
+    <Var name="showTime_bewxO8hL" type="number" expression="#showTime"/>
+    <Var name="isNoBg_bewxO8hL" type="number" expression="0"/>
+    <Var name="isDeep_bewxO8hL" type="number" expression="1"/>
+    <Var name="defaultBlurColor_bewxO8hL" type="string" expression="ifelse(#isDeep_bewxO8hL,'#E6ffffff','#E6ABABAB')"/>
+    <Var name="defaultColorMode_bewxO8hL" type="string" expression="'15'"/>
+    <Var name="blurTextAlpha_bewxO8hL" type="string" expression="ifelse(#isDeep_bewxO8hL,'#7F','#B3')"/>
+    <Var name="blurTextColorMode_bewxO8hL" type="string" expression="ifelse(#isDeep_bewxO8hL,'20','120')"/>
+    <Var name="blurTextColor_bewxO8hL" type="string" expression="ifelse((! strIsEmpty(@textColor_bewxO8hL)),(@blurTextAlpha_bewxO8hL + substr(@textColor_bewxO8hL,1,6)),@defaultBlurColor_bewxO8hL)"/>
+    <Var name="aodBlurTextAlpha_bewxO8hL" type="string" expression="ifelse(#isDeep_bewxO8hL,'#B3','#CC')"/>
+    <Var name="aodBlurTextColorMode_bewxO8hL" type="string" expression="ifelse(#isDeep_bewxO8hL,'20','121')"/>
+    <Var name="aodBlurTextColor_bewxO8hL" type="string" expression="ifelse((! strIsEmpty(@textColor_bewxO8hL)),(@aodBlurTextAlpha_bewxO8hL + substr(@textColor_bewxO8hL,1,6)),@defaultBlurColor_bewxO8hL)"/>
+    <Var name="aodTextColor_bewxO8hL" type="string" expression="ifelse(#isDeep_bewxO8hL,@textColor_bewxO8hL,'#ffffff')"/>
+    <Var name="designWidth_bewxO8hL" type="number" expression="336"/>
+    <Var name="scale_bewxO8hL" type="number" expression="(#view_width / #designWidth_bewxO8hL)"/>
+    <Var name="fontSize_bewxO8hL" type="number" expression="(#signatureSize_bewxO8hL * #scale_bewxO8hL)"/>
+    <Var name="q200Width_bewxO8hL" type="number" expression="904"/>
+    <Var name="q200Height_bewxO8hL" type="number" expression="572"/>
+    <Var name="q200AvailableWidth_bewxO8hL" type="number" expression="625"/>
+    <Var name="q200MarginLeftRatio_bewxO8hL" type="number" expression="((#q200Width_bewxO8hL - #q200AvailableWidth_bewxO8hL) / #q200Width_bewxO8hL)"/>
+    <Var name="q200ScreenRatio_bewxO8hL" type="number" expression="(#q200Width_bewxO8hL / #q200Height_bewxO8hL)"/>
+    <Var name="p2Width_bewxO8hL" type="number" expression="976"/>
+    <Var name="p2Height_bewxO8hL" type="number" expression="596"/>
+    <Var name="p2AvailableWidth_bewxO8hL" type="number" expression="696"/>
+    <Var name="p2MarginLeftRatio_bewxO8hL" type="number" expression="((#p2Width_bewxO8hL - #p2AvailableWidth_bewxO8hL) / #p2Width_bewxO8hL)"/>
+    <Var name="p2ScreenRatio_bewxO8hL" type="number" expression="(#p2Width_bewxO8hL / #p2Height_bewxO8hL)"/>
+    <Var name="realScreenRatio_bewxO8hL" type="number" expression="(#view_width / #view_height)"/>
+    <Var name="diffWithQ200_bewxO8hL" type="number" expression="abs((#realScreenRatio_bewxO8hL - #q200ScreenRatio_bewxO8hL))"/>
+    <Var name="diffWithP2_bewxO8hL" type="number" expression="abs((#realScreenRatio_bewxO8hL - #p2ScreenRatio_bewxO8hL))"/>
+    <Var name="isQ200_bewxO8hL" type="number" expression="(#diffWithQ200_bewxO8hL { #diffWithP2_bewxO8hL)"/>
+    <Var name="availableMarginLeftRatio_bewxO8hL" type="number" expression="ifelse(#isQ200_bewxO8hL,#q200MarginLeftRatio_bewxO8hL,#p2MarginLeftRatio_bewxO8hL)"/>
+    <Var name="safeAreaMarginLeft_bewxO8hL" type="number" expression="(10 * #scale_bewxO8hL)"/>
+    <Var name="viewMarginLeft_bewxO8hL" type="number" expression="ifelse(#isQ200_bewxO8hL,(140 * #scale_bewxO8hL),(132 * #scale_bewxO8hL))"/>
+    <Var name="oneLineTextHeight_bewxO8hL" type="number" expression="(#fontSize_bewxO8hL * 1.2)"/>
+    <Var name="offset_y_bewxO8hL" type="number" expression="ifelse(#isQ200_bewxO8hL,0,(4 * #scale_bewxO8hL))"/>
+    <Var name="safeAreaMarginTop_bewxO8hL" type="number" expression="((37 * #scale_bewxO8hL) - #offset_y_bewxO8hL)" const="true"/>
+    <Var name="timeAreaMarginTop_bewxO8hL" type="number" expression="(8 * #scale_bewxO8hL)"/>
+    <Var name="timeAreaHeight_bewxO8hL" type="number" expression="(30 * #scale_bewxO8hL)"/>
+    <Var name="safeAreaMarginBottom_bewxO8hL" type="number" expression="(28 * #scale_bewxO8hL)"/>
+    <Var name="safeAreaMarginRight_bewxO8hL" type="number" expression="(15 * #scale_bewxO8hL)"/>
+    <Var name="text_w_bewxO8hL" type="number" expression="#sig_text.text_width"/>
+    <Var name="safeAreaWidth_bewxO8hL" type="number" expression="ifelse((#maxCols_bewxO8hL } 3),ifelse((#text_w_bewxO8hL } (120 * #scale_bewxO8hL)),(160 * #scale_bewxO8hL),#text_w_bewxO8hL),#text_w_bewxO8hL)"/>
+    <Var name="safeAreaHeight_bewxO8hL" type="number" expression="(160 * #scale_bewxO8hL)"/>
+    <Var name="sig_text_x_bewxO8hL" type="number" expression="((((158 * #scale_bewxO8hL) - #safeAreaWidth_bewxO8hL) / 2) + #fontSize_bewxO8hL)"/>
+    <Var name="layerLeftBuffer_bewxO8hL" type="number" expression="#fontSize_bewxO8hL"/>
+    <Var name="layerBottomBuffer_bewxO8hL" type="number" expression="(20 * #scale_bewxO8hL)"/>
+    <Var name="maxRows_bewxO8hL" type="number" expression="4"/>
+    <Var name="timeSize_bewxO8hL" type="number" expression="(14 * #scale_bewxO8hL)"/>
+    <Var name="time_w_bewxO8hL" type="number" expression="(60 * #scale_bewxO8hL)"/>
+    <Var name="time_x_bewxO8hL" type="number" expression="(((263 * #scale_bewxO8hL) - (120 * #scale_bewxO8hL)) + #fontSize_bewxO8hL)"/>
+    <Var name="time_y_bewxO8hL" type="number" expression="(2 * #scale_bewxO8hL)"/>
+    <Var name="fontPath1_bewxO8hL" type="string" expression="'/system/fonts/MiSansVF.ttf'"/>
+    <Var name="lineHeight1_bewxO8hL" type="number" expression="0.9"/>
+    <Var name="fontPath2_bewxO8hL" type="string" expression="'/product/fonts/Qinghe.otf'"/>
+    <Var name="lineHeight2_bewxO8hL" type="number" expression="1.2"/>
+    <Var name="fontPath3_bewxO8hL" type="string" expression="'/product/fonts/Coca-ColaCareFontKaiTi.TTF'"/>
+    <Var name="lineHeight3_bewxO8hL" type="number" expression="1.05"/>
+    <Var name="fontPath4_bewxO8hL" type="string" expression="'/product/fonts/FZFWZhuZiAYuanJWB.TTF'"/>
+    <Var name="lineHeight4_bewxO8hL" type="number" expression="0.985"/>
+    <Var name="fontPath_bewxO8hL" type="string" expression="'/product/fonts/Coca-ColaCareFontKaiTi.TTF'"/>
+    <Var name="time_fontPath_bewxO8hL" type="string" expression="'/product/fonts/MiSansRoundedSC.ttf'"/>
+    <Var name="lineHeight_bewxO8hL" type="number" expression="0.9" const="true"/>
+    <Var name="textAlign_bewxO8hL" type="string" expression="ifelse((#signatureAlign_bewxO8hL == 0),'left',ifelse((#signatureAlign_bewxO8hL == 1),'center','right'))"/>
+    <Var name="sigTextWatch_bewxO8hL" expression="len(@signatureText_bewxO8hL)" threshold="1">
+      <Trigger>
+        <FunctionCommand target="getMaxCols"/>
+      </Trigger>
+    </Var>
+    <Function name="getMaxCols">
+      <MultiCommand condition="(len(@sigTrim_bewxO8hL) } 11)">
+        <VariableCommand name="maxCols_bewxO8hL" expression="ifelse(((len(@sigTrim_bewxO8hL) - len(strReplaceAll(@sigTrim_bewxO8hL,'&#xA;',''))) } 1),3,2)" type="number"/>
+      </MultiCommand>
+      <MultiCommand condition="(len(@sigTrim_bewxO8hL) == 11)">
+        <IfCommand ifCondition="((((((((! strContains(substr(@sigTrim_bewxO8hL,0,4),'&#xA;')) || (! strContains(substr(@sigTrim_bewxO8hL,1,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,2,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,3,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,4,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,5,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,6,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,7,4),'&#xA;')))">
+          <Consequent>
+            <VariableCommand name="maxCols_bewxO8hL" expression="4" type="number"/>
+          </Consequent>
+          <Alternate>
+            <IfCommand ifCondition="(((((((((! strContains(substr(@sigTrim_bewxO8hL,0,3),'&#xA;')) || (! strContains(substr(@sigTrim_bewxO8hL,1,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,2,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,3,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,4,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,5,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,6,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,7,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,8,3),'&#xA;')))">
+              <Consequent>
+                <VariableCommand name="maxCols_bewxO8hL" expression="3" type="number"/>
+              </Consequent>
+              <Alternate>
+                <VariableCommand name="maxCols_bewxO8hL" expression="ifelse(((len(@sigTrim_bewxO8hL) - len(strReplaceAll(@sigTrim_bewxO8hL,'&#xA;',''))) } 1),3,2)" type="number"/>
+              </Alternate>
+            </IfCommand>
+          </Alternate>
+        </IfCommand>
+      </MultiCommand>
+      <MultiCommand condition="(len(@sigTrim_bewxO8hL) == 10)">
+        <IfCommand ifCondition="(((((((! strContains(substr(@sigTrim_bewxO8hL,0,4),'&#xA;')) || (! strContains(substr(@sigTrim_bewxO8hL,1,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,2,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,3,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,4,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,5,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,6,4),'&#xA;')))">
+          <Consequent>
+            <VariableCommand name="maxCols_bewxO8hL" expression="4" type="number"/>
+          </Consequent>
+          <Alternate>
+            <IfCommand ifCondition="((((((((! strContains(substr(@sigTrim_bewxO8hL,0,3),'&#xA;')) || (! strContains(substr(@sigTrim_bewxO8hL,1,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,2,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,3,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,4,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,5,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,6,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,7,3),'&#xA;')))">
+              <Consequent>
+                <VariableCommand name="maxCols_bewxO8hL" expression="3" type="number"/>
+              </Consequent>
+              <Alternate>
+                <VariableCommand name="maxCols_bewxO8hL" expression="ifelse(((len(@sigTrim_bewxO8hL) - len(strReplaceAll(@sigTrim_bewxO8hL,'&#xA;',''))) } 1),3,2)" type="number"/>
+              </Alternate>
+            </IfCommand>
+          </Alternate>
+        </IfCommand>
+      </MultiCommand>
+      <MultiCommand condition="(len(@sigTrim_bewxO8hL) == 9)">
+        <IfCommand ifCondition="((((((! strContains(substr(@sigTrim_bewxO8hL,0,4),'&#xA;')) || (! strContains(substr(@sigTrim_bewxO8hL,1,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,2,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,3,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,4,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,5,4),'&#xA;')))">
+          <Consequent>
+            <VariableCommand name="maxCols_bewxO8hL" expression="4" type="number"/>
+          </Consequent>
+          <Alternate>
+            <IfCommand ifCondition="(((((((! strContains(substr(@sigTrim_bewxO8hL,0,3),'&#xA;')) || (! strContains(substr(@sigTrim_bewxO8hL,1,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,2,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,3,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,4,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,5,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,6,3),'&#xA;')))">
+              <Consequent>
+                <VariableCommand name="maxCols_bewxO8hL" expression="3" type="number"/>
+              </Consequent>
+              <Alternate>
+                <VariableCommand name="maxCols_bewxO8hL" expression="ifelse(((len(@sigTrim_bewxO8hL) - len(strReplaceAll(@sigTrim_bewxO8hL,'&#xA;',''))) } 1),3,2)" type="number"/>
+              </Alternate>
+            </IfCommand>
+          </Alternate>
+        </IfCommand>
+      </MultiCommand>
+      <MultiCommand condition="(len(@sigTrim_bewxO8hL) == 8)">
+        <IfCommand ifCondition="(((((! strContains(substr(@sigTrim_bewxO8hL,0,4),'&#xA;')) || (! strContains(substr(@sigTrim_bewxO8hL,1,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,2,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,3,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,4,4),'&#xA;')))">
+          <Consequent>
+            <VariableCommand name="maxCols_bewxO8hL" expression="4" type="number"/>
+          </Consequent>
+          <Alternate>
+            <IfCommand ifCondition="((((((! strContains(substr(@sigTrim_bewxO8hL,0,3),'&#xA;')) || (! strContains(substr(@sigTrim_bewxO8hL,1,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,2,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,3,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,4,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,5,3),'&#xA;')))">
+              <Consequent>
+                <VariableCommand name="maxCols_bewxO8hL" expression="3" type="number"/>
+              </Consequent>
+              <Alternate>
+                <VariableCommand name="maxCols_bewxO8hL" expression="ifelse(((len(@sigTrim_bewxO8hL) - len(strReplaceAll(@sigTrim_bewxO8hL,'&#xA;',''))) } 1),3,2)" type="number"/>
+              </Alternate>
+            </IfCommand>
+          </Alternate>
+        </IfCommand>
+      </MultiCommand>
+      <MultiCommand condition="(len(@sigTrim_bewxO8hL) == 7)">
+        <IfCommand ifCondition="((((! strContains(substr(@sigTrim_bewxO8hL,0,4),'&#xA;')) || (! strContains(substr(@sigTrim_bewxO8hL,1,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,2,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,3,4),'&#xA;')))">
+          <Consequent>
+            <VariableCommand name="maxCols_bewxO8hL" expression="4" type="number"/>
+          </Consequent>
+          <Alternate>
+            <IfCommand ifCondition="(((((! strContains(substr(@sigTrim_bewxO8hL,0,3),'&#xA;')) || (! strContains(substr(@sigTrim_bewxO8hL,1,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,2,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,3,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,4,3),'&#xA;')))">
+              <Consequent>
+                <VariableCommand name="maxCols_bewxO8hL" expression="3" type="number"/>
+              </Consequent>
+              <Alternate>
+                <VariableCommand name="maxCols_bewxO8hL" expression="ifelse(((len(@sigTrim_bewxO8hL) - len(strReplaceAll(@sigTrim_bewxO8hL,'&#xA;',''))) } 1),3,2)" type="number"/>
+              </Alternate>
+            </IfCommand>
+          </Alternate>
+        </IfCommand>
+      </MultiCommand>
+      <MultiCommand condition="(len(@sigTrim_bewxO8hL) == 6)">
+        <IfCommand ifCondition="(((! strContains(substr(@sigTrim_bewxO8hL,0,4),'&#xA;')) || (! strContains(substr(@sigTrim_bewxO8hL,1,4),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,2,4),'&#xA;')))">
+          <Consequent>
+            <VariableCommand name="maxCols_bewxO8hL" expression="4" type="number"/>
+          </Consequent>
+          <Alternate>
+            <IfCommand ifCondition="((((! strContains(substr(@sigTrim_bewxO8hL,0,3),'&#xA;')) || (! strContains(substr(@sigTrim_bewxO8hL,1,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,2,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,3,3),'&#xA;')))">
+              <Consequent>
+                <VariableCommand name="maxCols_bewxO8hL" expression="3" type="number"/>
+              </Consequent>
+              <Alternate>
+                <VariableCommand name="maxCols_bewxO8hL" expression="ifelse(((len(@sigTrim_bewxO8hL) - len(strReplaceAll(@sigTrim_bewxO8hL,'&#xA;',''))) } 1),3,2)" type="number"/>
+              </Alternate>
+            </IfCommand>
+          </Alternate>
+        </IfCommand>
+      </MultiCommand>
+      <MultiCommand condition="(len(@sigTrim_bewxO8hL) == 5)">
+        <IfCommand ifCondition="((! strContains(substr(@sigTrim_bewxO8hL,0,4),'&#xA;')) || (! strContains(substr(@sigTrim_bewxO8hL,1,4),'&#xA;')))">
+          <Consequent>
+            <VariableCommand name="maxCols_bewxO8hL" expression="4" type="number"/>
+          </Consequent>
+          <Alternate>
+            <IfCommand ifCondition="(((! strContains(substr(@sigTrim_bewxO8hL,0,3),'&#xA;')) || (! strContains(substr(@sigTrim_bewxO8hL,1,3),'&#xA;'))) || (! strContains(substr(@sigTrim_bewxO8hL,2,3),'&#xA;')))">
+              <Consequent>
+                <VariableCommand name="maxCols_bewxO8hL" expression="3" type="number"/>
+              </Consequent>
+              <Alternate>
+                <VariableCommand name="maxCols_bewxO8hL" expression="ifelse(((len(@sigTrim_bewxO8hL) - len(strReplaceAll(@sigTrim_bewxO8hL,'&#xA;',''))) } 1),3,2)" type="number"/>
+              </Alternate>
+            </IfCommand>
+          </Alternate>
+        </IfCommand>
+      </MultiCommand>
+      <MultiCommand condition="(len(@sigTrim_bewxO8hL) == 4)">
+        <IfCommand ifCondition="(! strContains(substr(@sigTrim_bewxO8hL,0,4),'&#xA;'))">
+          <Consequent>
+            <VariableCommand name="maxCols_bewxO8hL" expression="4" type="number"/>
+          </Consequent>
+          <Alternate>
+            <IfCommand ifCondition="((! strContains(substr(@sigTrim_bewxO8hL,0,3),'&#xA;')) || (! strContains(substr(@sigTrim_bewxO8hL,1,3),'&#xA;')))">
+              <Consequent>
+                <VariableCommand name="maxCols_bewxO8hL" expression="3" type="number"/>
+              </Consequent>
+              <Alternate>
+                <VariableCommand name="maxCols_bewxO8hL" expression="ifelse(((len(@sigTrim_bewxO8hL) - len(strReplaceAll(@sigTrim_bewxO8hL,'&#xA;',''))) } 1),3,2)" type="number"/>
+              </Alternate>
+            </IfCommand>
+          </Alternate>
+        </IfCommand>
+      </MultiCommand>
+      <MultiCommand condition="(len(@sigTrim_bewxO8hL) == 3)">
+        <IfCommand ifCondition="(! strContains(substr(@sigTrim_bewxO8hL,0,3),'&#xA;'))">
+          <Consequent>
+            <VariableCommand name="maxCols_bewxO8hL" expression="3" type="number"/>
+          </Consequent>
+          <Alternate>
+            <VariableCommand name="maxCols_bewxO8hL" expression="2" type="number"/>
+          </Alternate>
+        </IfCommand>
+      </MultiCommand>
+      <MultiCommand condition="(len(@sigTrim_bewxO8hL) == 2)">
+        <VariableCommand name="maxCols_bewxO8hL" expression="2" type="number"/>
+      </MultiCommand>
+      <MultiCommand condition="(len(@sigTrim_bewxO8hL) == 1)">
+        <VariableCommand name="maxCols_bewxO8hL" expression="1" type="number"/>
+      </MultiCommand>
+      <VariableCommand name="lineHeight_bewxO8hL" expression="0.9" type="number"/>
+      <MultiCommand condition="((#maxCols_bewxO8hL == 1) ** (#maxLines_bewxO8hL == 1))">
+        <VariableCommand name="safeAreaMarginTop_bewxO8hL" expression="((37 * #scale_bewxO8hL) - #offset_y_bewxO8hL)" type="number"/>
+      </MultiCommand>
+      <MultiCommand condition="((#maxCols_bewxO8hL == 2) ** (#maxLines_bewxO8hL == 1))">
+        <VariableCommand name="safeAreaMarginTop_bewxO8hL" expression="((64.7 * #scale_bewxO8hL) - #offset_y_bewxO8hL)" type="number"/>
+      </MultiCommand>
+      <MultiCommand condition="((#maxCols_bewxO8hL == 3) ** (#maxLines_bewxO8hL == 1))">
+        <VariableCommand name="safeAreaMarginTop_bewxO8hL" expression="((71.6 * #scale_bewxO8hL) - #offset_y_bewxO8hL)" type="number"/>
+      </MultiCommand>
+      <MultiCommand condition="((#maxCols_bewxO8hL } 3) ** (#maxLines_bewxO8hL == 1))">
+        <IfCommand ifCondition="(len(@signatureText_bewxO8hL) } 4)">
+          <Consequent>
+            <VariableCommand name="safeAreaMarginTop_bewxO8hL" expression="((55 * #scale_bewxO8hL) - #offset_y_bewxO8hL)" type="number"/>
+          </Consequent>
+          <Alternate>
+            <VariableCommand name="safeAreaMarginTop_bewxO8hL" expression="((75.6 * #scale_bewxO8hL) - #offset_y_bewxO8hL)" type="number"/>
+          </Alternate>
+        </IfCommand>
+      </MultiCommand>
+      <MultiCommand condition="((#maxCols_bewxO8hL { 3) ** (#maxLines_bewxO8hL == 2))">
+        <VariableCommand name="safeAreaMarginTop_bewxO8hL" expression="((34 * #scale_bewxO8hL) - #offset_y_bewxO8hL)" type="number"/>
+      </MultiCommand>
+      <MultiCommand condition="((#maxCols_bewxO8hL == 3) ** (#maxLines_bewxO8hL == 2))">
+        <VariableCommand name="safeAreaMarginTop_bewxO8hL" expression="((47 * #scale_bewxO8hL) - #offset_y_bewxO8hL)" type="number"/>
+        <VariableCommand name="lineHeight_bewxO8hL" expression="ifelse(#isQ200_bewxO8hL,0.89,0.88)" type="number"/>
+      </MultiCommand>
+      <MultiCommand condition="((#maxCols_bewxO8hL } 3) ** (#maxLines_bewxO8hL == 2))">
+        <VariableCommand name="safeAreaMarginTop_bewxO8hL" expression="((55 * #scale_bewxO8hL) - #offset_y_bewxO8hL)" type="number"/>
+      </MultiCommand>
+      <MultiCommand condition="(#maxLines_bewxO8hL == 3)">
+        <IfCommand ifCondition="(#maxCols_bewxO8hL } 3)">
+          <Consequent>
+            <VariableCommand name="safeAreaMarginTop_bewxO8hL" expression="((35 * #scale_bewxO8hL) - #offset_y_bewxO8hL)" type="number"/>
+          </Consequent>
+          <Alternate>
+            <VariableCommand name="lineHeight_bewxO8hL" expression="0.88" type="number"/>
+            <VariableCommand name="safeAreaMarginTop_bewxO8hL" expression="((24 * #scale_bewxO8hL) - #offset_y_bewxO8hL)" type="number"/>
+          </Alternate>
+        </IfCommand>
+      </MultiCommand>
+      <MultiCommand condition="(#maxLines_bewxO8hL } 3)">
+        <VariableCommand name="lineHeight_bewxO8hL" expression="0.89" type="number"/>
+        <VariableCommand name="safeAreaMarginTop_bewxO8hL" expression="((15 * #scale_bewxO8hL) - #offset_y_bewxO8hL)" type="number"/>
+      </MultiCommand>
+    </Function>
+    <Function name="switchStateAod">
+      <MultiCommand condition="(! #isNoBg_bewxO8hL)">
+        <FrameRateCommand rate="120"/>
+        <FolmeCommand target="aod_bg" config="'folme_config_0'" states="'folme_state_0'" command="to"/>
+        <FolmeCommand target="sig_desk" config="'folme_config_1'" states="'folme_state_1'" command="to"/>
+        <FolmeCommand target="sig_aod" config="'folme_config_2'" states="'folme_state_2'" command="to"/>
+      </MultiCommand>
+    </Function>
+    <Function name="switchStateDesk">
+      <MultiCommand condition="(! #isNoBg_bewxO8hL)">
+        <FrameRateCommand rate="120"/>
+        <FolmeCommand target="aod_bg" config="'folme_config_3'" states="'folme_state_3'" command="to"/>
+        <FolmeCommand target="sig_desk" config="'folme_config_4'" states="'folme_state_4'" command="to"/>
+        <FolmeCommand target="sig_aod" config="'folme_config_5'" states="'folme_state_5'" command="to"/>
+      </MultiCommand>
+    </Function>
+    <Text size="#fontSize_bewxO8hL" fontPath="@fontPath_bewxO8hL" fontPathWeight="#signatureBold_bewxO8hL" name="sig_canary" text="米" alpha="0"/>
+    <Rectangle w="#view_width" h="#view_height" x="0" y="0" folmeMode="true" name="aod_bg" fillColor="#000000" alpha="0"/>
+    <Group x="0" visibility="(#maxRows_bewxO8hL { 30)">
+      <Group folmeMode="true" name="sig_desk">
+        <Layer x="(#viewMarginLeft_bewxO8hL - #layerLeftBuffer_bewxO8hL)" y="#timeAreaMarginTop_bewxO8hL" w="((#view_width - #viewMarginLeft_bewxO8hL) + #layerLeftBuffer_bewxO8hL)" h="(((#view_height - #timeAreaMarginTop_bewxO8hL) - #safeAreaMarginBottom_bewxO8hL) + #layerBottomBuffer_bewxO8hL)" frameRate="-1">
+          <Text x="#sig_text_x_bewxO8hL" y="#safeAreaMarginTop_bewxO8hL" size="#fontSize_bewxO8hL" spacingMultExp="#lineHeight_bewxO8hL" fontPath="@fontPath_bewxO8hL" fontPathWeight="#signatureBold_bewxO8hL" color="@textColor_bewxO8hL" textExp="@signatureText_bewxO8hL" w="#safeAreaWidth_bewxO8hL" textAlign="@textAlign_bewxO8hL" lineClamp="#maxRows_bewxO8hL" name="sig_text" multiLine="true" ellipsis="true" enableClip="false"/>
+          <Text visibility="(#showTime_bewxO8hL == 1)" x="#time_x_bewxO8hL" y="#time_y_bewxO8hL" w="#time_w_bewxO8hL" size="#timeSize_bewxO8hL" spacingMultExp="#lineHeight_bewxO8hL" fontPath="@time_fontPath_bewxO8hL" color="@textColor_bewxO8hL" textExp="formatDate(@timeFormat_bewxO8hL,#time_sys)" name="time_text" rotation="42" fontPathWeight="600" textAlign="center" alignV="center" enableClip="false"/>
+        </Layer>
+      </Group>
+      <Group folmeMode="true" name="sig_aod" alpha="0">
+        <Layer blurColors="@defaultBlurColor_bewxO8hL,@aodBlurTextColor_bewxO8hL" colorModes="@defaultColorMode_bewxO8hL,@aodBlurTextColorMode_bewxO8hL" x="(#viewMarginLeft_bewxO8hL - #layerLeftBuffer_bewxO8hL)" y="#timeAreaMarginTop_bewxO8hL" w="((#view_width - #viewMarginLeft_bewxO8hL) + #layerLeftBuffer_bewxO8hL)" h="(((#view_height - #timeAreaMarginTop_bewxO8hL) - #safeAreaMarginBottom_bewxO8hL) + #layerBottomBuffer_bewxO8hL)" frameRate="-1" blurRadius="40">
+          <Text x="#sig_text_x_bewxO8hL" y="#safeAreaMarginTop_bewxO8hL" size="#fontSize_bewxO8hL" spacingMultExp="#lineHeight_bewxO8hL" fontPath="@fontPath_bewxO8hL" fontPathWeight="#signatureBold_bewxO8hL" color="@aodTextColor_bewxO8hL" textExp="@signatureText_bewxO8hL" w="#safeAreaWidth_bewxO8hL" textAlign="@textAlign_bewxO8hL" lineClamp="#maxRows_bewxO8hL" name="sig_text_aod" multiLine="true" ellipsis="true" enableClip="false"/>
+          <Text visibility="(#showTime_bewxO8hL == 1)" x="#time_x_bewxO8hL" y="#time_y_bewxO8hL" w="#time_w_bewxO8hL" size="#timeSize_bewxO8hL" spacingMultExp="#lineHeight_bewxO8hL" fontPath="@time_fontPath_bewxO8hL" color="@aodTextColor_bewxO8hL" textExp="formatDate(@timeFormat_bewxO8hL,#time_sys)" name="time_text" rotation="42" fontPathWeight="600" textAlign="center" alignV="center" enableClip="false"/>
+        </Layer>
+      </Group>
+    </Group>
+    <Group x="(275 * #scale_bewxO8hL)" y="0" w="(60 * #scale_bewxO8hL)" h="(60 * #scale_bewxO8hL)" contentDescriptionExp="formatDate(@timeFormat_bewxO8hL,#time_sys)" visibility="(eq(#aod_state_bewxO8hL,0) ** (#showTime_bewxO8hL == 1))"/>
+  </Group>
+  <Group>
+    <FolmeState name="folme_state_0" alpha="(255 * 0.4)"/>
+    <FolmeConfig name="folme_config_0" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_1" alpha="0"/>
+    <FolmeConfig name="folme_config_1" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_2" alpha="255"/>
+    <FolmeConfig name="folme_config_2" ease="-2, 1,0.72" onComplete="'folme_oncomplete_3'"/>
+    <Function name="folme_oncomplete_3">
+      <FrameRateCommand rate="0"/>
+    </Function>
+    <FolmeState name="folme_state_3" alpha="0"/>
+    <FolmeConfig name="folme_config_3" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_4" alpha="255"/>
+    <FolmeConfig name="folme_config_4" ease="-2, 1,0.72" onComplete="'folme_oncomplete_5'"/>
+    <Function name="folme_oncomplete_5">
+      <FrameRateCommand rate="0"/>
+    </Function>
+    <FolmeState name="folme_state_5" alpha="0"/>
+    <FolmeConfig name="folme_config_5" ease="-2, 1,0.5"/>
+  </Group>
+  <ExternalCommands>
+    <Trigger action="init">
+      <IfCommand ifCondition="eqs(@isPreviewMode,'true')">
+        <Consequent>
+          <FrameRateCommand rate="120"/>
+        </Consequent>
+        <Alternate>
+          <FrameRateCommand rate="0"/>
+        </Alternate>
+      </IfCommand>
+    </Trigger>
+    <Trigger action="enterAod">
+      <FunctionCommand target="switchStateAod"/>
+      <VariableCommand name="aod_state_bewxO8hL" expression="1" type="number"/>
+      <ExternCommand command="__clearTalkback"/>
+    </Trigger>
+    <Trigger action="exitAod">
+      <FunctionCommand target="switchStateDesk"/>
+      <VariableCommand name="aod_state_bewxO8hL" expression="0" type="number"/>
+      <ExternCommand command="__clearTalkback"/>
+    </Trigger>
+  </ExternalCommands>
+</Widget>

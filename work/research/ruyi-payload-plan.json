@@ -1,0 +1,322 @@
+[
+  {
+    "name": "abl",
+    "requiredChunks": 1,
+    "missingChunks": 0,
+    "minOffset": 277287,
+    "maxOffset": 569311,
+    "ready": true
+  },
+  {
+    "name": "aop",
+    "requiredChunks": 1,
+    "missingChunks": 0,
+    "minOffset": 569311,
+    "maxOffset": 671771,
+    "ready": true
+  },
+  {
+    "name": "aop_config",
+    "requiredChunks": 1,
+    "missingChunks": 0,
+    "minOffset": 671771,
+    "maxOffset": 675423,
+    "ready": true
+  },
+  {
+    "name": "bluetooth",
+    "requiredChunks": 1,
+    "missingChunks": 0,
+    "minOffset": 675423,
+    "maxOffset": 904435,
+    "ready": true
+  },
+  {
+    "name": "boot",
+    "requiredChunks": 11,
+    "missingChunks": 0,
+    "minOffset": 904435,
+    "maxOffset": 11310128,
+    "ready": true
+  },
+  {
+    "name": "cpucp",
+    "requiredChunks": 1,
+    "missingChunks": 0,
+    "minOffset": 11310128,
+    "maxOffset": 11373140,
+    "ready": true
+  },
+  {
+    "name": "cpucp_dtb",
+    "requiredChunks": 1,
+    "missingChunks": 0,
+    "minOffset": 11373140,
+    "maxOffset": 11374724,
+    "ready": true
+  },
+  {
+    "name": "devcfg",
+    "requiredChunks": 1,
+    "missingChunks": 0,
+    "minOffset": 11374724,
+    "maxOffset": 11391568,
+    "ready": true
+  },
+  {
+    "name": "dsp",
+    "requiredChunks": 16,
+    "missingChunks": 0,
+    "minOffset": 11391568,
+    "maxOffset": 26687600,
+    "ready": true
+  },
+  {
+    "name": "dtbo",
+    "requiredChunks": 1,
+    "missingChunks": 0,
+    "minOffset": 26687600,
+    "maxOffset": 26731657,
+    "ready": true
+  },
+  {
+    "name": "featenabler",
+    "requiredChunks": 1,
+    "missingChunks": 0,
+    "minOffset": 26731657,
+    "maxOffset": 26762297,
+    "ready": true
+  },
+  {
+    "name": "hyp",
+    "requiredChunks": 1,
+    "missingChunks": 0,
+    "minOffset": 26762297,
+    "maxOffset": 27218929,
+    "ready": true
+  },
+  {
+    "name": "imagefv",
+    "requiredChunks": 3,
+    "missingChunks": 0,
+    "minOffset": 27218929,
+    "maxOffset": 29116689,
+    "ready": true
+  },
+  {
+    "name": "init_boot",
+    "requiredChunks": 3,
+    "missingChunks": 0,
+    "minOffset": 29116689,
+    "maxOffset": 30851614,
+    "ready": true
+  },
+  {
+    "name": "keymaster",
+    "requiredChunks": 1,
+    "missingChunks": 0,
+    "minOffset": 30851614,
+    "maxOffset": 30986050,
+    "ready": true
+  },
+  {
+    "name": "modem",
+    "requiredChunks": 60,
+    "missingChunks": 0,
+    "minOffset": 30986050,
+    "maxOffset": 93040453,
+    "ready": true
+  },
+  {
+    "name": "modemfirmware",
+    "requiredChunks": 65,
+    "missingChunks": 0,
+    "minOffset": 93040453,
+    "maxOffset": 159839521,
+    "ready": true
+  },
+  {
+    "name": "multiimgqti",
+    "requiredChunks": 1,
+    "missingChunks": 0,
+    "minOffset": 159839521,
+    "maxOffset": 159841437,
+    "ready": true
+  },
+  {
+    "name": "odm",
+    "requiredChunks": 1802,
+    "missingChunks": 0,
+    "minOffset": 159841437,
+    "maxOffset": 2048653205,
+    "ready": true
+  },
+  {
+    "name": "product",
+    "requiredChunks": 2870,
+    "missingChunks": 151,
+    "minOffset": 2048653205,
+    "maxOffset": 5056817591,
+    "ready": false
+  },
+  {
+    "name": "qupfw",
+    "requiredChunks": 1,
+    "missingChunks": 1,
+    "minOffset": 5056817591,
+    "maxOffset": 5056835295,
+    "ready": false
+  },
+  {
+    "name": "recovery",
+    "requiredChunks": 24,
+    "missingChunks": 24,
+    "minOffset": 5056835295,
+    "maxOffset": 5080691755,
+    "ready": false
+  },
+  {
+    "name": "shrm",
+    "requiredChunks": 1,
+    "missingChunks": 1,
+    "minOffset": 5080691755,
+    "maxOffset": 5080761875,
+    "ready": false
+  },
+  {
+    "name": "spuservice",
+    "requiredChunks": 1,
+    "missingChunks": 1,
+    "minOffset": 5080761875,
+    "maxOffset": 5080788203,
+    "ready": false
+  },
+  {
+    "name": "system",
+    "requiredChunks": 507,
+    "missingChunks": 507,
+    "minOffset": 5080788203,
+    "maxOffset": 5611632945,
+    "ready": false
+  },
+  {
+    "name": "system_dlkm",
+    "requiredChunks": 12,
+    "missingChunks": 12,
+    "minOffset": 5611632945,
+    "maxOffset": 5623175824,
+    "ready": false
+  },
+  {
+    "name": "system_ext",
+    "requiredChunks": 430,
+    "missingChunks": 430,
+    "minOffset": 5623175824,
+    "maxOffset": 6073276291,
+    "ready": false
+  },
+  {
+    "name": "tz",
+    "requiredChunks": 2,
+    "missingChunks": 2,
+    "minOffset": 6073276291,
+    "maxOffset": 6074331827,
+    "ready": false
+  },
+  {
+    "name": "uefi",
+    "requiredChunks": 4,
+    "missingChunks": 4,
+    "minOffset": 6074331827,
+    "maxOffset": 6077016519,
+    "ready": false
+  },
+  {
+    "name": "uefisecapp",
+    "requiredChunks": 1,
+    "missingChunks": 1,
+    "minOffset": 6077016519,
+    "maxOffset": 6077070023,
+    "ready": false
+  },
+  {
+    "name": "vbmeta",
+    "requiredChunks": 1,
+    "missingChunks": 1,
+    "minOffset": 6077070023,
+    "maxOffset": 6077071903,
+    "ready": false
+  },
+  {
+    "name": "vbmeta_system",
+    "requiredChunks": 1,
+    "missingChunks": 1,
+    "minOffset": 6077071903,
+    "maxOffset": 6077073399,
+    "ready": false
+  },
+  {
+    "name": "vendor",
+    "requiredChunks": 267,
+    "missingChunks": 267,
+    "minOffset": 6077073399,
+    "maxOffset": 6356127459,
+    "ready": false
+  },
+  {
+    "name": "vendor_boot",
+    "requiredChunks": 25,
+    "missingChunks": 25,
+    "minOffset": 6356127459,
+    "maxOffset": 6381079413,
+    "ready": false
+  },
+  {
+    "name": "vendor_dlkm",
+    "requiredChunks": 19,
+    "missingChunks": 19,
+    "minOffset": 6381079413,
+    "maxOffset": 6399693917,
+    "ready": false
+  },
+  {
+    "name": "vm-bootsys",
+    "requiredChunks": 4,
+    "missingChunks": 4,
+    "minOffset": 6399693917,
+    "maxOffset": 6403466979,
+    "ready": false
+  },
+  {
+    "name": "xbl",
+    "requiredChunks": 2,
+    "missingChunks": 2,
+    "minOffset": 6403466979,
+    "maxOffset": 6403855247,
+    "ready": false
+  },
+  {
+    "name": "xbl_config",
+    "requiredChunks": 1,
+    "missingChunks": 1,
+    "minOffset": 6403855247,
+    "maxOffset": 6403879131,
+    "ready": false
+  },
+  {
+    "name": "xbl_ramdump",
+    "requiredChunks": 1,
+    "missingChunks": 1,
+    "minOffset": 6403879131,
+    "maxOffset": 6404183731,
+    "ready": false
+  },
+  {
+    "name": "mi_ext",
+    "requiredChunks": 707,
+    "missingChunks": 707,
+    "minOffset": 6404183731,
+    "maxOffset": 7144279143,
+    "ready": false
+  }
+]

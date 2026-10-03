@@ -1,0 +1,623 @@
+{
+  "apkSha256": "b46ea0d57da9c5714c8af67a73e259e0c78d5c5cd75d008838fc837789c10e09",
+  "tested": 68,
+  "failed": 0,
+  "decodedOriginalImages": 497,
+  "validCompiledNinePatches": 110,
+  "results": [
+    {
+      "pet": "Силикон · фиолетовый",
+      "color": "purple",
+      "aspect": "cover 1392x1208",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "fcbf0f26ec60525e27b5740b8fa69dcae4973dfbdf921dbcc0d1850adf8a6757",
+      "hash2": "fa569e806ac502ceec68cac621b33b447c870e33362675dec637894f29dfef82",
+      "ok": true
+    },
+    {
+      "pet": "Силикон · фиолетовый",
+      "color": "purple",
+      "aspect": "cover 1208x1392",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "91739e0da531537f092bc0f19ccd1240db9dedceec0f0b52316c075b1a60968e",
+      "hash2": "6c9dfe77fdc568b399ac150a45e0d015d8bcac7a17adfc9e40ee04adfa2d7909",
+      "ok": true
+    },
+    {
+      "pet": "Силикон · фиолетовый",
+      "color": "purple",
+      "aspect": "inner 1224x2912",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "051877686cabff563db34de036e207e51e267ace707dcbf8015b1d706fb5ad8e",
+      "hash2": "229816bbdde9be9f4b60ee403357703c3b1d77206209f4ad9d566ab94be1c921",
+      "ok": true
+    },
+    {
+      "pet": "Силикон · зелёный",
+      "color": "green",
+      "aspect": "cover 1392x1208",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "8b89b5593b8eb533421a4a0c32949e4f13a596833cc62f120c45ef3873fdcf0f",
+      "hash2": "80dfafa0b5db33caa361c0b42ed1a149317a03f20549ac04efdce75e914552ef",
+      "ok": true
+    },
+    {
+      "pet": "Силикон · зелёный",
+      "color": "green",
+      "aspect": "cover 1208x1392",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "c14792084fbab9ce6a9d118aca7cc71689823d589f71cba6e087589b25ae176e",
+      "hash2": "54520c6ad9555ca4fc9673f5027400889893bc136b2791bf1b336e8d4f208d1a",
+      "ok": true
+    },
+    {
+      "pet": "Силикон · зелёный",
+      "color": "green",
+      "aspect": "inner 1224x2912",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "c501f9c1e2334fdb13f6457d865db0419bcf6a6fc4e1394258d8e228abff1d8b",
+      "hash2": "c453253cfcc6b3f5491a0de46a06194b7106623eeb3b7725d8ab7884e713611a",
+      "ok": true
+    },
+    {
+      "pet": "Силикон · красный",
+      "color": "red",
+      "aspect": "cover 1392x1208",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "55db9731bfc32103fbdbb7298c5d8222358efd74614c070665ec8b56bd973260",
+      "hash2": "54399927ddae2bb709fbb81ac7091f20fe033437725a1eac0203f01119323c3e",
+      "ok": true
+    },
+    {
+      "pet": "Силикон · красный",
+      "color": "red",
+      "aspect": "cover 1208x1392",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "a007e5dd4e4a77cc2f488b22df765c239147314187b8f531972bb8fc9fec4a05",
+      "hash2": "d292be241d92d438910a5ad63671aa90959822e778b0090e6f8791429cd08dff",
+      "ok": true
+    },
+    {
+      "pet": "Силикон · красный",
+      "color": "red",
+      "aspect": "inner 1224x2912",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "4b86075e0e5426faa0eccc84ac99db85d0c9a37cc379a7503f2f7a6057fc93b6",
+      "hash2": "5459ad21a0ef56eca3b74e8552efa51563341df828121a829dcd0b572c9f4f4f",
+      "ok": true
+    },
+    {
+      "pet": "Градиент · часы",
+      "color": "blue",
+      "aspect": "cover 1392x1208",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "d258ca20d01a4059033ef339c6a2e9485c287fe1862f4fed46832167d16b8682",
+      "hash2": "771cadca6392cff0287a3bdccdb702f87c559c40d5e2eaeeab809a6a8f0d03fd",
+      "ok": true
+    },
+    {
+      "pet": "Градиент · часы",
+      "color": "blue",
+      "aspect": "cover 1208x1392",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "5fde4d98daab6cc70b02818a9d70273cd8127fe8b6db59bac030fc75782b1619",
+      "hash2": "fb1c34bace4059808c8c1e0e8cc4d0f9097efa8b73ec31a6a57666f2a452529f",
+      "ok": true
+    },
+    {
+      "pet": "Градиент · часы",
+      "color": "blue",
+      "aspect": "inner 1224x2912",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "121c8c712d2cbb51790be4c4491e80c35eaa543be14fd4d7de6d3d788ec2b76a",
+      "hash2": "eab7125b622ae2d6b6544c310decc93b419edc94dcc56e1b511c3834b3fe3539",
+      "ok": true
+    },
+    {
+      "pet": "Градиент · часы",
+      "color": "purple",
+      "aspect": "cover 1392x1208",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "fcbf0f26ec60525e27b5740b8fa69dcae4973dfbdf921dbcc0d1850adf8a6757",
+      "hash2": "fa569e806ac502ceec68cac621b33b447c870e33362675dec637894f29dfef82",
+      "ok": true
+    },
+    {
+      "pet": "Градиент · часы",
+      "color": "purple",
+      "aspect": "cover 1208x1392",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "91739e0da531537f092bc0f19ccd1240db9dedceec0f0b52316c075b1a60968e",
+      "hash2": "6c9dfe77fdc568b399ac150a45e0d015d8bcac7a17adfc9e40ee04adfa2d7909",
+      "ok": true
+    },
+    {
+      "pet": "Градиент · часы",
+      "color": "purple",
+      "aspect": "inner 1224x2912",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "051877686cabff563db34de036e207e51e267ace707dcbf8015b1d706fb5ad8e",
+      "hash2": "229816bbdde9be9f4b60ee403357703c3b1d77206209f4ad9d566ab94be1c921",
+      "ok": true
+    },
+    {
+      "pet": "Градиент · часы",
+      "color": "green",
+      "aspect": "cover 1392x1208",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "8b89b5593b8eb533421a4a0c32949e4f13a596833cc62f120c45ef3873fdcf0f",
+      "hash2": "80dfafa0b5db33caa361c0b42ed1a149317a03f20549ac04efdce75e914552ef",
+      "ok": true
+    },
+    {
+      "pet": "Градиент · часы",
+      "color": "green",
+      "aspect": "cover 1208x1392",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "c14792084fbab9ce6a9d118aca7cc71689823d589f71cba6e087589b25ae176e",
+      "hash2": "54520c6ad9555ca4fc9673f5027400889893bc136b2791bf1b336e8d4f208d1a",
+      "ok": true
+    },
+    {
+      "pet": "Градиент · часы",
+      "color": "green",
+      "aspect": "inner 1224x2912",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "c501f9c1e2334fdb13f6457d865db0419bcf6a6fc4e1394258d8e228abff1d8b",
+      "hash2": "c453253cfcc6b3f5491a0de46a06194b7106623eeb3b7725d8ab7884e713611a",
+      "ok": true
+    },
+    {
+      "pet": "Градиент · часы",
+      "color": "orange",
+      "aspect": "cover 1392x1208",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "f7ebeefa0805ef8cb465bde01df7dfb329c23565275111a005747f624e9d3b7b",
+      "hash2": "0f0693f27703578c8597997266e88edeede9dfee9b669dd5798081ce1ec46ad9",
+      "ok": true
+    },
+    {
+      "pet": "Градиент · часы",
+      "color": "orange",
+      "aspect": "cover 1208x1392",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "bb67fcf82866afeb516e0471c241be8465d7aa4f3672be68d5d13ce856de340c",
+      "hash2": "5fff573000ceeec4bcf0a9c14c931a946b415d0ca6dee7ee72a833618dbc82ca",
+      "ok": true
+    },
+    {
+      "pet": "Градиент · часы",
+      "color": "orange",
+      "aspect": "inner 1224x2912",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "2b2d3dac6e4200a65f7189c8f78d67703a1b0534193418c8ca73357728110fb7",
+      "hash2": "c6ae4ca9ad0ddfbe5feb814d5777ffe14fade05099430b8cd180aa4a089953eb",
+      "ok": true
+    },
+    {
+      "pet": "Градиент · часы",
+      "color": "red",
+      "aspect": "cover 1392x1208",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "55db9731bfc32103fbdbb7298c5d8222358efd74614c070665ec8b56bd973260",
+      "hash2": "54399927ddae2bb709fbb81ac7091f20fe033437725a1eac0203f01119323c3e",
+      "ok": true
+    },
+    {
+      "pet": "Градиент · часы",
+      "color": "red",
+      "aspect": "cover 1208x1392",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "a007e5dd4e4a77cc2f488b22df765c239147314187b8f531972bb8fc9fec4a05",
+      "hash2": "d292be241d92d438910a5ad63671aa90959822e778b0090e6f8791429cd08dff",
+      "ok": true
+    },
+    {
+      "pet": "Градиент · часы",
+      "color": "red",
+      "aspect": "inner 1224x2912",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "4b86075e0e5426faa0eccc84ac99db85d0c9a37cc379a7503f2f7a6057fc93b6",
+      "hash2": "5459ad21a0ef56eca3b74e8552efa51563341df828121a829dcd0b572c9f4f4f",
+      "ok": true
+    },
+    {
+      "pet": "Волокно дракона · часы",
+      "color": "black",
+      "aspect": "cover 1392x1208",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "5e9ceecdca3f19e459a86a59e8bbfdda43a8dd500736b4cac188d84c30b75c70",
+      "hash2": "a62078f36d3d9b008487e01a9c620451ebb58b9e12eb064992817ecab6f81049",
+      "ok": true
+    },
+    {
+      "pet": "Волокно дракона · часы",
+      "color": "black",
+      "aspect": "cover 1208x1392",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "40af5febc698927d25bd9bfde403d50ee464aa594ffd14a9a6333f22aba39c3d",
+      "hash2": "04473a335ad684a21f8d956f4a0410ae1f9d67b12ca918813ecefd3653285a25",
+      "ok": true
+    },
+    {
+      "pet": "Волокно дракона · часы",
+      "color": "black",
+      "aspect": "inner 1224x2912",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "b3c25123e5e6a4daaa32e78e64024cc2f96f11f6f920271755ecc10fc07e7e56",
+      "hash2": "a57076e9db23e4bb38a2eddfc3ae67675b5734891e904014f153a0b45d070c6b",
+      "ok": true
+    },
+    {
+      "pet": "Stretch · упругие часы",
+      "color": "blue",
+      "aspect": "cover 1392x1208",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "be59b940c4a22d3a8fde146f0316ddb40e7acb4fa684cb6bee1a1357b65bf01f",
+      "hash2": "761bcb520348f1b67026a4509ca4cce6ad800afea339a7e2c01e2dd5764a8bea",
+      "ok": true
+    },
+    {
+      "pet": "Stretch · упругие часы",
+      "color": "blue",
+      "aspect": "cover 1208x1392",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "769bfe6b2cf352060f9199eede93e16c46cb9c715b4fa0598755b8508a61b326",
+      "hash2": "61eba4ea1942a3f4c6846e1b661020131c78501e62a8c2b6eee237dc48285e0e",
+      "ok": true
+    },
+    {
+      "pet": "Stretch · упругие часы",
+      "color": "blue",
+      "aspect": "inner 1224x2912",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "d15aab81e4ec5e7af2dfa5ce19d6d26ff9d994a13876d0c9478067ae78927ad4",
+      "hash2": "b52118eb6f43c4f07496dca761d6cd661dd249004f081a0b7bf619f31147bf36",
+      "ok": true
+    },
+    {
+      "pet": "Stretch · упругие часы",
+      "color": "purple",
+      "aspect": "cover 1392x1208",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "a5830429b4a870bf690af6c8d6e603020bb7f4099c66c5775ee0c3bbf5c668bc",
+      "hash2": "5595761a4084730d193915ad36b029c109f29845893072bbda972e41129b1887",
+      "ok": true
+    },
+    {
+      "pet": "Stretch · упругие часы",
+      "color": "purple",
+      "aspect": "cover 1208x1392",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "471270ae438c670170719c4d15ac16b70a0cdbef295f28471eb340cedff62195",
+      "hash2": "2c7193f08d1d7071d92b9c99e35ee87a256472765e7310277f0dfc755aed6dd0",
+      "ok": true
+    },
+    {
+      "pet": "Stretch · упругие часы",
+      "color": "purple",
+      "aspect": "inner 1224x2912",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "1a1d87220136a9c29c779ef5c649469c6132e9a4caadfc7798f64531371811f0",
+      "hash2": "2d98423dc29b01b85164404a03b177aafd03da9401933036f1545b015b074ba4",
+      "ok": true
+    },
+    {
+      "pet": "Stretch · упругие часы",
+      "color": "green",
+      "aspect": "cover 1392x1208",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "f4151d58ac94bf25b2a77a1ce09a239ead8c58bf0512f0d667e431da784d0590",
+      "hash2": "b9db5c34d1114f0b2f57cf8ba8845f74e50f5f94a3567c310c2927caa1af36cb",
+      "ok": true
+    },
+    {
+      "pet": "Stretch · упругие часы",
+      "color": "green",
+      "aspect": "cover 1208x1392",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "367675b819e1a45d91bc306fd65ab62853e7179106d78b9e36565b9463c277d6",
+      "hash2": "4b02d8341211232013a16a102ee2006387b7b6e009c30802fcf20789eddbb91e",
+      "ok": true
+    },
+    {
+      "pet": "Stretch · упругие часы",
+      "color": "green",
+      "aspect": "inner 1224x2912",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "0a93fa4a727ccba2765dc4462f256d7d641c30f5bf90bb7ffd5e84688aa2de5f",
+      "hash2": "c5d5ea857152ab4307ceb50f675d9171251a692667d2abc2b31ed36e64e31f98",
+      "ok": true
+    },
+    {
+      "pet": "Stretch · упругие часы",
+      "color": "orange",
+      "aspect": "cover 1392x1208",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "bf6a44bf060afe27592f7fc1877b09d7a637e6414410b498d218483a6cbf7686",
+      "hash2": "5a0145d16f626396135fdcf00afddecb112bbdcfffe9c916047839df13bfb2a8",
+      "ok": true
+    },
+    {
+      "pet": "Stretch · упругие часы",
+      "color": "orange",
+      "aspect": "cover 1208x1392",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "7db309ef653c965a928a2adffa8131267d76f1302d031b63c12631a569ef555a",
+      "hash2": "f16d6f4dc1814ed39822ff63b409cfd9b7c05bc1cd9209db0d0c47aacbd00fe7",
+      "ok": true
+    },
+    {
+      "pet": "Stretch · упругие часы",
+      "color": "orange",
+      "aspect": "inner 1224x2912",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "56c415d8d9e5d0075a7d1620009273258ccc3ca614627fee538f24f3aa795a60",
+      "hash2": "508867c0d5adea914255051e3bde855cdb7bf97d77d34ed010c455bf59508bef",
+      "ok": true
+    },
+    {
+      "pet": "Stretch · упругие часы",
+      "color": "red",
+      "aspect": "cover 1392x1208",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "15584f2804f75954f54ef2e342015a11767788463916ab51883f741a9c763387",
+      "hash2": "2c5a9690a2898456f9a42d69068ff81d2e50e7ffa23cabb1f391363fcdfc3c23",
+      "ok": true
+    },
+    {
+      "pet": "Stretch · упругие часы",
+      "color": "red",
+      "aspect": "cover 1208x1392",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "e59da093ad408328541147bd729733d3ebc9f8d13dc6e53c1819c0500e763320",
+      "hash2": "793e9b3434932e9744c322140aad967b41d5d9c784f60ffe6bbbac7e9245cf32",
+      "ok": true
+    },
+    {
+      "pet": "Stretch · упругие часы",
+      "color": "red",
+      "aspect": "inner 1224x2912",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "35be82e8121e5d3d1f82b081b1262018e089d78167e5909cc93472ed9422c10f",
+      "hash2": "fa98f83084caba5f36a52b3d0de2ddea577fb6c1d3903c719ca962b56593d8b8",
+      "ok": true
+    },
+    {
+      "test": "touch spring and alternate layout",
+      "ok": true
+    },
+    {
+      "pet": "Шагомер",
+      "color": "",
+      "aspect": "cover 1392x1208",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "2d542b107209cd603f732b33a1530a9c593f74cc2a76a668bb894b483965efb6",
+      "hash2": "754c18b03714f579d5004ab7f66f2dfade540b869758ec882ca41a8a6d5f7b63",
+      "ok": true
+    },
+    {
+      "pet": "Шагомер",
+      "color": "",
+      "aspect": "cover 1208x1392",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "6a344c196d9ed1a6cff1fa9f474d5e3d35c47a70709837848c886619b72fadbd",
+      "hash2": "e097241709deae910ccd1ad0fbe158690c36e80ad00248c39e60252a2c565593",
+      "ok": true
+    },
+    {
+      "pet": "Шагомер",
+      "color": "",
+      "aspect": "inner 1224x2912",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "597ab62d969f3bb50b9ac34cf97c27e49c836adcc7f9da35652ee7835851fd45",
+      "hash2": "2d1450f61e98d5f912e68a012095bd11dc3b7450b5d4d82d07561cfa51fbb54c",
+      "ok": true
+    },
+    {
+      "pet": "Подпись",
+      "color": "",
+      "aspect": "cover 1392x1208",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "56bc95a986e062f34bce6b5ffc4b71db3a430b64b75ab4340938700b3cc3e9b2",
+      "hash2": "abca971c572e36a1f3dc29bdda89b8df6bee3be44725b683641fec72218bcb52",
+      "ok": true
+    },
+    {
+      "pet": "Подпись",
+      "color": "",
+      "aspect": "cover 1208x1392",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "2e0af48a7f0ad7f7c8b4deb771e9c68be3dc9d6b56bc1e9e62ec4a349c1b47b0",
+      "hash2": "f00b03c43be5aad57aa2e866cbe5ca3c6d3d2f108bfc77564187de7328fbabfc",
+      "ok": true
+    },
+    {
+      "pet": "Подпись",
+      "color": "",
+      "aspect": "inner 1224x2912",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "c6b5f9706a544d7bfc06f04c28351301d66f8f5a21846f46c8feffb57fe72f91",
+      "hash2": "184e2da1ef0aff76fea30ccb18f205b64f8add541fda3d1de631ae76240fe055",
+      "ok": true
+    },
+    {
+      "test": "signature text font and vertical layout",
+      "ok": true
+    },
+    {
+      "pet": "Новогодняя бумага",
+      "color": "",
+      "aspect": "cover 1392x1208",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "e250fbd19cf9d47a56062dba2b757b51f47fbc97b718c813fa0dd3e52fabeb7c",
+      "hash2": "7a6ade685e71afe09bd4e575f385a8f73b452969ebc1d39033d866587f6fa083",
+      "ok": true
+    },
+    {
+      "pet": "Новогодняя бумага",
+      "color": "",
+      "aspect": "cover 1208x1392",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "6b3688f8313dc74af9e24da772dde94581ffd1f580ad0308de1b1d71b8d3ddae",
+      "hash2": "4c20c794a8f5d09aff4485cef0e7418eca24d44874c2f571f5a44c153531885e",
+      "ok": true
+    },
+    {
+      "pet": "Новогодняя бумага",
+      "color": "",
+      "aspect": "inner 1224x2912",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "80bc2287bda79e609f9d9659eeecfc3b8072d40b98997a9492162bac473d52c4",
+      "hash2": "a87e39ba29cfe3898f66f4b9dec8b588efe25287dfca059cabc21d7d5983ea42",
+      "ok": true
+    },
+    {
+      "pet": "Кинокалендарь · локальный",
+      "color": "",
+      "aspect": "cover 1392x1208",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "782916d25edbbceb057ad54b92c1ce3caf3afd230aea2c1a49f60b490f624a8a",
+      "hash2": "cadcd60a0fc75c34e672a143d301c7c26071b0b679565aaad68d77695ed84242",
+      "ok": true
+    },
+    {
+      "pet": "Кинокалендарь · локальный",
+      "color": "",
+      "aspect": "cover 1208x1392",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "3b496c5ee66a88d1c9b431b35c89cb0adb8b11fb5bdaba0f4f90250b18db6f53",
+      "hash2": "eb742c1fd92919af5ac3daec8b362c13e1c866032b8eadd9c77af1ad511394e5",
+      "ok": true
+    },
+    {
+      "pet": "Кинокалендарь · локальный",
+      "color": "",
+      "aspect": "inner 1224x2912",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "339cdaa489ad0fd192c7e2b5c1e9bbe9f0a68df7a0693e380fe53a8657930563",
+      "hash2": "3400c4ccd9c934de2931da140e09b486b9738b403ecab9626d3605c70cb69163",
+      "ok": true
+    },
+    {
+      "pet": "Своя фотография",
+      "color": "",
+      "aspect": "cover 1392x1208",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "7d25b9e370f95617f54c06cf4c610eae8c3bf6e807988cb55cad0e19949c61ae",
+      "hash2": "730464034782db888c0d961c8469f34add59f90fd7b73d5bcf666f6235836994",
+      "ok": true
+    },
+    {
+      "pet": "Своя фотография",
+      "color": "",
+      "aspect": "cover 1208x1392",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "06a18f685f14ef02d8177c7442e7f02d484d46af6fdb604764b411095cffd77b",
+      "hash2": "012663761382a62e92684919b2933c27a003154da5c9a3fc52ee8a0e4a0fc954",
+      "ok": true
+    },
+    {
+      "pet": "Своя фотография",
+      "color": "",
+      "aspect": "inner 1224x2912",
+      "visible": true,
+      "framesDiffer": true,
+      "hash1": "8c88a2668ea5b5150c556a3a7c87317214d8ac18902a675e4a7a4d748a8a7678",
+      "hash2": "d18551034552389d489aae1c9b2f2464218bb609ea8a366511e2fdad7c401667",
+      "ok": true
+    },
+    {
+      "test": "load original font MiSansVF.ttf",
+      "ok": true
+    },
+    {
+      "test": "load original font Qinghe.otf",
+      "ok": true
+    },
+    {
+      "test": "load original font Coca-ColaCareFontKaiTi.TTF",
+      "ok": true
+    },
+    {
+      "test": "load original font FZFWZhuZiAYuanJWB.TTF",
+      "ok": true
+    },
+    {
+      "test": "load original font MiSansRoundedSC.ttf",
+      "ok": true
+    },
+    {
+      "test": "import bounds and transparent foreground",
+      "ok": true
+    },
+    {
+      "test": "transparent layer renders over composition",
+      "ok": true
+    },
+    {
+      "test": "JPEG EXIF rotation before crop",
+      "ok": true
+    },
+    {
+      "test": "remove private image",
+      "ok": true
+    }
+  ]
+}

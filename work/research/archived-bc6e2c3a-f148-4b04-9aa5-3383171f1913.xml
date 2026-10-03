@@ -1,0 +1,4 @@
+<Widget frameRate="0" scaleByDensity="false" screenWidth="1080" version="2" useVariableUpdater="DateTime.Minute">
+  <Var name="assets" expression="'q5'" type="string"/>
+  <Image w="#view_width" h="#view_height" srcExp="(('assets/' + @assets) + '/bg.png')" name="list_entry_img"/>
+</Widget>

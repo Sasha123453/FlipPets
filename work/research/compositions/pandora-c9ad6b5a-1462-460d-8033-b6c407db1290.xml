@@ -1,0 +1,152 @@
+<Widget frameRate="0" scaleByDensity="false" screenWidth="1080" version="2" useVariableUpdater="DateTime.Minute">
+  <Var name="isAOD" type="number" expression="0" const="true"/>
+  <Var name="aodDone" type="number" expression="0" const="true"/>
+  <Var name="w" type="number" expression="#view_width"/>
+  <Var name="h" type="number" expression="#view_height"/>
+  <Var name="assetDir" type="string" expression="'assets/black'"/>
+  <Var name="isP2" type="number" expression="ifelse(((#w / #h) } 1.6),1,0)"/>
+  <Var name="dpdx" type="number" expression="ifelse(#isP2,2.97,3.214)"/>
+  <Var name="_scale" type="number" expression="(#view_width / 1080)"/>
+  <Var name="centerX" type="number" expression="(ifelse(#isP2,(236 * #dpdx),((217 * #dpdx) + 3.5)) * #_scale)"/>
+  <Var name="centerY" type="number" expression="((#h / 2) + 3)"/>
+  <Var name="_time_sys" type="number" expression="0"/>
+  <Var name="angle_second" type="number" expression="((#second + ((#_time_sys % 1000) / 1000)) * 6)"/>
+  <Var name="angle_minute" type="number" expression="((#minute + ((#second + ((#_time_sys % 1000) / 1000)) / 60)) * 6)"/>
+  <Var name="angle_hour" type="number" expression="(((#hour12 + (#minute / 60)) * 30) + ((#second / 3600) * 30))"/>
+  <Var name="_month" type="number" expression="(#month + 1)"/>
+  <Var name="date0" type="number" expression="int((#date / 10))"/>
+  <Var name="date1" type="number" expression="(#date % 10)"/>
+  <Var name="pointerAodDir" type="string" expression="'assets/pointer/aod'" const="true"/>
+  <Var name="pointerNormalDir" type="string" expression="'assets/pointer/normal'" const="true"/>
+  <Function name="_setAniRate">
+    <FrameRateCommand rate="8"/>
+  </Function>
+  <Function name="_init">
+    <IfCommand ifCondition="#isAOD">
+      <Consequent>
+        <MultiCommand condition="#aodDone">
+          <FrameRateCommand rate="0"/>
+        </MultiCommand>
+      </Consequent>
+      <Alternate>
+        <FunctionCommand target="_setAniRate"/>
+      </Alternate>
+    </IfCommand>
+  </Function>
+  <Rectangle w="#view_width" h="#view_height" x="0" y="0" fillColor="#000000"/>
+  <Image w="#view_width" h="#view_height" srcExp="(@assetDir + ifelse(#isP2,'/bg_p2.png','/bg_q200.png'))" x="0" y="0"/>
+  <Group visibility="(! #isAOD)">
+    <Rectangle x="#centerX" y="#centerY" w="((210 * #dpdx) * #_scale)" h="((190 * #dpdx) * #_scale)" contentDescriptionExp="formatDate(ifelse(#time_format,'HH:mm','hh:mm'),#time_sys)" alpha="0" fillColor="#000000" interceptTouch="true" touchable="true" align="center" alignV="center"/>
+  </Group>
+  <Group scale="#_scale" pivotX="#centerX" pivotY="#centerY">
+    <Group x="(#centerX + ifelse(#isP2,ifelse((#w } 1000),ifelse((#date0 == 1),(- 2),ifelse((#date0 == 2),0.5,0)),0),ifelse((#w } 1000),ifelse((#date0 == 1),(- 2),0),ifelse((#date0 == 1),(- 3),0))))" y="((#centerY + (41 * #dpdx)) + ifelse((#isP2 ** (#w } 1000)),1,0))" w="((8 * #dpdx) * ifelse((#date0 } 0),2,1))" h="(22 * #dpdx)" align="center" alignV="center">
+      <Image visibility="(#date0 } 0)" w="(8 * #dpdx)" h="(22 * #dpdx)" srcExp="(((@assetDir + '/date/') + #date0) + '.png')" name="_date0"/>
+      <Image x="ifelse((#date0 } 0),(8 * #dpdx),0)" w="(8 * #dpdx)" h="(22 * #dpdx)" srcExp="(((@assetDir + '/date/') + #date1) + '.png')" name="_date1"/>
+    </Group>
+    <Group folmeMode="true" name="_month_group">
+      <Image x="(#centerX - (1 * #dpdx))" y="(#centerY - (37 * #dpdx))" srcExp="(('assets/month/' + #_month) + '.png')" name="_month" align="center" alignV="center" w="#_month.bmp_width" h="#_month.bmp_height"/>
+    </Group>
+    <Group>
+      <Image x="#centerX" y="(#centerY + (6 * #dpdx))" w="(25 * #dpdx)" h="(212 * #dpdx)" srcExp="(@pointerAodDir + '/hour_shadow.png')" rotation="#angle_hour" pivotX="((25 * #dpdx) / 2)" pivotY="((212 * #dpdx) / 2)" align="center" alignV="center"/>
+      <Image x="#centerX" y="#centerY" w="(15 * #dpdx)" h="(212 * #dpdx)" srcExp="(@pointerAodDir + ifelse((#angle_hour {= 180),'/hour_right.png','/hour_left.png'))" rotation="#angle_hour" pivotX="((15 * #dpdx) / 2)" pivotY="((212 * #dpdx) / 2)" align="center" alignV="center"/>
+    </Group>
+    <Group visibility="ifelse(#aodDone,0,1)" folmeMode="true" name="group_hour">
+      <Image x="#centerX" y="(#centerY + (6 * #dpdx))" w="(15 * #dpdx)" h="(212 * #dpdx)" srcExp="(@pointerNormalDir + '/hour_shadow.png')" rotation="#angle_hour" pivotX="((15 * #dpdx) / 2)" pivotY="((212 * #dpdx) / 2)" align="center" alignV="center"/>
+      <Image x="#centerX" y="#centerY" w="(15 * #dpdx)" h="(212 * #dpdx)" srcExp="(@pointerNormalDir + ifelse((#angle_hour {= 180),'/hour_right.png','/hour_left.png'))" rotation="#angle_hour" pivotX="((15 * #dpdx) / 2)" pivotY="((212 * #dpdx) / 2)" align="center" alignV="center"/>
+    </Group>
+    <Group>
+      <Image x="#centerX" y="(#centerY + (7 * #dpdx))" w="(23 * #dpdx)" h="(212 * #dpdx)" srcExp="(@pointerAodDir + '/minute_shadow.png')" rotation="#angle_minute" pivotX="((23 * #dpdx) / 2)" pivotY="((212 * #dpdx) / 2)" align="center" alignV="center"/>
+      <Image x="#centerX" y="#centerY" w="(13 * #dpdx)" h="(212 * #dpdx)" srcExp="(@pointerAodDir + ifelse((#angle_minute {= 180),'/minute_right.png','/minute_left.png'))" rotation="#angle_minute" pivotX="((13 * #dpdx) / 2)" pivotY="((212 * #dpdx) / 2)" align="center" alignV="center"/>
+    </Group>
+    <Group visibility="ifelse(#aodDone,0,1)" folmeMode="true" name="group_minute">
+      <Image x="#centerX" y="(#centerY + (7 * #dpdx))" w="(13 * #dpdx)" h="(212 * #dpdx)" srcExp="(@pointerNormalDir + '/minute_shadow.png')" rotation="#angle_minute" pivotX="((13 * #dpdx) / 2)" pivotY="((212 * #dpdx) / 2)" align="center" alignV="center"/>
+      <Image x="#centerX" y="#centerY" w="(13 * #dpdx)" h="(212 * #dpdx)" srcExp="(@pointerNormalDir + ifelse((#angle_minute {= 180),'/minute_right.png','/minute_left.png'))" rotation="#angle_minute" pivotX="((13 * #dpdx) / 2)" pivotY="((212 * #dpdx) / 2)" align="center" alignV="center"/>
+    </Group>
+    <Group visibility="ifelse(#aodDone,0,1)" folmeMode="true" name="group_second">
+      <Image x="#centerX" y="((#centerY - (98 * #dpdx)) + (5 * #dpdx))" w="(8 * #dpdx)" h="(120 * #dpdx)" srcExp="(@assetDir + '/second_shadow.png')" rotation="#angle_second" pivotX="((8 * #dpdx) / 2)" pivotY="(98 * #dpdx)" align="center"/>
+      <Image x="#centerX" y="#centerY" w="(16 * #dpdx)" h="(212 * #dpdx)" srcExp="(@assetDir + ifelse((#angle_second {= 180),'/second_right.png','/second_left.png'))" rotation="#angle_second" pivotX="((16 * #dpdx) / 2)" pivotY="((212 * #dpdx) / 2)" align="center" alignV="center"/>
+    </Group>
+    <Group x="#centerX" y="#centerY">
+      <Image w="(4 * #dpdx)" h="(4 * #dpdx)" srcExp="(@pointerNormalDir + '/center.png')" folmeMode="true" name="center_image_normal" align="center" alignV="center"/>
+      <Image w="(6 * #dpdx)" h="(6 * #dpdx)" srcExp="(@pointerNormalDir + '/center.png')" folmeMode="true" name="center_image_aod" alpha="0" align="center" alignV="center"/>
+    </Group>
+    <Group folmeMode="true" name="aod_bg_group" alpha="0">
+      <Rectangle w="#view_width" h="#view_height" fillColor="#000000"/>
+    </Group>
+  </Group>
+  <Group>
+    <FolmeState name="folme_state_0" alpha="0"/>
+    <FolmeConfig name="folme_config_0" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_1" alpha="0"/>
+    <FolmeConfig name="folme_config_1" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_2" alpha="0"/>
+    <FolmeConfig name="folme_config_2" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_3" alpha="0"/>
+    <FolmeConfig name="folme_config_3" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_4" alpha="0"/>
+    <FolmeConfig name="folme_config_4" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_5" alpha="255"/>
+    <FolmeConfig name="folme_config_5" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_6" alpha="(255 * 0.4)"/>
+    <FolmeConfig name="folme_config_6" ease="-2, 1,0.72" onComplete="'folme_oncomplete_7'"/>
+    <Function name="folme_oncomplete_7">
+      <FrameRateCommand rate="0"/>
+      <VariableCommand name="aodDone" expression="1" type="number"/>
+    </Function>
+    <FolmeState name="folme_state_7" alpha="(255 * 0.8)"/>
+    <FolmeConfig name="folme_config_7" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_8" alpha="255"/>
+    <FolmeConfig name="folme_config_8" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_9" alpha="255"/>
+    <FolmeConfig name="folme_config_9" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_10" alpha="255"/>
+    <FolmeConfig name="folme_config_10" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_11" alpha="255"/>
+    <FolmeConfig name="folme_config_11" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_12" alpha="0"/>
+    <FolmeConfig name="folme_config_12" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_13" alpha="255"/>
+    <FolmeConfig name="folme_config_13" ease="-2, 1,0.72" onComplete="'folme_oncomplete_14'"/>
+    <Function name="folme_oncomplete_14">
+      <FunctionCommand target="_setAniRate"/>
+    </Function>
+    <FolmeState name="folme_state_14" alpha="0"/>
+    <FolmeConfig name="folme_config_14" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_15" alpha="255"/>
+    <FolmeConfig name="folme_config_15" ease="-2, 1,0.72"/>
+  </Group>
+  <ExternalCommands>
+    <Trigger action="enterAod">
+      <VariableCommand name="isAOD" expression="1" type="number"/>
+      <VariableCommand name="aodDone" expression="0" type="number"/>
+      <FrameRateCommand rate="120"/>
+      <FolmeCommand target="group_second" config="'folme_config_0'" states="'folme_state_0'" command="to"/>
+      <FolmeCommand target="group_minute" config="'folme_config_1'" states="'folme_state_1'" command="to"/>
+      <FolmeCommand target="group_hour" config="'folme_config_2'" states="'folme_state_2'" command="to"/>
+      <FolmeCommand target="center_image" config="'folme_config_3'" states="'folme_state_3'" command="to"/>
+      <FolmeCommand target="center_image_normal" config="'folme_config_4'" states="'folme_state_4'" command="to"/>
+      <FolmeCommand target="center_image_aod" config="'folme_config_5'" states="'folme_state_5'" command="to"/>
+      <FolmeCommand target="aod_bg_group" config="'folme_config_6'" states="'folme_state_6'" command="to"/>
+      <FolmeCommand target="_month_group" config="'folme_config_7'" states="'folme_state_7'" command="to"/>
+    </Trigger>
+    <Trigger action="exitAod">
+      <VariableCommand name="isAOD" expression="0" type="number"/>
+      <VariableCommand name="aodDone" expression="0" type="number"/>
+      <FrameRateCommand rate="120"/>
+      <FolmeCommand target="group_second" config="'folme_config_8'" states="'folme_state_8'" command="to"/>
+      <FolmeCommand target="group_minute" config="'folme_config_9'" states="'folme_state_9'" command="to"/>
+      <FolmeCommand target="group_hour" config="'folme_config_10'" states="'folme_state_10'" command="to"/>
+      <FolmeCommand target="center_image" config="'folme_config_11'" states="'folme_state_11'" command="to"/>
+      <FolmeCommand target="center_image_aod" config="'folme_config_12'" states="'folme_state_12'" command="to"/>
+      <FolmeCommand target="center_image_normal" config="'folme_config_13'" states="'folme_state_13'" command="to"/>
+      <FolmeCommand target="aod_bg_group" config="'folme_config_14'" states="'folme_state_14'" command="to"/>
+      <FolmeCommand target="_month_group" config="'folme_config_15'" states="'folme_state_15'" command="to"/>
+    </Trigger>
+    <Trigger action="init">
+      <FunctionCommand target="_init"/>
+    </Trigger>
+    <Trigger action="resume">
+      <FunctionCommand target="_init"/>
+    </Trigger>
+  </ExternalCommands>
+</Widget>

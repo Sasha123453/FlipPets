@@ -1,0 +1,191 @@
+<Widget frameRate="0" scaleByDensity="false" screenWidth="1080" version="2" useVariableUpdater="DateTime.Minute">
+  <Var name="assets" expression="'green'" type="string"/>
+  <Var name="colorPick" expression="'#4EA666'" type="string"/>
+  <Var name="isAOD" type="number" expression="0" const="true"/>
+  <Var name="aodDone" type="number" expression="0" const="true"/>
+  <Var name="show_time" type="number" expression="#showTime"/>
+  <Var name="color_pick" type="string" expression="@colorPick"/>
+  <Var name="w" type="number" expression="#view_width"/>
+  <Var name="h" type="number" expression="#view_height"/>
+  <Var name="misansRounded" type="string" expression="'/product/fonts/MiSansRoundedSC.ttf'" const="true"/>
+  <Var name="colors" type="string[]" values="'#4EA666','#4571D9','#8F67E0','#EF7C25','#DF3B17'" const="true"/>
+  <Var name="color_assets" type="string[]" values="'green','blue','purple','orange','red'" const="true"/>
+  <Var name="text_colors" type="string[]" values="'#7AFFD3','#ADE4FF','#E4D5FF','#FFE5CC','#FFCFCC'" const="true"/>
+  <Var name="text_aod_colors" type="string[]" values="'#23E785','#3D9EFF','#9F80FF','#F37C20','#EB6D47'" const="true"/>
+  <Var name="colorIndex" type="number" expression="ifelse(eqs(@color_pick,@colors[0]),0,ifelse(eqs(@color_pick,@colors[1]),1,ifelse(eqs(@color_pick,@colors[2]),2,ifelse(eqs(@color_pick,@colors[3]),3,ifelse(eqs(@color_pick,@colors[4]),4,0)))))"/>
+  <Var name="assetColorDir" type="string" expression="('assets/' + @color_assets[#colorIndex])"/>
+  <Var name="textColor" type="string" expression="@text_colors[#colorIndex]"/>
+  <Var name="text_aod_color" type="string" expression="@text_aod_colors[#colorIndex]"/>
+  <Var name="isP2" type="number" expression="ifelse(((#w / #h) } 1.6),1,0)"/>
+  <Var name="dpdx" type="number" expression="ifelse(#isP2,1.106,1.194)"/>
+  <Var name="_scale" type="number" expression="(#view_width / 1080)"/>
+  <Var name="centerX" type="number" expression="(ifelse(#isP2,(616 * #dpdx),(575 * #dpdx)) * #_scale)"/>
+  <Var name="centerY" type="number" expression="(#h / 2)"/>
+  <Var name="_scale_image" type="number" expression="ifelse(#isP2,((596 / 572) * #_scale),#_scale)"/>
+  <Var name="_time_sys" type="number" expression="#time_sys"/>
+  <Var name="angle_second" type="number" expression="((#second + ((#_time_sys % 1000) / 1000)) * 6)"/>
+  <Var name="angle_minute" type="number" expression="((#minute + ((#second + ((0 % 1000) / 1000)) / 60)) * 6)"/>
+  <Var name="angle_hour" type="number" expression="(((#hour12 + (#minute / 60)) * 30) + ((#second / 3600) * 30))"/>
+  <Var name="angle_second_enter_aod" type="number" expression="#angle_second" const="true"/>
+  <Var name="_hour" type="number" expression="ifelse(#time_format,#hour24,#hour12)"/>
+  <Var name="_minute" type="number" expression="#minute"/>
+  <Var name="hourHigh" type="number" expression="int((#_hour / 10))"/>
+  <Var name="hourLow" type="number" expression="int((#_hour % 10))"/>
+  <Var name="minuteHigh" type="number" expression="int((#_minute / 10))"/>
+  <Var name="minuteLow" type="number" expression="int((#_minute % 10))"/>
+  <Var name="showHourHigh" type="number" expression="ifelse(((#time_format } 0) || (#hourHigh } 0)),1,0)"/>
+  <Var name="textSize" type="number" expression="((44.5 * #dpdx) * #_scale)"/>
+  <Var name="textR" type="number" expression="ifelse(#isP2,((((594 / 2) - 12) * #dpdx) * #_scale),((((570 / 2) - 12) * #dpdx) * #_scale))"/>
+  <Var name="textRotationBase" type="number" expression="ifelse(#isP2,ifelse(#showHourHigh,49,44),ifelse(#showHourHigh,50.3,46))"/>
+  <Var name="offset_hour_low" type="number" expression="ifelse((#hourLow == 1),(- 0.3),ifelse((#hourLow == 4),0.3,0))"/>
+  <Var name="offset_hour_high" type="number" expression="ifelse((#hourHigh == 1),(- 0.1),ifelse((#hourHigh == 0),0.3,ifelse((#hourHigh == 2),0.5,0)))"/>
+  <Var name="offset_minute_high" type="number" expression="ifelse(((#minuteHigh == 0) || (#minuteHigh == 4)),0.3,ifelse((#minuteHigh == 1),(- 0.1),0))"/>
+  <Var name="offset_minute_low" type="number" expression="ifelse(((#minuteHigh == 0) || (#minuteHigh == 4)),0.3,ifelse((#minuteHigh == 1),(- 0.1),0))"/>
+  <Function name="_setAniRate">
+    <IfCommand ifCondition="#aodDone">
+      <Consequent>
+        <FrameRateCommand rate="0"/>
+      </Consequent>
+      <Alternate>
+        <FrameRateCommand rate="30"/>
+      </Alternate>
+    </IfCommand>
+  </Function>
+  <Rectangle w="#view_width" h="#view_height" x="0" y="0" fillColor="#000000"/>
+  <Group folmeMode="true" name="bg">
+    <Image w="#view_width" h="#view_height" srcExp="(@assetColorDir + '/bg.png')" x="0" y="0"/>
+  </Group>
+  <Group visibility="(! #isAOD)">
+    <Rectangle x="(#centerX - ((259 * #dpdx) * #_scale_image))" y="(#centerY - ((259 * #dpdx) * #_scale_image))" w="(((259 * #dpdx) + ifelse(#show_time,(286 * #dpdx),(259 * #dpdx))) * #_scale_image)" h="((518 * #dpdx) * #_scale_image)" contentDescriptionExp="formatDate(ifelse(#time_format,'HH:mm','hh:mm'),#time_sys)" alpha="0" fillColor="#000000" interceptTouch="true" touchable="true"/>
+  </Group>
+  <Group scale="#_scale_image" pivotX="#centerX" pivotY="#centerY">
+    <Group folmeMode="true" name="_second_light_ball">
+      <Image x="#centerX" y="#centerY" w="(1230 * #dpdx)" h="(1230 * #dpdx)" srcExp="(@assetColorDir + '/second_light_ball.png')" rotation="#angle_second" pivotX="((1230 * #dpdx) / 2)" pivotY="((1230 * #dpdx) / 2)" align="center" alignV="center"/>
+    </Group>
+    <Group folmeMode="true" name="_second_ball_aod" alpha="0">
+      <Image x="#centerX" y="#centerY" w="(518 * #dpdx)" h="(518 * #dpdx)" srcExp="(@assetColorDir + '/second_ball_aod.png')" rotation="#angle_second_enter_aod" pivotX="((518 * #dpdx) / 2)" pivotY="((518 * #dpdx) / 2)" align="center" alignV="center"/>
+    </Group>
+    <Group folmeMode="true" name="_second_ball_aod_bg" alpha="0">
+      <Rectangle w="#view_width" h="#view_height" fillColor="#000000"/>
+    </Group>
+    <Group>
+      <Image x="#centerX" y="(#centerY - (29 * #dpdx))" w="(26 * #dpdx)" h="(164 * #dpdx)" srcExp="(@assetColorDir + '/hour.png')" rotation="#angle_hour" pivotX="((26 * #dpdx) / 2)" pivotY="((164 + 29) * #dpdx)" align="center" alignV="bottom"/>
+    </Group>
+    <Group folmeMode="true" name="_hour_aod" alpha="0">
+      <Image x="#centerX" y="(#centerY - (29 * #dpdx))" w="(26 * #dpdx)" h="(164 * #dpdx)" srcExp="(@assetColorDir + '/hour_aod.png')" rotation="#angle_hour" pivotX="((26 * #dpdx) / 2)" pivotY="((164 + 29) * #dpdx)" align="center" alignV="bottom"/>
+    </Group>
+    <Group>
+      <Image x="#centerX" y="(#centerY - (29 * #dpdx))" w="(8 * #dpdx)" h="(212 * #dpdx)" srcExp="(@assetColorDir + '/minute.png')" rotation="#angle_minute" pivotX="((8 * #dpdx) / 2)" pivotY="((212 + 29) * #dpdx)" align="center" alignV="bottom"/>
+    </Group>
+    <Group folmeMode="true" name="_minute_aod" alpha="0">
+      <Image x="#centerX" y="(#centerY - (29 * #dpdx))" w="(8 * #dpdx)" h="(212 * #dpdx)" srcExp="(@assetColorDir + '/minute_aod.png')" rotation="#angle_minute" pivotX="((8 * #dpdx) / 2)" pivotY="((212 + 29) * #dpdx)" align="center" alignV="bottom"/>
+    </Group>
+    <Group>
+      <Image x="#centerX" y="#centerY" w="(26 * #dpdx)" h="(26 * #dpdx)" srcExp="(@assetColorDir + '/center.png')" align="center" alignV="center"/>
+      <Image x="#centerX" y="#centerY" w="(26 * #dpdx)" h="(26 * #dpdx)" srcExp="(@assetColorDir + '/center_aod.png')" folmeMode="true" name="_center_aod" align="center" alignV="center" alpha="0"/>
+    </Group>
+  </Group>
+  <Group visibility="#show_time">
+    <Group>
+      <Text visibility="#showHourHigh" x="#centerX" y="(#centerY - #textR)" textExp="#hourHigh" fontPath="@misansRounded" size="#textSize" rotation="((((#textRotationBase - 4) - 5) - #offset_hour_low) - #offset_hour_high)" color="@textColor" name="hour_high" fontPathWeight="600" pivotX="#hour_high.text_width/2" pivotY="#hour_high.text_height + #textR" align="center" alignV="bottom"/>
+      <Text x="#centerX" y="(#centerY - #textR)" textExp="#hourLow" fontPath="@misansRounded" size="#textSize" rotation="((#textRotationBase - 4) - #offset_hour_low)" color="@textColor" name="hour_low" fontPathWeight="600" pivotX="#hour_low.text_width/2" pivotY="#hour_low.text_height + #textR" align="center" alignV="bottom"/>
+      <Text x="#centerX" y="((#centerY - #textR) - 5)" textExp="':'" fontPath="@misansRounded" size="#textSize" rotation="#textRotationBase" color="@textColor" name="time_sep" fontPathWeight="600" pivotX="#time_sep.text_width/2" pivotY="#time_sep.text_height + #textR + 5" align="center" alignV="bottom"/>
+      <Text x="#centerX" y="(#centerY - #textR)" textExp="#minuteHigh" fontPath="@misansRounded" size="#textSize" rotation="((#textRotationBase + 4) + #offset_minute_high)" color="@textColor" name="minute_high" fontPathWeight="600" pivotX="#minute_high.text_width/2" pivotY="#minute_high.text_height + #textR" align="center" alignV="bottom"/>
+      <Text x="#centerX" y="(#centerY - #textR)" textExp="#minuteLow" fontPath="@misansRounded" size="#textSize" rotation="((((#textRotationBase + 4) + 5.2) + #offset_minute_high) + #offset_minute_low)" color="@textColor" name="minute_low" fontPathWeight="600" pivotX="#minute_low.text_width/2" pivotY="#minute_low.text_height + #textR" align="center" alignV="bottom"/>
+    </Group>
+    <Group folmeMode="true" name="time_text_aod" alpha="0">
+      <Text visibility="#showHourHigh" x="#centerX" y="(#centerY - #textR)" textExp="#hourHigh" fontPath="@misansRounded" size="#textSize" rotation="((((#textRotationBase - 4) - 5) - #offset_hour_low) - #offset_hour_high)" color="@text_aod_color" name="hour_high_aod" fontPathWeight="600" pivotX="#hour_high_aod.text_width/2" pivotY="#hour_high_aod.text_height + #textR" align="center" alignV="bottom"/>
+      <Text x="#centerX" y="(#centerY - #textR)" textExp="#hourLow" fontPath="@misansRounded" size="#textSize" rotation="((#textRotationBase - 4) - #offset_hour_low)" color="@text_aod_color" name="hour_low_aod" fontPathWeight="600" pivotX="#hour_low_aod.text_width/2" pivotY="#hour_low_aod.text_height + #textR" align="center" alignV="bottom"/>
+      <Text x="#centerX" y="((#centerY - #textR) - 5)" textExp="':'" fontPath="@misansRounded" size="#textSize" rotation="#textRotationBase" color="@text_aod_color" name="time_sep_aod" fontPathWeight="600" pivotX="#time_sep_aod.text_width/2" pivotY="#time_sep_aod.text_height + #textR + 5" align="center" alignV="bottom"/>
+      <Text x="#centerX" y="(#centerY - #textR)" textExp="#minuteHigh" fontPath="@misansRounded" size="#textSize" rotation="((#textRotationBase + 4) + #offset_minute_high)" color="@text_aod_color" name="minute_high_aod" fontPathWeight="600" pivotX="#minute_high_aod.text_width/2" pivotY="#minute_high_aod.text_height + #textR" align="center" alignV="bottom"/>
+      <Text x="#centerX" y="(#centerY - #textR)" textExp="#minuteLow" fontPath="@misansRounded" size="#textSize" rotation="((((#textRotationBase + 4) + 5.2) + #offset_minute_high) + #offset_minute_low)" color="@text_aod_color" name="minute_low_aod" fontPathWeight="600" pivotX="#minute_low_aod.text_width/2" pivotY="#minute_low_aod.text_height + #textR" align="center" alignV="bottom"/>
+    </Group>
+  </Group>
+  <Group>
+    <FolmeState name="folme_state_0" alpha="0"/>
+    <FolmeConfig name="folme_config_0" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_1" alpha="0"/>
+    <FolmeConfig name="folme_config_1" ease="-2, 1,0.18"/>
+    <FolmeState name="folme_state_2" alpha="255"/>
+    <FolmeConfig name="folme_config_2" ease="-2, 1,0.35"/>
+    <FolmeState name="folme_state_3" alpha="(255 * 0.8)"/>
+    <FolmeConfig name="folme_config_3" ease="-2, 1,0.35"/>
+    <FolmeState name="folme_state_4" alpha="(255 * 0.8)"/>
+    <FolmeConfig name="folme_config_4" ease="-2, 1,0.35"/>
+    <FolmeState name="folme_state_5" alpha="255"/>
+    <FolmeConfig name="folme_config_5" ease="-2, 1,0.35"/>
+    <FolmeState name="folme_state_6" alpha="(255 * 0.8)"/>
+    <FolmeConfig name="folme_config_6" ease="-2, 1,0.35"/>
+    <FolmeState name="folme_state_7" alpha="(255 * 0.6)"/>
+    <FolmeConfig name="folme_config_7" ease="-2, 1,0.72" onComplete="'folme_oncomplete_8'"/>
+    <Function name="folme_oncomplete_8">
+      <VariableCommand name="aodDone" expression="1" type="number"/>
+      <FrameRateCommand rate="0"/>
+    </Function>
+    <FolmeState name="folme_state_8" alpha="255"/>
+    <FolmeConfig name="folme_config_8" ease="-2, 1, 0.72" onComplete="'folme_oncomplete_9'"/>
+    <Function name="folme_oncomplete_9">
+      <FunctionCommand target="_setAniRate"/>
+    </Function>
+    <FolmeState name="folme_state_9" alpha="255"/>
+    <FolmeConfig name="folme_config_9" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_10" alpha="255"/>
+    <FolmeConfig name="folme_config_10" ease="-2, 1,0.35"/>
+    <FolmeState name="folme_state_11" alpha="0"/>
+    <FolmeConfig name="folme_config_11" ease="-2, 1,0.18"/>
+    <FolmeState name="folme_state_12" alpha="0"/>
+    <FolmeConfig name="folme_config_12" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_13" alpha="0"/>
+    <FolmeConfig name="folme_config_13" ease="-2, 1,0.18"/>
+    <FolmeState name="folme_state_14" alpha="0"/>
+    <FolmeConfig name="folme_config_14" ease="-2, 1,0.18"/>
+    <FolmeState name="folme_state_15" alpha="0"/>
+    <FolmeConfig name="folme_config_15" ease="-2, 1,0.18"/>
+    <FolmeState name="folme_state_16" alpha="0"/>
+    <FolmeConfig name="folme_config_16" ease="-2, 1,0.18"/>
+  </Group>
+  <ExternalCommands>
+    <Trigger action="enterAod">
+      <VariableCommand name="isAOD" expression="1" type="number"/>
+      <VariableCommand name="aodDone" expression="0" type="number"/>
+      <FrameRateCommand rate="120"/>
+      <VariableCommand name="angle_second_enter_aod" expression="#angle_second" type="number"/>
+      <FolmeCommand target="bg" config="'folme_config_0'" states="'folme_state_0'" command="to"/>
+      <FolmeCommand target="_second_light_ball" config="'folme_config_1'" states="'folme_state_1'" command="to"/>
+      <FolmeCommand target="_second_ball_aod" config="'folme_config_2'" states="'folme_state_2'" command="to"/>
+      <FolmeCommand target="_hour_aod" config="'folme_config_3'" states="'folme_state_3'" command="to"/>
+      <FolmeCommand target="_minute_aod" config="'folme_config_4'" states="'folme_state_4'" command="to"/>
+      <FolmeCommand target="_center_aod" config="'folme_config_5'" states="'folme_state_5'" command="to"/>
+      <FolmeCommand target="time_text_aod" config="'folme_config_6'" states="'folme_state_6'" command="to"/>
+      <FolmeCommand target="_second_ball_aod_bg" config="'folme_config_7'" states="'folme_state_7'" command="to"/>
+      <ExternCommand command="__clearTalkback"/>
+    </Trigger>
+    <Trigger action="exitAod">
+      <VariableCommand name="isAOD" expression="0" type="number"/>
+      <VariableCommand name="aodDone" expression="0" type="number"/>
+      <FrameRateCommand rate="120"/>
+      <FolmeCommand target="bg" config="'folme_config_8'" states="'folme_state_8'" command="to"/>
+      <FolmeCommand target="time_text_group" config="'folme_config_9'" states="'folme_state_9'" command="to"/>
+      <FolmeCommand target="_second_light_ball" config="'folme_config_10'" states="'folme_state_10'" command="to"/>
+      <FolmeCommand target="_second_ball_aod" config="'folme_config_11'" states="'folme_state_11'" command="to"/>
+      <FolmeCommand target="_second_ball_aod_bg" config="'folme_config_12'" states="'folme_state_12'" command="to"/>
+      <FolmeCommand target="_hour_aod" config="'folme_config_13'" states="'folme_state_13'" command="to"/>
+      <FolmeCommand target="_minute_aod" config="'folme_config_14'" states="'folme_state_14'" command="to"/>
+      <FolmeCommand target="_center_aod" config="'folme_config_15'" states="'folme_state_15'" command="to"/>
+      <FolmeCommand target="time_text_aod" config="'folme_config_16'" states="'folme_state_16'" command="to"/>
+      <ExternCommand command="__clearTalkback"/>
+    </Trigger>
+    <Trigger action="resume">
+      <IfCommand ifCondition="#isAOD">
+        <Consequent>
+          <MultiCommand condition="#aodDone">
+            <FrameRateCommand rate="0"/>
+          </MultiCommand>
+        </Consequent>
+        <Alternate>
+          <FunctionCommand target="_setAniRate"/>
+        </Alternate>
+      </IfCommand>
+    </Trigger>
+  </ExternalCommands>
+</Widget>

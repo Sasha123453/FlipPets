@@ -1,0 +1,306 @@
+<Widget frameRate="0" scaleByDensity="false" screenWidth="1080" version="2" useVariableUpdater="HyperMaterial,DateTime.Minute">
+  <Var name="is_debug" type="number" expression="0"/>
+  <Var name="isDisplayDefaultBg" type="number" expression="#isDisplayDefaultBg"/>
+  <Var name="bgmode" type="number" expression="#bgmode"/>
+  <Var name="aniX" type="number" expression="#aniVar_x"/>
+  <Var name="aniY" type="number" expression="#aniVar_y"/>
+  <Var name="aniScaleX" type="number" expression="#aniVar_scaleX"/>
+  <Var name="aniScaleY" type="number" expression="#aniVar_scaleY"/>
+  <Var name="resType" type="number" expression="#bgmode_resType"/>
+  <Var name="isImageResType" type="number" expression="((#resType == 0) || (#resType == 2))"/>
+  <Rectangle w="#view_width" h="#view_height" visibility="(#bgmode == 3)" fillColor="#000000"/>
+  <Group>
+    <!-- Ai.vue -->
+    <Var name="aod_state_it9AjsIs" type="number" expression="0" const="true"/>
+    <Var name="is_paused_it9AjsIs" type="number" expression="0" const="true"/>
+    <Var name="is_edit_it9AjsIs" type="number" expression="0" const="true"/>
+    <Var name="is_finished_it9AjsIs" type="number" expression="0" const="true"/>
+    <Var name="bgmode_it9AjsIs" type="number" expression="#bgmode"/>
+    <Var name="isDisplayDefaultBg_it9AjsIs" type="number" expression="#isDisplayDefaultBg"/>
+    <Var name="imageUri_it9AjsIs" type="string" expression="@imageUri"/>
+    <Var name="videoUri_it9AjsIs" type="string" expression="@videoUri"/>
+    <Var name="selected_it9AjsIs" type="number" expression="#selected"/>
+    <Var name="videoState_it9AjsIs" type="string" expression="@aiVideo.playState"/>
+    <Var name="aniX_it9AjsIs" type="number" expression="#aniVar_x"/>
+    <Var name="aniY_it9AjsIs" type="number" expression="#aniVar_y"/>
+    <Var name="aniScaleX_it9AjsIs" type="number" expression="#aniVar_scaleX"/>
+    <Var name="aniScaleY_it9AjsIs" type="number" expression="#aniVar_scaleY"/>
+    <Var name="aniDisplayScale_it9AjsIs" type="number" expression="#aniVar_displayScale"/>
+    <Var name="resType_it9AjsIs" type="number" expression="#bgmode_resType"/>
+    <Var name="scaleFactor_it9AjsIs" type="number" expression="#__scale_factor"/>
+    <Var name="isVideoResType_it9AjsIs" type="number" expression="((#resType_it9AjsIs == 1) || (#resType_it9AjsIs == 3))"/>
+    <Var name="isImageResType_it9AjsIs" type="number" expression="((#resType_it9AjsIs == 0) || (#resType_it9AjsIs == 2))"/>
+    <Var name="cVideoLoop_it9AjsIs" type="number" expression="ifelse(eqs(@isPreviewMode,'true'),1,0)"/>
+    <Var name="isNewTheme_it9AjsIs" type="number" expression="(#aniScaleX_it9AjsIs != 0)"/>
+    <Function name="playVideo">
+      <VariableCommand name="is_finished_it9AjsIs" expression="0" type="number"/>
+      <VariableCommand name="is_paused_it9AjsIs" expression="0" type="number"/>
+      <VideoCommand target="aiVideo" command="play"/>
+      <VideoCommand target="customVideo" command="play"/>
+    </Function>
+    <Function name="pauseVideo">
+      <IfCommand ifCondition="(#bgmode_it9AjsIs == 2)">
+        <Consequent>
+          <VideoCommand target="aiVideo" command="pause"/>
+        </Consequent>
+        <Alternate>
+          <VideoCommand target="customVideo" command="pause"/>
+        </Alternate>
+      </IfCommand>
+    </Function>
+    <Function name="releaseVideo">
+      <IfCommand ifCondition="(#bgmode_it9AjsIs == 2)">
+        <Consequent>
+          <VideoCommand target="aiVideo" command="release"/>
+        </Consequent>
+        <Alternate>
+          <VideoCommand target="customVideo" command="release"/>
+        </Alternate>
+      </IfCommand>
+    </Function>
+    <Function name="setVideoFirstFrame">
+      <IfCommand ifCondition="(#bgmode_it9AjsIs == 2)">
+        <Consequent>
+          <VideoCommand target="aiVideo" command="seekTo" time="0"/>
+        </Consequent>
+        <Alternate>
+          <VideoCommand target="customVideo" command="seekTo" time="0"/>
+        </Alternate>
+      </IfCommand>
+    </Function>
+    <Function name="replayVideo">
+      <FunctionCommand target="setVideoFirstFrame"/>
+      <FunctionCommand target="playVideo" delay="1"/>
+    </Function>
+    <Function name="onComplete">
+      <VariableCommand name="is_finished_it9AjsIs" expression="1" type="number"/>
+    </Function>
+    <Image visibility="((((! eqs(@isPreviewMode,'true')) ** strIsEmpty(@imageUri_it9AjsIs)) ** (#bgmode_it9AjsIs == 2)) ** (! #isNewTheme_it9AjsIs))" w="#view_width" h="#view_height" src="assets/ai/ai.png"/>
+    <Image visibility="((((! eqs(@isPreviewMode,'true')) ** strIsEmpty(@imageUri_it9AjsIs)) ** (#bgmode_it9AjsIs == 2)) ** #isNewTheme_it9AjsIs)" x="((#aniX_it9AjsIs * #aniDisplayScale_it9AjsIs) / #scaleFactor_it9AjsIs)" y="((#aniY_it9AjsIs * #aniDisplayScale_it9AjsIs) / #scaleFactor_it9AjsIs)" scaleX="(#aniScaleX_it9AjsIs * #aniDisplayScale_it9AjsIs)" scaleY="(#aniScaleY_it9AjsIs * #aniDisplayScale_it9AjsIs)" src="assets/ai/ai.png"/>
+    <Video visibility="(#bgmode_it9AjsIs == 2)" w="#view_width" h="#view_height" touchable="true" name="aiVideo" layerType="bottom">
+      <Triggers>
+        <Trigger action="complete">
+          <FunctionCommand target="onComplete"/>
+        </Trigger>
+      </Triggers>
+    </Video>
+    <Video visibility="((((! eqs(@isPreviewMode,'true')) ** (! strIsEmpty(@videoUri_it9AjsIs))) ** (#bgmode_it9AjsIs == 1)) ** #isVideoResType_it9AjsIs)" path="@videoUri_it9AjsIs" w="#view_width" h="#view_height" x="((#aniX_it9AjsIs * #aniDisplayScale_it9AjsIs) / #scaleFactor_it9AjsIs)" y="((#aniY_it9AjsIs * #aniDisplayScale_it9AjsIs) / #scaleFactor_it9AjsIs)" scaleX="#aniScaleX_it9AjsIs" scaleY="#aniScaleY_it9AjsIs" loop="#cVideoLoop_it9AjsIs" touchable="true" name="customVideo" layerType="bottom" scaleMode="1">
+      <Triggers>
+        <Trigger action="complete">
+          <FunctionCommand target="onComplete"/>
+        </Trigger>
+      </Triggers>
+    </Video>
+    <Image src="@imageUri_it9AjsIs" w="#view_width" h="#view_height" visibility="((((! eqs(@isPreviewMode,'true')) ** (! strIsEmpty(@imageUri_it9AjsIs))) ** (#bgmode_it9AjsIs != 3)) ** (! #isNewTheme_it9AjsIs))" srcType="FileSystem"/>
+    <Image src="@imageUri_it9AjsIs" x="((#aniX_it9AjsIs * #aniDisplayScale_it9AjsIs) / #scaleFactor_it9AjsIs)" y="((#aniY_it9AjsIs * #aniDisplayScale_it9AjsIs) / #scaleFactor_it9AjsIs)" scaleX="(#aniScaleX_it9AjsIs * #aniDisplayScale_it9AjsIs)" scaleY="(#aniScaleY_it9AjsIs * #aniDisplayScale_it9AjsIs)" visibility="((((! eqs(@isPreviewMode,'true')) ** (! strIsEmpty(@imageUri_it9AjsIs))) ** ((#bgmode_it9AjsIs == 0) || (#bgmode_it9AjsIs == 2))) ** #isNewTheme_it9AjsIs)" srcType="FileSystem"/>
+    <Image src="@imageUri_it9AjsIs" x="((#aniX_it9AjsIs * #aniDisplayScale_it9AjsIs) / #scaleFactor_it9AjsIs)" y="((#aniY_it9AjsIs * #aniDisplayScale_it9AjsIs) / #scaleFactor_it9AjsIs)" scaleX="(#aniScaleX_it9AjsIs * #aniDisplayScale_it9AjsIs)" scaleY="(#aniScaleY_it9AjsIs * #aniDisplayScale_it9AjsIs)" visibility="(((((! eqs(@isPreviewMode,'true')) ** (! strIsEmpty(@imageUri_it9AjsIs))) ** (#bgmode_it9AjsIs == 1)) ** #isImageResType_it9AjsIs) ** #isNewTheme_it9AjsIs)" srcType="FileSystem"/>
+    <Group visibility="0">
+      <Text textExp="((('isDisplayDefaultBg ' + #isDisplayDefaultBg_it9AjsIs) + ' bgmode') + #bgmode_it9AjsIs)" x="300" y="10" size="30" color="#00ffff"/>
+      <Text textExp="('isPreviewMode ' + eqs(@isPreviewMode,'true'))" x="300" y="50" size="30" color="#00ffff"/>
+      <Text textExp="@imageUri_it9AjsIs" x="300" y="140" size="30" color="#ff6a05"/>
+      <Text textExp="#aniScaleX_it9AjsIs" x="300" y="200" size="30" color="#ff6a05"/>
+      <Text textExp="#aniX_it9AjsIs" x="300" y="250" size="30" color="#ff6a05"/>
+      <Text textExp="#isImageResType_it9AjsIs" x="300" y="300" size="30" color="#ff6a05"/>
+    </Group>
+  </Group>
+  <Group visibility="#is_debug">
+    <Text textExp="((('isDisplayDefaultBg ' + #isDisplayDefaultBg) + ' bgmode') + #bgmode)" x="300" y="10" size="30" color="#00ffff"/>
+    <Text textExp="('isPreviewMode ' + eqs(@isPreviewMode,'true'))" x="300" y="50" size="30" color="#00ffff"/>
+    <Text textExp="@imageUri" x="300" y="140" size="30" color="#ff6a05"/>
+    <Text textExp="undefined($customImage, 'bmp_height')" x="300" y="200" size="30" color="#ff6a05"/>
+    <Text textExp="#aniX" x="300" y="250" size="30" color="#ff6a05"/>
+    <Text textExp="#aniY" x="300" y="300" size="30" color="#ff6a05"/>
+    <Text textExp="undefined($customImage, 'bmp_width')" x="300" y="350" size="30" color="#ff6a05"/>
+    <Text textExp="(undefined($customImage, 'bmp_width') / #view_width)" x="300" y="400" size="30" color="#ff6a05"/>
+  </Group>
+  <Group>
+    <!-- Sig.vue -->
+    <Var name="debugMode_YG7W3Wow" type="number" expression="0" const="true"/>
+    <Var name="aod_state_YG7W3Wow" type="number" expression="0" const="true"/>
+    <Var name="timeFormat_YG7W3Wow" type="string" expression="ifelse((#time_format == 1),'HH:mm','hh:mm')"/>
+    <Var name="signatureText_YG7W3Wow" type="string" expression="@signatureText"/>
+    <Var name="textColor_YG7W3Wow" type="string" expression="@textColor"/>
+    <Var name="signatureAlign_YG7W3Wow" type="number" expression="#signatureAlign"/>
+    <Var name="signatureSize_YG7W3Wow" type="number" expression="#signatureSize"/>
+    <Var name="signatureBold_YG7W3Wow" type="number" expression="#signatureBold"/>
+    <Var name="showTime_YG7W3Wow" type="number" expression="#showTime"/>
+    <Var name="bgmode_YG7W3Wow" type="number" expression="#bgmode"/>
+    <Var name="isNoBg_YG7W3Wow" type="number" expression="(#bgmode_YG7W3Wow == 3)"/>
+    <Var name="isDeep_YG7W3Wow" type="number" expression="ifelse(#isNoBg_YG7W3Wow,1,#isDeep)"/>
+    <Var name="defaultBlurColor_YG7W3Wow" type="string" expression="ifelse(#isDeep_YG7W3Wow,'#E6ffffff','#E6ABABAB')"/>
+    <Var name="defaultColorMode_YG7W3Wow" type="string" expression="'15'"/>
+    <Var name="blurTextAlpha_YG7W3Wow" type="string" expression="ifelse(#isDeep_YG7W3Wow,'#7F','#B3')"/>
+    <Var name="blurTextColorMode_YG7W3Wow" type="string" expression="ifelse(#isDeep_YG7W3Wow,'20','120')"/>
+    <Var name="blurTextColor_YG7W3Wow" type="string" expression="ifelse((! strIsEmpty(@textColor_YG7W3Wow)),(@blurTextAlpha_YG7W3Wow + substr(@textColor_YG7W3Wow,1,6)),@defaultBlurColor_YG7W3Wow)"/>
+    <Var name="aodBlurTextAlpha_YG7W3Wow" type="string" expression="ifelse(#isDeep_YG7W3Wow,'#B3','#CC')"/>
+    <Var name="aodBlurTextColorMode_YG7W3Wow" type="string" expression="ifelse(#isDeep_YG7W3Wow,'20','121')"/>
+    <Var name="aodBlurTextColor_YG7W3Wow" type="string" expression="ifelse((! strIsEmpty(@textColor_YG7W3Wow)),(@aodBlurTextAlpha_YG7W3Wow + substr(@textColor_YG7W3Wow,1,6)),@defaultBlurColor_YG7W3Wow)"/>
+    <Var name="aodTextColor_YG7W3Wow" type="string" expression="ifelse(#isDeep_YG7W3Wow,@textColor_YG7W3Wow,'#ffffff')"/>
+    <Var name="designWidth_YG7W3Wow" type="number" expression="336"/>
+    <Var name="scale_YG7W3Wow" type="number" expression="(#view_width / #designWidth_YG7W3Wow)"/>
+    <Var name="fontSize_YG7W3Wow" type="number" expression="(#signatureSize_YG7W3Wow * #scale_YG7W3Wow)"/>
+    <Var name="q200Width_YG7W3Wow" type="number" expression="904"/>
+    <Var name="q200Height_YG7W3Wow" type="number" expression="572"/>
+    <Var name="q200AvailableWidth_YG7W3Wow" type="number" expression="625"/>
+    <Var name="q200MarginLeftRatio_YG7W3Wow" type="number" expression="((#q200Width_YG7W3Wow - #q200AvailableWidth_YG7W3Wow) / #q200Width_YG7W3Wow)"/>
+    <Var name="q200ScreenRatio_YG7W3Wow" type="number" expression="(#q200Width_YG7W3Wow / #q200Height_YG7W3Wow)"/>
+    <Var name="p2Width_YG7W3Wow" type="number" expression="976"/>
+    <Var name="p2Height_YG7W3Wow" type="number" expression="596"/>
+    <Var name="p2AvailableWidth_YG7W3Wow" type="number" expression="696"/>
+    <Var name="p2MarginLeftRatio_YG7W3Wow" type="number" expression="((#p2Width_YG7W3Wow - #p2AvailableWidth_YG7W3Wow) / #p2Width_YG7W3Wow)"/>
+    <Var name="p2ScreenRatio_YG7W3Wow" type="number" expression="(#p2Width_YG7W3Wow / #p2Height_YG7W3Wow)"/>
+    <Var name="realScreenRatio_YG7W3Wow" type="number" expression="(#view_width / #view_height)"/>
+    <Var name="diffWithQ200_YG7W3Wow" type="number" expression="abs((#realScreenRatio_YG7W3Wow - #q200ScreenRatio_YG7W3Wow))"/>
+    <Var name="diffWithP2_YG7W3Wow" type="number" expression="abs((#realScreenRatio_YG7W3Wow - #p2ScreenRatio_YG7W3Wow))"/>
+    <Var name="isQ200_YG7W3Wow" type="number" expression="(#diffWithQ200_YG7W3Wow { #diffWithP2_YG7W3Wow)"/>
+    <Var name="availableMarginLeftRatio_YG7W3Wow" type="number" expression="ifelse(#isQ200_YG7W3Wow,#q200MarginLeftRatio_YG7W3Wow,#p2MarginLeftRatio_YG7W3Wow)"/>
+    <Var name="safeAreaMarginLeft_YG7W3Wow" type="number" expression="(10 * #scale_YG7W3Wow)"/>
+    <Var name="viewMarginLeft_YG7W3Wow" type="number" expression="((#view_width * #availableMarginLeftRatio_YG7W3Wow) + #safeAreaMarginLeft_YG7W3Wow)"/>
+    <Var name="oneLineTextHeight_YG7W3Wow" type="number" expression="(#fontSize_YG7W3Wow * 1.2)"/>
+    <Var name="safeAreaMarginTop_YG7W3Wow" type="number" expression="ifelse(#showTime_YG7W3Wow,(38 * #scale_YG7W3Wow),(28 * #scale_YG7W3Wow))"/>
+    <Var name="timeAreaMarginTop_YG7W3Wow" type="number" expression="(8 * #scale_YG7W3Wow)"/>
+    <Var name="timeAreaHeight_YG7W3Wow" type="number" expression="(30 * #scale_YG7W3Wow)"/>
+    <Var name="safeAreaMarginBottom_YG7W3Wow" type="number" expression="(28 * #scale_YG7W3Wow)"/>
+    <Var name="safeAreaMarginRight_YG7W3Wow" type="number" expression="(15 * #scale_YG7W3Wow)"/>
+    <Var name="safeAreaWidth_YG7W3Wow" type="number" expression="((#view_width - #viewMarginLeft_YG7W3Wow) - #safeAreaMarginRight_YG7W3Wow)"/>
+    <Var name="safeAreaHeight_YG7W3Wow" type="number" expression="((#view_height - #safeAreaMarginTop_YG7W3Wow) - #safeAreaMarginBottom_YG7W3Wow)"/>
+    <Var name="layerLeftBuffer_YG7W3Wow" type="number" expression="#fontSize_YG7W3Wow"/>
+    <Var name="layerBottomBuffer_YG7W3Wow" type="number" expression="(20 * #scale_YG7W3Wow)"/>
+    <Var name="maxRows_YG7W3Wow" type="number" expression="ifelse((#safeAreaHeight_YG7W3Wow }= #oneLineTextHeight_YG7W3Wow),floor((#safeAreaHeight_YG7W3Wow / #oneLineTextHeight_YG7W3Wow)),1)"/>
+    <Var name="timeSize_YG7W3Wow" type="number" expression="(14 * #scale_YG7W3Wow)"/>
+    <Var name="fontPath1_YG7W3Wow" type="string" expression="'/system/fonts/MiSansVF.ttf'"/>
+    <Var name="lineHeight1_YG7W3Wow" type="number" expression="0.9"/>
+    <Var name="fontPath2_YG7W3Wow" type="string" expression="'/product/fonts/Qinghe.otf'"/>
+    <Var name="lineHeight2_YG7W3Wow" type="number" expression="1.2"/>
+    <Var name="fontPath3_YG7W3Wow" type="string" expression="'/product/fonts/Coca-ColaCareFontKaiTi.TTF'"/>
+    <Var name="lineHeight3_YG7W3Wow" type="number" expression="1.05"/>
+    <Var name="fontPath4_YG7W3Wow" type="string" expression="'/product/fonts/FZFWZhuZiAYuanJWB.TTF'"/>
+    <Var name="lineHeight4_YG7W3Wow" type="number" expression="0.985"/>
+    <Var name="fontPath_YG7W3Wow" type="string" expression="ifelse((#fontFamily[0] == 1),@fontPath1_YG7W3Wow,ifelse((#fontFamily[1] == 1),@fontPath2_YG7W3Wow,ifelse((#fontFamily[2] == 1),@fontPath3_YG7W3Wow,ifelse((#fontFamily[3] == 1),@fontPath4_YG7W3Wow,''))))"/>
+    <Var name="lineHeight_YG7W3Wow" type="number" expression="ifelse((#fontFamily[0] == 1),#lineHeight1_YG7W3Wow,ifelse((#fontFamily[1] == 1),#lineHeight2_YG7W3Wow,ifelse((#fontFamily[2] == 1),#lineHeight3_YG7W3Wow,ifelse((#fontFamily[3] == 1),#lineHeight4_YG7W3Wow,0))))"/>
+    <Var name="textAlign_YG7W3Wow" type="string" expression="ifelse((#signatureAlign_YG7W3Wow == 0),'left',ifelse((#signatureAlign_YG7W3Wow == 1),'center','right'))"/>
+    <Function name="switchStateAod">
+      <MultiCommand condition="(! #isNoBg_YG7W3Wow)">
+        <FrameRateCommand rate="120"/>
+        <FolmeCommand target="aod_bg" config="'folme_config_0'" states="'folme_state_0'" command="to"/>
+        <FolmeCommand target="sig_desk" config="'folme_config_1'" states="'folme_state_1'" command="to"/>
+        <FolmeCommand target="sig_aod" config="'folme_config_2'" states="'folme_state_2'" command="to"/>
+      </MultiCommand>
+    </Function>
+    <Function name="switchStateDesk">
+      <MultiCommand condition="(! #isNoBg_YG7W3Wow)">
+        <FrameRateCommand rate="120"/>
+        <FolmeCommand target="aod_bg" config="'folme_config_3'" states="'folme_state_3'" command="to"/>
+        <FolmeCommand target="sig_desk" config="'folme_config_4'" states="'folme_state_4'" command="to"/>
+        <FolmeCommand target="sig_aod" config="'folme_config_5'" states="'folme_state_5'" command="to"/>
+      </MultiCommand>
+    </Function>
+    <Text size="#fontSize_YG7W3Wow" fontPath="@fontPath_YG7W3Wow" fontPathWeight="#signatureBold_YG7W3Wow" name="sig_canary" text="米" alpha="0"/>
+    <Rectangle w="#view_width" h="#view_height" x="0" y="0" folmeMode="true" name="aod_bg" fillColor="#000000" alpha="0"/>
+    <Group x="0" visibility="(#maxRows_YG7W3Wow { 30)">
+      <Group folmeMode="true" name="sig_desk">
+        <Layer blurColors="@defaultBlurColor_YG7W3Wow,@blurTextColor_YG7W3Wow" colorModes="@defaultColorMode_YG7W3Wow,@blurTextColorMode_YG7W3Wow" x="(#viewMarginLeft_YG7W3Wow - #layerLeftBuffer_YG7W3Wow)" y="#timeAreaMarginTop_YG7W3Wow" w="((#view_width - #viewMarginLeft_YG7W3Wow) + #layerLeftBuffer_YG7W3Wow)" h="(((#view_height - #timeAreaMarginTop_YG7W3Wow) - #safeAreaMarginBottom_YG7W3Wow) + #layerBottomBuffer_YG7W3Wow)" frameRate="-1" blurRadius="40">
+          <Text x="#layerLeftBuffer_YG7W3Wow" y="((#safeAreaMarginTop_YG7W3Wow - #timeAreaMarginTop_YG7W3Wow) + ((#safeAreaHeight_YG7W3Wow - #sig_text.text_height) / 2))" size="#fontSize_YG7W3Wow" spacingMultExp="#lineHeight_YG7W3Wow" fontPath="@fontPath_YG7W3Wow" fontPathWeight="#signatureBold_YG7W3Wow" color="@textColor_YG7W3Wow" textExp="@signatureText_YG7W3Wow" w="#safeAreaWidth_YG7W3Wow" textAlign="@textAlign_YG7W3Wow" lineClamp="#maxRows_YG7W3Wow" name="sig_text" multiLine="true" ellipsis="true" enableClip="false"/>
+          <Text visibility="(#showTime_YG7W3Wow == 1)" x="#layerLeftBuffer_YG7W3Wow" y="(#timeAreaHeight_YG7W3Wow / 2)" w="#safeAreaWidth_YG7W3Wow" size="#timeSize_YG7W3Wow" spacingMultExp="#lineHeight_YG7W3Wow" fontPath="@fontPath_YG7W3Wow" color="@textColor_YG7W3Wow" textExp="formatDate(@timeFormat_YG7W3Wow,#time_sys)" textAlign="@textAlign_YG7W3Wow" name="time_text" alignV="center" enableClip="false"/>
+        </Layer>
+      </Group>
+      <Group folmeMode="true" name="sig_aod" alpha="0">
+        <Layer blurColors="@defaultBlurColor_YG7W3Wow,@aodBlurTextColor_YG7W3Wow" colorModes="@defaultColorMode_YG7W3Wow,@aodBlurTextColorMode_YG7W3Wow" x="(#viewMarginLeft_YG7W3Wow - #layerLeftBuffer_YG7W3Wow)" y="#timeAreaMarginTop_YG7W3Wow" w="((#view_width - #viewMarginLeft_YG7W3Wow) + #layerLeftBuffer_YG7W3Wow)" h="(((#view_height - #timeAreaMarginTop_YG7W3Wow) - #safeAreaMarginBottom_YG7W3Wow) + #layerBottomBuffer_YG7W3Wow)" frameRate="-1" blurRadius="40">
+          <Text x="#layerLeftBuffer_YG7W3Wow" y="((#safeAreaMarginTop_YG7W3Wow - #timeAreaMarginTop_YG7W3Wow) + ((#safeAreaHeight_YG7W3Wow - #sig_text.text_height) / 2))" size="#fontSize_YG7W3Wow" spacingMultExp="#lineHeight_YG7W3Wow" fontPath="@fontPath_YG7W3Wow" fontPathWeight="#signatureBold_YG7W3Wow" color="@aodTextColor_YG7W3Wow" textExp="@signatureText_YG7W3Wow" w="#safeAreaWidth_YG7W3Wow" textAlign="@textAlign_YG7W3Wow" lineClamp="#maxRows_YG7W3Wow" name="sig_text" multiLine="true" ellipsis="true" enableClip="false"/>
+          <Text visibility="(#showTime_YG7W3Wow == 1)" x="#layerLeftBuffer_YG7W3Wow" y="(#timeAreaHeight_YG7W3Wow / 2)" w="#safeAreaWidth_YG7W3Wow" size="#timeSize_YG7W3Wow" spacingMultExp="#lineHeight_YG7W3Wow" fontPath="@fontPath_YG7W3Wow" color="@aodTextColor_YG7W3Wow" textExp="formatDate(@timeFormat_YG7W3Wow,#time_sys)" textAlign="@textAlign_YG7W3Wow" name="time_text" alignV="center" enableClip="false"/>
+        </Layer>
+      </Group>
+    </Group>
+    <Group x="#viewMarginLeft_YG7W3Wow" y="#timeAreaMarginTop_YG7W3Wow" w="#safeAreaWidth_YG7W3Wow" h="#timeAreaHeight_YG7W3Wow" contentDescriptionExp="formatDate(@timeFormat_YG7W3Wow,#time_sys)" visibility="(eq(#aod_state_YG7W3Wow,0) ** (#showTime_YG7W3Wow == 1))"/>
+  </Group>
+  <Group>
+    <FolmeState name="folme_state_0" alpha="(255 * 0.4)"/>
+    <FolmeConfig name="folme_config_0" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_1" alpha="0"/>
+    <FolmeConfig name="folme_config_1" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_2" alpha="255"/>
+    <FolmeConfig name="folme_config_2" ease="-2, 1,0.72" onComplete="'folme_oncomplete_3'"/>
+    <Function name="folme_oncomplete_3">
+      <FrameRateCommand rate="0"/>
+    </Function>
+    <FolmeState name="folme_state_3" alpha="0"/>
+    <FolmeConfig name="folme_config_3" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_4" alpha="255"/>
+    <FolmeConfig name="folme_config_4" ease="-2, 1,0.72" onComplete="'folme_oncomplete_5'"/>
+    <Function name="folme_oncomplete_5">
+      <FrameRateCommand rate="0"/>
+    </Function>
+    <FolmeState name="folme_state_5" alpha="0"/>
+    <FolmeConfig name="folme_config_5" ease="-2, 1,0.5"/>
+  </Group>
+  <ExternalCommands>
+    <Trigger action="init">
+      <IfCommand ifCondition="eqs(@isPreviewMode,'true')">
+        <Consequent>
+          <FrameRateCommand rate="120"/>
+        </Consequent>
+        <Alternate>
+          <FrameRateCommand rate="0"/>
+        </Alternate>
+      </IfCommand>
+    </Trigger>
+    <Trigger action="init">
+      <IfCommand ifCondition="eqs(@isPreviewMode,'true')">
+        <Consequent>
+          <VideoCommand target="aiVideo" command="config" path="'assets/ai/ai.mp4'" loop="1" scaleMode="2"/>
+        </Consequent>
+        <Alternate>
+          <VideoCommand target="aiVideo" command="config" path="'assets/ai/ai.mp4'" loop="0" scaleMode="2"/>
+        </Alternate>
+      </IfCommand>
+    </Trigger>
+    <Trigger action="resume">
+      <MultiCommand condition="((! #aod_state_it9AjsIs) ** #is_paused_it9AjsIs)">
+        <FunctionCommand target="replayVideo"/>
+      </MultiCommand>
+      <MultiCommand condition="(! #is_paused_it9AjsIs)">
+        <FunctionCommand target="playVideo"/>
+      </MultiCommand>
+      <MultiCommand condition="(#isDisplayDefaultBg_it9AjsIs == 1)">
+        <FunctionCommand target="releaseVideo"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="pause">
+      <FunctionCommand target="pauseVideo"/>
+      <VariableCommand name="is_paused_it9AjsIs" expression="1" type="number"/>
+    </Trigger>
+    <Trigger action="enterAod">
+      <VariableCommand name="aod_state_it9AjsIs" expression="1" type="number"/>
+    </Trigger>
+    <Trigger action="exitAod">
+      <VariableCommand name="aod_state_it9AjsIs" expression="0" type="number"/>
+      <MultiCommand condition="((#is_finished_it9AjsIs == 1) || (#is_paused_it9AjsIs == 1))">
+        <FunctionCommand target="replayVideo"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="enterEdit">
+      <VariableCommand name="is_edit_it9AjsIs" expression="1" type="number"/>
+      <MultiCommand condition="eq(#selected,0)">
+        <VariableCommand name="is_finished_it9AjsIs" expression="1" type="number"/>
+        <FunctionCommand target="setVideoFirstFrame"/>
+        <FunctionCommand target="pauseVideo"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="exitEdit">
+      <VariableCommand name="is_edit_it9AjsIs" expression="0" type="number"/>
+      <MultiCommand condition="(#is_finished_it9AjsIs == 1)">
+        <FunctionCommand target="replayVideo"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="enterAod">
+      <FunctionCommand target="switchStateAod"/>
+      <VariableCommand name="aod_state_YG7W3Wow" expression="1" type="number"/>
+      <ExternCommand command="__clearTalkback"/>
+    </Trigger>
+    <Trigger action="exitAod">
+      <FunctionCommand target="switchStateDesk"/>
+      <VariableCommand name="aod_state_YG7W3Wow" expression="0" type="number"/>
+      <ExternCommand command="__clearTalkback"/>
+    </Trigger>
+  </ExternalCommands>
+</Widget>

@@ -1,0 +1,82 @@
+{
+  "apkSha256": "b46ea0d57da9c5714c8af67a73e259e0c78d5c5cd75d008838fc837789c10e09",
+  "tested": 15,
+  "failed": 0,
+  "results": [
+    {
+      "pet": "Bubbles",
+      "kind": "reactive",
+      "ok": true
+    },
+    {
+      "pet": "Силикон · фиолетовый",
+      "kind": "composition",
+      "ok": true
+    },
+    {
+      "pet": "Lumi",
+      "kind": "video",
+      "ok": true
+    },
+    {
+      "pet": "Stretch · упругие часы",
+      "kind": "composition",
+      "ok": true
+    },
+    {
+      "pet": "Flowing glitter",
+      "kind": "ambient",
+      "ok": true
+    },
+    {
+      "pet": "Шагомер",
+      "kind": "composition",
+      "ok": true
+    },
+    {
+      "pet": "Roe",
+      "kind": "reactive",
+      "ok": true
+    },
+    {
+      "pet": "Кинокалендарь · локальный",
+      "kind": "composition",
+      "ok": true
+    },
+    {
+      "pet": "Needle felting",
+      "kind": "video",
+      "ok": true
+    },
+    {
+      "pet": "Волокно дракона · часы",
+      "kind": "composition",
+      "ok": true
+    },
+    {
+      "pet": "Подпись",
+      "kind": "composition",
+      "ok": true
+    },
+    {
+      "pet": "Градиент · часы",
+      "kind": "composition",
+      "ok": true
+    },
+    {
+      "pet": "Новогодняя бумага",
+      "kind": "composition",
+      "ok": true
+    },
+    {
+      "pet": "Своя фотография",
+      "kind": "composition",
+      "ok": true
+    },
+    {
+      "pet": "Bubbles",
+      "kind": "reactive",
+      "ok": true
+    }
+  ]
+}

@@ -1,0 +1,1307 @@
+<Widget frameRate="0" scaleByDensity="false" screenWidth="1080" version="2" useVariableUpdater="DateTime.Minute,DateTime.Hour">
+  <Var name="aod_state" type="number" expression="0" const="true"/>
+  <Var name="isP2" type="number" expression="ifelse(((#view_width / #view_height) } 1.6),1,0)"/>
+  <Var name="_time_sys" type="number" expression="(#time_sys % 1000)"/>
+  <FramerateController name="_frameControll" initPause="1" loop="0">
+    <ControlPoint frameRate="120" time="0"/>
+    <ControlPoint frameRate="120" time="5000"/>
+    <ControlPoint frameRate="0" time="5001"/>
+  </FramerateController>
+  <Var name="pick_colors" type="string[]" values="'#7C9EF9','#937CD6','#588A65','#E06024','#E04736'" const="true"/>
+  <Var name="color_pick" type="string" expression="@colorPick"/>
+  <Var name="color_index" type="number" expression="ifelse(eqs(@color_pick,@pick_colors[0]),0,ifelse(eqs(@color_pick,@pick_colors[1]),1,ifelse(eqs(@color_pick,@pick_colors[2]),2,ifelse(eqs(@color_pick,@pick_colors[3]),3,ifelse(eqs(@color_pick,@pick_colors[4]),4,0)))))"/>
+  <Var name="assets_color_subdirs" type="string[]" values="'blue','purple','green','orange','red'"/>
+  <Var name="asset_color_subdir" type="string" expression="@assets_color_subdirs[#color_index]"/>
+  <Var name="tint_colors_1_aod" type="string[]" values="'#7C9EF9','#BF71ED','#49C46F','#EB9439','#F0663D'" const="true"/>
+  <Var name="tint_colors_2_aod" type="string[]" values="'#1157B8','#7031C9','#106A3B','#9C2816','#AA2117'" const="true"/>
+  <Var name="tint_color_1_aod" type="string" expression="@tint_colors_1_aod[#color_index]" const="true"/>
+  <Var name="tint_color_2_aod" type="string" expression="@tint_colors_2_aod[#color_index]" const="true"/>
+  <Var name="_tintWatch" expression="#color_index" threshold="1">
+    <Trigger>
+      <FunctionCommand target="_initTintColor"/>
+    </Trigger>
+  </Var>
+  <Var name="dpdx" type="number" expression="4" const="true"/>
+  <Var name="w" type="number" expression="(ifelse(#isP2,363,336) * #dpdx)"/>
+  <Var name="h" type="number" expression="(ifelse(#isP2,222,213) * #dpdx)"/>
+  <Var name="_scale" type="number" expression="(#view_width / #w)"/>
+  <Var name="x_left" type="number" expression="(ifelse(#isP2,127,114.38) * #dpdx)"/>
+  <Var name="y_center" type="number" expression="(#h / 2)"/>
+  <Var name="y_v_offset" type="number" expression="(ifelse(#isP2,12,11) * #dpdx)"/>
+  <Var name="width1" type="number" expression="(ifelse(#isP2,62,59) * #dpdx)" const="true"/>
+  <Var name="width2" type="number" expression="(ifelse(#isP2,147,139) * #dpdx)" const="true"/>
+  <Var name="num_gap" type="number" expression="(ifelse(#isP2,12,11) * #dpdx)" const="true"/>
+  <Var name="x_offset_11" type="number" expression="(#width2 - #width1)" const="true"/>
+  <Var name="image_h_1" type="number" expression="(ifelse(#isP2,93,88) * #dpdx)" const="true"/>
+  <Var name="nine_path_w" type="number" expression="236" const="true"/>
+  <Var name="nine_path_h" type="number" expression="352" const="true"/>
+  <Var name="image_w_clock" type="number" expression="(ifelse(#isP2,105,99) * #dpdx)" const="true"/>
+  <Var name="image_h_clock" type="number" expression="(ifelse(#isP2,198,187) * #dpdx)" const="true"/>
+  <Var name="image_w_1_7" type="number" expression="(ifelse(#isP2,51,48) * #dpdx)" const="true"/>
+  <Var name="image_h_1_7" type="number" expression="(ifelse(#isP2,198,187) * #dpdx)" const="true"/>
+  <Var name="num_gap_1_7" type="number" expression="(6 * #dpdx)" const="true"/>
+  <Var name="_hour" type="number" expression="#hour24" const="true"/>
+  <Var name="_minute" type="number" expression="#minute" const="true"/>
+  <Var name="hour_high" type="number" expression="int((#_hour / 10))" const="true"/>
+  <Var name="hour_low" type="number" expression="int((#_hour % 10))" const="true"/>
+  <Var name="hour_low_w_last" type="number" expression="0" const="true"/>
+  <Var name="hour_high_w_last" type="number" expression="0" const="true"/>
+  <Var name="hour_last" type="number" expression="#_hour" const="true"/>
+  <Var name="hour_high_last" type="number" expression="#hour_high" const="true"/>
+  <Var name="hour_low_last" type="number" expression="#hour_low" const="true"/>
+  <Var name="is_hour_high_change" type="number" expression="(#hour_high_last != #hour_high)" const="true"/>
+  <Var name="is_hour_low_change" type="number" expression="(#hour_low_last != #hour_low)" const="true"/>
+  <Var name="hour_low_w" type="number" expression="0" const="true"/>
+  <Var name="hour_low_x" type="number" expression="0" const="true"/>
+  <Var name="hour_high_x" type="number" expression="0" const="true"/>
+  <Var name="hour_high_w" type="number" expression="0" const="true"/>
+  <Var name="hour_low_cur" type="number" expression="#hour_low" const="true"/>
+  <Var name="hour_low_next" type="number" expression="((#hour_low + 1) % 10)" const="true"/>
+  <Var name="hour_high_cur" type="number" expression="int((#_hour / 10))" const="true"/>
+  <Var name="hour_high_next" type="number" expression="int(((#_hour + 1) / 10))" const="true"/>
+  <Var name="is_hour_low_next_hidden" type="number" expression="(#_hour_low_next.alpha { 10)"/>
+  <Var name="is_hour_high_next_hidden" type="number" expression="(#_hour_high_next.alpha { 10)"/>
+  <Var name="minute_high" type="number" expression="int((#_minute / 10))" const="true"/>
+  <Var name="minute_low" type="number" expression="int((#_minute % 10))" const="true"/>
+  <Var name="minute_low_w_last" type="number" expression="0" const="true"/>
+  <Var name="minute_high_w_last" type="number" expression="0" const="true"/>
+  <Var name="minute_last" type="number" expression="#_minute" const="true"/>
+  <Var name="minute_high_last" type="number" expression="#minute_high" const="true"/>
+  <Var name="minute_low_last" type="number" expression="#minute_low" const="true"/>
+  <Var name="is_minute_high_change" type="number" expression="(#minute_high_last != #minute_high)" const="true"/>
+  <Var name="is_minute_low_change" type="number" expression="(#minute_low_last != #minute_low)" const="true"/>
+  <Var name="minute_low_w" type="number" expression="0" const="true"/>
+  <Var name="minute_low_x" type="number" expression="0" const="true"/>
+  <Var name="minute_high_x" type="number" expression="0" const="true"/>
+  <Var name="minute_high_w" type="number" expression="0" const="true"/>
+  <Var name="minute_low_cur" type="number" expression="#minute_low" const="true"/>
+  <Var name="minute_low_next" type="number" expression="((#minute_low + 1) % 10)" const="true"/>
+  <Var name="minute_low_next_live" type="number" expression="#minute_low_next" const="true"/>
+  <Var name="minute_high_cur" type="number" expression="int((#_minute / 10))" const="true"/>
+  <Var name="minute_high_next" type="number" expression="int(((#_minute + 1) / 10))" const="true"/>
+  <Var name="is_minute_low_next_hidden" type="number" expression="(#_minute_low_next.alpha { 10)"/>
+  <Var name="is_minute_high_next_hidden" type="number" expression="(#_minute_high_next.alpha { 10)"/>
+  <Var name="layout_type" type="number" expression="(- 1)" const="true"/>
+  <Var name="layout_type_last" type="number" expression="(- 1)" const="true"/>
+  <Var name="layout_state_1" type="number" expression="(- 1)" const="true"/>
+  <Var name="layout_state_0" type="number" expression="(- 1)" const="true"/>
+  <Var name="layout_state_7" type="number" expression="(- 1)" const="true"/>
+  <Var name="test_mode" type="number" expression="0" const="true"/>
+  <Var name="_time" type="number" expression="(((#hour24 * 1000) + (#minute * 10)) + (#second * 0))"/>
+  <Var name="_watch" expression="#_time" threshold="1">
+    <Trigger>
+      <MultiCommand condition="(#test_mode == 0)">
+        <FunctionCommand target="_timeChangeAni"/>
+      </MultiCommand>
+    </Trigger>
+  </Var>
+  <Var name="_resume_time" type="number" expression="0" const="true"/>
+  <Function name="_setLongRate">
+    <AnimationCommand target="_frameControll" command="play(0)"/>
+  </Function>
+  <Function name="_setAniRate">
+    <IfCommand ifCondition="(#aod_state == 1)">
+      <Consequent>
+        <AnimationCommand target="_frameControll" command="play(5001-20)"/>
+      </Consequent>
+      <Alternate>
+        <AnimationCommand target="_frameControll" command="play(5001-1200)"/>
+      </Alternate>
+    </IfCommand>
+  </Function>
+  <Function name="_closeRate">
+    <AnimationCommand target="_frameControll" command="play(5001-5)"/>
+  </Function>
+  <Function name="_initTintColor">
+    <VariableCommand name="tint_color_1_aod" expression="@tint_colors_1_aod[#color_index]" type="string"/>
+    <VariableCommand name="tint_color_2_aod" expression="@tint_colors_2_aod[#color_index]" type="string"/>
+  </Function>
+  <Function name="_updateHourImageAttrs">
+    <VariableCommand name="hour_low_w" expression="ifelse((#hour_high == 1),ifelse(((#hour_low == 1) || (#hour_low == 7)),#width1,#width2),ifelse(((((#hour_low - 1) % 2) == 0) || (#_hour == 20)),#width1,#width2))" type="number"/>
+    <VariableCommand name="hour_high_w" expression="ifelse(((#hour_high == 1) || (#hour_low_w == #width2)),#width1,#width2)" type="number"/>
+    <VariableCommand name="hour_high_x" expression="ifelse(((#hour_low_w { #width2) ** (#hour_high_w { #width2)),#x_offset_11,0)" type="number"/>
+    <VariableCommand name="hour_low_x" expression="((#width1 + #width2) + #num_gap)" type="number"/>
+  </Function>
+  <Function name="_hourLowAni">
+    <IfCommand ifCondition="((#layout_state_1 == 1) || (#aod_state == 1))">
+      <Consequent>
+        <IfCommand ifCondition="#is_hour_low_next_hidden">
+          <Consequent>
+            <FolmeCommand target="_hour_low" config="'folme_config_0'" states="'folme_state_0'" command="to"/>
+            <FolmeCommand target="_hour_low_next" config="'folme_config_1'" states="'folme_state_1'" command="to"/>
+          </Consequent>
+          <Alternate>
+            <FolmeCommand target="_hour_low_next" config="'folme_config_2'" states="'folme_state_2'" command="to"/>
+            <FolmeCommand target="_hour_low" config="'folme_config_3'" states="'folme_state_3'" command="to"/>
+          </Alternate>
+        </IfCommand>
+      </Consequent>
+      <Alternate>
+        <IfCommand ifCondition="#is_hour_low_change">
+          <Consequent>
+            <MultiCommand condition="((#hour_low == 7) || (#hour_low == 1))">
+              <IfCommand ifCondition="#is_hour_low_next_hidden">
+                <Consequent>
+                  <FolmeCommand target="_hour_low" config="'folme_config_4'" states="'folme_state_4'" command="to"/>
+                  <FolmeCommand target="_hour_low_next" config="'folme_config_5'" states="'folme_state_5'" command="to"/>
+                </Consequent>
+                <Alternate>
+                  <FolmeCommand target="_hour_low_next" config="'folme_config_7'" states="'folme_state_7'" command="to"/>
+                  <FolmeCommand target="_hour_low" config="'folme_config_8'" states="'folme_state_8'" command="to"/>
+                </Alternate>
+              </IfCommand>
+            </MultiCommand>
+            <MultiCommand condition="((#hour_low != 1) ** (#hour_low != 7))">
+              <IfCommand ifCondition="#is_hour_low_next_hidden">
+                <Consequent>
+                  <FolmeCommand target="_hour_low" config="'folme_config_10'" states="'folme_state_10'" command="to"/>
+                  <FolmeCommand target="_hour_low_next" config="'folme_config_11'" states="'folme_state_11'" command="to"/>
+                </Consequent>
+                <Alternate>
+                  <FolmeCommand target="_hour_low_next" config="'folme_config_12'" states="'folme_state_12'" command="to"/>
+                  <FolmeCommand target="_hour_low" config="'folme_config_13'" states="'folme_state_13'" command="to"/>
+                </Alternate>
+              </IfCommand>
+              <FolmeCommand target="_hour_low" config="'folme_config_14'" states="'folme_state_14'" command="to"/>
+              <FolmeCommand target="_hour_low_next" config="'folme_config_15'" states="'folme_state_15'" command="to"/>
+            </MultiCommand>
+          </Consequent>
+          <Alternate>
+            <FolmeCommand target="_hour_low" config="'folme_config_16'" states="'folme_state_16'" command="to"/>
+            <FolmeCommand target="_hour_low_next" config="'folme_config_17'" states="'folme_state_17'" command="to"/>
+          </Alternate>
+        </IfCommand>
+      </Alternate>
+    </IfCommand>
+  </Function>
+  <Function name="_hourHighAni">
+    <IfCommand ifCondition="((#layout_state_1 == 1) || (#aod_state == 1))">
+      <Consequent>
+        <IfCommand ifCondition="#is_hour_high_next_hidden">
+          <Consequent>
+            <FolmeCommand target="_hour_high" config="'folme_config_18'" states="'folme_state_18'" command="to"/>
+            <FolmeCommand target="_hour_high_next" config="'folme_config_19'" states="'folme_state_19'" command="to"/>
+          </Consequent>
+          <Alternate>
+            <FolmeCommand target="_hour_high_next" config="'folme_config_20'" states="'folme_state_20'" command="to"/>
+            <FolmeCommand target="_hour_high" config="'folme_config_21'" states="'folme_state_21'" command="to"/>
+          </Alternate>
+        </IfCommand>
+      </Consequent>
+      <Alternate>
+        <MultiCommand condition="(#hour_high == 1)">
+          <MultiCommand condition="(#hour_high_last == 1)">
+            <IfCommand ifCondition="#is_hour_high_next_hidden">
+              <Consequent>
+                <FolmeCommand target="_hour_high" config="'folme_config_22'" states="'folme_state_22'" command="to"/>
+              </Consequent>
+              <Alternate>
+                <FolmeCommand target="_hour_high_next" config="'folme_config_24'" states="'folme_state_24'" command="to"/>
+              </Alternate>
+            </IfCommand>
+          </MultiCommand>
+          <MultiCommand condition="((#hour_high_last != 1) ** ((#hour_high_w_last == #width2) || (#hour_low_w_last == #width1)))">
+            <IfCommand ifCondition="#is_hour_high_next_hidden">
+              <Consequent>
+                <FolmeCommand target="_hour_high_next" config="'folme_config_26'" states="'folme_state_26'" command="to"/>
+                <FolmeCommand target="_hour_high" config="'folme_config_28'" states="'folme_state_28'" command="to"/>
+              </Consequent>
+              <Alternate>
+                <FolmeCommand target="_hour_high" config="'folme_config_30'" states="'folme_state_30'" command="to"/>
+                <FolmeCommand target="_hour_high_next" config="'folme_config_32'" states="'folme_state_32'" command="to"/>
+              </Alternate>
+            </IfCommand>
+          </MultiCommand>
+          <MultiCommand condition="(((#hour_high_last != 1) ** (#hour_high_w_last == #width1)) ** (#hour_low_w_last == #width2))">
+            <IfCommand ifCondition="#is_hour_high_next_hidden">
+              <Consequent>
+                <FolmeCommand target="_hour_high" config="'folme_config_34'" states="'folme_state_34'" command="to"/>
+                <FolmeCommand target="_hour_high_next" config="'folme_config_36'" states="'folme_state_36'" command="to"/>
+                <FolmeCommand target="_hour_high_next" config="'folme_config_37'" states="'folme_state_37'" command="to"/>
+              </Consequent>
+              <Alternate>
+                <FolmeCommand target="_hour_high_next" config="'folme_config_38'" states="'folme_state_38'" command="to"/>
+                <FolmeCommand target="_hour_high" config="'folme_config_40'" states="'folme_state_40'" command="to"/>
+                <FolmeCommand target="_hour_high" config="'folme_config_41'" states="'folme_state_41'" command="to"/>
+              </Alternate>
+            </IfCommand>
+          </MultiCommand>
+        </MultiCommand>
+        <MultiCommand condition="(#hour_high != 1)">
+          <FolmeCommand target="_hour_high" config="'folme_config_42'" states="'folme_state_42'" command="to"/>
+          <FolmeCommand target="_hour_high_next" config="'folme_config_43'" states="'folme_state_43'" command="to"/>
+          <MultiCommand condition="#is_hour_high_change">
+            <IfCommand ifCondition="#is_hour_high_next_hidden">
+              <Consequent>
+                <FolmeCommand target="_hour_high" config="'folme_config_44'" states="'folme_state_44'" command="to"/>
+                <FolmeCommand target="_hour_high_next" config="'folme_config_45'" states="'folme_state_45'" command="to"/>
+              </Consequent>
+              <Alternate>
+                <FolmeCommand target="_hour_high_next" config="'folme_config_46'" states="'folme_state_46'" command="to"/>
+                <FolmeCommand target="_hour_high" config="'folme_config_47'" states="'folme_state_47'" command="to"/>
+              </Alternate>
+            </IfCommand>
+          </MultiCommand>
+        </MultiCommand>
+      </Alternate>
+    </IfCommand>
+  </Function>
+  <Function name="_hourLowAni_clock">
+    <IfCommand ifCondition="(((#layout_state_0 == 1) || (#aod_state == 1)) || (#hour_low_last == #hour_low))">
+      <Consequent>
+        <IfCommand ifCondition="#is_hour_low_next_hidden">
+          <Consequent>
+            <FolmeCommand target="_hour_low_clock" config="'folme_config_48'" states="'folme_state_48'" command="to"/>
+            <FolmeCommand target="_hour_low_next_clock" config="'folme_config_49'" states="'folme_state_49'" command="to"/>
+          </Consequent>
+          <Alternate>
+            <FolmeCommand target="_hour_low_next_clock" config="'folme_config_50'" states="'folme_state_50'" command="to"/>
+            <FolmeCommand target="_hour_low_clock" config="'folme_config_51'" states="'folme_state_51'" command="to"/>
+          </Alternate>
+        </IfCommand>
+      </Consequent>
+      <Alternate>
+        <IfCommand ifCondition="#is_hour_low_next_hidden">
+          <Consequent>
+            <FolmeCommand target="_hour_low_clock" config="'folme_config_52'" states="'folme_state_52'" command="to"/>
+            <FolmeCommand target="_hour_low_next_clock" config="'folme_config_53'" states="'folme_state_53'" command="to"/>
+          </Consequent>
+          <Alternate>
+            <FolmeCommand target="_hour_low_next_clock" config="'folme_config_54'" states="'folme_state_54'" command="to"/>
+            <FolmeCommand target="_hour_low_clock" config="'folme_config_55'" states="'folme_state_55'" command="to"/>
+          </Alternate>
+        </IfCommand>
+      </Alternate>
+    </IfCommand>
+  </Function>
+  <Function name="_hourHighAni_clock">
+    <IfCommand ifCondition="(((#layout_state_0 == 1) || (#aod_state == 1)) || (#hour_high_last == #hour_high))">
+      <Consequent>
+        <IfCommand ifCondition="#is_hour_high_next_hidden">
+          <Consequent>
+            <FolmeCommand target="_hour_high_clock" config="'folme_config_56'" states="'folme_state_56'" command="to"/>
+            <FolmeCommand target="_hour_high_next_clock" config="'folme_config_57'" states="'folme_state_57'" command="to"/>
+          </Consequent>
+          <Alternate>
+            <FolmeCommand target="_hour_high_next_clock" config="'folme_config_58'" states="'folme_state_58'" command="to"/>
+            <FolmeCommand target="_hour_high_clock" config="'folme_config_59'" states="'folme_state_59'" command="to"/>
+          </Alternate>
+        </IfCommand>
+      </Consequent>
+      <Alternate>
+        <IfCommand ifCondition="#is_hour_high_next_hidden">
+          <Consequent>
+            <FolmeCommand target="_hour_high_clock" config="'folme_config_60'" states="'folme_state_60'" command="to"/>
+            <FolmeCommand target="_hour_high_next_clock" config="'folme_config_61'" states="'folme_state_61'" command="to"/>
+          </Consequent>
+          <Alternate>
+            <FolmeCommand target="_hour_high_next_clock" config="'folme_config_62'" states="'folme_state_62'" command="to"/>
+            <FolmeCommand target="_hour_high_clock" config="'folme_config_63'" states="'folme_state_63'" command="to"/>
+          </Alternate>
+        </IfCommand>
+      </Alternate>
+    </IfCommand>
+  </Function>
+  <Function name="_hourLowAni_1_7">
+    <IfCommand ifCondition="(((#layout_state_7 == 1) || (#aod_state == 1)) || (#hour_low_last == #hour_low))">
+      <Consequent>
+        <IfCommand ifCondition="#is_hour_low_next_hidden">
+          <Consequent>
+            <FolmeCommand target="_hour_low_1_7" config="'folme_config_64'" states="'folme_state_64'" command="to"/>
+            <FolmeCommand target="_hour_low_next_1_7" config="'folme_config_65'" states="'folme_state_65'" command="to"/>
+          </Consequent>
+          <Alternate>
+            <FolmeCommand target="_hour_low_next_1_7" config="'folme_config_66'" states="'folme_state_66'" command="to"/>
+            <FolmeCommand target="_hour_low_1_7" config="'folme_config_67'" states="'folme_state_67'" command="to"/>
+          </Alternate>
+        </IfCommand>
+      </Consequent>
+      <Alternate>
+        <IfCommand ifCondition="#is_hour_low_next_hidden">
+          <Consequent>
+            <FolmeCommand target="_hour_low_1_7" config="'folme_config_68'" states="'folme_state_68'" command="to"/>
+            <FolmeCommand target="_hour_low_next_1_7" config="'folme_config_69'" states="'folme_state_69'" command="to"/>
+          </Consequent>
+          <Alternate>
+            <FolmeCommand target="_hour_low_next_1_7" config="'folme_config_70'" states="'folme_state_70'" command="to"/>
+            <FolmeCommand target="_hour_low_1_7" config="'folme_config_71'" states="'folme_state_71'" command="to"/>
+          </Alternate>
+        </IfCommand>
+      </Alternate>
+    </IfCommand>
+  </Function>
+  <Function name="_hourHighAni_1_7">
+    <IfCommand ifCondition="(((#layout_state_7 == 1) || (#aod_state == 1)) || (#hour_high_last == #hour_high))">
+      <Consequent>
+        <IfCommand ifCondition="#is_hour_high_next_hidden">
+          <Consequent>
+            <FolmeCommand target="_hour_high_1_7" config="'folme_config_72'" states="'folme_state_72'" command="to"/>
+            <FolmeCommand target="_hour_high_next_1_7" config="'folme_config_73'" states="'folme_state_73'" command="to"/>
+          </Consequent>
+          <Alternate>
+            <FolmeCommand target="_hour_high_next_1_7" config="'folme_config_74'" states="'folme_state_74'" command="to"/>
+            <FolmeCommand target="_hour_high_1_7" config="'folme_config_75'" states="'folme_state_75'" command="to"/>
+          </Alternate>
+        </IfCommand>
+      </Consequent>
+      <Alternate>
+        <IfCommand ifCondition="#is_hour_high_next_hidden">
+          <Consequent>
+            <FolmeCommand target="_hour_high_1_7" config="'folme_config_76'" states="'folme_state_76'" command="to"/>
+            <FolmeCommand target="_hour_high_next_1_7" config="'folme_config_77'" states="'folme_state_77'" command="to"/>
+          </Consequent>
+          <Alternate>
+            <FolmeCommand target="_hour_high_next_1_7" config="'folme_config_78'" states="'folme_state_78'" command="to"/>
+            <FolmeCommand target="_hour_high_1_7" config="'folme_config_79'" states="'folme_state_79'" command="to"/>
+          </Alternate>
+        </IfCommand>
+      </Alternate>
+    </IfCommand>
+  </Function>
+  <Function name="_hourSwitchAni">
+    <FunctionCommand target="_updateHourImageAttrs"/>
+    <FunctionCommand target="_hourHighAni"/>
+    <FunctionCommand target="_hourLowAni"/>
+    <FunctionCommand target="_hourHighAni_clock"/>
+    <FunctionCommand target="_hourLowAni_clock"/>
+    <FunctionCommand target="_hourHighAni_1_7"/>
+    <FunctionCommand target="_hourLowAni_1_7"/>
+  </Function>
+  <Function name="_updateMinuteImageAttrs">
+    <VariableCommand name="minute_low_w" expression="ifelse((#minute_high == 1),ifelse(((#minute_low == 1) || (#minute_low == 7)),#width1,#width2),ifelse(((((#minute_low - 1) % 2) == 0) || (#_minute == 20)),#width1,#width2))" type="number"/>
+    <VariableCommand name="minute_high_w" expression="ifelse(((#minute_high == 1) || (#minute_low_w == #width2)),#width1,#width2)" type="number"/>
+    <VariableCommand name="minute_high_x" expression="ifelse(((#minute_low_w { #width2) ** (#minute_high_w { #width2)),#x_offset_11,0)" type="number"/>
+    <VariableCommand name="minute_low_x" expression="((#width1 + #width2) + #num_gap)" type="number"/>
+  </Function>
+  <Function name="_minuteLowAni">
+    <IfCommand ifCondition="((#layout_state_1 == 1) || (#aod_state == 1))">
+      <Consequent>
+        <IfCommand ifCondition="#is_minute_low_next_hidden">
+          <Consequent>
+            <FolmeCommand target="_minute_low" config="'folme_config_80'" states="'folme_state_80'" command="to"/>
+            <FolmeCommand target="_minute_low_next" config="'folme_config_81'" states="'folme_state_81'" command="to"/>
+          </Consequent>
+          <Alternate>
+            <FolmeCommand target="_minute_low_next" config="'folme_config_82'" states="'folme_state_82'" command="to"/>
+            <FolmeCommand target="_minute_low" config="'folme_config_83'" states="'folme_state_83'" command="to"/>
+          </Alternate>
+        </IfCommand>
+      </Consequent>
+      <Alternate>
+        <IfCommand ifCondition="#is_minute_low_change">
+          <Consequent>
+            <IfCommand ifCondition="((#minute_low_last == 1) || (#minute_low_last == 7))">
+              <Consequent>
+                <IfCommand ifCondition="#is_minute_low_next_hidden">
+                  <Consequent>
+                    <FolmeCommand target="_minute_low" config="'folme_config_84'" states="'folme_state_84'" command="to"/>
+                    <FolmeCommand target="_minute_low_next" config="'folme_config_86'" states="'folme_state_86'" command="to"/>
+                  </Consequent>
+                  <Alternate>
+                    <FolmeCommand target="_minute_low_next" config="'folme_config_88'" states="'folme_state_88'" command="to"/>
+                    <FolmeCommand target="_minute_low" config="'folme_config_90'" states="'folme_state_90'" command="to"/>
+                  </Alternate>
+                </IfCommand>
+              </Consequent>
+              <Alternate>
+                <MultiCommand condition="((#minute_low == 7) || (#minute_low == 1))">
+                  <IfCommand ifCondition="#is_minute_low_next_hidden">
+                    <Consequent>
+                      <FolmeCommand target="_minute_low" config="'folme_config_92'" states="'folme_state_92'" command="to"/>
+                      <FolmeCommand target="_minute_low_next" config="'folme_config_94'" states="'folme_state_94'" command="to"/>
+                    </Consequent>
+                    <Alternate>
+                      <FolmeCommand target="_minute_low_next" config="'folme_config_96'" states="'folme_state_96'" command="to"/>
+                      <FolmeCommand target="_minute_low" config="'folme_config_98'" states="'folme_state_98'" command="to"/>
+                    </Alternate>
+                  </IfCommand>
+                </MultiCommand>
+                <MultiCommand condition="((#minute_low != 1) ** (#minute_low != 7))">
+                  <IfCommand ifCondition="#is_minute_low_next_hidden">
+                    <Consequent>
+                      <FolmeCommand target="_minute_low" config="'folme_config_100'" states="'folme_state_100'" command="to"/>
+                      <FolmeCommand target="_minute_low_next" config="'folme_config_101'" states="'folme_state_101'" command="to"/>
+                    </Consequent>
+                    <Alternate>
+                      <FolmeCommand target="_minute_low_next" config="'folme_config_102'" states="'folme_state_102'" command="to"/>
+                      <FolmeCommand target="_minute_low" config="'folme_config_103'" states="'folme_state_103'" command="to"/>
+                    </Alternate>
+                  </IfCommand>
+                  <FolmeCommand target="_minute_low" config="'folme_config_104'" states="'folme_state_104'" command="to"/>
+                  <FolmeCommand target="_minute_low_next" config="'folme_config_105'" states="'folme_state_105'" command="to"/>
+                </MultiCommand>
+              </Alternate>
+            </IfCommand>
+          </Consequent>
+          <Alternate>
+            <FolmeCommand target="_minute_low" config="'folme_config_106'" states="'folme_state_106'" command="to"/>
+            <FolmeCommand target="_minute_low_next" config="'folme_config_107'" states="'folme_state_107'" command="to"/>
+          </Alternate>
+        </IfCommand>
+      </Alternate>
+    </IfCommand>
+  </Function>
+  <Function name="_minuteHighAni">
+    <IfCommand ifCondition="((#layout_state_1 == 1) || (#aod_state == 1))">
+      <Consequent>
+        <IfCommand ifCondition="#is_minute_high_next_hidden">
+          <Consequent>
+            <FolmeCommand target="_minute_high" config="'folme_config_108'" states="'folme_state_108'" command="to"/>
+            <FolmeCommand target="_minute_high_next" config="'folme_config_109'" states="'folme_state_109'" command="to"/>
+          </Consequent>
+          <Alternate>
+            <FolmeCommand target="_minute_high_next" config="'folme_config_110'" states="'folme_state_110'" command="to"/>
+            <FolmeCommand target="_minute_high" config="'folme_config_111'" states="'folme_state_111'" command="to"/>
+          </Alternate>
+        </IfCommand>
+      </Consequent>
+      <Alternate>
+        <MultiCommand condition="(#minute_high == 1)">
+          <MultiCommand condition="(#minute_high_last == 1)">
+            <IfCommand ifCondition="#is_minute_high_next_hidden">
+              <Consequent>
+                <FolmeCommand target="_minute_high" config="'folme_config_112'" states="'folme_state_112'" command="to"/>
+                <FolmeCommand target="_minute_high_next" config="'folme_config_113'" states="'folme_state_113'" command="to"/>
+              </Consequent>
+              <Alternate>
+                <FolmeCommand target="_minute_high_next" config="'folme_config_114'" states="'folme_state_114'" command="to"/>
+                <FolmeCommand target="_minute_high" config="'folme_config_115'" states="'folme_state_115'" command="to"/>
+              </Alternate>
+            </IfCommand>
+          </MultiCommand>
+          <MultiCommand condition="((#minute_high_last != 1) ** ((#minute_high_w_last == #width2) || (#minute_low_w_last == #width1)))">
+            <IfCommand ifCondition="#is_minute_high_next_hidden">
+              <Consequent>
+                <FolmeCommand target="_minute_high_next" config="'folme_config_116'" states="'folme_state_116'" command="to"/>
+                <FolmeCommand target="_minute_high" config="'folme_config_118'" states="'folme_state_118'" command="to"/>
+              </Consequent>
+              <Alternate>
+                <FolmeCommand target="_minute_high" config="'folme_config_120'" states="'folme_state_120'" command="to"/>
+                <FolmeCommand target="_minute_high_next" config="'folme_config_122'" states="'folme_state_122'" command="to"/>
+              </Alternate>
+            </IfCommand>
+          </MultiCommand>
+          <MultiCommand condition="(((#minute_high_last != 1) ** (#minute_high_w_last == #width1)) ** (#minute_low_w_last == #width2))">
+            <IfCommand ifCondition="#is_minute_high_next_hidden">
+              <Consequent>
+                <FolmeCommand target="_minute_high" config="'folme_config_124'" states="'folme_state_124'" command="to"/>
+                <FolmeCommand target="_minute_high_next" config="'folme_config_126'" states="'folme_state_126'" command="to"/>
+                <FolmeCommand target="_minute_high_next" config="'folme_config_127'" states="'folme_state_127'" command="to"/>
+              </Consequent>
+              <Alternate>
+                <FolmeCommand target="_minute_high_next" config="'folme_config_128'" states="'folme_state_128'" command="to"/>
+                <FolmeCommand target="_minute_high" config="'folme_config_130'" states="'folme_state_130'" command="to"/>
+                <FolmeCommand target="_minute_high" config="'folme_config_131'" states="'folme_state_131'" command="to"/>
+              </Alternate>
+            </IfCommand>
+          </MultiCommand>
+        </MultiCommand>
+        <MultiCommand condition="(#minute_high != 1)">
+          <FolmeCommand target="_minute_high" config="'folme_config_132'" states="'folme_state_132'" command="to"/>
+          <FolmeCommand target="_minute_high_next" config="'folme_config_133'" states="'folme_state_133'" command="to"/>
+          <MultiCommand condition="#is_minute_high_change">
+            <IfCommand ifCondition="#is_minute_high_next_hidden">
+              <Consequent>
+                <FolmeCommand target="_minute_high" config="'folme_config_134'" states="'folme_state_134'" command="to"/>
+                <FolmeCommand target="_minute_high_next" config="'folme_config_135'" states="'folme_state_135'" command="to"/>
+              </Consequent>
+              <Alternate>
+                <FolmeCommand target="_minute_high_next" config="'folme_config_136'" states="'folme_state_136'" command="to"/>
+                <FolmeCommand target="_minute_high" config="'folme_config_137'" states="'folme_state_137'" command="to"/>
+              </Alternate>
+            </IfCommand>
+          </MultiCommand>
+        </MultiCommand>
+      </Alternate>
+    </IfCommand>
+  </Function>
+  <Function name="_minuteLowAni_1_7">
+    <IfCommand ifCondition="(((#layout_state_7 == 1) || (#aod_state == 1)) || (#minute_low_last == #minute_low))">
+      <Consequent>
+        <IfCommand ifCondition="#is_minute_low_next_hidden">
+          <Consequent>
+            <FolmeCommand target="_minute_low_1_7" config="'folme_config_138'" states="'folme_state_138'" command="to"/>
+            <FolmeCommand target="_minute_low_next_1_7" config="'folme_config_139'" states="'folme_state_139'" command="to"/>
+          </Consequent>
+          <Alternate>
+            <FolmeCommand target="_minute_low_next_1_7" config="'folme_config_140'" states="'folme_state_140'" command="to"/>
+            <FolmeCommand target="_minute_low_1_7" config="'folme_config_141'" states="'folme_state_141'" command="to"/>
+          </Alternate>
+        </IfCommand>
+      </Consequent>
+      <Alternate>
+        <IfCommand ifCondition="#is_minute_low_next_hidden">
+          <Consequent>
+            <FolmeCommand target="_minute_low_1_7" config="'folme_config_142'" states="'folme_state_142'" command="to"/>
+            <FolmeCommand target="_minute_low_next_1_7" config="'folme_config_143'" states="'folme_state_143'" command="to"/>
+          </Consequent>
+          <Alternate>
+            <FolmeCommand target="_minute_low_next_1_7" config="'folme_config_144'" states="'folme_state_144'" command="to"/>
+            <FolmeCommand target="_minute_low_1_7" config="'folme_config_145'" states="'folme_state_145'" command="to"/>
+          </Alternate>
+        </IfCommand>
+      </Alternate>
+    </IfCommand>
+  </Function>
+  <Function name="_minuteHighAni_1_7">
+    <IfCommand ifCondition="(((#layout_state_7 == 1) || (#aod_state == 1)) || (#minute_high_last == #minute_high))">
+      <Consequent>
+        <IfCommand ifCondition="#is_minute_high_next_hidden">
+          <Consequent>
+            <FolmeCommand target="_minute_high_1_7" config="'folme_config_146'" states="'folme_state_146'" command="to"/>
+            <FolmeCommand target="_minute_high_next_1_7" config="'folme_config_147'" states="'folme_state_147'" command="to"/>
+          </Consequent>
+          <Alternate>
+            <FolmeCommand target="_minute_high_next_1_7" config="'folme_config_148'" states="'folme_state_148'" command="to"/>
+            <FolmeCommand target="_minute_high_1_7" config="'folme_config_149'" states="'folme_state_149'" command="to"/>
+          </Alternate>
+        </IfCommand>
+      </Consequent>
+      <Alternate>
+        <IfCommand ifCondition="#is_minute_high_next_hidden">
+          <Consequent>
+            <FolmeCommand target="_minute_high_1_7" config="'folme_config_150'" states="'folme_state_150'" command="to"/>
+            <FolmeCommand target="_minute_high_next_1_7" config="'folme_config_151'" states="'folme_state_151'" command="to"/>
+          </Consequent>
+          <Alternate>
+            <FolmeCommand target="_minute_high_next_1_7" config="'folme_config_152'" states="'folme_state_152'" command="to"/>
+            <FolmeCommand target="_minute_high_1_7" config="'folme_config_153'" states="'folme_state_153'" command="to"/>
+          </Alternate>
+        </IfCommand>
+      </Alternate>
+    </IfCommand>
+  </Function>
+  <Function name="_minuteSwitchAni">
+    <FunctionCommand target="_updateMinuteImageAttrs"/>
+    <FunctionCommand target="_minuteHighAni"/>
+    <FunctionCommand target="_minuteLowAni"/>
+    <FunctionCommand target="_minuteHighAni_1_7"/>
+    <FunctionCommand target="_minuteLowAni_1_7"/>
+  </Function>
+  <Function name="_updateLayoutType">
+    <IfCommand ifCondition="(#minute_last == 0)">
+      <Consequent>
+        <VariableCommand name="layout_type_last" expression="0" type="number"/>
+      </Consequent>
+      <Alternate>
+        <IfCommand ifCondition="(((#hour_last == 11) || (#hour_last == 17)) || ((#minute_last == 11) ** ((int((#hour_last / 10)) == 1) || (int((#hour_last % 10)) == 1))))">
+          <Consequent>
+            <VariableCommand name="layout_type_last" expression="7" type="number"/>
+          </Consequent>
+          <Alternate>
+            <VariableCommand name="layout_type_last" expression="1" type="number"/>
+          </Alternate>
+        </IfCommand>
+      </Alternate>
+    </IfCommand>
+    <IfCommand ifCondition="(#_minute == 0)">
+      <Consequent>
+        <VariableCommand name="layout_type" expression="0" type="number"/>
+      </Consequent>
+      <Alternate>
+        <IfCommand ifCondition="(((#_hour == 11) || (#_hour == 17)) || ((#_minute == 11) ** ((#hour_high == 1) || (#hour_low == 1))))">
+          <Consequent>
+            <VariableCommand name="layout_type" expression="7" type="number"/>
+          </Consequent>
+          <Alternate>
+            <VariableCommand name="layout_type" expression="1" type="number"/>
+          </Alternate>
+        </IfCommand>
+      </Alternate>
+    </IfCommand>
+    <VariableCommand name="layout_state_1" expression="ifelse(((#layout_type == 1) ** (#layout_type_last != 1)),1,ifelse(((#layout_type != 1) ** (#layout_type_last == 1)),0,(- 1)))" type="number"/>
+    <VariableCommand name="layout_state_0" expression="ifelse(((#layout_type == 0) ** (#layout_type_last != 0)),1,ifelse(((#layout_type != 0) ** (#layout_type_last == 0)),0,(- 1)))" type="number"/>
+    <VariableCommand name="layout_state_7" expression="ifelse(((#layout_type == 7) ** (#layout_type_last != 7)),1,ifelse(((#layout_type != 7) ** (#layout_type_last == 7)),0,(- 1)))" type="number"/>
+  </Function>
+  <Function name="_setCurTime">
+    <VariableCommand name="hour_high_w_last" expression="#hour_high_w" type="number"/>
+    <VariableCommand name="hour_low_w_last" expression="#hour_low_w" type="number"/>
+    <VariableCommand name="hour_last" expression="#_hour" type="number"/>
+    <VariableCommand name="hour_high_last" expression="int((#_hour / 10))" type="number"/>
+    <VariableCommand name="hour_low_last" expression="int((#_hour % 10))" type="number"/>
+    <VariableCommand name="minute_high_w_last" expression="#minute_high_w" type="number"/>
+    <VariableCommand name="minute_low_w_last" expression="#minute_low_w" type="number"/>
+    <VariableCommand name="minute_last" expression="#_minute" type="number"/>
+    <VariableCommand name="minute_high_last" expression="int((#_minute / 10))" type="number"/>
+    <VariableCommand name="minute_low_last" expression="int((#_minute % 10))" type="number"/>
+    <MultiCommand condition="(#test_mode == 0)">
+      <VariableCommand name="_hour" expression="#hour24" type="number"/>
+      <VariableCommand name="_minute" expression="#minute" type="number"/>
+    </MultiCommand>
+    <MultiCommand condition="(#test_mode == 1)">
+      <VariableCommand name="_hour" expression="((#_hour + 1) % 24)" type="number"/>
+    </MultiCommand>
+    <MultiCommand condition="(#test_mode == 2)">
+      <VariableCommand name="_minute" expression="((#_minute + 1) % 60)" type="number"/>
+    </MultiCommand>
+    <VariableCommand name="minute_high" expression="int((#_minute / 10))" type="number"/>
+    <VariableCommand name="minute_low" expression="int((#_minute % 10))" type="number"/>
+    <VariableCommand name="is_minute_high_change" expression="(#minute_high_last != #minute_high)" type="number"/>
+    <VariableCommand name="is_minute_low_change" expression="(#minute_low_last != #minute_low)" type="number"/>
+    <IfCommand ifCondition="#is_minute_low_next_hidden">
+      <Consequent>
+        <VariableCommand name="minute_low_next" expression="int((#_minute % 10))" type="number"/>
+      </Consequent>
+      <Alternate>
+        <VariableCommand name="minute_low_cur" expression="int((#_minute % 10))" type="number"/>
+      </Alternate>
+    </IfCommand>
+    <VariableCommand name="minute_low_next_live" expression="int((#_minute % 10))" type="number"/>
+    <IfCommand ifCondition="#is_minute_high_next_hidden">
+      <Consequent>
+        <VariableCommand name="minute_high_next" expression="int((#_minute / 10))" type="number"/>
+      </Consequent>
+      <Alternate>
+        <VariableCommand name="minute_high_cur" expression="int((#_minute / 10))" type="number"/>
+      </Alternate>
+    </IfCommand>
+    <VariableCommand name="hour_high" expression="int((#_hour / 10))" type="number"/>
+    <VariableCommand name="hour_low" expression="int((#_hour % 10))" type="number"/>
+    <VariableCommand name="is_hour_high_change" expression="(#hour_high_last != #hour_high)" type="number"/>
+    <VariableCommand name="is_hour_low_change" expression="(#hour_low_last != #hour_low)" type="number"/>
+    <IfCommand ifCondition="#is_hour_low_next_hidden">
+      <Consequent>
+        <VariableCommand name="hour_low_next" expression="int((#_hour % 10))" type="number"/>
+      </Consequent>
+      <Alternate>
+        <VariableCommand name="hour_low_cur" expression="int((#_hour % 10))" type="number"/>
+      </Alternate>
+    </IfCommand>
+    <IfCommand ifCondition="#is_hour_high_next_hidden">
+      <Consequent>
+        <VariableCommand name="hour_high_next" expression="int((#_hour / 10))" type="number"/>
+      </Consequent>
+      <Alternate>
+        <VariableCommand name="hour_high_cur" expression="int((#_hour / 10))" type="number"/>
+      </Alternate>
+    </IfCommand>
+    <FunctionCommand target="_updateLayoutType"/>
+  </Function>
+  <Function name="_layoutSwitchAni">
+    <MultiCommand condition="(#layout_type == 0)">
+      <FolmeCommand target="_layout_clock" config="'folme_config_154'" states="'folme_state_154'" command="to"/>
+      <FolmeCommand target="_layout_normal" config="'folme_config_155'" states="'folme_state_155'" command="to"/>
+      <FolmeCommand target="_layout_1_7" config="'folme_config_156'" states="'folme_state_156'" command="to"/>
+    </MultiCommand>
+    <MultiCommand condition="(#layout_type == 1)">
+      <FolmeCommand target="_layout_normal" config="'folme_config_157'" states="'folme_state_157'" command="to"/>
+      <FolmeCommand target="_layout_clock" config="'folme_config_158'" states="'folme_state_158'" command="to"/>
+      <FolmeCommand target="_layout_1_7" config="'folme_config_159'" states="'folme_state_159'" command="to"/>
+    </MultiCommand>
+    <MultiCommand condition="(#layout_type == 7)">
+      <FolmeCommand target="_layout_1_7" config="'folme_config_160'" states="'folme_state_160'" command="to"/>
+      <FolmeCommand target="_layout_clock" config="'folme_config_161'" states="'folme_state_161'" command="to"/>
+      <FolmeCommand target="_layout_normal" config="'folme_config_162'" states="'folme_state_162'" command="to"/>
+    </MultiCommand>
+  </Function>
+  <Function name="_timeChangeAni">
+    <FunctionCommand target="_setAniRate"/>
+    <FunctionCommand target="_setCurTime"/>
+    <FunctionCommand target="_minuteSwitchAni"/>
+    <FunctionCommand target="_hourSwitchAni"/>
+    <FunctionCommand target="_layoutSwitchAni"/>
+  </Function>
+  <Function name="_test_minute0">
+    <VariableCommand name="test_mode" expression="0" type="number"/>
+    <FunctionCommand target="_timeChangeAni"/>
+  </Function>
+  <Function name="_test_minute1">
+    <VariableCommand name="test_mode" expression="1" type="number"/>
+    <FunctionCommand target="_timeChangeAni"/>
+  </Function>
+  <Function name="_test_minute2">
+    <VariableCommand name="test_mode" expression="2" type="number"/>
+    <FunctionCommand target="_timeChangeAni"/>
+  </Function>
+  <Function name="_init">
+    <FunctionCommand target="_setAniRate"/>
+    <FunctionCommand target="_updateLayoutType"/>
+    <FunctionCommand target="_layoutSwitchAni"/>
+    <FunctionCommand target="_updateHourImageAttrs"/>
+    <FunctionCommand target="_updateMinuteImageAttrs"/>
+    <FunctionCommand target="_initTintColor"/>
+    <MultiCommand condition="(#_resume_time { 2)">
+      <FolmeCommand target="_minute_high" config="'folme_config_163'" states="'folme_state_163'" command="to"/>
+      <FolmeCommand target="_minute_high_next" config="'folme_config_164'" states="'folme_state_164'" command="to"/>
+      <FolmeCommand target="_minute_low" config="'folme_config_165'" states="'folme_state_165'" command="to"/>
+      <FolmeCommand target="_minute_low_next" config="'folme_config_166'" states="'folme_state_166'" command="to"/>
+      <FolmeCommand target="_hour_high" config="'folme_config_167'" states="'folme_state_167'" command="to"/>
+      <FolmeCommand target="_hour_high_next" config="'folme_config_168'" states="'folme_state_168'" command="to"/>
+      <FolmeCommand target="_hour_low" config="'folme_config_169'" states="'folme_state_169'" command="to"/>
+      <FolmeCommand target="_hour_low_next" config="'folme_config_170'" states="'folme_state_170'" command="to"/>
+      <FolmeCommand target="_layout_normal" config="'folme_config_171'" states="'folme_state_171'" command="to"/>
+      <FolmeCommand target="_layout_clock" config="'folme_config_172'" states="'folme_state_172'" command="to"/>
+      <FolmeCommand target="_layout_1_7" config="'folme_config_173'" states="'folme_state_173'" command="to"/>
+    </MultiCommand>
+  </Function>
+  <Rectangle w="#view_width" h="#view_height" x="0" y="0" fillColor="#000000"/>
+  <Group visibility="ifelse((#aod_state {= 0.1),1,0)">
+    <Rectangle x="(#x_left * #_scale)" y="(#view_height / 2)" w="(((#image_w_1_7 * 4) + (#num_gap_1_7 * 3)) * #_scale)" h="(#image_h_1_7 * #_scale)" contentDescriptionExp="formatDate('HH:mm',#time_sys)" alpha="0" fillColor="#000000" interceptTouch="true" touchable="true" alignV="center"/>
+  </Group>
+  <Group scale="#_scale" w="#w" h="#h">
+    <Group visibility="#_layout_light.alpha } 0" alpha="ifelse((#aod_state == 0),255,0)" folmeMode="true" name="_layout_light">
+      <Group visibility="#_layout_normal.alpha } 0" x="#x_left" alpha="ifelse((#layout_type == 1),255,0)" folmeMode="true" name="_layout_normal">
+        <Group y="(#y_center - (#y_v_offset / 2))">
+          <Image x="#hour_high_x" w="#hour_high_w" h="#image_h_1" srcExp="(((('assets/light/nine_path/' + @asset_color_subdir) + '/hour/') + #hour_high_cur) + '.9.png')" folmeMode="true" name="_hour_high" alignV="bottom" antiAlias="true"/>
+          <Image x="#hour_high_x" w="#hour_high_w" h="#image_h_1" srcExp="(((('assets/light/nine_path/' + @asset_color_subdir) + '/hour/') + #hour_high_next) + '.9.png')" folmeMode="true" name="_hour_high_next" alignV="bottom" antiAlias="true" alpha="0"/>
+          <Image visibility="ifelse((((#hour_low == 1) || (#hour_low == 7)) ** (#layout_state_1 != 0)),0,1)" x="#hour_low_x" w="#hour_low_w" h="#image_h_1" srcExp="(((('assets/light/nine_path/' + @asset_color_subdir) + '/hour/') + #hour_low_cur) + '.9.png')" folmeMode="true" name="_hour_low" alignV="bottom" align="right" antiAlias="true"/>
+          <Image visibility="ifelse((((#hour_low == 1) || (#hour_low == 7)) ** (#layout_state_1 != 0)),0,1)" x="#hour_low_x" w="#hour_low_w" h="#image_h_1" srcExp="(((('assets/light/nine_path/' + @asset_color_subdir) + '/hour/') + #hour_low_next) + '.9.png')" folmeMode="true" name="_hour_low_next" alignV="bottom" align="right" antiAlias="true" alpha="0"/>
+          <Image visibility="ifelse((((#hour_low == 1) || (#hour_low == 7)) ** (#layout_state_1 != 0)),1,0)" x="((#_hour_high.w + #num_gap) + #_hour_high.x)" scale="(#width1 / #nine_path_w)" w="#nine_path_w" h="#nine_path_h" pivotY="#nine_path_h" srcExp="(((('assets/light/nine_path/' + @asset_color_subdir) + '/hour/') + #hour_low) + '.9.png')" alignV="bottom" antiAlias="true"/>
+        </Group>
+        <Group y="(#y_center + (#y_v_offset / 2))">
+          <Image x="#minute_high_x" w="#minute_high_w" h="#image_h_1" srcExp="(((('assets/light/nine_path/' + @asset_color_subdir) + '/minute/') + #minute_high_cur) + '.9.png')" folmeMode="true" name="_minute_high" antiAlias="true"/>
+          <Image x="#minute_high_x" w="#minute_high_w" h="#image_h_1" srcExp="(((('assets/light/nine_path/' + @asset_color_subdir) + '/minute/') + #minute_high_next) + '.9.png')" folmeMode="true" name="_minute_high_next" antiAlias="true" alpha="0"/>
+          <Image visibility="ifelse((((#minute_low == 1) || (#minute_low == 7)) ** (#layout_state_1 != 0)),0,1)" x="#minute_low_x" w="#minute_low_w" h="#image_h_1" srcExp="(((('assets/light/nine_path/' + @asset_color_subdir) + '/minute/') + #minute_low_cur) + '.9.png')" folmeMode="true" name="_minute_low" align="right" antiAlias="true"/>
+          <Image visibility="ifelse((((#minute_low == 1) || (#minute_low == 7)) ** (#layout_state_1 != 0)),0,1)" x="#minute_low_x" w="#minute_low_w" h="#image_h_1" srcExp="(((('assets/light/nine_path/' + @asset_color_subdir) + '/minute/') + #minute_low_next) + '.9.png')" folmeMode="true" name="_minute_low_next" align="right" antiAlias="true" alpha="0"/>
+          <Image visibility="ifelse((((#minute_low == 1) || (#minute_low == 7)) ** (#layout_state_1 != 0)),1,0)" x="((#_minute_high.w + #num_gap) + #_minute_high.x)" scale="(#width1 / #nine_path_w)" w="#nine_path_w" h="#nine_path_h" srcExp="(((('assets/light/nine_path/' + @asset_color_subdir) + '/minute/') + #minute_low) + '.9.png')" antiAlias="true"/>
+        </Group>
+      </Group>
+      <Group visibility="#_layout_clock.alpha } 0" x="#x_left" y="#y_center" alpha="ifelse((#layout_type == 0),255,0)" folmeMode="true" name="_layout_clock">
+        <Group folmeMode="true" name="_hour_high_clock">
+          <Image x="0" w="#image_w_clock" h="#image_h_clock" srcExp="(((('assets/light/clock/' + @asset_color_subdir) + '/hour/') + #hour_high_cur) + '.png')" alignV="center" antiAlias="true"/>
+        </Group>
+        <Group folmeMode="true" name="_hour_high_next_clock" alpha="0">
+          <Image x="0" w="#image_w_clock" h="#image_h_clock" srcExp="(((('assets/light/clock/' + @asset_color_subdir) + '/hour/') + #hour_high_next) + '.png')" tintmode="5" alignV="center" antiAlias="true"/>
+        </Group>
+        <Group folmeMode="true" name="_hour_low_clock">
+          <Image x="(#image_w_clock + #num_gap)" w="#image_w_clock" h="#image_h_clock" srcExp="(((('assets/light/clock/' + @asset_color_subdir) + '/minute/') + #hour_low_cur) + '.png')" alignV="center" antiAlias="true"/>
+        </Group>
+        <Group folmeMode="true" name="_hour_low_next_clock" alpha="0">
+          <Image x="(#image_w_clock + #num_gap)" w="#image_w_clock" h="#image_h_clock" srcExp="(((('assets/light/clock/' + @asset_color_subdir) + '/minute/') + #hour_low_next) + '.png')" alignV="center" antiAlias="true"/>
+        </Group>
+      </Group>
+      <Group visibility="#_layout_1_7.alpha } 0" x="#x_left" y="#y_center" alpha="ifelse((#layout_type == 7),255,0)" folmeMode="true" name="_layout_1_7">
+        <Group folmeMode="true" name="_hour_high_1_7">
+          <Image x="0" w="#image_w_1_7" h="#image_h_1_7" srcExp="(((('assets/light/_1_7/' + @asset_color_subdir) + '/hour/') + #hour_high_cur) + '.png')" alignV="center" antiAlias="true"/>
+        </Group>
+        <Group folmeMode="true" name="_hour_high_next_1_7" alpha="0">
+          <Image x="0" w="#image_w_1_7" h="#image_h_1_7" srcExp="(((('assets/light/_1_7/' + @asset_color_subdir) + '/hour/') + #hour_high_next) + '.png')" alignV="center" antiAlias="true"/>
+        </Group>
+        <Group folmeMode="true" name="_hour_low_1_7">
+          <Image x="((#image_w_1_7 + #num_gap_1_7) * 1)" w="#image_w_1_7" h="#image_h_1_7" srcExp="(((('assets/light/_1_7/' + @asset_color_subdir) + '/hour/') + #hour_low_cur) + '.png')" alignV="center" antiAlias="true"/>
+        </Group>
+        <Group folmeMode="true" name="_hour_low_next_1_7" alpha="0">
+          <Image x="((#image_w_1_7 + #num_gap_1_7) * 1)" w="#image_w_1_7" h="#image_h_1_7" srcExp="(((('assets/light/_1_7/' + @asset_color_subdir) + '/hour/') + #hour_low_next) + '.png')" alignV="center" antiAlias="true"/>
+        </Group>
+        <Group folmeMode="true" name="_minute_high_1_7">
+          <Image x="((#image_w_1_7 + #num_gap_1_7) * 2)" w="#image_w_1_7" h="#image_h_1_7" srcExp="(((('assets/light/_1_7/' + @asset_color_subdir) + '/minute/') + #minute_high_cur) + '.png')" alignV="center" antiAlias="true"/>
+        </Group>
+        <Group folmeMode="true" name="_minute_high_next_1_7" alpha="0">
+          <Image x="((#image_w_1_7 + #num_gap_1_7) * 2)" w="#image_w_1_7" h="#image_h_1_7" srcExp="(((('assets/light/_1_7/' + @asset_color_subdir) + '/minute/') + #minute_high_next) + '.png')" alignV="center" antiAlias="true"/>
+        </Group>
+        <Group folmeMode="true" name="_minute_low_1_7">
+          <Image x="((#image_w_1_7 + #num_gap_1_7) * 3)" w="#image_w_1_7" h="#image_h_1_7" srcExp="(((('assets/light/_1_7/' + @asset_color_subdir) + '/minute/') + #minute_low_cur) + '.png')" alignV="center" antiAlias="true"/>
+        </Group>
+        <Group folmeMode="true" name="_minute_low_next_1_7" alpha="0">
+          <Image x="((#image_w_1_7 + #num_gap_1_7) * 3)" w="#image_w_1_7" h="#image_h_1_7" srcExp="(((('assets/light/_1_7/' + @asset_color_subdir) + '/minute/') + #minute_low_next) + '.png')" alignV="center" antiAlias="true"/>
+        </Group>
+      </Group>
+    </Group>
+    <Group visibility="#_layout_aod.alpha } 0" alpha="ifelse((#aod_state == 0),0,255)" folmeMode="true" name="_layout_aod">
+      <Group x="#x_left" visibility="ifelse((#layout_type == 1),1,0)">
+        <Group y="(#y_center - (#y_v_offset / 2))">
+          <Image x="#hour_high_x" w="#hour_high_w" h="#image_h_1" tint="@tint_color_1_aod" srcExp="(('assets/aod/nine_path/' + #hour_high) + '.9.png')" tintmode="5" alignV="bottom" antiAlias="true"/>
+          <Image visibility="ifelse(((#hour_low == 1) || (#hour_low == 7)),0,1)" x="#hour_low_x" w="#hour_low_w" h="#image_h_1" tint="@tint_color_1_aod" srcExp="(('assets/aod/nine_path/' + #hour_low) + '.9.png')" tintmode="5" alignV="bottom" align="right" antiAlias="true"/>
+          <Image visibility="ifelse(((#hour_low == 1) || (#hour_low == 7)),1,0)" x="#hour_low_x" scale="(#width1 / #nine_path_w)" pivotX="#nine_path_w" w="#nine_path_w" h="#nine_path_h" pivotY="#nine_path_h" tint="@tint_color_1_aod" srcExp="(('assets/aod/nine_path/' + #hour_low) + '.9.png')" tintmode="5" alignV="bottom" align="right" antiAlias="true"/>
+        </Group>
+        <Group y="(#y_center + (#y_v_offset / 2))">
+          <Image x="#minute_high_x" w="#minute_high_w" h="#image_h_1" tint="@tint_color_2_aod" srcExp="(('assets/aod/nine_path/' + #minute_high) + '.9.png')" tintmode="5" antiAlias="true"/>
+          <Image visibility="ifelse(((#minute_low == 1) || (#minute_low == 7)),0,1)" x="#minute_low_x" w="#minute_low_w" h="#image_h_1" tint="@tint_color_2_aod" srcExp="(('assets/aod/nine_path/' + #minute_low) + '.9.png')" tintmode="5" align="right" antiAlias="true"/>
+          <Image visibility="ifelse(((#minute_low == 1) || (#minute_low == 7)),1,0)" x="#minute_low_x" scale="(#width1 / #nine_path_w)" pivotX="#nine_path_w" w="#nine_path_w" h="#nine_path_h" tint="@tint_color_2_aod" srcExp="(('assets/aod/nine_path/' + #minute_low) + '.9.png')" tintmode="5" align="right" antiAlias="true"/>
+        </Group>
+      </Group>
+      <Group x="#x_left" y="#y_center" alpha="ifelse((#layout_type == 0),255,0)">
+        <Image w="#image_w_clock" h="#image_h_clock" tint="@tint_color_1_aod" srcExp="(('assets/aod/clock/' + #hour_high) + '.png')" tintmode="5" alignV="center" antiAlias="true"/>
+        <Image x="(#image_w_clock + #num_gap)" w="#image_w_clock" h="#image_h_clock" tint="@tint_color_2_aod" srcExp="(('assets/aod/clock/' + #hour_low) + '.png')" tintmode="5" alignV="center" antiAlias="true"/>
+      </Group>
+      <Group x="#x_left" y="#y_center" alpha="ifelse((#layout_type == 7),255,0)">
+        <Image x="0" w="#image_w_1_7" h="#image_h_1_7" tint="@tint_color_1_aod" srcExp="(('assets/aod/_1_7/' + #hour_high) + '.png')" tintmode="5" alignV="center" antiAlias="true"/>
+        <Image x="((#image_w_1_7 + #num_gap_1_7) * 1)" w="#image_w_1_7" h="#image_h_1_7" tint="@tint_color_1_aod" srcExp="(('assets/aod/_1_7/' + #hour_low) + '.png')" tintmode="5" alignV="center" antiAlias="true"/>
+        <Image x="((#image_w_1_7 + #num_gap_1_7) * 2)" w="#image_w_1_7" h="#image_h_1_7" tint="@tint_color_2_aod" srcExp="(('assets/aod/_1_7/' + #minute_high) + '.png')" tintmode="5" alignV="center" antiAlias="true"/>
+        <Image x="((#image_w_1_7 + #num_gap_1_7) * 3)" w="#image_w_1_7" h="#image_h_1_7" tint="@tint_color_2_aod" srcExp="(('assets/aod/_1_7/' + #minute_low) + '.png')" tintmode="5" alignV="center" antiAlias="true"/>
+      </Group>
+    </Group>
+  </Group>
+  <Group visibility="0" alpha="0">
+    <Text x="(#view_width - 20)" y="50" size="50" alpha="ifelse((#test_mode == 1),255,(255 * 0.2))" touchable="true" textExp="'时递增'" color="#ffffff" align="right">
+      <Triggers>
+        <Trigger action="up">
+          <FunctionCommand target="_test_minute1"/>
+        </Trigger>
+      </Triggers>
+    </Text>
+    <Text x="(#view_width - 20)" y="150" size="50" alpha="ifelse((#test_mode == 2),255,(255 * 0.2))" touchable="true" textExp="'分递增'" color="#ffffff" align="right">
+      <Triggers>
+        <Trigger action="up">
+          <FunctionCommand target="_test_minute2"/>
+        </Trigger>
+      </Triggers>
+    </Text>
+    <Text x="#x_left" y="#view_height" size="50" alpha="ifelse((#test_mode == 0),255,(255 * 0.2))" touchable="true" textExp="'跟随系统'" color="#ffffff" alignV="bottom">
+      <Triggers>
+        <Trigger action="up">
+          <FunctionCommand target="_test_minute0"/>
+        </Trigger>
+      </Triggers>
+    </Text>
+  </Group>
+  <Group>
+    <FolmeState name="folme_state_0" alpha="0" x="#hour_low_x" w="#hour_low_w"/>
+    <FolmeConfig name="folme_config_0" ease="1, 0"/>
+    <FolmeState name="folme_state_1" alpha="255" w="#hour_low_w" x="#hour_low_x"/>
+    <FolmeConfig name="folme_config_1" ease="1, 0"/>
+    <FolmeState name="folme_state_2" alpha="0" x="#hour_low_x" w="#hour_low_w"/>
+    <FolmeConfig name="folme_config_2" ease="1, 0"/>
+    <FolmeState name="folme_state_3" alpha="255" w="#hour_low_w" x="#hour_low_x"/>
+    <FolmeConfig name="folme_config_3" ease="1, 0"/>
+    <FolmeState name="folme_state_4" alpha="0" x="#hour_low_x" w="#hour_low_w"/>
+    <FolmeConfig name="folme_config_4" ease="1, 0" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_5" alpha="255" w="#hour_low_w" x="ifelse((#hour_low_w != #hour_low_w_last),(#hour_low_x - #width1),#hour_low_x)"/>
+    <FolmeConfig name="folme_config_5" ease="1, 0" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_6'"/>
+    <Function name="folme_oncomplete_6">
+      <FolmeCommand target="_hour_low_next" config="'folme_config_6'" states="'folme_state_6'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_6" x="#hour_low_x" w="#hour_low_w"/>
+    <FolmeConfig name="folme_config_6" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_7" alpha="0" x="#hour_low_x" w="#hour_low_w"/>
+    <FolmeConfig name="folme_config_7" ease="1, 0" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_8" alpha="255" w="#hour_low_w" x="ifelse((#hour_low_w != #hour_low_w_last),(#hour_low_x - #width1),#hour_low_x)"/>
+    <FolmeConfig name="folme_config_8" ease="1, 0" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_9'"/>
+    <Function name="folme_oncomplete_9">
+      <FolmeCommand target="_hour_low" config="'folme_config_9'" states="'folme_state_9'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_9" x="#hour_low_x" w="#hour_low_w"/>
+    <FolmeConfig name="folme_config_9" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_10" alpha="0"/>
+    <FolmeConfig name="folme_config_10" ease="-2, 1,0.18" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_11" alpha="255"/>
+    <FolmeConfig name="folme_config_11" ease="-2, 1,0.25" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_12" alpha="0"/>
+    <FolmeConfig name="folme_config_12" ease="-2, 1,0.18" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_13" alpha="255"/>
+    <FolmeConfig name="folme_config_13" ease="-2, 1,0.25" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_14" x="#hour_low_x" w="#hour_low_w"/>
+    <FolmeConfig name="folme_config_14" delay="ifelse((#layout_state_1 == 0),150,0)" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_15" x="#hour_low_x" w="#hour_low_w"/>
+    <FolmeConfig name="folme_config_15" delay="ifelse((#layout_state_1 == 0),150,0)" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_16" x="#hour_low_x" w="#hour_low_w"/>
+    <FolmeConfig name="folme_config_16" delay="ifelse((#layout_state_1 == 0),150,0)" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_17" x="#hour_low_x" w="#hour_low_w"/>
+    <FolmeConfig name="folme_config_17" delay="ifelse((#layout_state_1 == 0),150,0)" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_18" alpha="0" x="#hour_high_x" w="#hour_high_w"/>
+    <FolmeConfig name="folme_config_18" ease="1, 0"/>
+    <FolmeState name="folme_state_19" alpha="255" w="#hour_high_w" x="#hour_high_x"/>
+    <FolmeConfig name="folme_config_19" ease="1, 0"/>
+    <FolmeState name="folme_state_20" alpha="0" x="#hour_high_x" w="#hour_high_w"/>
+    <FolmeConfig name="folme_config_20" ease="1, 0"/>
+    <FolmeState name="folme_state_21" alpha="255" w="#hour_high_w" x="#hour_high_x"/>
+    <FolmeConfig name="folme_config_21" ease="1, 0"/>
+    <FolmeState name="folme_state_22" x="#hour_high_x"/>
+    <FolmeConfig name="folme_config_22" ease="-2, 1,0.45" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_23'"/>
+    <Function name="folme_oncomplete_23">
+      <FolmeCommand target="_hour_high_next" config="'folme_config_23'" states="'folme_state_23'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_23" x="#hour_high_x"/>
+    <FolmeConfig name="folme_config_23" ease="-1,0"/>
+    <FolmeState name="folme_state_24" x="#hour_high_x"/>
+    <FolmeConfig name="folme_config_24" ease="-2, 1,0.45" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_25'"/>
+    <Function name="folme_oncomplete_25">
+      <FolmeCommand target="_hour_high" config="'folme_config_25'" states="'folme_state_25'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_25" x="#hour_high_x"/>
+    <FolmeConfig name="folme_config_25" ease="-1,0"/>
+    <FolmeState name="folme_state_26" alpha="255" x="#x_offset_11" w="#hour_high_w"/>
+    <FolmeConfig name="folme_config_26" ease="1, 0" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_27'"/>
+    <Function name="folme_oncomplete_27">
+      <FolmeCommand target="_hour_high_next" config="'folme_config_27'" states="'folme_state_27'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_27" x="#hour_high_x"/>
+    <FolmeConfig name="folme_config_27" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_28" alpha="0"/>
+    <FolmeConfig name="folme_config_28" ease="1, 0" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_29'"/>
+    <Function name="folme_oncomplete_29">
+      <FolmeCommand target="_hour_high" config="'folme_config_29'" states="'folme_state_29'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_29" x="#hour_high_x" w="#hour_high_w"/>
+    <FolmeConfig name="folme_config_29" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_30" alpha="255" x="#x_offset_11" w="#hour_high_w"/>
+    <FolmeConfig name="folme_config_30" delay="ifelse((#layout_state_1 == 0),150,0)" ease="1, 0" onComplete="'folme_oncomplete_31'"/>
+    <Function name="folme_oncomplete_31">
+      <FolmeCommand target="_hour_high" config="'folme_config_31'" states="'folme_state_31'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_31" x="#hour_high_x"/>
+    <FolmeConfig name="folme_config_31" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_32" alpha="0"/>
+    <FolmeConfig name="folme_config_32" ease="1, 0" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_33'"/>
+    <Function name="folme_oncomplete_33">
+      <FolmeCommand target="_hour_high_next" config="'folme_config_33'" states="'folme_state_33'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_33" x="#hour_high_x" w="#hour_high_w"/>
+    <FolmeConfig name="folme_config_33" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_34" alpha="0"/>
+    <FolmeConfig name="folme_config_34" ease="-2, 1,0.18" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_35'"/>
+    <Function name="folme_oncomplete_35">
+      <FolmeCommand target="_hour_high" config="'folme_config_35'" states="'folme_state_35'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_35" x="#hour_high_x"/>
+    <FolmeConfig name="folme_config_35" ease="-1,0"/>
+    <FolmeState name="folme_state_36" alpha="255"/>
+    <FolmeConfig name="folme_config_36" delay="ifelse((#layout_state_1 == 0),150,0)" ease="-2, 1,0.25"/>
+    <FolmeState name="folme_state_37" x="#hour_high_x"/>
+    <FolmeConfig name="folme_config_37" delay="ifelse((#layout_state_1 == 0),150,0)" ease="-2, 1, 0.45"/>
+    <FolmeState name="folme_state_38" alpha="0"/>
+    <FolmeConfig name="folme_config_38" ease="-2, 1,0.18" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_39'"/>
+    <Function name="folme_oncomplete_39">
+      <FolmeCommand target="_hour_high_next" config="'folme_config_39'" states="'folme_state_39'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_39" x="#hour_high_x"/>
+    <FolmeConfig name="folme_config_39" ease="-1,0"/>
+    <FolmeState name="folme_state_40" alpha="255"/>
+    <FolmeConfig name="folme_config_40" delay="ifelse((#layout_state_1 == 0),150,0)" ease="-2, 1,0.25"/>
+    <FolmeState name="folme_state_41" x="#hour_high_x"/>
+    <FolmeConfig name="folme_config_41" delay="ifelse((#layout_state_1 == 0),150,0)" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_42" x="#hour_high_x" w="#hour_high_w"/>
+    <FolmeConfig name="folme_config_42" delay="ifelse((#layout_state_1 == 0),150,0)" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_43" x="#hour_high_x" w="#hour_high_w"/>
+    <FolmeConfig name="folme_config_43" delay="ifelse((#layout_state_1 == 0),150,0)" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_44" alpha="0"/>
+    <FolmeConfig name="folme_config_44" ease="-2, 1,0.18" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_45" alpha="255"/>
+    <FolmeConfig name="folme_config_45" ease="-2, 1,0.25" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_46" alpha="0"/>
+    <FolmeConfig name="folme_config_46" ease="-2, 1,0.18" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_47" alpha="255"/>
+    <FolmeConfig name="folme_config_47" ease="-2, 1,0.25" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_48" alpha="0"/>
+    <FolmeConfig name="folme_config_48" ease="1,0"/>
+    <FolmeState name="folme_state_49" alpha="255"/>
+    <FolmeConfig name="folme_config_49" ease="1,0"/>
+    <FolmeState name="folme_state_50" alpha="0"/>
+    <FolmeConfig name="folme_config_50" ease="1,0"/>
+    <FolmeState name="folme_state_51" alpha="255"/>
+    <FolmeConfig name="folme_config_51" ease="1,0"/>
+    <FolmeState name="folme_state_52" alpha="0"/>
+    <FolmeConfig name="folme_config_52" ease="-2, 1,0.18" delay="ifelse((#layout_state_0 == 0),150,0)"/>
+    <FolmeState name="folme_state_53" alpha="255"/>
+    <FolmeConfig name="folme_config_53" ease="-2, 1,0.25" delay="ifelse((#layout_state_0 == 0),150,0)"/>
+    <FolmeState name="folme_state_54" alpha="0"/>
+    <FolmeConfig name="folme_config_54" ease="-2, 1,0.18" delay="ifelse((#layout_state_0 == 0),150,0)"/>
+    <FolmeState name="folme_state_55" alpha="255"/>
+    <FolmeConfig name="folme_config_55" ease="-2, 1,0.25" delay="ifelse((#layout_state_0 == 0),150,0)"/>
+    <FolmeState name="folme_state_56" alpha="0"/>
+    <FolmeConfig name="folme_config_56" ease="1,0"/>
+    <FolmeState name="folme_state_57" alpha="255"/>
+    <FolmeConfig name="folme_config_57" ease="1,0"/>
+    <FolmeState name="folme_state_58" alpha="0"/>
+    <FolmeConfig name="folme_config_58" ease="1,0"/>
+    <FolmeState name="folme_state_59" alpha="255"/>
+    <FolmeConfig name="folme_config_59" ease="1,0"/>
+    <FolmeState name="folme_state_60" alpha="0"/>
+    <FolmeConfig name="folme_config_60" ease="-2, 1,0.18" delay="ifelse((#layout_state_0 == 0),150,0)"/>
+    <FolmeState name="folme_state_61" alpha="255"/>
+    <FolmeConfig name="folme_config_61" ease="-2, 1,0.25" delay="ifelse((#layout_state_0 == 0),150,0)"/>
+    <FolmeState name="folme_state_62" alpha="0"/>
+    <FolmeConfig name="folme_config_62" ease="-2, 1,0.18" delay="ifelse((#layout_state_0 == 0),150,0)"/>
+    <FolmeState name="folme_state_63" alpha="255"/>
+    <FolmeConfig name="folme_config_63" ease="-2, 1,0.25" delay="ifelse((#layout_state_0 == 0),150,0)"/>
+    <FolmeState name="folme_state_64" alpha="0"/>
+    <FolmeConfig name="folme_config_64" ease="1,0"/>
+    <FolmeState name="folme_state_65" alpha="255"/>
+    <FolmeConfig name="folme_config_65" ease="1,0"/>
+    <FolmeState name="folme_state_66" alpha="0"/>
+    <FolmeConfig name="folme_config_66" ease="1,0"/>
+    <FolmeState name="folme_state_67" alpha="255"/>
+    <FolmeConfig name="folme_config_67" ease="1,0"/>
+    <FolmeState name="folme_state_68" alpha="0"/>
+    <FolmeConfig name="folme_config_68" ease="-2, 1,0.18" delay="ifelse((#layout_state_7 == 0),150,0)"/>
+    <FolmeState name="folme_state_69" alpha="255"/>
+    <FolmeConfig name="folme_config_69" ease="-2, 1,0.25" delay="ifelse((#layout_state_7 == 0),150,0)"/>
+    <FolmeState name="folme_state_70" alpha="0"/>
+    <FolmeConfig name="folme_config_70" ease="-2, 1,0.18" delay="ifelse((#layout_state_7 == 0),150,0)"/>
+    <FolmeState name="folme_state_71" alpha="255"/>
+    <FolmeConfig name="folme_config_71" ease="-2, 1,0.25" delay="ifelse((#layout_state_7 == 0),150,0)"/>
+    <FolmeState name="folme_state_72" alpha="0"/>
+    <FolmeConfig name="folme_config_72" ease="1,0"/>
+    <FolmeState name="folme_state_73" alpha="255"/>
+    <FolmeConfig name="folme_config_73" ease="1,0"/>
+    <FolmeState name="folme_state_74" alpha="0"/>
+    <FolmeConfig name="folme_config_74" ease="1,0"/>
+    <FolmeState name="folme_state_75" alpha="255"/>
+    <FolmeConfig name="folme_config_75" ease="1,0"/>
+    <FolmeState name="folme_state_76" alpha="0"/>
+    <FolmeConfig name="folme_config_76" ease="-2, 1,0.18" delay="ifelse((#layout_state_7 == 0),150,0)"/>
+    <FolmeState name="folme_state_77" alpha="255"/>
+    <FolmeConfig name="folme_config_77" ease="-2, 1,0.25" delay="ifelse((#layout_state_7 == 0),150,0)"/>
+    <FolmeState name="folme_state_78" alpha="0"/>
+    <FolmeConfig name="folme_config_78" ease="-2, 1,0.18" delay="ifelse((#layout_state_7 == 0),150,0)"/>
+    <FolmeState name="folme_state_79" alpha="255"/>
+    <FolmeConfig name="folme_config_79" ease="-2, 1,0.25" delay="ifelse((#layout_state_7 == 0),150,0)"/>
+    <FolmeState name="folme_state_80" alpha="0" x="#minute_low_x" w="#minute_low_w"/>
+    <FolmeConfig name="folme_config_80" ease="1, 0"/>
+    <FolmeState name="folme_state_81" alpha="255" w="#minute_low_w" x="#minute_low_x"/>
+    <FolmeConfig name="folme_config_81" ease="1, 0"/>
+    <FolmeState name="folme_state_82" alpha="0" x="#minute_low_x" w="#minute_low_w"/>
+    <FolmeConfig name="folme_config_82" ease="1, 0"/>
+    <FolmeState name="folme_state_83" alpha="255" w="#minute_low_w" x="#minute_low_x"/>
+    <FolmeConfig name="folme_config_83" ease="1, 0"/>
+    <FolmeState name="folme_state_84" alpha="0"/>
+    <FolmeConfig name="folme_config_84" ease="1, 0" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_85'"/>
+    <Function name="folme_oncomplete_85">
+      <FolmeCommand target="_minute_low" config="'folme_config_85'" states="'folme_state_85'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_85" x="#minute_low_x" w="#minute_low_w"/>
+    <FolmeConfig name="folme_config_85" ease="1, 0"/>
+    <FolmeState name="folme_state_86" alpha="255"/>
+    <FolmeConfig name="folme_config_86" ease="1, 0" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_87'"/>
+    <Function name="folme_oncomplete_87">
+      <FolmeCommand target="_minute_low_next" config="'folme_config_87'" states="'folme_state_87'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_87" x="#minute_low_x" w="#minute_low_w"/>
+    <FolmeConfig name="folme_config_87" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_88" alpha="0"/>
+    <FolmeConfig name="folme_config_88" ease="1, 0" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_89'"/>
+    <Function name="folme_oncomplete_89">
+      <FolmeCommand target="_minute_low_next" config="'folme_config_89'" states="'folme_state_89'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_89" x="#minute_low_x" w="#minute_low_w"/>
+    <FolmeConfig name="folme_config_89" ease="1, 0"/>
+    <FolmeState name="folme_state_90" alpha="255"/>
+    <FolmeConfig name="folme_config_90" ease="1, 0" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_91'"/>
+    <Function name="folme_oncomplete_91">
+      <FolmeCommand target="_minute_low" config="'folme_config_91'" states="'folme_state_91'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_91" x="#minute_low_x" w="#minute_low_w"/>
+    <FolmeConfig name="folme_config_91" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_92" alpha="0"/>
+    <FolmeConfig name="folme_config_92" ease="1,0" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_93'"/>
+    <Function name="folme_oncomplete_93">
+      <FolmeCommand target="_minute_low" config="'folme_config_93'" states="'folme_state_93'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_93" x="#minute_low_x" w="#minute_low_w"/>
+    <FolmeConfig name="folme_config_93" ease="1, 0"/>
+    <FolmeState name="folme_state_94" alpha="255" w="#minute_low_w" x="ifelse((#minute_low_w != #minute_low_w_last),(#minute_low_x - #width1),#minute_low_x)"/>
+    <FolmeConfig name="folme_config_94" ease="1,0" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_95'"/>
+    <Function name="folme_oncomplete_95">
+      <FolmeCommand target="_minute_low_next" config="'folme_config_95'" states="'folme_state_95'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_95" x="#minute_low_x" w="#minute_low_w"/>
+    <FolmeConfig name="folme_config_95" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_96" alpha="0"/>
+    <FolmeConfig name="folme_config_96" ease="1, 0" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_97'"/>
+    <Function name="folme_oncomplete_97">
+      <FolmeCommand target="_minute_low_next" config="'folme_config_97'" states="'folme_state_97'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_97" x="#minute_low_x" w="#minute_low_w"/>
+    <FolmeConfig name="folme_config_97" ease="1, 0"/>
+    <FolmeState name="folme_state_98" alpha="255" w="#minute_low_w" x="ifelse((#minute_low_w != #minute_low_w_last),(#minute_low_x - #width1),#minute_low_x)"/>
+    <FolmeConfig name="folme_config_98" ease="1, 0" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_99'"/>
+    <Function name="folme_oncomplete_99">
+      <FolmeCommand target="_minute_low" config="'folme_config_99'" states="'folme_state_99'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_99" x="#minute_low_x" w="#minute_low_w"/>
+    <FolmeConfig name="folme_config_99" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_100" alpha="0"/>
+    <FolmeConfig name="folme_config_100" ease="-2, 1,0.18" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_101" alpha="255"/>
+    <FolmeConfig name="folme_config_101" ease="-2, 1,0.25" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_102" alpha="0"/>
+    <FolmeConfig name="folme_config_102" ease="-2, 1,0.18" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_103" alpha="255"/>
+    <FolmeConfig name="folme_config_103" ease="-2, 1,0.25" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_104" x="#minute_low_x" w="#minute_low_w"/>
+    <FolmeConfig name="folme_config_104" ease="-2, 1,0.45" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_105" x="#minute_low_x" w="#minute_low_w"/>
+    <FolmeConfig name="folme_config_105" ease="-2, 1,0.45" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_106" x="#minute_low_x" w="#minute_low_w"/>
+    <FolmeConfig name="folme_config_106" ease="-2, 1,0.45" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_107" x="#minute_low_x" w="#minute_low_w"/>
+    <FolmeConfig name="folme_config_107" ease="-2, 1,0.45" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_108" alpha="0" x="#minute_high_x" w="#minute_high_w"/>
+    <FolmeConfig name="folme_config_108" ease="1, 0"/>
+    <FolmeState name="folme_state_109" alpha="255" w="#minute_high_w" x="#minute_high_x"/>
+    <FolmeConfig name="folme_config_109" ease="1, 0"/>
+    <FolmeState name="folme_state_110" alpha="0" x="#minute_high_x" w="#minute_high_w"/>
+    <FolmeConfig name="folme_config_110" ease="1, 0"/>
+    <FolmeState name="folme_state_111" alpha="255" w="#minute_high_w" x="#minute_high_x"/>
+    <FolmeConfig name="folme_config_111" ease="1, 0"/>
+    <FolmeState name="folme_state_112" x="#minute_high_x"/>
+    <FolmeConfig name="folme_config_112" ease="-2, 1,0.45" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_113" x="#minute_high_x"/>
+    <FolmeConfig name="folme_config_113" ease="-2, 1,0.45" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_114" x="#minute_high_x"/>
+    <FolmeConfig name="folme_config_114" ease="-2, 1,0.45" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_115" x="#minute_high_x"/>
+    <FolmeConfig name="folme_config_115" ease="-2, 1,0.45" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_116" alpha="255" x="#x_offset_11" w="#minute_high_w"/>
+    <FolmeConfig name="folme_config_116" ease="1, 0" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_117'"/>
+    <Function name="folme_oncomplete_117">
+      <FolmeCommand target="_minute_high_next" config="'folme_config_117'" states="'folme_state_117'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_117" x="#minute_high_x"/>
+    <FolmeConfig name="folme_config_117" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_118" alpha="0"/>
+    <FolmeConfig name="folme_config_118" ease="1, 0" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_119'"/>
+    <Function name="folme_oncomplete_119">
+      <FolmeCommand target="_minute_high" config="'folme_config_119'" states="'folme_state_119'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_119" x="#minute_high_x" w="#minute_high_w"/>
+    <FolmeConfig name="folme_config_119" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_120" alpha="255" x="#x_offset_11" w="#minute_high_w"/>
+    <FolmeConfig name="folme_config_120" ease="1, 0" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_121'"/>
+    <Function name="folme_oncomplete_121">
+      <FolmeCommand target="_minute_high" config="'folme_config_121'" states="'folme_state_121'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_121" x="#minute_high_x"/>
+    <FolmeConfig name="folme_config_121" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_122" alpha="0"/>
+    <FolmeConfig name="folme_config_122" ease="1, 0" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_123'"/>
+    <Function name="folme_oncomplete_123">
+      <FolmeCommand target="_minute_high_next" config="'folme_config_123'" states="'folme_state_123'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_123" x="#minute_high_x" w="#minute_high_w"/>
+    <FolmeConfig name="folme_config_123" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_124" alpha="0"/>
+    <FolmeConfig name="folme_config_124" ease="-2, 1,0.18" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_125'"/>
+    <Function name="folme_oncomplete_125">
+      <FolmeCommand target="_minute_high" config="'folme_config_125'" states="'folme_state_125'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_125" x="#minute_high_x"/>
+    <FolmeConfig name="folme_config_125" ease="-1,0"/>
+    <FolmeState name="folme_state_126" alpha="255"/>
+    <FolmeConfig name="folme_config_126" delay="ifelse((#layout_state_1 == 0),150,0)" ease="-2, 1,0.25"/>
+    <FolmeState name="folme_state_127" x="#minute_high_x"/>
+    <FolmeConfig name="folme_config_127" delay="ifelse((#layout_state_1 == 0),150,0)" ease="-2, 1, 0.45"/>
+    <FolmeState name="folme_state_128" alpha="0"/>
+    <FolmeConfig name="folme_config_128" ease="-2, 1,0.18" delay="ifelse((#layout_state_1 == 0),150,0)" onComplete="'folme_oncomplete_129'"/>
+    <Function name="folme_oncomplete_129">
+      <FolmeCommand target="_minute_high_next" config="'folme_config_129'" states="'folme_state_129'" command="to"/>
+    </Function>
+    <FolmeState name="folme_state_129" x="#minute_high_x"/>
+    <FolmeConfig name="folme_config_129" ease="-1,0"/>
+    <FolmeState name="folme_state_130" alpha="255"/>
+    <FolmeConfig name="folme_config_130" delay="ifelse((#layout_state_1 == 0),150,0)" ease="-2, 1,0.25"/>
+    <FolmeState name="folme_state_131" x="#minute_high_x"/>
+    <FolmeConfig name="folme_config_131" delay="ifelse((#layout_state_1 == 0),150,0)" ease="-2, 1,0.45"/>
+    <FolmeState name="folme_state_132" x="#minute_high_x" w="#minute_high_w"/>
+    <FolmeConfig name="folme_config_132" ease="-2, 1,0.45" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_133" x="#minute_high_x" w="#minute_high_w"/>
+    <FolmeConfig name="folme_config_133" ease="-2, 1,0.45" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_134" alpha="0"/>
+    <FolmeConfig name="folme_config_134" ease="-2, 1,0.18" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_135" alpha="255"/>
+    <FolmeConfig name="folme_config_135" ease="-2, 1,0.25" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_136" alpha="0"/>
+    <FolmeConfig name="folme_config_136" ease="-2, 1,0.18" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_137" alpha="255"/>
+    <FolmeConfig name="folme_config_137" ease="-2, 1,0.25" delay="ifelse((#layout_state_1 == 0),150,0)"/>
+    <FolmeState name="folme_state_138" alpha="0"/>
+    <FolmeConfig name="folme_config_138" ease="1,0"/>
+    <FolmeState name="folme_state_139" alpha="255"/>
+    <FolmeConfig name="folme_config_139" ease="1,0"/>
+    <FolmeState name="folme_state_140" alpha="0"/>
+    <FolmeConfig name="folme_config_140" ease="1,0"/>
+    <FolmeState name="folme_state_141" alpha="255"/>
+    <FolmeConfig name="folme_config_141" ease="1,0"/>
+    <FolmeState name="folme_state_142" alpha="0"/>
+    <FolmeConfig name="folme_config_142" ease="-2, 1,0.18"/>
+    <FolmeState name="folme_state_143" alpha="255"/>
+    <FolmeConfig name="folme_config_143" ease="-2, 1,0.25"/>
+    <FolmeState name="folme_state_144" alpha="0"/>
+    <FolmeConfig name="folme_config_144" ease="-2, 1,0.18"/>
+    <FolmeState name="folme_state_145" alpha="255"/>
+    <FolmeConfig name="folme_config_145" ease="-2, 1,0.25"/>
+    <FolmeState name="folme_state_146" alpha="0"/>
+    <FolmeConfig name="folme_config_146" ease="1,0"/>
+    <FolmeState name="folme_state_147" alpha="255"/>
+    <FolmeConfig name="folme_config_147" ease="1,0"/>
+    <FolmeState name="folme_state_148" alpha="0"/>
+    <FolmeConfig name="folme_config_148" ease="1,0"/>
+    <FolmeState name="folme_state_149" alpha="255"/>
+    <FolmeConfig name="folme_config_149" ease="1,0"/>
+    <FolmeState name="folme_state_150" alpha="0"/>
+    <FolmeConfig name="folme_config_150" ease="-2, 1,0.18" delay="ifelse((#layout_state_7 == 0),150,0)"/>
+    <FolmeState name="folme_state_151" alpha="255"/>
+    <FolmeConfig name="folme_config_151" ease="-2, 1,0.25" delay="ifelse((#layout_state_7 == 0),150,0)"/>
+    <FolmeState name="folme_state_152" alpha="0"/>
+    <FolmeConfig name="folme_config_152" ease="-2, 1,0.18" delay="ifelse((#layout_state_7 == 0),150,0)"/>
+    <FolmeState name="folme_state_153" alpha="255"/>
+    <FolmeConfig name="folme_config_153" ease="-2, 1,0.25" delay="ifelse((#layout_state_7 == 0),150,0)"/>
+    <FolmeState name="folme_state_154" alpha="255"/>
+    <FolmeConfig name="folme_config_154" ease="-2,1,0.25"/>
+    <FolmeState name="folme_state_155" alpha="0"/>
+    <FolmeConfig name="folme_config_155" ease="-2,1,0.18"/>
+    <FolmeState name="folme_state_156" alpha="0"/>
+    <FolmeConfig name="folme_config_156" ease="-2,1,0.18"/>
+    <FolmeState name="folme_state_157" alpha="255"/>
+    <FolmeConfig name="folme_config_157" ease="-2,1,0.25"/>
+    <FolmeState name="folme_state_158" alpha="0"/>
+    <FolmeConfig name="folme_config_158" ease="-2,1,0.18"/>
+    <FolmeState name="folme_state_159" alpha="0"/>
+    <FolmeConfig name="folme_config_159" ease="-2,1,0.18"/>
+    <FolmeState name="folme_state_160" alpha="255"/>
+    <FolmeConfig name="folme_config_160" ease="-2,1,0.25"/>
+    <FolmeState name="folme_state_161" alpha="0"/>
+    <FolmeConfig name="folme_config_161" ease="-2,1,0.18"/>
+    <FolmeState name="folme_state_162" alpha="0"/>
+    <FolmeConfig name="folme_config_162" ease="-2,1,0.18"/>
+    <FolmeState name="folme_state_163" alpha="255" w="#minute_high_w" x="#minute_high_x" h="#image_h_1"/>
+    <FolmeConfig name="folme_config_163" ease="1,0"/>
+    <FolmeState name="folme_state_164" alpha="0" w="#minute_high_w" x="#minute_high_x" h="#image_h_1"/>
+    <FolmeConfig name="folme_config_164" ease="1,0"/>
+    <FolmeState name="folme_state_165" alpha="255" w="#minute_low_w" x="#minute_low_x" h="#image_h_1"/>
+    <FolmeConfig name="folme_config_165" ease="1,0"/>
+    <FolmeState name="folme_state_166" alpha="0" w="#minute_low_w" h="#image_h_1" x="#minute_low_x"/>
+    <FolmeConfig name="folme_config_166" ease="1,0"/>
+    <FolmeState name="folme_state_167" alpha="255" w="#hour_high_w" h="#image_h_1" x="#hour_high_x"/>
+    <FolmeConfig name="folme_config_167" ease="1,0"/>
+    <FolmeState name="folme_state_168" alpha="0" w="#hour_high_w" h="#image_h_1" x="#hour_high_x"/>
+    <FolmeConfig name="folme_config_168" ease="1,0"/>
+    <FolmeState name="folme_state_169" alpha="255" w="#hour_low_w" h="#image_h_1" x="#hour_low_x"/>
+    <FolmeConfig name="folme_config_169" ease="1,0"/>
+    <FolmeState name="folme_state_170" alpha="0" w="#hour_low_w" h="#image_h_1" x="#hour_low_x"/>
+    <FolmeConfig name="folme_config_170" ease="1,0"/>
+    <FolmeState name="folme_state_171" x="#x_left"/>
+    <FolmeConfig name="folme_config_171" ease="1,0"/>
+    <FolmeState name="folme_state_172" x="#x_left" y="#y_center"/>
+    <FolmeConfig name="folme_config_172" ease="1,0"/>
+    <FolmeState name="folme_state_173" x="#x_left" y="#y_center"/>
+    <FolmeConfig name="folme_config_173" ease="1,0"/>
+    <FolmeState name="folme_state_174" alpha="0"/>
+    <FolmeConfig name="folme_config_174" ease="-2,1,0.72" onComplete="'folme_oncomplete_175'"/>
+    <Function name="folme_oncomplete_175">
+      <VariableCommand name="aod_state" expression="1" type="number"/>
+      <FunctionCommand target="_closeRate"/>
+    </Function>
+    <FolmeState name="folme_state_175" alpha="255"/>
+    <FolmeConfig name="folme_config_175" ease="-2,1,0.5"/>
+    <FolmeState name="folme_state_176" alpha="255"/>
+    <FolmeConfig name="folme_config_176" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_177" alpha="0"/>
+    <FolmeConfig name="folme_config_177" ease="-2, 1,0.72" onComplete="'folme_oncomplete_178'"/>
+    <Function name="folme_oncomplete_178">
+      <VariableCommand name="aod_state" expression="0" type="number"/>
+      <FunctionCommand target="_setAniRate"/>
+    </Function>
+  </Group>
+  <ExternalCommands>
+    <Trigger action="enterAod">
+      <VariableCommand name="aod_state" expression="0.9" type="number"/>
+      <FunctionCommand target="_setLongRate"/>
+      <FolmeCommand target="_layout_light" config="'folme_config_174'" states="'folme_state_174'" command="to"/>
+      <FolmeCommand target="_layout_aod" config="'folme_config_175'" states="'folme_state_175'" command="to"/>
+      <ExternCommand command="__clearTalkback"/>
+    </Trigger>
+    <Trigger action="exitAod">
+      <VariableCommand name="aod_state" expression="0.1" type="number"/>
+      <FunctionCommand target="_setLongRate"/>
+      <FolmeCommand target="_layout_light" config="'folme_config_176'" states="'folme_state_176'" command="to"/>
+      <FolmeCommand target="_layout_aod" config="'folme_config_177'" states="'folme_state_177'" command="to"/>
+    </Trigger>
+    <Trigger action="resume">
+      <VariableCommand name="_resume_time" expression="(#_resume_time + 1)" type="number"/>
+      <MultiCommand condition="((#aod_state == 0) || (#aod_state == 0.9))">
+        <FunctionCommand target="_init"/>
+      </MultiCommand>
+    </Trigger>
+  </ExternalCommands>
+</Widget>

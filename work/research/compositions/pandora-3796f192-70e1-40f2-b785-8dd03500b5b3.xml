@@ -1,0 +1,306 @@
+<Widget frameRate="0" scaleByDensity="false" screenWidth="1080" version="2" useVariableUpdater="HyperMaterial,DateTime.Minute">
+  <Var name="is_debug" type="number" expression="0"/>
+  <Var name="isDisplayDefaultBg" type="number" expression="#isDisplayDefaultBg"/>
+  <Var name="bgmode" type="number" expression="#bgmode"/>
+  <Var name="aniX" type="number" expression="#aniVar_x"/>
+  <Var name="aniY" type="number" expression="#aniVar_y"/>
+  <Var name="aniScaleX" type="number" expression="#aniVar_scaleX"/>
+  <Var name="aniScaleY" type="number" expression="#aniVar_scaleY"/>
+  <Var name="resType" type="number" expression="#bgmode_resType"/>
+  <Var name="isImageResType" type="number" expression="((#resType == 0) || (#resType == 2))"/>
+  <Rectangle w="#view_width" h="#view_height" visibility="(#bgmode == 3)" fillColor="#000000"/>
+  <Group>
+    <!-- Ai.vue -->
+    <Var name="aod_state_VmeD4ocK" type="number" expression="0" const="true"/>
+    <Var name="is_paused_VmeD4ocK" type="number" expression="0" const="true"/>
+    <Var name="is_edit_VmeD4ocK" type="number" expression="0" const="true"/>
+    <Var name="is_finished_VmeD4ocK" type="number" expression="0" const="true"/>
+    <Var name="bgmode_VmeD4ocK" type="number" expression="#bgmode"/>
+    <Var name="isDisplayDefaultBg_VmeD4ocK" type="number" expression="#isDisplayDefaultBg"/>
+    <Var name="imageUri_VmeD4ocK" type="string" expression="@imageUri"/>
+    <Var name="videoUri_VmeD4ocK" type="string" expression="@videoUri"/>
+    <Var name="selected_VmeD4ocK" type="number" expression="#selected"/>
+    <Var name="videoState_VmeD4ocK" type="string" expression="@aiVideo.playState"/>
+    <Var name="aniX_VmeD4ocK" type="number" expression="#aniVar_x"/>
+    <Var name="aniY_VmeD4ocK" type="number" expression="#aniVar_y"/>
+    <Var name="aniScaleX_VmeD4ocK" type="number" expression="#aniVar_scaleX"/>
+    <Var name="aniScaleY_VmeD4ocK" type="number" expression="#aniVar_scaleY"/>
+    <Var name="aniDisplayScale_VmeD4ocK" type="number" expression="#aniVar_displayScale"/>
+    <Var name="resType_VmeD4ocK" type="number" expression="#bgmode_resType"/>
+    <Var name="scaleFactor_VmeD4ocK" type="number" expression="#__scale_factor"/>
+    <Var name="isVideoResType_VmeD4ocK" type="number" expression="((#resType_VmeD4ocK == 1) || (#resType_VmeD4ocK == 3))"/>
+    <Var name="isImageResType_VmeD4ocK" type="number" expression="((#resType_VmeD4ocK == 0) || (#resType_VmeD4ocK == 2))"/>
+    <Var name="cVideoLoop_VmeD4ocK" type="number" expression="ifelse(eqs(@isPreviewMode,'true'),1,0)"/>
+    <Var name="isNewTheme_VmeD4ocK" type="number" expression="(#aniScaleX_VmeD4ocK != 0)"/>
+    <Function name="playVideo">
+      <VariableCommand name="is_finished_VmeD4ocK" expression="0" type="number"/>
+      <VariableCommand name="is_paused_VmeD4ocK" expression="0" type="number"/>
+      <VideoCommand target="aiVideo" command="play"/>
+      <VideoCommand target="customVideo" command="play"/>
+    </Function>
+    <Function name="pauseVideo">
+      <IfCommand ifCondition="(#bgmode_VmeD4ocK == 2)">
+        <Consequent>
+          <VideoCommand target="aiVideo" command="pause"/>
+        </Consequent>
+        <Alternate>
+          <VideoCommand target="customVideo" command="pause"/>
+        </Alternate>
+      </IfCommand>
+    </Function>
+    <Function name="releaseVideo">
+      <IfCommand ifCondition="(#bgmode_VmeD4ocK == 2)">
+        <Consequent>
+          <VideoCommand target="aiVideo" command="release"/>
+        </Consequent>
+        <Alternate>
+          <VideoCommand target="customVideo" command="release"/>
+        </Alternate>
+      </IfCommand>
+    </Function>
+    <Function name="setVideoFirstFrame">
+      <IfCommand ifCondition="(#bgmode_VmeD4ocK == 2)">
+        <Consequent>
+          <VideoCommand target="aiVideo" command="seekTo" time="0"/>
+        </Consequent>
+        <Alternate>
+          <VideoCommand target="customVideo" command="seekTo" time="0"/>
+        </Alternate>
+      </IfCommand>
+    </Function>
+    <Function name="replayVideo">
+      <FunctionCommand target="setVideoFirstFrame"/>
+      <FunctionCommand target="playVideo" delay="1"/>
+    </Function>
+    <Function name="onComplete">
+      <VariableCommand name="is_finished_VmeD4ocK" expression="1" type="number"/>
+    </Function>
+    <Image visibility="((((! eqs(@isPreviewMode,'true')) ** strIsEmpty(@imageUri_VmeD4ocK)) ** (#bgmode_VmeD4ocK == 2)) ** (! #isNewTheme_VmeD4ocK))" w="#view_width" h="#view_height" src="assets/ai/ai.png"/>
+    <Image visibility="((((! eqs(@isPreviewMode,'true')) ** strIsEmpty(@imageUri_VmeD4ocK)) ** (#bgmode_VmeD4ocK == 2)) ** #isNewTheme_VmeD4ocK)" x="((#aniX_VmeD4ocK * #aniDisplayScale_VmeD4ocK) / #scaleFactor_VmeD4ocK)" y="((#aniY_VmeD4ocK * #aniDisplayScale_VmeD4ocK) / #scaleFactor_VmeD4ocK)" scaleX="(#aniScaleX_VmeD4ocK * #aniDisplayScale_VmeD4ocK)" scaleY="(#aniScaleY_VmeD4ocK * #aniDisplayScale_VmeD4ocK)" src="assets/ai/ai.png"/>
+    <Video visibility="(#bgmode_VmeD4ocK == 2)" w="#view_width" h="#view_height" touchable="true" name="aiVideo" layerType="bottom">
+      <Triggers>
+        <Trigger action="complete">
+          <FunctionCommand target="onComplete"/>
+        </Trigger>
+      </Triggers>
+    </Video>
+    <Video visibility="((((! eqs(@isPreviewMode,'true')) ** (! strIsEmpty(@videoUri_VmeD4ocK))) ** (#bgmode_VmeD4ocK == 1)) ** #isVideoResType_VmeD4ocK)" path="@videoUri_VmeD4ocK" w="#view_width" h="#view_height" x="((#aniX_VmeD4ocK * #aniDisplayScale_VmeD4ocK) / #scaleFactor_VmeD4ocK)" y="((#aniY_VmeD4ocK * #aniDisplayScale_VmeD4ocK) / #scaleFactor_VmeD4ocK)" scaleX="#aniScaleX_VmeD4ocK" scaleY="#aniScaleY_VmeD4ocK" loop="#cVideoLoop_VmeD4ocK" touchable="true" name="customVideo" layerType="bottom" scaleMode="1">
+      <Triggers>
+        <Trigger action="complete">
+          <FunctionCommand target="onComplete"/>
+        </Trigger>
+      </Triggers>
+    </Video>
+    <Image src="@imageUri_VmeD4ocK" w="#view_width" h="#view_height" visibility="((((! eqs(@isPreviewMode,'true')) ** (! strIsEmpty(@imageUri_VmeD4ocK))) ** (#bgmode_VmeD4ocK != 3)) ** (! #isNewTheme_VmeD4ocK))" srcType="FileSystem"/>
+    <Image src="@imageUri_VmeD4ocK" x="((#aniX_VmeD4ocK * #aniDisplayScale_VmeD4ocK) / #scaleFactor_VmeD4ocK)" y="((#aniY_VmeD4ocK * #aniDisplayScale_VmeD4ocK) / #scaleFactor_VmeD4ocK)" scaleX="(#aniScaleX_VmeD4ocK * #aniDisplayScale_VmeD4ocK)" scaleY="(#aniScaleY_VmeD4ocK * #aniDisplayScale_VmeD4ocK)" visibility="((((! eqs(@isPreviewMode,'true')) ** (! strIsEmpty(@imageUri_VmeD4ocK))) ** ((#bgmode_VmeD4ocK == 0) || (#bgmode_VmeD4ocK == 2))) ** #isNewTheme_VmeD4ocK)" srcType="FileSystem"/>
+    <Image src="@imageUri_VmeD4ocK" x="((#aniX_VmeD4ocK * #aniDisplayScale_VmeD4ocK) / #scaleFactor_VmeD4ocK)" y="((#aniY_VmeD4ocK * #aniDisplayScale_VmeD4ocK) / #scaleFactor_VmeD4ocK)" scaleX="(#aniScaleX_VmeD4ocK * #aniDisplayScale_VmeD4ocK)" scaleY="(#aniScaleY_VmeD4ocK * #aniDisplayScale_VmeD4ocK)" visibility="(((((! eqs(@isPreviewMode,'true')) ** (! strIsEmpty(@imageUri_VmeD4ocK))) ** (#bgmode_VmeD4ocK == 1)) ** #isImageResType_VmeD4ocK) ** #isNewTheme_VmeD4ocK)" srcType="FileSystem"/>
+    <Group visibility="0">
+      <Text textExp="((('isDisplayDefaultBg ' + #isDisplayDefaultBg_VmeD4ocK) + ' bgmode') + #bgmode_VmeD4ocK)" x="300" y="10" size="30" color="#00ffff"/>
+      <Text textExp="('isPreviewMode ' + eqs(@isPreviewMode,'true'))" x="300" y="50" size="30" color="#00ffff"/>
+      <Text textExp="@imageUri_VmeD4ocK" x="300" y="140" size="30" color="#ff6a05"/>
+      <Text textExp="#aniScaleX_VmeD4ocK" x="300" y="200" size="30" color="#ff6a05"/>
+      <Text textExp="#aniX_VmeD4ocK" x="300" y="250" size="30" color="#ff6a05"/>
+      <Text textExp="#isImageResType_VmeD4ocK" x="300" y="300" size="30" color="#ff6a05"/>
+    </Group>
+  </Group>
+  <Group visibility="#is_debug">
+    <Text textExp="((('isDisplayDefaultBg ' + #isDisplayDefaultBg) + ' bgmode') + #bgmode)" x="300" y="10" size="30" color="#00ffff"/>
+    <Text textExp="('isPreviewMode ' + eqs(@isPreviewMode,'true'))" x="300" y="50" size="30" color="#00ffff"/>
+    <Text textExp="@imageUri" x="300" y="140" size="30" color="#ff6a05"/>
+    <Text textExp="undefined($customImage, 'bmp_height')" x="300" y="200" size="30" color="#ff6a05"/>
+    <Text textExp="#aniX" x="300" y="250" size="30" color="#ff6a05"/>
+    <Text textExp="#aniY" x="300" y="300" size="30" color="#ff6a05"/>
+    <Text textExp="undefined($customImage, 'bmp_width')" x="300" y="350" size="30" color="#ff6a05"/>
+    <Text textExp="(undefined($customImage, 'bmp_width') / #view_width)" x="300" y="400" size="30" color="#ff6a05"/>
+  </Group>
+  <Group>
+    <!-- Sig.vue -->
+    <Var name="debugMode_PePkMDbh" type="number" expression="0" const="true"/>
+    <Var name="aod_state_PePkMDbh" type="number" expression="0" const="true"/>
+    <Var name="timeFormat_PePkMDbh" type="string" expression="ifelse((#time_format == 1),'HH:mm','hh:mm')"/>
+    <Var name="signatureText_PePkMDbh" type="string" expression="@signatureText"/>
+    <Var name="textColor_PePkMDbh" type="string" expression="@textColor"/>
+    <Var name="signatureAlign_PePkMDbh" type="number" expression="#signatureAlign"/>
+    <Var name="signatureSize_PePkMDbh" type="number" expression="#signatureSize"/>
+    <Var name="signatureBold_PePkMDbh" type="number" expression="#signatureBold"/>
+    <Var name="showTime_PePkMDbh" type="number" expression="#showTime"/>
+    <Var name="bgmode_PePkMDbh" type="number" expression="#bgmode"/>
+    <Var name="isNoBg_PePkMDbh" type="number" expression="(#bgmode_PePkMDbh == 3)"/>
+    <Var name="isDeep_PePkMDbh" type="number" expression="ifelse(#isNoBg_PePkMDbh,1,#isDeep)"/>
+    <Var name="defaultBlurColor_PePkMDbh" type="string" expression="ifelse(#isDeep_PePkMDbh,'#E6ffffff','#E6ABABAB')"/>
+    <Var name="defaultColorMode_PePkMDbh" type="string" expression="'15'"/>
+    <Var name="blurTextAlpha_PePkMDbh" type="string" expression="ifelse(#isDeep_PePkMDbh,'#7F','#B3')"/>
+    <Var name="blurTextColorMode_PePkMDbh" type="string" expression="ifelse(#isDeep_PePkMDbh,'20','120')"/>
+    <Var name="blurTextColor_PePkMDbh" type="string" expression="ifelse((! strIsEmpty(@textColor_PePkMDbh)),(@blurTextAlpha_PePkMDbh + substr(@textColor_PePkMDbh,1,6)),@defaultBlurColor_PePkMDbh)"/>
+    <Var name="aodBlurTextAlpha_PePkMDbh" type="string" expression="ifelse(#isDeep_PePkMDbh,'#B3','#CC')"/>
+    <Var name="aodBlurTextColorMode_PePkMDbh" type="string" expression="ifelse(#isDeep_PePkMDbh,'20','121')"/>
+    <Var name="aodBlurTextColor_PePkMDbh" type="string" expression="ifelse((! strIsEmpty(@textColor_PePkMDbh)),(@aodBlurTextAlpha_PePkMDbh + substr(@textColor_PePkMDbh,1,6)),@defaultBlurColor_PePkMDbh)"/>
+    <Var name="aodTextColor_PePkMDbh" type="string" expression="ifelse(#isDeep_PePkMDbh,@textColor_PePkMDbh,'#ffffff')"/>
+    <Var name="designWidth_PePkMDbh" type="number" expression="336"/>
+    <Var name="scale_PePkMDbh" type="number" expression="(#view_width / #designWidth_PePkMDbh)"/>
+    <Var name="fontSize_PePkMDbh" type="number" expression="(#signatureSize_PePkMDbh * #scale_PePkMDbh)"/>
+    <Var name="q200Width_PePkMDbh" type="number" expression="904"/>
+    <Var name="q200Height_PePkMDbh" type="number" expression="572"/>
+    <Var name="q200AvailableWidth_PePkMDbh" type="number" expression="625"/>
+    <Var name="q200MarginLeftRatio_PePkMDbh" type="number" expression="((#q200Width_PePkMDbh - #q200AvailableWidth_PePkMDbh) / #q200Width_PePkMDbh)"/>
+    <Var name="q200ScreenRatio_PePkMDbh" type="number" expression="(#q200Width_PePkMDbh / #q200Height_PePkMDbh)"/>
+    <Var name="p2Width_PePkMDbh" type="number" expression="976"/>
+    <Var name="p2Height_PePkMDbh" type="number" expression="596"/>
+    <Var name="p2AvailableWidth_PePkMDbh" type="number" expression="696"/>
+    <Var name="p2MarginLeftRatio_PePkMDbh" type="number" expression="((#p2Width_PePkMDbh - #p2AvailableWidth_PePkMDbh) / #p2Width_PePkMDbh)"/>
+    <Var name="p2ScreenRatio_PePkMDbh" type="number" expression="(#p2Width_PePkMDbh / #p2Height_PePkMDbh)"/>
+    <Var name="realScreenRatio_PePkMDbh" type="number" expression="(#view_width / #view_height)"/>
+    <Var name="diffWithQ200_PePkMDbh" type="number" expression="abs((#realScreenRatio_PePkMDbh - #q200ScreenRatio_PePkMDbh))"/>
+    <Var name="diffWithP2_PePkMDbh" type="number" expression="abs((#realScreenRatio_PePkMDbh - #p2ScreenRatio_PePkMDbh))"/>
+    <Var name="isQ200_PePkMDbh" type="number" expression="(#diffWithQ200_PePkMDbh { #diffWithP2_PePkMDbh)"/>
+    <Var name="availableMarginLeftRatio_PePkMDbh" type="number" expression="ifelse(#isQ200_PePkMDbh,#q200MarginLeftRatio_PePkMDbh,#p2MarginLeftRatio_PePkMDbh)"/>
+    <Var name="safeAreaMarginLeft_PePkMDbh" type="number" expression="(10 * #scale_PePkMDbh)"/>
+    <Var name="viewMarginLeft_PePkMDbh" type="number" expression="((#view_width * #availableMarginLeftRatio_PePkMDbh) + #safeAreaMarginLeft_PePkMDbh)"/>
+    <Var name="oneLineTextHeight_PePkMDbh" type="number" expression="(#fontSize_PePkMDbh * 1.2)"/>
+    <Var name="safeAreaMarginTop_PePkMDbh" type="number" expression="ifelse(#showTime_PePkMDbh,(38 * #scale_PePkMDbh),(28 * #scale_PePkMDbh))"/>
+    <Var name="timeAreaMarginTop_PePkMDbh" type="number" expression="(8 * #scale_PePkMDbh)"/>
+    <Var name="timeAreaHeight_PePkMDbh" type="number" expression="(30 * #scale_PePkMDbh)"/>
+    <Var name="safeAreaMarginBottom_PePkMDbh" type="number" expression="(28 * #scale_PePkMDbh)"/>
+    <Var name="safeAreaMarginRight_PePkMDbh" type="number" expression="(15 * #scale_PePkMDbh)"/>
+    <Var name="safeAreaWidth_PePkMDbh" type="number" expression="((#view_width - #viewMarginLeft_PePkMDbh) - #safeAreaMarginRight_PePkMDbh)"/>
+    <Var name="safeAreaHeight_PePkMDbh" type="number" expression="((#view_height - #safeAreaMarginTop_PePkMDbh) - #safeAreaMarginBottom_PePkMDbh)"/>
+    <Var name="layerLeftBuffer_PePkMDbh" type="number" expression="#fontSize_PePkMDbh"/>
+    <Var name="layerBottomBuffer_PePkMDbh" type="number" expression="(20 * #scale_PePkMDbh)"/>
+    <Var name="maxRows_PePkMDbh" type="number" expression="ifelse((#safeAreaHeight_PePkMDbh }= #oneLineTextHeight_PePkMDbh),floor((#safeAreaHeight_PePkMDbh / #oneLineTextHeight_PePkMDbh)),1)"/>
+    <Var name="timeSize_PePkMDbh" type="number" expression="(14 * #scale_PePkMDbh)"/>
+    <Var name="fontPath1_PePkMDbh" type="string" expression="'/system/fonts/MiSansVF.ttf'"/>
+    <Var name="lineHeight1_PePkMDbh" type="number" expression="0.9"/>
+    <Var name="fontPath2_PePkMDbh" type="string" expression="'/product/fonts/Qinghe.otf'"/>
+    <Var name="lineHeight2_PePkMDbh" type="number" expression="1.2"/>
+    <Var name="fontPath3_PePkMDbh" type="string" expression="'/product/fonts/Coca-ColaCareFontKaiTi.TTF'"/>
+    <Var name="lineHeight3_PePkMDbh" type="number" expression="1.05"/>
+    <Var name="fontPath4_PePkMDbh" type="string" expression="'/product/fonts/FZFWZhuZiAYuanJWB.TTF'"/>
+    <Var name="lineHeight4_PePkMDbh" type="number" expression="0.985"/>
+    <Var name="fontPath_PePkMDbh" type="string" expression="ifelse((#fontFamily[0] == 1),@fontPath1_PePkMDbh,ifelse((#fontFamily[1] == 1),@fontPath2_PePkMDbh,ifelse((#fontFamily[2] == 1),@fontPath3_PePkMDbh,ifelse((#fontFamily[3] == 1),@fontPath4_PePkMDbh,''))))"/>
+    <Var name="lineHeight_PePkMDbh" type="number" expression="ifelse((#fontFamily[0] == 1),#lineHeight1_PePkMDbh,ifelse((#fontFamily[1] == 1),#lineHeight2_PePkMDbh,ifelse((#fontFamily[2] == 1),#lineHeight3_PePkMDbh,ifelse((#fontFamily[3] == 1),#lineHeight4_PePkMDbh,0))))"/>
+    <Var name="textAlign_PePkMDbh" type="string" expression="ifelse((#signatureAlign_PePkMDbh == 0),'left',ifelse((#signatureAlign_PePkMDbh == 1),'center','right'))"/>
+    <Function name="switchStateAod">
+      <MultiCommand condition="(! #isNoBg_PePkMDbh)">
+        <FrameRateCommand rate="120"/>
+        <FolmeCommand target="aod_bg" config="'folme_config_0'" states="'folme_state_0'" command="to"/>
+        <FolmeCommand target="sig_desk" config="'folme_config_1'" states="'folme_state_1'" command="to"/>
+        <FolmeCommand target="sig_aod" config="'folme_config_2'" states="'folme_state_2'" command="to"/>
+      </MultiCommand>
+    </Function>
+    <Function name="switchStateDesk">
+      <MultiCommand condition="(! #isNoBg_PePkMDbh)">
+        <FrameRateCommand rate="120"/>
+        <FolmeCommand target="aod_bg" config="'folme_config_3'" states="'folme_state_3'" command="to"/>
+        <FolmeCommand target="sig_desk" config="'folme_config_4'" states="'folme_state_4'" command="to"/>
+        <FolmeCommand target="sig_aod" config="'folme_config_5'" states="'folme_state_5'" command="to"/>
+      </MultiCommand>
+    </Function>
+    <Text size="#fontSize_PePkMDbh" fontPath="@fontPath_PePkMDbh" fontPathWeight="#signatureBold_PePkMDbh" name="sig_canary" text="米" alpha="0"/>
+    <Rectangle w="#view_width" h="#view_height" x="0" y="0" folmeMode="true" name="aod_bg" fillColor="#000000" alpha="0"/>
+    <Group x="0" visibility="(#maxRows_PePkMDbh { 30)">
+      <Group folmeMode="true" name="sig_desk">
+        <Layer blurColors="@defaultBlurColor_PePkMDbh,@blurTextColor_PePkMDbh" colorModes="@defaultColorMode_PePkMDbh,@blurTextColorMode_PePkMDbh" x="(#viewMarginLeft_PePkMDbh - #layerLeftBuffer_PePkMDbh)" y="#timeAreaMarginTop_PePkMDbh" w="((#view_width - #viewMarginLeft_PePkMDbh) + #layerLeftBuffer_PePkMDbh)" h="(((#view_height - #timeAreaMarginTop_PePkMDbh) - #safeAreaMarginBottom_PePkMDbh) + #layerBottomBuffer_PePkMDbh)" frameRate="-1" blurRadius="40">
+          <Text x="#layerLeftBuffer_PePkMDbh" y="((#safeAreaMarginTop_PePkMDbh - #timeAreaMarginTop_PePkMDbh) + ((#safeAreaHeight_PePkMDbh - #sig_text.text_height) / 2))" size="#fontSize_PePkMDbh" spacingMultExp="#lineHeight_PePkMDbh" fontPath="@fontPath_PePkMDbh" fontPathWeight="#signatureBold_PePkMDbh" color="@textColor_PePkMDbh" textExp="@signatureText_PePkMDbh" w="#safeAreaWidth_PePkMDbh" textAlign="@textAlign_PePkMDbh" lineClamp="#maxRows_PePkMDbh" name="sig_text" multiLine="true" ellipsis="true" enableClip="false"/>
+          <Text visibility="(#showTime_PePkMDbh == 1)" x="#layerLeftBuffer_PePkMDbh" y="(#timeAreaHeight_PePkMDbh / 2)" w="#safeAreaWidth_PePkMDbh" size="#timeSize_PePkMDbh" spacingMultExp="#lineHeight_PePkMDbh" fontPath="@fontPath_PePkMDbh" color="@textColor_PePkMDbh" textExp="formatDate(@timeFormat_PePkMDbh,#time_sys)" textAlign="@textAlign_PePkMDbh" name="time_text" alignV="center" enableClip="false"/>
+        </Layer>
+      </Group>
+      <Group folmeMode="true" name="sig_aod" alpha="0">
+        <Layer blurColors="@defaultBlurColor_PePkMDbh,@aodBlurTextColor_PePkMDbh" colorModes="@defaultColorMode_PePkMDbh,@aodBlurTextColorMode_PePkMDbh" x="(#viewMarginLeft_PePkMDbh - #layerLeftBuffer_PePkMDbh)" y="#timeAreaMarginTop_PePkMDbh" w="((#view_width - #viewMarginLeft_PePkMDbh) + #layerLeftBuffer_PePkMDbh)" h="(((#view_height - #timeAreaMarginTop_PePkMDbh) - #safeAreaMarginBottom_PePkMDbh) + #layerBottomBuffer_PePkMDbh)" frameRate="-1" blurRadius="40">
+          <Text x="#layerLeftBuffer_PePkMDbh" y="((#safeAreaMarginTop_PePkMDbh - #timeAreaMarginTop_PePkMDbh) + ((#safeAreaHeight_PePkMDbh - #sig_text.text_height) / 2))" size="#fontSize_PePkMDbh" spacingMultExp="#lineHeight_PePkMDbh" fontPath="@fontPath_PePkMDbh" fontPathWeight="#signatureBold_PePkMDbh" color="@aodTextColor_PePkMDbh" textExp="@signatureText_PePkMDbh" w="#safeAreaWidth_PePkMDbh" textAlign="@textAlign_PePkMDbh" lineClamp="#maxRows_PePkMDbh" name="sig_text" multiLine="true" ellipsis="true" enableClip="false"/>
+          <Text visibility="(#showTime_PePkMDbh == 1)" x="#layerLeftBuffer_PePkMDbh" y="(#timeAreaHeight_PePkMDbh / 2)" w="#safeAreaWidth_PePkMDbh" size="#timeSize_PePkMDbh" spacingMultExp="#lineHeight_PePkMDbh" fontPath="@fontPath_PePkMDbh" color="@aodTextColor_PePkMDbh" textExp="formatDate(@timeFormat_PePkMDbh,#time_sys)" textAlign="@textAlign_PePkMDbh" name="time_text" alignV="center" enableClip="false"/>
+        </Layer>
+      </Group>
+    </Group>
+    <Group x="#viewMarginLeft_PePkMDbh" y="#timeAreaMarginTop_PePkMDbh" w="#safeAreaWidth_PePkMDbh" h="#timeAreaHeight_PePkMDbh" contentDescriptionExp="formatDate(@timeFormat_PePkMDbh,#time_sys)" visibility="(eq(#aod_state_PePkMDbh,0) ** (#showTime_PePkMDbh == 1))"/>
+  </Group>
+  <Group>
+    <FolmeState name="folme_state_0" alpha="(255 * 0.4)"/>
+    <FolmeConfig name="folme_config_0" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_1" alpha="0"/>
+    <FolmeConfig name="folme_config_1" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_2" alpha="255"/>
+    <FolmeConfig name="folme_config_2" ease="-2, 1,0.72" onComplete="'folme_oncomplete_3'"/>
+    <Function name="folme_oncomplete_3">
+      <FrameRateCommand rate="0"/>
+    </Function>
+    <FolmeState name="folme_state_3" alpha="0"/>
+    <FolmeConfig name="folme_config_3" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_4" alpha="255"/>
+    <FolmeConfig name="folme_config_4" ease="-2, 1,0.72" onComplete="'folme_oncomplete_5'"/>
+    <Function name="folme_oncomplete_5">
+      <FrameRateCommand rate="0"/>
+    </Function>
+    <FolmeState name="folme_state_5" alpha="0"/>
+    <FolmeConfig name="folme_config_5" ease="-2, 1,0.5"/>
+  </Group>
+  <ExternalCommands>
+    <Trigger action="init">
+      <IfCommand ifCondition="eqs(@isPreviewMode,'true')">
+        <Consequent>
+          <FrameRateCommand rate="120"/>
+        </Consequent>
+        <Alternate>
+          <FrameRateCommand rate="0"/>
+        </Alternate>
+      </IfCommand>
+    </Trigger>
+    <Trigger action="init">
+      <IfCommand ifCondition="eqs(@isPreviewMode,'true')">
+        <Consequent>
+          <VideoCommand target="aiVideo" command="config" path="'assets/ai/ai.mp4'" loop="1" scaleMode="2"/>
+        </Consequent>
+        <Alternate>
+          <VideoCommand target="aiVideo" command="config" path="'assets/ai/ai.mp4'" loop="0" scaleMode="2"/>
+        </Alternate>
+      </IfCommand>
+    </Trigger>
+    <Trigger action="resume">
+      <MultiCommand condition="((! #aod_state_VmeD4ocK) ** #is_paused_VmeD4ocK)">
+        <FunctionCommand target="replayVideo"/>
+      </MultiCommand>
+      <MultiCommand condition="(! #is_paused_VmeD4ocK)">
+        <FunctionCommand target="playVideo"/>
+      </MultiCommand>
+      <MultiCommand condition="(#isDisplayDefaultBg_VmeD4ocK == 1)">
+        <FunctionCommand target="releaseVideo"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="pause">
+      <FunctionCommand target="pauseVideo"/>
+      <VariableCommand name="is_paused_VmeD4ocK" expression="1" type="number"/>
+    </Trigger>
+    <Trigger action="enterAod">
+      <VariableCommand name="aod_state_VmeD4ocK" expression="1" type="number"/>
+    </Trigger>
+    <Trigger action="exitAod">
+      <VariableCommand name="aod_state_VmeD4ocK" expression="0" type="number"/>
+      <MultiCommand condition="((#is_finished_VmeD4ocK == 1) || (#is_paused_VmeD4ocK == 1))">
+        <FunctionCommand target="replayVideo"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="enterEdit">
+      <VariableCommand name="is_edit_VmeD4ocK" expression="1" type="number"/>
+      <MultiCommand condition="eq(#selected,0)">
+        <VariableCommand name="is_finished_VmeD4ocK" expression="1" type="number"/>
+        <FunctionCommand target="setVideoFirstFrame"/>
+        <FunctionCommand target="pauseVideo"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="exitEdit">
+      <VariableCommand name="is_edit_VmeD4ocK" expression="0" type="number"/>
+      <MultiCommand condition="(#is_finished_VmeD4ocK == 1)">
+        <FunctionCommand target="replayVideo"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="enterAod">
+      <FunctionCommand target="switchStateAod"/>
+      <VariableCommand name="aod_state_PePkMDbh" expression="1" type="number"/>
+      <ExternCommand command="__clearTalkback"/>
+    </Trigger>
+    <Trigger action="exitAod">
+      <FunctionCommand target="switchStateDesk"/>
+      <VariableCommand name="aod_state_PePkMDbh" expression="0" type="number"/>
+      <ExternCommand command="__clearTalkback"/>
+    </Trigger>
+  </ExternalCommands>
+</Widget>

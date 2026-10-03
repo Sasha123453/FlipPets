@@ -1,0 +1,349 @@
+<Widget frameRate="0" scaleByDensity="false" screenWidth="1080" version="2" useVariableUpdater="DateTime.Minute">
+  <Var name="w" type="number" expression="#view_width"/>
+  <Var name="h" type="number" expression="#view_height"/>
+  <Var name="isP2" type="number" expression="ifelse(((#w / #h) } 1.6),1,0)"/>
+  <Var name="isAOD" type="number" expression="0" const="true"/>
+  <Var name="aodDone" type="number" expression="0" const="true"/>
+  <Var name="isVersionOld" type="number" expression="1" const="true"/>
+  <Var name="_scale" type="number" expression="(#view_width / 1080)"/>
+  <Var name="dpdx" type="number" expression="ifelse(#isP2,2.97,3.23)"/>
+  <Var name="contentLeft" type="number" expression="ifelse(#isP2,(122 * #dpdx),(118 * #dpdx))"/>
+  <Var name="contentW" type="number" expression="((#w - #contentLeft) - (14 * #dpdx))"/>
+  <Var name="contentH" type="number" expression="(#h - (22 * #dpdx))"/>
+  <Var name="bgGradientColors" type="string[]" values="'#621C00','#1B5C14','#7B34D7','#003CC1'" const="true"/>
+  <Var name="colorIndex" type="number" expression="ifelse(eqs(strToLowerCase(@colorPicker),strToLowerCase(@bgGradientColors[0])),0,ifelse(eqs(strToLowerCase(@colorPicker),strToLowerCase(@bgGradientColors[1])),1,ifelse(eqs(strToLowerCase(@colorPicker),strToLowerCase(@bgGradientColors[2])),2,ifelse(eqs(strToLowerCase(@colorPicker),strToLowerCase(@bgGradientColors[3])),3,0))))"/>
+  <Var name="bgGradientColor" type="string" expression="@bgGradientColors[#colorIndex]"/>
+  <Var name="timeColors" type="string[]" values="'#D9FFF3EF','#D9EAFFE8','#D9F4EFFF','#D9CFDDFF'" const="true"/>
+  <Var name="timeColor" type="string" expression="@timeColors[#colorIndex]"/>
+  <Var name="steps_count" type="number" expression="0" const="true"/>
+  <Var name="steps_goal" type="number" expression="0" const="true"/>
+  <Var name="halfHourSteps" type="number[]" values="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" const="true"/>
+  <Var name="halfHourStepsStr" type="string[]" values="" const="true"/>
+  <Var name="halfHourTimesStr" type="string[]" values="" const="true"/>
+  <Var name="twoHourSteps" type="number[]" values="0,0,0,0,0,0,0,0,0,0,0,0" const="true"/>
+  <Var name="barMaxSteps" type="number" expression="100" const="true"/>
+  <Var name="misansRounded" type="string" expression="'/product/fonts/MiSansRoundedSC.ttf'" const="true"/>
+  <Var name="misansVF" type="string" expression="'/product/fonts/MiSansVF.ttf'" const="true"/>
+  <Var name="barCircleR" type="number" expression="ifelse(#isP2,(6.5 * #dpdx),(5.5 * #dpdx))" const="true"/>
+  <Var name="barCircleGap" type="number" expression="ifelse(#isP2,(6 * #dpdx),(5.9 * #dpdx))" const="true"/>
+  <Var name="contentW2" type="number" expression="((12 * (#barCircleR * 2)) + (11 * #barCircleGap))"/>
+  <Var name="barHighLineCircles" type="number[]" values="0,0,0,0,0,0,0,0,0,0,0,0" const="true"/>
+  <Var name="barColors" type="string[]" values="'#FF4C27','#6AFF4D','#D2AFFF','#77C0FF'" const="true"/>
+  <Var name="barColor" type="string" expression="@barColors[#colorIndex]"/>
+  <Var name="barHighLineColors1" type="string[]" values="'#FF6F00','#6AFF4D','#DAAFFF','#82CDFF'" const="true"/>
+  <Var name="barHighLineColors2" type="string[]" values="'#FF481A','#48FF73','#CCAFFF','#69B9FF'" const="true"/>
+  <Var name="barHighLineColor1" type="string" expression="@barHighLineColors1[#colorIndex]"/>
+  <Var name="barHighLineColor2" type="string" expression="@barHighLineColors2[#colorIndex]"/>
+  <Var name="barTextColors" type="string[]" values="'#FF4E28','#6AFF4D','#D2AFFF','#77C0FF'" const="true"/>
+  <Var name="barTextColor" type="string" expression="@barTextColors[#colorIndex]"/>
+  <Var name="time0" type="number" expression="(((int((#time_sys / 1000)) - (#hour24 * 3600)) - (#minute * 60)) - #second)"/>
+  <Var name="queryDone" type="number" expression="0" const="true"/>
+  <Var name="versionNum" type="number" expression="0" const="true"/>
+  <Var name="_resume" type="number" expression="0" const="true"/>
+  <Var name="_query" type="number" expression="0" const="true"/>
+  <Var name="_fps_flag" type="number" expression="(#time_sys % 1000)"/>
+  <Function name="setAniRate">
+    <FrameRateCommand rate="30"/>
+  </Function>
+  <Function name="updateStepBars">
+    <VariableCommand name="index" type="number" expression="0"/>
+    <LoopCommand loopCondition="(#index { 12)" count="999">
+      <VariableCommand name="twoHourSteps" expression="(((#halfHourSteps[((#index * 4) + 0)] + #halfHourSteps[((#index * 4) + 1)]) + #halfHourSteps[((#index * 4) + 2)]) + #halfHourSteps[((#index * 4) + 3)])" type="number[]" index="#index"/>
+      <VariableCommand name="barMaxSteps" expression="max(#barMaxSteps,(ceil((#twoHourSteps[#index] / 100)) * 100))" type="number"/>
+      <VariableCommand name="index" expression="#index + 1" type="number"/>
+    </LoopCommand>
+    <VariableCommand name="index" type="number" expression="0"/>
+    <LoopCommand loopCondition="(#index { 12)" count="999">
+      <VariableCommand name="barHighLineCircles" expression="ifelse(((#twoHourSteps[#index] / #barMaxSteps) }= 0.75),4,ifelse(((#twoHourSteps[#index] / #barMaxSteps) }= 0.5),3,ifelse(((#twoHourSteps[#index] / #barMaxSteps) }= 0.25),2,ifelse(#twoHourSteps[#index],1,0))))" type="number[]" index="#index"/>
+      <VariableCommand name="index" expression="#index + 1" type="number"/>
+    </LoopCommand>
+  </Function>
+  <Function name="checkVersion">
+    <VariableCommand name="versionNum" expression="0" type="number"/>
+    <FieldCommand targetType="var" target="__objContext" class="com.miui.maml.ScreenContext" return="thisContext" field="mContext" returnType="object" method="get"/>
+    <MethodCommand targetType="var" target="thisContext" class="android.content.Context" method="getPackageManager" returnType="object" return="packageManage"/>
+    <MethodCommand targetType="var" target="packageManage" class="android.content.pm.PackageManager" method="getPackageInfo" paramTypes="String,int" params="'com.mi.health','0'" returnType="object" return="packageInfo"/>
+    <MethodCommand targetType="var" target="packageInfo" class="android.content.pm.PackageInfo" return="versionNum" returnType="int" method="getLongVersionCode"/>
+    <VariableCommand name="isVersionOld" expression="ifelse((#versionNum { 346000),1,0)" type="number"/>
+  </Function>
+  <Function name="querySteps">
+    <VariableCommand name="_query" expression="(#_query + 1)" type="number"/>
+    <BinderCommand name="MiSteps2" command="refresh"/>
+    <BinderCommand name="MiSteps" command="refresh"/>
+    <FunctionCommand target="checkVersion"/>
+  </Function>
+  <Rectangle w="#view_width" h="#view_height" x="0" y="0">
+    <FillShaders>
+      <LinearGradient x="0" y="(#view_height / 2)" x1="#view_width" y1="(#view_height / 2)">
+        <GradientStop color="#000000" position="0"/>
+        <GradientStop color="@bgGradientColor" position="1"/>
+      </LinearGradient>
+    </FillShaders>
+  </Rectangle>
+  <Group visibility="(! #isAOD)">
+    <Rectangle x="(#contentLeft * #_scale)" y="((6 * #dpdx) * #_scale)" w="((ifelse(#isP2,224,198) * #dpdx) * #_scale)" h="((ifelse(#isP2,50,48) * #dpdx) * #_scale)" contentDescriptionExp="formatDate(ifelse(#time_format,@talkback_date_time_24,@talkback_date_time_12),#time_sys)" alpha="0" fillColor="#000000" interceptTouch="true" touchable="true"/>
+    <Rectangle x="(#contentLeft * #_scale)" y="((ifelse(#isP2,77,82) * #dpdx) * #_scale)" w="((ifelse(#isP2,228,200) * #dpdx) * #_scale)" h="((ifelse(#isP2,131,122) * #dpdx) * #_scale)" contentDescriptionExp="ifelse((#steps_goal } 0),ifelse((#steps_count == 1),strReplaceAll(@talkback_steps_one,'STEP_COUNT',#steps_count),strReplaceAll(@talkback_steps_other,'STEP_COUNT',#steps_count)),@grant_permission)" alpha="0" fillColor="#000000" interceptTouch="true" touchable="true"/>
+  </Group>
+  <Group scale="#_scale">
+    <Group x="#contentLeft" y="(14.5 * #dpdx)" pivotX="(#contentW / 2)" pivotY="(#contentH / 2)" folmeMode="true" name="main_content">
+      <Group x="0" y="0">
+        <Text fontPath="@misansVF" size="ifelse(#isP2,36,(12 * #dpdx))" y="8" textExp="formatDate('E', #time_sys)" color="#99FFFFFF" fontPathWeight="520"/>
+        <Text x="0" y="ifelse(#isP2,60,66)" fontPath="@misansVF" size="ifelse(#isP2,(11 * #dpdx),(10 * #dpdx))" textExp="formatDate(@date_format, #time_sys)" color="#66FFFFFF" fontPathWeight="450"/>
+      </Group>
+      <Text x="#contentW2" y="(- 24)" fontPath="@misansRounded" size="ifelse(#isP2,(38 * #dpdx),(36 * #dpdx))" color="@timeColor" textExp="formatDate(ifelse(#time_format,'HH:mm','h:mm'), #time_sys)" fontPathWeight="500" align="right"/>
+      <Group x="0" y="(216 - ifelse(#isP2,28,0))">
+        <Text x="ifelse((eqs(@unit_left,'true') ** (#steps_goal } 0)),(#text_steps_unit.text_width + 7),0)" y="ifelse(((0 + #steps_goal) } 0),0,(- 10))" textExp="ifelse((#steps_goal } 0),#steps_count,'-')" fontPath="@misansRounded" size="ifelse(#isP2,(25 * #dpdx),(23 * #dpdx))" name="text_steps_count" color="#FFFFFF" fontPathWeight="430"/>
+        <Text visibility="(#steps_goal } 0)" x="ifelse(eqs(@unit_left,'true'),0,(#text_steps_count.text_width + 7))" y="((#text_steps_count.text_height / 2) - 12.5)" textExp="ifelse((#steps_count == 1),@steps_one,@steps_other)" fontPath="@misansVF" size="ifelse(#isP2,(13 * #dpdx),(12 * #dpdx))" name="text_steps_unit" color="#FFFFFF" fontPathWeight="380" alpha="153"/>
+        <Group visibility="((#steps_goal {= 0) ** (#queryDone == 1))">
+          <Text x="ifelse(eqs(@grant_permission_next_line,'1'),0,(#text_steps_count.text_width + 7))" y="((((#text_steps_count.text_height / 2) - 12.5) - (4 * #dpdx)) + ifelse(eqs(@grant_permission_next_line,'1'),(9 * #dpdx),0))" textExp="@grant_permission" fontPath="@misansVF" size="(12 * #dpdx)" name="_grant_permission_hidden" color="#FFFFFF" fontPathWeight="380" alpha="0"/>
+          <Text x="ifelse(eqs(@grant_permission_next_line,'1'),0,(#text_steps_count.text_width + 7))" y="((((#text_steps_count.text_height / 2) - 12.5) - (4 * #dpdx)) + ifelse(eqs(@grant_permission_next_line,'1'),(9 * #dpdx),0))" textExp="@grant_permission" fontPath="@misansVF" size="((min(((#contentW2 - (30 * #dpdx)) / #_grant_permission_hidden.text_width),1) * 12) * #dpdx)" color="#FFFFFF" fontPathWeight="380" alpha="153"/>
+        </Group>
+        <Image x="((#contentW2 - #barCircleR) - 5)" w="ifelse(#isP2,(31 * #dpdx),(29 * #dpdx))" h="ifelse(#isP2,(31 * #dpdx),(29 * #dpdx))" srcid="ifelse(#isAOD,0,(((#time / 45) % 30) - 1))" y="6" src="assets/step_ani/frame.png" align="center"/>
+        <Group y="(123 + ifelse(#isP2,(- 4),0))" alpha="ifelse((#isVersionOld == 1),61,255)" x="0">
+          <Group>
+            <Circle x="(#barCircleR + ((0 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((0 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((1 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((1 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((2 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((2 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((3 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((3 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((4 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((4 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((5 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((5 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((6 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((6 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((7 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((7 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((8 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((8 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((9 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((9 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((10 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((10 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((11 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((11 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((12 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((12 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((13 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((13 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((14 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((14 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((15 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((15 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((16 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((16 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((17 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((17 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((18 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((18 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((19 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((19 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((20 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((20 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((21 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((21 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((22 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((22 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((23 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((23 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((24 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((24 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((25 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((25 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((26 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((26 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((27 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((27 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((28 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((28 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((29 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((29 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((30 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((30 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((31 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((31 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((32 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((32 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((33 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((33 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((34 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((34 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((35 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((35 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((36 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((36 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((37 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((37 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((38 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((38 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((39 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((39 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((40 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((40 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((41 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((41 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((42 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((42 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((43 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((43 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((44 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((44 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((45 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((45 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((46 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((46 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+            <Circle x="(#barCircleR + ((47 % 12) * ((#barCircleR * 2) + #barCircleGap)))" y="(#barCircleR + (int((47 / 12)) * ((#barCircleR * 2) + #barCircleGap)))" r="#barCircleR" fillColor="@barColor" alpha="62" weight="0"/>
+          </Group>
+          <Group>
+            <Rectangle x="(0 * ((#barCircleR * 2) + #barCircleGap))" y="((4 - #barHighLineCircles[0]) * ((#barCircleR * 2) + #barCircleGap))" w="(#barCircleR * 2)" h="((#barHighLineCircles[0] * (#barCircleR * 2)) + ((#barHighLineCircles[0] - 1) * #barCircleGap))" cornerRadiusExp="#barCircleR" weight="0">
+              <FillShaders>
+                <LinearGradient x="#barCircleR" y="0" x1="#barCircleR" y1="((#barHighLineCircles[0] * (#barCircleR * 2)) + ((#barHighLineCircles[0] - 1) * #barCircleGap))">
+                  <GradientStop color="@barHighLineColor1" position="0"/>
+                  <GradientStop color="@barHighLineColor2" position="1"/>
+                </LinearGradient>
+              </FillShaders>
+            </Rectangle>
+            <Rectangle x="(1 * ((#barCircleR * 2) + #barCircleGap))" y="((4 - #barHighLineCircles[1]) * ((#barCircleR * 2) + #barCircleGap))" w="(#barCircleR * 2)" h="((#barHighLineCircles[1] * (#barCircleR * 2)) + ((#barHighLineCircles[1] - 1) * #barCircleGap))" cornerRadiusExp="#barCircleR" weight="0">
+              <FillShaders>
+                <LinearGradient x="#barCircleR" y="0" x1="#barCircleR" y1="((#barHighLineCircles[1] * (#barCircleR * 2)) + ((#barHighLineCircles[1] - 1) * #barCircleGap))">
+                  <GradientStop color="@barHighLineColor1" position="0"/>
+                  <GradientStop color="@barHighLineColor2" position="1"/>
+                </LinearGradient>
+              </FillShaders>
+            </Rectangle>
+            <Rectangle x="(2 * ((#barCircleR * 2) + #barCircleGap))" y="((4 - #barHighLineCircles[2]) * ((#barCircleR * 2) + #barCircleGap))" w="(#barCircleR * 2)" h="((#barHighLineCircles[2] * (#barCircleR * 2)) + ((#barHighLineCircles[2] - 1) * #barCircleGap))" cornerRadiusExp="#barCircleR" weight="0">
+              <FillShaders>
+                <LinearGradient x="#barCircleR" y="0" x1="#barCircleR" y1="((#barHighLineCircles[2] * (#barCircleR * 2)) + ((#barHighLineCircles[2] - 1) * #barCircleGap))">
+                  <GradientStop color="@barHighLineColor1" position="0"/>
+                  <GradientStop color="@barHighLineColor2" position="1"/>
+                </LinearGradient>
+              </FillShaders>
+            </Rectangle>
+            <Rectangle x="(3 * ((#barCircleR * 2) + #barCircleGap))" y="((4 - #barHighLineCircles[3]) * ((#barCircleR * 2) + #barCircleGap))" w="(#barCircleR * 2)" h="((#barHighLineCircles[3] * (#barCircleR * 2)) + ((#barHighLineCircles[3] - 1) * #barCircleGap))" cornerRadiusExp="#barCircleR" weight="0">
+              <FillShaders>
+                <LinearGradient x="#barCircleR" y="0" x1="#barCircleR" y1="((#barHighLineCircles[3] * (#barCircleR * 2)) + ((#barHighLineCircles[3] - 1) * #barCircleGap))">
+                  <GradientStop color="@barHighLineColor1" position="0"/>
+                  <GradientStop color="@barHighLineColor2" position="1"/>
+                </LinearGradient>
+              </FillShaders>
+            </Rectangle>
+            <Rectangle x="(4 * ((#barCircleR * 2) + #barCircleGap))" y="((4 - #barHighLineCircles[4]) * ((#barCircleR * 2) + #barCircleGap))" w="(#barCircleR * 2)" h="((#barHighLineCircles[4] * (#barCircleR * 2)) + ((#barHighLineCircles[4] - 1) * #barCircleGap))" cornerRadiusExp="#barCircleR" weight="0">
+              <FillShaders>
+                <LinearGradient x="#barCircleR" y="0" x1="#barCircleR" y1="((#barHighLineCircles[4] * (#barCircleR * 2)) + ((#barHighLineCircles[4] - 1) * #barCircleGap))">
+                  <GradientStop color="@barHighLineColor1" position="0"/>
+                  <GradientStop color="@barHighLineColor2" position="1"/>
+                </LinearGradient>
+              </FillShaders>
+            </Rectangle>
+            <Rectangle x="(5 * ((#barCircleR * 2) + #barCircleGap))" y="((4 - #barHighLineCircles[5]) * ((#barCircleR * 2) + #barCircleGap))" w="(#barCircleR * 2)" h="((#barHighLineCircles[5] * (#barCircleR * 2)) + ((#barHighLineCircles[5] - 1) * #barCircleGap))" cornerRadiusExp="#barCircleR" weight="0">
+              <FillShaders>
+                <LinearGradient x="#barCircleR" y="0" x1="#barCircleR" y1="((#barHighLineCircles[5] * (#barCircleR * 2)) + ((#barHighLineCircles[5] - 1) * #barCircleGap))">
+                  <GradientStop color="@barHighLineColor1" position="0"/>
+                  <GradientStop color="@barHighLineColor2" position="1"/>
+                </LinearGradient>
+              </FillShaders>
+            </Rectangle>
+            <Rectangle x="(6 * ((#barCircleR * 2) + #barCircleGap))" y="((4 - #barHighLineCircles[6]) * ((#barCircleR * 2) + #barCircleGap))" w="(#barCircleR * 2)" h="((#barHighLineCircles[6] * (#barCircleR * 2)) + ((#barHighLineCircles[6] - 1) * #barCircleGap))" cornerRadiusExp="#barCircleR" weight="0">
+              <FillShaders>
+                <LinearGradient x="#barCircleR" y="0" x1="#barCircleR" y1="((#barHighLineCircles[6] * (#barCircleR * 2)) + ((#barHighLineCircles[6] - 1) * #barCircleGap))">
+                  <GradientStop color="@barHighLineColor1" position="0"/>
+                  <GradientStop color="@barHighLineColor2" position="1"/>
+                </LinearGradient>
+              </FillShaders>
+            </Rectangle>
+            <Rectangle x="(7 * ((#barCircleR * 2) + #barCircleGap))" y="((4 - #barHighLineCircles[7]) * ((#barCircleR * 2) + #barCircleGap))" w="(#barCircleR * 2)" h="((#barHighLineCircles[7] * (#barCircleR * 2)) + ((#barHighLineCircles[7] - 1) * #barCircleGap))" cornerRadiusExp="#barCircleR" weight="0">
+              <FillShaders>
+                <LinearGradient x="#barCircleR" y="0" x1="#barCircleR" y1="((#barHighLineCircles[7] * (#barCircleR * 2)) + ((#barHighLineCircles[7] - 1) * #barCircleGap))">
+                  <GradientStop color="@barHighLineColor1" position="0"/>
+                  <GradientStop color="@barHighLineColor2" position="1"/>
+                </LinearGradient>
+              </FillShaders>
+            </Rectangle>
+            <Rectangle x="(8 * ((#barCircleR * 2) + #barCircleGap))" y="((4 - #barHighLineCircles[8]) * ((#barCircleR * 2) + #barCircleGap))" w="(#barCircleR * 2)" h="((#barHighLineCircles[8] * (#barCircleR * 2)) + ((#barHighLineCircles[8] - 1) * #barCircleGap))" cornerRadiusExp="#barCircleR" weight="0">
+              <FillShaders>
+                <LinearGradient x="#barCircleR" y="0" x1="#barCircleR" y1="((#barHighLineCircles[8] * (#barCircleR * 2)) + ((#barHighLineCircles[8] - 1) * #barCircleGap))">
+                  <GradientStop color="@barHighLineColor1" position="0"/>
+                  <GradientStop color="@barHighLineColor2" position="1"/>
+                </LinearGradient>
+              </FillShaders>
+            </Rectangle>
+            <Rectangle x="(9 * ((#barCircleR * 2) + #barCircleGap))" y="((4 - #barHighLineCircles[9]) * ((#barCircleR * 2) + #barCircleGap))" w="(#barCircleR * 2)" h="((#barHighLineCircles[9] * (#barCircleR * 2)) + ((#barHighLineCircles[9] - 1) * #barCircleGap))" cornerRadiusExp="#barCircleR" weight="0">
+              <FillShaders>
+                <LinearGradient x="#barCircleR" y="0" x1="#barCircleR" y1="((#barHighLineCircles[9] * (#barCircleR * 2)) + ((#barHighLineCircles[9] - 1) * #barCircleGap))">
+                  <GradientStop color="@barHighLineColor1" position="0"/>
+                  <GradientStop color="@barHighLineColor2" position="1"/>
+                </LinearGradient>
+              </FillShaders>
+            </Rectangle>
+            <Rectangle x="(10 * ((#barCircleR * 2) + #barCircleGap))" y="((4 - #barHighLineCircles[10]) * ((#barCircleR * 2) + #barCircleGap))" w="(#barCircleR * 2)" h="((#barHighLineCircles[10] * (#barCircleR * 2)) + ((#barHighLineCircles[10] - 1) * #barCircleGap))" cornerRadiusExp="#barCircleR" weight="0">
+              <FillShaders>
+                <LinearGradient x="#barCircleR" y="0" x1="#barCircleR" y1="((#barHighLineCircles[10] * (#barCircleR * 2)) + ((#barHighLineCircles[10] - 1) * #barCircleGap))">
+                  <GradientStop color="@barHighLineColor1" position="0"/>
+                  <GradientStop color="@barHighLineColor2" position="1"/>
+                </LinearGradient>
+              </FillShaders>
+            </Rectangle>
+            <Rectangle x="(11 * ((#barCircleR * 2) + #barCircleGap))" y="((4 - #barHighLineCircles[11]) * ((#barCircleR * 2) + #barCircleGap))" w="(#barCircleR * 2)" h="((#barHighLineCircles[11] * (#barCircleR * 2)) + ((#barHighLineCircles[11] - 1) * #barCircleGap))" cornerRadiusExp="#barCircleR" weight="0">
+              <FillShaders>
+                <LinearGradient x="#barCircleR" y="0" x1="#barCircleR" y1="((#barHighLineCircles[11] * (#barCircleR * 2)) + ((#barHighLineCircles[11] - 1) * #barCircleGap))">
+                  <GradientStop color="@barHighLineColor1" position="0"/>
+                  <GradientStop color="@barHighLineColor2" position="1"/>
+                </LinearGradient>
+              </FillShaders>
+            </Rectangle>
+          </Group>
+        </Group>
+        <Group visibility="((#isVersionOld != 1) || (#steps_goal == 0))" y="(((135 + ifelse(#isP2,0,0)) + ((4 * #barCircleR) * 2)) + (3 * #barCircleGap))" alpha="ifelse((#isVersionOld == 1),61,255)" x="0">
+          <Text x="0" y="0" fontPath="@misansVF" size="ifelse(#isP2,(11 * #dpdx),(10 * #dpdx))" text="00:00" alpha="125" color="@barTextColor" fontPathWeight="380"/>
+          <Text x="(#contentW2 / 2)" y="0" fontPath="@misansVF" size="ifelse(#isP2,(11 * #dpdx),(10 * #dpdx))" text="12:00" alpha="125" color="@barTextColor" fontPathWeight="380" align="center"/>
+          <Text x="(#contentW2 + ifelse(#isP2,2,0))" y="0" fontPath="@misansVF" size="ifelse(#isP2,(11 * #dpdx),(10 * #dpdx))" text="24:00" alpha="125" color="@barTextColor" fontPathWeight="380" align="right"/>
+        </Group>
+        <Group visibility="((#isVersionOld == 1) ** (#steps_goal } 0))" y="(((((135 + ifelse(#isP2,0,0)) + ((4 * #barCircleR) * 2)) + (3 * #barCircleGap)) - (4 * #dpdx)) + (6 * #dpdx))">
+          <Text y="0" textExp="@update_app" fontPath="@misansVF" size="ifelse(#isP2,(12 * #dpdx),(11 * #dpdx))" name="_hidden_text" x="0" color="#FFFFFF" fontPathWeight="450" alpha="0"/>
+          <Text y="0" textExp="@update_app" fontPath="@misansVF" size="((ifelse(#isP2,(12 * #dpdx),(11 * #dpdx)) * (#contentW2 - (4 * #dpdx))) / #_hidden_text.text_width)" x="0" color="#FFFFFF" fontPathWeight="450" alpha="255*0.4"/>
+        </Group>
+      </Group>
+    </Group>
+  </Group>
+  <Rectangle w="#view_width" h="#view_height" folmeMode="true" name="aod_bg" fillColor="#000000" alpha="0"/>
+  <Group visibility="0">
+    <Text x="(#contentW / 2)" y="40" textExp="((((('_fps_flag：' + #_fps_flag) + ', R： ') + #_resume) + ', Q： ') + #_query)" size="20" color="#ffffff"/>
+  </Group>
+  <Group>
+    <FolmeState name="folme_state_0" scaleX="0.97" scaleY="0.97"/>
+    <FolmeConfig name="folme_config_0" ease="-2, 1, 0.5"/>
+    <FolmeState name="folme_state_1" alpha="(255 * 0.4)"/>
+    <FolmeConfig name="folme_config_1" ease="-2, 1,0.72" onComplete="'folme_oncomplete_2'"/>
+    <Function name="folme_oncomplete_2">
+      <VariableCommand name="aodDone" expression="1" type="number"/>
+      <FrameRateCommand rate="0"/>
+    </Function>
+    <FolmeState name="folme_state_2" scaleX="1" scaleY="1"/>
+    <FolmeConfig name="folme_config_2" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_3" alpha="0"/>
+    <FolmeConfig name="folme_config_3" ease="-2, 1,0.5" onComplete="'folme_oncomplete_4'"/>
+    <Function name="folme_oncomplete_4">
+      <FunctionCommand target="setAniRate"/>
+    </Function>
+  </Group>
+  <VariableBinders>
+    <ContentProviderBinder name="MiSteps" uriExp="'content://com.mi.health.provider.main/activity/steps/brief'" columns="steps,goal">
+      <Variable name="steps_count" column="steps" type="number"/>
+      <Variable name="steps_goal" column="goal" type="number"/>
+      <Trigger>
+        <VariableCommand name="queryDone" expression="1" type="number"/>
+      </Trigger>
+    </ContentProviderBinder>
+    <ContentProviderBinder name="MiSteps2" uriExp="'content://com.mi.health.provider.main/activity/steps/timeline'" order="time ASC" columns="steps,time">
+      <Variable name="halfHourStepsStr" column="steps" type="string[]"/>
+      <Variable name="halfHourTimesStr" column="time" type="string[]"/>
+      <Trigger>
+        <VariableCommand name="i" type="number" expression="0"/>
+        <LoopCommand loopCondition="(#i { 48)" count="999">
+          <VariableCommand name="halfHourSteps" expression="0" type="number[]" index="#i"/>
+          <VariableCommand name="i" expression="#i + 1" type="number"/>
+        </LoopCommand>
+        <VariableCommand name="i" type="number" expression="0"/>
+        <LoopCommand loopCondition="(#i { 48)" count="999">
+          <MultiCommand condition="(preciseeval(@halfHourStepsStr[#i],0) } 0)">
+            <VariableCommand name="halfHourSteps" expression="preciseeval(@halfHourStepsStr[#i],0)" type="number[]" index="int((((preciseeval(@halfHourTimesStr[#i],0) - #time0) + 5) / (30 * 60)))"/>
+          </MultiCommand>
+          <VariableCommand name="i" expression="#i + 1" type="number"/>
+        </LoopCommand>
+        <FunctionCommand target="updateStepBars"/>
+      </Trigger>
+    </ContentProviderBinder>
+  </VariableBinders>
+  <ExternalCommands>
+    <Trigger action="enterAod">
+      <FrameRateCommand rate="120"/>
+      <VariableCommand name="isAOD" expression="1" type="number"/>
+      <VariableCommand name="aodDone" expression="0" type="number"/>
+      <FolmeCommand target="main_content" config="'folme_config_0'" states="'folme_state_0'" command="to"/>
+      <FolmeCommand target="aod_bg" config="'folme_config_1'" states="'folme_state_1'" command="to"/>
+      <ExternCommand command="__clearTalkback"/>
+    </Trigger>
+    <Trigger action="exitAod">
+      <VariableCommand name="isAOD" expression="0" type="number"/>
+      <VariableCommand name="aodDone" expression="0" type="number"/>
+      <FrameRateCommand rate="120"/>
+      <FunctionCommand target="querySteps"/>
+      <FolmeCommand target="main_content" config="'folme_config_2'" states="'folme_state_2'" command="to"/>
+      <FolmeCommand target="aod_bg" config="'folme_config_3'" states="'folme_state_3'" command="to"/>
+    </Trigger>
+    <Trigger action="resume">
+      <VariableCommand name="_resume" expression="(#_resume + 1)" type="number"/>
+      <IfCommand ifCondition="#isAOD">
+        <Consequent>
+          <MultiCommand condition="(! #aodDone)">
+            <FunctionCommand target="querySteps"/>
+          </MultiCommand>
+        </Consequent>
+        <Alternate>
+          <FunctionCommand target="setAniRate"/>
+          <FunctionCommand target="querySteps"/>
+        </Alternate>
+      </IfCommand>
+    </Trigger>
+    <Trigger action="pause"/>
+    <Trigger action="appUninstalled">
+      <FunctionCommand target="querySteps"/>
+    </Trigger>
+  </ExternalCommands>
+</Widget>

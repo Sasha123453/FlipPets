@@ -1,0 +1,207 @@
+<Widget frameRate="0" scaleByDensity="false" screenWidth="1080" version="2" useVariableUpdater="HyperMaterial,DateTime.Minute">
+  <Var name="assets" expression="'seal'" type="string"/>
+  <Var name="deskSeparatorColor" expression="'#CC8080FF'" type="string"/>
+  <Var name="aodSeparatorColor" expression="'#CCCDCDFF'" type="string"/>
+  <Var name="sr" type="number" expression="(#view_width / 336)"/>
+  <Var name="timeWidth" type="number" expression="(44 * #sr)"/>
+  <Var name="timeHeight" type="number" expression="(52 * #sr)"/>
+  <Var name="pagWidth" type="number" expression="(350 * #sr)"/>
+  <Var name="pagHeight" type="number" expression="(215 * #sr)"/>
+  <Var name="pet_complete" type="number" expression="0" const="true"/>
+  <Var name="petCount" type="number" expression="ifelse(eqs(@assets,'seal'),11,12)"/>
+  <Var name="aod_state" type="number" expression="0" const="true"/>
+  <Var name="pause_state" type="number" expression="0" const="true"/>
+  <Var name="pagIndex" type="number" expression="int((rand() * #petCount))" const="true"/>
+  <Var name="next_pag" type="number" expression="#pagIndex" const="true"/>
+  <Var name="is_desk" type="number" expression="1" const="true"/>
+  <Var name="is_aod" type="number" expression="0" const="true"/>
+  <Var name="edit" type="number" expression="0" const="true"/>
+  <Var name="frame_down" type="number" expression="0" const="true"/>
+  <Var name="deskOtherBlurColors" type="string[]" values="'#4DFFFFFF','#99FFFFFF'"/>
+  <Var name="deskBirdBlurColors" type="string[]" values="'#66FFFFFF','#99FFFFFF'"/>
+  <Var name="generalColorModes" type="number[]" values="15,15"/>
+  <Var name="sepBlurColors" type="string[]" values="'#4DFFFFFF','#99FFFFFF'"/>
+  <Var name="sepColorModes" type="number[]" values="3,15,15"/>
+  <Var name="aodTimerColor" type="string" expression="'#CCFFFFFF'"/>
+  <Function name="switchStateAod">
+    <VariableCommand name="frame_down" expression="1" type="number"/>
+    <VariableCommand name="is_aod" expression="1" type="number"/>
+    <FrameRateCommand rate="120"/>
+    <ExternCommand command="AnimeState" strPara="1"/>
+    <FolmeCommand target="time_desk" config="'folme_config_0'" states="'folme_state_0'" command="to"/>
+    <FolmeCommand target="time_desk_separator" config="'folme_config_1'" states="'folme_state_1'" command="to"/>
+    <FolmeCommand target="time_aod" config="'folme_config_2'" states="'folme_state_2'" command="to"/>
+    <FolmeCommand target="time_aod_separator" config="'folme_config_3'" states="'folme_state_3'" command="to"/>
+    <FolmeCommand target="aod_bg" config="'folme_config_4'" states="'folme_state_4'" command="to"/>
+  </Function>
+  <Function name="switchStateDesk">
+    <VariableCommand name="is_desk" expression="1" type="number"/>
+    <VariableCommand name="frame_down" expression="1" type="number"/>
+    <FrameRateCommand rate="120"/>
+    <ExternCommand command="AnimeState" strPara="1"/>
+    <FolmeCommand target="time_desk" config="'folme_config_5'" states="'folme_state_5'" command="to"/>
+    <FolmeCommand target="time_desk_separator" config="'folme_config_6'" states="'folme_state_6'" command="to"/>
+    <FolmeCommand target="time_aod" config="'folme_config_7'" states="'folme_state_7'" command="to"/>
+    <FolmeCommand target="time_aod_separator" config="'folme_config_8'" states="'folme_state_8'" command="to"/>
+    <FolmeCommand target="aod_bg" config="'folme_config_9'" states="'folme_state_9'" command="to"/>
+  </Function>
+  <Function name="petPagCommand">
+    <FrameRateCommand rate="120"/>
+    <VariableCommand name="index" type="number" expression="0"/>
+    <LoopCommand loopCondition="((#index { 10) ** eq(#next_pag,#pagIndex))" count="999">
+      <VariableCommand name="next_pag" expression="int((rand() * #petCount))" type="number"/>
+      <VariableCommand name="index" expression="#index + 1" type="number"/>
+    </LoopCommand>
+    <VariableCommand name="pagIndex" expression="#next_pag" type="number"/>
+    <PagCommand target="a" command="play"/>
+  </Function>
+  <Function name="onComplete">
+    <VariableCommand name="pet_complete" expression="1" type="number"/>
+    <MultiCommand condition="(! #frame_down)">
+      <FrameRateCommand rate="0"/>
+    </MultiCommand>
+  </Function>
+  <Function name="onClick">
+    <MultiCommand condition="((#pet_complete == 1) ** (! #aod_state))">
+      <VariableCommand name="pet_complete" expression="0" type="number"/>
+      <FunctionCommand target="petPagCommand"/>
+    </MultiCommand>
+  </Function>
+  <Image w="#view_width" h="#view_height" srcExp="(('assets/' + @assets) + '/bg.webp')"/>
+  <BlurContainer x="(#view_width - (123 * #sr))" y="(6 * #sr)" w="(117 * #sr)" h="(106 * #sr)" visibility="#is_desk" name="blurContainer1" blurRadius="30"/>
+  <Layer blurColors="@deskSeparatorColor,@sepBlurColors[0],@sepBlurColors[1]" colorModes="#sepColorModes[0],#sepColorModes[1],#sepColorModes[2]" x="(#view_width - (123 * #sr))" y="(6 * #sr)" w="(117 * #sr)" h="(106 * #sr)" visibility="#is_desk" frameRate="-1" reuseContainer="true" useContainer="'blurContainer1'">
+    <Group folmeMode="true" name="time_desk_separator">
+      <Image x="(86 * #sr)" y="(32 * #sr)" w="(8 * #sr)" h="(20 * #sr)" srcExp="(('assets/' + @assets) + '/desk/time_separator.png')"/>
+    </Group>
+  </Layer>
+  <Layer blurColors="ifelse(eqs(@assets,'bird'),@deskBirdBlurColors[0],@deskOtherBlurColors[0]),ifelse(eqs(@assets,'bird'),@deskBirdBlurColors[1],@deskOtherBlurColors[1])" colorModes="#generalColorModes[0],#generalColorModes[1]" x="(#view_width - (123 * #sr))" y="(6 * #sr)" w="(117 * #sr)" h="(106 * #sr)" visibility="#is_desk" frameRate="-1" reuseContainer="true" useContainer="'blurContainer1'">
+    <Group folmeMode="true" name="time_desk">
+      <Group w="(117 * #sr)" h="(106 * #sr)" contentDescriptionExp="formatDate(ifelse(#time_format,'HH:mm','hh:mm'),#time_sys)" visibility="eq(#aod_state,0)" x="0" y="0" interceptTouch="true" touchable="true"/>
+      <Image w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/desk/hour_0/temp_') + substr(formatDate(ifelse(#time_format,'HH','hh'),#time_sys),0,1)) + '.png')"/>
+      <Image x="(39 * #sr)" y="(4 * #sr)" w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/desk/hour_1/temp_') + substr(formatDate(ifelse(#time_format,'HH','hh'),#time_sys),1,1)) + '.png')"/>
+      <Image x="(39 * #sr)" y="(48 * #sr)" w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/desk/minute_0/temp_') + substr(formatDate('mm',#time_sys),0,1)) + '.png')"/>
+      <Image x="(73 * #sr)" y="(48 * #sr)" w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/desk/minute_1/temp_') + substr(formatDate('mm',#time_sys),1,1)) + '.png')"/>
+    </Group>
+  </Layer>
+  <Layer frameRate="-1">
+    <PagView w="#pagWidth" h="#pagHeight" x="(#view_width + 1)" y="(#view_height + 3)" touchable="true" srcExp="(((('assets/' + @assets) + '/pag_') + #pagIndex) + '.pag')" name="a" loop="1" layerType="top" align="right" alignV="bottom" setPath="true">
+      <Triggers>
+        <Trigger action="complete">
+          <FunctionCommand target="onComplete"/>
+        </Trigger>
+      </Triggers>
+    </PagView>
+    <Button w="#view_width" h="#view_height" x="0" y="0" interceptTouch="true">
+      <Triggers>
+        <Trigger action="up">
+          <FunctionCommand target="onClick"/>
+        </Trigger>
+      </Triggers>
+    </Button>
+  </Layer>
+  <Layer frameRate="-1">
+    <Rectangle w="#view_width" h="#view_height" x="0" y="0" alpha="(#aod_state * 255)" folmeMode="true" name="aod_bg" fillColor="#000000"/>
+  </Layer>
+  <BlurContainer x="(#view_width - (123 * #sr))" y="(6 * #sr)" w="(117 * #sr)" h="(106 * #sr)" visibility="#is_aod" name="blurContainer2" blurRadius="10"/>
+  <Layer blurColors="@aodSeparatorColor" x="(#view_width - (123 * #sr))" y="(6 * #sr)" w="(117 * #sr)" h="(106 * #sr)" visibility="#is_aod" frameRate="-1" colorModes="3" reuseContainer="true" useContainer="'blurContainer2'">
+    <Group alpha="(#aod_state * 255)" folmeMode="true" name="time_aod_separator">
+      <Image x="(86 * #sr)" y="(32 * #sr)" w="(8 * #sr)" h="(20 * #sr)" srcExp="(('assets/' + @assets) + '/aod/time_separator.png')"/>
+    </Group>
+  </Layer>
+  <Layer blurColors="@aodTimerColor" x="(#view_width - (123 * #sr))" y="(6 * #sr)" w="(117 * #sr)" h="(106 * #sr)" visibility="#is_aod" frameRate="-1" colorModes="3" reuseContainer="true" useContainer="'blurContainer2'">
+    <Group alpha="(#aod_state * 255)" folmeMode="true" name="time_aod">
+      <Image w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/aod/hour_0/temp_') + substr(formatDate(ifelse(#time_format,'HH','hh'),#time_sys),0,1)) + '.png')"/>
+      <Image x="(39 * #sr)" y="(4 * #sr)" w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/aod/hour_1/temp_') + substr(formatDate(ifelse(#time_format,'HH','hh'),#time_sys),1,1)) + '.png')"/>
+      <Image x="(39 * #sr)" y="(48 * #sr)" w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/aod/minute_0/temp_') + substr(formatDate('mm',#time_sys),0,1)) + '.png')"/>
+      <Image x="(73 * #sr)" y="(48 * #sr)" w="#timeWidth" h="#timeHeight" srcExp="(((('assets/' + @assets) + '/aod/minute_1/temp_') + substr(formatDate('mm',#time_sys),1,1)) + '.png')"/>
+    </Group>
+  </Layer>
+  <Group>
+    <FolmeState name="folme_state_0" alpha="0"/>
+    <FolmeConfig name="folme_config_0" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_1" alpha="0"/>
+    <FolmeConfig name="folme_config_1" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_2" alpha="255"/>
+    <FolmeConfig name="folme_config_2" ease="-2, 1,0.72" onComplete="'folme_oncomplete_3'"/>
+    <Function name="folme_oncomplete_3">
+      <VariableCommand name="is_desk" expression="0" type="number"/>
+      <VariableCommand name="frame_down" expression="0" type="number"/>
+      <ExternCommand command="AnimeState" strPara="0"/>
+      <FrameRateCommand rate="0"/>
+    </Function>
+    <FolmeState name="folme_state_3" alpha="255"/>
+    <FolmeConfig name="folme_config_3" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_4" alpha="(255 * 0.4)"/>
+    <FolmeConfig name="folme_config_4" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_5" alpha="255"/>
+    <FolmeConfig name="folme_config_5" ease="-2, 1,0.72" onComplete="'folme_oncomplete_6'"/>
+    <Function name="folme_oncomplete_6">
+      <VariableCommand name="is_aod" expression="0" type="number"/>
+      <VariableCommand name="frame_down" expression="0" type="number"/>
+      <ExternCommand command="AnimeState" strPara="0"/>
+      <FrameRateCommand rate="0"/>
+    </Function>
+    <FolmeState name="folme_state_6" alpha="255"/>
+    <FolmeConfig name="folme_config_6" ease="-2, 1,0.72"/>
+    <FolmeState name="folme_state_7" alpha="0"/>
+    <FolmeConfig name="folme_config_7" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_8" alpha="0"/>
+    <FolmeConfig name="folme_config_8" ease="-2, 1,0.5"/>
+    <FolmeState name="folme_state_9" alpha="0"/>
+    <FolmeConfig name="folme_config_9" ease="-2, 1,0.5"/>
+  </Group>
+  <ExternalCommands>
+    <Trigger action="init">
+      <FrameRateCommand rate="120"/>
+      <FunctionCommand target="petPagCommand"/>
+    </Trigger>
+    <Trigger action="resume">
+      <PagCommand target="a" command="setProgress" params="'0'"/>
+      <MultiCommand condition="(#aod_state == 0)">
+        <FrameRateCommand rate="120"/>
+        <VariableCommand name="pause_state" expression="0" type="number"/>
+        <VariableCommand name="pet_complete" expression="0" type="number"/>
+        <FunctionCommand target="petPagCommand"/>
+      </MultiCommand>
+    </Trigger>
+    <Trigger action="play">
+      <FrameRateCommand rate="120"/>
+      <PagCommand target="a" command="setProgress" params="'0'"/>
+      <PagCommand target="a" command="play"/>
+    </Trigger>
+    <Trigger action="enterEdit">
+      <MultiCommand condition="eq(#selected,0)">
+        <PagCommand target="a" command="setProgress" params="'0'"/>
+        <PagCommand target="a" command="pause"/>
+        <VariableCommand name="pet_complete" expression="1" type="number"/>
+        <FrameRateCommand rate="0"/>
+      </MultiCommand>
+      <VariableCommand name="edit" expression="1" type="number"/>
+    </Trigger>
+    <Trigger action="exitEdit">
+      <MultiCommand condition="eq(#pet_complete,1)">
+        <FunctionCommand target="petPagCommand"/>
+        <VariableCommand name="pet_complete" expression="0" type="number"/>
+      </MultiCommand>
+      <VariableCommand name="edit" expression="0" type="number"/>
+    </Trigger>
+    <Trigger action="pause">
+      <VariableCommand name="pause_state" expression="1" type="number"/>
+      <PagCommand target="a" command="pause"/>
+      <FrameRateCommand rate="0"/>
+    </Trigger>
+    <Trigger action="enterAod">
+      <FunctionCommand target="switchStateAod"/>
+      <VariableCommand name="aod_state" expression="1" type="number"/>
+    </Trigger>
+    <Trigger action="exitAod">
+      <FunctionCommand target="switchStateDesk"/>
+      <VariableCommand name="aod_state" expression="0" type="number"/>
+      <MultiCommand condition="((#pet_complete == 1) || (#pause_state == 1))">
+        <VariableCommand name="pause_state" expression="0" type="number"/>
+        <VariableCommand name="pet_complete" expression="0" type="number"/>
+        <FunctionCommand target="petPagCommand"/>
+      </MultiCommand>
+    </Trigger>
+  </ExternalCommands>
+</Widget>

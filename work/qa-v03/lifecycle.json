@@ -1,0 +1,64 @@
+{
+  "shizukuShellUidVerified": 2000,
+  "shizukuStartNonRuyiRefused": true,
+  "shizukuStatusStop": true,
+  "shizukuTemporaryBridgeExitsAfterEachCommand": true,
+  "galleryFavoritesSearch": true,
+  "hardware": "emulator only",
+  "diagnosticExportWithoutRoot": true,
+  "diagnosticExportHasSavedEventsShizukuAndOwnLogcat": true,
+  "wallpaperAppliedComponentVerified": true,
+  "wallpaperPagCanvasMp4Transitions": [
+    {
+      "type": "pag",
+      "visiblePixels": true,
+      "framesDiffer": true,
+      "expectedMotion": true
+    },
+    {
+      "type": "mp4",
+      "visiblePixels": true,
+      "framesDiffer": true,
+      "expectedMotion": true
+    },
+    {
+      "type": "signature",
+      "visiblePixels": true,
+      "framesDiffer": false,
+      "expectedMotion": false
+    },
+    {
+      "type": "clock-return",
+      "visiblePixels": true,
+      "framesDiffer": true,
+      "expectedMotion": true
+    }
+  ],
+  "photoImportThroughAndroidDocumentPicker": true,
+  "twoVirtualDisplays": true,
+  "outerResolution": "1392x1208",
+  "protectedStopClosesCoverPreservesManualPreview": true,
+  "rebootBootCount": 4,
+  "selectionSurvivesReboot": true,
+  "photoSurvivesReboot": true,
+  "photoCropMeanDifference": 0.0,
+  "favoritesSurviveReboot": true,
+  "journalSurvivesReboot": true,
+  "wallpaperSurvivesReboot": true,
+  "shizukuRequiresRestartAfterReboot": true,
+  "exportWorksWithoutShizuku": true,
+  "finalWallpaperHideReleaseResume": [
+    {
+      "type": "pag-final",
+      "resumedVisibleAndMoving": true
+    },
+    {
+      "type": "mp4-final",
+      "resumedVisibleAndMoving": true
+    },
+    {
+      "type": "clock-final",
+      "resumedVisibleAndMoving": true
+    }
+  ]
+}
