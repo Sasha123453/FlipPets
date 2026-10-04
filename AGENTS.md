@@ -50,6 +50,14 @@ animations and native integration. New modes must be explicit user choices.
   pixels. Do not describe it as fixed. MP4 avatars retain opaque source rectangles.
   Ordinary PAG live wallpaper shares that geometry; its direct-Surface MP4 path
   still has the earlier placement and must not be claimed camera-safe.
+- Version1.0 adds explicit per-pet With clock / Without clock profiles in
+  `scene-ID` preferences. The default clock geometry is exactly0.9.1. Clockless
+  enlarges on the right using fixed face guides; round pets remain width-limited.
+  Manual scale60–160% and X/Y±25% are relative to that mode's automatic placement.
+  The dialog reparents the existing preview/decoder; its local draft must never
+  affect the cover before Apply. Cancel restores the preview; reset affects only
+  the selected mode. Clockless releases clock assets and skips minute redraws.
+  Photos, compositions and Flowing glitter retain their dedicated controls.
 - Keep the cover task separate from Main. `CoverGuard` is an enabled-session
   foreground service, not a frame loop. Closing Main should retain the cover;
   explicit Stop must close only our tasks and signal the shell supervisor.
@@ -77,6 +85,13 @@ animations and native integration. New modes must be explicit user choices.
   (68 checks), `qaSwitch` (15 transitions), `qaUtilities` (15 checks). Run UI and
   utility QA separately, wait for completion, and pull each named JSON. Check
   APK SHA, counts, failures, and skipped tests before accepting results.
+- Version1.0 additionally requires `qaPetLayout` on Main:19 real dialog/control,
+  renderer matrix and preference-restoration checks. Use `run_pet_layout_qa.py`
+  separately. Clear only our Main task's stale QA launch extras when restarting
+  normal UI tests. Final1.0 passed287 APK checks and6 virtual-cover lifecycle
+  checks, plus1,076 source geometry assertions; new physical layout is unverified.
+  Version1.0 was installed as an update on MIX Flip and exact installed APK SHA
+  was verified; `hardware-install-v100.json` is installation-only evidence.
 - Utility QA uses a synthetic MediaSession through the real notification
   listener. Failure to discover it must not become a mocked pass.
 - `work/tests/runtime_cover_qa.py` tests virtual secondary display, Main task
@@ -123,3 +138,10 @@ timeout) after the rootless power audit. An app-only launch button is not accept
 `cmd display power-off 0` left mainOFF/coverON while PowerManager remained Awake;
 it is not secure sleep/AOD proof. Preserve native Power semantics, avoid repeated
 wake/ON/brightness hacks, and consult `docs/independent-display-power.md`/`TODO.md`.
+
+Xiaomi18Pro artwork is deferred to the next version by the user's request.
+The resumable partial OTA and checkpoint are local/ignored. Only payload metadata
+has been verified so far; the complete ZIP and selected partition hashes have
+not. See `docs/donor18-resource-import.md`; do not import or claim new18Pro assets
+in1.0. Preserve original catalogue IDs and require verified source hashes/MAML
+before any later selective import.

@@ -10,14 +10,31 @@ interface/AOD. No donor firmware is flashed.
 The default folded path remains Xiaomi's own cover interface, secure lock screen and
 AOD. The next priority is optional animated cover-lock wallpaper through Xiaomi's
 stock wallpaper editor/engine, so the native system handles folding and persistence.
-Version0.9.1 does not implement that native export/apply path. The native tiny editor
+Version1.0 does not implement that native export/apply path. The native tiny editor
 accepted a donor-based preview, but animation and safe apply/restore remain unverified;
 this folded-lock work is deferred at the user's request. See the
 [folded wallpaper research](docs/folded-wallpaper-options.md) and
 [donor-based roadmap](docs/cover-screen-research.md). Optional utility cards are a
 secondary addition; stock folded widgets already provide many comparable functions.
 
-## Version 0.9.1
+## Version 1.0
+
+- Each pet has explicit **With clock / Without clock** variants, selected with
+  the **Вариант и положение** button beside the preview. With clock keeps the exact
+  default size and position from0.9.1. Without clock enlarges the pet on the right,
+  preserving proportions and using fixed face-placement guides; round characters
+  reach the available width before they can fill the panel height.
+- Optional scale and horizontal/vertical position are saved separately per pet
+  and variant. The dialog reuses the existing virtual-cover renderer. Changes
+  affect only that preview until **Apply**; **Cancel** discards them. **Automatic**
+  resets the selected variant's manual offsets and scale, saved on Apply.
+  Camera circles are schematic: manually adjusted poses still need a phone check.
+- Without clock hides only the app's clock, skips clock-digit loading and minute
+  redraws. Clocks already encoded inside a video remain. Photos, compositions and
+  Flowing glitter keep their existing layouts. Ordinary PAG live wallpaper shares
+  saved placement; its direct-Surface MP4 path still uses the earlier placement.
+
+Retained from0.9.1:
 
 - Cover pets use a fixed subject focus per family and uniform bottom-right placement.
   Most are10% larger than intermediate0.9; Coco is enlarged further to fill the
@@ -88,10 +105,28 @@ python -X utf8 work/package_release.py --qa-dir work/qa-v03/device-files
 ```
 
 Packaging refuses missing, failed, incorrectly counted or stale SHA-bound results.
-Version0.9.1 requires a fresh170/68/15/15 run (268 checks) against its exact APK SHA.
-The current run passed268 render/UI/utility checks,582 geometry assertions and
+Version1.0 requires fresh170/68/15/15 renderer/UI/utility results and19 layout-dialog
+checks against its exact APK SHA, plus the virtual-cover lifecycle checks. Run the
+layout checks separately, while no other emulator UI QA is running:
+
+```powershell
+python -X utf8 work/tests/run_pet_layout_qa.py
+```
+
+The runner explicitly guards `emulator-5554`, removes its old result, installs the
+current APK, tests real dialog controls, and pulls `pet-layout-qa.json`. It rejects
+an incorrect SHA, missing checks, failures and skips. Source geometry tests now
+pass1,076 assertions; this does not prove physical camera clearance. Version1.0
+The final1.0 APK passed287 renderer/UI/utility/layout checks and6 virtual-cover
+lifecycle checks. Both modes persisted after force-stop/relaunch through real UI.
+Five screenshots were inspected. Version1.0 was installed as an update on MIX Flip;
+version/code and installed APK SHA were verified. This is installation evidence only.
+Current physical camera/hinge/battery validation
+remains pending; older phone reports do not validate the new modes.
+
+Historical0.9.1 passed268 render/UI/utility checks,582 geometry assertions and
 6 virtual-cover lifecycle checks. Geometry uses offline original-asset sampling.
-The phone has0.9.1 installed; current evidence is limited to both visible activities,
+Its phone evidence is limited to both visible activities,
 foreground service, Charlie geometry and short process CPU/PSS samples. New physical
 fold/reboot and battery stability remain unverified.
 Version0.8 passed the full emulator set under its original SHA. Emulator helpers explicitly target

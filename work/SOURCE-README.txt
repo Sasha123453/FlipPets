@@ -38,6 +38,8 @@ Current runtime QA (emulator only; execute separately, wait for each fresh file)
     -> ui-switch-qa.json, 15 transitions
   adb -s emulator-5554 shell am start -n org.flippets.app/.PetActivity --ez qaUtilities true
     -> utility-qa.json, 15 checks with an enabled notification listener
+  python -X utf8 work/tests/run_pet_layout_qa.py
+    -> pet-layout-qa.json, 19 real dialog controls/rendering/restoration checks
 Files: /sdcard/Android/data/org.flippets.app/files/. Pull each named file explicitly.
 QA extras are gated to ranchu/goldfish. Utility QA uses its own synthetic MediaSession
 without audio/network, exercises real callbacks, and restores utility/timer/selection
@@ -45,10 +47,10 @@ preferences. Missing notification-listener discovery is a failure, not mocked su
 
 Packaging (run only after all fresh outputs exist):
   python -X utf8 work/package_release.py --qa-dir work/qa-v03/device-files
-  optional: --profile work/qa-v03/resource-profile-v08.json
+  optional: --profile work/qa-v03/resource-profile-v100.json
   optional: --current-evidence PATH_TO_SHA_BOUND_JSON [MORE_JSON...]
 This replaces report.html, Verification.json/zip and source/resources ZIPs. It checks
-APK version0.8, exact QA SHA/count/failures, APK asset equality, composition image
+APK version1.0, exact QA SHA/count/failures, APK asset equality, composition image
 hashes, signature, zipalign and native ELF page alignment. Historical hardware,
 resource and lifecycle data are labelled with their original SHA, not current evidence.
 Only explicit public evidence/source files are bundled; no raw phone dumps or keys.

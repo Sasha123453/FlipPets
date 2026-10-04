@@ -1,0 +1,38 @@
+{
+  "apkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
+  "environment": "Standard Android16 API36 x86_64 emulator; virtual cover1208x1392/520 and Main1224x2912/520, not HyperOS",
+  "tested": 6,
+  "failed": 0,
+  "results": [
+    {
+      "test": "cover_starts_foreground_service",
+      "ok": true,
+      "detail": "Real secondary-display coverSession launch, no qaGuard extra; wait for observed foreground and visible activity, bounded8s"
+    },
+    {
+      "test": "main_home_cover_continues",
+      "ok": true,
+      "detail": "Virtual cover remains visible after Main goes Home"
+    },
+    {
+      "test": "main_task_removed_cover_continues",
+      "ok": true,
+      "detail": "Only own Main root task removed through Android task manager; cover survives"
+    },
+    {
+      "test": "fold_close_retains_foreground_session",
+      "ok": true,
+      "detail": "Simulated fold receiver closes owned cover task; no physical hinge claim"
+    },
+    {
+      "test": "notification_stop_stops_foreground",
+      "ok": true,
+      "detail": "Actual SystemUI notification action clicked"
+    },
+    {
+      "test": "stop_signals_shell_controller",
+      "ok": true,
+      "detail": "Owned stop handshake file is written"
+    }
+  ]
+}

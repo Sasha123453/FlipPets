@@ -13,7 +13,7 @@ def build():
         if folder.exists():shutil.rmtree(folder)
         folder.mkdir(parents=True)
     run(BT/'aapt2.exe','compile','--dir',APP/'res','-o',BUILD/'compiled.zip')
-    run(BT/'aapt2.exe','link',BUILD/'compiled.zip','-o',BUILD/'resources.apk','--manifest',APP/'AndroidManifest.xml','-I',ANDROID,'--java',BUILD/'res','-A',APP/'assets','-0','mp4','--version-code','10','--version-name','0.9.1')
+    run(BT/'aapt2.exe','link',BUILD/'compiled.zip','-o',BUILD/'resources.apk','--manifest',APP/'AndroidManifest.xml','-I',ANDROID,'--java',BUILD/'res','-A',APP/'assets','-0','mp4','--version-code','11','--version-name','1.0')
     source=list((APP/'src').rglob('*.java'))+list((BUILD/'res').rglob('*.java'))
     run(JDK/'javac.exe','-encoding','UTF-8','-source','8','-target','8','-classpath',os.pathsep.join(str(x) for x in [ANDROID,LIB/'classes.jar',*SHIZUKU]),'-d',BUILD/'classes',*source)
     with zipfile.ZipFile(BUILD/'app-classes.jar','w') as z:

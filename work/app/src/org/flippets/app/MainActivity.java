@@ -15,6 +15,7 @@ import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends Activity {
     PetStage preview;
+    CoverPreview previewCard;Button layoutButton;AlertDialog layoutDialog;
     String exported,logExport,pickPet;
     boolean pickFront;
     LinearLayout body;
@@ -23,6 +24,7 @@ public class MainActivity extends Activity {
     Button detailsButton;
     UiTheme ui;
     boolean waitingSessionStart;
+    boolean layoutQaStarted;
     int dp(float value){return Math.round(value*getResources().getDisplayMetrics().density);}
     protected void onCreate(Bundle saved){
         boolean dark=(getResources().getConfiguration().uiMode&android.content.res.Configuration.UI_MODE_NIGHT_MASK)==android.content.res.Configuration.UI_MODE_NIGHT_YES;
@@ -34,8 +36,9 @@ public class MainActivity extends Activity {
         TextView overline=ui.label("СЕЙЧАС НА ЭКРАНЕ",11,true);overline.setLetterSpacing(.1f);body.addView(overline);
         selectedName=ui.label("",24,false);selectedName.setPadding(0,dp(8),0,0);body.addView(selectedName);
         selectedInfo=ui.label("",13,true);selectedInfo.setPadding(0,dp(6),0,dp(16));body.addView(selectedInfo);
-        CoverPreview previewCard=new CoverPreview(this);preview=previewCard.stage;ui.card(previewCard,0xff182432,22);LinearLayout.LayoutParams previewParams=new LinearLayout.LayoutParams(-2,-2);previewParams.gravity=Gravity.CENTER_HORIZONTAL;body.addView(previewCard,previewParams);
+        previewCard=new CoverPreview(this);preview=previewCard.stage;ui.card(previewCard,0xff182432,22);LinearLayout.LayoutParams previewParams=new LinearLayout.LayoutParams(-2,-2);previewParams.gravity=Gravity.CENTER_HORIZONTAL;body.addView(previewCard,previewParams);
         TextView previewNote=ui.label("Пропорции внешнего экрана · камеры показаны схематично",12,true);previewNote.setGravity(Gravity.CENTER);previewNote.setPadding(0,dp(10),0,0);body.addView(previewNote);
+        layoutButton=ui.button("Вариант и положение питомца",false,v->{if(layoutDialog==null||!layoutDialog.isShowing())layoutDialog=PetLayoutSettings.show(this,previewCard);});body.addView(layoutButton,ui.spaced());
         Button gallery=ui.button("Выбрать оформление",true,v->new GalleryDialog(this).show());body.addView(gallery,ui.spaced());
         button("Своё фото",v->ownPhoto());body=page;
         text("Два экрана",22);
@@ -52,7 +55,7 @@ public class MainActivity extends Activity {
     void ownPhoto(){JSONArray catalog=Pets.catalog(this);for(int i=0;i<catalog.length();i++){JSONObject pet=catalog.optJSONObject(i);if("photo".equals(pet.optString("renderer"))){select(i);pickImage(pet.optString("id"),false);return;}}message("Оформление для своей фотографии не найдено.");}
     void startSession(){if(CoverGuard.notificationPermissionNeeded(this)){waitingSessionStart=true;CoverGuard.requestNotificationPermission(this);return;}ShizukuBridge.start(this);}
     void select(int index){Pets.select(this,index);preview.reload();refreshSelection();}
-    void refreshSelection(){JSONObject pet=Pets.current(this);selectedName.setText(pet.optString("name"));selectedInfo.setText(GalleryDialog.group(pet)+(pet.optString("kind").equals("composition")?" · настройки ниже":" · сцен: "+pet.optJSONObject("clips").length()));populateClips();refreshDetailsTitle();}
+    void refreshSelection(){JSONObject pet=Pets.current(this);selectedName.setText(pet.optString("name"));selectedInfo.setText(GalleryDialog.group(pet)+(pet.optString("kind").equals("composition")?" · настройки ниже":" · сцен: "+pet.optJSONObject("clips").length()));layoutButton.setVisibility(PetLayout.supported(pet)?View.VISIBLE:View.GONE);layoutButton.setText("Вариант и положение · "+(PetLayout.read(this,pet).clockless?"без часов":"с часами"));populateClips();refreshDetailsTitle();}
     void refreshDetailsTitle(){detailsButton.setText((clipPanel.getVisibility()==View.VISIBLE?"Скрыть":"Открыть")+" сцены и настройки оформления");}
     void settings(){
         ScrollView scroll=new ScrollView(this);LinearLayout panel=new LinearLayout(this);panel.setOrientation(1);panel.setPadding(dp(20),dp(10),dp(20),dp(24));panel.setBackgroundColor(ui.background);scroll.addView(panel);LinearLayout mainBody=body;body=panel;
@@ -102,8 +105,8 @@ public class MainActivity extends Activity {
     void pickImage(String id,boolean front){pickPet=id;pickFront=front;startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT).addCategory(Intent.CATEGORY_OPENABLE).setType("image/*"),front?10:9);}
     protected void onSaveInstanceState(Bundle state){state.putString("exported",exported);state.putString("logExport",logExport);state.putString("pickPet",pickPet);state.putBoolean("pickFront",pickFront);super.onSaveInstanceState(state);}
     protected void onActivityResult(int request,int result,Intent data){super.onActivityResult(request,result,data);if((request==9||request==10)&&result==RESULT_OK&&data!=null&&pickPet!=null){final String id=pickPet;final boolean front=pickFront;final android.net.Uri uri=data.getData();new Thread(()->{try{SceneSettings.importImage(this,id,front,uri);runOnUiThread(()->{if(!isFinishing())preview.reload();});}catch(Exception e){runOnUiThread(()->{if(!isFinishing())message(e.toString());});}},"photo-import").start();}if((request==7||request==8)&&result==RESULT_OK&&data!=null)try(java.io.OutputStream s=getContentResolver().openOutputStream(data.getData())){String report=request==8?logExport:exported;if(report==null)report=Pets.displayReport(this)+AppLog.saved(this);s.write(report.getBytes(StandardCharsets.UTF_8));}catch(Exception e){message(e.toString());}}
-    protected void onStart(){super.onStart();if(preview!=null){refreshSelection();preview.start();}}
+    protected void onStart(){super.onStart();if(preview!=null){refreshSelection();preview.start();}if(!layoutQaStarted&&getIntent().getBooleanExtra("qaPetLayout",false)&&(Build.HARDWARE.contains("ranchu")||Build.HARDWARE.contains("goldfish"))){layoutQaStarted=true;preview.postDelayed(()->PetLayoutQa.start(this),1200);}}
     protected void onStop(){preview.stop();super.onStop();}
-    protected void onDestroy(){preview.destroy();super.onDestroy();}
+    protected void onDestroy(){if(layoutDialog!=null)layoutDialog.dismiss();preview.destroy();super.onDestroy();}
     public void onRequestPermissionsResult(int request,String[] p,int[] results){super.onRequestPermissionsResult(request,p,results);if(request==3){preview.stop();preview.start();}if(request==CoverGuard.NOTIFICATION_PERMISSION_REQUEST&&waitingSessionStart){waitingSessionStart=false;ShizukuBridge.start(this);}}
 }

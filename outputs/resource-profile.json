@@ -1,32 +1,32 @@
 {
-  "releaseVersion": "0.9.1",
-  "currentApkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+  "releaseVersion": "1.0",
+  "currentApkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
   "currentProfile": {
-    "file": "resource-profile-v091.json",
+    "file": "resource-profile-v100.json",
     "data": {
-      "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+      "apkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
       "environment": "Standard Android16 x86_64 emulator, software decoding/SwiftShader GPU; 100% CPU is one core. Scoped activity scenery-mask sample, not phone battery cost.",
       "results": [
         {
           "scenario": "Lola held scenery frame after observed PLAYBACK_END",
-          "durationSeconds": 4.07,
-          "cpuPercentOneCore": 0.25,
-          "pssKiB": 62999,
-          "rssKiB": 152552
+          "durationSeconds": 4.08,
+          "cpuPercentOneCore": 0.49,
+          "pssKiB": 68167,
+          "rssKiB": 150680
         },
         {
           "scenario": "Lola touch reaction interval; may include completed frame",
-          "durationSeconds": 4.08,
-          "cpuPercentOneCore": 51.23,
-          "pssKiB": 72200,
-          "rssKiB": 162972
+          "durationSeconds": 4.12,
+          "cpuPercentOneCore": 16.02,
+          "pssKiB": 76995,
+          "rssKiB": 160956
         },
         {
           "scenario": "Lola hidden behind Settings",
-          "durationSeconds": 4.08,
-          "cpuPercentOneCore": 0.0,
-          "pssKiB": 52614,
-          "rssKiB": 143648
+          "durationSeconds": 4.18,
+          "cpuPercentOneCore": 1.2,
+          "pssKiB": 56604,
+          "rssKiB": 142336
         }
       ],
       "hardwareCanvasObserved": true,

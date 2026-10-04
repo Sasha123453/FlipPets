@@ -15,7 +15,7 @@ public class PetWallpaper extends WallpaperService {
         final CompositionRenderer compositionRenderer=new CompositionRenderer(PetWallpaper.this);
         PAGImageLayer foregroundLayer;PAGImage foregroundImage;android.graphics.Bitmap foregroundBitmap;PhotoLayer photoLayer,frontLayer;long backgroundUpdated;
         PAGImageLayer background;PAGImage backgroundImage;android.graphics.Bitmap backgroundBitmap;PetBackdrop backdrop;
-        PAGFile petFile;PAGComposition petViewport;int placedWidth,placedHeight,placedCamera;float placedFraction;
+        PAGFile petFile;PAGComposition petViewport;int placedWidth,placedHeight,placedCamera;float placedFraction;String placedProfile="";
         final android.hardware.SensorManager sensors=(android.hardware.SensorManager)getSystemService(SENSOR_SERVICE);
         final Runnable frame=new Runnable(){public void run(){if(!visible||!ready)return;
             if(SystemClock.elapsedRealtime()-lastBattery>5000){Pets.battery(PetWallpaper.this);lastBattery=SystemClock.elapsedRealtime();}org.json.JSONObject selected=Pets.current(PetWallpaper.this);updateGravity(selected.optString("name").equals("Flowing glitter"));if(selected.optString("kind").equals("composition")){
@@ -41,7 +41,7 @@ public class PetWallpaper extends WallpaperService {
             if(player!=null){
                 player.setMaxFrameRate(FlipPetsApp.frameRate(PetWallpaper.this));
                 boolean placementChanged=updatePetPlacement(getSurfaceHolder().getSurfaceFrame().width(),getSurfaceHolder().getSurfaceFrame().height(),selected.optString("id"),loaded);
-                boolean dirty=placementChanged||System.currentTimeMillis()/60000!=lastMinute||(selected.optString("name").equals("Flowing glitter")&&SystemClock.elapsedRealtime()-backgroundUpdated>1000);
+                boolean dirty=placementChanged||(!PetLayout.read(PetWallpaper.this,selected).clockless&&System.currentTimeMillis()/60000!=lastMinute)||(selected.optString("name").equals("Flowing glitter")&&SystemClock.elapsedRealtime()-backgroundUpdated>1000);
                 if(dirty)updateBackground(getSurfaceHolder().getSurfaceFrame().width(),getSurfaceHolder().getSurfaceFrame().height());
                 if(lastPlayRevision!=Pets.playRevision){lastPlayRevision=Pets.playRevision;started=SystemClock.elapsedRealtime();lastProgress=-1;}
                 long duration=player.duration();
@@ -65,12 +65,14 @@ public class PetWallpaper extends WallpaperService {
         boolean updatePetPlacement(int w,int h,String id,String path){
             if(petFile==null||petViewport==null||w<=0||h<=0)return false;
             float fraction=CoverGeometry.cameraFraction(getSharedPreferences(Pets.PREFS,0).getFloat("cameraSafeFraction",CoverGeometry.CAMERA_FRACTION));
-            if(w==placedWidth&&h==placedHeight&&cameraRight==placedCamera&&fraction==placedFraction)return false;
-            CoverGeometry.Placement p=CoverGeometry.focused(w,h,petFile.width(),petFile.height(),PetEnvelopes.get(PetWallpaper.this,id,path),cameraRight,fraction);
+            PetLayoutProfile profile=PetLayout.read(PetWallpaper.this,Pets.current(PetWallpaper.this));
+            if(w==placedWidth&&h==placedHeight&&cameraRight==placedCamera&&fraction==placedFraction&&profile.key().equals(placedProfile))return false;
+            PetLayoutProfile geometryProfile=path.contains("nfc_")||path.contains("pin_show")?PetLayoutProfile.CLOCK:profile;
+            CoverGeometry.Placement p=CoverGeometry.profile(w,h,petFile.width(),petFile.height(),PetEnvelopes.get(PetWallpaper.this,id,path),cameraRight,fraction,id,geometryProfile);
             petViewport.setContentSize(w,h);android.graphics.Matrix source=new android.graphics.Matrix();source.setScale(p.scale,p.scale);source.postTranslate(p.x,p.y);petFile.setMatrix(source);
             if(!petViewport.contains(petFile))petViewport.addLayer(petFile);petViewport.setMatrix(new android.graphics.Matrix());
             if(backdrop==null)backdrop=new PetBackdrop(PetWallpaper.this,true);boolean scenery=PetEnvelopes.opaqueScenery(id);backdrop.sceneTransform(scenery?petFile.width():0,scenery?petFile.height():0,p.scale,p.x,p.y);
-            placedWidth=w;placedHeight=h;placedCamera=cameraRight;placedFraction=fraction;return true;
+            placedWidth=w;placedHeight=h;placedCamera=cameraRight;placedFraction=fraction;placedProfile=profile.key();return true;
         }
         void releaseMedia(){petFile=null;petViewport=null;placedWidth=placedHeight=placedCamera=0;placedFraction=0;lastProgress=-1;lastPlayRevision=Pets.playRevision;if(video!=null){video.release();video=null;}if(player!=null){player.release();player=null;}if(surface!=null){surface.release();surface=null;}compositionStamp=-1;compositionLayer=null;if(compositionSpare!=null){compositionSpare.recycle();compositionSpare=null;}if(compositionImage!=null){compositionImage.release();compositionImage=null;}if(compositionBitmap!=null){compositionBitmap.recycle();compositionBitmap=null;}foregroundLayer=null;if(foregroundImage!=null){foregroundImage.release();foregroundImage=null;}if(foregroundBitmap!=null){foregroundBitmap.recycle();foregroundBitmap=null;}background=null;if(backgroundImage!=null){backgroundImage.release();backgroundImage=null;}if(backgroundBitmap!=null){backgroundBitmap.recycle();backgroundBitmap=null;}lastMinute=-1;}
         public void onSurfaceDestroyed(SurfaceHolder holder){ready=false;handler.removeCallbacks(frame);releaseMedia();loaded="";super.onSurfaceDestroyed(holder);}

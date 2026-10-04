@@ -1,5 +1,28 @@
 # Changes
 
+## 1.0
+
+- Explicit per-pet With clock / Without clock modes. With clock retains the exact
+  automatic size and placement from0.9.1. Without clock enlarges on the right with
+  uniform scale and fixed face-placement guides; round pets remain width-limited.
+- Per-pet/per-mode scale and X/Y controls with a live preview using the existing
+  cover renderer. Draft changes affect only Main preview until Apply. Cancel
+  restores it; Automatic clears manual values only for the selected mode.
+- Clockless mode releases clock digits and skips clock-minute redraws, retaining
+  the donor background and original animation/end behavior. Baked video clocks
+  cannot be removed. Photos/compositions/Flowing glitter keep their layouts.
+  Ordinary PAG wallpaper shares saved geometry; direct-Surface MP4 wallpaper
+  retains its earlier placement.
+- Guarded emulator-only layout QA exercises19 real dialog/control/rendering and
+  preference-restoration checks, with exact APK SHA and no skipped-pass acceptance.
+  The final1.0 APK passes287 renderer/UI/utility/layout and6 virtual-cover lifecycle
+  checks. Both modes persist after process restart through real UI;5 screenshots
+  inspected. Pure geometry tests pass1,076 assertions. Current phone verification
+  remains pending; old0.9.1 evidence does not validate these new modes.
+- Charlie's source crest truncation in intermediate frames remains; changing mode
+  or size does not restore missing donor pixels. Camera guides are schematic and
+  manual positioning needs physical pose checks.
+
 ## 0.9.1
 
 - Bottom-right placement with stable per-family subject focus and uniform scale.

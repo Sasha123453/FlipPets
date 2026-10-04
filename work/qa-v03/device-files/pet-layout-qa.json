@@ -1,0 +1,104 @@
+{
+  "apkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
+  "environment": "Android emulator; no physical camera\/HyperOS claim",
+  "tested": 19,
+  "failed": 0,
+  "results": [
+    {
+      "test": "default_clock_exact_legacy_matrix",
+      "ok": true,
+      "detail": "Actual PAGView matrix and app clock; existing focused placement"
+    },
+    {
+      "test": "open_editor",
+      "ok": true,
+      "detail": "Actual selected-pet button"
+    },
+    {
+      "test": "reuse_existing_stage",
+      "ok": true,
+      "detail": "One existing virtual cover reparented into dialog"
+    },
+    {
+      "test": "clockless_mode_button",
+      "ok": true,
+      "detail": "Actual radio-button event selected checkedId101 and clockless preview draft"
+    },
+    {
+      "test": "clockless_larger_rendered",
+      "ok": true,
+      "detail": "Actual Charlie PAGView matrix scale increased; clock disabled"
+    },
+    {
+      "test": "clockless_releases_digit_assets",
+      "ok": true,
+      "detail": "Backdrop draw retained donor background but released clock resources"
+    },
+    {
+      "test": "draft_keeps_saved_mode",
+      "ok": true,
+      "detail": "No global override or saved settings during draft"
+    },
+    {
+      "test": "manual_scale_accessibility",
+      "ok": true,
+      "detail": "Native SeekBar ACTION_SET_PROGRESS"
+    },
+    {
+      "test": "manual_x_accessibility",
+      "ok": true,
+      "detail": "Native SeekBar ACTION_SET_PROGRESS"
+    },
+    {
+      "test": "manual_y_accessibility",
+      "ok": true,
+      "detail": "Native SeekBar ACTION_SET_PROGRESS"
+    },
+    {
+      "test": "manual_adjustments_rendered",
+      "ok": true,
+      "detail": "Actual source matrix reflects scale\/X\/Y"
+    },
+    {
+      "test": "draft_no_preference_writes",
+      "ok": true,
+      "detail": "All selected-pet preferences unchanged"
+    },
+    {
+      "test": "layout_does_not_replay_scene",
+      "ok": true,
+      "detail": "No path load or playback revision change"
+    },
+    {
+      "test": "cancel_restores_preview_and_parent",
+      "ok": true,
+      "detail": "Draft discarded; legacy stage returned to Main"
+    },
+    {
+      "test": "apply_saves_selected_pet_mode",
+      "ok": true,
+      "detail": "One explicit Apply saves mode and current profile"
+    },
+    {
+      "test": "per_mode_clock_profile_preserved",
+      "ok": true,
+      "detail": "Other mode retains automatic legacy profile"
+    },
+    {
+      "test": "automatic_reset_button",
+      "ok": true,
+      "detail": "Actual reset button"
+    },
+    {
+      "test": "reset_selected_mode_removes_manual_keys",
+      "ok": true,
+      "detail": "Reset clears only selected mode adjustments on Apply"
+    },
+    {
+      "test": "test_layout_preferences_restored",
+      "ok": true,
+      "detail": "Original layout keys, selection key presence, scene and override restored"
+    }
+  ],
+  "skipped": []
+}

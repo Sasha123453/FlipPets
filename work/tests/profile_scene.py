@@ -24,6 +24,6 @@ try:
     pid=shell('pidof org.flippets.app').strip();log=shell(f'logcat -d --pid={pid} -s FlipPets:I');feathers=re.findall(r'SCENE_FEATHER (.+)',log)
     assert feathers and any('hardware=true' in x for x in feathers)
     report={'apkSha256':sha,'environment':'Standard Android16 x86_64 emulator, software decoding/SwiftShader GPU; 100% CPU is one core. Scoped activity scenery-mask sample, not phone battery cost.','results':rows,'hardwareCanvasObserved':True,'sceneFeather':feathers[-1],'limitations':['4-second samples; no long memory-leak or thermal/battery test.','Main and folded native wallpaper engines excluded.']}
-    (QA/'resource-profile-v091.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+    (QA/'resource-profile-v100.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 finally:
     shell('am force-stop org.flippets.app',check=False);shell('wm size 1224x2912',check=False)

@@ -1,9 +1,9 @@
 {
-  "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+  "apkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
   "environment": "Android emulator; no HyperOS/hardware claim",
   "tested": 15,
   "failed": 0,
-  "durationMs": 6406,
+  "durationMs": 6417,
   "results": [
     {
       "test": "battery_percent",
@@ -23,7 +23,7 @@
     {
       "test": "timer_advances_visible",
       "ok": true,
-      "detail": "elapsedDeltaMs=1303 displayChanged=true"
+      "detail": "elapsedDeltaMs=1301 displayChanged=true"
     },
     {
       "test": "timer_pause_button",

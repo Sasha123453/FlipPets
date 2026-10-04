@@ -4,7 +4,7 @@ ADB='C:/platform-tools/adb.exe'
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 QA=ROOT/'qa-v03'; QA.mkdir(exist_ok=True)
 def adb(*args,check=True):
-    p=subprocess.run([ADB,'-s','emulator-5554',*map(str,args)],capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=30)
+    p=subprocess.run([ADB,'-s','emulator-5554',*map(str,args)],capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=120 if args and args[0]=='install' else 30)
     if check and p.returncode: raise RuntimeError(p.stdout+p.stderr)
     return p.stdout
 def shell(command,check=True): return adb('shell',command,check=check)

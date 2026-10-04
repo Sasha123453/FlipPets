@@ -27,6 +27,7 @@ public final class PetStage extends FrameLayout implements SensorEventListener {
     final UtilityCardView utility;
     final boolean full;
     boolean previewSurface;int previewCameraRight;
+    private PetLayoutProfile layoutDraft;
     final Handler handler=new Handler(Looper.getMainLooper());
     final SensorManager sensors;
     boolean running;
@@ -65,6 +66,9 @@ public final class PetStage extends FrameLayout implements SensorEventListener {
     public void stop(){if(!running)return;running=false;utility.stop();AppLog.event(getContext(),"STAGE_STOP","full="+full);handler.removeCallbacks(ticker);getContext().unregisterReceiver(receiver);sensors.unregisterListener(this);gravityRegistered=false;pag.pause();pag.setComposition(null);pag.freeCache();video.pause();video.load("");loaded="";composition.renderer.release();backdrop.release();photo.release();front.release();}
     public void destroy(){stop();pag.setComposition(null);pag.freeCache();video.destroy();composition.renderer.release();backdrop.release();photo.release();front.release();}
     public void reload(){loaded="";visualStamp=-1;mediaGeometry="";requestLayout();if(running)update();}
+    /** Main-only staged geometry: neither preferences nor another stage is changed. */
+    void previewLayout(PetLayoutProfile draft){layoutDraft=draft;backdrop.layoutDraft=draft;mediaGeometry="";lastBackdropMinute=-1;backdrop.invalidate();if(full)configureMediaGeometry(getWidth(),getHeight());}
+    private PetLayoutProfile layoutProfile(JSONObject pet){return previewSurface&&layoutDraft!=null?layoutDraft:PetLayout.read(getContext(),pet);}
     private void update(){
         Context c=getContext();pag.setMaxFrameRate(FlipPetsApp.frameRate(c));JSONObject selected=Pets.current(c);boolean composed=selected.optString("kind").equals("composition");boolean glitter=selected.optString("name").equals("Flowing glitter");
         if(running&&glitter!=gravityRegistered){Sensor gravity=sensors.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);if(gravity!=null){if(glitter)sensors.registerListener(this,gravity,SensorManager.SENSOR_DELAY_UI);else sensors.unregisterListener(this,gravity);}gravityRegistered=glitter;}
@@ -80,7 +84,7 @@ public final class PetStage extends FrameLayout implements SensorEventListener {
             mediaGeometry="";requestLayout();
         }
         if(pag.getVisibility()==VISIBLE&&pag.getComposition()!=null){pag.setRepeatCount(repeats(selected,index)?0:1);if(lastPlayRevision!=Pets.playRevision){lastPlayRevision=Pets.playRevision;pag.setProgress(0);pag.play();}}
-        long minute=System.currentTimeMillis()/60000;if(glitter||minute!=lastBackdropMinute){backdrop.invalidate();lastBackdropMinute=minute;}
+        long minute=System.currentTimeMillis()/60000;if(glitter||(backdrop.clockEnabled()&&minute!=lastBackdropMinute)){backdrop.invalidate();lastBackdropMinute=minute;}
         if(full)configureMediaGeometry(getWidth(),getHeight());
     }
     private boolean repeats(JSONObject pet,int index){boolean enabled=android.provider.Settings.Global.getFloat(getContext().getContentResolver(),"animator_duration_scale",1f)!=0;return enabled&&PlaybackPolicy.repeats(pet.optString("id"),pet.optString("kind"),index,getContext().getSharedPreferences(Pets.PREFS,0).getBoolean("calmPets",false));}
@@ -95,11 +99,13 @@ public final class PetStage extends FrameLayout implements SensorEventListener {
         int sourceW=isVideo?video.videoW:(file==null?0:file.width()),sourceH=isVideo?video.videoH:(file==null?0:file.height());
         if(isVideo&&(sourceW<=0||sourceH<=0)){int[] size=PetEnvelopes.videoSize(getContext(),loaded);sourceW=size[0];sourceH=size[1];}
         if(sourceW<=0||sourceH<=0)return;
-        String key=w+"/"+h+"/"+camera+"/"+fraction+"/"+sourceW+"/"+sourceH+"/"+loaded;
+        PetLayoutProfile profile=layoutProfile(pet);
+        String key=w+"/"+h+"/"+camera+"/"+fraction+"/"+sourceW+"/"+sourceH+"/"+loaded+"/"+profile.key();
         if(key.equals(mediaGeometry))return;mediaGeometry=key;
         if(glitter){pagFrame.topFeather(-1);backdrop.sceneTransform(0,0,0,0,0);LayoutParams params=(LayoutParams)pag.getLayoutParams();if(params.width!=-1||params.height!=-1||params.leftMargin!=0||params.topMargin!=0)pag.setLayoutParams(new LayoutParams(-1,-1));pag.setScaleMode(PAGScaleMode.LetterBox);pag.layout(0,0,w,h);return;}
         float[] envelope=isVideo?null:PetEnvelopes.get(getContext(),pet.optString("id"),loaded);
-        CoverGeometry.Placement placement=CoverGeometry.focused(w,h,sourceW,sourceH,envelope,camera,fraction);
+        PetLayoutProfile geometryProfile=loaded.contains("nfc_")||loaded.contains("pin_show")?PetLayoutProfile.CLOCK:profile;
+        CoverGeometry.Placement placement=CoverGeometry.profile(w,h,sourceW,sourceH,envelope,camera,fraction,pet.optString("id"),geometryProfile);backdrop.invalidate();
         boolean scenery=!isVideo&&PetEnvelopes.opaqueScenery(pet.optString("id"));
         backdrop.sceneTransform(scenery?sourceW:0,scenery?sourceH:0,placement.scale,placement.x,placement.y);pagFrame.topFeather(scenery?placement.y:-1);
         if(isVideo){int vw=Math.max(1,Math.round(sourceW*placement.scale)),vh=Math.max(1,Math.round(sourceH*placement.scale));video.layout(Math.round(placement.x),Math.round(placement.y),Math.round(placement.x)+vw,Math.round(placement.y)+vh);video.fit();}

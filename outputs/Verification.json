@@ -1,11 +1,11 @@
 {
-  "version": "0.9.1",
-  "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+  "version": "1.0",
+  "apkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
   "currentApk": {
     "environment": "Standard Android16/API36 x86_64 emulator; not HyperOS",
     "emulatorQa": {
       "qa.json": {
-        "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+        "apkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
         "tested": 170,
         "failed": 0,
         "results": [
@@ -2562,7 +2562,7 @@
         ]
       },
       "composition-qa.json": {
-        "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+        "apkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
         "tested": 68,
         "failed": 0,
         "decodedOriginalImages": 497,
@@ -3185,7 +3185,7 @@
         ]
       },
       "ui-switch-qa.json": {
-        "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+        "apkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
         "tested": 15,
         "failed": 0,
         "results": [
@@ -3267,11 +3267,11 @@
         ]
       },
       "utility-qa.json": {
-        "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+        "apkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
         "environment": "Android emulator; no HyperOS/hardware claim",
         "tested": 15,
         "failed": 0,
-        "durationMs": 6406,
+        "durationMs": 6417,
         "results": [
           {
             "test": "battery_percent",
@@ -3291,7 +3291,7 @@
           {
             "test": "timer_advances_visible",
             "ok": true,
-            "detail": "elapsedDeltaMs=1303 displayChanged=true"
+            "detail": "elapsedDeltaMs=1301 displayChanged=true"
           },
           {
             "test": "timer_pause_button",
@@ -3350,13 +3350,117 @@
           }
         ],
         "skipped": []
+      },
+      "pet-layout-qa.json": {
+        "apkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
+        "environment": "Android emulator; no physical camera/HyperOS claim",
+        "tested": 19,
+        "failed": 0,
+        "results": [
+          {
+            "test": "default_clock_exact_legacy_matrix",
+            "ok": true,
+            "detail": "Actual PAGView matrix and app clock; existing focused placement"
+          },
+          {
+            "test": "open_editor",
+            "ok": true,
+            "detail": "Actual selected-pet button"
+          },
+          {
+            "test": "reuse_existing_stage",
+            "ok": true,
+            "detail": "One existing virtual cover reparented into dialog"
+          },
+          {
+            "test": "clockless_mode_button",
+            "ok": true,
+            "detail": "Actual radio-button event selected checkedId101 and clockless preview draft"
+          },
+          {
+            "test": "clockless_larger_rendered",
+            "ok": true,
+            "detail": "Actual Charlie PAGView matrix scale increased; clock disabled"
+          },
+          {
+            "test": "clockless_releases_digit_assets",
+            "ok": true,
+            "detail": "Backdrop draw retained donor background but released clock resources"
+          },
+          {
+            "test": "draft_keeps_saved_mode",
+            "ok": true,
+            "detail": "No global override or saved settings during draft"
+          },
+          {
+            "test": "manual_scale_accessibility",
+            "ok": true,
+            "detail": "Native SeekBar ACTION_SET_PROGRESS"
+          },
+          {
+            "test": "manual_x_accessibility",
+            "ok": true,
+            "detail": "Native SeekBar ACTION_SET_PROGRESS"
+          },
+          {
+            "test": "manual_y_accessibility",
+            "ok": true,
+            "detail": "Native SeekBar ACTION_SET_PROGRESS"
+          },
+          {
+            "test": "manual_adjustments_rendered",
+            "ok": true,
+            "detail": "Actual source matrix reflects scale/X/Y"
+          },
+          {
+            "test": "draft_no_preference_writes",
+            "ok": true,
+            "detail": "All selected-pet preferences unchanged"
+          },
+          {
+            "test": "layout_does_not_replay_scene",
+            "ok": true,
+            "detail": "No path load or playback revision change"
+          },
+          {
+            "test": "cancel_restores_preview_and_parent",
+            "ok": true,
+            "detail": "Draft discarded; legacy stage returned to Main"
+          },
+          {
+            "test": "apply_saves_selected_pet_mode",
+            "ok": true,
+            "detail": "One explicit Apply saves mode and current profile"
+          },
+          {
+            "test": "per_mode_clock_profile_preserved",
+            "ok": true,
+            "detail": "Other mode retains automatic legacy profile"
+          },
+          {
+            "test": "automatic_reset_button",
+            "ok": true,
+            "detail": "Actual reset button"
+          },
+          {
+            "test": "reset_selected_mode_removes_manual_keys",
+            "ok": true,
+            "detail": "Reset clears only selected mode adjustments on Apply"
+          },
+          {
+            "test": "test_layout_preferences_restored",
+            "ok": true,
+            "detail": "Original layout keys, selection key presence, scene and override restored"
+          }
+        ],
+        "skipped": []
       }
     },
-    "qaChecks": 268,
+    "qaChecks": 287,
     "binaryChecks": {
       "package": "org.flippets.app",
-      "versionName": "0.9.1",
-      "versionCode": 10,
+      "versionName": "1.0",
+      "versionCode": 11,
       "signatureV3Verified": true,
       "certificateSha256": "819b54a88b032712475060b68a6adcfff569366c86e9683c92934b36375391ba",
       "zipalign16KiBVerified": true,
@@ -3402,31 +3506,31 @@
     },
     "compositionImageHashesVerified": true,
     "resourceProfile": {
-      "file": "resource-profile-v091.json",
+      "file": "resource-profile-v100.json",
       "data": {
-        "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+        "apkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
         "environment": "Standard Android16 x86_64 emulator, software decoding/SwiftShader GPU; 100% CPU is one core. Scoped activity scenery-mask sample, not phone battery cost.",
         "results": [
           {
             "scenario": "Lola held scenery frame after observed PLAYBACK_END",
-            "durationSeconds": 4.07,
-            "cpuPercentOneCore": 0.25,
-            "pssKiB": 62999,
-            "rssKiB": 152552
+            "durationSeconds": 4.08,
+            "cpuPercentOneCore": 0.49,
+            "pssKiB": 68167,
+            "rssKiB": 150680
           },
           {
             "scenario": "Lola touch reaction interval; may include completed frame",
-            "durationSeconds": 4.08,
-            "cpuPercentOneCore": 51.23,
-            "pssKiB": 72200,
-            "rssKiB": 162972
+            "durationSeconds": 4.12,
+            "cpuPercentOneCore": 16.02,
+            "pssKiB": 76995,
+            "rssKiB": 160956
           },
           {
             "scenario": "Lola hidden behind Settings",
-            "durationSeconds": 4.08,
-            "cpuPercentOneCore": 0.0,
-            "pssKiB": 52614,
-            "rssKiB": 143648
+            "durationSeconds": 4.18,
+            "cpuPercentOneCore": 1.2,
+            "pssKiB": 56604,
+            "rssKiB": 142336
           }
         ],
         "hardwareCanvasObserved": true,
@@ -3438,89 +3542,43 @@
       }
     },
     "physicalEvidence": {
-      "file": "hardware-v091.json",
+      "file": "hardware-install-v100.json",
       "scope": "Limited physical observations; see exact report and limitations",
       "data": {
-        "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
-        "version": "0.9.1",
-        "environment": "Physical MIX Flip EEA HyperOS3.0.303 Android16; rootless Shizuku enabled through app UI",
-        "tested": 5,
+        "tested": 3,
+        "limitations": [
+          "Clockless/manual layout was visually tested on the emulator only.",
+          "New physical fold/lock/reboot and long resource stability were not tested.",
+          "No private phone screenshots, serial, other-app UI or photo content included."
+        ],
         "failed": 0,
+        "apkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
+        "environment": "Physical MIX Flip; installation verification only, no new layout/hinge/lock/battery validation",
         "results": [
           {
-            "test": "Installed APK SHA equals final release",
+            "test": "Explicit target identity verified as MIX Flip ruyi",
             "ok": true
           },
           {
-            "test": "Own Main and cover activities simultaneously visible on display0/1",
+            "test": "Update installed version1.0 code11 without uninstall",
             "ok": true
           },
           {
-            "test": "Own cover session foreground service active",
-            "ok": true
-          },
-          {
-            "test": "Actual activity geometry1208x1392 with focused source transform",
-            "ok": true,
-            "geometry": "display=1 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.5559721 translate=-274.04358,483.1878"
-          },
-          {
-            "test": "Unchanged Charlie geometry and original assets vs user-reviewed size; no rectangular camera-column crop",
+            "test": "Installed APK SHA equals packaged release",
             "ok": true
           }
         ],
-        "resourceSample": {
-          "label": "Charlie visible after startup settled; Main and cover visible",
-          "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
-          "durationSeconds": 8.0,
-          "cpuPercentOneCore": 0.48,
-          "cpuSamples": [
-            0.47,
-            0.48,
-            0.0,
-            0.96
-          ],
-          "pssKiB": 258938,
-          "rssKiB": 406788,
-          "scope": "Application process only; 100% CPU is one core. Does not measure battery or system decoder/GPU cost."
-        },
-        "userFeedbackScope": "User reviewed previous0.9.1 build: current final changes only Coco focus, Charlie geometry/artwork unchanged.",
-        "userFeedback": [
-          "Charlie size acceptable.",
-          "Crest still slices during motion; confirmed also in standalone donor PAG probe."
-        ],
-        "limitations": [
-          "No fresh physical fold-cycle, reboot, notification Stop, media controls or long-stability test for0.9.1.",
-          "Physical camera-hole clearance is not proved for all reactions.",
-          "Charlie intermediate source crest remains sliced.",
-          "Short process-only completed-frame CPU/PSS sample does not measure total decoder/GPU cost or battery.",
-          "Folded native wallpaper and any-main-off continuation remain deferred."
-        ],
-        "startupResourceSample": {
-          "label": "Startup settling interval after enabling; includes initial decoding",
-          "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
-          "durationSeconds": 8.0,
-          "cpuPercentOneCore": 15.62,
-          "cpuSamples": [
-            46.63,
-            15.38,
-            0.0,
-            0.48
-          ],
-          "pssKiB": 254969,
-          "rssKiB": 400108,
-          "scope": "Application process only; 100% CPU is one core. Does not measure battery or system decoder/GPU cost."
-        }
+        "version": "1.0"
       }
     },
     "additionalEvidence": [
       {
-        "file": "pure-tests-v091.json",
+        "file": "pure-tests-v100.json",
         "data": {
           "artifact": "FlipPets.apk",
-          "apk_version": "0.9.1",
-          "apk_sha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
-          "generated_utc": "2026-10-03T20:08:06.147828+00:00",
+          "apk_version": "1.0",
+          "apk_sha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
+          "generated_utc": "2026-10-04T08:43:36.556467+00:00",
           "scope": "Host JVM pure timer and hinge-opacity logic only; no Android lifecycle, display hardware, or UI automation",
           "compile": {
             "passed": true,
@@ -3558,9 +3616,9 @@
         }
       },
       {
-        "file": "runtime-v091.json",
+        "file": "runtime-v100.json",
         "data": {
-          "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+          "apkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
           "environment": "Standard Android16 API36 x86_64 emulator; virtual cover1208x1392/520 and Main1224x2912/520, not HyperOS",
           "tested": 6,
           "failed": 0,
@@ -3568,7 +3626,7 @@
             {
               "test": "cover_starts_foreground_service",
               "ok": true,
-              "detail": "Real secondary-display coverSession launch, no qaGuard extra"
+              "detail": "Real secondary-display coverSession launch, no qaGuard extra; wait for observed foreground and visible activity, bounded8s"
             },
             {
               "test": "main_home_cover_continues",
@@ -3599,323 +3657,66 @@
         }
       },
       {
-        "file": "cover-layout-v091.json",
+        "file": "visual-layout-v100.json",
         "data": {
-          "version": "0.9.1",
-          "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
-          "passed": true,
+          "apkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
+          "environment": "Standard Android16 emulator; Main1224x2912/520, virtual cover1208x1392/520; no physical camera-clearance claim",
+          "scope": "Real UI controls, explicit Apply, process-restart persistence and owned APK screenshots; Charlie donor crest remains truncated in intermediate frames",
+          "tested": 2,
           "failed": 0,
-          "scope": "Current source binding of582 host geometry assertions and provenance check against116 previously sampled unchanged donor PAG files. Not continuous motion, physical camera clearance, GPU mask or wallpaper parity validation. Current APK screenshots/runtime are separate.",
-          "source_sha256": {
-            "work/app/src/org/flippets/app/CoverGeometry.java": "cbb3f05560b7359abf66e043f30242d1423ce04e751b616b73da87a243bda22c",
-            "work/app/src/org/flippets/app/PetStage.java": "cd35363f8528fbd9c3f9738a11c9912bcfa855de2a4217b1df3c2daaa86b4eec",
-            "work/app/src/org/flippets/app/PetSceneFrame.java": "3ea94767d0bace164354eaafaca445a7b761e65223c02b4af47e54bf4e977aba",
-            "work/app/src/org/flippets/app/PetBackdrop.java": "d64a47ee9ac3c23e2fa721d6066c63256f2c31d47f9de3d9f45d8c7ce36cb0ab",
-            "work/app/src/org/flippets/app/CoverPreview.java": "f53be84994d7586272b9b8c00273e88cccc358983c76c10b3f8df69f89ca53a2",
-            "work/app/src/org/flippets/app/PetEnvelopes.java": "df1583916ce94d572046f3dde78c00918e2a2161bf26f36a164cad3d0b437008",
-            "work/app/src/org/flippets/app/PetVideo.java": "f77ab17df08a101c44b36203d7590c986371f5ec1edbbf1699c8584e4d97b9fb",
-            "work/app/src/org/flippets/app/PetWallpaper.java": "9c487e9d79503e10cfc8fc326cd210ba16de58fad3c99b0fe33096c2b722f7da",
-            "work/app/src/org/flippets/app/MainActivity.java": "eaad5d28c45343f9b2adf3ee565b5b6b88b933c016a409ae5c0a06c81bd1c096",
-            "work/tests/CoverGeometryTest.java": "b43c1f99f5a3b279f81a3168c3404bd9668d3cf099d7678d7b83adbcfbf2018c",
-            "work/app/assets/pet-envelopes.json": "dcb75b7ab4f13a04d2d73752bf90f0e7c67c4f28cdf12b9d08418d86b37c6e42"
-          },
-          "geometryAssertions": 582,
-          "sampledPAGFiles": 116,
-          "results": [
-            {
-              "test": "host fit/focused geometry and reviewed idle face core invariants",
-              "ok": true
-            },
-            {
-              "test": "116 previously sampled original PAG hashes unchanged",
-              "ok": true
-            }
-          ],
-          "limitations": [
-            "Wide effects may cross camera area or screen edges.",
-            "Scenery-edge feather applies to activity only; ordinary wallpaper lacks foreground feather.",
-            "Charlie original PAG has a crest slice in intermediate frames; not repaired."
-          ]
-        }
-      },
-      {
-        "file": "visual-v091.json",
-        "data": {
-          "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
-          "environment": "Android16 API36 x86_64 emulator; virtual cover1208x1392/520, Main1224x2912/520; no HyperOS/camera-hole hardware",
-          "scope": "Own APK screenshots with stock donor assets, no private photos or other applications. Wallpaper MP4 placement unchanged and excluded.",
-          "captured": 9,
           "reviewCompleted": true,
           "results": [
             {
-              "petIndex": 3,
-              "petId": "bird-pandora",
-              "pet": "Charlie",
-              "screenshot": "cover-charlie-v091.png",
-              "loadedAsset": "pets/bird-pandora/pag_0.pag",
-              "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.6136005 translate=-139.0542,430.29413",
-              "sceneFeather": null,
-              "reviewed": true,
-              "assessment": "No rectangular camera-column crop. Original source crest truncation in other intermediate frames remains."
+              "screenshot": "layout-charlie-clock-v100.png",
+              "reviewed": true
             },
             {
-              "petIndex": 0,
-              "petId": "koala-archived-presets",
-              "pet": "Bubbles",
-              "screenshot": "cover-bubbles-v091.png",
-              "loadedAsset": "pets/koala-archived-presets/pag_0.pag",
-              "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.5559721 translate=-274.04358,483.1878",
-              "sceneFeather": null,
+              "screenshot": "cover-charlie-clock-v100.png",
               "reviewed": true,
-              "assessment": "Sampled composition reviewed; not all reactions or physical camera holes."
+              "modePersistedAfterProcessRestart": true
             },
             {
-              "petIndex": 1,
-              "petId": "roedeer-archived-presets",
-              "pet": "Roe",
-              "screenshot": "cover-roe-v091.png",
-              "loadedAsset": "pets/roedeer-archived-presets/pag_0.pag",
-              "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.5559721 translate=-182.9259,464.64062",
-              "sceneFeather": null,
-              "reviewed": true,
-              "assessment": "Sampled composition reviewed; not all reactions or physical camera holes."
+              "screenshot": "layout-charlie-clockless-v100.png",
+              "reviewed": true
             },
             {
-              "petIndex": 7,
-              "petId": "capybara-archived-presets",
-              "pet": "Jumbo",
-              "screenshot": "cover-jumbo-v091.png",
-              "loadedAsset": "pets/capybara-archived-presets/pag_0.pag",
-              "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.675662 translate=-369.83386,393.30542",
-              "sceneFeather": null,
-              "reviewed": true,
-              "assessment": "Sampled composition reviewed; not all reactions or physical camera holes."
+              "screenshot": "layout-controls-v100.png",
+              "reviewed": true
             },
             {
-              "petIndex": 8,
-              "petId": "sheep-archived-presets",
-              "pet": "Lola",
-              "screenshot": "cover-lola-v091.png",
-              "loadedAsset": "pets/sheep-archived-presets/pag_8.pag",
-              "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.4522406 translate=-91.808105,526.4646",
-              "sceneFeather": "hardware=true top=526.4646 length=48",
+              "screenshot": "cover-charlie-clockless-v100.png",
               "reviewed": true,
-              "assessment": "Continuous scenery, soft top edge; sampled motion pose only."
-            },
-            {
-              "petIndex": 4,
-              "petId": "seal-archived-presets",
-              "pet": "Coco",
-              "screenshot": "cover-coco-v091.png",
-              "loadedAsset": "pets/seal-archived-presets/pag_0.pag",
-              "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.3614753 translate=-25.368042,596.7894",
-              "sceneFeather": "hardware=true top=596.7894 length=48",
-              "reviewed": true,
-              "assessment": "Scenery spans full panel width; old narrow left edge removed. Soft top edge; sampled motion pose only."
-            },
-            {
-              "petIndex": 12,
-              "petId": "46e72f3e-8f51-4db8-8db9-1c9e2a847b2a-pandora",
-              "pet": "3D cartoon",
-              "screenshot": "cover-mp4-cartoon-v091.png",
-              "loadedAsset": "pets/46e72f3e-8f51-4db8-8db9-1c9e2a847b2a-pandora/ai.mp4",
-              "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=1808x1144 scale=0.47037166 translate=333.40802,853.89484",
-              "sceneFeather": null,
-              "reviewed": true,
-              "assessment": "Opaque MP4 source rectangle remains visible; decoder/placement works, natural blending not implemented."
-            },
-            {
-              "petIndex": 15,
-              "petId": "lumi-archived-presets",
-              "pet": "Lumi",
-              "screenshot": "cover-mp4-lumi-v091.png",
-              "loadedAsset": "pets/lumi-archived-presets/idle_0.mp4",
-              "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=1280x720 scale=0.6644 translate=333.40796,913.632",
-              "sceneFeather": null,
-              "reviewed": true,
-              "assessment": "Opaque MP4 source rectangle remains visible; decoder/placement works, natural blending not implemented."
-            },
-            {
-              "screen": "Main Charlie preview",
-              "screenshot": "main-charlie-preview-v091.png",
-              "mainDimensions": [
-                1224,
-                2912
-              ],
-              "previewAccessibilityBounds": [
-                124,
-                873,
-                1099,
-                1997
-              ],
-              "reviewed": true,
-              "assessment": "Sampled composition reviewed; not all reactions or physical camera holes."
+              "modePersistedAfterProcessRestart": true
             }
           ],
-          "limitations": [
-            "MP4 avatar source rectangles remain visible; no transparency/background continuation for these videos.",
-            "Charlie crest slice remains in original intermediate frames.",
-            "Camera circles schematic; screenshots do not prove physical clearance of every gesture."
-          ]
-        }
-      },
-      {
-        "file": "donor-charlie-crest.json",
-        "data": {
-          "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
-          "scope": "Original donor PAG rendered by standalone libpag on guarded emulator, not physical Xiaomi17Pro behavior. Probe used unchanged asset bytes; current APK asset hash binding only.",
-          "source_sha256": {
-            "work/tests/HairPaddingProbe.java": "094735e09ea80e498c471464eea58da5b959051b355eab725a1abfb579aa940e",
-            "work/app/assets/pets/bird-pandora/pag_0.pag": "3bb7533fd7506cdfcd6b0ad48a7027fe8b37353ee7723547a18a6b7e5518dc14"
-          },
-          "originalProbe": {
-            "results": [
-              {
-                "variant": 0,
-                "padding": 0,
-                "expandInner": false,
-                "layers": [
-                  {
-                    "name": "",
-                    "type": 6,
-                    "bounds": "RectF(0.0, 0.0, 813.0, 596.0)",
-                    "children": 0
-                  }
-                ],
-                "frames": [
-                  {
-                    "progress": 0.55,
-                    "topInSubjectColumns": 0,
-                    "recoveredTopPixels": 0
-                  },
-                  {
-                    "progress": 0.7,
-                    "topInSubjectColumns": 0,
-                    "recoveredTopPixels": 0
-                  },
-                  {
-                    "progress": 0.98,
-                    "topInSubjectColumns": 104,
-                    "recoveredTopPixels": 0
-                  },
-                  {
-                    "progress": 0.999,
-                    "topInSubjectColumns": 104,
-                    "recoveredTopPixels": 0
-                  },
-                  {
-                    "progress": 1,
-                    "topInSubjectColumns": 104,
-                    "recoveredTopPixels": 0
-                  }
-                ]
-              },
-              {
-                "variant": 1,
-                "padding": 64,
-                "expandInner": false,
-                "layers": [
-                  {
-                    "name": "",
-                    "type": 6,
-                    "bounds": "RectF(0.0, 0.0, 813.0, 596.0)",
-                    "children": 0
-                  }
-                ],
-                "frames": [
-                  {
-                    "progress": 0.55,
-                    "topInSubjectColumns": 0,
-                    "recoveredTopPixels": 0
-                  },
-                  {
-                    "progress": 0.7,
-                    "topInSubjectColumns": 0,
-                    "recoveredTopPixels": 0
-                  },
-                  {
-                    "progress": 0.98,
-                    "topInSubjectColumns": 104,
-                    "recoveredTopPixels": 0
-                  },
-                  {
-                    "progress": 0.999,
-                    "topInSubjectColumns": 104,
-                    "recoveredTopPixels": 0
-                  },
-                  {
-                    "progress": 1,
-                    "topInSubjectColumns": 104,
-                    "recoveredTopPixels": 0
-                  }
-                ]
-              },
-              {
-                "variant": 2,
-                "padding": 64,
-                "expandInner": true,
-                "layers": [
-                  {
-                    "name": "",
-                    "type": 6,
-                    "bounds": "RectF(0.0, 0.0, 813.0, 596.0)",
-                    "children": 0
-                  }
-                ],
-                "frames": [
-                  {
-                    "progress": 0.55,
-                    "topInSubjectColumns": 0,
-                    "recoveredTopPixels": 0
-                  },
-                  {
-                    "progress": 0.7,
-                    "topInSubjectColumns": 0,
-                    "recoveredTopPixels": 0
-                  },
-                  {
-                    "progress": 0.98,
-                    "topInSubjectColumns": 104,
-                    "recoveredTopPixels": 0
-                  },
-                  {
-                    "progress": 0.999,
-                    "topInSubjectColumns": 104,
-                    "recoveredTopPixels": 0
-                  },
-                  {
-                    "progress": 1,
-                    "topInSubjectColumns": 104,
-                    "recoveredTopPixels": 0
-                  }
-                ]
-              }
-            ]
-          },
-          "observation": "Intermediate0.55/0.70 crest reaches source top. Adding64px to root and inner video composition restores zero top pixels. Completed1.0 frame has whole crest.",
-          "limitation": "Does not prove exact physical17Pro rendering; only sampled original scene0."
+          "reviewScope": "Manually inspected all five actual APK screenshots: clock size retained, clockless larger/right, complete controls readable through scroll; schematic cameras only, no physical clearance proof."
         }
       }
     ],
     "screenshots": [
       {
-        "file": "cover-charlie-v091.png",
-        "sha256": "58b69c110e13903c676fc65b8fffe582790f4542806b29fddac30e7a53320d30",
+        "file": "layout-charlie-clock-v100.png",
+        "sha256": "7374ebecbb1cd07a1518c378eb3ec8bc1568213e1d4fcd55e2f9db517f55b7af",
         "scope": "Explicitly selected emulator/app screenshot; no hardware claim"
       },
       {
-        "file": "cover-coco-v091.png",
-        "sha256": "fffdd054e4968c45946e4d0f282f228fa0e46119decabe894c68de6ad59fbec0",
+        "file": "layout-charlie-clockless-v100.png",
+        "sha256": "346325b195c35491db4aedbe9f7ff1a678f1971ab3004226ac31e70a4a2d962d",
         "scope": "Explicitly selected emulator/app screenshot; no hardware claim"
       },
       {
-        "file": "cover-lola-v091.png",
-        "sha256": "0de2ab20774525a68b7ad6bf14704a1645838b84481537261f6f79ef157d6a5f",
+        "file": "layout-controls-v100.png",
+        "sha256": "84ebf027878a6feb8e1dee1df32d687301fdb06ea2a1dc45d70911fa9c641208",
         "scope": "Explicitly selected emulator/app screenshot; no hardware claim"
       },
       {
-        "file": "main-charlie-preview-v091.png",
-        "sha256": "fb39c0e4c397917c02f91c47cf1ea7a66001f69d17fa5b7152b69de1a69ea93e",
+        "file": "cover-charlie-clock-v100.png",
+        "sha256": "1741354a3eb0ceec0c051415fdecb9ac81c3873201f4c1165b00ccafcc51a509",
+        "scope": "Explicitly selected emulator/app screenshot; no hardware claim"
+      },
+      {
+        "file": "cover-charlie-clockless-v100.png",
+        "sha256": "9cef805a618e80cb84742d52f3b58ae0ce49e041f8a15d6eb8aa791dadd47a7b",
         "scope": "Explicitly selected emulator/app screenshot; no hardware claim"
       }
     ]
@@ -4460,6 +4261,337 @@
           }
         ]
       }
+    },
+    {
+      "file": "hardware-v091.json",
+      "scope": "Limited physical version0.9.1 observations; not current clockless/manual-layout QA",
+      "originalApkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+      "sourceFileSha256": "14118a0386c25e58b6a1eeabc05f9568481dafd88c5865d47dd5faa84fea181e",
+      "data": {
+        "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+        "version": "0.9.1",
+        "environment": "Physical MIX Flip EEA HyperOS3.0.303 Android16; rootless Shizuku enabled through app UI",
+        "tested": 5,
+        "failed": 0,
+        "results": [
+          {
+            "test": "Installed APK SHA equals final release",
+            "ok": true
+          },
+          {
+            "test": "Own Main and cover activities simultaneously visible on display0/1",
+            "ok": true
+          },
+          {
+            "test": "Own cover session foreground service active",
+            "ok": true
+          },
+          {
+            "test": "Actual activity geometry1208x1392 with focused source transform",
+            "ok": true,
+            "geometry": "display=1 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.5559721 translate=-274.04358,483.1878"
+          },
+          {
+            "test": "Unchanged Charlie geometry and original assets vs user-reviewed size; no rectangular camera-column crop",
+            "ok": true
+          }
+        ],
+        "resourceSample": {
+          "label": "Charlie visible after startup settled; Main and cover visible",
+          "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+          "durationSeconds": 8.0,
+          "cpuPercentOneCore": 0.48,
+          "cpuSamples": [
+            0.47,
+            0.48,
+            0.0,
+            0.96
+          ],
+          "pssKiB": 258938,
+          "rssKiB": 406788,
+          "scope": "Application process only; 100% CPU is one core. Does not measure battery or system decoder/GPU cost."
+        },
+        "userFeedbackScope": "User reviewed previous0.9.1 build: current final changes only Coco focus, Charlie geometry/artwork unchanged.",
+        "userFeedback": [
+          "Charlie size acceptable.",
+          "Crest still slices during motion; confirmed also in standalone donor PAG probe."
+        ],
+        "limitations": [
+          "No fresh physical fold-cycle, reboot, notification Stop, media controls or long-stability test for0.9.1.",
+          "Physical camera-hole clearance is not proved for all reactions.",
+          "Charlie intermediate source crest remains sliced.",
+          "Short process-only completed-frame CPU/PSS sample does not measure total decoder/GPU cost or battery.",
+          "Folded native wallpaper and any-main-off continuation remain deferred."
+        ],
+        "startupResourceSample": {
+          "label": "Startup settling interval after enabling; includes initial decoding",
+          "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+          "durationSeconds": 8.0,
+          "cpuPercentOneCore": 15.62,
+          "cpuSamples": [
+            46.63,
+            15.38,
+            0.0,
+            0.48
+          ],
+          "pssKiB": 254969,
+          "rssKiB": 400108,
+          "scope": "Application process only; 100% CPU is one core. Does not measure battery or system decoder/GPU cost."
+        }
+      }
+    },
+    {
+      "file": "resource-profile-v091.json",
+      "scope": "Version0.9.1 emulator resource sample; not current release resource use",
+      "originalApkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+      "sourceFileSha256": "2ed7e9357f3ae93629ed7480a49baf739fad7267b10ec16741c23eb1d9ab2273",
+      "data": {
+        "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+        "environment": "Standard Android16 x86_64 emulator, software decoding/SwiftShader GPU; 100% CPU is one core. Scoped activity scenery-mask sample, not phone battery cost.",
+        "results": [
+          {
+            "scenario": "Lola held scenery frame after observed PLAYBACK_END",
+            "durationSeconds": 4.07,
+            "cpuPercentOneCore": 0.25,
+            "pssKiB": 62999,
+            "rssKiB": 152552
+          },
+          {
+            "scenario": "Lola touch reaction interval; may include completed frame",
+            "durationSeconds": 4.08,
+            "cpuPercentOneCore": 51.23,
+            "pssKiB": 72200,
+            "rssKiB": 162972
+          },
+          {
+            "scenario": "Lola hidden behind Settings",
+            "durationSeconds": 4.08,
+            "cpuPercentOneCore": 0.0,
+            "pssKiB": 52614,
+            "rssKiB": 143648
+          }
+        ],
+        "hardwareCanvasObserved": true,
+        "sceneFeather": "hardware=true top=526.4646 length=48",
+        "limitations": [
+          "4-second samples; no long memory-leak or thermal/battery test.",
+          "Main and folded native wallpaper engines excluded."
+        ]
+      }
+    },
+    {
+      "file": "runtime-v091.json",
+      "scope": "Version0.9.1 virtual-cover lifecycle; not current release runtime QA",
+      "originalApkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+      "sourceFileSha256": "10f3c743b9a5fedea0eda20cae160a07c3e4d92ce37f7e65f73ae2ad84a1e44a",
+      "data": {
+        "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+        "environment": "Standard Android16 API36 x86_64 emulator; virtual cover1208x1392/520 and Main1224x2912/520, not HyperOS",
+        "tested": 6,
+        "failed": 0,
+        "results": [
+          {
+            "test": "cover_starts_foreground_service",
+            "ok": true,
+            "detail": "Real secondary-display coverSession launch, no qaGuard extra"
+          },
+          {
+            "test": "main_home_cover_continues",
+            "ok": true,
+            "detail": "Virtual cover remains visible after Main goes Home"
+          },
+          {
+            "test": "main_task_removed_cover_continues",
+            "ok": true,
+            "detail": "Only own Main root task removed through Android task manager; cover survives"
+          },
+          {
+            "test": "fold_close_retains_foreground_session",
+            "ok": true,
+            "detail": "Simulated fold receiver closes owned cover task; no physical hinge claim"
+          },
+          {
+            "test": "notification_stop_stops_foreground",
+            "ok": true,
+            "detail": "Actual SystemUI notification action clicked"
+          },
+          {
+            "test": "stop_signals_shell_controller",
+            "ok": true,
+            "detail": "Owned stop handshake file is written"
+          }
+        ]
+      }
+    },
+    {
+      "file": "pure-tests-v091.json",
+      "scope": "Version0.9.1 pure logic tests; original source/APK hashes retained",
+      "originalApkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+      "sourceFileSha256": "96f68049e448cec79d5b6108d7c62be5c48fd8e32d2b8a73ce1c0e09e0c18de3",
+      "data": {
+        "artifact": "FlipPets.apk",
+        "apk_version": "0.9.1",
+        "apk_sha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+        "generated_utc": "2026-10-03T20:08:06.147828+00:00",
+        "scope": "Host JVM pure timer and hinge-opacity logic only; no Android lifecycle, display hardware, or UI automation",
+        "compile": {
+          "passed": true,
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        "source_sha256": {
+          "work/app/src/org/flippets/app/TimerState.java": "51b8ad19ac02969d63effbae04d54eaa4527074d0da2391af7427facfc017d46",
+          "work/app/src/org/flippets/app/HingeOpacity.java": "bab6ce08b467d88e40d1a64c8b10719c1da36b01437f0cf45f9ba0cdee952961",
+          "work/tests/TimerStateTest.java": "61f94ecf0a308d263e0cd51e8deb2253d5d3ff9959a135d54e3cc29e40b17882",
+          "work/tests/HingeOpacityTest.java": "2f4de609d90244206379870d5af3e1818120bd5b38044a126e02c38f81760b26"
+        },
+        "suites": [
+          {
+            "suite": "TimerStateTest",
+            "passed": true,
+            "exit_code": 0,
+            "stdout": "TimerState: 24 assertions passed",
+            "stderr": "",
+            "assertions": 24
+          },
+          {
+            "suite": "HingeOpacityTest",
+            "passed": true,
+            "exit_code": 0,
+            "stdout": "Hinge opacity: endpoints, monotonic range, midpoint and invalid-sample fallback passed",
+            "stderr": ""
+          }
+        ],
+        "total_suites": 2,
+        "passed_suites": 2,
+        "apk_unchanged_during_run": true,
+        "passed": true
+      }
+    },
+    {
+      "file": "visual-v091.json",
+      "scope": "Version0.9.1 screenshots and original review scope; not current release visuals",
+      "originalApkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+      "sourceFileSha256": "320a536c01dddd7d8e4eeadae73937afed9acac891334c9f7a439ce422724581",
+      "data": {
+        "apkSha256": "ccb61e02a62cf08c7f28476e8dee56ae05d7488e0fcd77505568e0e405b78eff",
+        "environment": "Android16 API36 x86_64 emulator; virtual cover1208x1392/520, Main1224x2912/520; no HyperOS/camera-hole hardware",
+        "scope": "Own APK screenshots with stock donor assets, no private photos or other applications. Wallpaper MP4 placement unchanged and excluded.",
+        "captured": 9,
+        "reviewCompleted": true,
+        "results": [
+          {
+            "petIndex": 3,
+            "petId": "bird-pandora",
+            "pet": "Charlie",
+            "screenshot": "cover-charlie-v091.png",
+            "loadedAsset": "pets/bird-pandora/pag_0.pag",
+            "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.6136005 translate=-139.0542,430.29413",
+            "sceneFeather": null,
+            "reviewed": true,
+            "assessment": "No rectangular camera-column crop. Original source crest truncation in other intermediate frames remains."
+          },
+          {
+            "petIndex": 0,
+            "petId": "koala-archived-presets",
+            "pet": "Bubbles",
+            "screenshot": "cover-bubbles-v091.png",
+            "loadedAsset": "pets/koala-archived-presets/pag_0.pag",
+            "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.5559721 translate=-274.04358,483.1878",
+            "sceneFeather": null,
+            "reviewed": true,
+            "assessment": "Sampled composition reviewed; not all reactions or physical camera holes."
+          },
+          {
+            "petIndex": 1,
+            "petId": "roedeer-archived-presets",
+            "pet": "Roe",
+            "screenshot": "cover-roe-v091.png",
+            "loadedAsset": "pets/roedeer-archived-presets/pag_0.pag",
+            "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.5559721 translate=-182.9259,464.64062",
+            "sceneFeather": null,
+            "reviewed": true,
+            "assessment": "Sampled composition reviewed; not all reactions or physical camera holes."
+          },
+          {
+            "petIndex": 7,
+            "petId": "capybara-archived-presets",
+            "pet": "Jumbo",
+            "screenshot": "cover-jumbo-v091.png",
+            "loadedAsset": "pets/capybara-archived-presets/pag_0.pag",
+            "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.675662 translate=-369.83386,393.30542",
+            "sceneFeather": null,
+            "reviewed": true,
+            "assessment": "Sampled composition reviewed; not all reactions or physical camera holes."
+          },
+          {
+            "petIndex": 8,
+            "petId": "sheep-archived-presets",
+            "pet": "Lola",
+            "screenshot": "cover-lola-v091.png",
+            "loadedAsset": "pets/sheep-archived-presets/pag_8.pag",
+            "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.4522406 translate=-91.808105,526.4646",
+            "sceneFeather": "hardware=true top=526.4646 length=48",
+            "reviewed": true,
+            "assessment": "Continuous scenery, soft top edge; sampled motion pose only."
+          },
+          {
+            "petIndex": 4,
+            "petId": "seal-archived-presets",
+            "pet": "Coco",
+            "screenshot": "cover-coco-v091.png",
+            "loadedAsset": "pets/seal-archived-presets/pag_0.pag",
+            "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=976x596 scale=1.3614753 translate=-25.368042,596.7894",
+            "sceneFeather": "hardware=true top=596.7894 length=48",
+            "reviewed": true,
+            "assessment": "Scenery spans full panel width; old narrow left edge removed. Soft top edge; sampled motion pose only."
+          },
+          {
+            "petIndex": 12,
+            "petId": "46e72f3e-8f51-4db8-8db9-1c9e2a847b2a-pandora",
+            "pet": "3D cartoon",
+            "screenshot": "cover-mp4-cartoon-v091.png",
+            "loadedAsset": "pets/46e72f3e-8f51-4db8-8db9-1c9e2a847b2a-pandora/ai.mp4",
+            "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=1808x1144 scale=0.47037166 translate=333.40802,853.89484",
+            "sceneFeather": null,
+            "reviewed": true,
+            "assessment": "Opaque MP4 source rectangle remains visible; decoder/placement works, natural blending not implemented."
+          },
+          {
+            "petIndex": 15,
+            "petId": "lumi-archived-presets",
+            "pet": "Lumi",
+            "screenshot": "cover-mp4-lumi-v091.png",
+            "loadedAsset": "pets/lumi-archived-presets/idle_0.mp4",
+            "geometry": "display=12 preview=false stage=1208x1392 safe=410.72,431.52,1183.84,1392.0 source=1280x720 scale=0.6644 translate=333.40796,913.632",
+            "sceneFeather": null,
+            "reviewed": true,
+            "assessment": "Opaque MP4 source rectangle remains visible; decoder/placement works, natural blending not implemented."
+          },
+          {
+            "screen": "Main Charlie preview",
+            "screenshot": "main-charlie-preview-v091.png",
+            "mainDimensions": [
+              1224,
+              2912
+            ],
+            "previewAccessibilityBounds": [
+              124,
+              873,
+              1099,
+              1997
+            ],
+            "reviewed": true,
+            "assessment": "Sampled composition reviewed; not all reactions or physical camera holes."
+          }
+        ],
+        "limitations": [
+          "MP4 avatar source rectangles remain visible; no transparency/background continuation for these videos.",
+          "Charlie crest slice remains in original intermediate frames.",
+          "Camera circles schematic; screenshots do not prove physical clearance of every gesture."
+        ]
+      }
     }
   ],
   "controllerFixtures": [
@@ -4601,9 +4733,9 @@
     }
   ],
   "physicalReleaseValidation": {
-    "releaseVersion": "0.9.1",
+    "releaseVersion": "1.0",
     "currentVersionTested": true,
-    "phoneInstalledVersionAtHandoff": "0.9.1",
+    "phoneInstalledVersionAtHandoff": "1.0",
     "phoneVersionScope": "See explicit current physical report",
     "scope": "Limited physical observations only",
     "baseline": "Version0.5 fold/photo/two-screen and limited0.7 phone observations retain their original SHA above",
@@ -4612,11 +4744,9 @@
       "Long stability/battery run not demonstrated by short checks"
     ],
     "reportLimitations": [
-      "No fresh physical fold-cycle, reboot, notification Stop, media controls or long-stability test for0.9.1.",
-      "Physical camera-hole clearance is not proved for all reactions.",
-      "Charlie intermediate source crest remains sliced.",
-      "Short process-only completed-frame CPU/PSS sample does not measure total decoder/GPU cost or battery.",
-      "Folded native wallpaper and any-main-off continuation remain deferred."
+      "Clockless/manual layout was visually tested on the emulator only.",
+      "New physical fold/lock/reboot and long resource stability were not tested.",
+      "No private phone screenshots, serial, other-app UI or photo content included."
     ]
   },
   "firmware": [

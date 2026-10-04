@@ -12,6 +12,12 @@ def stacks(): return shell('am stack list').split('RootTask')
 def foreground(): return 'isForeground=true' in shell('dumpsys activity services org.flippets.app/.CoverGuard')
 def cover_visible():
     return any(f'displayId={display} ' in b and 'org.flippets.app.PetActivity' in b and 'visible=true' in b for b in stacks())
+def wait_for(predicate,timeout=8):
+    deadline=time.monotonic()+timeout
+    while time.monotonic()<deadline:
+        if predicate():return True
+        time.sleep(.25)
+    return predicate()
 try:
     shell('cmd statusbar collapse')
     shell('am force-stop org.flippets.app')
@@ -22,9 +28,9 @@ try:
     assert display>0
     physical=re.search(r'Display (\d+) \(Virtual display\): displayName="Overlay #1"',shell('dumpsys SurfaceFlinger --display-id'))[1]
     shell('rm -f /sdcard/Android/data/org.flippets.app/files/controller-stop')
-    shell('am start --display 0 -n org.flippets.app/.MainActivity')
-    launch(29,display,True);time.sleep(2)
-    check('cover_starts_foreground_service',foreground(),'Real secondary-display coverSession launch, no qaGuard extra')
+    shell('am start --display 0 -n org.flippets.app/.MainActivity -f 0x10008000')
+    launch(29,display,True)
+    check('cover_starts_foreground_service',wait_for(lambda:foreground() and cover_visible()),'Real secondary-display coverSession launch, no qaGuard extra; wait for observed foreground and visible activity, bounded8s')
     shell('input -d 0 keyevent KEYCODE_HOME');time.sleep(1)
     check('main_home_cover_continues',cover_visible() and foreground(),'Virtual cover remains visible after Main goes Home')
     owned=[b for b in stacks() if 'displayId=0 ' in b and 'org.flippets.app.MainActivity' in b]
@@ -32,11 +38,11 @@ try:
     task=re.search(r'id=(\d+)',owned[0])[1]
     shell('am stack remove '+task);time.sleep(1)
     check('main_task_removed_cover_continues',cover_visible() and foreground() and not any('org.flippets.app.MainActivity' in b for b in stacks()),'Only own Main root task removed through Android task manager; cover survives')
-    shell(f'screencap -d {physical} -p /sdcard/flip-cover.png');adb('pull','/sdcard/flip-cover.png',QA/'photo-battery-runtime-v091.png')
+    shell(f'screencap -d {physical} -p /sdcard/flip-cover.png');adb('pull','/sdcard/flip-cover.png',QA/'photo-battery-runtime-v100.png')
     shell('am broadcast -a org.flippets.app.STOP_COVER -n org.flippets.app/.StopCover');time.sleep(1)
     check('fold_close_retains_foreground_session',foreground() and not cover_visible(),'Simulated fold receiver closes owned cover task; no physical hinge claim')
     shell('cmd statusbar expand-notifications');time.sleep(.7)
-    tree=ui('guard-notification-v091')
+    tree=ui('guard-notification-v100')
     if not any(n.get('text')=='Выключить' for n in tree.iter('node')):
         title=next(n for n in tree.iter('node') if n.get('text')=='Внешний экран · Flip Pets')
         _,top,_,bottom=map(int,re.findall(r'\d+',title.get('bounds')))
@@ -55,4 +61,4 @@ finally:
     shell('cmd statusbar collapse',check=False)
     shell('settings put global overlay_display_devices ""',check=False)
     report=dict(apkSha256=hashlib.sha256((ROOT.parent/'outputs/FlipPets.apk').read_bytes()).hexdigest(),environment='Standard Android16 API36 x86_64 emulator; virtual cover1208x1392/520 and Main1224x2912/520, not HyperOS',tested=len(rows),failed=sum(not r['ok'] for r in rows),results=rows)
-    (QA/'runtime-v091.json').write_text(json.dumps(report,indent=2),encoding='utf8')
+    (QA/'runtime-v100.json').write_text(json.dumps(report,indent=2),encoding='utf8')

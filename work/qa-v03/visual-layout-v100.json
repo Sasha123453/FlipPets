@@ -1,0 +1,33 @@
+{
+  "apkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
+  "environment": "Standard Android16 emulator; Main1224x2912/520, virtual cover1208x1392/520; no physical camera-clearance claim",
+  "scope": "Real UI controls, explicit Apply, process-restart persistence and owned APK screenshots; Charlie donor crest remains truncated in intermediate frames",
+  "tested": 2,
+  "failed": 0,
+  "reviewCompleted": true,
+  "results": [
+    {
+      "screenshot": "layout-charlie-clock-v100.png",
+      "reviewed": true
+    },
+    {
+      "screenshot": "cover-charlie-clock-v100.png",
+      "reviewed": true,
+      "modePersistedAfterProcessRestart": true
+    },
+    {
+      "screenshot": "layout-charlie-clockless-v100.png",
+      "reviewed": true
+    },
+    {
+      "screenshot": "layout-controls-v100.png",
+      "reviewed": true
+    },
+    {
+      "screenshot": "cover-charlie-clockless-v100.png",
+      "reviewed": true,
+      "modePersistedAfterProcessRestart": true
+    }
+  ],
+  "reviewScope": "Manually inspected all five actual APK screenshots: clock size retained, clockless larger/right, complete controls readable through scroll; schematic cameras only, no physical clearance proof."
+}

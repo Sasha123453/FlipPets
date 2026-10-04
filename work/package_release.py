@@ -1,4 +1,4 @@
-"""Package release 0.9.1 only after fresh, successful APK-bound emulator QA.
+"""Package release 1.0 only after fresh, successful APK-bound emulator QA.
 
 No device/network operations. Public bundles use explicit allowlists; historical
 results retain their own SHA and never become evidence for the current APK.
@@ -18,10 +18,11 @@ import zipfile
 WORK = pathlib.Path(__file__).resolve().parent
 ROOT = WORK.parent
 OUT = ROOT / "outputs"
-VERSION = "0.9.1"
-VERSION_CODE = 10
+VERSION = "1.0"
+VERSION_CODE = 11
 COUNTS = {"qa.json": 170, "composition-qa.json": 68,
-          "ui-switch-qa.json": 15, "utility-qa.json": 15}
+          "ui-switch-qa.json": 15, "utility-qa.json": 15,
+          "pet-layout-qa.json": 19}
 RESEARCH = ["MRC-coverage.json", "composition-provenance.json", "font-provenance.json",
             "portable-resource-provenance.json", "native-playback-evidence.json",
             "pandora-rearscreen-inventory.json", "ruyi-display_layout_configuration.xml",
@@ -36,7 +37,12 @@ HISTORICAL = {"hardware-validation.json": "Physical MIX Flip version 0.5; not cu
               "resource-profile-v07.json": "Version0.7 emulator profile; not current release resource use",
               "runtime-v07.json": "Version0.7 emulator task/service lifecycle; not current release runtime QA",
               "pure-tests-v07.json": "Version0.7 source-bound pure tests; original source hashes retained",
-              "visual-simulation-v07.json": "Version0.7 virtual cover/large-font observations; not current release visuals"}
+              "visual-simulation-v07.json": "Version0.7 virtual cover/large-font observations; not current release visuals",
+              "hardware-v091.json": "Limited physical version0.9.1 observations; not current clockless/manual-layout QA",
+              "resource-profile-v091.json": "Version0.9.1 emulator resource sample; not current release resource use",
+              "runtime-v091.json": "Version0.9.1 virtual-cover lifecycle; not current release runtime QA",
+              "pure-tests-v091.json": "Version0.9.1 pure logic tests; original source/APK hashes retained",
+              "visual-v091.json": "Version0.9.1 screenshots and original review scope; not current release visuals"}
 DENIED_PARTS = {"phone-qa", "firmware", "images", "extracted", "emulator", "logs", "build", "ksu"}
 
 
@@ -167,7 +173,7 @@ def source_entries():
     # Only named portable scripts/docs: top-level phone-*.txt dumps must never leak.
     for name in ["build_apk.py", "prepare_catalog.py", "prepare_compositions.py", "inspect_compositions.py",
                  "check_native.py", "download_firmware.py", "download_presets.py", "read_erofs_file.py",
-                 "package_release.py", "prepare_playback.py", "extract_ready.py", "extract_theme_resources.py",
+                 "package_release.py", "fetch_donor18.py", "prepare_donor18.py", "prepare_playback.py", "extract_ready.py", "extract_theme_resources.py",
                  "payload_plan.py", "read_partial_metadata.py", "prepare_sample.py", "SOURCE-README.txt", "CODE-LICENSE.txt"]:
         path = WORK / name
         if path.is_file():
@@ -212,7 +218,7 @@ def original_entries():
 def report(verification, catalog):
     e = html.escape
     physical = verification["currentApk"].get("physicalEvidence")
-    notice = ("0.9.1 прошла актуальные эмуляторные проверки и ограниченную проверку на реальном MIX Flip. Точные физические наблюдения/ограничения находятся в current physical evidence; длительная стабильность, расход батареи и нативное применение анимированных обоев сложенного экрана этим не подтверждены." if physical else "0.9.1 прошла актуальные проверки на стандартном Android16 в эмуляторе. Физические результаты0.9.1 в этот пакет ещё не включены. На реальном MIX Flip EEA HyperOS3 ранее подтверждены два экрана, fold-return, аппаратный декодер и собственные фото в версии0.5; это историческая базовая проверка.")
+    notice = ("1.0 прошла актуальные эмуляторные проверки и ограниченную проверку на реальном MIX Flip. Точные физические наблюдения/ограничения находятся в current physical evidence; длительная стабильность, расход батареи и нативное применение анимированных обоев сложенного экрана этим не подтверждены." if physical else "1.0 прошла актуальные проверки на стандартном Android16 в эмуляторе. Физические результаты1.0 в этот пакет ещё не включены. На реальном MIX Flip EEA HyperOS3 ранее подтверждены два экрана, fold-return, аппаратный декодер и собственные фото в версии0.5; это историческая базовая проверка.")
     cards = []
     for pet in catalog:
         thumb = WORK / "app/assets/thumbs" / (pet["id"] + ".webp")
@@ -226,7 +232,7 @@ def report(verification, catalog):
         rows = ''.join(f'<tr><td>{e(item.get("scenario", item.get("label", "scenario")))}</td><td>{item.get("cpuPercentOneCore", 0):.2f}%</td><td>{item.get("pssKiB", 0)/1024:.1f} МиБ</td></tr>' for item in profile["data"].get("results", []))
         resource_section = f'<p>Свежий профиль связан с этим APK. {e(profile["data"].get("environment", "Эмулятор Android 16; не замер батареи телефона."))}</p><table><tr><th>Сценарий</th><th>CPU одного ядра</th><th>PSS</th></tr>{rows}</table>'
     else:
-        resource_section = '<p>Свежий профиль 0.8 в этот пакет не включён. Старые CPU/PSS доступны только как historical baseline со своим SHA. Нулевой фоновый рендер и экономия батареи требуют отдельного измерения на новой сборке/телефоне.</p>'
+        resource_section = '<p>Свежий профиль 1.0 в этот пакет не включён. Старые CPU/PSS доступны только как historical baseline со своим SHA. Расход батареи требует отдельного измерения на новой сборке/телефоне.</p>'
     history = ''.join(f'<li>{e(item["file"])} — {e(item["scope"])}; исходный SHA: <code>{e(item.get("originalApkSha256") or "не указан / unbound")}</code>.</li>' for item in verification["historicalEvidence"])
     return f'''<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Flip Pets {VERSION} — проверенный пакет</title><style>
 *{{box-sizing:border-box}}body{{margin:0;background:#151218;color:#e9e0e9;font:16px/1.55 system-ui,sans-serif}}main{{max-width:1150px;margin:auto;padding:32px 20px}}h1{{font-size:clamp(30px,5vw,52px);line-height:1.15}}a{{color:#d7baff}}p,li{{color:#cdc2d3}}nav{{display:flex;gap:18px;flex-wrap:wrap}}.hero,article{{background:#211e26;border-radius:24px;padding:20px}}.notice{{background:#39333f;border-radius:18px;padding:18px}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}}article img{{width:100%;height:170px;object-fit:contain}}h3{{font-size:17px}}article p{{font-size:13px}}code{{word-break:break-all}}table{{border-collapse:collapse;width:100%}}td,th{{border-bottom:1px solid #514658;padding:10px;text-align:left}}
@@ -234,6 +240,7 @@ def report(verification, catalog):
 <p class="notice">{e(notice)}</p>
 <h2>Сложенный экран: нативная интеграция</h2><p>По умолчанию остаются родной внешний интерфейс, защищённый экран блокировки и AOD Xiaomi. Следующий приоритет — опциональные анимированные обои через штатный редактор/движок Xiaomi; в 0.8 этот export/apply ещё не реализован. Исследование: sourceZIP/docs/folded-wallpaper-options.md. Повторная попытка запуска после раскрытия ограничена по времени и проверяет готовность state5; устойчивое поведение0.8 на HyperOS требует своего аппаратного отчёта. Utility-карточки второстепенны, включаются явно и не подменяют штатные виджеты.</p><h2>Что нового</h2><p>Настройки/галерея используют системные цвета и светлую/тёмную тему. Optional карточки батареи, медиаплеера или визуального таймера выключены по умолчанию; это наши дополнения, а не заявленная копия виджетов17Pro. Одновременно показывается одна компактная карточка. Таймер/секундомер без звука и точного фонового alarm; музыка через опубликованные MediaSession и поддерживаемые плеером действия.</p>
 <p>Внешний сеанс отделён от задачи настроек и поддерживается user-enabled foreground-службой с тихим уведомлением/Stop. Закрытие настроек не является командой выключения сеанса. Wake lock и скрытый рендер не добавлены. HyperOS всё ещё может принудительно остановить приложение. Затухание работает по exposed hinge angle либо дискретному flip-state; дискретное состояние не называется измеренным углом.</p>
+<h2>Размер и положение в1.0</h2><p>В карточке выбранного питомца открой «Вариант и положение». «С часами» сохраняет прежний автоматический размер; «Без часов» увеличивает питомца справа с сохранением пропорций. Масштаб60–160% и сдвигX/Y сохраняются отдельно для каждого питомца и варианта. Предпросмотр меняется сразу; внешний экран — после «Применить». «Отмена» отменяет черновик, «Автоматически» сбрасывает текущий вариант после применения. Камеры в предпросмотре схематичны. Часы внутри видео и исходное обрезание причёскиCharlie остаются. Новые ресурсы18Pro отложены до следующей версии.</p>
 <h2>Запуск</h2><ol><li>Установи APK, выбери оформление/фото.</li><li>Запусти <a href="https://shizuku.rikka.app/guide/setup/">Shizuku по официальной инструкции</a>, нажми «Включить через Shizuku» и разреши доступ.</li><li>Раскрой/разблокируй MIX Flip. При складывании/сне возвращается штатный интерфейс/AOD Xiaomi.</li><li>После перезагрузки Shizuku запускается заново, затем включается сеанс. Фото и настройки сохраняются.</li></ol>
 <h2>Проверки этого APK</h2><ul>{tests}</ul><p>Всего {verification["currentApk"]["qaChecks"]} успешных runtime-проверок. Все assets APK совпали с source bytes; MP4 не сжаты, подписьv3/zipalign/ELF16KiB проверены. SHA-256: <code>{verification["apkSha256"]}</code>. Успех эмулятора не доказывает физический угол шарнира, обход ограниченийHyperOS или расход батареи.</p>
 <h2>Ресурсы</h2><div class="grid">{''.join(cards)}</div><p>Геометрия адаптирована к внешнему1392×1208/1208×1392 и основному1224×2912. Вырез камер учитывается по insets. Размеры — <a href="https://www.mi.com/global/product/xiaomi-mix-flip/specs/">официальные характеристикиMIX Flip</a>; касания/вырезы новых карточек ещё требуют телефона.</p>
@@ -280,7 +287,7 @@ def main():
                     f"Composition image provenance mismatch: {path}")
     profile_path = args.profile
     if profile_path is None:
-        candidates = [args.qa_dir / "resource-profile-v091.json", args.qa_dir.parent / "resource-profile-v091.json"]
+        candidates = [args.qa_dir / "resource-profile-v100.json", args.qa_dir.parent / "resource-profile-v100.json"]
         profile_path = next((p for p in candidates if p.is_file()), None)
     profile = None
     if profile_path is not None:

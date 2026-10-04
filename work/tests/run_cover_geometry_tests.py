@@ -5,7 +5,7 @@ import subprocess,json,hashlib,re
 root=Path(__file__).resolve().parents[2];work=root/'work'
 output=work/'review-check/cover-geometry-classes';output.mkdir(parents=True,exist_ok=True)
 jdk=work/'tools/jdk/jdk-17.0.20.1+1/bin'
-sources=[work/'app/src/org/flippets/app/CoverGeometry.java',work/'tests/CoverGeometryTest.java']
+sources=[work/'app/src/org/flippets/app/CoverGeometry.java',work/'app/src/org/flippets/app/PetLayoutProfile.java',work/'tests/CoverGeometryTest.java']
 compile_result=subprocess.run([str(jdk/'javac.exe'),'-encoding','UTF-8','-d',str(output),*map(str,sources)],capture_output=True,text=True)
 test_result=subprocess.run([str(jdk/'java.exe'),'-cp',str(output),'CoverGeometryTest'],capture_output=True,text=True) if compile_result.returncode==0 else None
 samples=json.loads((work/'qa-v03/pet-envelope-samples.json').read_text())

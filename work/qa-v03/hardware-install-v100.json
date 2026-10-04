@@ -1,0 +1,26 @@
+{
+  "tested": 3,
+  "limitations": [
+    "Clockless/manual layout was visually tested on the emulator only.",
+    "New physical fold/lock/reboot and long resource stability were not tested.",
+    "No private phone screenshots, serial, other-app UI or photo content included."
+  ],
+  "failed": 0,
+  "apkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
+  "environment": "Physical MIX Flip; installation verification only, no new layout/hinge/lock/battery validation",
+  "results": [
+    {
+      "test": "Explicit target identity verified as MIX Flip ruyi",
+      "ok": true
+    },
+    {
+      "test": "Update installed version1.0 code11 without uninstall",
+      "ok": true
+    },
+    {
+      "test": "Installed APK SHA equals packaged release",
+      "ok": true
+    }
+  ],
+  "version": "1.0"
+}
