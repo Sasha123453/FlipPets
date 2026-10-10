@@ -9,6 +9,18 @@
 
 # Flip Pets — текущие задачи
 
+## Resumed implementation — 11 October 2026
+
+- [x] First KernelSU hardening step: bounded first-unlock/storage wait, separate
+  unattended resume preserving Stop, and child startup acknowledgement.
+- [ ] Finish root session ownership, PID reuse, serialized Action/boot/Stop,
+  update migration and root-to-Shizuku file cleanup. Keep the ZIP experimental.
+- [ ] Run full current-SHA APK/lifecycle QA before a new release; source changes
+  to the embedded controller required an APK rebuild. Historical release QA stays
+  bound to its original APK.
+- [ ] Exact EEA FlipHome/continuity contract and native pet motion/restore proof
+  remain device-work gates. No generation backend work is required.
+
 ## Мини-приложения и свой питомец
 
 - [x] Заполнить весь cover оригинальным responsive Canvas без чёрных полей; проверить реальные PixelCopy-снимки.
@@ -21,7 +33,8 @@
 - [x] Подготовить первый KernelSU controller-модуль без framework/power/lockscreen изменений; root пока не установлен, phone QA отсутствует.
 - [ ] После появления KernelSU проверить UID0/SELinux/boot/Stop и точную EEA power-group политику, прежде чем обещать folded/main-off работу.
 - [x] Проследить донорский AI Companion image→image→video pipeline.
-- [ ] Подтвердить доступный генератор и настоящий результат «фото → свой анимированный питомец». Root не заменяет backend Xiaomi.
+- [ ] Отложено пользователем: генератор и результат «фото → свой анимированный питомец», включая альтернативные backend. Root не заменяет сервис Xiaomi; генерация не блокирует нативных питомцев из донорских ресурсов или приложения.
+- [x] Исследовать варианты root/non-root без реализации: `docs/native-cover-root-and-rootless-agent-plan.md`. Подтверждён код native launcher/2X3 MAML host в Global FlipHome; точный EEA APK и физическая работа ещё не проверены.
 
 ## Сейчас: геометрия раскрытого MIX Flip, без root
 

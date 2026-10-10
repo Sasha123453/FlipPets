@@ -34,6 +34,11 @@ verify() {
   grep -q 'OPENED_PRESENTATION' /odm/etc/displayconfig/display_layout_configuration.xml || fail "Unrecognised display layout; collect diagnostics"
 }
 unlocked() { dumpsys window policy | grep -E '(^|[[:space:]])showing=false|mKeyguardShowing=false' >/dev/null; }
+prepare_start() {
+  # Only an explicit Start clears Stop, once, after validating/acquiring ownership.
+  if [ "$1" = supervise ]; then rm -f "$STOP" || return 1; fi
+  [ ! -e "$STOP" ]
+}
 case "${1:-diagnose}" in
 diagnose)
   for key in ro.product.device ro.product.model ro.build.version.release ro.build.version.incremental ro.miui.ui.version.name; do echo "$key=$(getprop "$key")"; done
@@ -56,23 +61,47 @@ status)
   dumpsys window policy | grep -E 'mKeyguardShowing|(^|[[:space:]])showing='
   true
   ;;
-supervise)
+supervise|resume)
   verify
+  [ "$1" != resume ] || [ ! -e "$STOP" ] || fail "Stopped by user; explicit Start required"
   if [ -f "$LOCK/pid" ] && kill -0 "$(cat "$LOCK/pid")" 2>/dev/null; then
     tr '\000' ' ' < "/proc/$(cat "$LOCK/pid")/cmdline" | grep -q 'flip-pets-control.sh run' || fail "Existing PID is not this supervisor"
-    echo enabled > "$ENABLE"; rm -f "$STOP"; echo "Supervisor already running"; exit 0
+    [ -f "$ENABLE" ] && [ "$(cat "$LOCK/ready" 2>/dev/null)" = "$(cat "$LOCK/pid")" ] || fail "Existing supervisor is not ready; wait for it to stop"
+    prepare_start "$1" || fail "Cannot start: Stop remains or arrived during startup"
+    [ ! -e "$STOP" ] || fail "Stopped during startup"
+    echo "Supervisor already running"; exit 0
   fi
-  rm -f "$LOCK/pid"; rmdir "$LOCK" 2>/dev/null
+  rm -f "$LOCK/pid" "$LOCK/ready"; rmdir "$LOCK" 2>/dev/null
   umask 077; mkdir "$LOCK" || fail "Cannot acquire supervisor lock"
-  echo enabled > "$ENABLE"; rm -f "$STOP"
+  # If Stop wins this race, leave neither an enabled flag nor an empty lock.
+  if [ "$1" = resume ] && [ -e "$STOP" ]; then rmdir "$LOCK"; fail "Stopped during startup"; fi
+  prepare_start "$1" || { rmdir "$LOCK"; fail "Cannot start: Stop remains or arrived during startup"; }
+  echo enabled > "$ENABLE"
   command -v nohup >/dev/null 2>&1 || { rm -f "$ENABLE"; rmdir "$LOCK"; fail "nohup is unavailable"; }
   nohup sh "$0" run >/data/local/tmp/flip-pets-supervisor.log 2>&1 </dev/null &
-  echo $! > "$LOCK/pid"
-  echo "Supervisor enabled; waiting for fully open, awake, unlocked phone. Cable is no longer required."
+  child=$!; echo "$child" > "$LOCK/pid"
+  # Child acknowledges only after its own verify and cleanup trap are installed.
+  tries=0
+  while [ "$tries" -lt 40 ]; do
+    [ -f "$ENABLE" ] && [ ! -e "$STOP" ] && kill -0 "$child" 2>/dev/null || break
+    if [ "$(cat "$LOCK/ready" 2>/dev/null)" = "$child" ]; then
+      echo "Supervisor ready; waiting for fully open, awake, unlocked phone. Cable is no longer required."
+      exit 0
+    fi
+    sleep 0.25; tries=$((tries+1))
+  done
+  rm -f "$ENABLE"
+  # A late child observes disabled/Stop before acknowledgement or presentation.
+  if ! kill -0 "$child" 2>/dev/null && [ "$(cat "$LOCK/pid" 2>/dev/null)" = "$child" ]; then
+    rm -f "$LOCK/pid" "$LOCK/ready"; rmdir "$LOCK" 2>/dev/null
+  fi
+  fail "Supervisor did not acknowledge startup (stopped, failed verification or timed out)"
   ;;
 run)
   verify
-  trap 'rm -f "$ENABLE"; stop; rm -f "$LOCK/pid"; rmdir "$LOCK" 2>/dev/null; exit' HUP INT TERM EXIT
+  trap 'rm -f "$ENABLE"; stop; rm -f "$LOCK/pid" "$LOCK/ready"; rmdir "$LOCK" 2>/dev/null; exit' HUP INT TERM EXIT
+  [ -f "$ENABLE" ] && [ ! -e "$STOP" ] || exit 1
+  echo "$$" > "$LOCK/ready" || exit 1
   misses=0; failures=0; probes=0
   while [ -f "$ENABLE" ]; do
     [ ! -f "$STOP" ] || break
@@ -103,7 +132,7 @@ run)
     fi
     sleep 2
   done
-  rm -f "$ENABLE"; stop >/dev/null; rm -f "$LOCK/pid"; rmdir "$LOCK" 2>/dev/null
+  rm -f "$ENABLE"; stop >/dev/null; rm -f "$LOCK/pid" "$LOCK/ready"; rmdir "$LOCK" 2>/dev/null
   trap - HUP INT TERM EXIT
   ;;
 watch)
@@ -188,5 +217,5 @@ start)
   fi
   echo "Started on display $id. To restore normal folding: sh $0 stop"
   ;;
-*) fail "Usage: sh $0 diagnose|start|supervise|status|stop" ;;
+*) fail "Usage: sh $0 diagnose|start|supervise|resume|status|stop" ;;
 esac

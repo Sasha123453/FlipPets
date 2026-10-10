@@ -19,9 +19,13 @@ secondary addition; stock folded widgets already provide many comparable functio
 
 ## Version 1.1
 
-The current1.1 APK passes343 emulator checks and6 virtual-cover lifecycle checks.
+The released1.1 APK (`1d7d6181…`) passed343 emulator checks and6 virtual-cover lifecycle checks.
 Full-screen mini-app captures were visually reviewed. Physical MIX Flip and
-KernelSU verification remain pending for this build.
+KernelSU verification remain pending. Subsequent controller development APKs have
+separate scoped evidence and do not inherit those full-release results. Each
+reviewed development milestone is published as a GitHub prerelease with matching
+source commit, APK, experimental module and hashes. Physical testing waits for the
+assembled build; see [HANDOFF](HANDOFF.md) for the current development identity.
 
 - Three additions from verified Xiaomi18Pro product resources: **Butterfly carp ·18Pro** (four scenes), **Vortex ·animated background** and **Card effect ·18Pro** (one-shot manual preview). The existing30 entries and IDs stay unchanged:33 entries,176 clip paths,148 unique media SHA256.
 - Carp uses the donor MAML progress thresholds,500ms fade-out,100ms delay after actual scene load and300ms fade-in. Automatic scene selection does not write preferences; a tap manually selects another scene. With/without-clock placement controls also apply to this fish.29 original clock glyphs are retained. This is a Java adaptation, not the Xiaomi Folme/MAML engine.
@@ -116,7 +120,10 @@ or Xiaomi's folded lockscreen/AOD. The old utility overlay remains independent.
 
 An [experimental KernelSU module](docs/kernel-su-module.md) is prepared for a
 future rooted MIX Flip. It is an alternative supervisor, not verified independent
-rear-screen power. The [photo-pet generation audit](docs/photo-pet-generation.md)
+rear-screen power. The development controller now acknowledges child startup;
+unattended boot resume never clears Stop and waits up to ten minutes for unlocked
+app storage. This is the first hardening step; ownership, update migration and
+physical root verification remain pending. The [photo-pet generation audit](docs/photo-pet-generation.md)
 documents the donor image/video service chain; a working generator is still required.
 
 ## Project layout

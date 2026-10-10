@@ -1,6 +1,6 @@
 {
   "environment": "emulator-5554; stubbed stock command responses, not a physical MIX Flip",
-  "controller_sha256": "91c923d909f5c404480843ab5b006ab2503c87d88274cd4310c36b378163e853",
+  "controller_sha256": "815e11a50f6549dbd14968e4fc3257dc0270d3c9f6800a1a9096e7f1afe2c99e",
   "results": [
     {
       "case": "start activates presentation",

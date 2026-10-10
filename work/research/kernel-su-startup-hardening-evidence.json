@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-11",
+  "scope": "First boot/startup hardening milestone; development build, not a release or physical root validation",
+  "apkSha256": "012d42fa4548ef84e0d9c77f6769ebde4477fa20d0fa305953353f5cabdca361",
+  "moduleZipSha256": "90e47d597584044c02d9c3d7d4b0385f403e346b4fc7e6a843f0a7da80ec062a",
+  "canonicalControllerSha256": "815e11a50f6549dbd14968e4fc3257dc0270d3c9f6800a1a9096e7f1afe2c99e",
+  "rootControllerSha256": "9477c4fb4c254c41e215c07434762f754b7531474de015b87c560646d1ece3b1",
+  "wrapperSha256": "132f6a796ea4ce3291af6f904eb56edf869c48a6da0e33a08f4114bae8c14210",
+  "commandChecksPassed": 91,
+  "syntaxChecksPassed": 7,
+  "reports": {
+    "controller-tests.json": {
+      "sha256": "7cc71f95ba3b043feb2f600ecbacab45f26dba7c10750708ed99b12c25458e69",
+      "checks": 15,
+      "allPassed": true,
+      "environment": "emulator-5554; stubbed stock command responses, not a physical MIX Flip"
+    },
+    "kernel-su-controller-tests.json": {
+      "sha256": "edf22501290ce478eaeb35988716a6edd38fc17a49d52b20ae0abf0cb1989113",
+      "checks": 15,
+      "allPassed": true,
+      "environment": "emulator-5554; stubbed stock command responses; root identity also stubbed, no actual UID0/SELinux proof, not a physical MIX Flip"
+    },
+    "supervisor-tests-current.json": {
+      "sha256": "c33b36c9e14fcd4efac1b2cb5ac85aa24da82fba9e6cd8251802f431cf323353",
+      "checks": 23,
+      "allPassed": true,
+      "environment": "emulator-5554, stubbed device-state/display/power/keyguard commands; no physical MIX Flip"
+    },
+    "kernel-su-supervisor-tests.json": {
+      "sha256": "6040713b135e92def04b695ca40d995cf2b38792037a1a4fc348b23c3e8398fc",
+      "checks": 23,
+      "allPassed": true,
+      "environment": "emulator-5554, stubbed device-state/display/power/keyguard commands; UID0 also stubbed; no physical MIX Flip"
+    },
+    "kernel-su-boot-tests.json": {
+      "sha256": "1a433169df3b32e7c71023745b740e4385441b6ebf61a477036fb74032545eb8",
+      "checks": 15,
+      "allPassed": true,
+      "environment": "emulator-5554; UID0, storage availability and controller responses stubbed; no physical root proof"
+    },
+    "kernel-su-syntax-current.json": {
+      "sha256": "eb069cb0536793f2e4fee37736ab94777145f09cd11028b72f31ef3defaca254",
+      "checks": 7,
+      "allPassed": true,
+      "environment": "Android sh -n on identity-verified emulator-5554; syntax only"
+    }
+  },
+  "apkStructure": {
+    "package": "org.flippets.app",
+    "versionName": "1.1",
+    "versionCode": 12,
+    "signatureV3Verified": true,
+    "certificateSha256": "819b54a88b032712475060b68a6adcfff569366c86e9683c92934b36375391ba",
+    "zipalign16KiBVerified": true,
+    "allAssetsByteIdenticalToSources": true,
+    "nativeLibraries": [
+      {
+        "path": "lib/arm64-v8a/libffavc.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "1e214164a6c153f74f25018c1625f3e71d1d5ba601f6592c4dd89385dcc4b0bc"
+      },
+      {
+        "path": "lib/arm64-v8a/libpag.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "1178fe9a7fb345212e2a9ff0c386ce9772f03183686e1de87af84f89cbdf736f"
+      },
+      {
+        "path": "lib/x86_64/libffavc.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "5da4dea926ef43d7ac4535b5799afba00d9d0e0fd396e350486037de6843e7e2"
+      },
+      {
+        "path": "lib/x86_64/libpag.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "f013aead9e08a559326921a1f94df701814197bcc93592c50d93cd4285158d51"
+      }
+    ],
+    "apkSha256": "012d42fa4548ef84e0d9c77f6769ebde4477fa20d0fa305953353f5cabdca361"
+  },
+  "remaining": [
+    "Exact process identity and PID reuse",
+    "Serialized Action/boot/Stop transitions",
+    "Opt-in update migration",
+    "Root-to-shell control-file ownership",
+    "Module disable/remove monitoring after startup",
+    "Rooted MIX Flip UID0, SELinux, boot and physical fold checks",
+    "Full current-SHA APK and virtual-cover suites before release"
+  ],
+  "historicalReleaseQaApkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
+  "physicalDeviceTouched": false,
+  "releaseBundlesRegenerated": false,
+  "testRunnerSha256": {
+    "run_controller_tests.py": "2ac1bc699b5210403ce6e04312e2f06df887703e9a7fcf649bc0c36518f17932",
+    "run_supervisor_tests.py": "0269a124b54866e208050769f9b3ccb47832994e115868e2a1c8fa187b308cba",
+    "run_kernel_su_boot_tests.py": "785a0d53efa325824e4a67c71cfece49f10375ce91e4f7ab165ee1018c972fc4"
+  },
+  "independentReview": {
+    "requestedByUser": true,
+    "actionableCorrectnessFindings": 0,
+    "coverageGap": "ACK timeout followed by late verification",
+    "resolution": "Added three assertions per controller variant; independent follow-up review accepted coverage; both 23-check supervisor runs passed",
+    "scope": "Boot/startup milestone only; deferred ownership and physical root compatibility not certified"
+  }
+}

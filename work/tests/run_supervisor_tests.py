@@ -1,18 +1,36 @@
 """Exercise detached supervisor with fixture commands, exclusively on our emulator."""
-import pathlib,subprocess,time,json,hashlib
+import pathlib,subprocess,time,json,hashlib,argparse,zipfile
 r=pathlib.Path(__file__).resolve().parents[1];adb='C:/platform-tools/adb.exe';base='/data/local/tmp/flip-pets-fixture'
-(r/'qa-v02').mkdir(exist_ok=True)
+(r/'qa-final').mkdir(exist_ok=True)
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--kernel-su',action='store_true',help='Stub UID0 and exercise the exact generated root controller; not root/SELinux proof')
+args=parser.parse_args()
+controller=r.parent/'outputs/flip-pets-control.sh'
+if args.kernel_su:
+ with zipfile.ZipFile(r.parent/'outputs/FlipPets-KernelSU-experimental.zip') as archive:
+  controller=r/'qa-final/generated-root-controller.sh';controller.write_bytes(archive.read('flip-pets-control.sh'))
 def call(*args,ok=True):
  p=subprocess.run([adb,'-s','emulator-5554',*args],capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=20)
  if ok and p.returncode:raise RuntimeError(p.stdout+p.stderr)
  return p
 def shell(command,ok=True):return call('shell',command,ok=ok)
 assert shell('getprop ro.kernel.qemu').stdout.strip()=='1','Emulator required'
-fixture=(r/'tests/controller-fixture.sh').read_text()
+fixture=(r/'tests/controller-fixture.sh').read_text(encoding='utf-8')
 fixture=fixture.replace('nohup() { :; }','sleep() { command sleep 0.1; }')
-wrapper=r/'tests/supervisor-fixture.sh';wrapper.write_text(fixture,encoding='utf-8',newline='\n')
+fixture='FP_FIXTURE_ACTION=$1\n'+fixture
+if args.kernel_su: fixture='id() { [ "$1" = "-u" ] && echo 0; }\n'+fixture
+fixture=fixture.replace('pm() { echo package:/fixture/FlipPets.apk; }', '''pm() {
+ if [ "$FP_FIXTURE_ACTION" = run ]; then
+  [ ! -f "$TEST/slow_verify" ] || command sleep 0.5
+  [ ! -f "$TEST/timeout_verify" ] || command sleep 5.5
+  [ ! -f "$TEST/fail_verify" ] || return 1
+  [ ! -f "$TEST/stop_during_verify" ] || touch /sdcard/Android/data/org.flippets.app/files/controller-stop
+ fi
+ echo package:/fixture/FlipPets.apk
+}''')
+wrapper=r/'qa-final/supervisor-fixture.sh';wrapper.write_text(fixture,encoding='utf-8',newline='\n')
 shell('mkdir -p '+base)
-for p,dest in [(r.parent/'outputs/flip-pets-control.sh','control.sh'),(wrapper,'flip-pets-control.sh'),(r/'research/ruyi-display_layout_configuration.xml','layout')]:call('push',str(p),base+'/'+dest)
+for p,dest in [(controller,'control.sh'),(wrapper,'flip-pets-control.sh'),(r/'research/ruyi-display_layout_configuration.xml','layout')]:call('push',str(p),base+'/'+dest)
 def invoke(action,ok=True):return shell(f'sh {base}/flip-pets-control.sh {action}',ok=ok)
 def exists(path):return shell(f'test -f {path}',ok=False).returncode==0
 def wait_for(test,label):
@@ -26,9 +44,31 @@ results=[]
 def check(condition,label):
  assert condition,label;results.append(dict(case=label,ok=True))
 def reset():
- invoke('disable');time.sleep(.3)
- shell(f'echo ruyi > {base}/device\necho 3 > {base}/state\necho 3 > {base}/base\necho Awake > {base}/wake\necho false > {base}/locked\nrm -f {base}/override {base}/reject {base}/reject_count {base}/display_off_reads {base}/foreign_on_reject {base}/launches {base}/closed /data/local/tmp/flip-pets-active /sdcard/Android/data/org.flippets.app/files/controller-stop')
+ invoke('disable')
+ # Startup now acknowledges before presentation; cleanup may still be in a
+ # child start command. Do not race the next fixture against the previous run.
+ wait_for(lambda:shell('test ! -f /data/local/tmp/flip-pets-supervisor.lock/pid || ! kill -0 "$(cat /data/local/tmp/flip-pets-supervisor.lock/pid)" 2>/dev/null',ok=False).returncode==0,'previous supervisor teardown')
+ shell(f'echo ruyi > {base}/device\necho 3 > {base}/state\necho 3 > {base}/base\necho Awake > {base}/wake\necho false > {base}/locked\nrm -f {base}/override {base}/reject {base}/reject_count {base}/display_off_reads {base}/foreign_on_reject {base}/launches {base}/closed {base}/slow_verify {base}/timeout_verify {base}/fail_verify {base}/stop_during_verify /data/local/tmp/flip-pets-active /sdcard/Android/data/org.flippets.app/files/controller-stop')
 try:
+ reset();shell('touch /sdcard/Android/data/org.flippets.app/files/controller-stop')
+ p=invoke('resume',ok=False)
+ check(p.returncode!=0 and exists('/sdcard/Android/data/org.flippets.app/files/controller-stop') and not exists('/data/local/tmp/flip-pets-enabled') and not exists(base+'/launches'),'unattended resume preserves existing Stop and never launches')
+ invoke('supervise');wait_for(lambda:state(5),'explicit restart after Stop')
+ check(not exists('/sdcard/Android/data/org.flippets.app/files/controller-stop'),'explicit Start clears the previous Stop')
+ reset();shell(f'touch {base}/slow_verify');started=time.monotonic();invoke('resume');elapsed=time.monotonic()-started
+ check(elapsed>=.45 and exists('/data/local/tmp/flip-pets-supervisor.lock/ready'),'parent waits for child verification and ready acknowledgement')
+ reset();shell(f'touch {base}/fail_verify');p=invoke('resume',ok=False)
+ check(p.returncode!=0 and not exists('/data/local/tmp/flip-pets-enabled') and not exists(base+'/launches'),'child verification failure is reported as startup failure without launch')
+ reset();shell(f'touch {base}/timeout_verify');p=invoke('resume',ok=False)
+ check(p.returncode!=0 and not exists('/data/local/tmp/flip-pets-enabled') and not exists(base+'/launches'),'ACK timeout disables the runtime without launching')
+ wait_for(lambda:not exists('/data/local/tmp/flip-pets-supervisor.lock/pid'),'late child teardown after ACK timeout')
+ check(not exists('/data/local/tmp/flip-pets-supervisor.lock/ready') and not exists('/data/local/tmp/flip-pets-active') and not exists(base+'/launches'),'late verification cannot publish readiness or activate presentation after timeout')
+ shell(f'rm -f {base}/timeout_verify');invoke('supervise');wait_for(lambda:state(5),'explicit restart after ACK timeout')
+ check(True,'explicit Start succeeds after late-child timeout cleanup')
+ reset();shell(f'touch {base}/stop_during_verify');p=invoke('resume',ok=False)
+ check(p.returncode!=0 and exists('/sdcard/Android/data/org.flippets.app/files/controller-stop') and not exists(base+'/launches'),'Stop arriving during unattended startup survives and prevents launch')
+ reset();shell(f'touch {base}/stop_during_verify');p=invoke('supervise',ok=False)
+ check(p.returncode!=0 and exists('/sdcard/Android/data/org.flippets.app/files/controller-stop') and not exists(base+'/launches'),'Stop arriving after explicit Start cleared old Stop also survives')
  reset();invoke('supervise');wait_for(lambda:state(5),'initial activation')
  check(exists('/data/local/tmp/flip-pets-enabled'),'detached supervisor remains enabled')
  pid=shell('cat /data/local/tmp/flip-pets-supervisor.lock/pid').stdout.strip();invoke('supervise');check(shell('cat /data/local/tmp/flip-pets-supervisor.lock/pid').stdout.strip()==pid,'second enable does not duplicate supervisor')
@@ -48,5 +88,5 @@ try:
  reset();shell(f'touch {base}/reject');invoke('supervise');wait_for(lambda:not exists('/data/local/tmp/flip-pets-enabled'),'bounded launch failures');check(state(3) and len(shell(f'cat {base}/launches').stdout.splitlines())==9,'three failed start batches use at most three attempts each, disable retry loop and restore stock mode')
 finally:
  invoke('disable',ok=False);shell('rm -f /sdcard/Android/data/org.flippets.app/files/controller-stop',ok=False)
-(r/'qa-v02/supervisor-tests.json').write_text(json.dumps(dict(environment='emulator-5554, stubbed device-state/display/power/keyguard commands; no physical MIX Flip',controller_sha256=hashlib.sha256((r.parent/'outputs/flip-pets-control.sh').read_bytes()).hexdigest(),results=results),indent=2),encoding='utf-8')
+(r/'qa-final'/('kernel-su-supervisor-tests.json' if args.kernel_su else 'supervisor-tests-current.json')).write_text(json.dumps(dict(environment='emulator-5554, stubbed device-state/display/power/keyguard commands'+('; UID0 also stubbed' if args.kernel_su else '')+'; no physical MIX Flip',controller_sha256=hashlib.sha256(controller.read_bytes()).hexdigest(),results=results),indent=2),encoding='utf-8')
 print(json.dumps(results,indent=2))

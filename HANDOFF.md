@@ -1,15 +1,79 @@
-# Flip Pets continuation — 2026-10-10
+# Flip Pets continuation — 2026-10-11
+
+## Implementation resumed — first controller hardening step
+
+The user requested “read handoff.md and start doing”, then an independent review
+at the end. This supersedes the planning-only implementation pause below. This
+session implements the boot/startup part of the KernelSU milestone in
+`docs/native-cover-root-and-rootless-agent-plan.md`; it does not authorize physical
+phone changes, root installation, native Apply or generation. The subsequent
+instruction authorizes a fresh independent review and code/APK GitHub publication
+for each milestone. Physical testing is deferred until the fully assembled build.
+
+- Canonical/embedded controllers remain byte-identical. `supervise` is explicit
+  Start; new `resume` preserves Stop. Both wait for the child readiness marker,
+  which is written after child verification and cleanup-trap installation.
+- KernelSU boot waits at five-second intervals for up to ten minutes for primary
+  user unlock and accessible app storage. Stop discovered after unlock cancels
+  opt-in. Action opt-out and disable/remove flags cancel the wait. Timeout retains
+  opt-in but does not start a retry daemon. See updated installation instructions.
+- This is partial hardening. Exact process identity/PID reuse, serialized
+  Action/boot/Stop, update migration, root-owned leftovers and post-start module
+  disable handling still need work. Do not claim reliable physical KernelSU.
+- APK rebuilt with the preserved signing certificate; matching root ZIP generated
+  from the canonical controller. Version remains 1.1/code 12, development only.
+- Current APK: `012d42fa4548ef84e0d9c77f6769ebde4477fa20d0fa305953353f5cabdca361`.
+- Current root ZIP: `90e47d597584044c02d9c3d7d4b0385f403e346b4fc7e6a843f0a7da80ec062a`.
+- Current canonical controller: `815e11a50f6549dbd14968e4fc3257dc0270d3c9f6800a1a9096e7f1afe2c99e`.
+- Fresh structure checks passed: asset byte identity, original signing certificate,
+  v3 signature, APK ZIP and both ABI ELF 16 KiB alignment. Report:
+  `work/qa-final/apk-structure-current.json`.
+- Existing 343 APK and six lifecycle passes below belong to APK `1d7d6181...`.
+  They do not validate this rebuilt APK. No release/source/verification bundles
+  are regenerated for this development change, and no phone installation occurs.
+
+Fresh scoped verification: 15 canonical controller + 23 canonical supervisor +
+15 generated UID0 controller + 23 generated UID0 supervisor + 15 module boot
+command checks passed (91 total), plus seven Android `sh -n` syntax checks.
+UID0/storage/device responses are fixture stubs, not physical root proof.
+Exact hashes/report digests and limits:
+`work/research/kernel-su-startup-hardening-evidence.json`. Local detailed reports
+are in `work/qa-final/`; the old `work/qa-v02` supervisor report is preserved.
+
+The user-requested independent agent review found no actionable correctness
+issues in this bounded milestone. It identified missing late-child ACK-timeout
+coverage; that fixture was added, independently rechecked, and passed for both
+variants. Review does not certify the deferred ownership/migration work.
+The identity-verified test emulator was shut down after collection; no physical
+phone was targeted.
+
+Next source milestone: exact process ownership and serialized module transitions,
+then persistent opt-in migration/root-to-shell cleanup. Native launcher admission
+still needs the exact EEA policy reader; native pet Apply remains gated on motion
+and exact restore. Generation remains deferred. Reviewed milestones are pushed
+to main with exact matching APK/module assets in a development prerelease; APK/ZIP
+files remain ignored in the source tree.
+
+## Previous planning and release state — 10 October 2026
 
 ## Latest planning direction — implementation paused by user
 
 The user explicitly said “Do not make. Just plan for now.” Subsequent requests
 authorized a detailed agent plan and a folded/unfolded visual concept, not code
-implementation or device changes. Read `docs/root-native-integration-plan.md`.
-Priority: reliable KernelSU support for the existing open/awake/unlocked mode,
-then native folded pets with reusable foundations for later app cards. The
-integration stage must include real **Generate my pet** from a photo, not only
-importing an already generated clip. Service choice/upload consent and output
-compatibility with the native PAG path remain gates. Phone is still unrooted.
+implementation or device changes. Read the current detailed handoff:
+`docs/native-cover-root-and-rootless-agent-plan.md`. It supersedes the sequence in
+`docs/root-native-integration-plan.md`. The user subsequently deferred **Generate
+my pet** and all generation backends. Use known donor assets for the native proof.
+Phone is still unrooted. Priority: reliable KernelSU for the existing mode;
+native FlipHome launching for folded unlocked app-owned cards; native tiny-keyguard
+PAG for folded lockscreen pets after motion and exact restoration are proven.
+Read-only Global FlipHome audit found ordinary launcher entries admitted through
+the continuity service, plus a native 2X3 MAML widget host with a fixed catalogue
+and private cached selection. Special `miui.fliphome.default` dispatch is gated
+by a five-package set; a manifest action alone is insufficient. Native small widgets
+are a later optional root extension, not a prerequisite for full-screen cards.
+New evidence: `work/research/ruyi-fliphome-native-host-audit.json`. Global FlipHome
+has not been hash-compared to the phone's EEA APK. No phone mutations occurred.
 The current KernelSU wrapper was reviewed but not hardened in this session.
 Concepts use historical Charlie frames and do not prove folded native playback.
 Resume implementation only when requested; preserve the historical QA status below.
@@ -22,7 +86,8 @@ then requested mini-apps fill the entire cover and asked to obtain the cards fro
 These instructions supersede the previous session's stop point below. The user
 subsequently requested committing/pushing the finished new version to GitHub.
 Phone installation, root installation, flashing, login and photo upload remain outside
-this request. The larger native-runtime/KernelSU transplant idea was set aside.
+this request. The larger native-runtime/KernelSU transplant idea was set aside at
+that point; the planning-only native-host investigation above is the current direction.
 
 ## Current changes
 
@@ -65,7 +130,7 @@ This is source evidence, not a port of the native runtime or verified online acc
 No native library or unrelated stock widget was added to the app. Raw packages,
 full inventories and decompiled classes stay ignored in work/extracted/hongkong.
 
-## Current exact artifacts and verification status
+## Historical 10 October release artifacts and verification status
 
 - APK: 1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37
 - KernelSU ZIP: d72d8c62d57fe3ea753b88f56712f0789d8431b54ec99858778306aed0dede82

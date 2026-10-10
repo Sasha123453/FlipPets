@@ -1,5 +1,37 @@
 # KernelSU: экспериментальная альтернатива контроллера
 
+## Development hardening — 11 October 2026
+
+Implementation has resumed with the boot/startup part of the native integration
+plan. This remains an experimental candidate, not a reliable root release.
+
+- Boot requires `cmd user is-user-unlocked 0` to report true and the app's external
+  files directory to be accessible. It checks every five seconds for at most ten
+  minutes. Unknown/unavailable storage never means permission to resume.
+- Boot uses canonical `resume`, which never removes `controller-stop`. An explicit
+  Action uses `supervise`, which clears the previous Stop once. A subsequent Stop
+  cancels startup; the child acknowledges only after verification and trap setup.
+- Action while opted in switches the session off, even if an app Stop already
+  exists. If storage timed out, unlock/open Flip Pets and use Action to turn the
+  retained opt-in off, then Action again to explicitly start. No outer retry loop
+  circumvents the controller's launch-failure limit.
+- Module disable/remove or Action opt-out cancels the storage wait. A flag seen
+  immediately after startup acknowledgement tears down that new session.
+
+Outstanding: serialize boot/Action/Stop transitions, exact process identity and
+PID reuse, opt-in migration outside the replaceable module directory, root-to-shell
+file ownership, continuous module-disable handling after startup, and rooted
+MIX Flip testing. The current marker/UID/command-line ownership check is still
+experimental. Do not install this candidate merely to test these source changes.
+
+Command verification: `work/tests/run_kernel_su_boot_tests.py` exercises wrapper
+branches with rebased paths and stubbed UID/storage/controller on emulator-5554.
+`run_supervisor_tests.py` and its `--kernel-su` variant exercise actual generated
+controller logic with stock command responses stubbed. Neither proves SELinux,
+first-unlock mount behavior or physical fold handling.
+
+## Original candidate and installation
+
 10.10.2026 пользователь разрешил root-модуль как альтернативу ADB/Shizuku и
 уточнил, что root пока отсутствует, планируется KernelSU. Существующий rootless
 путь остаётся по умолчанию. Root на телефон не устанавливался.

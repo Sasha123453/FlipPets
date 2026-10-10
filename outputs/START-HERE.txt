@@ -1,5 +1,14 @@
 Flip Pets 1.1 — Xiaomi 17/18 Pro → MIX Flip, без root
 
+DEVELOPMENT CONTROLLER UPDATE — 11 October 2026
+The experimental KernelSU module waits up to ten minutes for unlocked app storage
+and never clears Stop during boot. Startup now waits for a child acknowledgement.
+Shizuku remains the default. Root ownership/migration and physical verification
+are unfinished; see docs/kernel-su-module.md. If the boot storage wait expires,
+unlock/open Flip Pets, use Action to turn the retained opt-in off, then Action
+again to explicitly start. This development APK needs fresh full release QA;
+the earlier 343-check release evidence does not validate the rebuilt APK.
+
 33 оформления: 176 исходных PAG/MP4-клипов и 11 адаптированных композиций.
 Графика Xiaomi сохранена; полного системного HyperOS 17 Pro здесь нет.
 

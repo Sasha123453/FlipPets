@@ -1,0 +1,330 @@
+{
+  "date": "2026-10-10",
+  "scope": "Read-only local firmware and source analysis. No phone commands, root installation, native Apply or implementation in this investigation.",
+  "source": {
+    "device": "ruyi",
+    "region": "Global",
+    "build": "OS3.0.303.0.WNIMIXM",
+    "partition": "product",
+    "partition_bytes": 3765919744,
+    "partition_sha256": "89100bc816e60aebd4152aa60dbe832a2b83cc9e815181f6e8b0e11b68ce9107",
+    "extraction_sidecar": {
+      "operation_hash_checks": true,
+      "partition_hash_check": true
+    },
+    "sidecar_caveat": "Sidecar records prior payload verification but contains no digest; current digest is a separate fresh local hash.",
+    "apk_member": "/priv-app/FlipHome/FlipHome.apk",
+    "apk_sha256": "e3c03f3307dae5b2799f9c62f27347b038f575acbc7f54c73270d54429433027",
+    "apk_bytes": 23241468,
+    "apk_crc_ok": true,
+    "version_code": 101041103,
+    "version_name": "ALPHA-1.1.4.1103-04221121",
+    "exact_phone_eea_apk_match": "NOT CHECKED"
+  },
+  "decompiler": {
+    "name": "JADX",
+    "version": "1.5.6",
+    "entrypoint": "jadx.cli.JadxCLI",
+    "errors_reported": 95,
+    "limitation": "Critical-path readable methods reviewed; this is not a successful reconstruction of all methods. Validate failed or ambiguous code with DEX before implementation."
+  },
+  "apk_inventory": {
+    "native_so_members": [],
+    "declared_class_lines": 13277,
+    "quickjs_or_jscanvas_class_matches": [],
+    "absence_scope": "Declared classes and .so members of this APK only; does not exclude external framework dependencies."
+  },
+  "sample_widget": {
+    "path": "work/folded-research/fliphome-audit/product/media/theme/default/maml/flip_watch_maml_dateshow.mtz",
+    "sha256": "7ac35f84cc13f00204562a8528d64ae1eb1f7e84f387bb380acf40edc1424fb2",
+    "bytes": 77782,
+    "zip_crc_ok": true,
+    "widget_2x3_crc_ok": true,
+    "widget_2x3_sha256": "d3581ba33855dfc45f069aa53eb5f43d52113c6fbac6c27e39b5f8775819efd3",
+    "manifest_sha256": "4ed7e499a654c861d30504d8a173741ee8bac92a52065ccb10849c57aa93b7f0",
+    "root": "Widget",
+    "attributes": {
+      "version": "2",
+      "screenWidth": "1208",
+      "frameRate": "0",
+      "useVariableUpdater": "DateTime.Second",
+      "disableCutRoundCorner": "false",
+      "resDensity": "520"
+    },
+    "element_types": [
+      "AniFrame",
+      "AnimationCommand",
+      "Array",
+      "BinderCommand",
+      "Button",
+      "ContentProviderBinder",
+      "DateTime",
+      "ExternalCommands",
+      "Fallback",
+      "FrameRateCommand",
+      "Function",
+      "FunctionCommand",
+      "Group",
+      "IntentCommand",
+      "Rectangle",
+      "Text",
+      "Trigger",
+      "Triggers",
+      "Var",
+      "Variable",
+      "VariableAnimation",
+      "VariableBinders",
+      "VariableCommand",
+      "Widget",
+      "var"
+    ],
+    "typeTag": "theme_calendar"
+  },
+  "source_anchors": [
+    {
+      "source": "work/folded-research/fliphome-audit/decompiled/sources/com/miui/fliphome/model/DefaultLauncherApps.java",
+      "sha256": "fb94845be79e37c3819c5c1109896f48f8b6cd1b8ac93afda293f68dc4745c29",
+      "anchors": {
+        "private void addValidAppsToAllAppList": [
+          53
+        ],
+        "private boolean initValidApplist": [
+          66
+        ],
+        "public HashMap<ComponentKey, LauncherActivityInfo> loadAllInstallApps": [
+          263
+        ]
+      }
+    },
+    {
+      "source": "work/folded-research/fliphome-audit/decompiled/sources/com/miui/fliphome/utils/PerformLaunchAction.java",
+      "sha256": "3ce7b6f3f2f828c6a8a326ef3555677b057ff85bd1e1f2f4c8543d855cacffd0",
+      "anchors": {
+        "mSecondEntryPkgs =": [
+          33
+        ],
+        "onStartIntercept(": [
+          99,
+          134
+        ]
+      }
+    },
+    {
+      "source": "work/folded-research/fliphome-audit/decompiled/sources/com/miui/fliphome/widget/ui/maml/FlipMaMlHostView.java",
+      "sha256": "b3c7f392f6ac01d19fec95c63a7c23ca44f639df312ed675258cc61a36a1d25f",
+      "anchors": {
+        "MAML_TYPE": [
+          14,
+          26
+        ],
+        "super(context": [
+          30
+        ],
+        "onAttachedToWindow": [
+          50,
+          51
+        ],
+        "onDetachedFromWindow": [
+          56,
+          57
+        ]
+      }
+    },
+    {
+      "source": "work/folded-research/fliphome-audit/decompiled/sources/com/miui/fliphome/widget/ui/maml/FlipMaMlWidgetCompat.java",
+      "sha256": "2a2c92008b1b2f67d4ee2783f153c3d5a1532ca466f057ebe1b06522487511dd",
+      "anchors": {
+        "public static FlipWidgetInfo createWidgetInfo": [
+          90
+        ],
+        "public static final String getResDir": [
+          164
+        ],
+        "private static FlipWidgetInfo loadLocalMaml": [
+          203
+        ],
+        "private static FlipWidgetInfo loadPreMadeAssets": [
+          231
+        ]
+      }
+    },
+    {
+      "source": "work/folded-research/fliphome-audit/decompiled/sources/com/miui/fliphome/widget/model/FlipWatchDefaultConfig.java",
+      "sha256": "a36851b7e97d0956c3082a22c01c5eb8026f653a7d9f271220be2d4ad14c028b",
+      "anchors": {
+        "FIlE_NAME_N8 =": [
+          20
+        ],
+        "public static List<FlipWidgetInfo> loadAllWidget": [
+          61
+        ]
+      }
+    },
+    {
+      "source": "work/folded-research/fliphome-audit/decompiled/sources/com/miui/fliphome/widget/model/FlipWidgetModel.java",
+      "sha256": "e72e73e6534e2eb7a639e2371ae2b79e2d93484e7b4af831b7b822439fe9516b",
+      "anchors": {
+        "MAX_COUNT": [
+          19
+        ],
+        "getAddedListBlocked": [
+          147,
+          172
+        ],
+        "saveToDatabase": [
+          41,
+          104,
+          123,
+          124,
+          202,
+          211
+        ]
+      }
+    },
+    {
+      "source": "work/folded-research/fliphome-audit/decompiled/sources/com/miui/fliphome/widget/model/database/FlipWidgetRepository.java",
+      "sha256": "dedfbb2195b4619335f8e9f18e4f77c3b9ebfc8d87c46bbda864604e5afe6c1e",
+      "anchors": {
+        "flip_widget_db": [
+          9
+        ]
+      }
+    },
+    {
+      "source": "work/folded-research/fliphome-audit/decompiled/sources/com/miui/fliphome/settings/widget/WidgetViewModel.java",
+      "sha256": "c15071dfcd2f3a4d4127522a6545defb000c8e6d42c7ed89bb5277b474cf0857",
+      "anchors": {
+        "loadAllWidget": [
+          134
+        ],
+        "onAddedUpdate": [
+          160,
+          241,
+          307,
+          336
+        ]
+      }
+    },
+    {
+      "source": "work/folded-research/fliphome-audit/decompiled/sources/com/miui/fliphome/FlipHomeProvider.java",
+      "sha256": "d97047d74079e37ae8daaefb8c9940df43c402c7aca5bcaacf42aaf7c84ec46b",
+      "anchors": {
+        "showFlipWatch": [
+          28,
+          163
+        ],
+        "getHomePreview": [
+          26,
+          97,
+          152,
+          157
+        ],
+        "getLastWidgetPreview": [
+          27,
+          112,
+          161,
+          162
+        ]
+      }
+    },
+    {
+      "source": "work/folded-research/fliphome-audit/decompiled/sources/com/miui/fliphome/widget/WatchOverlayWindow.java",
+      "sha256": "afbcc2a152cb03f89d8670103056118ed6597478a79343d2f3b15a71d969ab0a",
+      "anchors": {
+        "miui.supportFlipWatchOverlayGroupView": [
+          175,
+          177
+        ],
+        "isKeyguardLocked": [
+          714
+        ],
+        "ON_STOP": [
+          402,
+          534,
+          535,
+          560,
+          679,
+          681,
+          682
+        ]
+      }
+    },
+    {
+      "source": "work/folded-research/fliphome-audit/decompiled/sources/com/miui/fliphome/widget/ui/FlipWidgetManager.java",
+      "sha256": "274f29219a3a37cb8108c34c91d9c1f3a6a7490f5176e12e274305eb317f1659",
+      "anchors": {
+        "sendToMaml": [
+          55,
+          56,
+          62,
+          63,
+          229,
+          234,
+          246,
+          247,
+          248
+        ],
+        "onPause": [
+          241
+        ],
+        "onResume": [
+          238
+        ]
+      }
+    },
+    {
+      "source": "work/folded-research/fliphome-audit/decompiled/sources/com/miui/maml/elements/ScreenElementFactory.java",
+      "sha256": "736e8d519b15f9f89defd9c8ee6bb33834c844c258ecedf009f118460d0ee32a",
+      "anchors": {
+        "WebViewScreenElement": [
+          131,
+          132
+        ],
+        "PagUtils.supportPagFeature": [
+          169,
+          174
+        ]
+      }
+    },
+    {
+      "source": "work/folded-research/fliphome-audit/decompiled/sources/com/miui/maml/elements/WebViewScreenElement.java",
+      "sha256": "f92df8de391718c16b468c655b2063ca544ceeeec5610b33c69d631ffc392e3d",
+      "anchors": {
+        "addJavascriptInterface": [
+          137
+        ]
+      }
+    },
+    {
+      "source": "work/folded-research/fliphome-audit/decompiled/sources/com/miui/maml/elements/pag/PagUtils.java",
+      "sha256": "04def0fff07c7652ba32f34a6d8bfede563d83b92953a0ef6c2d1e37936ac7f5",
+      "anchors": {
+        "PAG_LIB_FILE": [
+          10,
+          41
+        ],
+        "supportPagFeature": [
+          40
+        ]
+      }
+    }
+  ],
+  "conclusions": {
+    "apps": "Native launcher accepts ordinary LauncherApps entries admitted by continuity service component/package lists. Prefer app-owned activity for full-screen cards. Exact EEA policy and actual launcher behavior remain untested.",
+    "second_entry": "miui.fliphome.default dispatch is gated by a five-package set in this APK; a manifest action alone is insufficient.",
+    "widgets": "Native 2X3 MAML host, local MTZ parsing, fixed catalogue, cached Room selection and lifecycle commands exist. New resource registration is not a public import API.",
+    "jscanvas": "No evidence this FlipHome APK has the donor QuickJS Canvas runtime.",
+    "lockscreen": "FlipHome overlay code does not prove secure lockscreen execution; native tiny-keyguard pet route is separate."
+  },
+  "primary_web_references": [
+    {
+      "url": "https://dev.mi.com/xiaomihyperos/documentation/detail?pId=2026",
+      "updated": "2025-02-28",
+      "accessed": "2026-10-10"
+    },
+    {
+      "url": "https://kernelsu.org/guide/module.html",
+      "accessed": "2026-10-10"
+    }
+  ]
+}
