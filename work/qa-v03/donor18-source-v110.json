@@ -1,0 +1,43 @@
+{
+  "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
+  "scope": "Host JVM geometry/playback/carp and8 synthetic filesystem-import cases, source hashes only; no Android/phone/UI proof. Source probes used1.0 renderer separately.",
+  "tested": 4,
+  "failed": 0,
+  "passed": true,
+  "source_sha256": {
+    "work/app/src/org/flippets/app/PlaybackPolicy.java": "c49310159fb80b31e491eb2e82351914aa15acd9ad1c998c69afbbb82d21a673",
+    "work/tests/PlaybackPolicyTest.java": "06022db91ae8aee98c2d777318a4b2546b85407c4337fd86febc816351425a19",
+    "work/tests/test_donor18_import.py": "e0f0ba9406141bd16dbfd8f523e0a1a18280bdd13d64c7eeb96974bebeedcb65",
+    "work/prepare_donor18.py": "70a31c65189bc1496766f99675d07e777effbeeef0e541a398bdfb7121a0d1be",
+    "work/app/src/org/flippets/app/CoverGeometry.java": "7d38ebdde1a2e89dda766aa39182e88e0500147b0be601a3e6dade448994c543",
+    "work/app/src/org/flippets/app/PetLayoutProfile.java": "f4696a339cbf4eac2d8f929108c5ee0fbfb45d7f115a5609c0daf1818b976183",
+    "work/tests/CoverGeometryTest.java": "caa28bcc89dba138b1de6fa7d0c0c094c57500a6d1ffc40990deca83624d0a17",
+    "work/app/assets/pet-envelopes.json": "adbac3469c5babebdf62b746e717b367cce2c01ca973eb8f947decd8df89186a",
+    "work/app/src/org/flippets/app/CarpSequence.java": "cd0680468c480aa1548e5fa1638785574c69932b84a0d2e3326d7d40373058d3",
+    "work/tests/CarpSequenceTest.java": "9ed0f18f86d88be30f751e0dc265c966bd0d8f52836cec6a8000f7b23814ed86"
+  },
+  "results": [
+    {
+      "test": "run_cover_geometry_tests.py",
+      "ok": true,
+      "detail": "{\n  \"scope\": \"Pre-build source tests: pure aspect/placement invariants and offline donor-asset provenance; not APK/UI or physical camera validation\",\n  \"compilePassed\": true,\n  \"testsPassed\": true,\n  \"stdout\": \"CoverGeometry: 1106 assertions passed\",\n  \"sourceSha256\": {\n    \"work/app/src/org/flippets/app/CoverGeometry.java\": \"7d38ebdde1a2e89dda766aa39182e88e0500147b0be601a3e6dade448994c543\",\n    \"work/app/src/org/flippets/app/PetLayoutProfile.java\": \"f4696a339cbf4eac2d8f929108c5ee0fbfb45d7f115a5609c0daf1818b976183\",\n    \"work/tests/CoverGeometryTest.java\": \"caa28bcc89dba138b1de6fa7d0c0c094c57500a6d1ffc40990deca83624d0a17\",\n    \"work/app/assets/pet-envelopes.json\": \"adbac3469c5babebdf62b746e717b367cce2c01ca973eb8f947decd8df89186a\"\n  },\n  \"sampledPAGAssets\": 116,\n  \"allSampledSourceHashesMatch\": true\n}",
+      "stderr": ""
+    },
+    {
+      "test": "run_carp_sequence_tests.py",
+      "ok": true,
+      "detail": "{\n  \"scope\": \"Pre-build pure Java source tests; threshold/Folme timing adaptation and renderer isolation only, not native engine or APK/phone behavior\",\n  \"compilePassed\": true,\n  \"testsPassed\": true,\n  \"stdout\": \"CarpSequence: 474 assertions passed\",\n  \"stderr\": \"\\n\",\n  \"sourceSha256\": {\n    \"work/app/src/org/flippets/app/CarpSequence.java\": \"cd0680468c480aa1548e5fa1638785574c69932b84a0d2e3326d7d40373058d3\",\n    \"work/tests/CarpSequenceTest.java\": \"9ed0f18f86d88be30f751e0dc265c966bd0d8f52836cec6a8000f7b23814ed86\"\n  },\n  \"localVerifiedMaml\": {\n    \"sha256\": \"82a1617dc7f7fb7972571a827add4da81b45f67ade5a60ce254d3a8c5e2e3eac\",\n    \"expectedThresholdAndFadeExpressionsPresent\": true\n  },\n  \"passed\": true\n}",
+      "stderr": ""
+    },
+    {
+      "test": "PlaybackPolicyTest",
+      "ok": true,
+      "detail": "Playback policy: 33 assertions passed"
+    },
+    {
+      "test": "DonorImportFilesystem8Cases",
+      "ok": true,
+      "detail": "........\n----------------------------------------------------------------------\nRan 8 tests in 0.072s\n\nOK"
+    }
+  ]
+}

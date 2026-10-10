@@ -1,0 +1,290 @@
+{
+  "schemaVersion": 1,
+  "scope": "Read-only source audit, no apply/catalog/runtime/build/device changes; not render QA",
+  "partitionEvidence": [
+    {
+      "device": "hongkong",
+      "publicVersion": "OS4.0.15.0.XFRCNXM",
+      "officialArchiveUrl": "https://bigota.d.miui.com/OS4.0.15.0.XFRCNXM/hongkong-ota_full-OS4.0.15.0.XFRCNXM-user-17.0-6aad32ed35.zip",
+      "archiveSize": 12318005426,
+      "completeArchiveVerified": false,
+      "partition": "product",
+      "partitionBytes": 5672587264,
+      "partitionSha256": "f63831fadeddfd4b52407ff22e02ac8d17cce6ceb474c951c4fc13c214d09f63",
+      "operationHashesCheckedByPayloadDumper": true,
+      "partitionHashVerified": true
+    },
+    {
+      "device": "hongkong",
+      "publicVersion": "OS4.0.15.0.XFRCNXM",
+      "officialArchiveUrl": "https://bigota.d.miui.com/OS4.0.15.0.XFRCNXM/hongkong-ota_full-OS4.0.15.0.XFRCNXM-user-17.0-6aad32ed35.zip",
+      "archiveSize": 12318005426,
+      "completeArchiveVerified": false,
+      "partition": "system_ext",
+      "partitionBytes": 817614848,
+      "partitionSha256": "bd32916b4010f90ebaa077ef8685b9c6a84b57e0416e4645f6bae3bf072e239d",
+      "operationHashesCheckedByPayloadDumper": true,
+      "partitionHashVerified": true
+    }
+  ],
+  "mrcCount": 41,
+  "mrcDecisions": {
+    "no-media": 20,
+    "policy-needs-renderer-support": 3,
+    "all-media-already-present": 2,
+    "exact-media-set-alias": 16
+  },
+  "baseline": {
+    "catalogueEntries": 30,
+    "mediaReferences": 170,
+    "uniqueMediaSha256": 142
+  },
+  "newMrcMediaReferences": 13,
+  "newMrcUniqueMediaSha256": 9,
+  "duplicateAcrossNewMrcs": 4,
+  "newMediaGroups": [
+    {
+      "id": "hongkong-hongkong",
+      "originalFile": "119f090b-b625-4b3e-9ffd-107927c360c6.mrc",
+      "originalSha256": "c6a45971b17954aae19ff0c230ad75ebf5b5c44743c4dc40d365f7dd0975c138",
+      "manifestSha256": "bc380987622251f9d86d6ed9d056ded34f8bce7121a5568a43e44677a4a81e3b",
+      "family": "hongkong",
+      "media": [
+        {
+          "member": "assets/hongkong/bg.mp4",
+          "sha256": "dec6963ec0f3462e49c64d054b7374f2c257409695bc81d48f220fb40febddcb",
+          "reusesAsset": null
+        }
+      ],
+      "uniqueMediaInMrc": 1,
+      "newMediaVsBaseline": 1,
+      "playbackPolicy": "unmapped MAML playback; retain in research only",
+      "playbackEvidence": {
+        "pagLoops": [],
+        "completeCommands": []
+      },
+      "decision": "policy-needs-renderer-support"
+    },
+    {
+      "id": "p_carp-hongkong",
+      "originalFile": "6eca3137-153e-4eed-827e-e8f89e51fb8a.mrc",
+      "originalSha256": "d3b18f31d54eb6390ae415dba32fb27def0dd959271cbb042f3ef44a354ef4aa",
+      "manifestSha256": "304afc45e1d620f53263ddc54c10cd99aa8702ee040f195c2edc8ce755e95ed6",
+      "family": "p_carp",
+      "media": [
+        {
+          "member": "assets/p_carp/pag_0.pag",
+          "sha256": "7b8985b97e5861bd616caf3e3dbaec40bb3fa262dc34d2e78f42ec9d923385f3",
+          "reusesAsset": null
+        },
+        {
+          "member": "assets/p_carp/pag_1.pag",
+          "sha256": "add7ce0c21bc67e3649aeaf07720cea5ad83be71e825bfd89300966a9a00f53c",
+          "reusesAsset": null
+        },
+        {
+          "member": "assets/p_carp/pag_2.pag",
+          "sha256": "622a19416767dd708e4a64bf2ad778d7f0c958550ed9a5a86630f75ab58f83d8",
+          "reusesAsset": null
+        },
+        {
+          "member": "assets/p_carp/pag_3.pag",
+          "sha256": "f3bd3a7461b9408fc399dde1b8db8ad66e90e9f99b0a5cbed7c1a69afa2f4e59",
+          "reusesAsset": null
+        }
+      ],
+      "uniqueMediaInMrc": 4,
+      "newMediaVsBaseline": 4,
+      "playbackPolicy": "unmapped MAML playback; retain in research only",
+      "playbackEvidence": {
+        "pagLoops": [
+          "1"
+        ],
+        "completeCommands": [
+          {
+            "tag": "Function",
+            "name": "onComplete"
+          },
+          {
+            "tag": "MultiCommand",
+            "condition": "(((#aod_state == 1) ** (#carp_pag.progress == 1)) ** (#is_hidden == 0))"
+          },
+          {
+            "tag": "VariableCommand",
+            "name": "pet_complete",
+            "expression": "1",
+            "type": "number"
+          },
+          {
+            "tag": "FrameRateCommand",
+            "rate": "0"
+          }
+        ]
+      },
+      "decision": "policy-needs-renderer-support"
+    },
+    {
+      "id": "e23e7933-0bd7-4d6e-9165-aae505e389cc-hongkong",
+      "originalFile": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "originalSha256": "592059fff600673e02089cc0fc1d7c47cc97ce1310b010d562a0fea1a042ee11",
+      "manifestSha256": "82a1617dc7f7fb7972571a827add4da81b45f67ade5a60ce254d3a8c5e2e3eac",
+      "family": "e23e7933-0bd7-4d6e-9165-aae505e389cc",
+      "media": [
+        {
+          "member": "assets/pag_456x298/pag_0.pag",
+          "sha256": "f2fbfd8351bea657823b2d3a0f54b9b841a97be4de010c89fe47af3538ad6c7d",
+          "reusesAsset": null
+        },
+        {
+          "member": "assets/pag_452x286/pag_0.pag",
+          "sha256": "352d95bbf6b90a2cc4460a7899b184b41e1cd6c13efe7f3a997066e805dacaa7",
+          "reusesAsset": "pets/q_carp-pandora/pag_0.pag"
+        },
+        {
+          "member": "assets/pag_488x298/pag_0.pag",
+          "sha256": "7b8985b97e5861bd616caf3e3dbaec40bb3fa262dc34d2e78f42ec9d923385f3",
+          "reusesAsset": null
+        },
+        {
+          "member": "assets/pag_456x298/pag_1.pag",
+          "sha256": "8c05bdef38cb4d518b5552e6612f1d67cd205d35fe8553adb9f452a35d761ff1",
+          "reusesAsset": null
+        },
+        {
+          "member": "assets/pag_452x286/pag_1.pag",
+          "sha256": "a023c6718796aa849d4e9e13619c9244838933c00b6428ff5ee06ac239f2065f",
+          "reusesAsset": "pets/q_carp-pandora/pag_1.pag"
+        },
+        {
+          "member": "assets/pag_488x298/pag_1.pag",
+          "sha256": "add7ce0c21bc67e3649aeaf07720cea5ad83be71e825bfd89300966a9a00f53c",
+          "reusesAsset": null
+        },
+        {
+          "member": "assets/pag_456x298/pag_2.pag",
+          "sha256": "0dc093fa0e518fc2c7c37ebb995737f98050450162bac53b34572b45ad3531da",
+          "reusesAsset": null
+        },
+        {
+          "member": "assets/pag_452x286/pag_2.pag",
+          "sha256": "72fccaffe56ede893abff7dc1bb18ac9d443d5530700fc4cb81863b92f27b7db",
+          "reusesAsset": "pets/q_carp-pandora/pag_2.pag"
+        },
+        {
+          "member": "assets/pag_488x298/pag_2.pag",
+          "sha256": "622a19416767dd708e4a64bf2ad778d7f0c958550ed9a5a86630f75ab58f83d8",
+          "reusesAsset": null
+        },
+        {
+          "member": "assets/pag_456x298/pag_3.pag",
+          "sha256": "636b5f6457dc04a91ff146670fc257eb3b4c3b1dc1aaac71ae3a4c4b96860dd0",
+          "reusesAsset": null
+        },
+        {
+          "member": "assets/pag_452x286/pag_3.pag",
+          "sha256": "355506f5ad3159aa100928468f3cfb79fa0ca197fe916c9f758e93bddddae374",
+          "reusesAsset": "pets/q_carp-pandora/pag_3.pag"
+        },
+        {
+          "member": "assets/pag_488x298/pag_3.pag",
+          "sha256": "f3bd3a7461b9408fc399dde1b8db8ad66e90e9f99b0a5cbed7c1a69afa2f4e59",
+          "reusesAsset": null
+        }
+      ],
+      "uniqueMediaInMrc": 12,
+      "newMediaVsBaseline": 8,
+      "playbackPolicy": "unmapped MAML playback; retain in research only",
+      "playbackEvidence": {
+        "pagLoops": [
+          "1"
+        ],
+        "completeCommands": [
+          {
+            "tag": "Function",
+            "name": "onComplete"
+          },
+          {
+            "tag": "ExternCommand",
+            "command": "FLLogD",
+            "strPara": "('butterfly_carp onComplete | pagIdx=' + #pagIndex + ' progress=' + #carp_pag.progress + ' alpha=' + #carp_pag.alpha + ' aod=' + #aod_state + ' is_hidden=' + #is_hidden + ' pet_complete=' + #pet_complete)"
+          },
+          {
+            "tag": "MultiCommand",
+            "condition": "(((#aod_state == 1) ** (#carp_pag.progress == 1)) ** (#is_hidden == 0))"
+          },
+          {
+            "tag": "VariableCommand",
+            "name": "pet_complete",
+            "expression": "1",
+            "type": "number"
+          },
+          {
+            "tag": "FrameRateCommand",
+            "rate": "0"
+          }
+        ]
+      },
+      "decision": "policy-needs-renderer-support"
+    }
+  ],
+  "charlie": {
+    "id": "bird-pandora",
+    "statesComparedByIndex": 12,
+    "allOriginalBytesIdentical": true,
+    "sourceCrestSliceNotFixed": true
+  },
+  "subscreenCenter": {
+    "partitionPath": "/app/subscreencenter/subscreencenter.apk",
+    "bytes": 19109721,
+    "apkSha256": "45bfcd3ecae8f7264b083248e88ad2c80bdfde39c9d511ce51b1f62f2649b55c",
+    "animatedMedia": [
+      {
+        "member": "assets/pin_show.pag",
+        "bytes": 954020,
+        "sha256": "566424b867d98bf5e84f8eb8afa6f368332fb7877b5a7378503943358ae159b2",
+        "duplicateDonor17Apk": null
+      }
+    ],
+    "pinPurposeEvidence": "M.j.run case7 loads pin_show.pag through SmartAssistantPanel; not proof of NFC/awake trigger",
+    "embeddedSmartAssistantArchives": 16,
+    "embeddedSmartAssistantPagMp4Count": 0
+  },
+  "carpPolicy": {
+    "sourceMrc": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+    "ratioFolders": {
+      "lessThan1.55": "pag_456x298",
+      "1.55To1.61": "pag_452x286",
+      "atLeast1.61": "pag_488x298"
+    },
+    "pag488EqualsSeparatePCarpMrc": true,
+    "pag452EqualsExistingQCarp": true,
+    "randomInitialSceneCount": 4,
+    "advanceThresholds": [
+      0.9582753824756607,
+      0.9582753824756607,
+      0.95,
+      0.9496644295302014
+    ],
+    "fadeOutMs": 500,
+    "fadeInMs": 300,
+    "fadeInDelayMs": 100,
+    "differentSceneSelectionAttempts": 10,
+    "pause": "setProgress1, pause, FrameRate0",
+    "aod": "finish/hold, not active cycling",
+    "limits": "MAML code evidence only, native engine and adapted UI not verified"
+  },
+  "vortexPolicy": {
+    "sourceMrc": "119f090b-b625-4b3e-9ffd-107927c360c6.mrc",
+    "nativeFile": "assets/hongkong/bg.mp4",
+    "loop": 1,
+    "scaleMode": 2,
+    "purpose": "Background beneath separate analogue clock/date/battery PNG layers",
+    "lifecycle": "play on normal resume, pause on inactive/AOD"
+  },
+  "thumbnail": "Metadata names preview_rearscreen_0.png but no such embedded/extracted source image was found; actual rendered-frame thumbnails still needed",
+  "importerTests": {
+    "syntheticFilesystemTestsPassed": 8,
+    "isArtworkRuntimeQa": false
+  },
+  "limits": "Unique hashes are new versus current142 and all locally available previous pandora/archive MRC media; not proof that material never shipped elsewhere. Complete OTA ZIP not verified."
+}

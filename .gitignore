@@ -47,6 +47,8 @@ __pycache__/
 /outputs/checksums.sha256
 /outputs/FlipPets.sha256.txt
 /work/research/range-test.bin
+/work/research/hongkong-product-list.txt
+/work/research/hongkong-system_ext-list.txt
 /work/folded-research/
 
 !/work/qa-final/

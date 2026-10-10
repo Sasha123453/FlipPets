@@ -16,6 +16,7 @@ public class PetActivity extends Activity {
         if(getIntent().getBooleanExtra("coverSession",false)&&!(emulator&&getIntent().hasExtra("qaHingeAngle")))hinge=new HingeFade(this,stage);
         if(emulator&&getIntent().getBooleanExtra("qaSwitch",false))stage.postDelayed(()->UiQa.start(this),1200);
         if(emulator&&getIntent().getBooleanExtra("qaUtilities",false))stage.postDelayed(()->UtilityQa.start(this),1200);
+        if(emulator&&getIntent().getBooleanExtra("qaDonor18",false))stage.postDelayed(()->Donor18Qa.start(this),1200);
         if(emulator&&getIntent().getBooleanExtra("qaComposition",false))new Thread(()->CompositionQa.run(this),"composition-qa").start();
         if(emulator&&getIntent().getBooleanExtra("qa",false))new Thread(()->Qa.run(this),"pag-qa").start();
     }

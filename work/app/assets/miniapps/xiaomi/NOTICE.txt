@@ -1,0 +1,14 @@
+Original demonstration mini-app HTML from Xiaomi's public Xiaomi18Pro app-card catalogue.
+Catalogue: https://m.mi.com/appcard
+Source index: https://cdn.cnbj1.fds.api.mi-img.com/ai-app-fe/appList.json
+Source files: https://cdn.cnbj1.fds.api.mi-img.com/ai-app-fe/apps/{1,3,5}.html
+Retrieved 2026-10-10. Original bytes are retained; member hashes and exact URLs are
+recorded in work/research/xiaomi-mini-apps-provenance.json in the source checkout.
+
+These third-party resources retain their owners' rights and are outside the MIT
+license of Flip Pets' generated code. Public availability is not a claim of an
+open-source license. No Xiaomi AI generation service, account or firmware engine
+is included. The Android host injects viewport and restrictive CSP metadata at
+load time, serves only these bundled files, and blocks networking/native bridges.
+Chinese text and vocabulary are unchanged. Rendering in Android WebView is an
+adaptation of the public demonstration, not verified native18Pro engine identity.

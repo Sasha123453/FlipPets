@@ -1,0 +1,6 @@
+id=flippets_controller
+name=Flip Pets · MIX Flip controller
+version=0.1-experimental
+versionCode=1
+author=Flip Pets contributors
+description=Optional root controller for ruyi. Action starts/stops an open, unlocked cover session. Stock fold/lock/sleep behavior retained. No independent rear power or folded wallpaper support claimed.

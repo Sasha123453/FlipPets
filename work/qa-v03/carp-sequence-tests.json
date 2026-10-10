@@ -1,0 +1,16 @@
+{
+  "scope": "Pre-build pure Java source tests; threshold/Folme timing adaptation and renderer isolation only, not native engine or APK/phone behavior",
+  "compilePassed": true,
+  "testsPassed": true,
+  "stdout": "CarpSequence: 474 assertions passed",
+  "stderr": "\n",
+  "sourceSha256": {
+    "work/app/src/org/flippets/app/CarpSequence.java": "cd0680468c480aa1548e5fa1638785574c69932b84a0d2e3326d7d40373058d3",
+    "work/tests/CarpSequenceTest.java": "9ed0f18f86d88be30f751e0dc265c966bd0d8f52836cec6a8000f7b23814ed86"
+  },
+  "localVerifiedMaml": {
+    "sha256": "82a1617dc7f7fb7972571a827add4da81b45f67ade5a60ce254d3a8c5e2e3eac",
+    "expectedThresholdAndFadeExpressionsPresent": true
+  },
+  "passed": true
+}

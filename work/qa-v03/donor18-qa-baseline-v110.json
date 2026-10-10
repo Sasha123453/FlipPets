@@ -1,0 +1,216 @@
+{
+  "apkSha256": "1b6eecefec3facbd08fccf5b2a09f43f670d3d3ccd8ff011177bac2c1c92d4c7",
+  "environment": "Standard Android emulator; real app players\/view properties, not compositor-frame or HyperOS\/physical camera proof",
+  "tested": 23,
+  "failed": 0,
+  "durationMs": 53029,
+  "cycles": [
+    {
+      "cycle": 1,
+      "scene": 3,
+      "minimumPollAlpha": 0,
+      "outMs": 15432,
+      "sourceChangeMs": 16241,
+      "loadAckMs": 15846,
+      "nativeHiddenObservationMs": 15893,
+      "firstFadeInViewStateMs": 16241,
+      "ackToFadeInMs": 395,
+      "completeMs": 17798
+    },
+    {
+      "cycle": 2,
+      "scene": 2,
+      "minimumPollAlpha": 0,
+      "outMs": 26589,
+      "sourceChangeMs": 26975,
+      "loadAckMs": 26755,
+      "nativeHiddenObservationMs": 26934,
+      "firstFadeInViewStateMs": 26980,
+      "ackToFadeInMs": 225,
+      "completeMs": 27601
+    }
+  ],
+  "phaseObservations": [
+    {
+      "elapsedMs": 3922,
+      "scene": 0,
+      "phase": "PLAYING",
+      "alpha": 1,
+      "progress": 0.04186369958275383
+    },
+    {
+      "elapsedMs": 15102,
+      "scene": 0,
+      "phase": "FADING_OUT",
+      "alpha": 1,
+      "progress": 0.9792767732962449
+    },
+    {
+      "elapsedMs": 15693,
+      "scene": 0,
+      "phase": "AWAITING_LOAD",
+      "alpha": 0,
+      "progress": 1
+    },
+    {
+      "elapsedMs": 16241,
+      "scene": 3,
+      "phase": "FADING_IN",
+      "alpha": 0.8933333158493042,
+      "progress": 1.6778523489932888E-4
+    },
+    {
+      "elapsedMs": 17798,
+      "scene": 3,
+      "phase": "PLAYING",
+      "alpha": 1,
+      "progress": 0.08070469798657719
+    },
+    {
+      "elapsedMs": 26432,
+      "scene": 3,
+      "phase": "FADING_OUT",
+      "alpha": 1,
+      "progress": 0.9850671140939598
+    },
+    {
+      "elapsedMs": 26682,
+      "scene": 3,
+      "phase": "AWAITING_LOAD",
+      "alpha": 0,
+      "progress": 1
+    },
+    {
+      "elapsedMs": 26974,
+      "scene": 2,
+      "phase": "FADING_IN",
+      "alpha": 0.3799999952316284,
+      "progress": 1.666666666666667E-4
+    },
+    {
+      "elapsedMs": 27601,
+      "scene": 2,
+      "phase": "PLAYING",
+      "alpha": 1,
+      "progress": 0.03516666666666667
+    }
+  ],
+  "results": [
+    {
+      "test": "carp_native_sequence_loaded",
+      "ok": true,
+      "detail": "Real PAG composition, local cold scene0..3, no saved scene"
+    },
+    {
+      "test": "carp_repeat_count_one",
+      "ok": true,
+      "detail": "Actual PAGView repeatCount=1"
+    },
+    {
+      "test": "carp_desk29_asset_dimensions",
+      "ok": true,
+      "detail": "Loaded29 desk bitmaps compared to bundled source PNG dimensions"
+    },
+    {
+      "test": "carp_two_actual_auto_transitions",
+      "ok": true,
+      "detail": "Completed automatic transitions=2; every new PAG observed near progress0"
+    },
+    {
+      "test": "carp_fade_out_native_threshold",
+      "ok": true,
+      "detail": "Real FADING_OUT samples alpha0..1 after each native threshold"
+    },
+    {
+      "test": "carp_hidden_delay_alpha_zero",
+      "ok": true,
+      "detail": "Loaded PAGView observed HIDDEN_DELAY alpha0 via native start or50ms sample; first actual fade-in observation>=100ms after model load acknowledgement, not callback delivery. Load-ack\/view-property evidence, not compositor-frame proof. [{\"cycle\":1,\"scene\":3,\"minimumPollAlpha\":0,\"outMs\":15432,\"sourceChangeMs\":16241,\"loadAckMs\":15846,\"nativeHiddenObservationMs\":15893,\"firstFadeInViewStateMs\":16241,\"ackToFadeInMs\":395,\"completeMs\":17798},{\"cycle\":2,\"scene\":2,\"minimumPollAlpha\":0,\"outMs\":26589,\"sourceChangeMs\":26975,\"loadAckMs\":26755,\"nativeHiddenObservationMs\":26934,\"firstFadeInViewStateMs\":26980,\"ackToFadeInMs\":225,\"completeMs\":27601}]"
+    },
+    {
+      "test": "carp_fade_in_alpha_path",
+      "ok": true,
+      "detail": "New source observed at intermediate FADING_IN alpha before returning to1"
+    },
+    {
+      "test": "carp_next_scene_differs",
+      "ok": true,
+      "detail": "Every real source change selected another scene"
+    },
+    {
+      "test": "carp_auto_scene_preferences_unchanged",
+      "ok": true,
+      "detail": "All selected-pet preferences unchanged across automatic transitions"
+    },
+    {
+      "test": "carp_auto_global_state_unchanged",
+      "ok": true,
+      "detail": "Selection keys, playRevision and override unchanged"
+    },
+    {
+      "test": "carp_manual_tap_restarts_saved_scene",
+      "ok": true,
+      "detail": "Actual PAGView tap, changed scene saved and playback restarted"
+    },
+    {
+      "test": "carp_clockless_draft_resources_local",
+      "ok": true,
+      "detail": "Only this stage emulates Main preview; clock assets released with no saved changes"
+    },
+    {
+      "test": "carp_clockless_real_matrix_larger",
+      "ok": true,
+      "detail": "Actual PAGView scale exceeds with-clock scale"
+    },
+    {
+      "test": "carp_draft_cancel_restores_clock_matrix",
+      "ok": true,
+      "detail": "Same source clock\/geometry restored; saved preferences unchanged"
+    },
+    {
+      "test": "vortex_real_media_player_playing",
+      "ok": true,
+      "detail": "Real MediaPlayer preparation\/playback; previous invisible PAG composition released"
+    },
+    {
+      "test": "vortex_background_cover_bounds",
+      "ok": true,
+      "detail": "Video TextureView covers actual stage bounds"
+    },
+    {
+      "test": "vortex_no_clock_or_pet_tap_controls",
+      "ok": true,
+      "detail": "No visible video tap handler\/app clock; pet-layout controls ineligible for background role"
+    },
+    {
+      "test": "pin_finite_preview_loaded",
+      "ok": true,
+      "detail": "Actual finite PAG preview, no video\/carp decoder"
+    },
+    {
+      "test": "pin_completes_then_holds",
+      "ok": true,
+      "detail": "Actual onAnimationEnd and completed progress held at least600ms"
+    },
+    {
+      "test": "pin_tap_replays_existing_player",
+      "ok": true,
+      "detail": "Actual PAGView tap restarts the same finite source"
+    },
+    {
+      "test": "actual_activity_hide_stops_active_carp",
+      "ok": true,
+      "detail": "Actual host KEYCODE_HOME after native fade handshake; activeFade=true homeRequested=true hostHomeAck=true running=false carp=null sampleCallback=false switchCallback=false pagComposition=false videoPlayer=false alpha=1.0"
+    },
+    {
+      "test": "hidden_releases_players_and_callbacks",
+      "ok": true,
+      "detail": "activeFade=true homeRequested=true hostHomeAck=true running=false carp=null sampleCallback=false switchCallback=false pagComposition=false videoPlayer=false alpha=1.0"
+    },
+    {
+      "test": "donor_preferences_and_selection_restored",
+      "ok": true,
+      "detail": "Original donor preferences\/key presence, selection, playback revision and override restored"
+    }
+  ],
+  "skipped": []
+}

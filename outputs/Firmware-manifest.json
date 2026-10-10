@@ -22,5 +22,18 @@
     "sha256": "173ee2a6b33a924d2783b1d59b38d9816717fbb944fa141e391b5e56fde509f8",
     "official_url": "https://bigota.d.miui.com/OS3.0.303.0.WNIMIXM/ruyi_global-ota_full-OS3.0.303.0.WNIMIXM-user-16.0-0200f61ca8.zip",
     "downloaded_file_relative_to_outputs": "../work/firmware/ruyi_global-ota_full-OS3.0.303.0.WNIMIXM-user-16.0-0200f61ca8.zip"
+  },
+  {
+    "device": "hongkong",
+    "name": "hongkong-ota_full-OS4.0.15.0.XFRCNXM-user-17.0-6aad32ed35.zip",
+    "version": "OS4.0.15.0.XFRCNXM",
+    "size": 12318005426,
+    "official_url": "https://bigota.d.miui.com/OS4.0.15.0.XFRCNXM/hongkong-ota_full-OS4.0.15.0.XFRCNXM-user-17.0-6aad32ed35.zip",
+    "completeArchiveVerified": false,
+    "downloadMode": "Selected resumable payload ranges; not flashable",
+    "verifiedPartitions": {
+      "product": "f63831fadeddfd4b52407ff22e02ac8d17cce6ceb474c951c4fc13c214d09f63",
+      "system_ext": "bd32916b4010f90ebaa077ef8685b9c6a84b57e0416e4645f6bae3bf072e239d"
+    }
   }
 ]

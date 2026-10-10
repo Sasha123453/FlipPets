@@ -76,7 +76,21 @@ def playback(tree, family, media):
     loops = [v.get('loop', '-1') for v in views]
     complete = tree.find(".//Function[@name='onComplete']")
     evidence = {'pagLoops': loops, 'completeCommands': [dict(tag=x.tag, **x.attrib) for x in complete.iter()] if complete is not None else []}
-    if family in CLASSIC and complete is not None and complete.find(".//FrameRateCommand[@rate='0']") is not None and complete.find(".//PagCommand[@command='play']") is None and loops == ['1']:
+    functions = {f.get('name'): f for f in tree.findall('.//Function')}
+    def reaches_play(function, visited):
+        if function is None:
+            return True  # Unknown target cannot prove finite hold.
+        name = function.get('name')
+        if name in visited:
+            return True  # Cyclic completion policy requires manual review.
+        visited = visited | {name}
+        if function.find(".//PagCommand[@command='play']") is not None:
+            return True
+        for command in function.findall('.//FunctionCommand'):
+            if reaches_play(functions.get(command.get('target')), visited):
+                return True
+        return False
+    if family in CLASSIC and complete is not None and complete.find(".//FrameRateCommand[@rate='0']") is not None and not reaches_play(complete, set()) and loops == ['1']:
         clips = [n for n in media if re.search(r'pag_\d+\.pag$', n)]
         return 'ambient', 'one cycle then hold until touch/resume', len(clips), evidence
     xml = ET.tostring(tree, encoding='unicode')
@@ -89,14 +103,44 @@ def playback(tree, family, media):
 
 
 def reactive_contract(tree):
-    """Only number/condition-bearing state variables, not decorative layout."""
-    names = {'level_rule', 'pag_index', 'pagIndex', 'petCount', 'music', 'charging', 'battery_low', 'notify'}
-    result = []
-    for node in tree.iter():
-        text = ' '.join(node.attrib.values())
-        if node.tag in {'Var', 'VariableCommand', 'MultiCommand'} and (node.get('name') in names or 'pag_index' in text or 'level_rule' in text):
-            result.append((node.tag, tuple(sorted(node.attrib.items()))))
-    return result
+    """Conservative control-flow equality, including actions and dependent constants.
+
+    Matching a few state variable names misses changed event_index assignments,
+    IfCommand ancestry, callbacks, delays and play/pause destinations. Keep full
+    command trees, external events, triggered variables and callback links. This
+    intentionally rejects uncertain equivalents rather than inventing a mapping.
+    Layout-only attributes of PagView are left to the separate geometry review.
+    """
+    def canonical(node):
+        return [node.tag, dict(sorted(node.attrib.items())), [canonical(child) for child in node]]
+
+    roots = list(tree.findall('.//Function'))
+    roots += [v for v in tree.findall('Var') if v.find('Trigger') is not None]
+    roots += list(tree.findall('.//ExternalCommands'))
+    roots += [v for v in tree.findall('.//FolmeConfig') if v.get('onComplete')]
+    references = {'pag_index', 'level_rule', 'level_event'}
+    for root in roots:
+        for node in root.iter():
+            references.update(re.findall(r'[#@]([A-Za-z_][A-Za-z0-9_]*)', ' '.join(node.attrib.values())))
+            if node.tag == 'VariableCommand' and node.get('name'):
+                references.add(node.get('name'))
+    view_contract = []
+    for view in tree.findall('.//PagView'):
+        attributes = {k: v for k, v in view.attrib.items() if k not in {'w', 'h', 'x', 'y', 'align', 'alignV', 'layerType', 'scaleMode'}}
+        view_contract.append([attributes, [canonical(c) for c in view]])
+        references.update(re.findall(r'[#@]([A-Za-z_][A-Za-z0-9_]*)', ' '.join(attributes.values())))
+    declarations = {v.get('name'): v for v in tree.findall('Var') if v.get('name')}
+    # Follow intermediate variables/arrays as well as directly referenced values.
+    while True:
+        previous = set(references)
+        for name in previous & declarations.keys():
+            references.update(re.findall(r'[#@]([A-Za-z_][A-Za-z0-9_]*)', ' '.join(declarations[name].attrib.values())))
+        if references == previous:
+            break
+    return {'schemaVersion': 2,
+            'controlRoots': [canonical(node) for node in roots],
+            'stateBindings': [canonical(declarations[name]) for name in sorted(references & declarations.keys())],
+            'pagActionsAndSources': view_contract}
 
 
 def native_preview(archive, meta, base):
@@ -179,17 +223,33 @@ def main():
                 entry.update(decision='exact-media-set-alias', aliases=signatures[signature])
                 plan.append(entry)
                 continue
+            if set(signature) <= baseline:
+                entry.update(decision='all-media-already-present',
+                             note='Subset/rearrangement of existing bytes; MAML may differ, no new animation SHA')
+                plan.append(entry)
+                continue
             if not kind:
                 entry['decision'] = 'policy-needs-renderer-support'
                 plan.append(entry)
                 continue
             if kind == 'reactive':
+                numbered = sorted(int(re.search(r'pag_(\d+)\.pag$', n).group(1)) for n in media if re.search(r'pag_(\d+)\.pag$', n))
+                other = [PurePosixPath(n).name for n in media if not re.search(r'pag_(\d+)\.pag$', n)]
+                entry['numberedReactiveStates'] = numbered
+                entry['additionalMediaNames'] = other
+                if numbered != list(range(16)) or any(n != 'nfc_pin_show.pag' for n in other):
+                    entry['decision'] = 'reactive-state-files-unmapped'
+                    plan.append(entry)
+                    continue
                 comparisons = []
+                candidate_contract = reactive_contract(tree)
+                entry['reactiveContractSha256'] = sha(json.dumps(candidate_contract, ensure_ascii=False, sort_keys=True).encode('utf-8'))
+                entry['reactiveContractSchema'] = 2
                 for old in catalog:
                     if old.get('kind') != 'reactive':
                         continue
                     source = WORK / 'research/compositions' / (('pandora-' if 'pandora' in old['id'] else 'archived-presets-') + Path(old.get('originalFile', '')).stem + '.xml')
-                    if source.exists() and reactive_contract(ET.parse(source).getroot()) == reactive_contract(tree):
+                    if source.exists() and reactive_contract(ET.parse(source).getroot()) == candidate_contract:
                         comparisons.append(old['id'])
                 if not comparisons:
                     entry['decision'] = 'reactive-state-mapping-unverified'
@@ -235,7 +295,8 @@ def main():
             staged.append((pet, payload, manifest, preview, entry))
             signatures[signature] = [identity]
             plan.append(entry)
-    report = {'schemaVersion': 1, 'device': FAMILY, 'officialArchiveUrl': OFFICIAL, 'partitionEvidence': proof, 'limits': 'Partial OTA, not a verified flashable whole archive. Dedup is byte-level; native MAML runtime/phone lifecycle is not transplanted.', 'baselineCatalogueEntries': len(catalog), 'baselineUniqueMedia': len(baseline), 'newCatalogueEntries': len(staged), 'newUniqueMedia': len(set(existing) - baseline), 'mediaReferencesAfterImport': sum(len(p.get('clips', {})) for p in catalog) + sum(len(p['clips']) for p, *_ in staged), 'decisions': plan}
+    discovered = {m['sha256'] for e in plan for m in e.get('media', [])} - baseline
+    report = {'schemaVersion': 1, 'device': FAMILY, 'officialArchiveUrl': OFFICIAL, 'partitionEvidence': proof, 'limits': 'Partial OTA, not a verified flashable whole archive. Dedup is byte-level; native MAML runtime/phone lifecycle is not transplanted.', 'baselineCatalogueEntries': len(catalog), 'baselineUniqueMedia': len(baseline), 'discoveredNewUniqueMedia': len(discovered), 'discoveredNewMediaReferences': sum(e.get('newMediaVsBaseline', 0) for e in plan), 'newCatalogueEntries': len(staged), 'newUniqueMedia': len(set(existing) - baseline), 'mediaReferencesAfterImport': sum(len(p.get('clips', {})) for p in catalog) + sum(len(p['clips']) for p, *_ in staged), 'decisions': plan}
     dump(args.source_root / 'import-plan.json', report)
     if args.apply:
         if not proof or not proof.get('partitionHashVerified') or proof.get('device') != FAMILY or proof.get('officialArchiveUrl') != OFFICIAL:
@@ -272,7 +333,7 @@ def main():
         # Do not sort/remove old entries: stable preferences and unrelated adaptations.
         dump(ASSETS / 'catalog.json', catalog)
         dump(WORK / 'research/hongkong-resource-provenance.json', report)
-    print(json.dumps({k: report[k] for k in ('baselineCatalogueEntries', 'baselineUniqueMedia', 'newCatalogueEntries', 'newUniqueMedia', 'mediaReferencesAfterImport')}, ensure_ascii=False))
+    print(json.dumps({k: report[k] for k in ('baselineCatalogueEntries', 'baselineUniqueMedia', 'discoveredNewUniqueMedia', 'discoveredNewMediaReferences', 'newCatalogueEntries', 'newUniqueMedia', 'mediaReferencesAfterImport')}, ensure_ascii=False))
 
 
 if __name__ == '__main__':

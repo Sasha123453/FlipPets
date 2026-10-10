@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<style>html,body{margin:0;background:#000;width:100%;height:100%;overflow:hidden}canvas{display:block;width:100%;height:100%;touch-action:none}</style>
+<canvas id="c" width="976" height="596"></canvas>
+<script>
+(()=>{'use strict';const c=document.getElementById('c'),g=c.getContext('2d');;
+/* W/H 取真实视口：真机 912 或 976 宽，写死会在宽屏上留黑边；浏览器退回 c.width/2。
+   scale(2,2) 必须保留：JsCanvas 有 0.5 初始变换，乘完净变换正好是 1.0。 */
+const W=(typeof window!=='undefined'&&window.CANVAS_W)||c.width,
+      H=(typeof window!=='undefined'&&window.CANVAS_H)||c.height,
+      CAM=Math.floor(W/3),TAU=Math.PI*2;
+window.__DIAL_CANVAS_SIZE={width:W,height:H};      /* 审计与装配读这里核对尺寸，勿删 */
+/* 屏幕左侧 296px 被相机挡住，文字/按钮/命中区必须落在 CAM 右侧。
+   本卡布局按 912 视口写死（表盘中心 cx=641），那时内容区是 304..912、中心在 x=608。
+   DX 把整个内容层平移到当前视口的内容区中心：912 → 0（零回归），976 → 43（居中）。
+   绘制统一 translate(DX,DY)+scale(FIT,FIT)、命中统一 (…-DX)/FIT，两侧共用同一个量，不会脱节。 */
+/* 三尺寸自适应（docs/01 第一、三节）。布局坐标仍按 912×596 基准写，
+   FIT 同时受宽高约束，所以矮视口不会只平移、把底部裁掉：
+     912×596 → FIT=1、DX=DY=0，与迁移前逐像素一致
+     976×596 → FIT 仍为 1，只横向居中
+     904×572 → 等比缩小后居中（pandora 真机实测 CAM=301、FIT≈0.96、DY≈0）
+   绘制统一 translate(DX,DY)+scale(FIT,FIT)，命中用同一组参数逆变换 (…-DX)/FIT、
+   (…-DY)/FIT —— 两侧共用一组量，不会出现画得对但点不到。
+   DX/DY 取整：FIT=1 的两档算出来就是整数，能保证已在真机验证过的两个视口零回归。 */
+const BASE_W=912,BASE_H=596,BASE_CAM=Math.floor(BASE_W/3),
+      FIT=Math.min((W-CAM)/(BASE_W-BASE_CAM),H/BASE_H),
+      DX=Math.round((CAM+(W-CAM)/2)-608*FIT),
+      DY=Math.round((H-BASE_H*FIT)/2);
+/* 负半径防护：只能打在 ctx 实例上。原产物用的是 CanvasRenderingContext2D.prototype，
+   jsLite 里没有那个全局、2D context 也没有原型链，会抛 ReferenceError 导致整卡黑屏。 */
+(function(){const _arc=g.arc.bind(g),_el=g.ellipse?g.ellipse.bind(g):null,
+  fix=v=>Number.isFinite(v)?Math.abs(v):0;
+  g.arc=(x,y,r,a,b,d)=>_arc(x,y,fix(r),a,b,d);
+  if(_el)g.ellipse=(x,y,rx,ry,rot,a,b,d)=>_el(x,y,fix(rx),fix(ry),rot,a,b,d);})();
+/* 界面文案。按生成侧规范抽到顶层：四语言变体之间只允许这些字面量不同，
+   其余代码必须逐字节一致。 */
+const T_RUNNING='计时中', T_MINUTE='分钟', T_FOCUS='专注', T_REST='休息',
+      T_SKIP='跳过', T_PAUSE='暂停', T_START='开始',
+      T_DUR_FOCUS='25分钟', T_DUR_REST='5分钟';let seed=963258741;const rnd=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296};const clamp=(v,a,b)=>Math.max(a,Math.min(b,Number.isFinite(v)?v:a));/* 椭圆填充。原实现是 save→translate→scale→arc(0,0,1)→**restore**→fill，
+   在 Chrome 里能画对（构建路径时就把点换算成设备坐标了），但 jsLite 是 fill 时才应用
+   变换矩阵 —— restore 之后矩阵已复位，填的是原点一个半径 1 的圆，真机上等于什么都没画。
+   重置按钮没有底色、番茄少了渐变层、背景小点全不见，都是这一处。
+   正圆走 arc 不动矩阵：E 的调用绝大多数是正圆，而它们的 fillStyle 常是按绝对坐标建的
+   渐变，一旦 scale 渐变会被一起拉走。真椭圆才用 scale，且 fill 挪到 restore 之前
+   （这些调用点传的都是纯色，不受变换影响）。 */
+/* 渐变缓存。宿主的 gradient cache 按对象引用识别，每帧 new 一个新对象就是每帧 miss、
+   要重算整条色带（flashcard 那次真机 bugreport 15000+ Frame dropped 就是这么来的）。
+   按「几何 + 色标」做 key 复用；色标进 key，所以 focus/rest 两套配色会各自缓存一份。
+   ⚠️ 只有 key 取值有界的才能这么缓存 —— 坐标或颜色随时间连续变的每帧都是新 key，
+      既不命中、字典还会无限长。这张卡的 cx/cy/R/innerR 都是常量，没有这个问题。 */
+const _GC={};
+function LG(x0,y0,x1,y1,stops){const k='l|'+x0+','+y0+','+x1+','+y1+'|'+stops.join(';');let _t=_GC[k];if(!_t){_t=g.createLinearGradient(x0,y0,x1,y1);for(const s of stops)_t.addColorStop(s[0],s[1]);_GC[k]=_t}return _t}
+function RG(x0,y0,r0,x1,y1,r1,stops){const k='r|'+x0+','+y0+','+r0+','+x1+','+y1+','+r1+'|'+stops.join(';');let _t=_GC[k];if(!_t){_t=g.createRadialGradient(x0,y0,Math.max(.1,r0),x1,y1,Math.max(.1,r1));for(const s of stops)_t.addColorStop(s[0],s[1]);_GC[k]=_t}return _t}
+function E(x,y,rx,ry,fill,rot=0){rx=clamp(Math.abs(rx),0,2000);ry=clamp(Math.abs(ry),0,2000);if(rx===ry&&!rot){g.beginPath();g.arc(x,y,rx,0,TAU);if(fill){g.fillStyle=fill;g.fill()}return}g.save();g.translate(x,y);g.rotate(rot);g.scale(rx,ry);g.beginPath();g.arc(0,0,1,0,TAU);if(fill){g.fillStyle=fill;g.fill()}g.restore()}function RR(x,y,w,h,r){r=clamp(r,0,Math.min(Math.abs(w),Math.abs(h))/2);g.beginPath();g.moveTo(x+r,y);g.lineTo(x+w-r,y);g.quadraticCurveTo(x+w,y,x+w,y+r);g.lineTo(x+w,y+h-r);g.quadraticCurveTo(x+w,y+h,x+w-r,y+h);g.lineTo(x+r,y+h);g.quadraticCurveTo(x,y+h,x,y+h-r);g.lineTo(x,y+r);g.quadraticCurveTo(x,y,x+r,y);g.closePath()}function text(s,x,y,size,col='#fff9ec',weight=700){g.save();g.font=weight+' '+size+'px Microsoft YaHei,PingFang SC,sans-serif';g.textAlign='center';g.textBaseline='middle';g.fillStyle=col;g.shadowColor='rgba(78,48,35,.22)';g.shadowBlur=3;g.shadowOffsetY=2;g.fillText(s,x,y);g.restore()}function heart(x,y,s,col,a=1){g.save();g.globalAlpha=a;g.fillStyle=col;g.beginPath();g.moveTo(x,y+s*.3);g.bezierCurveTo(x-s*.65,y-s*.08,x-s*.58,y-s*.72,x-s*.2,y-s*.72);g.bezierCurveTo(x,y-s*.72,x,y-s*.48,x,y-s*.4);g.bezierCurveTo(x,y-s*.48,x,y-s*.72,x+s*.2,y-s*.72);g.bezierCurveTo(x+s*.58,y-s*.72,x+s*.65,y-s*.08,x,y+s*.3);g.fill();g.restore()}function star(x,y,r,col,a=1){r=clamp(r,0,100);g.save();g.globalAlpha=a;g.fillStyle=col;g.beginPath();for(let i=0;i<10;i++){const q=-Math.PI/2+i*Math.PI/5,d=i%2?r:r*.45,px=x+Math.cos(q)*d,py=y+Math.sin(q)*d;i?g.lineTo(px,py):g.moveTo(px,py)}g.closePath();g.fill();g.restore()}const paper=document.createElement('canvas');paper.width=W;paper.height=H;const p=paper.getContext('2d');let bg=p.createLinearGradient(0,0,W,H);bg.addColorStop(0,'#f7aa8e');bg.addColorStop(.3,'#f8d1ad');bg.addColorStop(.58,'#f7e2c8');bg.addColorStop(.8,'#cee2bf');bg.addColorStop(1,'#f1b29b');p.fillStyle=bg;p.fillRect(0,0,W,H);for(let i=0;i<3800;i++){const x=rnd()*W,y=rnd()*H,s=.3+rnd()*1.5;p.fillStyle=rnd()>.52?'rgba(255,255,239,'+(.04+rnd()*.1)+')':'rgba(119,72,54,'+(.015+rnd()*.045)+')';p.fillRect(x,y,s,s)}/* 已按产品要求去掉内容区的半透明受光带（原本是 x=404 起 457 宽的 rgba(255,249,224,.22)
+   矩形，外加左右各一条 1~2px 的高光/暗线）。它在屏幕中间造出一道明显的竖向分界，
+   浅色水彩底上显得脏，去掉后背景是连续渐变。 */const motes=Array.from({length:34},()=>({x:rnd()*W,y:rnd()*H,r:1.2+rnd()*3.5,v:.08+rnd()*.2,ph:rnd()*TAU,col:rnd()>.45?'255,245,201':'238,114,99'}));let mode='focus',running=false,remaining=25*60*1000,endAt=0,last=0,press='',hover='',flash=0,shake=0;/* last 从 0 起，不取 performance.now()：与 rAF 回调时间戳可能不是同一个纪元，见 audit_spec 的同名检查 */const durations={focus:25*60*1000,rest:5*60*1000};const bursts=[];const areas={mode:[430,54,139,70],reset:[764,57,68,68],skip:[422,502,126,57],main:[561,499,151,62],duration:[725,503,119,55],core:[487,156,308,308]};function inside(k,x,y){const a=areas[k];return x>=a[0]&&x<=a[0]+a[2]&&y>=a[1]&&y<=a[1]+a[3]}function vibrate(){if(navigator.vibrate)navigator.vibrate([220,100,220,100,420])}
+/* 完成提示音。0911 测试单 #2「倒计时到了没有声音提醒」。
+   ⚠️ docs/02 早先记着「没有音频、AudioContext 是死代码」，那条已订正 —— 真机上可用。
+   ⚠️ 音频能力边界统一见 docs/02 的 D2 节，这里不复述。对本卡只要记住两点：
+   ① 频率走 frequency.setValueAtTime(f,t)，`frequency.value=f` 是静默失效的
+   （不报错、照样发声，但音高停在默认 440Hz）；② 单音时长低于 0.3 秒完全没有声音。
+   音色只能靠波形类型 + 泛音叠加 + 节奏错位（包络做不出来）。
+   振动仍然拿不到（navigator.vibrate 真机空转），所以声音是这条需求唯一能落地的部分。
+   AOD 下到点**会当场响**（aodRefresh="minute" + aodHint + 息屏分支判完成，三段齐全，
+   真机实测延迟 8ms）。原先这里写「rAF 停摆所以只能亮屏后补响」，已订正 —— rAF 确实停，
+   但宿主会按 aodHint 预约的时刻唤醒卡片。链条见 docs/02 的 A.2b。
+   本卡到点后 next(true) 会自动切到下一段并继续跑，所以每段结束都会响一次。 */
+let _ac=null;
+function tone(f,dur,vol,delay,type){
+  try{
+    if(!_ac){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;_ac=new AC()}
+    if(_ac.resume&&_ac.state==='suspended')_ac.resume();
+    const o=_ac.createOscillator(),g=_ac.createGain(),t=_ac.currentTime+(delay||0);
+    o.type=type||'sine';
+    o.frequency.setValueAtTime(f,t);
+    o.connect(g);g.connect(_ac.destination);
+    g.gain.setValueAtTime(vol,t);
+    g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+    o.start(t);o.stop(t+dur+.02);
+  }catch(e){}
+}
+/* 两段语义相反，所以用两个方向的音，不看屏也知道该干什么。
+   读的是切换**之前**的 mode（next() 还没执行），所以 focus 表示「专注刚结束」：
+     专注结束 → 上行 E5→A5，明快，可以歇了
+     休息结束 → 下行 A5→E5，收束，该回来干活
+   不用「一局只响一次」的标志：next() 只在归零那一刻被调用一次，不会重复。 */
+function ringDone(){
+  if(mode==='focus'){
+    tone(659,.22,.20,0,'triangle'); tone(1318,.14,.06,0);
+    tone(880,.40,.20,.20,'triangle'); tone(1760,.20,.06,.20); tone(2640,.12,.025,.20);
+  }else{
+    tone(880,.22,.20,0,'triangle'); tone(1760,.14,.06,0);
+    tone(659,.44,.20,.20,'triangle'); tone(1318,.22,.06,.20);
+  }
+}function burst(){flash=1;shake=1;for(let i=0;i<42;i++){const q=rnd()*TAU,sp=1.4+rnd()*4.3;bursts.push({x:641,y:307,vx:Math.cos(q)*sp,vy:Math.sin(q)*sp-1.5,r:3+rnd()*6,life:1,col:['#ff6652','#50c5a0','#f0bd50','#fff2c7'][i%4]})}}/* ===== 存档与 AOD =====
+   生成侧标准（canvas-function.md 第 3、4 条）：需要「退出再进还在」的状态必须 localStorage，
+   storageKey 固定字符串，读回 schema 归一化 + finite 校验；计时类存基准时间戳而非剩余秒数。
+   计时基准这张卡本来就用的是绝对时刻 endAt，问题是什么都没存 —— 退出再进专注进度就归零了。
+   现在 running 时存 endAt，暂停时存 remaining，读回按绝对时刻重算。 */
+const LS_KEY='pomodoro_v1';
+function save(){
+  try{ localStorage.setItem(LS_KEY,JSON.stringify({mode,running,endAt,remaining})); }catch(e){}
+}
+function load(){
+  try{
+    const raw=localStorage.getItem(LS_KEY); if(!raw) return;
+    const d=JSON.parse(raw); if(!d||typeof d!=='object'||Array.isArray(d)) return;
+    const num=(v,f)=>(typeof v==='number'&&isFinite(v))?v:f;
+    mode=(d.mode==='rest')?'rest':'focus';
+    endAt=num(d.endAt,0);
+    remaining=Math.max(0,num(d.remaining,durations[mode]));
+    if(d.running===true&&endAt-Date.now()>0){ running=true; remaining=endAt-Date.now(); }
+    else { running=false; if(d.running===true) remaining=durations[mode]; }   // 息屏期间已走完，回到待开始
+  }catch(e){}
+}
+const pad2=n=>('0'+n).slice(-2);
+/* AOD 只按分钟刷新：息屏时把真实秒数画上去，下一秒就是个停住的错数字，所以秒位显示 --。 */
+function timeText(){
+  const ms=Math.max(0,running?endAt-Date.now():remaining);
+  if(document.hidden) return pad2(Math.floor(ms/60000))+':--';
+  const s=Math.ceil(ms/1000);
+  return pad2(Math.floor(s/60))+':'+pad2(s%60);
+}
+/* 告诉宿主下一次要重绘的绝对时刻（剩余时间的下一个整分钟边界）；没在跑就写 -1。 */
+function aodHint(){
+  try{
+    if(!running){ localStorage.setItem('__maml_aod_next_refresh_ms','-1'); return; }
+    const ms=Math.max(0,endAt-Date.now());
+    localStorage.setItem('__maml_aod_next_refresh_ms',String(endAt-Math.floor(ms/60000)*60000));
+  }catch(e){}
+}
+function setMode(m,keep=false){mode=m;remaining=durations[mode];if(running||keep){running=true;endAt=Date.now()+remaining}else running=false;flash=.28;save()}function toggleMode(){setMode(mode==='focus'?'rest':'focus',false)}function toggleRun(){if(running){remaining=Math.max(0,endAt-Date.now());running=false}else{if(remaining<=0)remaining=durations[mode];endAt=Date.now()+remaining;running=true}save()}function next(auto=false){mode=mode==='focus'?'rest':'focus';remaining=durations[mode];if(running||auto){running=true;endAt=Date.now()+remaining}else running=false;burst();save()}function reset(){running=false;remaining=durations[mode];flash=.2;save()}function action(k){if(k==='mode'||k==='duration')toggleMode();else if(k==='reset')reset();else if(k==='skip')next(false);else if(k==='main'||k==='core')toggleRun()}/* 逆变换 (…-DX)/FIT、(…-DY)/FIT：把屏幕坐标换回布局坐标系，inside() 里那些按 912 写死的命中范围继续成立。 */
+function pos(e){const r=c.getBoundingClientRect();return{x:((e.clientX-r.left)*W/r.width-DX)/FIT,y:((e.clientY-r.top)*H/r.height-DY)/FIT}}c.addEventListener('pointerdown',e=>{const q=pos(e);press='';for(const k of ['mode','reset','skip','main','duration','core'])if(inside(k,q.x,q.y)){press=k;break}if(press)c.setPointerCapture(e.pointerId)});c.addEventListener('pointermove',e=>{const q=pos(e);hover='';for(const k of ['mode','reset','skip','main','duration','core'])if(inside(k,q.x,q.y)){hover=k;break}c.style.cursor=hover?'pointer':'default'});c.addEventListener('pointerup',e=>{const q=pos(e),k=press;press='';if(k&&inside(k,q.x,q.y))action(k)});c.addEventListener('pointercancel',()=>press='');/* 原稿这里有一段 keydown 快捷键。背屏没有键盘，按 canvas-function.md 第 2 条删掉 ——
+   这些操作触控路径已经全覆盖。
+   为什么它一直没被门禁抓住：audit_spec 的键盘检查原来查的是 stripNoise 之后的代码，
+   而 stripNoise 会把字符串字面量整个剥掉，'keydown' 这个事件名早就没了，规则一直在空跑。
+   同一个坑第 6 条判摄像头守卫时踩过并改用了原文，这两条当时漏掉，现在一并改成查原文。 */function button(x,y,w,h,c1,c2,key){const down=press===key,hot=hover===key;g.save();g.translate(0,down?3:0);g.shadowColor=hot?'rgba(255,250,220,.65)':'rgba(98,66,48,.24)';g.shadowBlur=hot?18:11;g.shadowOffsetY=down?3:7;RR(x,y,w,h,h/2);const z=g.createLinearGradient(x,y,x,y+h);z.addColorStop(0,c1);z.addColorStop(1,c2);g.fillStyle=z;g.fill();g.shadowColor='transparent';g.lineWidth=1.7;g.strokeStyle='rgba(255,255,238,.78)';RR(x+1.5,y+1.5,w-3,h-3,(h-3)/2);g.stroke();g.restore()}/* 重置按钮整体缩小：外圆半径 44→34（≈0.77），圈内元素按同一比例缩，
+   否则只改外圆会让内部箭头显得过大。命中区 areas.reset 同步收窄，保持圆心 (798,91) 不变。
+   40..44px 半径在 596 高的屏上比主按钮还抢眼，产品反馈偏大。 */
+/* 重置按钮底色与「跳过」按钮统一为 #70d1b0。
+   原来用的 #55c7a4 更深更冷，在这套配色里看着像半透明的。尺寸不动。 */
+function resetIcon(t){const down=press==='reset';g.save();g.translate(0,down?3:0);g.shadowColor='rgba(47,107,86,.27)';g.shadowBlur=12;g.shadowOffsetY=6;E(798,90,34+(hover==='reset'?2:0),34+(hover==='reset'?2:0),'#70d1b0');g.shadowColor='transparent';g.lineWidth=1.4;g.strokeStyle='rgba(255,255,255,.72)';g.beginPath();g.arc(798,90,32,0,TAU);g.stroke();g.strokeStyle='#fff9eb';g.lineWidth=5;g.lineCap='round';g.beginPath();g.arc(798,90,17,-.15,Math.PI*1.62);g.stroke();g.fillStyle='#fff9eb';g.beginPath();g.moveTo(814,74);g.lineTo(813,86);g.lineTo(802,82);g.closePath();g.fill();g.restore()}function drawAmbient(t){g.drawImage(paper,0,0);const blobs=[[-20,90,230,160,'239,89,73'],[200,280,250,160,'255,186,111'],[115,540,210,120,'255,87,105'],[420,560,180,115,'59,186,151'],[800,65,190,145,'68,183,148'],[878,390,155,190,'255,122,103']];for(let i=0;i<blobs.length;i++){const b=blobs[i],x=b[0]+Math.sin(t*.00012+i)*24,y=b[1]+Math.cos(t*.0001+i*1.7)*18,gr=g.createRadialGradient(x,y,2,x,y,Math.max(b[2],b[3]));gr.addColorStop(0,'rgba('+b[4]+',.19)');gr.addColorStop(.55,'rgba('+b[4]+',.09)');gr.addColorStop(1,'rgba('+b[4]+',0)');g.save();g.translate(x,y);g.scale(1,b[3]/b[2]);g.fillStyle=gr;g.beginPath();g.arc(0,0,b[2],0,TAU);g.fill();g.restore()}for(const m of motes){const yy=(m.y+t*m.v*.04)%H,xx=m.x+Math.sin(t*.0007+m.ph)*12;E(xx,yy,m.r,m.r,'rgba('+m.col+',.32)')}heart(129+Math.sin(t*.001)*5,191+Math.cos(t*.0012)*4,28,'#f4a04e',.76);heart(295+Math.sin(t*.0014)*4,451,18,'#e8504c',.88);heart(833,277+Math.sin(t*.0012)*5,26,'#ef786a',.7);heart(184,457+Math.sin(t*.0017)*3,13,'#ef8c7e',.3);star(487,193+Math.sin(t*.0015)*4,11,'#70c89c',.7);star(771,181+Math.cos(t*.0015)*4,10,'#70c89c',.65);for(const d of [[467,231,5,'#d8dc71'],[429,361,6,'#efbd5d'],[812,215,6,'#efd677'],[835,315,7,'#e9bf64'],[764,462,6,'#f0c151'],[360,387,4,'#e2aa42']])E(d[0],d[1]+Math.sin(t*.001+d[0]) *3,d[2],d[2],d[3])}function drawTomato(t){const cx=641,cy=309,R=153,pulse=running?Math.sin(t*.004)*2:Math.sin(t*.0015)*.8,progress=clamp(remaining/durations[mode],0,1),accent=mode==='focus'?'#f05b46':'#40b992';g.save();if(shake>0)g.translate(Math.sin(t*.05)*shake*5,Math.cos(t*.061)*shake*2);g.shadowColor=mode==='focus'?'rgba(177,73,50,.34)':'rgba(48,135,105,.31)';g.shadowBlur=20+6*Math.sin(t*.002);g.shadowOffsetY=13;E(cx,cy,R+pulse,R+pulse,mode==='focus'?'rgba(248,101,73,.91)':'rgba(85,194,157,.9)');g.shadowColor='transparent';const out=RG(cx-48,cy-72,10,cx,cy,R,mode==='focus'?[[0,'#ffd5b9'],[.58,'#fb9b7d'],[1,'#ed654f']]:[[0,'#d9f3d3'],[.58,'#79cfad'],[1,'#3cac8d']]);E(cx,cy,R,R,out);g.lineWidth=2;g.strokeStyle=accent;g.beginPath();g.arc(cx,cy,R-2,0,TAU);g.stroke();g.lineWidth=2.2;g.strokeStyle='rgba(255,247,219,.9)';g.beginPath();g.arc(cx,cy,R-8,0,TAU);g.stroke();const innerR=130,inner=RG(cx+35,cy-54,5,cx,cy,innerR,[[0,'#ffe3ca'],[.7,mode==='focus'?'#f8c1aa':'#cce7cb'],[1,mode==='focus'?'#f3a084':'#8ecfb2']]);E(cx,cy,innerR,innerR,inner);if(progress>.0001){g.save();g.beginPath();g.moveTo(cx,cy);g.arc(cx,cy,innerR,-Math.PI/2,-Math.PI/2+TAU*progress,false);g.closePath();const pie=g.createLinearGradient(520,175,660,440);pie.addColorStop(0,mode==='focus'?'#ff795b':'#69d2ac');pie.addColorStop(1,mode==='focus'?'#e94439':'#269e7d');g.fillStyle=pie;g.fill();g.restore()}g.lineWidth=7;g.strokeStyle='rgba(255,239,212,.5)';g.lineCap='round';g.beginPath();g.arc(cx,cy,135,-2.8,.83);g.stroke();g.lineWidth=2;g.strokeStyle='rgba(255,255,241,.58)';g.beginPath();g.arc(cx,cy,128,0,TAU);g.stroke();const sway=Math.sin(t*.0023)*.09;g.save();g.translate(642,169);g.rotate(sway);g.fillStyle='#25aa76';g.beginPath();g.moveTo(-3,2);g.bezierCurveTo(-18,-53,-33,-61,-50,-47);g.bezierCurveTo(-25,-48,-17,-21,-10,4);g.closePath();g.fill();const lg=LG(-8,-4,69,-59,[[0,'#159b69'],[1,'#7bc89e']]);g.fillStyle=lg;g.beginPath();g.moveTo(-5,3);g.bezierCurveTo(11,-50,61,-71,69,-52);g.bezierCurveTo(71,-30,32,-5,-5,5);g.closePath();g.fill();g.strokeStyle='rgba(39,130,89,.4)';g.lineWidth=1.2;g.beginPath();g.moveTo(0,1);g.quadraticCurveTo(31,-25,59,-43);g.stroke();E(-1,1,27,10,'#169f68');E(-1,-2,20,5,'#76c491');g.restore();const timeStr=timeText();text(timeStr,cx,298,72,'#fffaf0',700);g.strokeStyle='rgba(255,247,224,.84)';g.lineWidth=2;g.beginPath();g.moveTo(548,343);g.lineTo(735,343);g.stroke();/* weight 用 600 而不是 650：text() 把它拼进 font 简写（'650 30px …'），
+   而 font 简写里的 weight 只认 normal/bold/bolder/lighter 或整百数值。
+   Chrome 会宽容处理，jsLite 直接判整条 font 声明无效 → 回退默认 10px，
+   真机上「分钟」两个字明显比设计小一号就是这个原因。 */
+text(running?T_RUNNING:T_MINUTE,cx,375,30,'#fff8e9',600);if(hover==='core'){g.strokeStyle='rgba(255,255,235,.55)';g.lineWidth=4;g.beginPath();g.arc(cx,cy,145,0,TAU);g.stroke()}g.restore()}function drawControls(t){button(430,54,139,70,mode==='focus'?'#ff765a':'#70d1b0',mode==='focus'?'#ef5d44':'#42b995','mode');text(mode==='focus'?T_FOCUS:T_REST,499.5,89,31);resetIcon(t);
+/* 按钮内的 icon + 文字对齐（产品反馈）。原来两个按钮的图标与文字间距不一致
+   （跳过 18px、开始 25px），整组也没落在按钮正中；纵向还差半个像素。
+   现在统一：间距 12px，icon 与文字作为一组按按钮中心居中，纵向都取按钮中心。
+     跳过按钮 x422..548 中心 485   »(34px 宽≈17) + 12 + 跳过(22px 宽 44) = 73 → 起点 448.5
+     开始按钮 x561..712 中心 636.5 三角(宽 22) + 12 + 开始(宽 44) = 78 → 起点 597.5
+     暂停态两根竖条总宽 7+6+7=20，按同一规则起点 598.5，文字中心与开始态统一到 653
+   英文变体 Start/Pause 比中文宽约 11px，右侧仍有 25px 余量，不会顶到按钮边缘。 */
+button(422,502,126,57,'#70d1b0','#45bd98','skip');text('»',457,530.5,34);text(T_SKIP,499.5,530.5,22);button(561,499,151,62,running?'#f2bd68':'#ff7658',running?'#dfa04c':'#ef5940','main');if(running){g.fillStyle='#fff9eb';RR(598.5,518.5,7,23,3);g.fill();RR(611.5,518.5,7,23,3);g.fill();text(T_PAUSE,653,530,22)}else{g.fillStyle='#fff9eb';g.beginPath();g.moveTo(597.5,517);g.lineTo(597.5,543);g.lineTo(619.5,530);g.closePath();g.fill();text(T_START,653,530,22)}g.save();g.shadowColor=hover==='duration'?'rgba(255,255,225,.75)':'rgba(74,115,94,.12)';g.shadowBlur=hover==='duration'?16:8;g.shadowOffsetY=5;RR(725,503+(press==='duration'?3:0),119,55,28);g.fillStyle='rgba(248,246,215,.47)';g.fill();g.shadowColor='transparent';g.lineWidth=1.5;g.strokeStyle='rgba(255,255,235,.82)';g.stroke();g.restore();text(mode==='focus'?T_DUR_FOCUS:T_DUR_REST,784.5,530.5+(press==='duration'?3:0),22,'#289f82',700)}function update(t){const dt=Math.max(0,Math.min(50,t-last))   /* 下界钳 0：帧时间戳纪元被重置时 t-last 是负数 */;last=t;if(running){remaining=endAt-Date.now();if(remaining<=0){ringDone();vibrate();next(true)}}flash=Math.max(0,flash-dt/700);shake=Math.max(0,shake-dt/550);for(let i=bursts.length-1;i>=0;i--){const b=bursts[i];b.x+=b.vx;b.y+=b.vy;b.vy+=.055;b.life-=dt/1050;if(b.life<=0)bursts.splice(i,1)}}function drawBursts(){for(const b of bursts){g.save();g.globalAlpha=clamp(b.life,0,1);g.translate(b.x,b.y);g.rotate((b.x+b.y)*.03);g.fillStyle=b.col;RR(-b.r,-b.r*.45,b.r*2,b.r*.9,b.r*.3);g.fill();g.restore()}if(flash>0){g.save();g.globalAlpha=flash*.16;g.fillStyle='#fff7cf';g.fillRect(0,0,W,H);g.restore()}}/* drawAmbient 是铺满整屏的水彩背景，允许盖过相机遮挡区（不留硬边），所以不参与平移；
+   表盘、控件、迸溅都是 UI 层，整体平移到内容区中心。 */
+function paintUI(t){g.save();g.translate(DX,DY);g.scale(FIT,FIT);drawTomato(t);drawControls(t);drawBursts();g.restore()}
+/* 帧率节流到 30：背屏常亮，功耗≈帧率×每帧绘制量，帧率是第一乘数。
+   manifest 的 frameRate 只是宿主刷新率，rAF 回调照旧按 60Hz 触发。
+   不可见时跳过整帧。update() 里的 dt 已 clamp 50ms，跳帧后不会累积成大步长。 */
+/* aodPhase：息屏那一帧画的时候是什么状态。只看分钟数不够 —— 最后一分钟里
+   min 一直是 0，走到 0 的那一刻 min 没跳变，屏上就停在「00:--」，
+   计时结束了用户也看不出来（测试单：「若在aod环境下，画面也不动，计时到了也不知道」）。
+   状态一变就补画一帧，这是设备没有声音和震动能力时唯一还能给到的提示。 */
+const FRAME_MS=1000/30;let lastDraw=0,aodMin=-1,aodPhase=null;
+function frame(t){
+  /* 息屏（含 AOD）：**必须画一帧**，不能直接 return。
+     timeText() 里 `document.hidden ? 'MM:--'` 那个分支只有真重绘才画得出来；早先这里
+     一帧都不画，AOD 上留的就是息屏前那帧带真实秒数的画面，秒数错着停在屏上 —— 实测
+     截图确认过（25:00 而不是 25:--），正好就是上面那句注释想避免的情况。
+     也不能按 30fps 画。折中：只在剩余分钟数变化时重画一帧，一分钟一帧，功耗可忽略。 */
+  if(document.hidden){
+    aodHint();
+    update(t);                     // 计时本身靠 endAt 绝对时刻；这里推进息屏期间的阶段切换
+    const min=Math.floor(Math.max(0,running?endAt-Date.now():remaining)/60000);
+    /* mode 也要进 phase：走完一段会自动切到下一段（next(true)），running 仍是 true，
+       只看 running 认不出这次跳变。 */
+    const ph=running+'|'+mode;
+    if(min!==aodMin||ph!==aodPhase){aodMin=min;aodPhase=ph;drawAmbient(t);paintUI(t)}
+    requestAnimationFrame(frame);return;
+  }
+  aodMin=-1;aodPhase=null;         // 回到亮屏；下次息屏要重新画一帧，不能沿用上次的分钟数与状态
+  /* 纪元回退兜底：AOD 回来后 rAF 时间戳可能从 0 重算，而下面这个变量还是旧纪元的大数，差值恒为负、判据恒成立，frame() 会一直在这里 return，画面冻结时长≈息屏前已运行时长。 */if(t<lastDraw)lastDraw=t;if(t-lastDraw<FRAME_MS){requestAnimationFrame(frame);return;}
+  lastDraw=t;update(t);drawAmbient(t);paintUI(t);requestAnimationFrame(frame)}
+load();   // 存档要在首帧之前读回，否则第一帧会画成默认的 25:00
+drawAmbient(0);paintUI(0);requestAnimationFrame(frame)})();
+</script>
+</html>

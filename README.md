@@ -1,6 +1,6 @@
 # Flip Pets for Xiaomi MIX Flip
 
-Rootless Android port of original Xiaomi 17 Pro rear-screen resources, adapted to
+Rootless Android port of original Xiaomi 17/18 Pro rear-screen resources, adapted to
 MIX Flip. A guarded Shizuku shell controller enables both physical displays while
 the phone is open and unlocked. Folding, sleep or lock returns the stock cover
 interface/AOD. No donor firmware is flashed.
@@ -10,12 +10,25 @@ interface/AOD. No donor firmware is flashed.
 The default folded path remains Xiaomi's own cover interface, secure lock screen and
 AOD. The next priority is optional animated cover-lock wallpaper through Xiaomi's
 stock wallpaper editor/engine, so the native system handles folding and persistence.
-Version1.0 does not implement that native export/apply path. The native tiny editor
+Version1.1 does not implement that native export/apply path. The native tiny editor
 accepted a donor-based preview, but animation and safe apply/restore remain unverified;
 this folded-lock work is deferred at the user's request. See the
 [folded wallpaper research](docs/folded-wallpaper-options.md) and
 [donor-based roadmap](docs/cover-screen-research.md). Optional utility cards are a
 secondary addition; stock folded widgets already provide many comparable functions.
+
+## Version 1.1
+
+The current1.1 APK passes343 emulator checks and6 virtual-cover lifecycle checks.
+Full-screen mini-app captures were visually reviewed. Physical MIX Flip and
+KernelSU verification remain pending for this build.
+
+- Three additions from verified Xiaomi18Pro product resources: **Butterfly carp ·18Pro** (four scenes), **Vortex ·animated background** and **Card effect ·18Pro** (one-shot manual preview). The existing30 entries and IDs stay unchanged:33 entries,176 clip paths,148 unique media SHA256.
+- Carp uses the donor MAML progress thresholds,500ms fade-out,100ms delay after actual scene load and300ms fade-in. Automatic scene selection does not write preferences; a tap manually selects another scene. With/without-clock placement controls also apply to this fish.29 original clock glyphs are retained. This is a Java adaptation, not the Xiaomi Folme/MAML engine.
+- Vortex fills the cover while preserving video proportions. Its native analogue clock/date/battery layers are not included. The card animation previews the SmartAssistantPanel transition; it does not provide NFC, payment or AI backend functionality.
+- The Chinese18Pro Themes APK has a separate online rear-screen shop. Flip Pets currently offers bundled resources/private photos; online theme download/import remains unimplemented. See [shop research](docs/online-rearscreen-themes.md).
+- Exact source archive/member hashes, selected partition hashes and decoded-frame provenance are in [donor18 research](docs/donor18-resource-import.md). The complete OTA ZIP was not downloaded/verified; the partial file must not be flashed.
+- New scenes and their physical camera clearance require a MIX Flip check. Folded lock/AOD and ordinary Power behavior remain native and unchanged.
 
 ## Version 1.0
 
@@ -81,8 +94,35 @@ second. The visual timer has no sound or exact background alarm. Music controls
 require the existing notification-listener access and actions supported by the
 player. Imported photos remain private copies, independent of the source image.
 
+## Optional Xiaomi cards and root controller
+
+The gallery separates **17 Pro**, **18 Pro**, **Свои** (photo/text templates) and
+**Архив Xiaomi** (presets without verified donor-model attribution). Type filters,
+search and favorites work inside the selected collection. The 18 Pro collection
+also contains the three mini-app cards; opening one shows a preview before Apply.
+
+Optional [mini-apps](docs/mini-apps.md): choose Focus, Water or Words in Main and
+press **На внешний экран**. Browsing/Cancel leaves the cover unchanged. These are
+three original public Xiaomi Canvas examples, with their Chinese UI,8-glass
+water counter, English/Chinese vocabulary and25/5-minute Pomodoro retained. The
+offline host blocks networking/native bridges and fills the cover using the original
+responsive Canvas dimensions, with proportional artwork and controls. The bundled
+HTML bytes stay unchanged. A [firmware audit](docs/donor18-mini-app-runtime.md)
+confirmed a separate native JsCanvas/QuickJS engine and six built-in MAML cards;
+the three public examples were not found in those packages.
+Choose **Вернуть питомца** or a gallery item to return.
+They replace the pet only in our open/unlocked cover activity, not live wallpaper
+or Xiaomi's folded lockscreen/AOD. The old utility overlay remains independent.
+
+An [experimental KernelSU module](docs/kernel-su-module.md) is prepared for a
+future rooted MIX Flip. It is an alternative supervisor, not verified independent
+rear-screen power. The [photo-pet generation audit](docs/photo-pet-generation.md)
+documents the donor image/video service chain; a working generator is still required.
+
 ## Project layout
 
+- `HANDOFF.md`: latest implementation state, exact artifact hashes, verification
+  scope and outstanding work for the next contributor.
 - `work/app`: Android source, manifest, original assets and dependency notices.
 - `work/tests`: renderer/controller/profile helpers and pure logic tests.
 - `work/research`: original MAML, provenance, firmware layouts and coverage.
@@ -105,18 +145,19 @@ python -X utf8 work/package_release.py --qa-dir work/qa-v03/device-files
 ```
 
 Packaging refuses missing, failed, incorrectly counted or stale SHA-bound results.
-Version1.0 requires fresh170/68/15/15 renderer/UI/utility results and19 layout-dialog
-checks against its exact APK SHA, plus the virtual-cover lifecycle checks. Run the
-layout checks separately, while no other emulator UI QA is running:
+Version1.1 requires fresh176/68/15/15 renderer/UI/utility results,19 layout-dialog
+and23 donor18 runtime checks,27 mini-app checks against its exact APK SHA, plus virtual-cover lifecycle
+checks. Run these suites separately, while no other emulator UI QA is running:
 
 ```powershell
 python -X utf8 work/tests/run_pet_layout_qa.py
+python -X utf8 work/tests/run_donor18_qa.py
 ```
 
 The runner explicitly guards `emulator-5554`, removes its old result, installs the
 current APK, tests real dialog controls, and pulls `pet-layout-qa.json`. It rejects
 an incorrect SHA, missing checks, failures and skips. Source geometry tests now
-pass1,076 assertions; this does not prove physical camera clearance. Version1.0
+pass1,106 assertions; this does not prove physical camera clearance.
 The final1.0 APK passed287 renderer/UI/utility/layout checks and6 virtual-cover
 lifecycle checks. Both modes persisted after force-stop/relaunch through real UI.
 Five screenshots were inspected. Version1.0 was installed as an update on MIX Flip;

@@ -11,6 +11,12 @@ public final class CoverGeometry {
         return Math.max(1,Math.round(width*(coverHeight/(float)coverWidth)));
     }
     public static float cameraFraction(float requested){return Float.isNaN(requested)||Float.isInfinite(requested)?CAMERA_FRACTION:Math.max(CAMERA_FRACTION,Math.min(.55f,requested));}
+    /** Background/effect fills the canvas, preserving source aspect ratio. */
+    public static Placement canvas(int width,int height,int sourceWidth,int sourceHeight){
+        if(width<=0||height<=0||sourceWidth<=0||sourceHeight<=0)throw new IllegalArgumentException("Positive canvas/source dimensions required");
+        float scale=Math.max(width/(float)sourceWidth,height/(float)sourceHeight);
+        return new Placement(scale,(width-sourceWidth*scale)/2,(height-sourceHeight*scale)/2,0,0,width,height);
+    }
     public static Placement fit(int width,int height,int sourceWidth,int sourceHeight,float[] envelope,float cameraRight,float fraction){
         if(width<=0||height<=0||sourceWidth<=0||sourceHeight<=0)throw new IllegalArgumentException("Positive canvas/source dimensions required");
         float l=0,t=0,r=1,b=1;
@@ -53,6 +59,7 @@ public final class CoverGeometry {
     private static float faceLeft(String id,float fallback){
         if(id==null)return fallback;
         if(id.startsWith("bird-"))return .46f;
+        if(id.startsWith("butterfly-carp-"))return .45f;
         if(id.startsWith("koala-"))return .47f;
         if(id.startsWith("roedeer-"))return .52f;
         if(id.startsWith("seal-"))return .45f;

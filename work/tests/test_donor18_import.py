@@ -18,6 +18,24 @@ HOLD = '''<Widget><Var name="assets" expression="'bird'"/><Function name="onComp
 
 
 class ImportTests(unittest.TestCase):
+    def test_reactive_event_numbers_actions_and_delay_are_contract_changes(self):
+        original = ET.fromstring('''<Widget><Var name="level_rule" values="1,8,7,6,5,4,3,2"/><Var name="music"><Trigger><IfCommand ifCondition="#music_state"><VariableCommand name="event_index" expression="3"/><FunctionCommand target="switchPag" delay="1000"/></IfCommand></Trigger></Var><Function name="switchPag"><PagCommand target="pet" command="play"/></Function><PagView name="pet" loop="1"/></Widget>''')
+        baseline = donor.reactive_contract(original)
+        for tag, attribute, value in [('VariableCommand', 'expression', '5'), ('PagCommand', 'command', 'pause'), ('FunctionCommand', 'delay', '2000'), ('IfCommand', 'ifCondition', '! #music_state')]:
+            changed = ET.fromstring(ET.tostring(original))
+            changed.find('.//' + tag).set(attribute, value)
+            self.assertNotEqual(donor.reactive_contract(changed), baseline)
+
+    def test_reactive_dependent_constants_and_callback_links_are_checked(self):
+        original = ET.fromstring('''<Widget><Var name="delay_ms" expression="1000"/><Var name="intermediate" expression="#delay_ms"/><Function name="onComplete"><FunctionCommand target="switchPag" delay="#intermediate"/></Function><FolmeConfig name="cfg" onComplete="'onComplete'"/><PagView name="pet" loop="1"/></Widget>''')
+        baseline = donor.reactive_contract(original)
+        changed = ET.fromstring(ET.tostring(original))
+        changed.find("Var[@name='delay_ms']").set('expression', '2500')
+        self.assertNotEqual(donor.reactive_contract(changed), baseline)
+        changed = ET.fromstring(ET.tostring(original))
+        changed.find('FolmeConfig').set('onComplete', "'different'")
+        self.assertNotEqual(donor.reactive_contract(changed), baseline)
+
     def test_finite_hold_is_not_converted_to_loop(self):
         kind, policy, count, _ = donor.playback(ET.fromstring(HOLD), 'bird', ['assets/bird/pag_0.pag'])
         self.assertEqual((kind, count), ('ambient', 1))
@@ -25,6 +43,11 @@ class ImportTests(unittest.TestCase):
 
     def test_unknown_single_cycle_policy_is_not_silently_looped(self):
         kind, *_ = donor.playback(ET.fromstring('<Widget><PagView loop="1"/></Widget>'), 'unknown', ['a.pag'])
+        self.assertIsNone(kind)
+
+    def test_classic_completion_indirect_replay_is_not_a_hold(self):
+        tree = ET.fromstring('''<Widget><Function name="onComplete"><FrameRateCommand rate="0"/><FunctionCommand target="restart"/></Function><Function name="restart"><PagCommand target="pet" command="play"/></Function><PagView loop="1"/></Widget>''')
+        kind, *_ = donor.playback(tree, 'bird', ['pag_0.pag'])
         self.assertIsNone(kind)
 
     def test_unsafe_archive_names_rejected(self):

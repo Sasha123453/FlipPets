@@ -1,0 +1,1789 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<style>html,body{margin:0;background:#000;width:100%;height:100%;overflow:hidden}canvas{display:block;width:100%;height:100%;touch-action:none}</style>
+<canvas id="c" width="976" height="596"></canvas>
+<script>
+const cv=document.getElementById('c'),ctx=cv.getContext('2d');;
+/* W/H 取真实视口：真机 912 或 976 宽，写死会在宽屏上留黑边；浏览器退回 cv.width/2。
+   scale(2,2) 必须保留：JsCanvas 有 0.5 初始变换，乘完净变换为 1.0。
+   图素原稿是 DPR=7 + 写死 912，那是为了导出 6384×4172 的高清图，运行时不能用。 */
+const W=(typeof window!=='undefined'&&window.CANVAS_W)||cv.width,
+      H=(typeof window!=='undefined'&&window.CANVAS_H)||cv.height,
+      CAM=Math.floor(W/3);
+window.__DIAL_CANVAS_SIZE={width:W,height:H};      /* 审计与装配读这里核对尺寸，勿删 */
+const CX=CAM+(W-CAM)/2, APP_W=W-CAM;
+/* 三尺寸自适应：绘制统一 translate(DX,DY)+scale(FIT,FIT)，命中用同一组参数逆变换。 */
+const BASE_W=912,BASE_H=596,BASE_CAM=Math.floor(BASE_W/3),
+      FIT=Math.min((W-CAM)/(BASE_W-BASE_CAM),H/BASE_H),
+      DX=Math.round(CX-CX*FIT),
+      DY=Math.round((H-BASE_H*FIT)/2);
+
+// ===== 六级词汇库 =====
+const VOCAB=[
+  {w:'erroneous',p:'/ɪˈrəʊnɪəs/',c:'错误的'},
+  {w:'scent',p:'/sent/',c:'气味；踪迹'},
+  {w:'diet',p:'/ˈdaɪət/',c:'饮食；节食'},
+  {w:'hesitate',p:'/ˈhezɪteɪt/',c:'犹豫'},
+  {w:'appreciate',p:'/əˈpriːʃieɪt/',c:'重视，欣赏'},
+  {w:'accomplish',p:'/əˈkʌmplɪʃ/',c:'完成，实现'},
+  {w:'constant',p:'/ˈkɒnstənt/',c:'持续不断的'},
+  {w:'regardless',p:'/rɪˈɡɑːdləs/',c:'不管怎样'},
+  {w:'wander',p:'/ˈwɒndər/',c:'闲逛；走神'},
+  {w:'qualification',p:'/ˌkwɒlɪfɪˈkeɪʃən/',c:'资格'},
+  {w:'participate',p:'/pɑːˈtɪsɪpeɪt/',c:'参加'},
+  {w:'enthusiastic',p:'/ɪnˌθjuːziˈæstɪk/',c:'热情的'},
+  {w:'forecast',p:'/ˈfɔːkɑːst/',c:'预测'},
+  {w:'exceptional',p:'/ɪkˈsepʃənl/',c:'杰出的'},
+  {w:'reverse',p:'/rɪˈvɜːs/',c:'v. 撤销；adj. 反面的'},
+  {w:'argue',p:'/ˈɑːɡjuː/',c:'论证；争论'},
+  {w:'appearance',p:'/əˈpɪərəns/',c:'出现；外表'},
+  {w:'mature',p:'/məˈtʊər/',c:'成熟的'},
+  {w:'combination',p:'/ˌkɒmbɪˈneɪʃən/',c:'结合'},
+  {w:'doubtful',p:'/ˈdaʊtful/',c:'可疑的'},
+  {w:'previous',p:'/ˈpriːviəs/',c:'以前的'},
+  {w:'elapse',p:'/ɪˈlæps/',c:'(时间)流逝'},
+  {w:'seal',p:'/siːl/',c:'印章；海豹'},
+  {w:'burden',p:'/ˈbɜːdn/',c:'负担，重担'},
+  {w:'perceive',p:'/pəˈsiːv/',c:'感知；认识到'},
+  {w:'perspective',p:'/pəˈspektɪv/',c:'视角；观点'},
+  {w:'feedback',p:'/ˈfiːdbæk/',c:'反馈'},
+  {w:'sponsor',p:'/ˈspɒnsər/',c:'赞助者'},
+  {w:'advantage',p:'/ədˈvɑːntɪdʒ/',c:'优点；好处'},
+  {w:'circulation',p:'/ˌsɜːkjuˈleɪʃən/',c:'循环'},
+  {w:'condemn',p:'/kənˈdem/',c:'谴责；宣判'},
+  {w:'shuttle',p:'/ˈʃʌtl/',c:'航天飞机'},
+  {w:'interpret',p:'/ɪnˈtɜːprɪt/',c:'口译；解释'},
+  {w:'adhere',p:'/ədˈhɪər/',c:'遵守；坚持'},
+  {w:'virtually',p:'/ˈvɜːtjuəli/',c:'实际上'},
+  {w:'reproductive',p:'/ˌriːprəˈdʌktɪv/',c:'繁殖的'},
+  {w:'defect',p:'/ˈdiːfekt/',c:'缺点，瑕疵'},
+  {w:'sculpture',p:'/ˈskʌlptʃər/',c:'雕刻(作品)'},
+  {w:'calorie',p:'/ˈkæləri/',c:'卡路里'},
+  {w:'abuse',p:'/əˈbjuːz/',c:'滥用；辱骂'},
+  {w:'encounter',p:'/ɪnˈkaʊntər/',c:'遇到'},
+  {w:'overcome',p:'/ˌəʊvəˈkʌm/',c:'克服'},
+  {w:'revenue',p:'/ˈrevənuː/',c:'税收；收入'},
+  {w:'impose',p:'/ɪmˈpəʊz/',c:'把…强加于'},
+  {w:'consumption',p:'/kənˈsʌm(p)ʃən/',c:'消耗'},
+  {w:'range',p:'/reɪndʒ/',c:'一系列；范围'},
+  {w:'compromise',p:'/ˈkɒmprəmaɪz/',c:'妥协'},
+  {w:'accompany',p:'/əˈkʌmpəni/',c:'陪伴'},
+  {w:'eliminate',p:'/ɪˈlɪmɪneɪt/',c:'排除；淘汰'},
+  {w:'episode',p:'/ˈepɪsəʊd/',c:'集；插曲'},
+  {w:'appeal',p:'/əˈpiːl/',c:'恳求；上诉'},
+  {w:'export',p:'/ɪksˈpɔːt/',c:'出口'},
+  {w:'drawback',p:'/ˈdrɔːbæk/',c:'缺点，欠缺'},
+  {w:'exotic',p:'/ɪɡˈzɒtɪk/',c:'外国的'},
+  {w:'allergic',p:'/əˈlɜːdʒɪk/',c:'过敏的'},
+  {w:'bias',p:'/ˈbaɪəs/',c:'偏见，偏袒'},
+  {w:'calculate',p:'/ˈkælkjuleɪt/',c:'计算'},
+  {w:'identical',p:'/aɪˈdentɪkəl/',c:'相同的'},
+  {w:'innovation',p:'/ˌɪnəˈveɪʃən/',c:'改革'},
+  {w:'expectancy',p:'/ɪksˈpektənsi/',c:'期待'},
+  {w:'saying',p:'/ˈseɪɪŋ/',c:'谚语'},
+  {w:'transfer',p:'/ˈtrænsfɜːr/',c:'转移；调动'},
+  {w:'tragic',p:'/ˈtrædʒɪk/',c:'悲惨的'},
+  {w:'incline',p:'/ɪnˈklaɪn/',c:'(使)倾斜'},
+  {w:'reckon',p:'/ˈrekən/',c:'认为，考虑'},
+  {w:'platform',p:'/ˈplætfɔːm/',c:'平台'},
+  {w:'variable',p:'/ˈveəriəbl/',c:'易变的'},
+  {w:'convey',p:'/kənˈveɪ/',c:'表达，传递'},
+  {w:'fraud',p:'/frɔːd/',c:'欺诈；骗子'},
+  {w:'political',p:'/pəˈlɪtɪkəl/',c:'政治的'},
+  {w:'lean',p:'/liːn/',c:'倾斜；靠；瘦的'},
+  {w:'bald',p:'/bɔːld/',c:'秃的'},
+  {w:'competence',p:'/ˈkɒmpɪtəns/',c:'能力'},
+  {w:'nutrition',p:'/njuːˈtrɪʃən/',c:'营养'},
+  {w:'persist',p:'/pəˈsɪst/',c:'坚持'},
+  {w:'accelerate',p:'/əkˈseləreɪt/',c:'加速'},
+  {w:'energetic',p:'/ˌenəˈdʒetɪk/',c:'有精力的'},
+  {w:'heighten',p:'/ˈhaɪtn/',c:'变高；加强'},
+  {w:'prevalent',p:'/ˈprevələnt/',c:'普遍的'},
+  {w:'passive',p:'/ˈpæsɪv/',c:'被动的'},
+  {w:'penalty',p:'/ˈpenəlti/',c:'处罚，罚金'},
+  {w:'temporary',p:'/ˈtempərəri/',c:'暂时的'},
+  {w:'skeptical',p:'/ˈskeptɪkəl/',c:'怀疑的'},
+  {w:'contemporary',p:'/kənˈtempərəri/',c:'现代的'},
+  {w:'longevity',p:'/lɒnˈdʒevɪti/',c:'长寿'},
+  {w:'acknowledge',p:'/əkˈnɒlɪdʒ/',c:'承认；感谢'},
+  {w:'avoid',p:'/əˈvɔɪd/',c:'回避；避免'},
+  {w:'apply',p:'/əˈplaɪ/',c:'应用；申请；涂'},
+  {w:'complement',p:'/ˈkɒmplɪmənt/',c:'补充'},
+  {w:'investigate',p:'/ɪnˈvestɪɡeɪt/',c:'调查，研究'},
+  {w:'promote',p:'/prəˈməʊt/',c:'促进；推广'},
+  {w:'corporate',p:'/ˈkɔːpərət/',c:'公司的'},
+  {w:'consult',p:'/kənˈsʌlt/',c:'请教，查阅'},
+  {w:'award',p:'/əˈwɔːd/',c:'n. 奖，薪水；v. 授予'},
+  {w:'extinction',p:'/ɪksˈtɪŋkʃən/',c:'灭绝'},
+  {w:'survive',p:'/səˈvaɪv/',c:'生存'},
+  {w:'admit',p:'/ədˈmɪt/',c:'承认；准许…进入'},
+  {w:'stress',p:'/stres/',c:'n. 紧张；重音；v. 强调'},
+  {w:'refrain',p:'/rɪˈfreɪn/',c:'避免，抑制'},
+  {w:'severe',p:'/sɪˈvɪər/',c:'艰难的；严厉的'},
+  {w:'ability',p:'/əˈbɪləti/',c:'能力'},
+  {w:'restore',p:'/rɪˈstɔːr/',c:'恢复；归还'},
+  {w:'available',p:'/əˈveɪləbl/',c:'可用的'},
+  {w:'economy',p:'/ɪˈkɒnəmi/',c:'经济；节约'},
+  {w:'automation',p:'/ˌɔːtəˈmeɪʃən/',c:'自动化'},
+  {w:'reserve',p:'/rɪˈzɜːv/',c:'保留'},
+  {w:'ample',p:'/ˈæmpl/',c:'足够的；大量的'},
+  {w:'recently',p:'/ˈriːsntli/',c:'最近'},
+  {w:'correlation',p:'/ˌkɒrəˈleɪʃən/',c:'联系'},
+  {w:'compel',p:'/kəmˈpel/',c:'强迫'},
+  {w:'preserve',p:'/prɪˈzɜːv/',c:'保护，保存'},
+  {w:'consequence',p:'/ˈkɒnsɪkwəns/',c:'结果'},
+  {w:'submit',p:'/səbˈmɪt/',c:'提交'},
+  {w:'thrive',p:'/θraɪv/',c:'兴旺'},
+  {w:'dynamic',p:'/daɪˈnæmɪk/',c:'精力充沛的'},
+  {w:'virtual',p:'/ˈvɜːtjuəl/',c:'实际上，虚拟的'},
+  {w:'traditional',p:'/trəˈdɪʃənl/',c:'传统的'},
+  {w:'brief',p:'/briːf/',c:'a. 简短的；n. 摘要'},
+  {w:'approach',p:'/əˈprəʊtʃ/',c:'v. 靠近；n. 方法'},
+  {w:'occupy',p:'/ˈɒkjupaɪ/',c:'占用'},
+  {w:'anniversary',p:'/ˌænɪˈvɜːsəri/',c:'周年纪念(日)'},
+  {w:'catastrophe',p:'/kəˈtæstrəfi/',c:'大灾难'},
+  {w:'donate',p:'/dəʊˈneɪt/',c:'捐赠'},
+  {w:'inject',p:'/ɪnˈdʒekt/',c:'注射'},
+  {w:'bribe',p:'/braɪb/',c:'贿赂'},
+  {w:'fancy',p:'/ˈfænsi/',c:'v. 喜欢；a. 精致的'},
+  {w:'evolution',p:'/ˌevəˈluːʃən/',c:'演变，进化'},
+  {w:'stable',p:'/ˈsteɪbl/',c:'a. 稳定的；n. 马厩'},
+  {w:'currency',p:'/ˈkʌrənsi/',c:'货币；流行'},
+  {w:'divorce',p:'/dɪˈvɔːs/',c:'离婚'},
+  {w:'sophisticated',p:'/səˈfɪstɪkeɪtɪd/',c:'精密的'},
+  {w:'memorial',p:'/məˈmɔːriəl/',c:'a. 纪念的；n. 纪念碑'},
+  {w:'refund',p:'/rɪˈfʌnd/',c:'n. 退款；vt. 退还'},
+  {w:'complicated',p:'/ˈkɒmplɪkeɪtɪd/',c:'复杂的'},
+  {w:'accord',p:'/əˈkɔːd/',c:'协议；一致'},
+  {w:'terrific',p:'/təˈrɪfɪk/',c:'极好的'},
+  {w:'depict',p:'/dɪˈpɪkt/',c:'描绘'},
+  {w:'extraordinary',p:'/ɪksˈtrɔːdɪnəri/',c:'非凡的'},
+  {w:'poisonous',p:'/ˈpɔɪzənəs/',c:'有毒的'},
+  {w:'kidney',p:'/ˈkɪdni/',c:'肾'},
+  {w:'offend',p:'/əˈfend/',c:'冒犯'},
+  {w:'antique',p:'/ænˈtiːk/',c:'a. 古老的；n. 古董'},
+  {w:'preview',p:'/ˈpriːvjuː/',c:'预演；预告'},
+  {w:'vigorous',p:'/ˈvɪɡərəs/',c:'有力的'},
+  {w:'brochure',p:'/ˈbrəʊʃər/',c:'小册子'},
+  {w:'attractive',p:'/əˈtræktɪv/',c:'迷人的'},
+  {w:'personnel',p:'/ˌpɜːsəˈnel/',c:'人员'},
+  {w:'concrete',p:'/ˈkɒnkrɪt/',c:'a. 具体的；n. 混凝土'},
+  {w:'consequent',p:'/ˈkɒnsɪkwənt/',c:'随之发生的'},
+  {w:'absurd',p:'/əbˈsɜːd/',c:'荒谬的'},
+  {w:'inherent',p:'/ɪnˈhɪərənt/',c:'内在的'},
+  {w:'transplant',p:'/ˈtrænsplɑːnt/',c:'移植'},
+  {w:'polish',p:'/ˈpɒlɪʃ/',c:'抛光；润色'},
+  {w:'ignorance',p:'/ˈɪɡnərəns/',c:'无知'},
+  {w:'ignorant',p:'/ˈɪɡnərənt/',c:'无知的'},
+  {w:'stimulate',p:'/ˈstɪmjuleɪt/',c:'激发，促进'},
+  {w:'acquaintance',p:'/əˈkweɪntəns/',c:'泛泛之交'},
+  {w:'retrieve',p:'/rɪˈtriːv/',c:'搜索，拿回'},
+  {w:'prosper',p:'/ˈprɒspər/',c:'繁荣'},
+  {w:'globalization',p:'/ˌɡləʊbəlaɪˈzeɪʃən/',c:'全球化'},
+  {w:'compose',p:'/kəmˈpəʊz/',c:'构成；创作'},
+  {w:'compulsory',p:'/kəmˈpʌlsəri/',c:'强制的'},
+  {w:'identification',p:'/aɪˌdentɪfɪˈkeɪʃən/',c:'身份证明'},
+  {w:'prejudice',p:'/ˈpredʒudɪs/',c:'偏见'},
+  {w:'astronomy',p:'/əˈstrɒnəmi/',c:'天文学'},
+  {w:'dioxide',p:'/daɪˈɒksaɪd/',c:'二氧化物'},
+  {w:'toxic',p:'/ˈtɒksɪk/',c:'有毒的'},
+  {w:'vain',p:'/veɪn/',c:'徒劳的；虚荣的'},
+  {w:'proceed',p:'/prəˈsiːd/',c:'进行'},
+  {w:'cafeteria',p:'/ˌkæfɪˈtɪəriə/',c:'自助餐馆'},
+  {w:'authentic',p:'/ɔːˈθentɪk/',c:'真正的'},
+  {w:'dwell',p:'/dwel/',c:'居住'},
+  {w:'catholic',p:'/ˈkæθəlɪk/',c:'天主教的'},
+  {w:'captive',p:'/ˈkæptɪv/',c:'a. 被捕获的；n. 俘虏'},
+  {w:'overwhelming',p:'/ˌəʊvəˈwelmɪŋ/',c:'势不可挡的'},
+  {w:'preservation',p:'/ˌprezəˈveɪʃən/',c:'维护'},
+  {w:'exert',p:'/ɪɡˈzɜːt/',c:'运用'},
+  {w:'prospect',p:'/ˈprɒspekt/',c:'前景'},
+  {w:'entrepreneur',p:'/ˌɒntrəprəˈnɜːr/',c:'企业家'},
+  {w:'salute',p:'/səˈluːt/',c:'赞扬，敬礼'},
+  {w:'geology',p:'/dʒiˈɒlədʒi/',c:'地质学'},
+  {w:'explicit',p:'/ɪkˈsplɪsɪt/',c:'清楚的'},
+  {w:'hazard',p:'/ˈhæzəd/',c:'n. 危险；vt. 尝试做'},
+  {w:'confidential',p:'/ˌkɒnfɪˈdenʃəl/',c:'机密的'},
+  {w:'sacred',p:'/ˈseɪkrɪd/',c:'神圣的'},
+  {w:'foresee',p:'/fɔːˈsiː/',c:'预知'},
+  {w:'prescribe',p:'/prɪˈskraɪb/',c:'规定；开处方'},
+  {w:'cater',p:'/ˈkeɪtər/',c:'满足需要'},
+  {w:'ballet',p:'/ˈbæleɪ/',c:'芭蕾舞'},
+  {w:'thesis',p:'/ˈθiːsɪs/',c:'论文，论题'},
+  {w:'aggravate',p:'/ˈæɡrəveɪt/',c:'加重；激怒'},
+  {w:'overload',p:'/ˌəʊvəˈləʊd/',c:'vt. 过载；n. 超载'},
+  {w:'cancel',p:'/ˈkænsəl/',c:'取消'},
+  {w:'implication',p:'/ˌɪmplɪˈkeɪʃən/',c:'暗示'},
+  {w:'urbanization',p:'/ˌɜːbənaɪˈzeɪʃən/',c:'城市化'},
+  {w:'deem',p:'/diːm/',c:'认为，相信'},
+  {w:'boom',p:'/buːm/',c:'繁荣'},
+  {w:'drown',p:'/draʊn/',c:'(使)淹死'},
+  {w:'emerge',p:'/ɪˈmɜːdʒ/',c:'显露；浮现'},
+  {w:'conventional',p:'/kənˈvenʃənl/',c:'传统的'},
+  {w:'means',p:'/miːnz/',c:'方法'},
+  {w:'complex',p:'/ˈkɒmpleks/',c:'复杂的'},
+  {w:'gap',p:'/ɡæp/',c:'缺口；差距'},
+  {w:'payment',p:'/ˈpeɪmənt/',c:'款项，支付'},
+  {w:'passion',p:'/ˈpæʃən/',c:'热情，酷爱'},
+  {w:'challenge',p:'/ˈtʃælɪndʒ/',c:'挑战'},
+  {w:'giant',p:'/ˈdʒaɪənt/',c:'n. 巨人；a. 巨大的'},
+  {w:'critic',p:'/ˈkrɪtɪk/',c:'批评者；反对者'},
+  {w:'generate',p:'/ˈdʒenəreɪt/',c:'产生；引发'},
+  {w:'initiative',p:'/ɪˈnɪʃətɪv/',c:'倡议；主动性'},
+  {w:'convert',p:'/kənˈvɜːt/',c:'(使)转变'},
+  {w:'executive',p:'/ɪɡˈzekjutɪv/',c:'主管；经理'},
+  {w:'navigate',p:'/ˈnævɪɡeɪt/',c:'导航；航行'},
+  {w:'exaggerate',p:'/ɪɡˈzædʒəreɪt/',c:'夸大'},
+  {w:'consume',p:'/kənˈsjuːm/',c:'消耗；花费'},
+  {w:'ideal',p:'/aɪˈdɪəl/',c:'理想的；不实际的'},
+  {w:'boost',p:'/buːst/',c:'提高；推动'},
+  {w:'expose',p:'/ɪkˈspəʊz/',c:'暴露'},
+  {w:'embrace',p:'/ɪmˈbreɪs/',c:'拥抱'},
+  {w:'donation',p:'/dəʊˈneɪʃən/',c:'捐赠'},
+  {w:'efficient',p:'/ɪˈfɪʃənt/',c:'高效的'},
+  {w:'keen',p:'/kiːn/',c:'热衷的；着迷的'},
+  {w:'expansive',p:'/ɪkˈspænsɪv/',c:'广阔的'},
+  {w:'conscience',p:'/ˈkɒnʃəns/',c:'良心'},
+  {w:'electrical',p:'/ɪˈlektrɪkəl/',c:'电的'},
+  {w:'equip',p:'/ɪˈkwɪp/',c:'装备'},
+  {w:'routine',p:'/ruːˈtiːn/',c:'例行公事'},
+  {w:'sample',p:'/ˈsɑːmpl/',c:'样品'},
+  {w:'annual',p:'/ˈænjuəl/',c:'a. 每年的；n. 年报'},
+  {w:'household',p:'/ˈhaʊshəʊld/',c:'家喻户晓的'},
+  {w:'fraction',p:'/ˈfrækʃən/',c:'小部分；分数'},
+  {w:'occupation',p:'/ˌɒkjuˈpeɪʃən/',c:'职业'},
+  {w:'gaze',p:'/ɡeɪz/',c:'注视'},
+  {w:'vulnerable',p:'/ˈvʌlnərəbl/',c:'脆弱的'},
+  {w:'jealous',p:'/ˈdʒeləs/',c:'妒忌的'},
+  {w:'decisive',p:'/dɪˈsaɪsɪv/',c:'决断的'},
+  {w:'betray',p:'/bɪˈtreɪ/',c:'背叛；泄露'},
+  {w:'bankrupt',p:'/ˈbæŋkrʌpt/',c:'破产的'},
+  {w:'derive',p:'/dɪˈraɪv/',c:'得到'},
+  {w:'sexual',p:'/ˈsekʃuəl/',c:'性别的'},
+  {w:'drain',p:'/dreɪn/',c:'v. 排走；n. 下水道'},
+  {w:'integral',p:'/ˈɪntɪɡrəl/',c:'基本的'},
+  {w:'initiate',p:'/ɪˈnɪʃieɪt/',c:'开始'},
+  {w:'upset',p:'/ʌpˈset/',c:'vt. 打乱；a. 心烦的'},
+  {w:'subsidy',p:'/ˈsʌbsɪdi/',c:'津贴'},
+  {w:'casual',p:'/ˈkæʒuəl/',c:'马虎的；偶然的'},
+  {w:'deteriorate',p:'/dɪˈtɪəriəreɪt/',c:'恶化'},
+  {w:'patience',p:'/ˈpeɪʃəns/',c:'耐心'},
+  {w:'sensitive',p:'/ˈsensɪtɪv/',c:'敏感的'},
+  {w:'sacrifice',p:'/ˈsækrɪfaɪs/',c:'牺牲；献祭'},
+  {w:'manufacture',p:'/ˌmænjuˈfæktʃər/',c:'制造'},
+  {w:'freight',p:'/freɪt/',c:'n. 货物；vt. 运送(货物)'},
+  {w:'implement',p:'/ˈɪmplɪment/',c:'实施'},
+  {w:'initial',p:'/ɪˈnɪʃəl/',c:'a. 开始的；n. 首字母'},
+  {w:'portion',p:'/ˈpɔːʃən/',c:'n. 部分；vt. 分配'},
+  {w:'compact',p:'/kəmˈpækt/',c:'a. 紧凑的；n. 合同'},
+  {w:'profitable',p:'/ˈprɒfɪtəbl/',c:'有益的'},
+  {w:'metric',p:'/ˈmetrɪk/',c:'公制的；米制的'},
+  {w:'suspect',p:'/səˈspekt/',c:'觉得；怀疑'},
+  {w:'appliance',p:'/əˈplaɪəns/',c:'电器；应用'},
+  {w:'prey',p:'/preɪ/',c:'n. 猎物；v. 捕食'},
+  {w:'relieve',p:'/rɪˈliːv/',c:'使轻松；减轻'},
+  {w:'fake',p:'/feɪk/',c:'n. 假货；骗子；a. 假的'},
+  {w:'statistics',p:'/stəˈtɪstɪks/',c:'统计学'},
+  {w:'scope',p:'/skəʊp/',c:'范围；眼界'},
+  {w:'endure',p:'/ɪnˈdʊə(r)/',c:'忍受'},
+  {w:'residential',p:'/ˌrezɪˈdenʃəl/',c:'住宅的'},
+  {w:'lounge',p:'/laʊndʒ/',c:'n. 休息厅；vi. 闲逛'},
+  {w:'scratch',p:'/skrætʃ/',c:'v. 抓；n. 抓痕'},
+  {w:'parade',p:'/pəˈreɪd/',c:'游行；检阅'},
+  {w:'permanent',p:'/ˈpɜːmənənt/',c:'永久的'},
+  {w:'violation',p:'/ˌvaɪəˈleɪʃən/',c:'违反；违背'},
+  {w:'satisfactory',p:'/ˌsætɪsˈfæktəri/',c:'满意的'},
+  {w:'conserve',p:'/kənˈsɜːv/',c:'保护；保存'},
+  {w:'embarrass',p:'/ɪmˈbærəs/',c:'使尴尬'},
+  {w:'instruct',p:'/ɪnˈstrʌkt/',c:'指示；教育'},
+  {w:'bonus',p:'/ˈbəʊnəs/',c:'奖金'},
+  {w:'defy',p:'/dɪˈfaɪ/',c:'违抗'},
+  {w:'output',p:'/ˈaʊtpʊt/',c:'产量；输出'},
+  {w:'abundant',p:'/əˈbʌndənt/',c:'大量的'},
+  {w:'notorious',p:'/nəˈtɔːriəs/',c:'臭名昭著的'},
+  {w:'precise',p:'/prɪˈsaɪs/',c:'精确的；严谨的'},
+  {w:'offspring',p:'/ˈɒfsprɪŋ/',c:'子女；后代'},
+  {w:'frame',p:'/freɪm/',c:'体系；框架'},
+  {w:'reward',p:'/rɪˈwɔːd/',c:'v. 奖励；n. 酬金'},
+  {w:'nurture',p:'/ˈnɜːtʃər/',c:'vt. 养育；n. 培育'},
+  {w:'transparent',p:'/trænsˈpærənt/',c:'透明的'},
+  {w:'construct',p:'/kənˈstrʌkt/',c:'建造'},
+  {w:'inferior',p:'/ɪnˈfɪəriər/',c:'低劣的；下级的'},
+  {w:'cheat',p:'/tʃiːt/',c:'v. 欺骗；作弊；n. 欺骗'},
+  {w:'quest',p:'/kwest/',c:'探索'},
+  {w:'vanish',p:'/ˈvænɪʃ/',c:'消失'},
+  {w:'vague',p:'/veɪɡ/',c:'含糊的；模糊的'},
+  {w:'occasional',p:'/əˈkeɪʒənl/',c:'偶尔的'},
+  {w:'forum',p:'/ˈfɔːrəm/',c:'论坛；讨论区'},
+  {w:'respectively',p:'/rɪˈspektɪvli/',c:'分别地'},
+  {w:'autonomy',p:'/ɔːˈtɒnəmi/',c:'自治(权)'},
+  {w:'aboard',p:'/əˈbɔːd/',c:'在船/飞机/车上'},
+  {w:'conduct',p:'/kənˈdʌkt/',c:'v. 进行；n. 举止'},
+  {w:'shift',p:'/ʃɪft/',c:'v. 转移；n. 转变'},
+  {w:'proposal',p:'/prəˈpəʊzəl/',c:'建议'},
+  {w:'merely',p:'/ˈmɪəli/',c:'仅仅'},
+  {w:'condition',p:'/kənˈdɪʃən/',c:'条件；状况'},
+  {w:'discount',p:'/ˈdɪskaʊnt/',c:'折扣'},
+  {w:'reservation',p:'/ˌrezəˈveɪʃən/',c:'预订'},
+  {w:'artificial',p:'/ˌɑːtɪˈfɪʃəl/',c:'人造的'},
+  {w:'stem',p:'/stem/',c:'n. 茎；v. 阻止'},
+  {w:'critical',p:'/ˈkrɪtɪkəl/',c:'严重的'},
+  {w:'graduate',p:'/ˈɡrædʒuət/',c:'毕业生'},
+  {w:'represent',p:'/ˌreprɪˈzent/',c:'代表；象征'},
+  {w:'dim',p:'/dɪm/',c:'a. 昏暗的；v. (使)变暗'},
+  {w:'concern',p:'/kənˈsɜːn/',c:'关心'},
+  {w:'anyhow',p:'/ˈenihaʊ/',c:'无论如何'},
+  {w:'abandon',p:'/əˈbændən/',c:'放弃'},
+  {w:'obligation',p:'/ˌɒblɪˈɡeɪʃən/',c:'义务'},
+  {w:'scrutiny',p:'/ˈskruːtɪni/',c:'详细检查'},
+  {w:'originate',p:'/əˈrɪdʒɪneɪt/',c:'起源于'},
+  {w:'administer',p:'/ədˈmɪnɪstər/',c:'管理'},
+  {w:'illustrate',p:'/ˈɪləstreɪt/',c:'说明'},
+  {w:'sightseeing',p:'/ˈsaɪtsiːɪŋ/',c:'观光'},
+  {w:'skim',p:'/skɪm/',c:'浏览；略读'},
+  {w:'collapse',p:'/kəˈlæps/',c:'倒塌；崩溃'},
+  {w:'representation',p:'/ˌreprɪzenˈteɪʃən/',c:'表现'},
+  {w:'adjust',p:'/əˈdʒʌst/',c:'调整；适应'},
+  {w:'impress',p:'/ɪmˈpres/',c:'使敬佩'},
+  {w:'champagne',p:'/ʃæmˈpeɪn/',c:'香槟酒'},
+  {w:'bound',p:'/baʊnd/',c:'a. 一定的；v. 跳跃'},
+  {w:'federal',p:'/ˈfedərəl/',c:'联邦制的'},
+  {w:'amaze',p:'/əˈmeɪz/',c:'使惊奇'},
+  {w:'apart',p:'/əˈpɑːt/',c:'分开'},
+  {w:'flock',p:'/flɒk/',c:'蜂拥；群集'},
+  {w:'exceed',p:'/ɪkˈsiːd/',c:'超过；超过'},
+  {w:'trap',p:'/træp/',c:'陷阱；困境'},
+  {w:'resolution',p:'/ˌrezəˈluːʃən/',c:'决心；解决'},
+  {w:'coordinate',p:'/kəʊˈɔːdɪneɪt/',c:'协调'},
+  {w:'incredible',p:'/ɪnˈkredəbl/',c:'难以置信的'},
+  {w:'existence',p:'/ɪɡˈzɪstəns/',c:'存在；生存'},
+  {w:'corrupt',p:'/kəˈrʌpt/',c:'腐败的'},
+  {w:'correspondence',p:'/ˌkɒrɪˈspɒndəns/',c:'符合'},
+  {w:'multiply',p:'/ˈmʌltɪplaɪ/',c:'乘'},
+  {w:'stroke',p:'/strəʊk/',c:'n. 笔画；v. 轻拭'},
+  {w:'combat',p:'/ˈkɒmbæt/',c:'战斗；斗争'},
+  {w:'extravagant',p:'/ɪkˈstrævəɡənt/',c:'奢侈的'},
+  {w:'conclude',p:'/kənˈkluːd/',c:'推断出；总结'},
+  {w:'tremendous',p:'/trɪˈmendəs/',c:'巨大的'},
+  {w:'optimistic',p:'/ˌɒptɪˈmɪstɪk/',c:'乐观的'},
+  {w:'adequate',p:'/ˈædɪkwət/',c:'合格的'},
+  {w:'access',p:'/ˈækses/',c:'n. 入口；v. 到达'},
+  {w:'trend',p:'/trend/',c:'趋势；时尚'},
+  {w:'interview',p:'/ˈɪntəvjuː/',c:'会见；面试'},
+  {w:'publish',p:'/ˈpʌblɪʃ/',c:'发布；出版'},
+  {w:'effective',p:'/ɪˈfektɪv/',c:'有效的；实际的'},
+  {w:'harsh',p:'/hɑːʃ/',c:'严厉的'},
+  {w:'statement',p:'/ˈsteɪtmənt/',c:'声明；阐述'},
+  {w:'affect',p:'/əˈfekt/',c:'影响；使感动'},
+  {w:'rather',p:'/ˈrɑːðər/',c:'相当；相反'},
+  {w:'regulate',p:'/ˈreɡjuleɪt/',c:'管理；调节'},
+  {w:'medium',p:'/ˈmiːdiəm/',c:'中间的'},
+  {w:'schedule',p:'/ˈskedjuːl/',c:'日程安排'},
+  {w:'rare',p:'/reər/',c:'稀有的；珍贵的'},
+  {w:'sufficient',p:'/səˈfɪʃənt/',c:'足够的'},
+  {w:'industrialize',p:'/ɪnˈdʌstriəlaɪz/',c:'工业化'},
+  {w:'collection',p:'/kəˈlekʃən/',c:'收藏品'},
+  {w:'comprehensive',p:'/ˌkɒmprɪˈhensɪv/',c:'全面的'},
+  {w:'instant',p:'/ˈɪnstənt/',c:'立即的'},
+  {w:'prime',p:'/praɪm/',c:'首要的'},
+  {w:'assurance',p:'/əˈʃʊərəns/',c:'信心；保证'},
+  {w:'surf',p:'/sɜːf/',c:'v. 上网；n. 冲浪'},
+  {w:'liberate',p:'/ˈlɪbəreɪt/',c:'解放；释出'},
+  {w:'enclose',p:'/ɪnˈkləʊz/',c:'围住'},
+  {w:'imaginative',p:'/ɪˈmædʒɪnətɪv/',c:'爱想象的'},
+  {w:'portray',p:'/pɔːˈtreɪ/',c:'描绘；扮演'},
+  {w:'feast',p:'/fiːst/',c:'n. 盛宴；v. 宴饮'},
+  {w:'disclose',p:'/dɪsˈkləʊz/',c:'透露'},
+  {w:'inflation',p:'/ɪnˈfleɪʃən/',c:'通货膨胀'},
+  {w:'orbit',p:'/ˈɔːbɪt/',c:'n. 轨道；v. 绕轨'},
+  {w:'disrupt',p:'/dɪsˈrʌpt/',c:'使中断；扰乱'},
+  {w:'institution',p:'/ˌɪnstɪˈtjuːʃən/',c:'机构'},
+  {w:'fare',p:'/feər/',c:'票价'},
+  {w:'frustrate',p:'/frʌsˈtreɪt/',c:'挫败'},
+  {w:'attain',p:'/əˈteɪn/',c:'达到；获得'},
+  {w:'repay',p:'/rɪˈpeɪ/',c:'归还；报答'},
+  {w:'provision',p:'/prəˈvɪʒən/',c:'供应；条款'},
+  {w:'imperative',p:'/ɪmˈperətɪv/',c:'必要的'},
+  {w:'compassion',p:'/kəmˈpæʃən/',c:'怜悯；同情'},
+  {w:'signify',p:'/ˈsɪɡnɪfaɪ/',c:'表示；意味着'},
+  {w:'surpass',p:'/səˈpɑːs/',c:'胜过'},
+  {w:'flourish',p:'/ˈflʌrɪʃ/',c:'vi. 繁荣；vt. 挥动'},
+  {w:'generous',p:'/ˈdʒenərəs/',c:'慷慨的'},
+  {w:'entertain',p:'/ˌentəˈteɪn/',c:'款待'},
+  {w:'misery',p:'/ˈmɪzəri/',c:'痛苦；不幸'},
+  {w:'dip',p:'/dɪp/',c:'浸；落下'},
+  {w:'misfortune',p:'/mɪsˈfɔːtʃuːn/',c:'不幸'},
+  {w:'devise',p:'/dɪˈvaɪz/',c:'发明，设计'},
+  {w:'venture',p:'/ˈventʃər/',c:'冒险；敢于'},
+  {w:'dread',p:'/dred/',c:'n. 担忧；a. 可怕的'},
+  {w:'segment',p:'/ˈseɡmənt/',c:'n. 部分；v. 分割'},
+  {w:'susceptible',p:'/səˈseptəbl/',c:'易受影响的'},
+  {w:'immerse',p:'/ɪˈmɜːs/',c:'使沉浸于'},
+  {w:'indispensable',p:'/ˌɪndɪˈspensəbl/',c:'必需的'},
+  {w:'capable',p:'/ˈkeɪpəbl/',c:'有能力的'},
+  {w:'classic',p:'/ˈklæsɪk/',c:'经典的'},
+  {w:'disorder',p:'/dɪsˈɔːdər/',c:'混乱；失调'},
+  {w:'evidence',p:'/ˈevɪdəns/',c:'证据'},
+  {w:'primary',p:'/ˈpraɪməri/',c:'首要的'},
+  {w:'miserable',p:'/ˈmɪzərəbl/',c:'痛苦的'},
+  {w:'attitude',p:'/ˈætɪtjuːd/',c:'态度；看法'},
+  {w:'accustom',p:'/əˈkʌstəm/',c:'使适应'},
+  {w:'embark',p:'/ɪmˈbɑːk/',c:'从事；上船'},
+  {w:'participant',p:'/pɑːˈtɪsɪpənt/',c:'参与者'},
+  {w:'curriculum',p:'/kəˈrɪkjuləm/',c:'课程'},
+  {w:'confront',p:'/kənˈfrʌnt/',c:'正视；直面'},
+  {w:'clip',p:'/klɪp/',c:'n. 夹子；vt. 修剪'},
+  {w:'grant',p:'/ɡrɑːnt/',c:'n. 拨款；v. 授予'},
+  {w:'application',p:'/ˌæplɪˈkeɪʃən/',c:'申请'},
+  {w:'compensation',p:'/ˌkɒmpenˈseɪʃən/',c:'赔偿'},
+  {w:'concentrate',p:'/ˈkɒnsəntreɪt/',c:'集中'},
+  {w:'extreme',p:'/ɪkˈstriːm/',c:'极端的；末端的'},
+  {w:'vocal',p:'/ˈvəʊkl/',c:'直言的'},
+  {w:'complaint',p:'/kəmˈpleɪnt/',c:'抱怨'},
+  {w:'relate',p:'/rɪˈleɪt/',c:'讲述；涉及'},
+  {w:'recipe',p:'/ˈresɪpi/',c:'烹饪法；食谱'},
+  {w:'understanding',p:'/ˌʌndəˈstændɪŋ/',c:'理解'},
+  {w:'slash',p:'/slæʃ/',c:'大量削减'},
+  {w:'interrupt',p:'/ˌɪntəˈrʌpt/',c:'打断；中止'},
+  {w:'reduction',p:'/rɪˈdʌkʃən/',c:'减少；缩小'},
+  {w:'invariably',p:'/ɪnˈveəriəbli/',c:'不变地'},
+  {w:'grocery',p:'/ˈɡrəʊsəri/',c:'食品；杂货'},
+  {w:'immune',p:'/ɪˈmjuːn/',c:'免疫的'},
+  {w:'infect',p:'/ɪnˈfekt/',c:'传染；影响'},
+  {w:'aware',p:'/əˈweər/',c:'意识到的'},
+  {w:'abroad',p:'/əˈbrɔːd/',c:'在国外'},
+  {w:'circular',p:'/ˈsɜːkjulər/',c:'圆形的'},
+  {w:'hinder',p:'/ˈhɪndər/',c:'阻碍；束缚'},
+  {w:'likelihood',p:'/ˈlaɪklihʊd/',c:'可能；可能性'},
+  {w:'register',p:'/ˈredʒɪstər/',c:'登记本'},
+  {w:'bold',p:'/bəʊld/',c:'勇敢的'},
+  {w:'muscular',p:'/ˈmʌskjulər/',c:'强壮的'},
+  {w:'tuition',p:'/tjuːˈɪʃən/',c:'学费；教学'},
+  {w:'deplete',p:'/dɪˈpliːt/',c:'耗费；消耗'},
+  {w:'lifespan',p:'/ˈlaɪfspæn/',c:'寿命'},
+  {w:'advanced',p:'/ədˈvɑːnst/',c:'高级的'},
+  {w:'appetite',p:'/ˈæpɪtaɪt/',c:'胃口；食欲'},
+  {w:'mercy',p:'/ˈmɜːsi/',c:'仁慈；恩惠'},
+  {w:'contrary',p:'/ˈkɒntrəri/',c:'相反的'},
+  {w:'approve',p:'/əˈpruːv/',c:'赞成'},
+  {w:'refuge',p:'/ˈrefjuːdʒ/',c:'慰藉'},
+  {w:'disguise',p:'/dɪsˈɡaɪz/',c:'伪装；掩盖'},
+  {w:'preference',p:'/ˈprefərəns/',c:'偏爱'},
+  {w:'elementary',p:'/ˌelɪˈmentəri/',c:'基本的'},
+  {w:'institute',p:'/ˈɪnstɪtjuːt/',c:'协会；学院'},
+  {w:'incident',p:'/ˈɪnsɪdənt/',c:'事件；小事情'},
+  {w:'indifferent',p:'/ɪnˈdɪfrənt/',c:'一般的'},
+  {w:'personality',p:'/ˌpɜːsəˈnæləti/',c:'个性'},
+  {w:'tutor',p:'/ˈtjuːtər/',c:'导师'},
+  {w:'groundless',p:'/ˈɡraʊndləs/',c:'无理由的'},
+  {w:'collaborative',p:'/kəˈlæbərətɪv/',c:'合作的'},
+  {w:'prior',p:'/ˈpraɪər/',c:'优先的'},
+  {w:'determination',p:'/dɪˌtɜːmɪˈneɪʃən/',c:'决心'},
+  {w:'therapy',p:'/ˈθerəpi/',c:'治疗'},
+  {w:'shabby',p:'/ˈʃæbi/',c:'破旧的'},
+  {w:'external',p:'/ɪkˈstɜːnəl/',c:'外部的'},
+  {w:'permission',p:'/pəˈmɪʃən/',c:'许可'},
+  {w:'accommodation',p:'/əˌkɒməˈdeɪʃən/',c:'住宿'},
+  {w:'alter',p:'/ˈɔːltə/',c:'改变'},
+  {w:'beforehand',p:'/bɪˈfɔːhænd/',c:'预先'},
+  {w:'abnormal',p:'/æbˈnɔːməl/',c:'不正常的'},
+  {w:'abstract',p:'/ˈæbstrækt/',c:'抽象的'},
+  {w:'deposit',p:'/dɪˈpɒzɪt/',c:'沉积物'},
+  {w:'suppress',p:'/səˈpres/',c:'镇压；抑制'},
+  {w:'consistent',p:'/kənˈsɪstənt/',c:'一致的'},
+  {w:'agreeable',p:'/əˈɡriːəbl/',c:'令人愉快的'},
+  {w:'reveal',p:'/rɪˈviːl/',c:'揭露；展现'},
+  {w:'statesman',p:'/ˈsteɪtsmən/',c:'政治家'},
+  {w:'cruise',p:'/kruːz/',c:'乘船游览'},
+  {w:'neglect',p:'/nɪˈɡlekt/',c:'忽略；疏忽'},
+  {w:'reliable',p:'/rɪˈlaɪəbl/',c:'可靠的'},
+  {w:'skip',p:'/skɪp/',c:'v. 跳；n. 蹦跳'},
+  {w:'presumably',p:'/prɪˈzjuːməbli/',c:'大概'},
+  {w:'timely',p:'/ˈtaɪmli/',c:'及时的'},
+  {w:'destination',p:'/ˌdestɪˈneɪʃən/',c:'目的地'},
+  {w:'crush',p:'/krʌʃ/',c:'挤压；压坏'},
+  {w:'spit',p:'/spɪt/',c:'吐唾沫；吐出'},
+  {w:'outstanding',p:'/aʊtˈstændɪŋ/',c:'杰出的'},
+  {w:'offensive',p:'/əˈfensɪv/',c:'冒犯的'},
+  {w:'predict',p:'/prɪˈdɪkt/',c:'预测'},
+  {w:'overlook',p:'/ˌəʊvəˈlʊk/',c:'忽略；俯瞰'},
+  {w:'twist',p:'/twɪst/',c:'v. 捻；v. 弯曲'},
+  {w:'desperate',p:'/ˈdespərət/',c:'绝望的'},
+  {w:'suspension',p:'/səˈspenʃən/',c:'暂停；延缓'},
+  {w:'dedication',p:'/ˌdedɪˈkeɪʃən/',c:'奉献'},
+  {w:'increasingly',p:'/ɪnˈkriːsɪŋli/',c:'越来越多地'},
+];
+
+// 词性映射（按单词，去重共享）
+const POS = {
+  erroneous:'a.',
+  scent:'n.',
+  diet:'n.',
+  hesitate:'v.',
+  appreciate:'vt.',
+  accomplish:'vt.',
+  constant:'a.',
+  regardless:'ad.',
+  wander:'vi.',
+  qualification:'n.',
+  participate:'vi.',
+  enthusiastic:'a.',
+  forecast:'n./vt.',
+  exceptional:'a.',
+  argue:'v.',
+  appearance:'n.',
+  mature:'a.',
+  combination:'n.',
+  doubtful:'a.',
+  previous:'a.',
+  elapse:'vi.',
+  seal:'n.',
+  burden:'n.',
+  perceive:'vt.',
+  perspective:'n.',
+  feedback:'n.',
+  sponsor:'n.',
+  advantage:'n.',
+  circulation:'n.',
+  condemn:'vt.',
+  shuttle:'n.',
+  interpret:'v.',
+  adhere:'vi.',
+  virtually:'adv.',
+  reproductive:'adj.',
+  defect:'n.',
+  sculpture:'n.',
+  calorie:'n.',
+  abuse:'vt.',
+  encounter:'vt./n.',
+  overcome:'v.',
+  revenue:'n.',
+  impose:'vt.',
+  consumption:'n.',
+  range:'n.',
+  compromise:'n./v.',
+  accompany:'vt.',
+  eliminate:'vt.',
+  episode:'n.',
+  appeal:'n./v.',
+  export:'v.',
+  drawback:'n.',
+  exotic:'adj.',
+  allergic:'adj.',
+  bias:'n.',
+  calculate:'vt.',
+  identical:'a.',
+  innovation:'n.',
+  expectancy:'n.',
+  saying:'n.',
+  transfer:'v./n.',
+  tragic:'a.',
+  incline:'v.',
+  reckon:'v.',
+  platform:'n.',
+  variable:'a.',
+  convey:'v.',
+  fraud:'n.',
+  political:'adj.',
+  lean:'v.',
+  bald:'a.',
+  competence:'n.',
+  nutrition:'n.',
+  persist:'vi.',
+  accelerate:'v.',
+  energetic:'a.',
+  heighten:'v.',
+  prevalent:'a.',
+  passive:'a.',
+  penalty:'n.',
+  temporary:'adj.',
+  skeptical:'adj.',
+  contemporary:'adj.',
+  longevity:'n.',
+  acknowledge:'v.',
+  avoid:'v.',
+  apply:'v.',
+  complement:'v.',
+  investigate:'v.',
+  promote:'v.',
+  corporate:'adj.',
+  consult:'v.',
+  extinction:'n.',
+  survive:'v.',
+  admit:'v.',
+  refrain:'v.',
+  severe:'adj.',
+  ability:'n.',
+  restore:'vt.',
+  available:'adj.',
+  economy:'n.',
+  automation:'n.',
+  reserve:'vt.',
+  ample:'a.',
+  recently:'adv.',
+  correlation:'n.',
+  compel:'vt.',
+  preserve:'v.',
+  consequence:'n.',
+  submit:'v.',
+  thrive:'vi.',
+  dynamic:'a.',
+  virtual:'a.',
+  traditional:'a.',
+  occupy:'vt.',
+  anniversary:'n.',
+  catastrophe:'n.',
+  donate:'v.',
+  inject:'vt.',
+  bribe:'n.',
+  evolution:'n.',
+  currency:'n.',
+  divorce:'v.',
+  sophisticated:'a.',
+  complicated:'a.',
+  accord:'n.',
+  terrific:'a.',
+  depict:'vt.',
+  extraordinary:'a.',
+  poisonous:'a.',
+  kidney:'n.',
+  offend:'vt.',
+  preview:'n.',
+  vigorous:'a.',
+  brochure:'n.',
+  attractive:'adj.',
+  personnel:'n.',
+  consequent:'a.',
+  absurd:'a.',
+  inherent:'a.',
+  transplant:'vt./n.',
+  polish:'vt.',
+  ignorance:'n.',
+  ignorant:'a.',
+  stimulate:'v.',
+  acquaintance:'n.',
+  retrieve:'v.',
+  prosper:'v.',
+  globalization:'n.',
+  compose:'vt.',
+  compulsory:'a.',
+  identification:'n.',
+  prejudice:'n.',
+  astronomy:'n.',
+  dioxide:'n.',
+  toxic:'a.',
+  vain:'a.',
+  proceed:'vi.',
+  cafeteria:'n.',
+  authentic:'adj.',
+  dwell:'v.',
+  catholic:'a.',
+  overwhelming:'adj.',
+  preservation:'n.',
+  exert:'vt.',
+  prospect:'n.',
+  entrepreneur:'n.',
+  salute:'v.',
+  geology:'n.',
+  explicit:'a.',
+  confidential:'adj.',
+  sacred:'a.',
+  foresee:'vt.',
+  prescribe:'vt.',
+  cater:'v.',
+  ballet:'n.',
+  thesis:'n.',
+  aggravate:'vt.',
+  cancel:'vt.',
+  implication:'n.',
+  urbanization:'n.',
+  deem:'v.',
+  boom:'v.',
+  drown:'v.',
+  emerge:'v.',
+  conventional:'a.',
+  means:'n.',
+  complex:'a.',
+  gap:'n.',
+  payment:'n.',
+  passion:'n.',
+  challenge:'v.',
+  critic:'n.',
+  generate:'vt.',
+  initiative:'n.',
+  convert:'v.',
+  executive:'n.',
+  navigate:'v.',
+  exaggerate:'v.',
+  consume:'vt.',
+  ideal:'a.',
+  boost:'n.',
+  expose:'vt.',
+  embrace:'vt.',
+  donation:'n.',
+  efficient:'a.',
+  keen:'a.',
+  expansive:'a.',
+  conscience:'n.',
+  electrical:'a.',
+  equip:'vt.',
+  routine:'n.',
+  sample:'n.',
+  household:'a.',
+  fraction:'n.',
+  occupation:'n.',
+  gaze:'v./n.',
+  vulnerable:'adj.',
+  jealous:'a.',
+  decisive:'a.',
+  betray:'vt.',
+  bankrupt:'a.',
+  derive:'vt.',
+  sexual:'a.',
+  integral:'a.',
+  initiate:'vt.',
+  subsidy:'n.',
+  casual:'a.',
+  deteriorate:'v.',
+  patience:'n.',
+  sensitive:'a.',
+  sacrifice:'v./n.',
+  manufacture:'vt.',
+  implement:'vt.',
+  profitable:'a.',
+  metric:'a.',
+  suspect:'vt.',
+  appliance:'n.',
+  relieve:'vt.',
+  statistics:'n.',
+  scope:'n.',
+  endure:'v.',
+  residential:'a.',
+  parade:'n.',
+  permanent:'a.',
+  violation:'n.',
+  satisfactory:'a.',
+  conserve:'vt.',
+  embarrass:'vt.',
+  instruct:'vt.',
+  bonus:'n.',
+  defy:'vt.',
+  output:'n.',
+  abundant:'a.',
+  notorious:'a.',
+  precise:'a.',
+  offspring:'n.',
+  frame:'n.',
+  transparent:'adj.',
+  construct:'vt.',
+  inferior:'a.',
+  quest:'n.',
+  vanish:'vi.',
+  vague:'a.',
+  occasional:'a.',
+  forum:'n.',
+  respectively:'ad.',
+  autonomy:'n.',
+  aboard:'ad.',
+  proposal:'n.',
+  merely:'ad.',
+  condition:'n.',
+  discount:'n.',
+  reservation:'n.',
+  artificial:'a.',
+  critical:'a.',
+  graduate:'n.',
+  represent:'v.',
+  concern:'n.',
+  anyhow:'ad.',
+  abandon:'vt.',
+  obligation:'n.',
+  scrutiny:'n.',
+  originate:'vi.',
+  administer:'vt.',
+  illustrate:'vt.',
+  sightseeing:'n.',
+  skim:'v.',
+  collapse:'n.',
+  representation:'n.',
+  adjust:'v.',
+  impress:'vt.',
+  champagne:'n.',
+  federal:'adj.',
+  amaze:'vt.',
+  apart:'ad.',
+  flock:'v.',
+  exceed:'vt.',
+  trap:'n.',
+  resolution:'n.',
+  coordinate:'vt.',
+  incredible:'a.',
+  existence:'n.',
+  corrupt:'a.',
+  correspondence:'n.',
+  multiply:'v.',
+  combat:'n.',
+  extravagant:'a.',
+  conclude:'v.',
+  tremendous:'a.',
+  optimistic:'a.',
+  adequate:'a.',
+  trend:'n.',
+  interview:'vt.',
+  publish:'v.',
+  effective:'a.',
+  harsh:'a.',
+  statement:'n.',
+  affect:'v.',
+  rather:'adv.',
+  regulate:'vt.',
+  medium:'adj.',
+  schedule:'n.',
+  rare:'a.',
+  sufficient:'a.',
+  industrialize:'v.',
+  collection:'n.',
+  comprehensive:'a.',
+  instant:'a.',
+  prime:'a.',
+  assurance:'n.',
+  liberate:'vt.',
+  enclose:'vt.',
+  imaginative:'a.',
+  portray:'v.',
+  disclose:'vt.',
+  inflation:'n.',
+  disrupt:'v.',
+  institution:'n.',
+  fare:'n.',
+  frustrate:'v.',
+  attain:'vt.',
+  repay:'vt.',
+  provision:'n.',
+  imperative:'a.',
+  compassion:'n.',
+  signify:'v.',
+  surpass:'v.',
+  generous:'a.',
+  entertain:'v.',
+  misery:'n.',
+  dip:'vi.',
+  misfortune:'n.',
+  devise:'vt.',
+  venture:'v.',
+  susceptible:'adj.',
+  immerse:'v.',
+  indispensable:'adj.',
+  capable:'a.',
+  classic:'a.',
+  disorder:'n.',
+  evidence:'n.',
+  primary:'a.',
+  miserable:'a.',
+  attitude:'n.',
+  accustom:'vt.',
+  embark:'v.',
+  participant:'n.',
+  curriculum:'n.',
+  confront:'v.',
+  application:'n.',
+  compensation:'n.',
+  concentrate:'v.',
+  extreme:'a.',
+  vocal:'adj.',
+  complaint:'n.',
+  relate:'vt.',
+  recipe:'n.',
+  understanding:'n.',
+  slash:'v.',
+  interrupt:'v.',
+  reduction:'n.',
+  invariably:'adv.',
+  grocery:'n.',
+  immune:'a.',
+  infect:'vt.',
+  aware:'a.',
+  abroad:'ad.',
+  circular:'a.',
+  hinder:'v.',
+  likelihood:'n.',
+  register:'n.',
+  bold:'a.',
+  muscular:'a.',
+  tuition:'n.',
+  deplete:'v.',
+  lifespan:'n.',
+  advanced:'a.',
+  appetite:'n.',
+  mercy:'n.',
+  contrary:'a.',
+  approve:'vt.',
+  refuge:'n.',
+  disguise:'vt.',
+  preference:'n.',
+  elementary:'a.',
+  institute:'n.',
+  incident:'n.',
+  indifferent:'a.',
+  personality:'n.',
+  tutor:'n.',
+  groundless:'adj.',
+  collaborative:'adj.',
+  prior:'a.',
+  determination:'n.',
+  therapy:'n.',
+  shabby:'a.',
+  external:'a.',
+  permission:'n.',
+  accommodation:'n.',
+  alter:'v.',
+  beforehand:'adv.',
+  abnormal:'a.',
+  abstract:'a.',
+  deposit:'n.',
+  suppress:'vt.',
+  consistent:'a.',
+  agreeable:'a.',
+  reveal:'vt.',
+  statesman:'n.',
+  cruise:'n.',
+  neglect:'n.',
+  reliable:'a.',
+  presumably:'adv.',
+  timely:'a.',
+  destination:'n.',
+  crush:'vt.',
+  spit:'v.',
+  outstanding:'a.',
+  offensive:'a.',
+  predict:'vt.',
+  overlook:'vt.',
+  desperate:'a.',
+  suspension:'n.',
+  dedication:'n.',
+  increasingly:'adv.',
+};
+
+/* ===== UI 文案表 =====
+   四个 variants 之间只差这张表 + VOCAB 的释义，生成脚本整体替换 `const T = {...}` 这一处。
+   为什么不散点替换字符串：'不认识' 是 '不认识 '（结算页前缀，带尾空格）的前缀，
+   顺序稍错就把长的那条切坏；而且中文注释里也有同样的字，会被一起改掉。
+   en_US 按产品要求 = zh_CN 的完整副本（英文单词 + 中文释义 + 中文 UI）。 */
+const T = {
+  title: '背单词',
+  redraw: '换一批',
+  unknown: '不认识',
+  know: '已学会',
+  doneTitle: '本轮完成',
+  knowPrefix: '认识 ',
+  unknownPrefix: '不认识 ',
+  countSuffix: ' 个',
+  retry: '再来一轮',
+};
+
+// ===== 状态管理 =====
+/* 卡片入场起始值。以前真机是 0（淡入 + 轻微放大），只有预览截图链路
+   （scripts\shoot_preview.py 跑 Chrome headless，虚拟时间下 rAF 只回调两三次，
+   cardEnterT 到不了 1）才通过 window.__DIAL_NO_ANIM 跳过动画直接从终态开始。
+   真机的淡入过程中卡片处于半透明状态，一旦这几帧被系统丢帧（背屏渲染资源
+   紧张时很常见，真机 bugreport 已实测复现），肉眼看到的就是半透明直接跳到
+   全不透明 —— 卡片左上角那个用叠加发光混合模式画的高光（drawBronzeCard 的
+   mTL）跳变最明显，就是"卡片一进来左上角闪一下"的根因。按钮当年是同样原因
+   改成了常驻不透明（见「按钮常驻满不透明」那行），卡片本体现在同样处理：
+   恒为 1，不再有半透明的中间帧，真机和预览走同一个终态，两条链路合一。
+   注意所有重置 cardEnterT 的地方（drawCards / nextCard）都用这个值。 */
+const ENTER_T0 = 1;
+/* 预览样张要显示的单词，空串表示不固定（真机就是空串）。见 drawCards 里的用法。 */
+const PREVIEW_WORD = (typeof window !== 'undefined' && window.__DIAL_NO_ANIM)
+  ? (window.__DIAL_PREVIEW_WORD || 'passion') : '';
+/* 描边加粗（strokeText+fillText）只在真机上做，预览渲染时跳过。
+   预览图是 Windows 上 Chrome headless 渲染的，这台机器没有真正的 PingFang SC，
+   会 fallback 到本身笔画就偏重的中文字体（实测比真机的 PingFang SC 明显粗）。
+   真机「原生偏细字体 + 描边加粗」刚好是要的效果，但预览渲染时「本来就偏重的 fallback
+   字体 + 同样的描边」两层叠加，看起来会比真机粗一圈——产品反馈过"预览图字体太粗"，
+   根源是这个，不是描边宽度选错了。 */
+const IS_PREVIEW = typeof window !== 'undefined' && window.__DIAL_NO_ANIM;
+const state = {
+  deck: [],
+  cardIdx: 0,
+  weights: {},
+  /* 用普通对象而不是 Set：jsLite 的可用全局比浏览器窄，对象最稳（flashcard 早先也是为此改过）。
+     键 = 词库下标，值恒 true。 */
+  unknown: {},
+  phase: 'card',
+  hoverBtn: null,
+  pressBtn: null,
+  cardFlip: 0,
+  showMeaning: false,
+  totalSeen: 0,
+  totalKnown: 0,
+  cardEnterT: ENTER_T0,
+  btnFeedback: {},
+};
+
+/* ========== 学习进度持久化 ==========
+   产品要求保存历史记录。真机已验证 localStorage 能跨卡片重建保留（探针卡计数会累加）。
+   存四样：词权重（不认识的下次更容易抽到，是核心学习状态）、不认识集合、
+   累计统计、当前批次与进度（退出再进来能接着背，而不是重新抽一批）。
+   任何一步失败都静默降级成「从零开始」—— 存档丢了顶多重新背，不能因此白屏。 */
+const LS_KEY = 'flashcard_progress_v1';
+
+function saveProgress() {
+  try {
+    localStorage.setItem(LS_KEY, JSON.stringify({
+      weights: state.weights,
+      unknown: state.unknown,
+      totalSeen: state.totalSeen,
+      totalKnown: state.totalKnown,
+      deck: state.deck,
+      cardIdx: state.cardIdx,
+      phase: state.phase,
+      vocabLen: VOCAB.length,
+    }));
+  } catch (e) { /* 存不进去就算了，不影响本次使用 */ }
+}
+
+function loadProgress() {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    if (!raw) return false;
+    const d = JSON.parse(raw);
+    /* 词库换版本后旧存档的下标会指到别的词上，直接丢弃重来 */
+    if (!d || d.vocabLen !== VOCAB.length) return false;
+    if (d.weights) state.weights = d.weights;
+    if (d.unknown) state.unknown = d.unknown;
+    state.totalSeen = d.totalSeen || 0;
+    state.totalKnown = d.totalKnown || 0;
+    if (Array.isArray(d.deck) && d.deck.length) {
+      state.deck = d.deck;
+      state.cardIdx = Math.min(d.cardIdx || 0, d.deck.length);
+      state.phase = d.phase === 'done' ? 'done' : 'card';
+    }
+    return true;
+  } catch (e) { return false; }
+}
+
+function initWeights() {
+  VOCAB.forEach((_, i) => { state.weights[i] = 1; });
+}
+
+/* 一批的张数。产品定的是 20，但取 min(20, 词库长度) —— 词库小于 20 时
+   抽不满却仍显示「x/20」，进度条永远到不了头、也进不了结算页。
+   必须定义在 drawCards 之前：启动时 loadProgress 失败会立刻调 drawCards，
+   const 有 TDZ，定义写在文件后面会直接 ReferenceError。 */
+const BATCH = Math.min(20, VOCAB.length);
+
+function drawCards() {
+  const pool = VOCAB.map((_, i) => i);
+  const totalW = pool.reduce((s, i) => s + (state.weights[i] || 1), 0);
+  const drawn = [];
+  const used = {};
+  for (let n = 0; n < BATCH && pool.length > 0; n++) {
+    let r = Math.random() * totalW;
+    let chosen = -1;
+    for (let i = 0; i < pool.length; i++) {
+      const idx = pool[i];
+      if (used[idx]) continue;
+      r -= (state.weights[idx] || 1);
+      if (r <= 0) { chosen = idx; break; }
+    }
+    if (chosen === -1) {
+      for (let i = 0; i < pool.length; i++) {
+        if (!used[pool[i]]) { chosen = pool[i]; break; }
+      }
+    }
+    if (chosen >= 0) {
+      drawn.push(chosen);
+      used[chosen] = true;
+    }
+  }
+  state.deck = drawn;
+  /* 预览样张固定用同一个词：产品指定 passion。不固定的话每次重拍 preview 都换一个随机词，
+     包体和图都跟着变，没法比对也没法沉淀成设计稿。只在预览渲染时生效（见 ENTER_T0 的注释），
+     真机照旧加权随机抽。要换词不必改包，注入 window.__DIAL_PREVIEW_WORD 即可。 */
+  if (PREVIEW_WORD) {
+    const pi = VOCAB.findIndex((v) => v.w === PREVIEW_WORD);
+    if (pi >= 0) state.deck = [pi].concat(drawn.filter((x) => x !== pi)).slice(0, BATCH);
+  }
+  state.cardIdx = 0;
+  state.phase = 'card';
+  state.showMeaning = false;
+  state.cardFlip = 0;
+  state.cardEnterT = ENTER_T0;
+  /* 头部进度和结算页都是「本批」口径（prog = totalSeen/20，结算页读 totalKnown），
+     换一批 / 再来一次都必须归零，否则第二批会显示 22/20 且新批第 1 张就写着已看 2 个。
+     跨批要留的是 weights 和 unknown（喂给加权抽词），不是这两个计数。 */
+  state.totalSeen = 0;
+  state.totalKnown = 0;
+}
+
+initWeights();
+/* 先读存档：命中就沿用上次的权重与批次进度（退出再进来能接着背），
+   没有或词库版本变了就抽新的一批。 */
+if (!loadProgress() || !state.deck.length) { drawCards(); }
+
+// ===== 颜色与样式（深色暖调，复刻参考图）=====
+const INK = '#ffffff';           // 主文字：白
+const SUB = 'rgba(235,225,210,0.62)'; // 次要文字：暖灰
+// 按钮主题色
+const ORG1 = '#ff9a3c', ORG2 = '#f5601a';   // 不认识：橙
+const BLU1 = '#63b6fb', BLU2 = '#2f86f0';   // 已学会：蓝
+const GLD1 = '#f2c979', GLD2 = '#d99b3c';   // 再来一轮：金（与卡面黑棕色调同族）
+const TOTAL = BATCH;
+
+// ===== 工具函数 =====
+function radial(x0,y0,r0,x1,y1,r1,stops){
+  const g=ctx.createRadialGradient(x0,y0,r0,x1,y1,r1);
+  for(const[o,c]of stops)g.addColorStop(o,c);
+  return g;
+}
+function roundRect(cx,cy,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(cx-w/2+r,cy-h/2);
+  ctx.arcTo(cx+w/2,cy-h/2,cx+w/2,cy+h/2,r);
+  ctx.arcTo(cx+w/2,cy+h/2,cx-w/2,cy+h/2,r);
+  ctx.arcTo(cx-w/2,cy+h/2,cx-w/2,cy-h/2,r);
+  ctx.arcTo(cx-w/2,cy-h/2,cx+w/2,cy-h/2,r);
+  ctx.closePath();
+}
+function shade(hex,d){
+  const n=parseInt(hex.slice(1),16);
+  let r=(n>>16)+d, g=((n>>8)&255)+d, b=(n&255)+d;
+  r=Math.max(0,Math.min(255,r));g=Math.max(0,Math.min(255,g));b=Math.max(0,Math.min(255,b));
+  return '#'+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);
+}
+function easeOut(t){ return 1-(1-t)*(1-t)*(1-t); }
+
+/* 单行文本按可用宽度回缩字号，缩到底还超就截断加省略号。
+   词库从 102 词换成 1948 词后，长单词（incomprehensible 在 60px 下约 528px，卡片才 516）
+   和长释义（vt. 使…恶化，使…加重）都会画到卡片外面 —— 这两行都是单行绘制，没有换行。
+   1948 条没法逐条人工核对，所以把保险放在渲染层：先按比例缩，最后兜底截断。
+   fontTpl 里用 %d 占位字号，例：'700 %dpx "SF Pro Display",system-ui,sans-serif'。
+   返回值里带 font，调用方拿去 ctx.font 赋值，避免这里改了外面又覆盖回去。 */
+function fitText(text, fontTpl, basePx, minPx, maxW){
+  const at = (px) => fontTpl.replace('%d', px);
+  ctx.font = at(basePx);
+  let w = ctx.measureText(text).width;
+  if(w <= maxW) return { text, px: basePx, w, font: at(basePx) };
+  let px = Math.max(minPx, Math.floor(basePx * maxW / w));
+  ctx.font = at(px);
+  w = ctx.measureText(text).width;
+  if(w <= maxW) return { text, px, w, font: at(px) };
+  let s = text;
+  while(s.length > 1 && ctx.measureText(s + '…').width > maxW) s = s.slice(0, -1);
+  s = s + '…';
+  return { text: s, px, w: ctx.measureText(s).width, font: at(px) };
+}
+
+// 双箭头「换一批」图标：两段较长圆弧 + 较小箭头，两端留明显缺口、首尾不相接（复刻参考图标）
+function drawSyncIcon(cx, cy, r, color){
+  ctx.save();
+  ctx.strokeStyle = color;
+  ctx.fillStyle = color;
+  ctx.lineWidth = Math.max(2.4, r*0.34);
+  ctx.lineCap = 'round';
+
+  const GAP = Math.PI*0.16;   // 每端缺口约 29°：弧尾更长，但两弧仍有明显间距
+  const AH = r*0.6;           // 箭头更小
+
+  // 上弧：左侧 -> 顶 -> 右侧（顺时针），末端箭头指向下
+  const topA0 = Math.PI + GAP;
+  const topA1 = Math.PI*2 - GAP;
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, topA0, topA1);
+  ctx.stroke();
+  let ex = cx + Math.cos(topA1)*r, ey = cy + Math.sin(topA1)*r;
+  drawArrowHead(ex, ey, topA1 + Math.PI/2, AH);
+
+  // 下弧：右侧 -> 底 -> 左侧（顺时针），末端箭头指向上
+  const botA0 = GAP;
+  const botA1 = Math.PI - GAP;
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, botA0, botA1);
+  ctx.stroke();
+  ex = cx + Math.cos(botA1)*r; ey = cy + Math.sin(botA1)*r;
+  drawArrowHead(ex, ey, botA1 + Math.PI/2, AH);
+
+  ctx.restore();
+}
+// 在 (x,y) 处沿切线方向 ang 画一个实心三角箭头
+function drawArrowHead(x, y, ang, size){
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(ang);
+  ctx.beginPath();
+  ctx.moveTo(size*0.62, 0);
+  ctx.lineTo(-size*0.5, -size*0.55);
+  ctx.lineTo(-size*0.5, size*0.55);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+// ===== update =====
+function update(dt,t){
+  state.cardEnterT = Math.min(1, state.cardEnterT + dt * 3);
+  if(state.showMeaning){
+    state.cardFlip = Math.min(1, state.cardFlip + dt * 4);
+  } else {
+    state.cardFlip = Math.max(0, state.cardFlip - dt * 4);
+  }
+  for(const k in state.btnFeedback){
+    state.btnFeedback[k] = Math.max(0, state.btnFeedback[k] - dt * 4);
+  }
+}
+
+/* 背景渐变缓存：W/H 运行时不变，渐变对象没必要每帧重建。
+   canvas 引擎的 gradient cache 按 JS 对象引用识别，每帧 new 一个新渐变对象
+   等于每帧 cache miss —— 这是"摇一摇背单词"在主题预览白屏、背屏闪烁的根因
+   （真机 bugreport 里 15000+ 条 Frame dropped 定位到这里，2026-09）。
+   下面 drawBronzeCard / themedButton 的渐变缓存是同一个问题的另外两处。 */
+let _bgGradient = null;
+function paintBg(t){
+  if(!_bgGradient){
+    _bgGradient = ctx.createLinearGradient(0,0,W,H);
+    _bgGradient.addColorStop(0,'#020202');
+    _bgGradient.addColorStop(1,'#724432');
+  }
+  ctx.fillStyle=_bgGradient;ctx.fillRect(0,0,W,H);
+}
+
+// ===== paintShapes =====
+// 卡片与按钮的统一几何（paintShapes / paintText 共用）
+/* 卡片宽度吃满可用区、左右各留 35 的呼吸位。原来 516 宽在 976 屏 651 的可用区里只占 79%，
+   左右各空 67 —— 背屏离眼睛远，空着不如给字号。
+   但不能写死 580：912 机型的可用区只有 608（CAM=304），写死会让右边只剩 14px、贴着屏幕边
+   （预览图上很明显）。所以按可用区取小。
+   976 屏：APP_W=651 → 580；912 屏：APP_W=608 → 538，两边都是左右各 35。
+   垂直预算（H=596）：头行底边 96 | 间距 26 | 卡片 320（122..442）| 间距 26 | 按钮 76（468..544）| 底部 52。 */
+const CARD = { x: CX, y: 288, w: Math.min(580, APP_W - 70), h: 320, r: 32 };
+/* 卡内文字的可用宽度：左右各留 24 的呼吸位。单词和释义都按这个宽度回缩字号。 */
+const INNER_W = CARD.w - 48;
+/* 顶部标题/换一批那一行的底边，也是结果页等距布局的参考线。必须与 paintText 里的
+   HEAD_BOTTOM 一致，不然结算页的「再来一轮」会和卡片页的按钮错开。 */
+const DONE_TOP_REF = 102;
+// 按钮宽度由卡片宽度决定：左右各占卡片一半、中间留 gap，两端顶格对齐卡片左右边
+const BTN = { y: 512, h: 76, r: 38, gap: 40, get w(){ return (CARD.w - this.gap) / 2; } };
+function knowBtnCenter(){ return { x: CARD.x + CARD.w/2 - BTN.w/2, y: BTN.y }; }  // 已学会（蓝，右）右顶格
+function unkBtnCenter(){ return { x: CARD.x - CARD.w/2 + BTN.w/2, y: BTN.y }; }   // 不认识（橙，左）左顶格
+
+// 青铜金属卡片（与背单词卡片完全一致的颜色与质感），可复用
+/* 卡片渐变缓存：同一张卡在整个生命周期里位置/尺寸不变（卡内容换词不影响几何），
+   4 个线性渐变 + 2 个径向渐变按 "cx,cy,w,h,r" 拼 key 缓存，命中就直接复用
+   同一个 CanvasGradient 对象，不必每帧重新 createXxxGradient + addColorStop。 */
+const _bronzeCardCache = {};
+function drawBronzeCard(cx, cy, w, h, r){
+  const Lx = cx-w/2, Ty = cy-h/2, Rx = cx+w/2, By = cy+h/2;
+  const key = cx+','+cy+','+w+','+h+','+r;
+  let gc = _bronzeCardCache[key];
+  if(!gc){
+    const cg = ctx.createLinearGradient(Lx, Ty, Rx, By);
+    cg.addColorStop(0, 'rgba(118,90,64,0.82)');
+    cg.addColorStop(0.5, 'rgba(92,68,50,0.80)');
+    cg.addColorStop(1, 'rgba(60,44,34,0.84)');
+    const inner = ctx.createLinearGradient(Lx, Ty, Rx, By);
+    inner.addColorStop(0, 'rgba(196,166,128,0.22)');
+    inner.addColorStop(0.45, 'rgba(120,94,70,0.04)');
+    inner.addColorStop(1, 'rgba(48,34,26,0.38)');
+    const hl = ctx.createLinearGradient(0, Ty, 0, cy);
+    hl.addColorStop(0, 'rgba(255,240,214,0.14)');
+    hl.addColorStop(1, 'rgba(255,236,210,0)');
+    const mTL = radial(Lx, Ty, 4, Lx, Ty, w*0.66, [
+      [0, 'rgba(248,220,180,0.40)'],[0.32, 'rgba(210,176,130,0.16)'],[1, 'rgba(210,176,130,0)']
+    ]);
+    const mBR = radial(Rx, By, 4, Rx, By, w*0.66, [
+      [0, 'rgba(240,206,160,0.30)'],[0.4, 'rgba(188,142,96,0.14)'],[1, 'rgba(188,142,96,0)']
+    ]);
+    const edge = ctx.createLinearGradient(Lx, Ty, Rx, By);
+    edge.addColorStop(0, 'rgba(255,240,208,0.78)');
+    edge.addColorStop(0.3, 'rgba(180,150,116,0.28)');
+    edge.addColorStop(0.5, 'rgba(120,96,74,0.20)');
+    edge.addColorStop(0.72, 'rgba(180,150,116,0.30)');
+    edge.addColorStop(1, 'rgba(255,232,196,0.70)');
+    gc = _bronzeCardCache[key] = { cg, inner, hl, mTL, mBR, edge };
+  }
+
+  ctx.save();
+  // 卡片投影
+  ctx.shadowColor = 'rgba(0,0,0,0.55)';
+  ctx.shadowBlur = 46; ctx.shadowOffsetY = 22;
+  ctx.fillStyle = gc.cg;
+  roundRect(cx, cy, w, h, r);
+  ctx.fill();
+  ctx.shadowColor = 'transparent';
+
+  ctx.save();
+  roundRect(cx, cy, w, h, r);
+  ctx.clip();
+  ctx.fillStyle = gc.inner;
+  ctx.fillRect(Lx, Ty, w, h);
+  ctx.fillStyle = gc.hl;
+  ctx.fillRect(Lx, Ty, w, h*0.55);
+  ctx.save();
+  ctx.globalCompositeOperation = 'lighter';
+  ctx.fillStyle = gc.mTL; ctx.fillRect(Lx, Ty, w, h);
+  ctx.fillStyle = gc.mBR; ctx.fillRect(Lx, Ty, w, h);
+  ctx.restore();
+  ctx.restore();
+
+  // 金属描边
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = gc.edge;
+  roundRect(cx, cy, w, h, r);
+  ctx.stroke();
+  ctx.restore();
+}
+
+/* 按钮渐变缓存：同一个按钮的 cx,cy,w,h,c1,c2,hover 组合对应固定的渐变，
+   hover 态单独进 key（发光强度已经用 shadowBlur 实时算，不进缓存）。 */
+const _themedBtnCache = {};
+// 橙/蓝/金渐变胶囊按钮（结算页的「再来一轮」也走这里，原来那个深黑金属底 + 金描边的
+// goldButton 已经删掉 —— 设计要求三个按钮同一种风格）
+function themedButton(cx,cy,w,h,r,c1,c2,glow,hover,press,fb){
+  const oy = press ? 2 : 0;
+  const key = cx+','+cy+','+w+','+c1+','+c2+','+hover;
+  let g = _themedBtnCache[key];
+  if(!g){
+    g = ctx.createLinearGradient(cx-w/2, cy, cx+w/2, cy);
+    g.addColorStop(0, hover?shade(c1,10):c1);
+    g.addColorStop(1, hover?shade(c2,10):c2);
+    _themedBtnCache[key] = g;
+  }
+  ctx.save();
+  ctx.shadowColor = glow;
+  ctx.shadowBlur = (hover?26:18) + (fb||0)*18;
+  ctx.shadowOffsetY = 6;
+  ctx.fillStyle = g;
+  roundRect(cx, cy+oy, w, h, r);
+  ctx.fill();
+  ctx.restore();
+}
+
+function paintShapes(t){
+  const cardAreaX = CARD.x;
+  const cardAreaY = CARD.y;
+  const cardW = CARD.w;
+  const cardH = CARD.h;
+
+  if(state.phase === 'card'){
+    const idx = state.deck[state.cardIdx];
+    if(idx === undefined) return;
+    const entry = easeOut(state.cardEnterT);
+
+    ctx.save();
+    ctx.globalAlpha = entry;
+    const scale = 0.94 + 0.06 * entry;
+    ctx.translate(cardAreaX, cardAreaY);
+    ctx.scale(scale, scale);
+    ctx.translate(-cardAreaX, -cardAreaY);
+
+    const flip = state.cardFlip;
+    const scaleX = Math.abs(Math.cos(flip * Math.PI));
+    if(scaleX < 0.02) { ctx.restore(); }
+    else {
+      ctx.translate(cardAreaX, cardAreaY);
+      ctx.scale(scaleX, 1);
+      ctx.translate(-cardAreaX, -cardAreaY);
+
+      /* 卡面与结算页共用同一份「青铜金属卡」绘制 + 渐变缓存，见 drawBronzeCard。
+         原来这里整段复制了一份几乎一样的渲染代码、且渐变每帧重建 —— 是本卡
+         白屏/闪烁问题的主因（drawBronzeCard 的注释有完整背景）。 */
+      drawBronzeCard(cardAreaX, cardAreaY, cardW, cardH, CARD.r);
+
+      ctx.restore();
+    }
+
+    // ===== 两个按钮：不认识（橙，左）/ 已学会（蓝，右）=====
+    const kb = knowBtnCenter(), ub = unkBtnCenter();
+    addHit(ub.x - BTN.w/2, ub.y - BTN.h/2, BTN.w, BTN.h, 'unknown');
+    addHit(kb.x - BTN.w/2, kb.y - BTN.h/2, BTN.w, BTN.h, 'know');
+
+    // 按钮常驻满不透明（不随卡片淡入动画闪烁）
+    themedButton(ub.x, ub.y, BTN.w, BTN.h, BTN.r, ORG1, ORG2, 'rgba(245,96,26,0.5)',
+      state.hoverBtn==='unknown', state.pressBtn==='unknown', 0);
+    themedButton(kb.x, kb.y, BTN.w, BTN.h, BTN.r, BLU1, BLU2, 'rgba(47,134,240,0.5)',
+      state.hoverBtn==='know', state.pressBtn==='know', 0);
+
+  } else if(state.phase === 'done'){
+    const entry = easeOut(Math.min(1, state.cardEnterT));
+
+    // 结果卡片：与背单词卡片完全一致的青铜金属质感，同样几何
+    ctx.save();
+    ctx.globalAlpha = entry;
+    ctx.translate(CARD.x, CARD.y);
+    const sc = 0.94 + 0.06 * entry;
+    ctx.scale(sc, sc);
+    ctx.translate(-CARD.x, -CARD.y);
+    drawBronzeCard(CARD.x, CARD.y, CARD.w, CARD.h, CARD.r);
+    ctx.restore();
+
+    // 黑金「再来一轮」按钮：到卡片的距离 = 卡片到顶部组件的距离
+    const cardTop = CARD.y - CARD.h/2;
+    const cardBottom = CARD.y + CARD.h/2;
+    const topGap = cardTop - DONE_TOP_REF;          // 卡片顶到顶部组件底的间距
+    // 高度与卡片页的两个按钮一致：这样两页切换时按钮中心落在同一条线上，不会上下跳
+    const rbtnW = 230, rbtnH = BTN.h, rbtnR = BTN.h / 2;
+    const retryBtnY = cardBottom + topGap + rbtnH/2;
+    addHit(CX - rbtnW/2, retryBtnY - rbtnH/2, rbtnW, rbtnH, 'retry');
+    /* 与卡片页那两个按钮同一种做法（实心横向渐变 + 同色发光），颜色走金色系。
+       原来是深黑金属底 + 金色描边，跟前一页的实心按钮不是一路风格，设计要求统一。 */
+    themedButton(CX, retryBtnY, rbtnW, rbtnH, rbtnR, GLD1, GLD2, 'rgba(226,168,74,0.5)',
+      state.hoverBtn === 'retry', state.pressBtn === 'retry', 0);
+    state._retryBtnY = retryBtnY;   // 供文字层使用
+  }
+}
+
+// ===== paintText =====
+function paintText(t){
+  if(state.phase === 'card'){
+    const idx = state.deck[state.cardIdx];
+    if(idx === undefined) return;
+    const entry = easeOut(state.cardEnterT);
+    const word = VOCAB[idx];
+    const cardAreaX = CARD.x, cardAreaY = CARD.y;
+    const flip = state.cardFlip;
+
+    ctx.save();
+    ctx.globalAlpha = entry;
+
+    const scaleX = Math.abs(Math.cos(flip * Math.PI));
+    if(scaleX > 0.08){
+      ctx.save();
+      ctx.translate(cardAreaX, cardAreaY);
+      ctx.scale(scaleX, 1);
+      ctx.translate(-cardAreaX, -cardAreaY);
+
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      const ipaTxt = word.p || '';
+      /* 音标独占一行，不跟词性/释义挤在一排。
+         六级500 里最长音标 /dɪˌtɜːmɪˈneɪʃən/ 在 22px 下约 230px，最长释义 16 个中文字约 416px，
+         再加词性和段间距一行要 690px，卡内可用宽只有 468 —— 三段同排必然把释义压到 18px 以下。 */
+      if(flip < 0.5){
+        // 正面：单词（白，大）/ 音标（暖灰）/ 一行「词性 + 释义」
+        // 单词：60px 起，长单词自动回缩（见 fitText 注释）
+        const wordFit = fitText(word.w,
+          '700 %dpx "SF Pro Display",-apple-system,system-ui,sans-serif', 68, 40, INNER_W);
+        ctx.fillStyle = INK;
+        ctx.font = wordFit.font;
+        ctx.fillText(wordFit.text, cardAreaX, cardAreaY - (ipaTxt ? 66 : 34));
+
+        if(ipaTxt){
+          const ipaFit = fitText(ipaTxt,
+            '400 %dpx "SF Pro Text",-apple-system,system-ui,sans-serif', 38, 20, INNER_W);
+          ctx.fillStyle = SUB;
+          ctx.font = ipaFit.font;
+          ctx.fillText(ipaFit.text, cardAreaX, cardAreaY + 12);
+        }
+
+        /* 词性（暖色）| 释义（灰），整行居中：先量总宽再定起点，少一段不用改逻辑。
+           词性很短（adj./v./n.）不回缩，可用宽度先扣掉它，剩下的都给释义。
+           一词多词性的（v. 撤销；adj. 反面的）导入时就不剥前缀，POS 查不到、整条走释义。 */
+        const posTxt = POS[word.w] || '';
+        const lineY = cardAreaY + (ipaTxt ? 78 : 46);
+        /* 音标 38 / 词性 40 / 释义 44，都压在单词 68 以下（产品要求：放大但不抢单词）。
+           长释义超宽由 fitText 回缩兜底：16 个中文字在 44px 下要 704px，卡内只有 532，
+           会自动缩到 33px 左右；短释义才吃满 44px。 */
+        const fPos = 'italic 600 40px "SF Pro Display",-apple-system,system-ui,sans-serif';
+        const seg = 18; // 段间距
+        ctx.font = fPos; const wPos = posTxt ? ctx.measureText(posTxt).width : 0;
+        const cnFit = fitText(word.c,
+          '400 %dpx "PingFang SC",-apple-system,system-ui,sans-serif',
+          44, 24, INNER_W - (posTxt ? wPos + seg : 0));
+        const totalW = (posTxt ? wPos + seg : 0) + cnFit.w;
+        let sx = cardAreaX - totalW/2;
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        if(posTxt){ ctx.fillStyle = '#ffcf8f'; ctx.font = fPos; ctx.fillText(posTxt, sx, lineY); sx += wPos + seg; }
+        ctx.fillStyle = 'rgba(235,225,210,0.82)'; ctx.font = cnFit.font; ctx.fillText(cnFit.text, sx, lineY);
+        ctx.textAlign = 'center';
+      } else {
+        // 背面：释义（白，大）/ 单词（暖灰）/ 音标（暖灰，更小）；同样按宽度回缩
+        const bCn = fitText(word.c,
+          '600 %dpx "PingFang SC","SF Pro Display",-apple-system,system-ui,sans-serif',
+          48, 26, INNER_W);
+        ctx.fillStyle = INK;
+        ctx.font = bCn.font;
+        ctx.fillText(bCn.text, cardAreaX, cardAreaY - (ipaTxt ? 46 : 22));
+
+        const bW = fitText(word.w,
+          '400 %dpx "SF Pro Display",-apple-system,system-ui,sans-serif', 36, 22, INNER_W);
+        ctx.fillStyle = SUB;
+        ctx.font = bW.font;
+        ctx.fillText(bW.text, cardAreaX, cardAreaY + (ipaTxt ? 28 : 60));
+
+        if(ipaTxt){
+          const bIpa = fitText(ipaTxt,
+            '400 %dpx "SF Pro Text",-apple-system,system-ui,sans-serif', 32, 20, INNER_W);
+          ctx.fillStyle = 'rgba(235,225,210,0.46)';
+          ctx.font = bIpa.font;
+          ctx.fillText(bIpa.text, cardAreaX, cardAreaY + 82);
+        }
+      }
+      ctx.restore();
+    }
+
+    // 按钮文字：不认识（左）/ 已学会（右）—— 常驻满不透明，不随卡片淡入
+    const kb = knowBtnCenter(), ub = unkBtnCenter();
+    ctx.globalAlpha = 1;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '700 36px "PingFang SC",-apple-system,system-ui,sans-serif';
+    const uoy = state.pressBtn==='unknown'?2:0, koy = state.pressBtn==='know'?2:0;
+    ctx.fillText(T.unknown, ub.x, ub.y + 1 + uoy);
+    ctx.fillText(T.know, kb.x, kb.y + 1 + koy);
+
+    ctx.restore();
+
+  } else if(state.phase === 'done'){
+    const entry = easeOut(Math.min(1, state.cardEnterT));
+    ctx.save();
+    ctx.globalAlpha = entry;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    // 卡片内文字：三行整体在卡片内垂直居中（卡片中心 CARD.y）
+    const midY = CARD.y;
+    ctx.fillStyle = INK;
+    /* 字号粗细跟卡片正面对齐（设计要求「和之前统一」，原来 44/600 + 36/500 明显偏小）：
+       「本轮完成」用 56px 700，对应正面单词那一档的重量；两行统计用 44px 400，
+       与正面释义完全一致。三行等间距 16，整体在卡片内垂直居中（上下各留 72）。 */
+    ctx.font = '700 56px "PingFang SC",-apple-system,system-ui,sans-serif';
+    ctx.fillText(T.doneTitle, CARD.x, midY - 60);
+
+    ctx.font = '400 44px "PingFang SC",-apple-system,system-ui,sans-serif';
+    ctx.fillStyle = '#6bd39a';
+    ctx.fillText(T.knowPrefix + state.totalKnown + T.countSuffix, CARD.x, midY + 6);
+
+    ctx.fillStyle = '#f0889f';
+    ctx.fillText(T.unknownPrefix + (state.totalSeen - state.totalKnown) + T.countSuffix, CARD.x, midY + 66);
+    ctx.restore();
+
+    // 黑金按钮文字：再来一轮（常驻满不透明，金色）
+    const rby = state._retryBtnY || 430;
+    const roy = state.pressBtn === 'retry' ? 2 : 0;
+    ctx.save();
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    // 与卡片页的「不认识 / 已学会」同字号同粗细（设计要求按钮风格统一）
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '700 36px "PingFang SC",-apple-system,system-ui,sans-serif';
+    ctx.fillText(T.retry, CX, rby + 1 + roy);
+    ctx.restore();
+  }
+
+  // 顶部标题：居中「背单词」+ 右侧「循环按钮 + 换一批」
+  ctx.save();
+  ctx.textBaseline = 'middle';
+  const hy = 68;
+  /* 标题字号：设计要求「大到碰到下面的灰块」，也就是墨迹底边与换一批胶囊的底边齐平。
+     胶囊高 56（45..102），汉字墨迹高约等于字号的 0.9，所以 60px 的墨迹正好铺满这个高度。 */
+  const title = T.title;
+  const TITLE_PX = 60;
+  /* 字重用 700，不用 800：PingFang SC 没有真正的 800 字重，系统会用「合成粗体」
+     （在 700 的字形基础上二次描边加粗）去凑，笔画厚度不均匀，字号一大就很明显——
+     产品反馈"背单词"和其他文字（按钮、结算页）粗细不一致，根源就是这个。
+     全卡所有粗体文字统一用 700，没有例外。 */
+  ctx.font = `700 ${TITLE_PX}px "PingFang SC",-apple-system,system-ui,sans-serif`;
+  const titleW = ctx.measureText(title).width;
+
+  // 换一批按钮尺寸计算（图标 + 文字）
+  const rbTxt = T.redraw;
+  ctx.font = '600 28px "PingFang SC",-apple-system,system-ui,sans-serif';
+  const rbTxtW = ctx.measureText(rbTxt).width;
+  const rbIcon = 28;          // 循环图标直径
+  const rbInnerGap = 12;      // 图标与文字间距
+  const rbPadX = 24;          // 胶囊左右内边距
+  const rbW = rbPadX*2 + rbIcon + rbInnerGap + rbTxtW;
+  const rbH = 56;
+
+  // 定格对齐卡片左右边缘
+  const cardLeft = CARD.x - CARD.w/2;
+  const cardRight = CARD.x + CARD.w/2;
+
+  /* 这一排（标题 48px / 进度 30px / 换一批胶囊 56px）按「视觉中线」对齐，不是底边对齐。
+     原来三者都对齐 HEAD_BOTTOM，底边确实齐（实测都在 y=102），但三个元素高度不同，
+     视觉重心就散了 —— 量过：标题中心 79.5、进度中心 89.5、胶囊中心 73.5，差 16px，
+     产品看到的就是这个「没对齐」。
+     现在统一用 textBaseline='middle' 对同一条中线：middle 基线就是字形的 em box 中心，
+     比 alphabetic 再手工加减偏移（之前进度那行还额外 +3）可靠得多，换字号也不用重调。 */
+  const HEAD_BOTTOM = DONE_TOP_REF;       // 该行底边（换一批胶囊的盒底，也是结果页的参考线）
+  const HEAD_MID = HEAD_BOTTOM - rbH / 2; // 该行视觉中线 = 胶囊垂直中心
+  /* 竖向定位都用 textBaseline='middle' 再加一个「墨迹补偿」：middle 基线取的是 em box 中心，
+     而 em box 上下留着西文升部/降部的空间，汉字和数字的实际墨迹在里面偏上，直接用 middle
+     会整体偏高。
+
+     补偿值必须用真机截图量（.aicard/_measure-head.py），不能只信预览渲染——踩过一次：
+     之前的 6/2 是照预览图（Windows headless，字体是 fallback 出来的）校准的，真机
+     （PingFang SC）上量出来标题底边偏低 6px、进度中心偏低 3.5px，两条硬指标都没达标。
+     Canvas2D 的 textBaseline='middle' 定位是严格平移不变的——同一段文字，fillText 的
+     y 坐标改多少，渲染出来的墨迹就整体平移多少，不受字体度量影响，所以能直接拿真机
+     误差反推新值，不用再去猜字体比例系数：
+       标题：真机测得底边 108，要贴到 HEAD_BOTTOM=102，上移 6px -> DY 从 6 降到 0
+       进度：真机测得中心 76.5，要和标题新中心（79-6=73）对齐，上移 3.5px -> DY 从 2 降到 -1.5
+
+     设计给的两条硬要求：标题墨迹底边贴住胶囊底边（HEAD_BOTTOM）、进度垂直居中于标题。
+     所以先算出标题的墨迹中线，再让两者都挂在这条线上 —— 别各自去凑 HEAD_MID，
+     那样改字号就得两处一起重调。汉字墨迹高约等于字号的 0.93（仅用来估中线，不影响
+     上面这两个已用真机数据校准过的偏移量）。 */
+  const TITLE_INK_MID = HEAD_BOTTOM - TITLE_PX * 0.93 / 2;
+  const TITLE_INK_DY = 0;     // 标题：真机实测校准（2026-09 三轮 60px+描边版）
+  const PROG_INK_DY = -1.5;   // 进度：同上
+
+  // 标题：左边缘对齐卡片左边，墨迹底边与换一批胶囊底边齐平
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  ctx.font = `700 ${TITLE_PX}px "PingFang SC",-apple-system,system-ui,sans-serif`;
+  /* 描边加粗：CSS font-weight 700 在部分中文字体上笔画偏细（跟本仓库番茄钟 timeStr、
+     今天吃啥盲盒 state.text 的做法一致——那两处也是 strokeText+fillText 而不是单纯
+     指望字体自带粗字重）。线宽取字号的 1/20（60px -> 3px）：产品反馈 1/12（5px）太粗，
+     按参考图核对后收窄到这个比例，笔画比原生 700 明显扎实，但不会糊掉「囗」「言」
+     这类字里的窄缝。lineJoin 用 round 避免转角处尖刺，颜色和填充同色，
+     纯粹是为了物理加宽笔画，不是描边效果。 */
+  ctx.lineJoin = 'round';
+  if (!IS_PREVIEW) {
+    ctx.lineWidth = TITLE_PX / 20;
+    ctx.strokeStyle = '#ffffff';
+    ctx.strokeText(title, cardLeft, TITLE_INK_MID + TITLE_INK_DY);
+  }
+  ctx.fillStyle = '#ffffff';
+  ctx.fillText(title, cardLeft, TITLE_INK_MID + TITLE_INK_DY);
+
+  // 背单词进度「x/20」——紧跟标题右侧，垂直居中于标题（挂同一条墨迹中线）
+  // 描边加粗，比例和标题一致（字号/20），产品反馈这行和「换一批」也偏细
+  const prog = state.totalSeen + '/' + TOTAL;
+  const progFont = '600 30px "SF Pro Display","PingFang SC",-apple-system,system-ui,sans-serif';
+  const progX = cardLeft + titleW + 20, progY = TITLE_INK_MID + PROG_INK_DY;
+  ctx.font = progFont;
+  ctx.lineJoin = 'round';
+  if (!IS_PREVIEW) {
+    ctx.lineWidth = 30 / 20;
+    ctx.strokeStyle = SUB;
+    ctx.strokeText(prog, progX, progY);
+  }
+  ctx.fillStyle = SUB;
+  ctx.fillText(prog, progX, progY);
+
+  // 换一批按钮（胶囊）：右边缘对齐卡片右边，垂直中心就是 HEAD_MID
+  const rbCx = cardRight - rbW/2;
+  const rbCy = HEAD_MID;
+  const rbHover = state.hoverBtn==='redraw', rbPress = state.pressBtn==='redraw';
+  addHit(rbCx - rbW/2, rbCy - rbH/2, rbW, rbH, 'redraw');
+  const rboy = rbPress ? 1 : 0;
+  ctx.save();
+  roundRect(rbCx, rbCy + rboy, rbW, rbH, rbH/2);
+  ctx.fillStyle = rbHover ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.12)';
+  ctx.fill();
+  ctx.lineWidth = 1.5;
+  ctx.strokeStyle = 'rgba(255,236,210,0.5)';
+  ctx.stroke();
+  ctx.restore();
+
+  // 循环（双箭头刷新）图标 —— 两段粗圆弧 + 三角箭头
+  const icx = rbCx - rbW/2 + rbPadX + rbIcon/2;
+  const icy = rbCy + rboy;
+  const ir = rbIcon/2 - 2.5;
+  drawSyncIcon(icx, icy, ir, '#ffe8c4');
+
+  // 换一批文字：描边加粗，比例和标题一致（字号/20）
+  ctx.textAlign = 'left';
+  ctx.font = '600 28px "PingFang SC",-apple-system,system-ui,sans-serif';
+  const rbTxX = icx + rbIcon/2 + rbInnerGap, rbTxY = rbCy + rboy + 1;
+  ctx.lineJoin = 'round';
+  if (!IS_PREVIEW) {
+    ctx.lineWidth = 28 / 20;
+    ctx.strokeStyle = '#ffe8c4';
+    ctx.strokeText(rbTxt, rbTxX, rbTxY);
+  }
+  ctx.fillStyle = '#ffe8c4';
+  ctx.fillText(rbTxt, rbTxX, rbTxY);
+  ctx.restore();
+}
+
+// ===== 交互 =====
+function onTap(id){
+  /* 每次交互后落盘：这些操作都在改学习状态（权重、不认识集合、进度），
+     背屏卡片随时可能被回收，不能等"退出"再存 —— 压根没有退出事件。 */
+  setTimeout(saveProgress, 0);
+  if(id === 'know'){
+    const idx = state.deck[state.cardIdx];
+    state.totalSeen++;
+    state.totalKnown++;
+    state.weights[idx] = Math.max(0.3, (state.weights[idx] || 1) * 0.7);
+    delete state.unknown[idx];
+    state.btnFeedback['know'] = 1;
+    nextCard();
+  } else if(id === 'unknown'){
+    const idx = state.deck[state.cardIdx];
+    state.totalSeen++;
+    state.unknown[idx] = true;
+    state.weights[idx] = (state.weights[idx] || 1) * 2.5;
+    state.btnFeedback['unknown'] = 1;
+    nextCard();
+  } else if(id === 'retry' || id === 'redraw'){
+    drawCards();
+  }
+}
+
+function nextCard(){
+  state.cardIdx++;
+  state.showMeaning = false;
+  state.cardFlip = 0;
+  state.cardEnterT = ENTER_T0;
+  if(state.cardIdx >= BATCH){
+    state.phase = 'done';
+    state.cardEnterT = ENTER_T0;
+  }
+}
+
+// ===== 骨架集成 =====
+if(typeof data==='undefined'){const D=()=>new Date();window.data={
+ get hour24(){return D().getHours()},get hour12(){return D().getHours()%12||12},
+ get minute(){return D().getMinutes()},get second(){return D().getSeconds()},
+ get ampm(){return D().getHours()<12?0:1},time_format:1,
+ get year(){return D().getFullYear()},get month(){return D().getMonth()+1},
+ get date(){return D().getDate()},get day_of_week(){return D().getDay()+1},
+ year_lunar:'',month_lunar:'',date_lunar:'',battery_level:80,battery_plugged:0,
+ screen_width:W,screen_height:H,orientation:0,
+ hasweather:0,hasSteps:0,mi_step:null,mi_steps_goal:0,cal_count:0,cd_count:0,city_count:0,todo_count:0,note_count:0};}
+const ASSETS=[];
+try{window.__DIAL_ASSETS_SPEC=ASSETS;}catch(e){}
+const __IMG={};
+function IMG(id){const o=__IMG[id];return o&&o.ok?o.im:null;}
+(function(){const m=(typeof window!=='undefined'&&window.__DIAL_ASSETS)||{};
+ for(const k in m){const im=new Image(),o={im:im,ok:false};__IMG[k]=o;
+  const ready=()=>{o.ok=true;};
+  im.onload=()=>{ready();if(im.decode)im.decode().then(ready,ready);};
+  im.onerror=()=>{o.ok=false;};im.src=m[k];}})();
+function paintAssetBg(){for(const a of ASSETS){if(!a||!a.bg)continue;const im=IMG(a.id);if(!im||!im.width)continue;
+ const s=Math.max(W/im.width,H/im.height),w=im.width*s,h=im.height*s;ctx.drawImage(im,(W-w)/2,(H-h)/2,w,h);}}
+const hits=[];let hover=null,press=null,last=0;
+function addHit(a,b,c,d,e){if(a&&typeof a==='object')hits.push({x:a.x,y:a.y,w:a.w,h:a.h,id:b});else hits.push({x:a,y:b,w:c,h:d,id:e});}
+function toLogic(e){const r=cv.getBoundingClientRect();const px=(e.clientX-r.left)/r.width*W,py=(e.clientY-r.top)/r.height*H;return{x:(px-DX)/FIT,y:(py-DY)/FIT};}
+function pick(p){for(let i=hits.length-1;i>=0;i--){const h=hits[i];if(p.x>=h.x&&p.x<=h.x+h.w&&p.y>=h.y&&p.y<=h.y+h.h)return h;}return null;}
+cv.addEventListener('pointermove',e=>{const h=pick(toLogic(e));hover=h?.id||null;state.hoverBtn=hover;cv.style.cursor=h?'pointer':'default';});
+cv.addEventListener('pointerdown',e=>{press=pick(toLogic(e))?.id||null;state.pressBtn=press;});
+cv.addEventListener('pointerup',e=>{const h=pick(toLogic(e));if(h&&h.id===press)onTap(h.id);press=null;state.pressBtn=null;});
+cv.addEventListener('pointerleave',()=>{hover=null;press=null;state.hoverBtn=null;state.pressBtn=null;cv.style.cursor='default';});
+
+/* 帧率自己节流到 30：背屏常亮，功耗≈帧率×每帧绘制量，帧率是第一乘数。
+   只改 manifest 的 frameRate 不够 —— 那是宿主刷新率，rAF 回调可能照旧每秒 60 次，
+   JS 计算和 canvas 绘制都省不下来，所以在这里判时间差。
+   不可见时直接跳过整帧绘制（列表页/息屏时没必要画）。 */
+const FRAME_MS = 1000 / 30;
+let lastDraw = 0;
+function frame(ms){
+  if(document.hidden){ last = ms; requestAnimationFrame(frame); return; }
+  /* 纪元回退兜底：AOD 回来后 rAF 时间戳可能从 0 重算，而下面这个变量还是旧纪元的大数，差值恒为负、判据恒成立，frame() 会一直在这里 return，画面冻结时长≈息屏前已运行时长。 */if (ms < lastDraw) lastDraw = ms; if(ms - lastDraw < FRAME_MS){ requestAnimationFrame(frame); return; }
+  const t=ms/1000,dt=last?Math.min((ms-last)/1000,0.05):0;last=ms;lastDraw=ms;
+  update(dt,t);hits.length=0;
+  window.__DIAL_PHASE='bg';paintAssetBg();paintBg(t);
+  /* paintAssetBg/paintBg 铺满整屏、不参与变换；shapes/text 是内容层，统一走一组矩阵 */ctx.save();ctx.translate(DX,DY);ctx.scale(FIT,FIT);window.__DIAL_PHASE='shapes';paintShapes(t);
+  window.__DIAL_PHASE='text';paintText(t);ctx.restore();
+  window.__DIAL_PHASE='idle';requestAnimationFrame(frame);}
+requestAnimationFrame(frame);
+</script>
+</html>

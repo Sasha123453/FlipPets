@@ -36,7 +36,7 @@ public final class AssetEnvelopeProbe {
                             for(int y=0;y<sh;y++)for(int x=0;x<sw;x++)if((pixels[y*sw+x]>>>24)>=8){l=Math.min(l,x);t=Math.min(t,y);r=Math.max(r,x+1);d=Math.max(d,y+1);}
                             if(r>l&&d>t){left=Math.min(left,l);top=Math.min(top,t);right=Math.max(right,r);bottom=Math.max(bottom,d);frames.put(new JSONArray(new double[]{progress,l/(double)sw,t/(double)sh,r/(double)sw,d/(double)sh,java.util.Arrays.hashCode(pixels)}));}
                         }
-                        result.put("width",w).put("height",h).put("samples",frames).put("bounds",new JSONArray(new double[]{left/(double)sw,top/(double)sh,right/(double)sw,bottom/(double)sh}));
+                        result.put("width",w).put("height",h).put("durationUs",file.getMethod("duration").invoke(f)).put("samples",frames).put("bounds",new JSONArray(new double[]{left/(double)sw,top/(double)sh,right/(double)sw,bottom/(double)sh}));
                     } catch(Throwable e){result.put("error",e.toString());}
                     finally{if(p!=null)player.getMethod("release").invoke(p);if(s!=null)surface.getMethod("release").invoke(s);}
                     results.put(result);System.err.println("Envelope "+pet.getString("id")+" "+key);

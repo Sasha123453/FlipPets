@@ -13,6 +13,8 @@ public class PlaybackPolicyTest {
         }
         for(int scene=8;scene<17;scene++)check(!PlaybackPolicy.repeats("roedeer-archived-presets","reactive",scene,false));
         check(PlaybackPolicy.repeats("q_carp-pandora","ambient",0,false));
-        System.out.println("Playback policy: 31 assertions passed");
+        check(!PlaybackPolicy.repeats("pin-hongkong","finite-preview",0,false));
+        check(!PlaybackPolicy.repeats("pin-hongkong","finite-preview",0,true));
+        System.out.println("Playback policy: 33 assertions passed");
     }
 }

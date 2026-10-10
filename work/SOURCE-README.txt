@@ -31,7 +31,7 @@ original without uninstalling it. Private photos/settings can be lost on uninsta
 
 Current runtime QA (emulator only; execute separately, wait for each fresh file):
   adb -s emulator-5554 shell am start -n org.flippets.app/.PetActivity --ez qa true
-    -> qa.json, 170 clip checks
+    -> qa.json, 176 clip checks
   adb -s emulator-5554 shell am start -n org.flippets.app/.PetActivity --ez qaComposition true
     -> composition-qa.json, 68 checks
   adb -s emulator-5554 shell am start -n org.flippets.app/.PetActivity --ez qaSwitch true
@@ -47,10 +47,10 @@ preferences. Missing notification-listener discovery is a failure, not mocked su
 
 Packaging (run only after all fresh outputs exist):
   python -X utf8 work/package_release.py --qa-dir work/qa-v03/device-files
-  optional: --profile work/qa-v03/resource-profile-v100.json
+  optional: --profile work/qa-v03/resource-profile-v110.json
   optional: --current-evidence PATH_TO_SHA_BOUND_JSON [MORE_JSON...]
 This replaces report.html, Verification.json/zip and source/resources ZIPs. It checks
-APK version1.0, exact QA SHA/count/failures, APK asset equality, composition image
+APK version1.1, exact QA SHA/count/failures, APK asset equality, composition image
 hashes, signature, zipalign and native ELF page alignment. Historical hardware,
 resource and lifecycle data are labelled with their original SHA, not current evidence.
 Only explicit public evidence/source files are bundled; no raw phone dumps or keys.
@@ -105,3 +105,5 @@ Diagnostics: rare events in bounded private AppLog files, duplicate suppression,
 bounded controller snapshot, and own-UID logcat only on explicit export. No READ_LOGS
 permission or telemetry; no media titles are explicitly written to AppLog. Export uses
 ACTION_CREATE_DOCUMENT. Native crashes are not guaranteed in the private journal.
+
+1.1 additionally requires run_donor18_qa.py (real carp transitions, video/effect playback and visible-only release); QA runs separately after the standard suites. prepare_donor18_port.py is a one-time reviewed append from the intact1.0 catalogue, not a catalogue rebuild command.

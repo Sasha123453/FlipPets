@@ -1,0 +1,77 @@
+{
+  "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
+  "scope": "Manual review of real emulator window/SurfaceFlinger captures; not physical MIX Flip geometry or complete gallery automation",
+  "passed": true,
+  "failed": 0,
+  "results": [
+    {
+      "test": "Three virtual-cover card backgrounds fill the display without landscape letterbox",
+      "ok": true,
+      "method": "Manual visual inspection"
+    },
+    {
+      "test": "Three dialog previews retain portrait proportions and readable card controls",
+      "ok": true,
+      "method": "Manual visual inspection"
+    },
+    {
+      "test": "Main preview renders the applied card with schematic camera guides",
+      "ok": true,
+      "method": "Manual visual inspection"
+    },
+    {
+      "test": "Large-font gallery renders a readable single-column grid",
+      "ok": true,
+      "method": "Manual visual inspection"
+    },
+    {
+      "test": "Small-window gallery opens through its visible Main control; grid is scrollable but short",
+      "ok": true,
+      "method": "Manual visual inspection"
+    }
+  ],
+  "images": [
+    {
+      "file": "mini-virtual-cover-focus.png",
+      "sha256": "3207c43c0ec1f6a4a8b131cbec70f5edb389d1a270d5c1b18b52b4c7405e6c18"
+    },
+    {
+      "file": "mini-virtual-cover-water.png",
+      "sha256": "e705d4ab330ac64325e03d3e71fd544bab3a2e9b5c1779b4db6a986573e588ab"
+    },
+    {
+      "file": "mini-virtual-cover-words.png",
+      "sha256": "c0bf117979cde3937f77a329bb2be2a3a0e6919f9f923b9e75ecbf5b37f37cb6"
+    },
+    {
+      "file": "mini-dialog-focus.png",
+      "sha256": "e3f372f034362b1b7f2326c787e3933ae895b861f1cfa6ce149e3df27ec3bb47"
+    },
+    {
+      "file": "mini-dialog-water.png",
+      "sha256": "3b5e7fa71ec69dd58bc9ad7cb02570e4dcf4b158537a9a0c51603f2380dbbde8"
+    },
+    {
+      "file": "mini-dialog-words.png",
+      "sha256": "c1ed26c4de8798d4264287c15e62ed80d52163b0349bafca047fa10efcbbb637"
+    },
+    {
+      "file": "mini-applied-main.png",
+      "sha256": "178fb3525b413f052cc950a448ddf867197c6df96357a1748a06f84636477905"
+    },
+    {
+      "file": "gallery-large-font.png",
+      "sha256": "15de239457e4f78b3a62e9b4c000bef0b466f860eb584f533db1179b834c9b48"
+    },
+    {
+      "file": "gallery-small-window-manual-ready.png",
+      "sha256": "034118d39876253b27d5238bae2bc34764b89116fa0a31942aee8b5843af0408"
+    }
+  ],
+  "limitations": [
+    "Physical camera clearance and touch reachability are unverified",
+    "The original source Chinese UI is retained",
+    "At 1208x1392 and density520, gallery headers leave little grid height; compact-window polish is deferred",
+    "Supplemental full-gallery automation passed18 observations then aborted on an accessibility-root error; the windows-only retry passed its large-font observation then also aborted before the small-window assertion. These are not complete automated passes. The small-window screenshot was obtained separately through real input."
+  ]
+}

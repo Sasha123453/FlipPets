@@ -1,0 +1,21 @@
+{
+  "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
+  "capture": "Android PixelCopy of composed Main window",
+  "mainSize": "1224x2912",
+  "density": 520,
+  "images": [
+    {
+      "file": "mini-focus.png",
+      "sha256": "31c3edcbecf70359d57c5a101c7e31edb107b8e5dbdc279730ff93ca7f0afca5"
+    },
+    {
+      "file": "mini-water.png",
+      "sha256": "616272f846773d623653bb2a2d95110217a596eda3c2fe1c1a0952838cc2ac33"
+    },
+    {
+      "file": "mini-words.png",
+      "sha256": "3f1b47f523d4e32c004233f4cf3caae256363ec0b2d096b96ecb6ae557bff971"
+    }
+  ],
+  "limitation": "Emulator only; schematic camera overlay does not prove physical clearance"
+}

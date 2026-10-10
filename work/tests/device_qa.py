@@ -10,9 +10,16 @@ def adb(*args,check=True):
 def shell(command,check=True): return adb('shell',command,check=check)
 def guard(): assert shell('getprop ro.kernel.qemu').strip()=='1'
 def ui(name='ui'):
-    shell('uiautomator dump /sdcard/flip-ui.xml')
-    adb('pull','/sdcard/flip-ui.xml',QA/(name+'.xml'))
-    return ET.parse(QA/(name+'.xml')).getroot()
+    # uiautomator can return status 0 on an idle timeout, leaving the old XML.
+    # Delete that file first and require a fresh successful dump before reading.
+    for attempt in range(3):
+        shell('rm -f /sdcard/flip-ui.xml')
+        output=shell('uiautomator dump /sdcard/flip-ui.xml',check=False)
+        if 'dumped to:' in output:
+            adb('pull','/sdcard/flip-ui.xml',QA/(name+'.xml'))
+            return ET.parse(QA/(name+'.xml')).getroot()
+        time.sleep(.3)
+    raise RuntimeError('No fresh UI hierarchy: '+output.strip())
 def tap_text(text,description=False,partial=False):
     tree=ui(); key='content-desc' if description else 'text'
     nodes=[n for n in tree.iter('node') if (text in n.get(key,'') if partial else n.get(key)==text)]

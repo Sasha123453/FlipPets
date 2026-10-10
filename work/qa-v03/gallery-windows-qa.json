@@ -1,0 +1,28 @@
+{
+  "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
+  "environment": "Guarded Android emulator; real UI input and screencap, not physical MIX Flip",
+  "originalSelection": "Вода Xiaomi",
+  "tested": 2,
+  "failed": 1,
+  "results": [
+    {
+      "test": "large-font_grid_visible",
+      "ok": true
+    },
+    {
+      "test": "unexpected_error",
+      "ok": false,
+      "detail": "TimeoutError: Main window did not become ready"
+    }
+  ],
+  "images": [
+    {
+      "file": "gallery-large-font.png",
+      "sha256": "15de239457e4f78b3a62e9b4c000bef0b466f860eb584f533db1179b834c9b48"
+    }
+  ],
+  "cleanup": {
+    "favoriteRestored": true,
+    "selectionRestored": true
+  }
+}

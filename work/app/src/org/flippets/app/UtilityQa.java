@@ -18,6 +18,7 @@ public final class UtilityQa {
     private static final String[] SAVED_KEYS={"utilityCard","utilityTimerMode","utilityTimerRunning","utilityTimerElapsed","utilityTimerStart","utilityTimerBoot","pet","petId"};
     private final PetActivity activity;
     private final SharedPreferences prefs;
+    private final QaPetMode petMode;
     private final Handler handler=new Handler(Looper.getMainLooper());
     private final Map<String,Object> saved=new HashMap<>();
     private final JSONArray results=new JSONArray(),skipped=new JSONArray();
@@ -27,7 +28,7 @@ public final class UtilityQa {
     private boolean finished;
     private long timerElapsed,pausedElapsed,mediaDeadline;
     private String timerText,pausedText;
-    private UtilityQa(PetActivity a){activity=a;prefs=a.getSharedPreferences(Pets.PREFS,0);Map<String,?> all=prefs.getAll();for(String key:SAVED_KEYS)if(all.containsKey(key))saved.put(key,all.get(key));}
+    private UtilityQa(PetActivity a){activity=a;petMode=new QaPetMode(a);a.stage.reload();prefs=a.getSharedPreferences(Pets.PREFS,0);Map<String,?> all=prefs.getAll();for(String key:SAVED_KEYS)if(all.containsKey(key))saved.put(key,all.get(key));}
     public static void start(PetActivity a){
         if(!(Build.HARDWARE.contains("ranchu")||Build.HARDWARE.contains("goldfish")))throw new IllegalStateException("UtilityQa is emulator-only");
         if(Looper.myLooper()!=Looper.getMainLooper()){a.runOnUiThread(()->start(a));return;}
@@ -100,7 +101,7 @@ public final class UtilityQa {
         card().resetForQaRestore();SharedPreferences.Editor edit=prefs.edit();for(String key:SAVED_KEYS){edit.remove(key);if(!saved.containsKey(key))continue;Object value=saved.get(key);if(value instanceof String)edit.putString(key,(String)value);else if(value instanceof Boolean)edit.putBoolean(key,(Boolean)value);else if(value instanceof Integer)edit.putInt(key,(Integer)value);else if(value instanceof Long)edit.putLong(key,(Long)value);else if(value instanceof Float)edit.putFloat(key,(Float)value);}
         edit.apply();
         Map<String,?> after=prefs.getAll();boolean exact=true;for(String key:SAVED_KEYS)if(saved.containsKey(key)?!Objects.equals(saved.get(key),after.get(key)):after.containsKey(key))exact=false;
-        record("preferences_restored",exact,"Utility/timer and scene selection keys restored");Pets.signal(activity);if(activity.stage.running)card().start();
+        exact&=petMode.restore();record("preferences_restored",exact,"Utility/timer and scene selection keys restored");Pets.signal(activity);if(activity.stage.running)card().start();
     }
     private void finish(){
         if(finished)return;finished=true;handler.removeCallbacksAndMessages(null);

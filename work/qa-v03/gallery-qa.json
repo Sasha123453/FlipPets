@@ -1,0 +1,124 @@
+{
+  "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
+  "environment": "Guarded Android emulator; real UI input and screencap, not physical MIX Flip",
+  "originalSelection": "Вода Xiaomi",
+  "tested": 19,
+  "failed": 1,
+  "results": [
+    {
+      "test": "all_collection",
+      "ok": true
+    },
+    {
+      "test": "collection_18 Pro",
+      "ok": true
+    },
+    {
+      "test": "collection_Свои",
+      "ok": true
+    },
+    {
+      "test": "collection_Архив Xiaomi",
+      "ok": true
+    },
+    {
+      "test": "collection_17 Pro",
+      "ok": true
+    },
+    {
+      "test": "18pro_mini_intersection",
+      "ok": true
+    },
+    {
+      "test": "17pro_mini_empty",
+      "ok": true
+    },
+    {
+      "test": "personal_mini_empty",
+      "ok": true
+    },
+    {
+      "test": "scoped_search",
+      "ok": true
+    },
+    {
+      "test": "favorites_search_intersection",
+      "ok": true
+    },
+    {
+      "test": "favorites_stay_in_collection",
+      "ok": true
+    },
+    {
+      "test": "favorite_restored",
+      "ok": true
+    },
+    {
+      "test": "mini_opens_preview",
+      "ok": true
+    },
+    {
+      "test": "cancel_keeps_selection",
+      "ok": true
+    },
+    {
+      "test": "apply_selects_mini",
+      "ok": true
+    },
+    {
+      "test": "virtual_cover_activity_visible",
+      "ok": true
+    },
+    {
+      "test": "pet_selection_clears_mini",
+      "ok": true
+    },
+    {
+      "test": "normal_selection_and_restore",
+      "ok": true
+    },
+    {
+      "test": "unexpected_error",
+      "ok": false,
+      "detail": "RuntimeError: Own window accessibility root was not ready"
+    }
+  ],
+  "images": [
+    {
+      "file": "mini-dialog-focus.png",
+      "sha256": "e3f372f034362b1b7f2326c787e3933ae895b861f1cfa6ce149e3df27ec3bb47"
+    },
+    {
+      "file": "mini-dialog-water.png",
+      "sha256": "3b5e7fa71ec69dd58bc9ad7cb02570e4dcf4b158537a9a0c51603f2380dbbde8"
+    },
+    {
+      "file": "mini-dialog-words.png",
+      "sha256": "c1ed26c4de8798d4264287c15e62ed80d52163b0349bafca047fa10efcbbb637"
+    },
+    {
+      "file": "mini-applied-main.png",
+      "sha256": "178fb3525b413f052cc950a448ddf867197c6df96357a1748a06f84636477905"
+    },
+    {
+      "file": "mini-virtual-cover-focus.png",
+      "sha256": "3207c43c0ec1f6a4a8b131cbec70f5edb389d1a270d5c1b18b52b4c7405e6c18"
+    },
+    {
+      "file": "mini-virtual-cover-water.png",
+      "sha256": "e705d4ab330ac64325e03d3e71fd544bab3a2e9b5c1779b4db6a986573e588ab"
+    },
+    {
+      "file": "mini-virtual-cover-words.png",
+      "sha256": "c0bf117979cde3937f77a329bb2be2a3a0e6919f9f923b9e75ecbf5b37f37cb6"
+    },
+    {
+      "file": "gallery-main-18pro.png",
+      "sha256": "eb367c2945fb1ee671b375cb35e7b99ebff823497f92f912edba4bef093e93dd"
+    }
+  ],
+  "cleanup": {
+    "favoriteRestored": true,
+    "selectionRestored": true
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "sourceWidth": 912,
+  "sourceHeight": 596,
+  "durationMs": "5000",
+  "frames": [
+    {
+      "timeUs": 500000,
+      "width": 512,
+      "height": 335,
+      "pixelHash": -1257148309,
+      "screenshot": "source-vortex-500000-donor18.png"
+    },
+    {
+      "timeUs": 1500000,
+      "width": 512,
+      "height": 335,
+      "pixelHash": -1069259949,
+      "screenshot": "source-vortex-1500000-donor18.png"
+    }
+  ],
+  "environment": "Guarded Android16 emulator5554; actual MediaMetadataRetriever frames, not HyperOS layout or continuous player/battery validation",
+  "sourceSha256": "dec6963ec0f3462e49c64d054b7374f2c257409695bc81d48f220fb40febddcb",
+  "sourceMember": "assets/hongkong/bg.mp4",
+  "sourceMrcSha256": "c6a45971b17954aae19ff0c230ad75ebf5b5c44743c4dc40d365f7dd0975c138",
+  "tested": 2,
+  "failed": 0,
+  "thumbnailSha256": "e62197b95e519712e60115ab033c0fa2861638098b891fe88cbaa567999ee4ad",
+  "decoder": "Actual Android MediaMetadataRetriever via read-only MediaDataSource; scaled thumbnail frames"
+}

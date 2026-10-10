@@ -14,7 +14,7 @@ public final class PetBackdrop extends View {
     public PetBackdrop(Context c,boolean clock){super(c);this.clock=clock;setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);}
     void releaseClock(){for(int i=0;i<10;i++){if(digits[i]!=null)digits[i].recycle();digits[i]=null;}for(int i=0;i<4;i++)for(int j=0;j<10;j++){if(desk[i][j]!=null)desk[i][j].recycle();desk[i][j]=null;}font=null;clockLoaded=false;}
     void release(){releaseClock();sceneShader=null;scenePaint.setShader(null);if(bg!=null)bg.recycle();bg=null;loaded="";}
-    boolean clockEnabled(){return clock&&!(layoutDraft!=null?layoutDraft:PetLayout.read(getContext(),Pets.current(getContext()))).clockless;}
+    boolean clockEnabled(){JSONObject pet=Pets.current(getContext());return clock&&pet.optString("renderRole","pet").equals("pet")&&!(layoutDraft!=null?layoutDraft:PetLayout.read(getContext(),pet)).clockless;}
     void sceneTransform(int width,int height,float scale,float x,float y){if(sourceWidth==width&&sourceHeight==height&&sceneScale==scale&&sceneX==x&&sceneY==y)return;sourceWidth=width;sourceHeight=height;sceneScale=scale;sceneX=x;sceneY=y;updateSceneShader();invalidate();}
     void updateSceneShader(){if(bg==null||sourceWidth<=0||sourceHeight<=0||sceneScale<=0){scenePaint.setShader(null);return;}if(sceneShader==null)sceneShader=new BitmapShader(bg,Shader.TileMode.CLAMP,Shader.TileMode.CLAMP);sceneMatrix.setScale(sceneScale*sourceWidth/bg.getWidth(),sceneScale*sourceHeight/bg.getHeight());sceneMatrix.postTranslate(sceneX,sceneY);sceneShader.setLocalMatrix(sceneMatrix);float top=Math.max(0,sceneY);Shader fade=new LinearGradient(0,top,0,top+48,new int[]{0x00000000,0xff000000},null,Shader.TileMode.CLAMP);scenePaint.setShader(new ComposeShader(sceneShader,fade,PorterDuff.Mode.DST_IN));int sky1=bg.getPixel(bg.getWidth()/2,Math.min(bg.getHeight()-1,Math.round(bg.getHeight()*.20f))),sky2=bg.getPixel(bg.getWidth()/2,Math.min(bg.getHeight()-1,Math.round(bg.getHeight()*.40f)));skyPaint.setShader(new LinearGradient(0,0,0,Math.max(1,top+48),sky1,sky2,Shader.TileMode.CLAMP));}
     void load(){JSONObject pet=Pets.current(getContext());String id=pet.optString("id");
@@ -27,6 +27,11 @@ public final class PetBackdrop extends View {
     protected void onDraw(Canvas canvas){super.onDraw(canvas);load();float w=getWidth(),h=getHeight();
         if(bg!=null&&!(Pets.current(getContext()).optString("name").equals("Flowing glitter")&&SceneSettings.imageFile(getContext(),Pets.current(getContext()).optString("id"),false).exists())){if(scenePaint.getShader()!=null){canvas.drawRect(0,0,w,h,skyPaint);canvas.drawRect(0,0,w,h,scenePaint);}else canvas.drawBitmap(bg,null,new RectF(0,0,w,h),paint);}if(!clockEnabled())return;String time=new SimpleDateFormat("HHmm",Locale.US).format(new Date());
         float left=Math.max(w*.31f,cameraRight+16);float available=w-left-16;
+        if(Pets.current(getContext()).optString("clockStyle").equals("carp")&&desk[0][0]!=null){
+            // Original 68x126 digits and 80/138 spacing, adapted above the cover subject.
+            float sr=Math.min(available/148f,h*.30f/264f),x=w-16-148*sr,y=h*.02f;
+            for(int i=0;i<4;i++){Bitmap b=desk[i][time.charAt(i)-'0'];if(b==null)continue;float dx=x+(i%2)*80*sr,dy=y+(i/2)*138*sr;canvas.drawBitmap(b,null,new RectF(dx,dy,dx+68*sr,dy+126*sr),paint);}return;
+        }
         if(desk[0][0]!=null){float sr=Math.min(w/336f,(w-cameraRight-24)/125f),x=w-123*sr,y=6*sr;float[] xs={0,39,39,73},ys={0,4,48,48};for(int i=0;i<4;i++){Bitmap b=desk[i][time.charAt(i)-'0'];if(b!=null)canvas.drawBitmap(b,null,new RectF(x+xs[i]*sr,y+ys[i]*sr,x+(xs[i]+44)*sr,y+(ys[i]+52)*sr),paint);}return;}
         if(digits[0]!=null){float digitW=Math.min(56*h/213*.97f,available/4);float digitH=Math.min(189*h/213*.97f,h*.9f);float x=left+(available-digitW*4)/2,y=(h-digitH)/2;
             for(int i=0;i<4;i++){Bitmap b=digits[time.charAt(i)-'0'];if(b!=null)canvas.drawBitmap(b,null,new RectF(x+i*digitW,y,x+(i+1)*digitW,y+digitH),paint);}

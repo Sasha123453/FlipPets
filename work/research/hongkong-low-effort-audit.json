@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-10",
+  "scope": "Local source feasibility audit only. No app, module, device, firmware or live settings changes. Effort classifications are engineering estimates, not compatibility tests.",
+  "baseline": "Current catalogue: 33 entries; three public HTML cards separate.",
+  "candidates": [
+    {
+      "name": "Glow",
+      "id": "315e51f4-611c-4214-b8f0-6300cf17e64e",
+      "effort": "small-to-medium",
+      "source": {
+        "path": "work/extracted/hongkong/rearscreen/content/315e51f4-611c-4214-b8f0-6300cf17e64e.mrc",
+        "sha256": "c6aeba6406b45bc934dcca1d81491bf29940b0e532828f83cd904b16ee6c36f3",
+        "manifestSha256": "f4a41c6b1d8d081c092f0b88dfbd3b3372d05d392ee53f69e17b07888df90935",
+        "elementCount": 122,
+        "imageMembers": 250,
+        "externalProviderCount": 0
+      },
+      "findings": [
+        "Not in current catalogue; presence in donor does not establish exclusivity to 18 Pro.",
+        "Five color sets; 24 indexed backgrounds per set in normal and AOD variants; two hands per color.",
+        "Hour-dependent crossfades; analog/digital style selection; local clock input.",
+        "No ContentProviderBinder, IntentCommand, MethodCommand or ExternCommand elements in manifest.",
+        "Current CompositionRenderer supplies bitmap, rotation, font and photo primitives; new renderer, bounded transition scheduling, settings and portrait geometry still required."
+      ],
+      "limits": [
+        "About 44 MB source package; do not preload all images.",
+        "AOD artwork does not provide native AOD integration.",
+        "Exact Folme transition equivalence and physical camera clearance untested."
+      ]
+    },
+    {
+      "name": "Vortex clock completion",
+      "effort": "small-to-medium",
+      "source": {
+        "path": "work/extracted/hongkong/rearscreen/content/119f090b-b625-4b3e-9ffd-107927c360c6.mrc",
+        "sha256": "c6a45971b17954aae19ff0c230ad75ebf5b5c44743c4dc40d365f7dd0975c138",
+        "manifestSha256": "bc380987622251f9d86d6ed9d056ded34f8bce7121a5568a43e44677a4a81e3b",
+        "elementCount": 144,
+        "imageMembers": 33,
+        "externalProviderCount": 0
+      },
+      "findings": [
+        "Current entry intentionally imports animated background only.",
+        "Source supplies original clock hands, shadows, date/week and battery graphics (33 PNG members).",
+        "Clock formulas and video pause/resume are in MAML."
+      ],
+      "limits": [
+        "Requires explicit new clock mode; preserve existing background entry.",
+        "Battery remains optional/off by default.",
+        "Geometry and lifecycle need testing."
+      ]
+    },
+    {
+      "name": "Oil painting / Anime 1 / case wallpaper templates",
+      "effort": "small for local preset adaptation",
+      "ids": [
+        "201e979b-9ba5-4931-8388-e01decbfe884",
+        "c61bcd5d-365f-417d-b295-1e0997b0990b",
+        "aabbada0-94be-459c-afe5-371f0dbfba74"
+      ],
+      "findings": [
+        "Original sample image plus existing signature/photo-style MAML structure.",
+        "Can reuse private photo/text controls for local adaptation."
+      ],
+      "limits": [
+        "Does not reproduce photo stylization or AI generation.",
+        "Not full native template execution."
+      ]
+    },
+    {
+      "name": "Native folded PAG import",
+      "effort": "bounded research, unknown implementation effort",
+      "findings": [
+        "Existing native editor accepted donor-style JSON in historical phone experiment."
+      ],
+      "limits": [
+        "Motion, Apply, exact restoration and root file access remain unverified.",
+        "Not classified as an easy deliverable."
+      ]
+    }
+  ],
+  "notLowEffort": {
+    "sixFirmwareCards": "All six manifests contain external Xiaomi content-provider dependencies. Calendar gets pictures from Xiaomi Calendar; schedule uses nearEventsWithHolidays; privacy uses SecurityCenter; stocks uses Personal Assistant; car and Home use companion apps.",
+    "nativeQuickJS": "JsCanvasScreenElement decompilation alone has 2398 lines and includes MAML, native bridge, display/AOD, sensor, audio and storage integration. Library copying is not a complete host.",
+    "systemTimer": "Source consumes injected timer data and sends deskclock-specific pause/continue/cancel/dismiss broadcasts.",
+    "powerAndFullSubscreenPort": "Exact EEA/18 framework and device integration unresolved; current root supervisor does not solve them."
+  },
+  "duplicatesAndLimitedValue": [
+    "Carp scene-cycle, Vortex background and pin effect already adapted in current tree.",
+    "Stretch manifests e8482faa and 96af4ce9 have identical SHA-256 fdd033bfaec3e766e5fdb30c6ad656b9fe7e0c919286e5cb66a6462f5aa6e3a2.",
+    "Custom-character ai-mate package bc6e2c3a manifest contains only Widget, Var and Image: no generator or animation logic."
+  ],
+  "cardDependencies": [
+    {
+      "card": "calendar",
+      "manifest": "work/extracted/hongkong/firmware-appcards/normal/01_weather/calendar/rearscreen-unpacked/manifest.xml",
+      "sha256": "eafeee8faf74ee2c7beea614f3c56a3d965eea0102b0b94f8bee9d3a37b6ba5a",
+      "providers": [
+        {
+          "name": "calendarCTA_ps609o",
+          "uri": "content://com.miui.calendar/ctaPermission",
+          "column": "is_agree_with_cta",
+          "countName": "cta"
+        },
+        {
+          "name": "get_image_for_image1_ps609o",
+          "queryAtStart": "false",
+          "uriFormat": "content://com.miui.calendar/%s",
+          "uriParas": "@uri_part_ps609o",
+          "columns": "picture_data,picture_id",
+          "countName": "has_data"
+        },
+        {
+          "name": "get_image_for_image2_ps609o",
+          "queryAtStart": "false",
+          "uriFormat": "content://com.miui.calendar/%s",
+          "uriParas": "@uri_part_ps609o",
+          "columns": "picture_data,picture_id",
+          "countName": "has_data"
+        }
+      ]
+    },
+    {
+      "card": "schedule",
+      "manifest": "work/extracted/hongkong/firmware-appcards/normal/01_weather/schedule/rearscreen-unpacked/manifest.xml",
+      "sha256": "a5ef6320d1d668dafa238d21c4125fbad9ceeb9d8f3b2ba67410ab80bda7193d",
+      "providers": [
+        {
+          "name": "calendarCTA",
+          "uriExp": "'content://com.miui.calendar/ctaPermission'",
+          "columns": "is_agree_with_cta"
+        },
+        {
+          "name": "NearEventsWithHolidays",
+          "uriExp": "'content://com.miui.calendar/nearEventsWithHolidays'",
+          "columns": "item_title,item_date,item_display_time,item_countdown_days,item_event_id,item_allday,item_dtstart,item_dtend,item_color,item_event_type",
+          "countName": "totalItemCount"
+        }
+      ]
+    },
+    {
+      "card": "privacy",
+      "manifest": "work/extracted/hongkong/firmware-appcards/normal/02_utility/privacy/rearscreen-unpacked/manifest.xml",
+      "sha256": "a3ceddad393d7f37a898d83ec090271c29267d8615baf72de25793a519028ed2",
+      "providers": [
+        {
+          "name": "privacyProvider",
+          "uriExp": "'content://com.miui.securitycenter.provider/query_invisible_mode'",
+          "columns": "status"
+        }
+      ]
+    },
+    {
+      "card": "car",
+      "manifest": "work/extracted/hongkong/firmware-appcards/normal/03_smart/car/rearscreen-unpacked/manifest.xml",
+      "sha256": "ff85e8e2e0c2d16a2e8cf0b13bafe4955c4bd20f47cc2483df0fbe468656270c",
+      "providers": [
+        {
+          "name": "screenUpdateProvider",
+          "uriExp": "'content://com.mi.car.mobile.backScreenProvider/screenOpenStateUpdate?versionCode=251104'+@screen_state",
+          "queryAtStart": "false"
+        },
+        {
+          "name": "stateResetProvider",
+          "uriExp": "'content://com.mi.car.mobile.backScreenProvider/stateReset?versionCode=251104'+@state_reset",
+          "queryAtStart": "false"
+        },
+        {
+          "name": "btnControlProvider",
+          "uriExp": "'content://com.mi.car.mobile.backScreenProvider/carControlBtnClick?versionCode=251104'+@btnControl",
+          "queryAtStart": "false"
+        },
+        {
+          "name": "ImageShareProvider",
+          "uri": "content://com.mi.car.mobile.backScreenProvider/imageShare?versionCode=251104",
+          "countName": "hasImageShare"
+        },
+        {
+          "name": "CarControlStateProvider",
+          "uri": "content://com.mi.car.mobile.backScreenProvider/queryCarControlState?versionCode=251104",
+          "countName": "hasCarControlState"
+        },
+        {
+          "name": "CarControlConfirmProvider",
+          "uri": "content://com.mi.car.mobile.backScreenProvider/queryCarControlConfirm?versionCode=251104",
+          "countName": "hasCarControlConfirm"
+        },
+        {
+          "name": "FaceRecognitionProvider",
+          "uri": "content://com.mi.car.mobile.backScreenProvider/queryFaceRecognitionState?versionCode=251104",
+          "countName": "hasFaceRecognition"
+        },
+        {
+          "name": "BaseDataProvider",
+          "uri": "content://com.mi.car.mobile.backScreenProvider/getBaseData?versionCode=251104",
+          "countName": "hasBaseData"
+        },
+        {
+          "name": "EnergyInfoProvider",
+          "uri": "content://com.mi.car.mobile.backScreenProvider/queryEnergyInfo?versionCode=251104",
+          "countName": "hasEnergyInfo"
+        },
+        {
+          "name": "ControlListProvider",
+          "uri": "content://com.mi.car.mobile.backScreenProvider/queryControlList?versionCode=251104",
+          "countName": "hasControlList"
+        }
+      ]
+    },
+    {
+      "card": "home",
+      "manifest": "work/extracted/hongkong/firmware-appcards/normal/03_smart/home/rearscreen-unpacked/manifest.xml",
+      "sha256": "72f8f0deccebfade86e55758360661ff08611eafb28689019f5e69be4c42dbb6",
+      "providers": [
+        {
+          "name": "get_mi_home_info",
+          "uriFormat": "content://com.xiaomi.smarthome.feature.backscreen.BackScreenCameraContentProvider/backScreenSettingQuery/%s",
+          "uriParas": "@customEditLocalId",
+          "columns": "cameraListSize,smarthomeLoginStatus,homeName,roomName,deviceName,roomNameWidth,noDeviceTextLines,isNewMijia"
+        },
+        {
+          "name": "set_mi_home_one_track",
+          "uriFormat": "content://com.xiaomi.smarthome.feature.backscreen.BackScreenCameraContentProvider/onMamlCameraClick/%s",
+          "uriParas": "@customEditLocalId",
+          "loadOnInit": "false"
+        },
+        {
+          "name": "set_camera_preview_play_expose",
+          "uriFormat": "content://com.xiaomi.smarthome.feature.backscreen.BackScreenCameraContentProvider/onMamlCameraPreviewPlayExpose/%s",
+          "uriParas": "@customEditLocalId",
+          "loadOnInit": "false"
+        },
+        {
+          "name": "set_camera_preview_play_click",
+          "uriFormat": "content://com.xiaomi.smarthome.feature.backscreen.BackScreenCameraContentProvider/onMamlCameraPreviewPlayClick/%s",
+          "uriParas": "@customEditLocalId",
+          "loadOnInit": "false"
+        },
+        {
+          "name": "mijia_privacy",
+          "uri": "content://com.xiaomi.smarthome.feature.backscreen.BackScreenCameraContentProvider/privacy",
+          "columns": "isAgreeMiHomeBackScreenPrivacy"
+        }
+      ]
+    },
+    {
+      "card": "stock",
+      "manifest": "work/extracted/hongkong/firmware-appcards/normal/04_lift/stock/rearscreen-unpacked/manifest.xml",
+      "sha256": "339aa9b33c9cfd6c4928141896d1e351f9bab6ad58d7c9cb6d08af5096b971fe",
+      "providers": [
+        {
+          "name": "personalassistant_cta",
+          "uri": "content://com.miui.personalassistant.cta/ctaPermission",
+          "column": "is_agree_with_cta",
+          "countName": "cta"
+        },
+        {
+          "name": "get_stock",
+          "uriFormat": "content://com.miui.personalassistant.stock?localId=%s",
+          "uriParas": "@customEditLocalId",
+          "columns": "stock_data_json",
+          "countName": "has_data"
+        }
+      ]
+    }
+  ]
+}

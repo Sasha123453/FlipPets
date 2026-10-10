@@ -1,5 +1,5 @@
 {
-  "apkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
+  "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
   "environment": "Android emulator; no physical camera\/HyperOS claim",
   "tested": 19,
   "failed": 0,
@@ -72,7 +72,7 @@
     {
       "test": "cancel_restores_preview_and_parent",
       "ok": true,
-      "detail": "Draft discarded; legacy stage returned to Main"
+      "detail": "Bounded real settling after Cancel (max5000ms); parent=true clock=true preferences=true matrixScale=true matrixX=true matrixY=true attached=true pagSurface=true pagComposition=true stage=1208x1392 expectedMatrix=[1.6136005, 0.0, -139.0542, 0.0, 1.6136005, 430.29413, 0.0, 0.0, 1.0] actualMatrix=[1.6136005, 0.0, -139.0542, 0.0, 1.6136005, 430.29413, 0.0, 0.0, 1.0]"
     },
     {
       "test": "apply_saves_selected_pet_mode",

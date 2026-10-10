@@ -1,5 +1,5 @@
 """Controller integration fixtures on our emulator only, never a physical phone."""
-import pathlib,subprocess,json,time,hashlib
+import pathlib,subprocess,json,time,hashlib,argparse,zipfile
 r=pathlib.Path(__file__).resolve().parents[1];adb=pathlib.Path('C:/platform-tools/adb.exe');base='/data/local/tmp/flip-pets-fixture'
 (r/'qa-final').mkdir(exist_ok=True)
 def call(*args,ok=True):
@@ -8,9 +8,20 @@ def call(*args,ok=True):
     return p
 def shell(text,ok=True):return call('shell',text,ok=ok)
 assert shell('getprop ro.kernel.qemu').stdout.strip()=='1','Emulator required'
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--kernel-su',action='store_true',help='Test packaged UID0 variant with explicitly stubbed root identity; not real root/SELinux evidence')
+args=parser.parse_args()
+controller=r.parent/'outputs'/'flip-pets-control.sh'
+wrapper=r/'tests'/'controller-fixture.sh'
+if args.kernel_su:
+    temp=r/'ksu-check';temp.mkdir(exist_ok=True)
+    with zipfile.ZipFile(r.parent/'outputs/FlipPets-KernelSU-experimental.zip') as archive:
+        controller=temp/'flip-pets-control.sh';controller.write_bytes(archive.read('flip-pets-control.sh'))
+    wrapper=temp/'root-fixture.sh'
+    wrapper.write_text('id() { [ "$1" = "-u" ] && echo 0; }\n'+(r/'tests/controller-fixture.sh').read_text(encoding='utf8'),encoding='utf8',newline='\n')
 shell('mkdir -p '+base)
-call('push',str(r.parent/'outputs'/'flip-pets-control.sh'),base+'/control.sh')
-call('push',str(r/'tests'/'controller-fixture.sh'),base+'/wrapper.sh')
+call('push',str(controller),base+'/control.sh')
+call('push',str(wrapper),base+'/wrapper.sh')
 call('push',str(r/'research'/'ruyi-display_layout_configuration.xml'),base+'/layout')
 def setup():
     shell(f'echo ruyi > {base}/device\necho 3 > {base}/state\necho 3 > {base}/base\necho Awake > {base}/wake\necho false > {base}/locked\nrm -f {base}/override {base}/reject {base}/reject_count {base}/display_off_reads {base}/display_state {base}/events {base}/launches {base}/foreign_on_reject {base}/resets {base}/app_active /data/local/tmp/flip-pets-active /data/local/tmp/flip-pets-start-failures.log /sdcard/Android/data/org.flippets.app/files/controller-stop')
@@ -31,5 +42,5 @@ setup();shell(f'head -c 70000 /dev/zero > /data/local/tmp/flip-pets-start-failur
 setup();shell(f'touch {base}/override');p=invoke('start',ok=False);check(p.returncode!=0 and 'Another app' in p.stderr+p.stdout,'existing override is refused')
 setup();shell(f'echo bixi > {base}/device');p=invoke('start',ok=False);check(p.returncode!=0 and 'only for MIX Flip' in p.stderr+p.stdout,'wrong device is refused')
 setup()
-record={'environment':'emulator-5554; stubbed stock command responses, not a physical MIX Flip','controller_sha256':hashlib.sha256((r.parent/'outputs'/'flip-pets-control.sh').read_bytes()).hexdigest(),'results':results}
-(r/'qa-final'/'controller-tests.json').write_text(json.dumps(record,indent=2),encoding='utf-8');print(json.dumps(record,indent=2))
+record={'environment':'emulator-5554; stubbed stock command responses'+('; root identity also stubbed, no actual UID0/SELinux proof' if args.kernel_su else '')+', not a physical MIX Flip','controller_sha256':hashlib.sha256(controller.read_bytes()).hexdigest(),'results':results}
+(r/'qa-final'/('kernel-su-controller-tests.json' if args.kernel_su else 'controller-tests.json')).write_text(json.dumps(record,indent=2),encoding='utf-8');print(json.dumps(record,indent=2))

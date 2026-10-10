@@ -67,6 +67,12 @@
       0,
       0.9,
       1
+    ],
+    "butterfly-carp-hongkong": [
+      0.3,
+      0,
+      1,
+      0.97
     ]
   },
   "sampledArtworkEnvelopes": {
@@ -135,6 +141,12 @@
       0,
       1,
       1
+    ],
+    "butterfly-carp-hongkong": [
+      0.066947,
+      0,
+      1,
+      0.958309
     ]
   },
   "videos": {
@@ -353,6 +365,10 @@
     "pets/119f090b-b625-4b3e-9ffd-107927c360c6-pandora/Q200.mp4": [
       1008,
       640
+    ],
+    "pets/vortex-hongkong/bg.mp4": [
+      912,
+      596
     ]
   }
 }

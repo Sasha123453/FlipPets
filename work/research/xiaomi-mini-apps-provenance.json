@@ -1,0 +1,32 @@
+{
+  "sourceCatalogue": "https://m.mi.com/appcard",
+  "listUrl": "https://cdn.cnbj1.fds.api.mi-img.com/ai-app-fe/appList.json",
+  "scope": "Original public demonstration HTML, not verified firmware/runtime identity; no translation or generator",
+  "cards": [
+    {
+      "source": "https://cdn.cnbj1.fds.api.mi-img.com/ai-app-fe/apps/1.html",
+      "asset": "miniapps/xiaomi/1.html",
+      "sha256": "92c9a05d3f725cda8639887ddbd9352eef9ded1c9d44a297c8a693745a24bc44"
+    },
+    {
+      "source": "https://cdn.cnbj1.fds.api.mi-img.com/ai-app-fe/apps/3.html",
+      "asset": "miniapps/xiaomi/3.html",
+      "sha256": "190752e7bfbddcb9516af97932596c599b6592cf81c9ae3612c6f7b661547157"
+    },
+    {
+      "source": "https://cdn.cnbj1.fds.api.mi-img.com/ai-app-fe/apps/5.html",
+      "asset": "miniapps/xiaomi/5.html",
+      "sha256": "f06cab695c3b711199eb3bd9f3bf8d60be8d4e49a28c82544751cdc8a261aa58"
+    }
+  ],
+  "retrievedDate": "2026-10-10",
+  "catalogueListSha256": "bb8a20ea23d6b14b4b7069f33a6b2d6b538b2a09c1d103c3923d68813f0c0a6e",
+  "officialFrontEndSha256": "66a7561a062b7a93659438c9bb474727d30df8c83ddec18d4639090594e798b9",
+  "offlineAudit": {
+    "externalScriptTags": false,
+    "externalStylesheets": false,
+    "assetsArraysEmpty": true,
+    "networkPrimitivesFound": [],
+    "scope": "Manual source read of these three exact hashes; Android host also denies network/file/content and native bridge"
+  }
+}

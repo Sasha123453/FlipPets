@@ -1,4 +1,27 @@
+## Импорт18Pro для1.1
+
+- [x] Проверить payload metadata и полные product/system_ext partition hashes; whole OTA ZIP остаётся неполным и не проверенным.
+- [x] Сравнить41 MRC по байтам и MAML. Все12 Charlie PAG идентичны17Pro: срез причёски не исправлен.
+- [x] Выборочно добавить4 canonical Butterflycarp сцены, Vortex фон и эффект карточки:6 distinct media, без дублей других encoded variants.
+- [x] Реально декодировать9 исходных PAG и2 MP4 кадра. Это source evidence; final APK runtime checks отдельно.
+- [ ] Проверить новые сцены, fade transitions и размещение возле камер на реальном MIX Flip.
+- [ ] Дополнительные темы: CN18Pro содержит online rear-screen магазин. Исследовать легальный выбранный файл/экспорт и безопасный offline import поддерживаемого MRC. Не обещать магазин на EEA MIX или автоматически исполнять неизвестные MAML.
+
 # Flip Pets — текущие задачи
+
+## Мини-приложения и свой питомец
+
+- [x] Заполнить весь cover оригинальным responsive Canvas без чёрных полей; проверить реальные PixelCopy-снимки.
+- [x] Извлечь шесть штатных firmware MAML-карточек и подтвердить JsCanvas/QuickJS runtime; исходные три публичных примера в этих пакетах не найдены.
+- [ ] Найти проверенный MTZ/export именно Воды/Слов/Pomodoro и сравнить с публичными HTML; перенос native runtime ещё не выполнен.
+
+- [x] Вместо собственного прототипа перенести3 оригинальных публичных HTML-карточки Xiaomi: Фокус/Вода/Слова, с source SHA, явным Apply/Cancel, офлайн-изоляцией и освобождением скрытого рендера.
+- [ ] При необходимости отдельно локализовать китайские подписи/словарь и адаптировать Canvas accessibility, не называя изменённый вариант побайтно оригинальным.
+- [ ] Проверить новый UI, касания возле камер и расход на физическом MIX Flip.
+- [x] Подготовить первый KernelSU controller-модуль без framework/power/lockscreen изменений; root пока не установлен, phone QA отсутствует.
+- [ ] После появления KernelSU проверить UID0/SELinux/boot/Stop и точную EEA power-group политику, прежде чем обещать folded/main-off работу.
+- [x] Проследить донорский AI Companion image→image→video pipeline.
+- [ ] Подтвердить доступный генератор и настоящий результат «фото → свой анимированный питомец». Root не заменяет backend Xiaomi.
 
 ## Сейчас: геометрия раскрытого MIX Flip, без root
 
@@ -91,8 +114,9 @@ Prototype `work/folded-research/native-pag-wrap.py` добавляет внеш�
 
 ## Следующая версия: оригинальные ресурсы Xiaomi18Pro
 
-Отложено по просьбе пользователя04.10.2026. **В1.0 не импортировать.** Каталог и
-runtime пока сохраняют ресурсы17Pro/архивных presets.
+После новой инструкции пользователя «Тяни из18про»04.10.2026 загрузка и read-only
+research возобновлены. **Baseline1.0 не менять.** Выпуск1.1 рассматривается только
+для действительно новых совместимых ресурсов; apply/catalog/runtime пока не разрешены.
 
 - [x] Найден официальный hongkong OTA OS4.0.15.0.XFRCNXM; metadata подтверждает
   pre-devicehongkong и SDK37. Payload metadata SHA проверен, но полный ZIP и
@@ -102,9 +126,9 @@ runtime пока сохраняют ресурсы17Pro/архивных presets
   Неполный sparse ZIP/checkpoint/metadata/partition plan остаются в ignored
   `work/firmware`; не удалять перед продолжением и не использовать для прошивки.
 - [x] Готов `work/prepare_donor18.py` с read-only plan, media SHA dedup и сохранением
-  текущего каталога. Пять synthetic importer tests прошли; actual18Pro artwork
+  текущего каталога. Восемь synthetic importer tests прошли; actual18Pro artwork
   ещё не извлечён/не импортирован/не декодирован.
-- [ ] Возобновить загрузку и дождаться verified-extraction JSON обоих разделов:
+- [ ] Загрузка возобновлена; дождаться verified-extraction JSON обоих разделов:
   `python -X utf8 work/fetch_donor18.py --partitions product system_ext --workers 8`.
 - [ ] Создать EROFS product listing, запустить только import-plan. Exact media aliases
   не добавляют оформление; partial overlap использует старые asset paths. Baseline

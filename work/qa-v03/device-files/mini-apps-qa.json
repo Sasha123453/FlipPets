@@ -1,0 +1,117 @@
+{
+  "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
+  "tested": 27,
+  "failed": 0,
+  "results": [
+    {
+      "test": "original_water_sha",
+      "ok": true
+    },
+    {
+      "test": "original_words_sha",
+      "ok": true
+    },
+    {
+      "test": "original_focus_sha",
+      "ok": true
+    },
+    {
+      "test": "off_by_default",
+      "ok": true
+    },
+    {
+      "test": "dialog_browse",
+      "ok": true
+    },
+    {
+      "test": "draft_no_writes",
+      "ok": true
+    },
+    {
+      "test": "cancel_preserves_cover",
+      "ok": true
+    },
+    {
+      "test": "apply_water",
+      "ok": true
+    },
+    {
+      "test": "hidden_pet_released",
+      "ok": true
+    },
+    {
+      "test": "no_pet_frame_loop",
+      "ok": true
+    },
+    {
+      "test": "offline_restrictions",
+      "ok": true
+    },
+    {
+      "test": "original_canvas_ready",
+      "ok": true
+    },
+    {
+      "test": "no_native_bridge",
+      "ok": true
+    },
+    {
+      "test": "water_real_touch",
+      "ok": true
+    },
+    {
+      "test": "water_webview_recreation_persists",
+      "ok": true
+    },
+    {
+      "test": "tab_focus",
+      "ok": true
+    },
+    {
+      "test": "focus_real_start_touch",
+      "ok": true
+    },
+    {
+      "test": "focus_no_frame_writes",
+      "ok": true
+    },
+    {
+      "test": "focus_pause_touch",
+      "ok": true
+    },
+    {
+      "test": "tab_words",
+      "ok": true
+    },
+    {
+      "test": "original_word_deck",
+      "ok": true
+    },
+    {
+      "test": "word_unknown_real_touch",
+      "ok": true
+    },
+    {
+      "test": "word_known_real_touch",
+      "ok": true
+    },
+    {
+      "test": "stop_destroys_webview",
+      "ok": true
+    },
+    {
+      "test": "restart_restores_card",
+      "ok": true
+    },
+    {
+      "test": "return_to_pet",
+      "ok": true
+    },
+    {
+      "test": "preferences_restored",
+      "ok": true
+    }
+  ],
+  "skipped": [],
+  "environment": "Android emulator, original public Xiaomi HTML; no physical camera/HyperOS identity claim"
+}

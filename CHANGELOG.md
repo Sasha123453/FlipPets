@@ -1,5 +1,24 @@
 # Changes
 
+## 1.1
+
+- Verify the final APK with343 renderer/composition/UI/layout/donor/mini-app checks and6 virtual-cover lifecycle checks. Physical MIX Flip and KernelSU validation remain pending.
+
+- Fill the cover with the mini-app background using Xiaomi's responsive Canvas contract; retain proportional artwork/touch coordinates and unchanged bundled HTML. Make dialog previews portrait and capture real rendered pixels with PixelCopy.
+- Audit the donor native JsCanvas/QuickJS runtime and extract/hash six built-in MAML cards. Water/Vocabulary/Pomodoro remain public web examples; matching firmware packages have not been found.
+
+- Organize the gallery by 17 Pro, 18 Pro, personal photo/text templates and Xiaomi archive. Keep type filters/search/favorites within each collection; include mini-apps in 18 Pro with an explicit preview/Apply step.
+- Add three original public Xiaomi18Pro demonstration HTML cards: Water, CET6 vocabulary and Pomodoro. Original bytes/Chinese UI are retained with source hashes. Offline WebView hosting blocks networking and native bridges; Apply/Cancel is explicit, hidden pet resources stop, and hidden card WebViews are destroyed. This is an adaptation of the public examples, not verified native18Pro runtime identity.
+- Prepare an experimental KernelSU script module as an alternative controller, disabled until an explicit Action. No physical root, independent rear power or folded lockscreen verification is claimed.
+- Trace the donor photo-companion image→image→video pipeline. Photo-based AI pet creation is not implemented without a verified generation service.
+
+- Add six distinct donor18Pro media files: four Butterfly carp scenes, one Vortex background and the finite SmartAssistant card transition.33 catalogue entries/176 paths; the original1.0 catalogue entries retain their IDs and metadata.
+- Source-backed carp sequencing with500/100/300ms fades, native progress thresholds, local automatic scene selection and no automatic preference writes. Existing mode/scale/position controls and29 original digit PNGs are supported.
+- Full-canvas aspect-preserving background/effect geometry; no app clock or pet-size controls over Vortex/card effect. Manual effect playback ends after one pass.
+- Switching to MP4 releases the previous invisible PAG composition and cache.
+- Verify selected product/system_ext partition hashes and original archive/member bytes. Source PAG/video decode probes are separate from final-APK runtime QA. Complete OTA integrity and native HyperOS behavior are not inferred from these checks.
+- Record the actual Chinese18Pro online rear-screen Themes routes; online downloading/import is still pending.
+
 ## 1.0
 
 - Explicit per-pet With clock / Without clock modes. With clock retains the exact

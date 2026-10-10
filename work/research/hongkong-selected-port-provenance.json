@@ -1,0 +1,461 @@
+{
+  "schemaVersion": 1,
+  "baselineCatalogueSha256": "c55781ef5fe4f119ede203c1eeb96ddb2b8ddc16ce7bbe8f82d0844190eaf8cb",
+  "baselineCatalogueCanonicalSha256": "1fc3318d9e43f81f3bb05180006fede4bcf7d353951a93c1a59e29d26a785b30",
+  "baselineEntriesUnchanged": true,
+  "baselineEntryCount": 30,
+  "addedEntries": 3,
+  "addedMediaReferences": 6,
+  "addedUniqueMediaSha256": 6,
+  "partitionEvidence": [
+    {
+      "device": "hongkong",
+      "publicVersion": "OS4.0.15.0.XFRCNXM",
+      "officialArchiveUrl": "https://bigota.d.miui.com/OS4.0.15.0.XFRCNXM/hongkong-ota_full-OS4.0.15.0.XFRCNXM-user-17.0-6aad32ed35.zip",
+      "archiveSize": 12318005426,
+      "completeArchiveVerified": false,
+      "partition": "product",
+      "partitionBytes": 5672587264,
+      "partitionSha256": "f63831fadeddfd4b52407ff22e02ac8d17cce6ceb474c951c4fc13c214d09f63",
+      "operationHashesCheckedByPayloadDumper": true,
+      "partitionHashVerified": true
+    },
+    {
+      "device": "hongkong",
+      "publicVersion": "OS4.0.15.0.XFRCNXM",
+      "officialArchiveUrl": "https://bigota.d.miui.com/OS4.0.15.0.XFRCNXM/hongkong-ota_full-OS4.0.15.0.XFRCNXM-user-17.0-6aad32ed35.zip",
+      "archiveSize": 12318005426,
+      "completeArchiveVerified": false,
+      "partition": "system_ext",
+      "partitionBytes": 817614848,
+      "partitionSha256": "bd32916b4010f90ebaa077ef8685b9c6a84b57e0416e4645f6bae3bf072e239d",
+      "operationHashesCheckedByPayloadDumper": true,
+      "partitionHashVerified": true
+    }
+  ],
+  "entries": [
+    {
+      "id": "butterfly-carp-hongkong",
+      "name": "Butterfly carp · 18 Pro",
+      "kind": "ambient",
+      "renderRole": "pet",
+      "clips": {
+        "0": "pets/butterfly-carp-hongkong/pag_0.pag",
+        "1": "pets/butterfly-carp-hongkong/pag_1.pag",
+        "2": "pets/butterfly-carp-hongkong/pag_2.pag",
+        "3": "pets/butterfly-carp-hongkong/pag_3.pag"
+      },
+      "extra": [],
+      "gradientFrom": "#000000",
+      "gradientTo": "#000000",
+      "timeColor": "#AC2D2E",
+      "source": "Xiaomi 18 Pro OS4.0.15.0.XFRCNXM verified product.img",
+      "originalFile": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "originalSha256": "592059fff600673e02089cc0fc1d7c47cc97ce1310b010d562a0fea1a042ee11",
+      "clockStyle": "carp",
+      "playbackPolicy": "carp-sequence",
+      "transitionThresholds": {
+        "0": 0.9582753824756607,
+        "1": 0.9582753824756607,
+        "2": 0.95,
+        "3": 0.9496644295302014
+      },
+      "fadeOutMs": 500,
+      "fadeDelayMs": 100,
+      "fadeInMs": 300,
+      "carpSceneCount": 4,
+      "carpSelectionAttempts": 10,
+      "nativePauseProgress": 1,
+      "nativeAodPolicy": "finish then hold",
+      "sourceLayoutVariant": "pag_456x298",
+      "backgroundColor": "#000000",
+      "durationMs": {
+        "0": 11984,
+        "1": 11984,
+        "2": 10000,
+        "3": 9934
+      }
+    },
+    {
+      "id": "vortex-hongkong",
+      "name": "Vortex · анимированный фон",
+      "kind": "video",
+      "renderRole": "background",
+      "clips": {
+        "0": "pets/vortex-hongkong/bg.mp4"
+      },
+      "extra": [],
+      "gradientFrom": "#000000",
+      "gradientTo": "#000000",
+      "timeColor": "#AC2D2E",
+      "source": "Xiaomi 18 Pro OS4.0.15.0.XFRCNXM verified product.img",
+      "originalFile": "119f090b-b625-4b3e-9ffd-107927c360c6.mrc",
+      "originalSha256": "c6a45971b17954aae19ff0c230ad75ebf5b5c44743c4dc40d365f7dd0975c138",
+      "playbackPolicy": "loop-visible",
+      "nativeVideoLoop": true,
+      "nativeScaleMode": 2,
+      "adaptationNote": "Original animated background; native analogue clock/date/battery layers are not included",
+      "durationMs": {
+        "0": 5000
+      }
+    },
+    {
+      "id": "pin-hongkong",
+      "name": "Эффект карточки · 18 Pro",
+      "kind": "finite-preview",
+      "renderRole": "effect",
+      "clips": {
+        "0": "pets/pin-hongkong/pin_show.pag"
+      },
+      "extra": [],
+      "gradientFrom": "#000000",
+      "gradientTo": "#000000",
+      "timeColor": "#AC2D2E",
+      "source": "Xiaomi 18 Pro OS4.0.15.0.XFRCNXM verified product.img",
+      "originalFile": "subscreencenter.apk",
+      "originalSha256": "45bfcd3ecae8f7264b083248e88ad2c80bdfde39c9d511ce51b1f62f2649b55c",
+      "playbackPolicy": "finite-preview",
+      "manualOnly": true,
+      "nativeRepeatCount": 1,
+      "effectDeadlineMs": 3000,
+      "nativeScaleMode": 1,
+      "adaptationNote": "Manual preview of SmartAssistantPanel card enter animation; no NFC or automatic pin integration",
+      "durationMs": {
+        "0": 1000
+      }
+    }
+  ],
+  "assets": [
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/pag_0.pag",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/pag_456x298/pag_0.pag",
+      "bytes": 2005418,
+      "sha256": "f2fbfd8351bea657823b2d3a0f54b9b841a97be4de010c89fe47af3538ad6c7d",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/pag_1.pag",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/pag_456x298/pag_1.pag",
+      "bytes": 2545119,
+      "sha256": "8c05bdef38cb4d518b5552e6612f1d67cd205d35fe8553adb9f452a35d761ff1",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/pag_2.pag",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/pag_456x298/pag_2.pag",
+      "bytes": 1373331,
+      "sha256": "0dc093fa0e518fc2c7c37ebb995737f98050450162bac53b34572b45ad3531da",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/pag_3.pag",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/pag_456x298/pag_3.pag",
+      "bytes": 1013109,
+      "sha256": "636b5f6457dc04a91ff146670fc257eb3b4c3b1dc1aaac71ae3a4c4b96860dd0",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/hour_1/temp_8.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/hour_1/temp_8.png",
+      "bytes": 2000,
+      "sha256": "ce80611b2f2f5703918f2b34456e3d9d9c12c0eca7abd32ccdcf58f2ffe8290a",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/hour_1/temp_9.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/hour_1/temp_9.png",
+      "bytes": 1459,
+      "sha256": "526b2b37c7901961fa6e65dd24b6fcc87acc7b4b7dc08e953e31fd4c4c594918",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/hour_1/temp_4.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/hour_1/temp_4.png",
+      "bytes": 892,
+      "sha256": "d742c6a9d8c8b6cee9af969d54b785e79120c8a80cd8fba79a73f055518b7d0c",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/hour_1/temp_5.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/hour_1/temp_5.png",
+      "bytes": 1349,
+      "sha256": "70832f5b71d7fbac93eeee2b91b4bde491c6fb6fcc40362fdfaf015bbb41d2da",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/hour_1/temp_7.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/hour_1/temp_7.png",
+      "bytes": 805,
+      "sha256": "dd50a82fa4d27749baf91cbfb882854a8353d46647b9aa9ff2a7246bf48ef910",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/hour_1/temp_6.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/hour_1/temp_6.png",
+      "bytes": 1433,
+      "sha256": "2496d6c52fdef82c361a32a3a5602a8870213dd2becc6d3ede70236cc303aaff",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/hour_1/temp_2.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/hour_1/temp_2.png",
+      "bytes": 1305,
+      "sha256": "67d347644277dcf754f70b18a5230fdec61b263595f1c9766b34c74cb1a88d9b",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/hour_1/temp_3.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/hour_1/temp_3.png",
+      "bytes": 1740,
+      "sha256": "be43099eb5677e9af57e65d8586100336d389e34ec0ceb83dc1956f6cfa63d9a",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/hour_1/temp_1.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/hour_1/temp_1.png",
+      "bytes": 1424,
+      "sha256": "38041579122261d5c98c7a9d0c8b4df5a7213c9a861f6798b4f6b81f5cd6d681",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/hour_1/temp_0.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/hour_1/temp_0.png",
+      "bytes": 1285,
+      "sha256": "ba01cd9be6dd8bf11cc59e0ed48451adf8f4456ad39d669828b81865641928b9",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/hour_0/temp_2.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/hour_0/temp_2.png",
+      "bytes": 1305,
+      "sha256": "67d347644277dcf754f70b18a5230fdec61b263595f1c9766b34c74cb1a88d9b",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/hour_0/temp_1.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/hour_0/temp_1.png",
+      "bytes": 1424,
+      "sha256": "38041579122261d5c98c7a9d0c8b4df5a7213c9a861f6798b4f6b81f5cd6d681",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/hour_0/temp_0.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/hour_0/temp_0.png",
+      "bytes": 1285,
+      "sha256": "ba01cd9be6dd8bf11cc59e0ed48451adf8f4456ad39d669828b81865641928b9",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/minute_0/temp_4.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/minute_0/temp_4.png",
+      "bytes": 902,
+      "sha256": "6e757a261a4bf068c7f70fa6a87520e0838e5beb3bcfa44d61cf7aaa56746314",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/minute_0/temp_5.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/minute_0/temp_5.png",
+      "bytes": 1366,
+      "sha256": "913b88c5a4ff302a0e67c30283921da7ec6a0fc9776f6f6b40f9f1d19931e61d",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/minute_0/temp_2.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/minute_0/temp_2.png",
+      "bytes": 1309,
+      "sha256": "7b082579411a69f1c6c6011e94c2fa463a208af4a69fb7da2d37e4cbe463d52f",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/minute_0/temp_3.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/minute_0/temp_3.png",
+      "bytes": 1686,
+      "sha256": "dd14cdc6d7c62b1356f5265cf8c42722f32d05d0ac03e5e634327dca5a04a13b",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/minute_0/temp_1.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/minute_0/temp_1.png",
+      "bytes": 1440,
+      "sha256": "40344a0181723dd293e463055e081da111cc80ab910ffc2f72a1941844adfc0e",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/minute_0/temp_0.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/minute_0/temp_0.png",
+      "bytes": 1311,
+      "sha256": "95f44c10030710296df173e7e29788e31541f318defb4979ee4ff2994bf34e2c",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/minute_1/temp_8.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/minute_1/temp_8.png",
+      "bytes": 2008,
+      "sha256": "972250f2da2d5cf2074d2602953ff779ea5d52adc5bd6c34b2026f2a2259517f",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/minute_1/temp_9.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/minute_1/temp_9.png",
+      "bytes": 1472,
+      "sha256": "2bb671bf4986e12af2e18aef07c89a325716184d48b42fdd10803fd500ca2e11",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/minute_1/temp_4.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/minute_1/temp_4.png",
+      "bytes": 902,
+      "sha256": "6e757a261a4bf068c7f70fa6a87520e0838e5beb3bcfa44d61cf7aaa56746314",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/minute_1/temp_5.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/minute_1/temp_5.png",
+      "bytes": 1366,
+      "sha256": "913b88c5a4ff302a0e67c30283921da7ec6a0fc9776f6f6b40f9f1d19931e61d",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/minute_1/temp_7.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/minute_1/temp_7.png",
+      "bytes": 817,
+      "sha256": "07e56a002b4aa8659679ae303d813009487612eb89ce097a43bcf54ff6ac993a",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/minute_1/temp_6.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/minute_1/temp_6.png",
+      "bytes": 1474,
+      "sha256": "fd38a003ffecdbf7d16184e3ba323d03a34dd07b5443baca2cacde90084faa11",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/minute_1/temp_2.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/minute_1/temp_2.png",
+      "bytes": 1309,
+      "sha256": "7b082579411a69f1c6c6011e94c2fa463a208af4a69fb7da2d37e4cbe463d52f",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/minute_1/temp_3.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/minute_1/temp_3.png",
+      "bytes": 1686,
+      "sha256": "dd14cdc6d7c62b1356f5265cf8c42722f32d05d0ac03e5e634327dca5a04a13b",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/minute_1/temp_1.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/minute_1/temp_1.png",
+      "bytes": 1440,
+      "sha256": "40344a0181723dd293e463055e081da111cc80ab910ffc2f72a1941844adfc0e",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/butterfly-carp-hongkong/desk/minute_1/temp_0.png",
+      "sourceArchive": "e23e7933-0bd7-4d6e-9165-aae505e389cc.mrc",
+      "sourceMember": "assets/digits/desk/minute_1/temp_0.png",
+      "bytes": 1311,
+      "sha256": "95f44c10030710296df173e7e29788e31541f318defb4979ee4ff2994bf34e2c",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/vortex-hongkong/bg.mp4",
+      "sourceArchive": "119f090b-b625-4b3e-9ffd-107927c360c6.mrc",
+      "sourceMember": "assets/hongkong/bg.mp4",
+      "bytes": 5640962,
+      "sha256": "dec6963ec0f3462e49c64d054b7374f2c257409695bc81d48f220fb40febddcb",
+      "byteIdentical": true
+    },
+    {
+      "assetPath": "pets/pin-hongkong/pin_show.pag",
+      "sourceArchive": "subscreencenter.apk",
+      "sourceMember": "assets/pin_show.pag",
+      "bytes": 954020,
+      "sha256": "566424b867d98bf5e84f8eb8afa6f368332fb7877b5a7378503943358ae159b2",
+      "byteIdentical": true
+    }
+  ],
+  "thumbnails": [
+    {
+      "pet": "butterfly-carp-hongkong",
+      "assetPath": "thumbs/butterfly-carp-hongkong.webp",
+      "inputSha256": "abc8d89f7230ce5d47e92f2ea5706bcaea14c05a57401e84c3d412cc595117ee",
+      "inputSize": [
+        456,
+        298
+      ],
+      "sha256": "2f9afc8fbd6e8e02cfbcfe805b7fdecc61ea78e6f7b583f5962c87bf8e33d6d3",
+      "sourceMediaSha256": "f2fbfd8351bea657823b2d3a0f54b9b841a97be4de010c89fe47af3538ad6c7d",
+      "sourceProbeSha256": "933f1a5a88a8c8401a0d1dd83f3056bb23e49eaecd5b2be706794f2e33e67f62",
+      "rendererApkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
+      "sourceRequirement": "Caller-provided actual decoded original donor media frame; not a mockup"
+    },
+    {
+      "pet": "vortex-hongkong",
+      "assetPath": "thumbs/vortex-hongkong.webp",
+      "inputSha256": "e62197b95e519712e60115ab033c0fa2861638098b891fe88cbaa567999ee4ad",
+      "inputSize": [
+        512,
+        335
+      ],
+      "sha256": "b0f9d486cfc766dff37ace7a5cbeae2054011f4199d435a5c01cb33e14981605",
+      "sourceMediaSha256": "dec6963ec0f3462e49c64d054b7374f2c257409695bc81d48f220fb40febddcb",
+      "sourceProbeSha256": "20dbd82afbb02c59891528fed725497b1936b7106dfce0226d3fb815eaad2eb8",
+      "rendererApkSha256": null,
+      "sourceRequirement": "Caller-provided actual decoded original donor media frame; not a mockup"
+    },
+    {
+      "pet": "pin-hongkong",
+      "assetPath": "thumbs/pin-hongkong.webp",
+      "inputSha256": "2045ee3e5c3d120296b90d421e059dfc9ac37977d8c118dd26a3d5ba64b33493",
+      "inputSize": [
+        488,
+        298
+      ],
+      "sha256": "c689b9284f13401c9194f7a1ba5121ff1bcfda6f66ecc0146f673f7d5c6327fe",
+      "sourceMediaSha256": "566424b867d98bf5e84f8eb8afa6f368332fb7877b5a7378503943358ae159b2",
+      "sourceProbeSha256": "933f1a5a88a8c8401a0d1dd83f3056bb23e49eaecd5b2be706794f2e33e67f62",
+      "rendererApkSha256": "c436227e411811eaef00df587914525b071893545f97e7ccacdb253ab9c94e3b",
+      "sourceRequirement": "Caller-provided actual decoded original donor media frame; not a mockup"
+    }
+  ],
+  "nativePinEvidence": "Verified SubscreenCenter SmartAssistantPanel.s creates PAGView, setRepeatCount(1), listener/play and 3000ms cleanup fallback",
+  "limits": "Source import only, not MAML-engine transplant or runtime/device verification. Vortex is background only. Pin is manual card-effect preview. Complete OTA archive unverified.",
+  "resultCatalogueSha256": "f1b7961861f84e80028995688126e033714172f3b1d4d04a0a1234a3be13b752",
+  "mamlSha256": {
+    "hongkong-maml/e23e7933-0bd7-4d6e-9165-aae505e389cc.xml": "82a1617dc7f7fb7972571a827add4da81b45f67ade5a60ce254d3a8c5e2e3eac",
+    "hongkong-maml/119f090b-b625-4b3e-9ffd-107927c360c6.xml": "bc380987622251f9d86d6ed9d056ded34f8bce7121a5568a43e44677a4a81e3b"
+  }
+}

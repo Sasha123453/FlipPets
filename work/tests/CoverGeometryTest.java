@@ -49,6 +49,15 @@ public final class CoverGeometryTest {
         PetLayoutProfile bad=new PetLayoutProfile(true,Float.NaN,Float.POSITIVE_INFINITY,Float.NaN);near(1,bad.scale,0,"invalid manual scale default");near(0,bad.x,0,"invalid manual x default");near(0,bad.y,0,"invalid manual y default");
         PetLayoutProfile limited=new PetLayoutProfile(false,999,-999,999);near(1.6f,limited.scale,0,"manual scale bounded");near(-.25f,limited.x,0,"manual x bounded");near(.25f,limited.y,0,"manual y bounded");
         for(float[] invalid:new float[][]{null,{Float.NaN,0,1,1},{2,0,3,1},{0,0,0,0}}){CoverGeometry.Placement p=CoverGeometry.profile(1208,1392,976,596,invalid,9999,.34f,null,new PetLayoutProfile(true,1,0,0));yes(p.scale>0&&Float.isFinite(p.x)&&Float.isFinite(p.y),"clockless malformed metadata remains finite");}
+        float[] carpFocus={.30f,0,1,.97f};
+        for(int[] screen:screens){int w=screen[0],h=screen[1];
+            CoverGeometry.Placement clock=CoverGeometry.profile(w,h,912,596,carpFocus,w*.329f,.34f,"butterfly-carp-hongkong",PetLayoutProfile.CLOCK);
+            CoverGeometry.Placement large=CoverGeometry.profile(w,h,912,596,carpFocus,w*.329f,.34f,"butterfly-carp-hongkong",new PetLayoutProfile(true,1,0,0));
+            yes(large.scale>=clock.scale,"carp clockless not smaller");near(h,large.y+.97f*596*large.scale,.03f,"carp bottom anchor");
+            CoverGeometry.Placement canvas=CoverGeometry.canvas(w,h,912,596);
+            yes(canvas.x<=.01f&&canvas.y<=.01f&&canvas.x+912*canvas.scale>=w-.01f&&canvas.y+596*canvas.scale>=h-.01f,"full background covers canvas");
+            near(w/2f,canvas.x+912*canvas.scale/2,.01f,"canvas x centered");near(h/2f,canvas.y+596*canvas.scale/2,.01f,"canvas y centered");
+        }
         System.out.println("CoverGeometry: "+assertions+" assertions passed");
     }
 }

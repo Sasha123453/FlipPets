@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<style>html,body{margin:0;background:#000;width:100%;height:100%;overflow:hidden}canvas{display:block;width:100%;height:100%;touch-action:none}</style>
+<canvas id="c" width="976" height="596"></canvas>
+<script>
+const cv=document.getElementById('c'),ctx=cv.getContext('2d');;/* [responsive] W/H 取实际视口：设备上 window.CANVAS_W={976,596}；浏览器没有该变量，退回 cv.width/2（index.html 的 canvas 是 1952x1192，CSS 显示 912x596）*/const W=(typeof window!=="undefined"&&window.CANVAS_W)||cv.width,H=(typeof window!=="undefined"&&window.CANVAS_H)||cv.height,CAM=Math.floor(W/3);
+
+// 业务配置与状态
+const APP_W = W - CAM;
+const CX = CAM + APP_W * 0.4457;
+/* 三尺寸自适应：绘制统一 translate(DX,DY)+scale(FIT,FIT)，命中用同一组参数逆变换。 */
+const BASE_W=912,BASE_H=596,BASE_CAM=Math.floor(BASE_W/3),
+      FIT=Math.min((W-CAM)/(BASE_W-BASE_CAM),H/BASE_H),
+      DX=Math.round(CX-CX*FIT),
+      DY=Math.round((H-BASE_H*FIT)/2); // 杯子中心：安全区(CAM~W)内约44.6%处，与原设计(912宽度下cx=575)视觉比例一致
+const state = {
+  cups: 0,
+  goal: 8,
+  targetDays: 0,
+  streakDays: 0,
+  waterLevelAnim: 0,
+  particles: [],
+  celebrate: 0,       // 庆祝特效计时（>0 时播放）
+  confetti: []         // 庆祝彩带粒子
+};
+
+/* ========== 打卡进度持久化 ==========
+   产品要求：记住今天喝了多少杯，第二天回到 0 杯。
+   存两样就够：cups 和「哪一天」。dayKey 用本地日期 YYYYMMDD，
+   比存时间戳可靠 —— 只要日历日变了就该清零，不用关心时区偏移和跨月跨年。
+   celebrate / confetti / particles 一概不存：那是瞬时动画量，
+   存了会让重新进卡片时凭空重播一次庆祝特效。
+   任何一步失败都静默降级成「从 0 杯开始」，存档丢了顶多重新打卡，不能因此白屏。 */
+const LS_KEY = 'water_progress_v1';
+
+function dayKey(){
+  const d = new Date();
+  return d.getFullYear()*10000 + (d.getMonth()+1)*100 + d.getDate();
+}
+
+function saveProgress(){
+  try{
+    localStorage.setItem(LS_KEY, JSON.stringify({ cups: state.cups, day: dayKey() }));
+  }catch(e){ /* 存不进去就算了，不影响本次使用 */ }
+}
+
+function loadProgress(){
+  try{
+    const raw = localStorage.getItem(LS_KEY);
+    if(!raw) return false;
+    const d = JSON.parse(raw);
+    if(!d || typeof d.cups !== 'number' || !isFinite(d.cups)) return false;   /* NaN 的 typeof 也是 number，必须额外挡 finite */
+    /* 存档是别的日子的 -> 直接不恢复，等于新的一天从 0 杯开始。
+       不在这里 setItem 清档：万一用户今天根本没点，留着旧档也没坏处，
+       第一次点「+1杯」时 saveProgress 自然会把 day 更新成今天。 */
+    if(d.day !== dayKey()) return false;
+    state.cups = Math.max(0, Math.min(d.cups, state.goal));
+    state.waterLevelAnim = Math.min(1.1, state.cups/state.goal);  // 水位直接到位，不从空杯涨一次
+    return true;
+  }catch(e){ return false; }
+}
+
+/* 卡片可能一直亮着跨过 0 点，所以运行中也要盯着日期变化。
+   每 5 秒查一次就够（日期不会在两次检查之间变两回），
+   每帧都 new Date() 是 30 次/秒的白开销。 */
+let lastDayCheck = 0;
+let curDay = dayKey();
+function checkDayRollover(t){
+  if(t - lastDayCheck < 5) return;
+  lastDayCheck = t;
+  const now = dayKey();
+  if(now === curDay) return;
+  curDay = now;
+  state.cups = 0;
+  state.waterLevelAnim = 0;
+  state.celebrate = 0;
+  state.confetti.length = 0;
+  state.particles.length = 0;
+  saveProgress();
+}
+
+/* 玻璃杯几何：圆角矩形发光杯，四角圆角、侧壁近竖直 */
+const GLASS = { cx: CX, topY: 138, botY: 412, topHW: 112, botHW: 84, r: 34 };
+
+// ===== 布局：图形与文字共用同一份坐标，避免各写一份导致错位 =====
+const TITLE_CX = CX;                      // 标题与主体玻璃杯同心
+const BTN_W = 330, BTN_H = 66, BTN_Y = 505;
+const BTN_X = CX - BTN_W / 2;
+const DROP_R = 12, DROP_CY = 465, DROP_SPAN = 400;
+const DROP_START_X = CX - DROP_SPAN / 2;
+
+if(typeof data==='undefined'){const D=()=>new Date();window.data={
+ get hour24(){return D().getHours()},get hour12(){return D().getHours()%12||12},
+ get minute(){return D().getMinutes()},get second(){return D().getSeconds()},
+ get ampm(){return D().getHours()<12?0:1},time_format:1,
+ get year(){return D().getFullYear()},get month(){return D().getMonth()+1},
+ get date(){return D().getDate()},get day_of_week(){return D().getDay()+1},
+ year_lunar:'',month_lunar:'',date_lunar:'',battery_level:80,battery_plugged:0,
+ screen_width:W,screen_height:H,orientation:0,
+ hasweather:0,hasSteps:0,mi_step:null,mi_steps_goal:0,cal_count:0,cd_count:0,city_count:0,todo_count:0,note_count:0};}
+
+const ASSETS=[];
+try{window.__DIAL_ASSETS_SPEC=ASSETS;}catch(e){}
+const __IMG={};
+function IMG(id){const o=__IMG[id];return o&&o.ok?o.im:null;}
+(function(){const m=(typeof window!=='undefined'&&window.__DIAL_ASSETS)||{};
+ for(const k in m){const im=new Image(),o={im:im,ok:false};__IMG[k]=o;
+  const ready=()=>{o.ok=true;};
+  im.onload=()=>{ready();if(im.decode)im.decode().then(ready,ready);};
+  im.onerror=()=>{o.ok=false;};im.src=m[k];}})();
+function paintAssetBg(){for(const a of ASSETS){if(!a||!a.bg)continue;const im=IMG(a.id);if(!im||!im.width)continue;
+ const s=Math.max(W/im.width,H/im.height),w=im.width*s,h=im.height*s;ctx.drawImage(im,(W-w)/2,(H-h)/2,w,h);}}
+
+const hits=[];let hover=null,press=null,last=0;
+function addHit(a,b,c,d,e){if(a&&typeof a==='object')hits.push({x:a.x,y:a.y,w:a.w,h:a.h,id:b});else hits.push({x:a,y:b,w:c,h:d,id:e});}
+
+function spawnSplash(){
+  for(let i=0; i<16; i++){
+    const ang=Math.random()*Math.PI*2;
+    const spd=40+Math.random()*90;
+    state.particles.push({
+      x: GLASS.cx, y: 250,
+      vx: Math.cos(ang)*spd,
+      vy: Math.sin(ang)*spd-30,
+      r: 3+Math.random()*5,
+      life: 1.0
+    });
+  }
+}
+
+function update(dt,t){
+  checkDayRollover(t);
+  const targetRatio = Math.min(1.1, state.cups/state.goal);
+  state.waterLevelAnim += (targetRatio - state.waterLevelAnim) * Math.min(1, dt*5);
+
+  // 水花粒子
+  for(let i=state.particles.length-1; i>=0; i--){
+    const p = state.particles[i];
+    p.x += p.vx*dt;
+    p.y += p.vy*dt;
+    p.vy += 180*dt;
+    p.life -= dt*1.8;
+    if(p.life<=0) state.particles.splice(i,1);
+  }
+
+  // 庆祝彩带：下落 + 旋转，计时衰减
+  if(state.celebrate>0) state.celebrate = Math.max(0, state.celebrate-dt);
+  for(let i=state.confetti.length-1; i>=0; i--){
+    const c = state.confetti[i];
+    c.x += c.vx*dt;
+    c.y += c.vy*dt;
+    c.vy += 220*dt;
+    c.rot += c.vrot*dt;
+    c.life -= dt*0.7;
+    if(c.life<=0 || c.y>H+30) state.confetti.splice(i,1);
+  }
+}
+
+// 打卡满目标时的庆祝彩带
+function spawnCelebration(){
+  state.celebrate = 2.4;
+  const cols = ['#ffd54a', '#ff7bae', '#6be5ff', '#7dffab', '#c39bff', '#ff9a3c'];
+  for(let i=0; i<90; i++){
+    const ang = -Math.PI/2 + (Math.random()-0.5)*1.7;
+    const spd = 260 + Math.random()*340;
+    state.confetti.push({
+      x: GLASS.cx + (Math.random()-0.5)*120,
+      y: GLASS.topY + 30,
+      vx: Math.cos(ang)*spd,
+      vy: Math.sin(ang)*spd,
+      w: 7+Math.random()*8,
+      h: 10+Math.random()*12,
+      rot: Math.random()*Math.PI*2,
+      vrot: (Math.random()-0.5)*12,
+      col: cols[(Math.random()*cols.length)|0],
+      life: 1.0
+    });
+  }
+}
+
+function drawRoundRect(x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r, y);
+  ctx.arcTo(x+w, y, x+w, y+h, r);
+  ctx.arcTo(x+w, y+h, x, y+h, r);
+  ctx.arcTo(x, y+h, x, y, r);
+  ctx.arcTo(x, y, x+w, y, r);
+  ctx.closePath();
+}
+
+/* 渐变缓存。宿主的 gradient cache 按对象引用识别，每帧 new 一个新对象就是每帧 miss、
+   要重算整条色带（flashcard 那次真机 bugreport 15000+ Frame dropped 就是这么来的）。
+   按「几何 + 色标」做 key 复用，参数相同直接命中。
+   ⚠️ 只有 key 取值有界的才能这么缓存 —— 坐标或颜色随时间连续变的每帧都是新 key，
+      既不命中、字典还会无限长。液面那处的起点是连续量，所以取整后再进 key。 */
+const _GC = {};
+function linear(x0, y0, x1, y1, stops) {
+  const _k = 'l|' + x0 + ',' + y0 + ',' + x1 + ',' + y1 + '|' + stops.join(';');
+  if (_GC[_k]) return _GC[_k];
+  const g = _GC[_k] = ctx.createLinearGradient(x0, y0, x1, y1);
+  for (const [o, c] of stops) g.addColorStop(o, c);
+  return g;
+}
+function radial(x0, y0, r0, x1, y1, r1, stops) {
+  const _k = 'r|' + x0 + ',' + y0 + ',' + r0 + ',' + x1 + ',' + y1 + ',' + r1 + '|' + stops.join(';');
+  if (_GC[_k]) return _GC[_k];
+  const g = _GC[_k] = ctx.createRadialGradient(x0, y0, r0, x1, y1, r1);
+  for (const [o, c] of stops) g.addColorStop(o, c);
+  return g;
+}
+// 背景：对角线渐变 + 右下角青绿光晕 + 左上角压黑
+function paintBg(t){
+  const bgGrad = linear(0, 0, W, H, [[0, '#05070f'], [0.28, '#0a1c3e'], [0.58, '#123a78'], [0.82, '#1774a6'], [1, '#1fae9e']]);
+  ctx.fillStyle = bgGrad;
+  ctx.fillRect(0, 0, W, H);
+
+  ctx.save();
+  ctx.globalCompositeOperation = 'lighter';
+  const glow = radial(W-10, H+10, 10, W-10, H+10, 620, [[0, 'rgba(58, 240, 205, 0.55)'], [0.35, 'rgba(45, 200, 190, 0.28)'], [0.7, 'rgba(40, 150, 200, 0.08)'], [1, 'rgba(40, 150, 200, 0)']]);
+  ctx.fillStyle = glow;
+  ctx.fillRect(0, 0, W, H);
+
+  ctx.globalCompositeOperation = 'source-over';
+  const dark = radial(40, 20, 20, 40, 20, 640, [[0, 'rgba(2, 4, 10, 0.72)'], [0.6, 'rgba(2, 4, 10, 0.18)'], [1, 'rgba(2, 4, 10, 0)']]);
+  ctx.fillStyle = dark;
+  ctx.fillRect(0, 0, W, H);
+  ctx.restore();
+}
+
+/* 玻璃杯轮廓：圆角矩形（四角全圆角、侧壁近竖直） */
+function glassPath(inset){
+  const cx = GLASS.cx, topY = GLASS.topY+inset, botY = GLASS.botY-inset;
+  const tHW = GLASS.topHW-inset, bHW = GLASS.botHW-inset;
+  const r = Math.max(8, GLASS.r-inset);
+  const lTop = cx-tHW, rTop = cx+tHW, lBot = cx-bHW, rBot = cx+bHW;
+  ctx.beginPath();
+  ctx.moveTo(lTop+r, topY);
+  ctx.lineTo(rTop-r, topY);
+  ctx.arcTo(rTop, topY, rBot, botY, r);
+  ctx.lineTo(rBot, botY-r);
+  ctx.arcTo(rBot, botY, rBot-r, botY, r);
+  ctx.lineTo(lBot+r, botY);
+  ctx.arcTo(lBot, botY, lBot, botY-r, r);
+  ctx.lineTo(lTop, topY+r);
+  ctx.arcTo(lTop, topY, lTop+r, topY, r);
+  ctx.closePath();
+}
+
+/* 水滴形状：上尖下圆。cy 为下部圆心，r 为圆半径 */
+function drawDrop(cx,cy,r){
+  const tipY = cy - r*2.05;
+  ctx.beginPath();
+  ctx.moveTo(cx, tipY);
+  ctx.bezierCurveTo(cx+r*0.62, cy-r*1.25, cx+r, cy-r*0.5, cx+r, cy);
+  ctx.arc(cx, cy, r, 0, Math.PI, false);
+  ctx.bezierCurveTo(cx-r, cy-r*0.5, cx-r*0.62, cy-r*1.25, cx, tipY);
+  ctx.closePath();
+}
+
+function paintShapes(t){
+  const cx = GLASS.cx;
+
+  // 1. 水杯：圆角矩形玻璃杯 + 竖向渐变水体 + 波浪面
+  const glassBotY = GLASS.botY, glassTopY = GLASS.topY, totalH = glassBotY-glassTopY;
+
+  ctx.save();
+  glassPath(0);
+  const bodyGrad = linear(0, glassTopY, 0, glassBotY, [[0, 'rgba(120, 175, 230, 0.10)'], [1, 'rgba(150, 200, 245, 0.20)']]);
+  ctx.fillStyle = bodyGrad;
+  ctx.fill();
+  ctx.restore();
+
+  ctx.save();
+  glassPath(10);
+  ctx.clip();
+
+  const waterH = totalH * Math.max(0.02, state.waterLevelAnim);
+  const currentWaterY = glassBotY - waterH;
+  const L = cx-GLASS.topHW-16, Rr = cx+GLASS.topHW+16;
+  const waveAmp = 9, waveFreq = 0.017, sway = state.celebrate>0 ? 1.8 : 1;
+
+  const surfaceY = (px) =>
+    currentWaterY
+    + Math.sin(px*waveFreq + t*1.6) * waveAmp * sway
+    + Math.sin(px*waveFreq*2.3 + t*2.4) * (waveAmp*0.4);
+
+  const liquidGrad = linear(0, Math.round(currentWaterY)-10, 0, glassBotY, [[0, '#d3f2ff'], [0.45, '#8fd2fb'], [1, '#6fb3f2']]);
+  ctx.fillStyle = liquidGrad;
+  ctx.beginPath();
+  ctx.moveTo(L, glassBotY+12);
+  ctx.lineTo(L, surfaceY(L));
+  for(let px=L; px<=Rr; px+=6) ctx.lineTo(px, surfaceY(px));
+  ctx.lineTo(Rr, glassBotY+12);
+  ctx.closePath();
+  ctx.fill();
+
+  // 波峰下方的深蓝色带
+  ctx.fillStyle = 'rgba(30, 96, 200, 0.55)';
+  ctx.beginPath();
+  ctx.moveTo(L, surfaceY(L));
+  for(let px=L; px<=Rr; px+=6) ctx.lineTo(px, surfaceY(px));
+  for(let px=Rr; px>=L; px-=6) ctx.lineTo(px, surfaceY(px)+18);
+  ctx.closePath();
+  ctx.fill();
+
+  for(const p of state.particles){
+    ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0, p.life)})`;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+    ctx.fill();
+  }
+  ctx.restore();
+
+  // 杯身描边
+  ctx.save();
+  ctx.shadowColor = 'rgba(96, 150, 240, 0.8)';
+  ctx.shadowBlur = 20;
+  glassPath(0);
+  ctx.strokeStyle = 'rgba(120, 172, 248, 0.95)';
+  ctx.lineWidth = 7.5;
+  ctx.lineJoin = 'round';
+  ctx.lineCap = 'round';
+  ctx.stroke();
+  ctx.restore();
+
+  // 3. 水杯下方一排水滴：共 goal 颗，已喝的高亮实色，未喝的只有虚化阴影
+  const dropCount = state.goal;
+  const filled = Math.min(state.cups, dropCount);
+  for(let i=0; i<dropCount; i++){
+    const dx = DROP_START_X + (DROP_SPAN/(dropCount-1))*i;
+    const isFilled = i < filled;
+
+    if(isFilled){
+      ctx.save();
+      ctx.shadowColor = 'rgba(90, 190, 255, 0.55)';
+      ctx.shadowBlur = 12;
+      const dg = linear(dx, DROP_CY-DROP_R*2, dx, DROP_CY+DROP_R, [[0, 'rgba(205, 238, 255, 0.98)'], [0.5, 'rgba(120, 195, 245, 0.96)'], [1, 'rgba(60, 140, 220, 0.94)']]);
+      drawDrop(dx, DROP_CY, DROP_R);
+      ctx.fillStyle = dg;
+      ctx.fill();
+      ctx.restore();
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+      ctx.beginPath();
+      ctx.ellipse(dx-DROP_R*0.32, DROP_CY-DROP_R*0.15, DROP_R*0.22, DROP_R*0.34, -0.5, 0, Math.PI*2);
+      ctx.fill();
+    } else {
+      const eg = linear(dx, DROP_CY-DROP_R*2, dx, DROP_CY+DROP_R, [[0, 'rgba(150, 195, 235, 0.42)'], [1, 'rgba(80, 130, 190, 0.38)']]);
+      drawDrop(dx, DROP_CY, DROP_R);
+      ctx.fillStyle = eg;
+      ctx.fill();
+      drawDrop(dx, DROP_CY, DROP_R);
+      ctx.strokeStyle = 'rgba(175, 210, 245, 0.6)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+  }
+
+  // 4. 底部主按钮 "+1杯"（蓝→绿 横向渐变胶囊）
+  const isPress = press==='add', isHover = hover==='add';
+  const oy = isPress ? 3 : 0;
+
+  ctx.save();
+  ctx.shadowColor = 'rgba(45, 200, 180, 0.5)';
+  ctx.shadowBlur = 24;
+  ctx.shadowOffsetY = 6;
+  drawRoundRect(BTN_X, BTN_Y+oy, BTN_W, BTN_H, BTN_H/2);
+  const btnGrad = linear(BTN_X, BTN_Y, BTN_X+BTN_W, BTN_Y, [[0, isHover ? '#2f6fd6' : '#2a5fc4'], [0.5, '#33a6cf'], [1, isHover ? '#9df0b8' : '#8ae8a8']]);
+  ctx.fillStyle = btnGrad;
+  ctx.fill();
+  ctx.restore();
+
+  addHit(BTN_X, BTN_Y, BTN_W, BTN_H, 'add');
+
+  // 5. 庆祝彩带（打卡满目标时，画在最上层）
+  for(const c of state.confetti){
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, Math.min(1, c.life));
+    ctx.translate(c.x, c.y);
+    ctx.rotate(c.rot);
+    ctx.fillStyle = c.col;
+    ctx.fillRect(-c.w/2, -c.h/2, c.w, c.h);
+    ctx.restore();
+  }
+}
+
+function paintText(t){
+  ctx.textBaseline = 'middle';
+
+  // 标题 "喝水打卡"：左对齐，与下方第一颗水滴左边缘对齐（产品要求，原来居中对不上）
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 44px "PingFang SC", system-ui, sans-serif';
+  ctx.save();
+  ctx.shadowColor = 'rgba(10, 30, 60, 0.5)';
+  ctx.shadowBlur = 10;
+  ctx.fillText('喝水打卡', DROP_START_X - DROP_R, 72);
+  ctx.restore();
+  ctx.textBaseline = 'middle';
+
+  // 按钮文字 "+1杯"（随按压做同步位移）
+  const oy = press==='add' ? 3 : 0;
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 34px "PingFang SC", system-ui, sans-serif';
+  ctx.save();
+  ctx.shadowColor = 'rgba(10, 40, 60, 0.35)';
+  ctx.shadowBlur = 4;
+  ctx.fillText('+1杯', CX, BTN_Y + BTN_H/2 + 2 + oy);
+  ctx.restore();
+
+  // 达标庆祝文字（落在标题底边与水杯之间的空白区）
+  if(state.celebrate > 0){
+    const a = Math.min(1, state.celebrate/0.4);
+    const pop = 1 + 0.10*Math.sin((2.4-state.celebrate)*10);
+    ctx.save();
+    ctx.globalAlpha = a;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.translate(CX, 120);
+    ctx.scale(pop, pop);
+    ctx.font = 'bold 26px "PingFang SC", system-ui, sans-serif';
+    ctx.shadowColor = 'rgba(255, 200, 60, 0.8)';
+    ctx.shadowBlur = 14;
+    ctx.fillStyle = '#ffe08a';
+    ctx.fillText('今日达标 🎉', 0, 0);
+    ctx.restore();
+  }
+}
+
+function onTap(id){
+  if(id === 'add'){
+    state.cups++;
+    if(state.cups === state.goal){
+      state.targetDays++;
+      state.streakDays++;
+      spawnCelebration();   // 打卡满 8 杯，放庆祝特效
+    }
+    if(state.cups > state.goal){
+      // 达标后再点则开启新一轮
+      state.cups = 1;
+    }
+    spawnSplash();
+    /* 背屏卡片随时可能被回收，没有「退出」事件可等，所以每次点完就落盘。 */
+    saveProgress();
+  }
+}
+
+function toLogic(e){const r=cv.getBoundingClientRect();const px=(e.clientX-r.left)/r.width*W,py=(e.clientY-r.top)/r.height*H;return{x:(px-DX)/FIT,y:(py-DY)/FIT};}
+function pick(p){for(let i=hits.length-1;i>=0;i--){const h=hits[i];if(p.x>=h.x&&p.x<=h.x+h.w&&p.y>=h.y&&p.y<=h.y+h.h)return h;}return null;}
+cv.addEventListener('pointermove',e=>{const h=pick(toLogic(e));hover=h?.id||null;cv.style.cursor=h?'pointer':'default';});
+cv.addEventListener('pointerdown',e=>{press=pick(toLogic(e))?.id||null;});
+cv.addEventListener('pointerup',e=>{const h=pick(toLogic(e));if(h&&h.id===press)onTap(h.id);press=null;});
+cv.addEventListener('pointerleave',()=>{hover=null;press=null;cv.style.cursor='default';});
+
+/* 帧率节流到 30：背屏常亮，功耗≈帧率×每帧绘制量，帧率是第一乘数。
+   manifest 的 frameRate 只是宿主刷新率，rAF 回调照旧按 60Hz 触发。
+   不可见时跳过整帧：列表页/息屏没必要画。 */
+const FRAME_MS=1000/30;let lastDraw=0;
+function frame(ms){
+  if(document.hidden){last=ms;requestAnimationFrame(frame);return;}
+  /* 纪元回退兜底：AOD 回来后 rAF 时间戳可能从 0 重算，而下面这个变量还是旧纪元的大数，差值恒为负、判据恒成立，frame() 会一直在这里 return，画面冻结时长≈息屏前已运行时长。 */if(ms<lastDraw)lastDraw=ms;if(ms-lastDraw<FRAME_MS){requestAnimationFrame(frame);return;}
+  const t=ms/1000,dt=last?Math.min((ms-last)/1000,0.05):0;last=ms;lastDraw=ms;update(dt,t);hits.length=0;
+  window.__DIAL_PHASE='bg';paintAssetBg();paintBg(t);
+  /* paintAssetBg/paintBg 铺满整屏、不参与变换；shapes/text 是内容层，统一走一组矩阵 */ctx.save();ctx.translate(DX,DY);ctx.scale(FIT,FIT);window.__DIAL_PHASE='shapes';paintShapes(t);
+  window.__DIAL_PHASE='text';paintText(t);ctx.restore();
+  window.__DIAL_PHASE='idle';requestAnimationFrame(frame);}
+loadProgress();   // 同一天内重进卡片接着算，跨天则从 0 杯开始
+requestAnimationFrame(frame);
+</script>
+</html>
