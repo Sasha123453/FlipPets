@@ -3,8 +3,11 @@ Flip Pets 1.1 — Xiaomi 17/18 Pro → MIX Flip, без root
 DEVELOPMENT CONTROLLER UPDATE — 11 October 2026
 The experimental KernelSU module waits up to ten minutes for unlocked app storage
 and never clears Stop during boot. Startup now waits for a child acknowledgement.
-Shizuku remains the default. Root ownership/migration and physical verification
-are unfinished; see docs/kernel-su-module.md. If the boot storage wait expires,
+Step 2 adds exact root process receipts and serialized module actions; a newer
+disable cancels an in-progress Start. Shizuku remains the default. Shared root/shell
+runtime files, update migration and physical verification remain unfinished;
+see docs/kernel-su-module.md. Legacy module markers require explicit Action.
+If the boot storage wait expires,
 unlock/open Flip Pets, use Action to turn the retained opt-in off, then Action
 again to explicitly start. This development APK needs fresh full release QA;
 the earlier 343-check release evidence does not validate the rebuilt APK.

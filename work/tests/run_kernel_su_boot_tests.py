@@ -7,6 +7,7 @@ from pathlib import Path
 import hashlib
 import json
 import subprocess
+import time
 
 ROOT = Path(__file__).resolve().parents[2]
 BASE = '/data/local/tmp/flip-pets-ksu-boot-fixture'
@@ -22,7 +23,7 @@ def adb(*args, ok=True):
 
 
 def shell(command, ok=True):
-    return adb('shell', command, ok=ok)
+    return adb('shell', 'umask 077\n' + command, ok=ok)
 
 
 assert shell('getprop ro.kernel.qemu').stdout.strip() == '1', 'Emulator required'
@@ -40,7 +41,20 @@ for old, new in replacements.items():
     raw = raw.replace(old, new)
 preamble = f'''#!/system/bin/sh
 TEST={BASE}
+FP_FIXTURE_ACTION=$1
 id() {{ echo 0; }}
+cat() {{
+ if [ "$1" = "$TEST/session-cancel" ] && [ "$FP_FIXTURE_ACTION" = boot ] && [ -f "$TEST/stale_boot" ] && [ ! -f "$TEST/snapshot_taken" ]; then
+  old=$(command cat "$1"); touch "$TEST/snapshot_taken"
+  for i in $(seq 1 250); do [ -f "$TEST/release_snapshot" ] && break; command sleep 0.02; done
+  echo "$old"
+ else command cat "$@"; fi
+}}
+stat() {{
+ if [ "$1" = -c ] && [ "$2" = '%u' ]; then
+  if [ -f "$TEST/wrong_uid" ] && [ "${{3#/proc/}}" != "$3" ]; then echo 2000; else echo 0; fi
+ else command stat "$@"; fi
+}}
 getprop() {{ cat "$TEST/device"; }}
 pm() {{ [ ! -f "$TEST/no_package" ] && echo package:/fixture/FlipPets.apk; }}
 cmd() {{
@@ -48,6 +62,7 @@ cmd() {{
  if [ -f "$TEST/unlocked" ]; then echo true; else echo false; fi
 }}
 sleep() {{
+ [ "$1" = 5 ] || {{ command sleep 0.02; return; }}
  n=$(cat "$TEST/sleeps" 2>/dev/null || echo 0); echo $((n+1)) > "$TEST/sleeps"
  case "$(cat "$TEST/during_wait" 2>/dev/null)" in
  unlock) mkdir -p "$TEST/appfiles"; touch "$TEST/unlocked" ;;
@@ -63,6 +78,24 @@ fixture_controller() {{
  if [ -f "$TEST/concurrent_stop" ]; then touch "$TEST/appfiles/controller-stop"; return 1; fi
  if [ "$1" = resume ]; then [ ! -e "$TEST/appfiles/controller-stop" ] || return 1; fi
  if [ "$1" = supervise ]; then rm -f "$TEST/appfiles/controller-stop"; fi
+ if [ "$1" = supervise ] || [ "$1" = resume ]; then
+  if [ -f "$TEST/supervisor.lock/pid" ] && kill -0 "$(cat "$TEST/supervisor.lock/pid")" 2>/dev/null; then
+   [ -f "$TEST/runtime" ] || return 1
+   return 0
+  fi
+  mkdir -p "$TEST/supervisor.lock"; touch "$TEST/runtime"
+  nohup sh "$TEST/flip-pets-control.sh" run > "$TEST/child.log" 2>&1 < /dev/null &
+  child=$!; echo "$child" > "$TEST/supervisor.lock/pid"
+  for i in $(seq 1 100); do [ -f "$TEST/supervisor.lock/ready" ] && break; command sleep 0.02; done
+  [ ! -f "$TEST/slow_controller" ] || command sleep 0.5
+  [ ! -f "$TEST/fail_receipt_write" ] || mkdir "$TEST/session-owned.$$"
+  if [ -f "$TEST/disable_during_start" ]; then
+   nohup sh "$TEST/wrapper.sh" disable > "$TEST/disable.log" 2>&1 < /dev/null &
+   echo $! > "$TEST/disabler.pid"
+   for i in $(seq 1 100); do [ -f "$TEST/session-cancel" ] && break; command sleep 0.02; done
+  fi
+ fi
+ if [ "$1" = disable ]; then rm -f "$TEST/runtime"; fi
  if [ -f "$TEST/disable_after_ack" ]; then touch "$TEST/disable"; fi
  return 0
 }}
@@ -70,19 +103,34 @@ fixture_controller() {{
 local = ROOT / 'work/ksu-check/module-boot-fixture.sh'
 local.parent.mkdir(exist_ok=True)
 local.write_text(preamble + raw, encoding='utf-8', newline='\n')
-shell(f'mkdir -p {BASE}')
+shell(f'mkdir -p {BASE}\nchmod 755 {BASE}')
 adb('push', str(local), BASE + '/wrapper.sh')
+fake_controller = ROOT / 'work/ksu-check/ownership-child.sh'
+fake_controller.write_text(f'''#!/system/bin/sh
+TEST={BASE}
+trap 'rm -f "$TEST/runtime" "$TEST/supervisor.lock/pid" "$TEST/supervisor.lock/ready"; rmdir "$TEST/supervisor.lock" 2>/dev/null' EXIT
+echo $$ > "$TEST/supervisor.lock/ready"
+while [ -f "$TEST/runtime" ] || [ -f "$TEST/hold_child" ]; do sleep 0.02; done
+''', encoding='utf-8', newline='\n')
+adb('push', str(fake_controller), BASE + '/flip-pets-control.sh')
 results = []
 
 
 def reset(*, opted=True, ready=True):
+    shell(f'rm -f {BASE}/runtime {BASE}/hold_child')
+    deadline = time.monotonic() + 5
+    while shell(f'test -f {BASE}/supervisor.lock/pid', ok=False).returncode == 0:
+        assert time.monotonic() < deadline, 'previous fixture child cleanup'
+        time.sleep(.03)
     # All targets are literal children of the dedicated fixture directory.
     shell(f'rm -f {BASE}/session-enabled {BASE}/session-owned {BASE}/disable {BASE}/remove '
           f'{BASE}/unlocked {BASE}/calls {BASE}/sleeps {BASE}/during_wait '
-          f'{BASE}/child_failure {BASE}/concurrent_stop {BASE}/no_package {BASE}/disable_after_ack\n'
+          f'{BASE}/child_failure {BASE}/concurrent_stop {BASE}/no_package {BASE}/disable_after_ack '
+          f'{BASE}/session-cancel {BASE}/wrong_uid {BASE}/slow_controller {BASE}/disable_during_start {BASE}/disabler.pid '
+          f'{BASE}/stale_boot {BASE}/snapshot_taken {BASE}/release_snapshot {BASE}/fail_receipt_write\n'
           f'mkdir -p {BASE}/appfiles\nrm -f {BASE}/appfiles/controller-stop\necho ruyi > {BASE}/device')
     if opted:
-        shell(f'touch {BASE}/session-enabled')
+        shell(f'echo none > {BASE}/session-enabled')
     if ready:
         shell(f'touch {BASE}/unlocked')
 
@@ -132,6 +180,90 @@ reset(); shell(f'echo bixi > {BASE}/device'); p = invoke()
 check(p.returncode != 0 and not calls(), 'wrong device is refused')
 reset(); shell(f'touch {BASE}/no_package'); p = invoke()
 check(p.returncode != 0 and not calls(), 'missing APK is refused')
+
+# Real emulator /proc start times, argv and flock; only UID ownership is stubbed.
+reset(opted=False); p = invoke('toggle'); p = invoke('status')
+check(p.returncode == 0 and 'Verified owned root supervisor' in p.stdout, 'exact live argv, PID/start time and boot receipt are recognized')
+receipt = shell(f'cat {BASE}/session-owned').stdout.strip().split()
+check(len(receipt) == 3 and all(receipt[:2]), 'ownership is a process receipt rather than a Boolean marker')
+shell(f'echo {receipt[0]} 0 {receipt[2]} > {BASE}/session-owned'); p = invoke('disable')
+check(p.returncode == 0 and calls() == ['supervise', 'status'] and exists('runtime'), 'mismatched process start time cannot disable a live process')
+reset(opted=False); invoke('toggle'); shell(f'touch {BASE}/wrong_uid'); p = invoke('disable')
+check(p.returncode == 0 and calls() == ['supervise'] and exists('runtime'), 'non-root process identity is never stopped')
+reset(opted=False); invoke('toggle'); p = invoke('disable')
+check(p.returncode == 0 and not exists('runtime') and not exists('supervisor.lock') and not exists('session-owned'), 'owned disable waits for process cleanup before releasing the transition')
+reset(opted=False)
+shell(f'mkdir -p {BASE}/supervisor.lock\ntouch {BASE}/runtime\nnohup sh {BASE}/flip-pets-control.sh run extra > {BASE}/child.log 2>&1 < /dev/null &\necho $! > {BASE}/supervisor.lock/pid')
+deadline = time.monotonic() + 5
+while not exists('supervisor.lock/ready'):
+    assert time.monotonic() < deadline, 'lookalike child startup'
+    time.sleep(.02)
+shell(f'pid=$(cat {BASE}/supervisor.lock/pid); started=$(sed "s/.*) //" /proc/$pid/stat | cut -d " " -f 20); echo "$pid $started $(cat /proc/sys/kernel/random/boot_id)" > {BASE}/session-owned')
+p = invoke('disable')
+check(p.returncode == 0 and not calls() and exists('runtime'), 'argv with extra arguments is rejected even when the old substring would match')
+reset(opted=False)
+foreign_pid = shell(f'nohup sleep 60 > {BASE}/foreign.log 2>&1 < /dev/null &\necho $!').stdout.strip()
+assert foreign_pid.isdigit()
+try:
+    shell(f'mkdir -p {BASE}/supervisor.lock\necho {foreign_pid} > {BASE}/supervisor.lock/pid\necho {foreign_pid} > {BASE}/supervisor.lock/ready\necho {foreign_pid} 0 $(cat /proc/sys/kernel/random/boot_id) > {BASE}/session-owned')
+    p = invoke('toggle')
+    check(p.returncode == 0 and shell(f'kill -0 {foreign_pid}', ok=False).returncode == 0 and shell(f'cat {BASE}/supervisor.lock/pid').stdout.strip() != foreign_pid, 'PID reuse clears receipt-bound stale files without killing the unrelated live process')
+finally:
+    shell(f'kill {foreign_pid}', ok=False)
+reset(opted=False); shell(f'mkdir -p {BASE}/supervisor.lock\necho 999999 > {BASE}/supervisor.lock/pid\necho 999999 > {BASE}/supervisor.lock/ready\necho 999999 1 $(cat /proc/sys/kernel/random/boot_id) > {BASE}/session-owned'); p = invoke('toggle')
+check(p.returncode == 0 and calls() == ['supervise'] and exists('session-owned'), 'receipt-bound dead root lock is recovered without killing a process')
+reset(opted=False); shell(f'touch {BASE}/runtime\necho owned > {BASE}/session-owned'); p = invoke('toggle')
+check(p.returncode != 0 and not calls() and exists('runtime'), 'legacy ownership marker cannot authorize taking over an existing session')
+reset(); shell(f'echo enabled > {BASE}/session-enabled'); p = invoke()
+check(p.returncode == 0 and not calls() and not exists('session-enabled'), 'legacy opt-in is not silently migrated into consent')
+reset(opted=False); shell(f'ln -s {BASE}/device {BASE}/session-owned'); p = invoke('toggle')
+check(p.returncode != 0 and not calls() and shell(f'cat {BASE}/device').stdout.strip() == 'ruyi', 'symlinked root control file is refused without touching target')
+reset(opted=False); shell(f'chmod 777 {BASE}'); p = invoke('toggle'); shell(f'chmod 755 {BASE}')
+check(p.returncode != 0 and not calls(), 'writable-by-others module directory is refused')
+reset(); shell(f'chmod 666 {BASE}/session-enabled'); p = invoke('toggle'); shell(f'chmod 600 {BASE}/session-enabled')
+check(p.returncode != 0 and not calls(), 'writable-by-others root control file is refused')
+reset(opted=False); shell(f'touch {BASE}/slow_controller')
+first = subprocess.Popen([ADB, '-s', 'emulator-5554', 'shell', f'sh {BASE}/wrapper.sh toggle'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+deadline = time.monotonic() + 5
+while not exists('runtime'):
+    assert time.monotonic() < deadline, 'first Action enters startup'
+    time.sleep(.02)
+second = invoke('toggle'); first.communicate(timeout=15)
+check(first.returncode == 0 and second.returncode == 0 and calls() == ['supervise', 'disable'] and not exists('runtime') and not exists('session-enabled'), 'concurrent Actions serialize as Start then Stop; detached child does not inherit flock')
+reset(); shell(f'touch {BASE}/slow_controller')
+first = subprocess.Popen([ADB, '-s', 'emulator-5554', 'shell', f'sh {BASE}/wrapper.sh boot'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+deadline = time.monotonic() + 5
+while not exists('runtime'):
+    assert time.monotonic() < deadline, 'boot enters resume'
+    time.sleep(.02)
+second = invoke('toggle'); first.communicate(timeout=15)
+check(first.returncode == 0 and second.returncode == 0 and calls() == ['resume', 'disable'] and not exists('session-enabled'), 'boot resume and Action Stop serialize without a duplicate supervisor')
+reset(opted=False); shell(f'touch {BASE}/disable_during_start'); p = invoke('toggle')
+deadline = time.monotonic() + 5
+while shell(f'test -f {BASE}/disabler.pid && kill -0 "$(cat {BASE}/disabler.pid)"', ok=False).returncode == 0:
+    assert time.monotonic() < deadline, 'queued disable completes'
+    time.sleep(.03)
+check(p.returncode != 0 and exists('session-cancel') and not exists('session-enabled') and not exists('runtime'), 'new disable generation wins over in-progress Start and its queued cleanup completes')
+reset(); shell(f'echo none > {BASE}/session-cancel\ntouch {BASE}/stale_boot')
+stale_boot = subprocess.Popen([ADB, '-s', 'emulator-5554', 'shell', f'sh {BASE}/wrapper.sh boot'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+deadline = time.monotonic() + 5
+while not exists('snapshot_taken'):
+    assert time.monotonic() < deadline, 'boot generation snapshot is paused'
+    time.sleep(.02)
+invoke('disable'); new_start = invoke('toggle'); new_opt_in = shell(f'cat {BASE}/session-enabled').stdout.strip()
+shell(f'touch {BASE}/release_snapshot'); stale_boot.communicate(timeout=10)
+check(new_start.returncode == 0 and stale_boot.returncode == 0 and exists('runtime') and shell(f'cat {BASE}/session-enabled').stdout.strip() == new_opt_in, 'stale boot preflight cannot delete a newer Action opt-in or session')
+reset(opted=False); invoke('toggle'); shell(f'touch {BASE}/hold_child'); p = invoke('disable')
+held_receipt = shell(f'cat {BASE}/session-owned').stdout.strip()
+check(p.returncode != 0 and not exists('session-enabled') and exists('session-owned') and exists('supervisor.lock/pid'), 'stop timeout retains the receipt of the still-live owned child')
+p = invoke('toggle')
+check(p.returncode != 0 and shell(f'cat {BASE}/session-owned').stdout.strip() == held_receipt and calls() == ['supervise', 'disable', 'disable'], 'Action retries Stop rather than replacing a timed-out owned child')
+shell(f'rm -f {BASE}/hold_child'); p = invoke('disable')
+check(p.returncode == 0 and not exists('session-owned'), 'cleanup retry succeeds when the timed-out child is allowed to exit')
+reset(opted=False); shell(f'touch {BASE}/fail_receipt_write'); p = invoke('toggle')
+check(p.returncode != 0 and not exists('session-enabled') and not exists('runtime') and not exists('supervisor.lock/pid') and calls() == ['supervise', 'disable'], 'receipt write failure after ACK stops only the exactly captured child')
+shell(f'rmdir {BASE}/session-owned.[0-9]*', ok=False)
+reset(opted=False)
 report = dict(environment='emulator-5554; UID0, storage availability and controller responses stubbed; no physical root proof',
               wrapperSha256=hashlib.sha256(source.read_bytes()).hexdigest(),
               fixtureSha256=hashlib.sha256(local.read_bytes()).hexdigest(),

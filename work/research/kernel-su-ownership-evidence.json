@@ -1,0 +1,124 @@
+{
+  "date": "2026-10-11",
+  "scope": "Step 2: exact root process receipts and serialized module transitions; development prerelease, not physical root validation",
+  "apkSha256": "012d42fa4548ef84e0d9c77f6769ebde4477fa20d0fa305953353f5cabdca361",
+  "moduleZipSha256": "1a049ca30d81575851ddc17a525ee4f2da55b2b84e2002f17e7bddb3cc3ed7a3",
+  "canonicalControllerSha256": "815e11a50f6549dbd14968e4fc3257dc0270d3c9f6800a1a9096e7f1afe2c99e",
+  "rootControllerSha256": "9477c4fb4c254c41e215c07434762f754b7531474de015b87c560646d1ece3b1",
+  "wrapperSha256": "1d833105703678b78400874f685043493257c665640b49328c4a12f794ccb14f",
+  "commandChecksPassed": 112,
+  "newWrapperCommandChecksPassed": 36,
+  "syntaxChecksPassed": 7,
+  "reports": {
+    "controller-tests.json": {
+      "sha256": "7cc71f95ba3b043feb2f600ecbacab45f26dba7c10750708ed99b12c25458e69",
+      "checks": 15,
+      "allPassed": true,
+      "environment": "emulator-5554; stubbed stock command responses, not a physical MIX Flip"
+    },
+    "kernel-su-controller-tests.json": {
+      "sha256": "edf22501290ce478eaeb35988716a6edd38fc17a49d52b20ae0abf0cb1989113",
+      "checks": 15,
+      "allPassed": true,
+      "environment": "emulator-5554; stubbed stock command responses; root identity also stubbed, no actual UID0/SELinux proof, not a physical MIX Flip"
+    },
+    "supervisor-tests-current.json": {
+      "sha256": "c33b36c9e14fcd4efac1b2cb5ac85aa24da82fba9e6cd8251802f431cf323353",
+      "checks": 23,
+      "allPassed": true,
+      "environment": "emulator-5554, stubbed device-state/display/power/keyguard commands; no physical MIX Flip"
+    },
+    "kernel-su-supervisor-tests.json": {
+      "sha256": "6040713b135e92def04b695ca40d995cf2b38792037a1a4fc348b23c3e8398fc",
+      "checks": 23,
+      "allPassed": true,
+      "environment": "emulator-5554, stubbed device-state/display/power/keyguard commands; UID0 also stubbed; no physical MIX Flip"
+    },
+    "kernel-su-boot-tests.json": {
+      "sha256": "040d61bdb226259e43f2ece03c175c89f38a4450bffb1f19e4e0b2a1104271d0",
+      "checks": 36,
+      "allPassed": true,
+      "environment": "emulator-5554; UID0, storage availability and controller responses stubbed; no physical root proof"
+    },
+    "kernel-su-ownership-syntax.json": {
+      "sha256": "0b5d49206fc3f8511a9bb5a1134fb627c0d755d5395c2f682ea32135cbbeead1",
+      "checks": 7,
+      "allPassed": true,
+      "environment": "Identity-verified Android emulator-5554; sh -n syntax only"
+    }
+  },
+  "reusedUnchangedControllerReports": [
+    "controller-tests.json",
+    "kernel-su-controller-tests.json",
+    "supervisor-tests-current.json",
+    "kernel-su-supervisor-tests.json"
+  ],
+  "testRunnerSha256": {
+    "run_kernel_su_boot_tests.py": "0e0b8c37a9bb43779078046ff1b0fb9af67524e6d73878149bcb447598549d6c"
+  },
+  "apkStructure": {
+    "package": "org.flippets.app",
+    "versionName": "1.1",
+    "versionCode": 12,
+    "signatureV3Verified": true,
+    "certificateSha256": "819b54a88b032712475060b68a6adcfff569366c86e9683c92934b36375391ba",
+    "zipalign16KiBVerified": true,
+    "allAssetsByteIdenticalToSources": true,
+    "nativeLibraries": [
+      {
+        "path": "lib/arm64-v8a/libffavc.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "1e214164a6c153f74f25018c1625f3e71d1d5ba601f6592c4dd89385dcc4b0bc"
+      },
+      {
+        "path": "lib/arm64-v8a/libpag.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "1178fe9a7fb345212e2a9ff0c386ce9772f03183686e1de87af84f89cbdf736f"
+      },
+      {
+        "path": "lib/x86_64/libffavc.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "5da4dea926ef43d7ac4535b5799afba00d9d0e0fd396e350486037de6843e7e2"
+      },
+      {
+        "path": "lib/x86_64/libpag.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "f013aead9e08a559326921a1f94df701814197bcc93592c50d93cd4285158d51"
+      }
+    ],
+    "apkSha256": "012d42fa4548ef84e0d9c77f6769ebde4477fa20d0fa305953353f5cabdca361"
+  },
+  "independentReview": {
+    "requestedByUser": true,
+    "initialActionableFindings": 1,
+    "actionableCorrectnessFindings": 0,
+    "resolution": "Fixed stale boot generation cleanup under flock. Added deterministic stale-boot, stop timeout/retry and receipt-write failure tests. Follow-up independent review inspected all 36 passing cases and matching wrapper/fixture hashes; no additional findings."
+  },
+  "remaining": [
+    "Private root runtime files and safe root-to-Shizuku switching",
+    "Cross-backend serialization",
+    "Persistent opt-in migration across module updates",
+    "Post-start module disable/remove monitoring",
+    "Rooted MIX Flip UID0/SELinux and physical display testing after assembled build",
+    "Full APK rendering/lifecycle QA before production release"
+  ],
+  "physicalDeviceTouched": false,
+  "apkRebuilt": false,
+  "apkUnchangedFromStep1": true
+}

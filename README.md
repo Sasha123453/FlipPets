@@ -122,8 +122,10 @@ An [experimental KernelSU module](docs/kernel-su-module.md) is prepared for a
 future rooted MIX Flip. It is an alternative supervisor, not verified independent
 rear-screen power. The development controller now acknowledges child startup;
 unattended boot resume never clears Stop and waits up to ten minutes for unlocked
-app storage. This is the first hardening step; ownership, update migration and
-physical root verification remain pending. The [photo-pet generation audit](docs/photo-pet-generation.md)
+app storage. The root wrapper additionally verifies exact process receipts and
+serializes module actions, preserving a newer disable request during startup.
+Shared root/shell file handling, update migration and physical root verification
+remain pending. The [photo-pet generation audit](docs/photo-pet-generation.md)
 documents the donor image/video service chain; a working generator is still required.
 
 ## Project layout

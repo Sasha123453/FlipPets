@@ -13,8 +13,11 @@
 
 - [x] First KernelSU hardening step: bounded first-unlock/storage wait, separate
   unattended resume preserving Stop, and child startup acknowledgement.
-- [ ] Finish root session ownership, PID reuse, serialized Action/boot/Stop,
-  update migration and root-to-Shizuku file cleanup. Keep the ZIP experimental.
+- [x] Step 2: exact root process/boot receipts, PID reuse protection and serialized
+  module Action/boot/disable, with stale-boot and timeout/failure regression cases.
+- [ ] Finish shared root/shell runtime paths, cross-backend serialization, update
+  migration, post-start module-disable handling and physical root verification.
+  Keep the ZIP experimental.
 - [ ] Run full current-SHA APK/lifecycle QA before a new release; source changes
   to the embedded controller required an APK rebuild. Historical release QA stays
   bound to its original APK.

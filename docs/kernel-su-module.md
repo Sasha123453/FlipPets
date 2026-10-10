@@ -1,5 +1,40 @@
 # KernelSU: экспериментальная альтернатива контроллера
 
+## Ownership and module transitions — development step 2
+
+The root wrapper now stores PID, process start time and boot ID instead of a
+Boolean ownership marker. It verifies root file/process ownership and exact
+NUL-delimited interpreter/controller/`run` arguments. An extra argument or reused
+PID cannot authorize stopping another process. Receipt-bound stale root files can
+be cleaned without killing that PID or resetting device state.
+
+Boot, Action and disable serialize through Android `flock` with a bounded
+30-second acquisition wait. Detached controller children do not inherit the lock.
+A disable publishes a new cancellation generation before waiting, so in-progress
+Start cannot overwrite it. Stale boot cleanup rechecks generations under the lock
+before deleting opt-in. Module directory/control files must be root-owned,
+regular/non-symlink where appropriate, and not writable by group/others.
+
+Disable waits up to 16 seconds for its exactly identified process to exit. If it
+times out, the receipt remains and Action retries Stop rather than replacing the
+child. If receipt persistence fails after startup ACK, an exact in-memory snapshot
+can stop that still-identical process. If identity cannot be verified, startup
+fails and asks for Flip Pets Stop rather than stopping an unknown process.
+
+Legacy `owned` / `enabled` markers do not establish this receipt/generation
+contract. Boot does not silently migrate them into new consent; use explicit
+Action. Opt-in still lives in the module directory, so update persistence remains
+unfinished. Android `flock` availability and physical UID0/SELinux behavior are not
+yet verified on the phone. Shared root/shell runtime paths and post-start module
+disable monitoring are the next milestones; keep this candidate experimental.
+
+This module-only step leaves the APK and canonical/embedded controller bytes
+unchanged. The matching APK is included with each reviewed development prerelease.
+The wrapper fixtures now use real emulator `/proc` identities, background children
+and `flock`, with UID ownership/storage and Android controller commands stubbed.
+They cover concurrent Actions, boot/Action, newer disable during Start, stale boot,
+extra argv, live PID reuse, stop timeout/retry and receipt-write failure.
+
 ## Development hardening — 11 October 2026
 
 Implementation has resumed with the boot/startup part of the native integration
@@ -18,11 +53,11 @@ plan. This remains an experimental candidate, not a reliable root release.
 - Module disable/remove or Action opt-out cancels the storage wait. A flag seen
   immediately after startup acknowledgement tears down that new session.
 
-Outstanding: serialize boot/Action/Stop transitions, exact process identity and
-PID reuse, opt-in migration outside the replaceable module directory, root-to-shell
-file ownership, continuous module-disable handling after startup, and rooted
-MIX Flip testing. The current marker/UID/command-line ownership check is still
-experimental. Do not install this candidate merely to test these source changes.
+The first step left process ownership/serialization unfinished; step 2 above now
+hardens module transitions and identity. Shared root/shell file ownership,
+cross-backend serialization, opt-in migration outside the replaceable module
+directory, continuous module-disable handling and rooted MIX Flip testing remain
+unfinished. Do not install this candidate merely to test these source changes.
 
 Command verification: `work/tests/run_kernel_su_boot_tests.py` exercises wrapper
 branches with rebased paths and stubbed UID/storage/controller on emulator-5554.

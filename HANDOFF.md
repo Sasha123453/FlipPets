@@ -1,5 +1,46 @@
 # Flip Pets continuation — 2026-10-11
 
+## Current milestone — root ownership and module transitions (step 2)
+
+The user requested continued implementation, a fresh independent review and
+code/APK GitHub publication for each step. Fully assembled physical testing is
+deferred. Root installation, native Apply and generation remain unauthorized.
+
+- Root wrapper ownership now uses PID + process start time + boot ID, root-owned
+  regular control files, and exact NUL-delimited interpreter/controller/`run`
+  argv. A reused PID or command-line lookalike does not authorize stopping it.
+- Module boot/Action/disable use a bounded Android `flock` transition. Detached
+  controller children do not inherit that lock. A new disable generation cancels
+  an in-progress Start before it can restore opt-in.
+- Stale boot cleanup takes the lock and rechecks generations before deleting
+  opt-in. Stop timeout retains its receipt; Action retries Stop. Receipt-write
+  failure cleans up only a still-identical in-memory captured process, otherwise
+  asks for app Stop and leaves unverified processes alone.
+- Legacy ownership/opt-in markers are not silently treated as new consent. Module
+  update migration is still unfinished. Shared root/shell runtime paths,
+  cross-backend serialization, post-start module disable monitoring and actual
+  rooted MIX Flip compatibility remain next work. Do not install this intermediate
+  candidate for hardware testing before the assembled build is ready.
+- Module-only change: APK/canonical/embedded bytes remain identical to step 1.
+  APK: `012d42fa4548ef84e0d9c77f6769ebde4477fa20d0fa305953353f5cabdca361`.
+  Current module: `1a049ca30d81575851ddc17a525ee4f2da55b2b84e2002f17e7bddb3cc3ed7a3`.
+- 36 new wrapper command cases passed using real emulator process identities,
+  background children and flock; UID ownership/storage/controller commands are
+  stubbed. The unchanged canonical/root controller reports retain their verified
+  matching hashes (76 checks). Seven final module/canonical syntax checks passed.
+- Fresh independent review found a stale-boot cleanup race. It was fixed and
+  covered by a deterministic interleaving test. The reviewer requested stop-timeout
+  and post-ACK receipt-write failure cases; both were added and passed. Follow-up
+  independent review found no additional actionable findings.
+- Current scoped evidence: `work/research/kernel-su-ownership-evidence.json`.
+  Full APK rendering/lifecycle QA still belongs to the historical release SHA;
+  physical root/SELinux/display compatibility is not inferred from fixtures.
+
+Step 1 is pushed as commit `d97a0db`, with exact assets and digests verified at
+`https://github.com/Sasha123453/FlipPets/releases/tag/dev-controller-startup-20261011`.
+Each development prerelease includes the matching APK, experimental module and
+sanitized evidence. Generated binaries and signing keys remain excluded from Git.
+
 ## Implementation resumed — first controller hardening step
 
 The user requested “read handoff.md and start doing”, then an independent review
