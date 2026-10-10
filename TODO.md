@@ -20,9 +20,8 @@
   acknowledged manual watchers. Physical root verification remains separate.
 - [ ] Verify root UID/SELinux, boot/first unlock/update/disable/fold on an actual
   rooted MIX Flip after assembly. Keep the ZIP experimental until that evidence.
-- [ ] Run full current-SHA APK/lifecycle QA before a new release; source changes
-  to the embedded controller required an APK rebuild. Historical release QA stays
-  bound to its original APK.
+- [x] Step4 current APK:374 renderer/UI/native-card checks,20 gallery and6 virtual-cover checks passed, plus14 route and5 packager cases. Physical testing remains deferred.
+- [x] Native-launch card Activity, separate storage/navigation and opt-in observed-context routing. Actual EEA policy/admission/continuity remains a device gate.
 - [ ] Exact EEA FlipHome/continuity contract and native pet motion/restore proof
   remain device-work gates. No generation backend work is required.
 

@@ -12,8 +12,9 @@ Shizuku remains the default. Physical verification is still pending;
 see docs/kernel-su-module.md.
 If the boot storage wait expires,
 unlock/open Flip Pets, use Action to turn the retained opt-in off, then Action
-again to explicitly start. This development APK needs fresh full release QA;
-the earlier 343-check release evidence does not validate the rebuilt APK.
+again to explicitly start. Current native-card APK b8fb78ce… passed374 APK checks,
+20 gallery and6 virtual-cover checks. Actual phone/root/native admission testing
+remains pending; historical hardware observations retain their original hashes.
 
 33 оформления: 176 исходных PAG/MP4-клипов и 11 адаптированных композиций.
 Графика Xiaomi сохранена; полного системного HyperOS 17 Pro здесь нет.
@@ -38,6 +39,14 @@ the earlier 343-check release evidence does not validate the rebuilt APK.
    показ. «Стоп» в приложении или уведомлении выключает сеанс.
 
 МИНИ-ПРИЛОЖЕНИЯ
+Отдельные карточки: «Открыть карточки отдельно». Их выбор и данные не меняют
+питомца во внешнем сеансе. «Карточки в штатном внешнем меню» позволяет явно
+включить переход к ним при запуске обычного значка Flip Pets на внешнем экране.
+Нужно также выбрать Flip Pets в штатных настройках Xiaomi, если прошивка
+допускает приложение. Эта доступность, штатная полоса виджетов и перенос при
+складывании ещё требуют проверки на телефоне. Root для самой Activity не нужен.
+Сон и блокировка остаются штатными; скрытая WebView освобождается.
+
 В Main нажми «Выбрать мини-приложение»: Фокус, Вода или Слова. «На внешний экран»
 явно заменяет питомца карточкой; Отмена не меняет режим. «Вернуть питомца» либо
 выбор в галерее возвращает оформление. Вверху есть три кнопки переключения.

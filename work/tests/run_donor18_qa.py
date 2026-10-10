@@ -116,11 +116,19 @@ def main():
                         adb('shell','input -d 0 keyevent KEYCODE_HOME')
                         # Launch the real Home destination as well: input injection
                         # alone can be deferred during a heavy native render frame.
-                        adb('shell','am start --display 0 -a android.intent.action.MAIN -c android.intent.category.HOME')
+                        home_launch=adb('shell','am start -W --display 0 -a android.intent.action.MAIN -c android.intent.category.HOME').stdout
                         # A translucent/animating launcher need not stop the
                         # underlying Activity. Use a real opaque stock Activity
                         # to make this a hidden-surface lifecycle test.
-                        adb('shell','am start --display 0 -a android.settings.SETTINGS')
+                        settings_launch=adb('shell','am start -W --display 0 -a android.settings.SETTINGS').stdout
+                        print('Home launch: '+home_launch.strip(),flush=True)
+                        print('Opaque Settings launch: '+settings_launch.strip(),flush=True)
+                        if 'Error:' in home_launch or 'Error:' in settings_launch:
+                            raise AssertionError('Required real foreground launch failed')
+                        visible=adb('shell','am stack list').stdout
+                        own=[block for block in visible.split('RootTask') if 'org.flippets.app/' in block]
+                        if any('displayId=0 ' in block and 'visible=true' in block for block in own):
+                            raise AssertionError('Real opaque Settings did not hide the donor Activity')
                         adb('shell',f'echo {token} > {ACK}')
                         home_token=token
                         print('Actual KEYCODE_HOME delivered for donor18 hide handshake',flush=True)

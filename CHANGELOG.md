@@ -1,5 +1,16 @@
 # Changes
 
+## Unreleased native-launch cards — 11 October 2026
+
+- Add an ordinary foreground card activity with separate selection/storage from
+  the supervised pet session. Reuse unchanged offline Xiaomi HTML and restrictions.
+- Offer explicit cover-launch routing using observed display flags/modes and real
+  window bounds; keep Main/settings accessible and reject narrow/unknown contexts.
+- Release hidden WebViews, remeasure on rotation and retain original card data
+  through Activity/process reconstruction. Session Stop does not close these cards.
+- Add real touch/PixelCopy/lifecycle/isolation QA and pure routing cases. Actual
+  Xiaomi EEA admission, full-screen strip, cameras and continuity remain unverified.
+
 ## Unreleased controller hardening — 11 October 2026
 
 - Step 3: durable root consent with a versioned private schema outside module

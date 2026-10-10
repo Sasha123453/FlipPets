@@ -1,5 +1,6 @@
 {
-  "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
+  "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
+  "installedApkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
   "environment": "Standard Android16 API36 x86_64 emulator; virtual cover1208x1392/520 and Main1224x2912/520, not HyperOS",
   "tested": 6,
   "failed": 0,
@@ -17,7 +18,7 @@
     {
       "test": "main_task_removed_cover_continues",
       "ok": true,
-      "detail": "Only own Main root task removed through Android task manager; cover survives"
+      "detail": "Only own Main root task removed through Android task manager; wait up to8s for asynchronous removal, cover/service must survive; observed cover=True foreground=True mainAbsent=True"
     },
     {
       "test": "fold_close_retains_foreground_session",

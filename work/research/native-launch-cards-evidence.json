@@ -1,0 +1,317 @@
+{
+  "date": "2026-10-11",
+  "scope": "Step 4: separate foreground native-launch cards; source and current-SHA emulator verification, Xiaomi admission unverified",
+  "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
+  "moduleZipSha256": "95e02bf4b589ed558bec0204c991ca7ac0f8f5a455c426422a2a1cdd3164563b",
+  "canonicalControllerSha256": "eaf0f94cc6a57ba21cc342c7c7b7fe5914215ae540d38b583ab7315e4af5d06c",
+  "rootControllerSha256": "0355c90e6f35d7e2b0dbab10a37845eccfa2c9647822925bb01d1a7acd020eb8",
+  "commandChecksPassed": 0,
+  "syntaxChecksPassed": 0,
+  "reports": {
+    "qa.json": {
+      "path": "work/qa-v03/device-files/qa.json",
+      "sha256": "4c6ccac87b21adff8b0e5bedd49b194d125e40afcf56a520903e479b099b4e69",
+      "checks": 176,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "composition-qa.json": {
+      "path": "work/qa-v03/device-files/composition-qa.json",
+      "sha256": "e62401f79c876b89a16707a7258e2e830df444745edfccd5c1ee3a343894d7ef",
+      "checks": 68,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "ui-switch-qa.json": {
+      "path": "work/qa-v03/device-files/ui-switch-qa.json",
+      "sha256": "ccd2b80a92eab9c8a076aab29d5282e42388c0a91d5655f5c6b9aa470187a35e",
+      "checks": 15,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "utility-qa.json": {
+      "path": "work/qa-v03/device-files/utility-qa.json",
+      "sha256": "e499707c1c8fe1e12f7c95f78490bf67f4c0dc5bea45a98052c2753028ca5728",
+      "checks": 15,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "pet-layout-qa.json": {
+      "path": "work/qa-v03/device-files/pet-layout-qa.json",
+      "sha256": "80a30d6366d6781b92761a06bd9f922ce58dfa1b6afc41bccbc64edc084ac451",
+      "checks": 19,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "donor18-qa.json": {
+      "path": "work/qa-v03/device-files/donor18-qa.json",
+      "sha256": "86de8a93002c190f763211c52e0c2a0ebf806d77249ae7e19a1677431c2e0fb3",
+      "checks": 23,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "mini-apps-qa.json": {
+      "path": "work/qa-v03/device-files/mini-apps-qa.json",
+      "sha256": "029d3e092af64f8390f901e8557e5ca89b35db89e6701409c8f01d9347d000c6",
+      "checks": 27,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "native-cards-qa.json": {
+      "path": "work/qa-final/native-cards/native-cards-qa.json",
+      "sha256": "f44ec2a5cc7802550a7a2bf3534d8e6d27c41f57a6f049b571fa7d33fca9c6d4",
+      "checks": 31,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "gallery-qa.json": {
+      "path": "work/qa-v03/gallery-qa.json",
+      "sha256": "0535d0ce32669d7c19989573e996b64a79ee53174b87e6b1bb6f63e93a5a2d18",
+      "checks": 20,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "runtime-v110.json": {
+      "path": "work/qa-v03/runtime-v110.json",
+      "sha256": "0bb54522ec8378711488276b2aed60adcddd87378797aefcc78d82fdc6e8032b",
+      "checks": 6,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "native-route-tests.json": {
+      "path": "work/qa-final/native-route-tests.json",
+      "sha256": "8aa3cde5a365b3f8f6122a7583ccacd842e86ca4be511bdc1f504d119ab18ec7",
+      "checks": 14,
+      "allPassed": true,
+      "binding": "source"
+    },
+    "native-package-guards.json": {
+      "path": "work/qa-final/native-package-guards.json",
+      "sha256": "9d440de09e6c49b72ba7d91d29ac30856716c5d5a0b5dcee19b51e4ff41af0aa",
+      "checks": 5,
+      "allPassed": true,
+      "binding": "source"
+    }
+  },
+  "apkChecksPassed": 374,
+  "additionalEmulatorChecksPassed": 26,
+  "sourceChecksPassed": 19,
+  "gallerySynchronization": {
+    "initialFailure": "Own accessibility window root temporarily unavailable after real Charlie selection; failed run and cleanup failure retained privately, excluded from passes",
+    "finalProcedure": "Restored initialWater through actual galleryApply before finalfullrun; fresh own-window polling bounded15s; intermediatepet always differs from original so restoration cannotbe a no-op"
+  },
+  "rendererCollection": {
+    "initialTimeout": "Initial600-second renderer collection expired with an independent foreground WebView active; diagnostic retained privately",
+    "finalProcedure": "Real Home released the foreground view; existing exact-installed-SHA176/68 renderer runs completed and were collected with --resume-render; no assertions/counts/skips relaxed",
+    "scope": "Emulator graphics scheduling diagnosis, not phone performance evidence"
+  },
+  "sourceVerification": {
+    "native-route-tests.json": {
+      "environment": "Host JVM; pure observed-profile predicate with Android SDK constants, not Xiaomi native admission proof",
+      "sourceSha256": "c22d39272700afb3a4d5d4393c0b6902cbf6f91cb20a56572d63a9277291ad50",
+      "results": [
+        {
+          "case": "observed_cover_context",
+          "ok": true
+        },
+        {
+          "case": "display_id_not_hardcoded",
+          "ok": true
+        },
+        {
+          "case": "rotated_cover_bounds",
+          "ok": true
+        },
+        {
+          "case": "main_display_rejected",
+          "ok": true
+        },
+        {
+          "case": "narrow_main_rejected",
+          "ok": true
+        },
+        {
+          "case": "narrow_cover_window_rejected",
+          "ok": true
+        },
+        {
+          "case": "unknown_device_rejected",
+          "ok": true
+        },
+        {
+          "case": "private_display_rejected",
+          "ok": true
+        },
+        {
+          "case": "incomplete_flags_rejected",
+          "ok": true
+        },
+        {
+          "case": "unknown_mode_rejected",
+          "ok": true
+        },
+        {
+          "case": "sleep_rejected",
+          "ok": true
+        },
+        {
+          "case": "lock_rejected",
+          "ok": true
+        },
+        {
+          "case": "invalid_id_rejected",
+          "ok": true
+        },
+        {
+          "case": "zero_window_rejected",
+          "ok": true
+        }
+      ]
+    },
+    "native-package-guards.json": {
+      "environment": "Host-only publication gate checks using current report plus deliberately invalid copies",
+      "source_sha256": {
+        "work/package_release.py": "2fbb2c5696a75bcb5a0a3e6b62ea83baededda36f5ae4935e34ce7a86cb4c664",
+        "work/tests/native_apps_contract.py": "2511a11168d2792c50e6c1c880ef65cf81a0904f9832c5001a6ec0393364ffa3"
+      },
+      "tested": 5,
+      "failed": 0,
+      "results": [
+        {
+          "test": "real_current_report",
+          "ok": true
+        },
+        {
+          "test": "duplicate_case",
+          "ok": true
+        },
+        {
+          "test": "foreign_case",
+          "ok": true
+        },
+        {
+          "test": "missing_case",
+          "ok": true
+        },
+        {
+          "test": "wrong_expected_count",
+          "ok": true
+        }
+      ]
+    }
+  },
+  "apkStructure": {
+    "package": "org.flippets.app",
+    "versionName": "1.1",
+    "versionCode": 12,
+    "signatureV3Verified": true,
+    "certificateSha256": "819b54a88b032712475060b68a6adcfff569366c86e9683c92934b36375391ba",
+    "zipalign16KiBVerified": true,
+    "allAssetsByteIdenticalToSources": true,
+    "nativeLibraries": [
+      {
+        "path": "lib/arm64-v8a/libffavc.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "1e214164a6c153f74f25018c1625f3e71d1d5ba601f6592c4dd89385dcc4b0bc"
+      },
+      {
+        "path": "lib/arm64-v8a/libpag.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "1178fe9a7fb345212e2a9ff0c386ce9772f03183686e1de87af84f89cbdf736f"
+      },
+      {
+        "path": "lib/x86_64/libffavc.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "5da4dea926ef43d7ac4535b5799afba00d9d0e0fd396e350486037de6843e7e2"
+      },
+      {
+        "path": "lib/x86_64/libpag.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "f013aead9e08a559326921a1f94df701814197bcc93592c50d93cd4285158d51"
+      }
+    ],
+    "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75"
+  },
+  "captures": {
+    "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
+    "capture": "Android PixelCopy composed Activity window",
+    "images": [
+      {
+        "file": "native-water.png",
+        "sha256": "ed41739ff7258f9592dd3fd9ae8963c7cecdc5f2fede800c7018853a8d86ee85"
+      },
+      {
+        "file": "native-focus.png",
+        "sha256": "a8f6859194e3f3f479584828e2aff69b243bd6024fb50f7d935ca69db8184718"
+      },
+      {
+        "file": "native-words.png",
+        "sha256": "dae08a72b95d7b805653d7d6c7b96250b1c10aacd583ae66243912eaf009f702"
+      }
+    ],
+    "limitation": "Emulator only; not physical camera or Xiaomi continuity proof"
+  },
+  "source_sha256": {
+    "work/app/src/org/flippets/app/CoverAppsActivity.java": "4f2bdc82753f06fd756645e4fe85d1eb8e44e6e56ea933e05cec3d20ece263f0",
+    "work/app/src/org/flippets/app/NativeAppsQa.java": "3b07c3bbf67e254d80dee50aba190fef317565adcb40610d1348eb87a398ffee",
+    "work/app/src/org/flippets/app/NativeCards.java": "cf26b83ae94a2745ee1c20efa180cdbbe352734ed005f5f400d85ad92db7b4ac",
+    "work/app/src/org/flippets/app/NativeCoverRoute.java": "c22d39272700afb3a4d5d4393c0b6902cbf6f91cb20a56572d63a9277291ad50",
+    "work/app/src/org/flippets/app/MainActivity.java": "89c585f48395735cacfb984cb48ca71982dc7a6d7a10897d47c6577670918d07",
+    "work/app/src/org/flippets/app/MiniAppView.java": "73d691de8f71a9a8281cca5485ac1e6e8a8f05144eb5411248f44641401fd999",
+    "work/tests/run_native_apps_qa.py": "dd666257d64e42cf55dce50f3fd134265ab7931fb14d484e238913e1c1d9873a",
+    "work/tests/native_apps_contract.py": "2511a11168d2792c50e6c1c880ef65cf81a0904f9832c5001a6ec0393364ffa3",
+    "work/tests/run_gallery_qa.py": "15b1489784bb7de3c0ba74753c47afeadbd05c0ca99a39f6d5a1101c48f3142d",
+    "work/tests/run_donor18_qa.py": "c2f21e3c7df9286f61b59653124eb0b135d5551731bbc1ffa623fca8076c65a8",
+    "work/tests/runtime_cover_qa.py": "bba4cb22f9abfbb5a8294c0997baf58f00c49800e2a435ee5bf332a051d6f68a",
+    "work/tests/run_native_route_tests.py": "6603b7bb6b5c4951ac7dda2b5ff38791f532b59e2c6eaea321e4b29337129316",
+    "work/tests/run_package_native_tests.py": "2f1e1262e79372d6bc069f80a7a2e54e33bf0db2adbffa32a681e9cd572799c2",
+    "work/package_release.py": "2fbb2c5696a75bcb5a0a3e6b62ea83baededda36f5ae4935e34ce7a86cb4c664"
+  },
+  "independentReview": {
+    "requestedByUser": true,
+    "actionableCorrectnessFindings": 0,
+    "findingsFixed": [
+      "Opaque Settings footer resolves Focus contrast",
+      "Packager requires exact shared native test set, rejecting duplicate/foreign/missing cases",
+      "Main onNewIntent replaces reused SINGLE_TOP launch intent before routing, covered by same-Activity test",
+      "Rotation invalidates readiness before reload; QA waits for a replacement page and rechecks delayed predicates",
+      "Lifecycle host hashes the active installed APK before and after, re-reading its current package path",
+      "Gallery waits for fresh own-window roots and always changes selection before restoration"
+    ],
+    "finalCodeReview": "Fresh independent code, host-fixture and packaging reviews found no further actionable issues",
+    "finalPixelReview": "Three fresh PixelCopy captures independently inspected; footer legible and controls unobstructed"
+  },
+  "unchangedRootEvidence": {
+    "path": "work/research/kernel-su-runtime-evidence.json",
+    "scope": "151 command and eight syntax checks from step3 retain matching canonical/generated-root/wrapper/state source hashes; not rerun as APK visual checks"
+  },
+  "limitations": [
+    "Standard Android emulator is not physical HyperOS admission/continuity/camera/power/hinge or KernelSU proof",
+    "No phone targeted; exact EEA policy reader/admission/readback/restoration awaits deferred actual device testing",
+    "No native pet motion/Apply/exact restore implemented; source resource preparation continues next",
+    "Generation deferred; native widget hooks optional"
+  ],
+  "releaseTitle": "Native-launch cards: reviewed assembled app candidate",
+  "releaseSummary": "Separate foreground Water, Words and Focus cards, isolated from the supervised pet session. Explicit off-by-default routing choice, conservative observed cover profile, normal visibility lifecycle, offline WebView storage and original Xiaomi HTML. Same Activity for rooted and unrooted phones.\n\nCurrent APK:374 renderer/UI/card checks,20 gallery and6 virtual-cover checks passed with zero failures/skips.14 source routing cases and5 publication gate cases passed. Fresh independent code and rendered-pixel reviews completed. Signature/assets/ZIP/ELF16KiB checks passed.\n\nDevelopment prerelease:actual Xiaomi native launcher admission, physical fold/camera/lock/Power/timeout and root compatibility remain untested. No native Apply/AOD/independent cover power claim. Earlier failed diagnostic runs are excluded from pass evidence.",
+  "lifecycleSynchronization": {
+    "initialFailure": "Fixed one-second Main root-task removal observation failed; retained private failure report",
+    "finalProcedure": "Same coverVisible, foreground-service and MainAbsent conditions observed with bounded8s asynchronous removal wait; all six current-SHA checks passed",
+    "installedIdentity": "Active installed base.apk path re-read and hashed before/after; host APK unchanged"
+  }
+}

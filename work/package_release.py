@@ -11,6 +11,7 @@ import html
 import json
 import pathlib
 import re
+import runpy
 import struct
 import subprocess
 import zipfile
@@ -23,7 +24,7 @@ VERSION_CODE = 12
 COUNTS = {"qa.json": 176, "composition-qa.json": 68,
           "ui-switch-qa.json": 15, "utility-qa.json": 15,
           "pet-layout-qa.json": 19, "donor18-qa.json": 23,
-          "mini-apps-qa.json": 27}
+          "mini-apps-qa.json": 27, "native-cards-qa.json": 31}
 RESEARCH = ["MRC-coverage.json", "composition-provenance.json", "font-provenance.json",
             "portable-resource-provenance.json", "native-playback-evidence.json",
             "pandora-rearscreen-inventory.json", "ruyi-display_layout_configuration.xml",
@@ -73,6 +74,14 @@ def dump(path, data):
 def require(condition, message):
     if not condition:
         raise ValueError(message)
+
+
+def native_qa_cases(data, count):
+    names = runpy.run_path(str(WORK / "tests/native_apps_contract.py"))["NAMES"]
+    rows = data.get("results", [])
+    require(len(names) == count and len(rows) == count and
+            {row.get("test") for row in rows} == names,
+            "Native card QA test set differs from required contract")
 
 
 def apk_sha(data):
@@ -174,7 +183,7 @@ def source_entries():
             entries.append((ROOT / name, name))
     entries += [(p, p.relative_to(ROOT)) for p in (ROOT / "docs").glob("*.md")]
     # Sanitized OEM inspection only; never glob raw phone dumps.
-    for name in ["folded-wallpaper-phone-inspection.json", "native-tiny-preview-evidence.json", "framework-power-provenance.json"]:
+    for name in ["folded-wallpaper-phone-inspection.json", "native-tiny-preview-evidence.json", "framework-power-provenance.json", "native-cover-capabilities.json"]:
         path = ROOT / "docs" / name
         if path.is_file():
             entries.append((path, path.relative_to(ROOT)))
@@ -262,7 +271,7 @@ def report(verification, catalog):
 <h2>Размер и положение в1.0</h2><p>В карточке выбранного питомца открой «Вариант и положение». «С часами» сохраняет прежний автоматический размер; «Без часов» увеличивает питомца справа с сохранением пропорций. Масштаб60–160% и сдвигX/Y сохраняются отдельно для каждого питомца и варианта. Предпросмотр меняется сразу; внешний экран — после «Применить». «Отмена» отменяет черновик, «Автоматически» сбрасывает текущий вариант после применения. Камеры в предпросмотре схематичны. Часы внутри видео и исходное обрезание причёскиCharlie остаются. В1.1 добавлены четыре сцены Butterfly carp с плавной сменой по MAML, Vortex как анимированный фон и ручной эффект появления карточки18Pro. Эти файлы не включают серверные AI-функции или native аналоговые часыVortex.</p>
 <h2>Запуск</h2><ol><li>Установи APK, выбери оформление/фото.</li><li>Запусти <a href="https://shizuku.rikka.app/guide/setup/">Shizuku по официальной инструкции</a>, нажми «Включить через Shizuku» и разреши доступ.</li><li>Раскрой/разблокируй MIX Flip. При складывании/сне возвращается штатный интерфейс/AOD Xiaomi.</li><li>После перезагрузки Shizuku запускается заново, затем включается сеанс. Фото и настройки сохраняются.</li></ol>
 <h2>Мини-приложения в1.1</h2><p>Вода, английско-китайский словарь и Pomodoro используют оригинальные публичные HTML-примеры Xiaomi. Фон заполняет внешний экран; пропорции графики и координаты касаний сохранены. Предпросмотр и Отмена не меняют применённую карточку. Карточки работают офлайн, скрытые WebView уничтожаются. Это не подтверждённая копия нативного runtime18Pro: прошивка содержит отдельный JsCanvas/QuickJS-движок, а соответствующие пакеты этих трёх карточек пока не найдены. Галерея разделена по источникам17Pro/18Pro/Свои/Архив Xiaomi. Экспериментальный KernelSU-модуль служит альтернативным контроллером; работа с root на телефоне не проверена, независимое питание и сложенный lockscreen/AOD он не реализует.</p>
-<h2>Проверки этого APK</h2><ul>{tests}</ul><p>Всего {verification["currentApk"]["qaChecks"]} успешных runtime-проверок. Все assets APK совпали с source bytes; MP4 не сжаты, подписьv3/zipalign/ELF16KiB проверены. SHA-256: <code>{verification["apkSha256"]}</code>. Успех эмулятора не доказывает физический угол шарнира, обход ограниченийHyperOS или расход батареи.</p>
+<h2>Отдельные карточки</h2><p>Вода, Слова и Фокус также доступны в обычной foreground Activity с отдельными данными и выбором. Для запуска из штатного внешнего меню нужен явный выбор в Flip Pets и допуск значка прошивкой Xiaomi; фактический EEA допуск ещё не проверен. Root не требуется для Activity. Сон и блокировку обслуживает штатная система; скрытый WebView уничтожается. Это не нативный folded lockscreen/AOD.</p><h2>Проверки этого APK</h2><ul>{tests}</ul><p>Всего {verification["currentApk"]["qaChecks"]} успешных runtime-проверок. Все assets APK совпали с source bytes; MP4 не сжаты, подписьv3/zipalign/ELF16KiB проверены. SHA-256: <code>{verification["apkSha256"]}</code>. Успех эмулятора не доказывает физический угол шарнира, обход ограниченийHyperOS или расход батареи.</p>
 <h2>Ресурсы</h2><div class="grid">{''.join(cards)}</div><p>Геометрия адаптирована к внешнему1392×1208/1208×1392 и основному1224×2912. Вырез камер учитывается по insets. Размеры — <a href="https://www.mi.com/global/product/xiaomi-mix-flip/specs/">официальные характеристикиMIX Flip</a>; касания/вырезы новых карточек ещё требуют телефона.</p>
 <h2>Ресурсы процесса</h2>{resource_section}<p>CPU100% означает одно ядро; PSS относится к процессу приложения. Системный decoder/GPU и батарея этим не измеряются. На 0.5 телефон показал около39% одного ядра при непрерывном30fps и0.16% на удержанном кадре, короткие12-секундные интервалы; это исторические замеры, не обещание для0.8.</p>
 <h2>Исторические данные</h2><ul>{history}</ul><p>Без полного системного сервисаXiaomi не обещаются AI-dialog, AON-камерные жесты, платежи, облачная погода/Douban и полноценныйFolme. Исследование и donor-roadmap находятся в sourceZIP/docs. MIT относится только к нашему коду; графика/шрифты сохраняют права владельцев. Прошивки — только доноры ресурсов, не для установки наMIX Flip.</p></main></html>'''
@@ -271,6 +280,7 @@ def report(verification, catalog):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--qa-dir", type=pathlib.Path, default=WORK / "qa-v03/device-files")
+    parser.add_argument("--native-qa", type=pathlib.Path, default=WORK / "qa-final/native-cards/native-cards-qa.json")
     parser.add_argument("--profile", type=pathlib.Path)
     parser.add_argument("--physical-evidence", type=pathlib.Path, help="Explicit public current-APK physical report; limited scope remains explicit")
     parser.add_argument("--current-evidence", type=pathlib.Path, nargs="*", default=[])
@@ -300,7 +310,7 @@ def main():
     require(catalogue_lf_sha == selected["resultCatalogueSha256"], "Donor18 result catalogue differs")
     qa, evidence = {}, []
     for name, count in COUNTS.items():
-        path = public_input(args.qa_dir / name)
+        path = public_input(args.native_qa if name == "native-cards-qa.json" else args.qa_dir / name)
         data = read(path)
         require(apk_sha(data) == binary, f"Stale/wrong APK SHA: {name}")
         require(data.get("tested") == count and data.get("failed") == 0,
@@ -308,6 +318,8 @@ def main():
         require(len(data.get("results", [])) == count and all(x.get("ok") is True for x in data["results"]),
                 f"QA result rows invalid: {name}")
         require(not data.get("skipped"), f"Skipped required QA: {name}")
+        if name == "native-cards-qa.json":
+            native_qa_cases(data, count)
         qa[name] = data
         evidence.append((path, "current/emulator/" + name))
     require({row["path"] for row in qa["qa.json"]["results"]} == paths, "Clip QA coverage differs from catalogue")

@@ -1,11 +1,11 @@
 {
   "version": "1.1",
-  "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
+  "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
   "currentApk": {
     "environment": "Standard Android16/API36 x86_64 emulator; not HyperOS",
     "emulatorQa": {
       "qa.json": {
-        "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
+        "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
         "tested": 176,
         "failed": 0,
         "results": [
@@ -2652,7 +2652,7 @@
         ]
       },
       "composition-qa.json": {
-        "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
+        "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
         "tested": 68,
         "failed": 0,
         "decodedOriginalImages": 497,
@@ -3275,7 +3275,7 @@
         ]
       },
       "ui-switch-qa.json": {
-        "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
+        "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
         "tested": 15,
         "failed": 0,
         "results": [
@@ -3357,11 +3357,11 @@
         ]
       },
       "utility-qa.json": {
-        "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
+        "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
         "environment": "Android emulator; no HyperOS/hardware claim",
         "tested": 15,
         "failed": 0,
-        "durationMs": 6668,
+        "durationMs": 6919,
         "results": [
           {
             "test": "battery_percent",
@@ -3381,7 +3381,7 @@
           {
             "test": "timer_advances_visible",
             "ok": true,
-            "detail": "elapsedDeltaMs=1300 displayChanged=true"
+            "detail": "elapsedDeltaMs=1301 displayChanged=true"
           },
           {
             "test": "timer_pause_button",
@@ -3442,7 +3442,7 @@
         "skipped": []
       },
       "pet-layout-qa.json": {
-        "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
+        "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
         "environment": "Android emulator; no physical camera/HyperOS claim",
         "tested": 19,
         "failed": 0,
@@ -3546,107 +3546,114 @@
         "skipped": []
       },
       "donor18-qa.json": {
-        "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
+        "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
         "environment": "Standard Android emulator; real app players/view properties, not compositor-frame or HyperOS/physical camera proof",
         "tested": 23,
         "failed": 0,
-        "durationMs": 41861,
+        "durationMs": 59317,
         "cycles": [
           {
             "cycle": 1,
-            "scene": 1,
+            "scene": 0,
             "minimumPollAlpha": 0,
-            "outMs": 13008,
-            "sourceChangeMs": 13545,
-            "loadAckMs": 13500,
-            "nativeHiddenObservationMs": 13545,
-            "firstFadeInViewStateMs": 13825,
-            "ackToFadeInMs": 325,
-            "completeMs": 14182
+            "outMs": 13934,
+            "sourceChangeMs": 15079,
+            "loadAckMs": 15074,
+            "nativeHiddenObservationMs": 15079,
+            "firstFadeInViewStateMs": 15609,
+            "ackToFadeInMs": 535,
+            "completeMs": 16665
           },
           {
             "cycle": 2,
-            "scene": 2,
+            "scene": 1,
             "minimumPollAlpha": 0,
-            "outMs": 25452,
-            "sourceChangeMs": 25848,
-            "loadAckMs": 25771,
-            "nativeHiddenObservationMs": 25772,
-            "firstFadeInViewStateMs": 25903,
-            "ackToFadeInMs": 132,
-            "completeMs": 26395
+            "outMs": 27859,
+            "sourceChangeMs": 28874,
+            "loadAckMs": 28874,
+            "nativeHiddenObservationMs": 28874,
+            "firstFadeInViewStateMs": 29408,
+            "ackToFadeInMs": 534,
+            "completeMs": 30614
           }
         ],
         "phaseObservations": [
           {
-            "elapsedMs": 1295,
-            "scene": 0,
+            "elapsedMs": 4336,
+            "scene": 3,
             "phase": "PLAYING",
             "alpha": 1,
+            "progress": 0.05553691275167785
+          },
+          {
+            "elapsedMs": 13853,
+            "scene": 3,
+            "phase": "FADING_OUT",
+            "alpha": 1,
+            "progress": 1
+          },
+          {
+            "elapsedMs": 14428,
+            "scene": 3,
+            "phase": "AWAITING_LOAD",
+            "alpha": 0,
+            "progress": 1
+          },
+          {
+            "elapsedMs": 15079,
+            "scene": 0,
+            "phase": "HIDDEN_DELAY",
+            "alpha": 0,
             "progress": 0.00013908205841446454
           },
           {
-            "elapsedMs": 12885,
+            "elapsedMs": 15609,
             "scene": 0,
-            "phase": "FADING_OUT",
-            "alpha": 1,
-            "progress": 0.9625869262865091
+            "phase": "FADING_IN",
+            "alpha": 0.046666666865348816,
+            "progress": 0.004311543810848401
           },
           {
-            "elapsedMs": 13396,
+            "elapsedMs": 16665,
+            "scene": 0,
+            "phase": "PLAYING",
+            "alpha": 1,
+            "progress": 0.09610570236439499
+          },
+          {
+            "elapsedMs": 27859,
+            "scene": 0,
+            "phase": "FADING_OUT",
+            "alpha": 0.9980000257492065,
+            "progress": 1
+          },
+          {
+            "elapsedMs": 28314,
             "scene": 0,
             "phase": "AWAITING_LOAD",
             "alpha": 0,
             "progress": 1
           },
           {
-            "elapsedMs": 13544,
+            "elapsedMs": 28874,
             "scene": 1,
             "phase": "HIDDEN_DELAY",
             "alpha": 0,
             "progress": 0.00013908205841446454
           },
           {
-            "elapsedMs": 13825,
+            "elapsedMs": 29408,
             "scene": 1,
             "phase": "FADING_IN",
-            "alpha": 0.75,
+            "alpha": 0.21666666865348816,
             "progress": 0.008484005563282337
           },
           {
-            "elapsedMs": 14163,
+            "elapsedMs": 30614,
             "scene": 1,
             "phase": "PLAYING",
             "alpha": 1,
-            "progress": 0.03769123783031989
-          },
-          {
-            "elapsedMs": 25294,
-            "scene": 1,
-            "phase": "FADING_OUT",
-            "alpha": 1,
-            "progress": 0.9709318497913769
-          },
-          {
-            "elapsedMs": 25848,
-            "scene": 2,
-            "phase": "HIDDEN_DELAY",
-            "alpha": 0,
-            "progress": 0.0001666666666666667
-          },
-          {
-            "elapsedMs": 25975,
-            "scene": 2,
-            "phase": "FADING_IN",
-            "alpha": 0.05999999865889549,
-            "progress": 0.005166666666666667
-          },
-          {
-            "elapsedMs": 26395,
-            "scene": 2,
-            "phase": "PLAYING",
-            "alpha": 1,
-            "progress": 0.03516666666666667
+            "progress": 0.07941585535465925
           }
         ],
         "results": [
@@ -3678,7 +3685,7 @@
           {
             "test": "carp_hidden_delay_alpha_zero",
             "ok": true,
-            "detail": "Loaded PAGView observed HIDDEN_DELAY alpha0 via native start or50ms sample; first actual fade-in observation>=100ms after model load acknowledgement, not callback delivery. Load-ack/view-property evidence, not compositor-frame proof. [{\"cycle\":1,\"scene\":1,\"minimumPollAlpha\":0,\"outMs\":13008,\"sourceChangeMs\":13545,\"loadAckMs\":13500,\"nativeHiddenObservationMs\":13545,\"firstFadeInViewStateMs\":13825,\"ackToFadeInMs\":325,\"completeMs\":14182},{\"cycle\":2,\"scene\":2,\"minimumPollAlpha\":0,\"outMs\":25452,\"sourceChangeMs\":25848,\"loadAckMs\":25771,\"nativeHiddenObservationMs\":25772,\"firstFadeInViewStateMs\":25903,\"ackToFadeInMs\":132,\"completeMs\":26395}]"
+            "detail": "Loaded PAGView observed HIDDEN_DELAY alpha0 via native start or50ms sample; first actual fade-in observation>=100ms after model load acknowledgement, not callback delivery. Load-ack/view-property evidence, not compositor-frame proof. [{\"cycle\":1,\"scene\":0,\"minimumPollAlpha\":0,\"outMs\":13934,\"sourceChangeMs\":15079,\"loadAckMs\":15074,\"nativeHiddenObservationMs\":15079,\"firstFadeInViewStateMs\":15609,\"ackToFadeInMs\":535,\"completeMs\":16665},{\"cycle\":2,\"scene\":1,\"minimumPollAlpha\":0,\"outMs\":27859,\"sourceChangeMs\":28874,\"loadAckMs\":28874,\"nativeHiddenObservationMs\":28874,\"firstFadeInViewStateMs\":29408,\"ackToFadeInMs\":534,\"completeMs\":30614}]"
           },
           {
             "test": "carp_fade_in_alpha_path",
@@ -3770,7 +3777,7 @@
         "hostFixture": "Native Home navigation then opaque Android Settings; actual onStop/release required. Owned stale QA tasks removed; listener access isolated/restored."
       },
       "mini-apps-qa.json": {
-        "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
+        "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
         "tested": 27,
         "failed": 0,
         "results": [
@@ -3885,9 +3892,143 @@
         ],
         "skipped": [],
         "environment": "Android emulator, original public Xiaomi HTML; no physical camera/HyperOS identity claim"
+      },
+      "native-cards-qa.json": {
+        "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
+        "token": "64110810-ebb3-4a01-aaff-e27b24f566fd",
+        "tested": 31,
+        "failed": 0,
+        "results": [
+          {
+            "test": "native_origin",
+            "ok": true
+          },
+          {
+            "test": "foreground_only_flags",
+            "ok": true
+          },
+          {
+            "test": "no_cover_membership",
+            "ok": true
+          },
+          {
+            "test": "offline_settings",
+            "ok": true
+          },
+          {
+            "test": "no_native_bridge",
+            "ok": true
+          },
+          {
+            "test": "first_measured_canvas",
+            "ok": true
+          },
+          {
+            "test": "water_empty_qa_storage",
+            "ok": true
+          },
+          {
+            "test": "water_touch",
+            "ok": true
+          },
+          {
+            "test": "capture_native-water.png",
+            "ok": true
+          },
+          {
+            "test": "water_persistence",
+            "ok": true
+          },
+          {
+            "test": "nav_focus",
+            "ok": true
+          },
+          {
+            "test": "capture_native-focus.png",
+            "ok": true
+          },
+          {
+            "test": "focus_touch_start",
+            "ok": true
+          },
+          {
+            "test": "focus_touch_pause",
+            "ok": true
+          },
+          {
+            "test": "nav_words",
+            "ok": true
+          },
+          {
+            "test": "words_touch_unknown",
+            "ok": true
+          },
+          {
+            "test": "words_touch_known",
+            "ok": true
+          },
+          {
+            "test": "capture_native-words.png",
+            "ok": true
+          },
+          {
+            "test": "native_selection_isolated",
+            "ok": true
+          },
+          {
+            "test": "rotation_measured_canvas",
+            "ok": true
+          },
+          {
+            "test": "rotation_state",
+            "ok": true
+          },
+          {
+            "test": "recreate_selection_state",
+            "ok": true
+          },
+          {
+            "test": "stop_cover_preserves_native",
+            "ok": true
+          },
+          {
+            "test": "settings_hidden_release",
+            "ok": true
+          },
+          {
+            "test": "settings_back_state",
+            "ok": true
+          },
+          {
+            "test": "home_hidden_release",
+            "ok": true
+          },
+          {
+            "test": "home_resume_state",
+            "ok": true
+          },
+          {
+            "test": "native_process_recreation",
+            "ok": true
+          },
+          {
+            "test": "native_process_storage",
+            "ok": true
+          },
+          {
+            "test": "preferences_restored",
+            "ok": true
+          },
+          {
+            "test": "global_preferences_preserved",
+            "ok": true
+          }
+        ],
+        "skipped": [],
+        "environment": "Android emulator; app-owned Activity only, not Xiaomi admission/physical continuity proof"
       }
     },
-    "qaChecks": 343,
+    "qaChecks": 374,
     "binaryChecks": {
       "package": "org.flippets.app",
       "versionName": "1.1",
@@ -3940,9 +4081,468 @@
     "physicalEvidence": null,
     "additionalEvidence": [
       {
+        "file": "native-launch-cards-evidence.json",
+        "data": {
+          "date": "2026-10-11",
+          "scope": "Step 4: separate foreground native-launch cards; source and current-SHA emulator verification, Xiaomi admission unverified",
+          "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
+          "moduleZipSha256": "95e02bf4b589ed558bec0204c991ca7ac0f8f5a455c426422a2a1cdd3164563b",
+          "canonicalControllerSha256": "eaf0f94cc6a57ba21cc342c7c7b7fe5914215ae540d38b583ab7315e4af5d06c",
+          "rootControllerSha256": "0355c90e6f35d7e2b0dbab10a37845eccfa2c9647822925bb01d1a7acd020eb8",
+          "commandChecksPassed": 0,
+          "syntaxChecksPassed": 0,
+          "reports": {
+            "qa.json": {
+              "path": "work/qa-v03/device-files/qa.json",
+              "sha256": "4c6ccac87b21adff8b0e5bedd49b194d125e40afcf56a520903e479b099b4e69",
+              "checks": 176,
+              "allPassed": true,
+              "binding": "current APK"
+            },
+            "composition-qa.json": {
+              "path": "work/qa-v03/device-files/composition-qa.json",
+              "sha256": "e62401f79c876b89a16707a7258e2e830df444745edfccd5c1ee3a343894d7ef",
+              "checks": 68,
+              "allPassed": true,
+              "binding": "current APK"
+            },
+            "ui-switch-qa.json": {
+              "path": "work/qa-v03/device-files/ui-switch-qa.json",
+              "sha256": "ccd2b80a92eab9c8a076aab29d5282e42388c0a91d5655f5c6b9aa470187a35e",
+              "checks": 15,
+              "allPassed": true,
+              "binding": "current APK"
+            },
+            "utility-qa.json": {
+              "path": "work/qa-v03/device-files/utility-qa.json",
+              "sha256": "e499707c1c8fe1e12f7c95f78490bf67f4c0dc5bea45a98052c2753028ca5728",
+              "checks": 15,
+              "allPassed": true,
+              "binding": "current APK"
+            },
+            "pet-layout-qa.json": {
+              "path": "work/qa-v03/device-files/pet-layout-qa.json",
+              "sha256": "80a30d6366d6781b92761a06bd9f922ce58dfa1b6afc41bccbc64edc084ac451",
+              "checks": 19,
+              "allPassed": true,
+              "binding": "current APK"
+            },
+            "donor18-qa.json": {
+              "path": "work/qa-v03/device-files/donor18-qa.json",
+              "sha256": "86de8a93002c190f763211c52e0c2a0ebf806d77249ae7e19a1677431c2e0fb3",
+              "checks": 23,
+              "allPassed": true,
+              "binding": "current APK"
+            },
+            "mini-apps-qa.json": {
+              "path": "work/qa-v03/device-files/mini-apps-qa.json",
+              "sha256": "029d3e092af64f8390f901e8557e5ca89b35db89e6701409c8f01d9347d000c6",
+              "checks": 27,
+              "allPassed": true,
+              "binding": "current APK"
+            },
+            "native-cards-qa.json": {
+              "path": "work/qa-final/native-cards/native-cards-qa.json",
+              "sha256": "f44ec2a5cc7802550a7a2bf3534d8e6d27c41f57a6f049b571fa7d33fca9c6d4",
+              "checks": 31,
+              "allPassed": true,
+              "binding": "current APK"
+            },
+            "gallery-qa.json": {
+              "path": "work/qa-v03/gallery-qa.json",
+              "sha256": "0535d0ce32669d7c19989573e996b64a79ee53174b87e6b1bb6f63e93a5a2d18",
+              "checks": 20,
+              "allPassed": true,
+              "binding": "current APK"
+            },
+            "runtime-v110.json": {
+              "path": "work/qa-v03/runtime-v110.json",
+              "sha256": "0bb54522ec8378711488276b2aed60adcddd87378797aefcc78d82fdc6e8032b",
+              "checks": 6,
+              "allPassed": true,
+              "binding": "current APK"
+            },
+            "native-route-tests.json": {
+              "path": "work/qa-final/native-route-tests.json",
+              "sha256": "8aa3cde5a365b3f8f6122a7583ccacd842e86ca4be511bdc1f504d119ab18ec7",
+              "checks": 14,
+              "allPassed": true,
+              "binding": "source"
+            },
+            "native-package-guards.json": {
+              "path": "work/qa-final/native-package-guards.json",
+              "sha256": "9d440de09e6c49b72ba7d91d29ac30856716c5d5a0b5dcee19b51e4ff41af0aa",
+              "checks": 5,
+              "allPassed": true,
+              "binding": "source"
+            }
+          },
+          "apkChecksPassed": 374,
+          "additionalEmulatorChecksPassed": 26,
+          "sourceChecksPassed": 19,
+          "gallerySynchronization": {
+            "initialFailure": "Own accessibility window root temporarily unavailable after real Charlie selection; failed run and cleanup failure retained privately, excluded from passes",
+            "finalProcedure": "Restored initialWater through actual galleryApply before finalfullrun; fresh own-window polling bounded15s; intermediatepet always differs from original so restoration cannotbe a no-op"
+          },
+          "rendererCollection": {
+            "initialTimeout": "Initial600-second renderer collection expired with an independent foreground WebView active; diagnostic retained privately",
+            "finalProcedure": "Real Home released the foreground view; existing exact-installed-SHA176/68 renderer runs completed and were collected with --resume-render; no assertions/counts/skips relaxed",
+            "scope": "Emulator graphics scheduling diagnosis, not phone performance evidence"
+          },
+          "sourceVerification": {
+            "native-route-tests.json": {
+              "environment": "Host JVM; pure observed-profile predicate with Android SDK constants, not Xiaomi native admission proof",
+              "sourceSha256": "c22d39272700afb3a4d5d4393c0b6902cbf6f91cb20a56572d63a9277291ad50",
+              "results": [
+                {
+                  "case": "observed_cover_context",
+                  "ok": true
+                },
+                {
+                  "case": "display_id_not_hardcoded",
+                  "ok": true
+                },
+                {
+                  "case": "rotated_cover_bounds",
+                  "ok": true
+                },
+                {
+                  "case": "main_display_rejected",
+                  "ok": true
+                },
+                {
+                  "case": "narrow_main_rejected",
+                  "ok": true
+                },
+                {
+                  "case": "narrow_cover_window_rejected",
+                  "ok": true
+                },
+                {
+                  "case": "unknown_device_rejected",
+                  "ok": true
+                },
+                {
+                  "case": "private_display_rejected",
+                  "ok": true
+                },
+                {
+                  "case": "incomplete_flags_rejected",
+                  "ok": true
+                },
+                {
+                  "case": "unknown_mode_rejected",
+                  "ok": true
+                },
+                {
+                  "case": "sleep_rejected",
+                  "ok": true
+                },
+                {
+                  "case": "lock_rejected",
+                  "ok": true
+                },
+                {
+                  "case": "invalid_id_rejected",
+                  "ok": true
+                },
+                {
+                  "case": "zero_window_rejected",
+                  "ok": true
+                }
+              ]
+            },
+            "native-package-guards.json": {
+              "environment": "Host-only publication gate checks using current report plus deliberately invalid copies",
+              "source_sha256": {
+                "work/package_release.py": "2fbb2c5696a75bcb5a0a3e6b62ea83baededda36f5ae4935e34ce7a86cb4c664",
+                "work/tests/native_apps_contract.py": "2511a11168d2792c50e6c1c880ef65cf81a0904f9832c5001a6ec0393364ffa3"
+              },
+              "tested": 5,
+              "failed": 0,
+              "results": [
+                {
+                  "test": "real_current_report",
+                  "ok": true
+                },
+                {
+                  "test": "duplicate_case",
+                  "ok": true
+                },
+                {
+                  "test": "foreign_case",
+                  "ok": true
+                },
+                {
+                  "test": "missing_case",
+                  "ok": true
+                },
+                {
+                  "test": "wrong_expected_count",
+                  "ok": true
+                }
+              ]
+            }
+          },
+          "apkStructure": {
+            "package": "org.flippets.app",
+            "versionName": "1.1",
+            "versionCode": 12,
+            "signatureV3Verified": true,
+            "certificateSha256": "819b54a88b032712475060b68a6adcfff569366c86e9683c92934b36375391ba",
+            "zipalign16KiBVerified": true,
+            "allAssetsByteIdenticalToSources": true,
+            "nativeLibraries": [
+              {
+                "path": "lib/arm64-v8a/libffavc.so",
+                "loadAlignments": [
+                  16384,
+                  16384,
+                  16384
+                ],
+                "sha256": "1e214164a6c153f74f25018c1625f3e71d1d5ba601f6592c4dd89385dcc4b0bc"
+              },
+              {
+                "path": "lib/arm64-v8a/libpag.so",
+                "loadAlignments": [
+                  16384,
+                  16384,
+                  16384
+                ],
+                "sha256": "1178fe9a7fb345212e2a9ff0c386ce9772f03183686e1de87af84f89cbdf736f"
+              },
+              {
+                "path": "lib/x86_64/libffavc.so",
+                "loadAlignments": [
+                  16384,
+                  16384,
+                  16384
+                ],
+                "sha256": "5da4dea926ef43d7ac4535b5799afba00d9d0e0fd396e350486037de6843e7e2"
+              },
+              {
+                "path": "lib/x86_64/libpag.so",
+                "loadAlignments": [
+                  16384,
+                  16384,
+                  16384
+                ],
+                "sha256": "f013aead9e08a559326921a1f94df701814197bcc93592c50d93cd4285158d51"
+              }
+            ],
+            "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75"
+          },
+          "captures": {
+            "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
+            "capture": "Android PixelCopy composed Activity window",
+            "images": [
+              {
+                "file": "native-water.png",
+                "sha256": "ed41739ff7258f9592dd3fd9ae8963c7cecdc5f2fede800c7018853a8d86ee85"
+              },
+              {
+                "file": "native-focus.png",
+                "sha256": "a8f6859194e3f3f479584828e2aff69b243bd6024fb50f7d935ca69db8184718"
+              },
+              {
+                "file": "native-words.png",
+                "sha256": "dae08a72b95d7b805653d7d6c7b96250b1c10aacd583ae66243912eaf009f702"
+              }
+            ],
+            "limitation": "Emulator only; not physical camera or Xiaomi continuity proof"
+          },
+          "source_sha256": {
+            "work/app/src/org/flippets/app/CoverAppsActivity.java": "4f2bdc82753f06fd756645e4fe85d1eb8e44e6e56ea933e05cec3d20ece263f0",
+            "work/app/src/org/flippets/app/NativeAppsQa.java": "3b07c3bbf67e254d80dee50aba190fef317565adcb40610d1348eb87a398ffee",
+            "work/app/src/org/flippets/app/NativeCards.java": "cf26b83ae94a2745ee1c20efa180cdbbe352734ed005f5f400d85ad92db7b4ac",
+            "work/app/src/org/flippets/app/NativeCoverRoute.java": "c22d39272700afb3a4d5d4393c0b6902cbf6f91cb20a56572d63a9277291ad50",
+            "work/app/src/org/flippets/app/MainActivity.java": "89c585f48395735cacfb984cb48ca71982dc7a6d7a10897d47c6577670918d07",
+            "work/app/src/org/flippets/app/MiniAppView.java": "73d691de8f71a9a8281cca5485ac1e6e8a8f05144eb5411248f44641401fd999",
+            "work/tests/run_native_apps_qa.py": "dd666257d64e42cf55dce50f3fd134265ab7931fb14d484e238913e1c1d9873a",
+            "work/tests/native_apps_contract.py": "2511a11168d2792c50e6c1c880ef65cf81a0904f9832c5001a6ec0393364ffa3",
+            "work/tests/run_gallery_qa.py": "15b1489784bb7de3c0ba74753c47afeadbd05c0ca99a39f6d5a1101c48f3142d",
+            "work/tests/run_donor18_qa.py": "c2f21e3c7df9286f61b59653124eb0b135d5551731bbc1ffa623fca8076c65a8",
+            "work/tests/runtime_cover_qa.py": "bba4cb22f9abfbb5a8294c0997baf58f00c49800e2a435ee5bf332a051d6f68a",
+            "work/tests/run_native_route_tests.py": "6603b7bb6b5c4951ac7dda2b5ff38791f532b59e2c6eaea321e4b29337129316",
+            "work/tests/run_package_native_tests.py": "2f1e1262e79372d6bc069f80a7a2e54e33bf0db2adbffa32a681e9cd572799c2",
+            "work/package_release.py": "2fbb2c5696a75bcb5a0a3e6b62ea83baededda36f5ae4935e34ce7a86cb4c664"
+          },
+          "independentReview": {
+            "requestedByUser": true,
+            "actionableCorrectnessFindings": 0,
+            "findingsFixed": [
+              "Opaque Settings footer resolves Focus contrast",
+              "Packager requires exact shared native test set, rejecting duplicate/foreign/missing cases",
+              "Main onNewIntent replaces reused SINGLE_TOP launch intent before routing, covered by same-Activity test",
+              "Rotation invalidates readiness before reload; QA waits for a replacement page and rechecks delayed predicates",
+              "Lifecycle host hashes the active installed APK before and after, re-reading its current package path",
+              "Gallery waits for fresh own-window roots and always changes selection before restoration"
+            ],
+            "finalCodeReview": "Fresh independent code, host-fixture and packaging reviews found no further actionable issues",
+            "finalPixelReview": "Three fresh PixelCopy captures independently inspected; footer legible and controls unobstructed"
+          },
+          "unchangedRootEvidence": {
+            "path": "work/research/kernel-su-runtime-evidence.json",
+            "scope": "151 command and eight syntax checks from step3 retain matching canonical/generated-root/wrapper/state source hashes; not rerun as APK visual checks"
+          },
+          "limitations": [
+            "Standard Android emulator is not physical HyperOS admission/continuity/camera/power/hinge or KernelSU proof",
+            "No phone targeted; exact EEA policy reader/admission/readback/restoration awaits deferred actual device testing",
+            "No native pet motion/Apply/exact restore implemented; source resource preparation continues next",
+            "Generation deferred; native widget hooks optional"
+          ],
+          "releaseTitle": "Native-launch cards: reviewed assembled app candidate",
+          "releaseSummary": "Separate foreground Water, Words and Focus cards, isolated from the supervised pet session. Explicit off-by-default routing choice, conservative observed cover profile, normal visibility lifecycle, offline WebView storage and original Xiaomi HTML. Same Activity for rooted and unrooted phones.\n\nCurrent APK:374 renderer/UI/card checks,20 gallery and6 virtual-cover checks passed with zero failures/skips.14 source routing cases and5 publication gate cases passed. Fresh independent code and rendered-pixel reviews completed. Signature/assets/ZIP/ELF16KiB checks passed.\n\nDevelopment prerelease:actual Xiaomi native launcher admission, physical fold/camera/lock/Power/timeout and root compatibility remain untested. No native Apply/AOD/independent cover power claim. Earlier failed diagnostic runs are excluded from pass evidence.",
+          "lifecycleSynchronization": {
+            "initialFailure": "Fixed one-second Main root-task removal observation failed; retained private failure report",
+            "finalProcedure": "Same coverVisible, foreground-service and MainAbsent conditions observed with bounded8s asynchronous removal wait; all six current-SHA checks passed",
+            "installedIdentity": "Active installed base.apk path re-read and hashed before/after; host APK unchanged"
+          }
+        }
+      },
+      {
+        "file": "gallery-qa.json",
+        "data": {
+          "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
+          "environment": "Guarded Android emulator; real UI input and screencap, not physical MIX Flip",
+          "originalSelection": "Вода Xiaomi",
+          "tested": 20,
+          "failed": 0,
+          "results": [
+            {
+              "test": "all_collection",
+              "ok": true
+            },
+            {
+              "test": "collection_18 Pro",
+              "ok": true
+            },
+            {
+              "test": "collection_Свои",
+              "ok": true
+            },
+            {
+              "test": "collection_Архив Xiaomi",
+              "ok": true
+            },
+            {
+              "test": "collection_17 Pro",
+              "ok": true
+            },
+            {
+              "test": "18pro_mini_intersection",
+              "ok": true
+            },
+            {
+              "test": "17pro_mini_empty",
+              "ok": true
+            },
+            {
+              "test": "personal_mini_empty",
+              "ok": true
+            },
+            {
+              "test": "scoped_search",
+              "ok": true
+            },
+            {
+              "test": "favorites_search_intersection",
+              "ok": true
+            },
+            {
+              "test": "favorites_stay_in_collection",
+              "ok": true
+            },
+            {
+              "test": "favorite_restored",
+              "ok": true
+            },
+            {
+              "test": "mini_opens_preview",
+              "ok": true
+            },
+            {
+              "test": "cancel_keeps_selection",
+              "ok": true
+            },
+            {
+              "test": "apply_selects_mini",
+              "ok": true
+            },
+            {
+              "test": "virtual_cover_activity_visible",
+              "ok": true
+            },
+            {
+              "test": "pet_selection_clears_mini",
+              "ok": true
+            },
+            {
+              "test": "normal_selection_and_restore",
+              "ok": true
+            },
+            {
+              "test": "large-font_grid_visible",
+              "ok": true
+            },
+            {
+              "test": "small-window_grid_visible",
+              "ok": true
+            }
+          ],
+          "images": [
+            {
+              "file": "mini-dialog-focus.png",
+              "sha256": "3fc8933113f48dedd5198fb0364e5dbf09ba88b76dd08cc9497b00ba0898cf60"
+            },
+            {
+              "file": "mini-dialog-water.png",
+              "sha256": "e9b1647f9595766c004c3ada57a22ab020c80dfb21be722352a51a9933686c90"
+            },
+            {
+              "file": "mini-dialog-words.png",
+              "sha256": "6725bb90133d90050daa797bb4210543674c5ec4d7179e04e7a80a83b60ca9fd"
+            },
+            {
+              "file": "mini-applied-main.png",
+              "sha256": "d5ad6d4b60f048d2cadf1f6d2c696d401e6091eaac7192c198f9d9182587cca8"
+            },
+            {
+              "file": "mini-virtual-cover-focus.png",
+              "sha256": "4da2fb140e14e152bdc8ea78c93171d31d8fa4b92a90faf365ecedc3ef4358f5"
+            },
+            {
+              "file": "mini-virtual-cover-water.png",
+              "sha256": "06f933b62ba7221926b02bc809a1323ebb9378ddea7a280d10313375658b3a4a"
+            },
+            {
+              "file": "mini-virtual-cover-words.png",
+              "sha256": "e60aabe5b120573dcc8cd5345c035a06cf92915949343a47b378ccb02d4378d4"
+            },
+            {
+              "file": "gallery-main-18pro.png",
+              "sha256": "7fbafbc2f4ef8c9761aa3af41cfc9b14f2f10848258fbc9302ce2b68e97cf922"
+            },
+            {
+              "file": "gallery-large-font.png",
+              "sha256": "3fa6b5b5ca3c985667edefe7900bc5edb81248759de39908a1636dd423b9d786"
+            },
+            {
+              "file": "gallery-small-window.png",
+              "sha256": "e4c0826024cbb2a59441255634787686536cdc022cc6f3bbf15819e7e00acea2"
+            }
+          ],
+          "cleanup": {
+            "favoriteRestored": true,
+            "selectionRestored": true
+          }
+        }
+      },
+      {
         "file": "runtime-v110.json",
         "data": {
-          "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
+          "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
+          "installedApkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
           "environment": "Standard Android16 API36 x86_64 emulator; virtual cover1208x1392/520 and Main1224x2912/520, not HyperOS",
           "tested": 6,
           "failed": 0,
@@ -3960,7 +4560,7 @@
             {
               "test": "main_task_removed_cover_continues",
               "ok": true,
-              "detail": "Only own Main root task removed through Android task manager; cover survives"
+              "detail": "Only own Main root task removed through Android task manager; wait up to8s for asynchronous removal, cover/service must survive; observed cover=True foreground=True mainAbsent=True"
             },
             {
               "test": "fold_close_retains_foreground_session",
@@ -3979,245 +4579,22 @@
             }
           ]
         }
-      },
-      {
-        "file": "pure-tests-v110.json",
-        "data": {
-          "artifact": "FlipPets.apk",
-          "apk_version": "1.1",
-          "apk_sha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
-          "generated_utc": "2026-10-10T20:15:28.225996+00:00",
-          "scope": "Host JVM pure timer and hinge-opacity logic only; no Android lifecycle, display hardware, or UI automation",
-          "compile": {
-            "passed": true,
-            "exit_code": 0,
-            "stdout": "",
-            "stderr": ""
-          },
-          "source_sha256": {
-            "work/app/src/org/flippets/app/TimerState.java": "51b8ad19ac02969d63effbae04d54eaa4527074d0da2391af7427facfc017d46",
-            "work/app/src/org/flippets/app/HingeOpacity.java": "bab6ce08b467d88e40d1a64c8b10719c1da36b01437f0cf45f9ba0cdee952961",
-            "work/tests/TimerStateTest.java": "61f94ecf0a308d263e0cd51e8deb2253d5d3ff9959a135d54e3cc29e40b17882",
-            "work/tests/HingeOpacityTest.java": "2f4de609d90244206379870d5af3e1818120bd5b38044a126e02c38f81760b26"
-          },
-          "suites": [
-            {
-              "suite": "TimerStateTest",
-              "passed": true,
-              "exit_code": 0,
-              "stdout": "TimerState: 24 assertions passed",
-              "stderr": "",
-              "assertions": 24
-            },
-            {
-              "suite": "HingeOpacityTest",
-              "passed": true,
-              "exit_code": 0,
-              "stdout": "Hinge opacity: endpoints, monotonic range, midpoint and invalid-sample fallback passed",
-              "stderr": ""
-            }
-          ],
-          "total_suites": 2,
-          "passed_suites": 2,
-          "apk_unchanged_during_run": true,
-          "passed": true
-        }
-      },
-      {
-        "file": "donor18-source-v110.json",
-        "data": {
-          "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
-          "scope": "Host JVM geometry/playback/carp and8 synthetic filesystem-import cases, source hashes only; no Android/phone/UI proof. Source probes used1.0 renderer separately.",
-          "tested": 4,
-          "failed": 0,
-          "passed": true,
-          "source_sha256": {
-            "work/app/src/org/flippets/app/PlaybackPolicy.java": "c49310159fb80b31e491eb2e82351914aa15acd9ad1c998c69afbbb82d21a673",
-            "work/tests/PlaybackPolicyTest.java": "06022db91ae8aee98c2d777318a4b2546b85407c4337fd86febc816351425a19",
-            "work/tests/test_donor18_import.py": "e0f0ba9406141bd16dbfd8f523e0a1a18280bdd13d64c7eeb96974bebeedcb65",
-            "work/prepare_donor18.py": "70a31c65189bc1496766f99675d07e777effbeeef0e541a398bdfb7121a0d1be",
-            "work/app/src/org/flippets/app/CoverGeometry.java": "7d38ebdde1a2e89dda766aa39182e88e0500147b0be601a3e6dade448994c543",
-            "work/app/src/org/flippets/app/PetLayoutProfile.java": "f4696a339cbf4eac2d8f929108c5ee0fbfb45d7f115a5609c0daf1818b976183",
-            "work/tests/CoverGeometryTest.java": "caa28bcc89dba138b1de6fa7d0c0c094c57500a6d1ffc40990deca83624d0a17",
-            "work/app/assets/pet-envelopes.json": "adbac3469c5babebdf62b746e717b367cce2c01ca973eb8f947decd8df89186a",
-            "work/app/src/org/flippets/app/CarpSequence.java": "cd0680468c480aa1548e5fa1638785574c69932b84a0d2e3326d7d40373058d3",
-            "work/tests/CarpSequenceTest.java": "9ed0f18f86d88be30f751e0dc265c966bd0d8f52836cec6a8000f7b23814ed86"
-          },
-          "results": [
-            {
-              "test": "run_cover_geometry_tests.py",
-              "ok": true,
-              "detail": "{\n  \"scope\": \"Pre-build source tests: pure aspect/placement invariants and offline donor-asset provenance; not APK/UI or physical camera validation\",\n  \"compilePassed\": true,\n  \"testsPassed\": true,\n  \"stdout\": \"CoverGeometry: 1106 assertions passed\",\n  \"sourceSha256\": {\n    \"work/app/src/org/flippets/app/CoverGeometry.java\": \"7d38ebdde1a2e89dda766aa39182e88e0500147b0be601a3e6dade448994c543\",\n    \"work/app/src/org/flippets/app/PetLayoutProfile.java\": \"f4696a339cbf4eac2d8f929108c5ee0fbfb45d7f115a5609c0daf1818b976183\",\n    \"work/tests/CoverGeometryTest.java\": \"caa28bcc89dba138b1de6fa7d0c0c094c57500a6d1ffc40990deca83624d0a17\",\n    \"work/app/assets/pet-envelopes.json\": \"adbac3469c5babebdf62b746e717b367cce2c01ca973eb8f947decd8df89186a\"\n  },\n  \"sampledPAGAssets\": 116,\n  \"allSampledSourceHashesMatch\": true\n}",
-              "stderr": ""
-            },
-            {
-              "test": "run_carp_sequence_tests.py",
-              "ok": true,
-              "detail": "{\n  \"scope\": \"Pre-build pure Java source tests; threshold/Folme timing adaptation and renderer isolation only, not native engine or APK/phone behavior\",\n  \"compilePassed\": true,\n  \"testsPassed\": true,\n  \"stdout\": \"CarpSequence: 474 assertions passed\",\n  \"stderr\": \"\\n\",\n  \"sourceSha256\": {\n    \"work/app/src/org/flippets/app/CarpSequence.java\": \"cd0680468c480aa1548e5fa1638785574c69932b84a0d2e3326d7d40373058d3\",\n    \"work/tests/CarpSequenceTest.java\": \"9ed0f18f86d88be30f751e0dc265c966bd0d8f52836cec6a8000f7b23814ed86\"\n  },\n  \"localVerifiedMaml\": {\n    \"sha256\": \"82a1617dc7f7fb7972571a827add4da81b45f67ade5a60ce254d3a8c5e2e3eac\",\n    \"expectedThresholdAndFadeExpressionsPresent\": true\n  },\n  \"passed\": true\n}",
-              "stderr": ""
-            },
-            {
-              "test": "PlaybackPolicyTest",
-              "ok": true,
-              "detail": "Playback policy: 33 assertions passed"
-            },
-            {
-              "test": "DonorImportFilesystem8Cases",
-              "ok": true,
-              "detail": "........\n----------------------------------------------------------------------\nRan 8 tests in 0.072s\n\nOK"
-            }
-          ]
-        }
-      },
-      {
-        "file": "visual-miniapps-v110.json",
-        "data": {
-          "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
-          "scope": "Manual review of real emulator window/SurfaceFlinger captures; not physical MIX Flip geometry or complete gallery automation",
-          "passed": true,
-          "failed": 0,
-          "results": [
-            {
-              "test": "Three virtual-cover card backgrounds fill the display without landscape letterbox",
-              "ok": true,
-              "method": "Manual visual inspection"
-            },
-            {
-              "test": "Three dialog previews retain portrait proportions and readable card controls",
-              "ok": true,
-              "method": "Manual visual inspection"
-            },
-            {
-              "test": "Main preview renders the applied card with schematic camera guides",
-              "ok": true,
-              "method": "Manual visual inspection"
-            },
-            {
-              "test": "Large-font gallery renders a readable single-column grid",
-              "ok": true,
-              "method": "Manual visual inspection"
-            },
-            {
-              "test": "Small-window gallery opens through its visible Main control; grid is scrollable but short",
-              "ok": true,
-              "method": "Manual visual inspection"
-            }
-          ],
-          "images": [
-            {
-              "file": "mini-virtual-cover-focus.png",
-              "sha256": "3207c43c0ec1f6a4a8b131cbec70f5edb389d1a270d5c1b18b52b4c7405e6c18"
-            },
-            {
-              "file": "mini-virtual-cover-water.png",
-              "sha256": "e705d4ab330ac64325e03d3e71fd544bab3a2e9b5c1779b4db6a986573e588ab"
-            },
-            {
-              "file": "mini-virtual-cover-words.png",
-              "sha256": "c0bf117979cde3937f77a329bb2be2a3a0e6919f9f923b9e75ecbf5b37f37cb6"
-            },
-            {
-              "file": "mini-dialog-focus.png",
-              "sha256": "e3f372f034362b1b7f2326c787e3933ae895b861f1cfa6ce149e3df27ec3bb47"
-            },
-            {
-              "file": "mini-dialog-water.png",
-              "sha256": "3b5e7fa71ec69dd58bc9ad7cb02570e4dcf4b158537a9a0c51603f2380dbbde8"
-            },
-            {
-              "file": "mini-dialog-words.png",
-              "sha256": "c1ed26c4de8798d4264287c15e62ed80d52163b0349bafca047fa10efcbbb637"
-            },
-            {
-              "file": "mini-applied-main.png",
-              "sha256": "178fb3525b413f052cc950a448ddf867197c6df96357a1748a06f84636477905"
-            },
-            {
-              "file": "gallery-large-font.png",
-              "sha256": "15de239457e4f78b3a62e9b4c000bef0b466f860eb584f533db1179b834c9b48"
-            },
-            {
-              "file": "gallery-small-window-manual-ready.png",
-              "sha256": "034118d39876253b27d5238bae2bc34764b89116fa0a31942aee8b5843af0408"
-            }
-          ],
-          "limitations": [
-            "Physical camera clearance and touch reachability are unverified",
-            "The original source Chinese UI is retained",
-            "At 1208x1392 and density520, gallery headers leave little grid height; compact-window polish is deferred",
-            "Supplemental full-gallery automation passed18 observations then aborted on an accessibility-root error; the windows-only retry passed its large-font observation then also aborted before the small-window assertion. These are not complete automated passes. The small-window screenshot was obtained separately through real input."
-          ]
-        }
-      },
-      {
-        "file": "mini-apps-captures.json",
-        "data": {
-          "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
-          "capture": "Android PixelCopy of composed Main window",
-          "mainSize": "1224x2912",
-          "density": 520,
-          "images": [
-            {
-              "file": "mini-focus.png",
-              "sha256": "31c3edcbecf70359d57c5a101c7e31edb107b8e5dbdc279730ff93ca7f0afca5"
-            },
-            {
-              "file": "mini-water.png",
-              "sha256": "616272f846773d623653bb2a2d95110217a596eda3c2fe1c1a0952838cc2ac33"
-            },
-            {
-              "file": "mini-words.png",
-              "sha256": "3f1b47f523d4e32c004233f4cf3caae256363ec0b2d096b96ecb6ae557bff971"
-            }
-          ],
-          "limitation": "Emulator only; schematic camera overlay does not prove physical clearance"
-        }
       }
     ],
     "screenshots": [
       {
-        "file": "mini-virtual-cover-focus.png",
-        "sha256": "3207c43c0ec1f6a4a8b131cbec70f5edb389d1a270d5c1b18b52b4c7405e6c18",
+        "file": "native-water.png",
+        "sha256": "ed41739ff7258f9592dd3fd9ae8963c7cecdc5f2fede800c7018853a8d86ee85",
         "scope": "Explicitly selected emulator/app screenshot; no hardware claim"
       },
       {
-        "file": "mini-virtual-cover-water.png",
-        "sha256": "e705d4ab330ac64325e03d3e71fd544bab3a2e9b5c1779b4db6a986573e588ab",
+        "file": "native-focus.png",
+        "sha256": "a8f6859194e3f3f479584828e2aff69b243bd6024fb50f7d935ca69db8184718",
         "scope": "Explicitly selected emulator/app screenshot; no hardware claim"
       },
       {
-        "file": "mini-virtual-cover-words.png",
-        "sha256": "c0bf117979cde3937f77a329bb2be2a3a0e6919f9f923b9e75ecbf5b37f37cb6",
-        "scope": "Explicitly selected emulator/app screenshot; no hardware claim"
-      },
-      {
-        "file": "mini-dialog-focus.png",
-        "sha256": "e3f372f034362b1b7f2326c787e3933ae895b861f1cfa6ce149e3df27ec3bb47",
-        "scope": "Explicitly selected emulator/app screenshot; no hardware claim"
-      },
-      {
-        "file": "mini-dialog-water.png",
-        "sha256": "3b5e7fa71ec69dd58bc9ad7cb02570e4dcf4b158537a9a0c51603f2380dbbde8",
-        "scope": "Explicitly selected emulator/app screenshot; no hardware claim"
-      },
-      {
-        "file": "mini-dialog-words.png",
-        "sha256": "c1ed26c4de8798d4264287c15e62ed80d52163b0349bafca047fa10efcbbb637",
-        "scope": "Explicitly selected emulator/app screenshot; no hardware claim"
-      },
-      {
-        "file": "mini-applied-main.png",
-        "sha256": "178fb3525b413f052cc950a448ddf867197c6df96357a1748a06f84636477905",
-        "scope": "Explicitly selected emulator/app screenshot; no hardware claim"
-      },
-      {
-        "file": "gallery-large-font.png",
-        "sha256": "15de239457e4f78b3a62e9b4c000bef0b466f860eb584f533db1179b834c9b48",
-        "scope": "Explicitly selected emulator/app screenshot; no hardware claim"
-      },
-      {
-        "file": "gallery-small-window-manual-ready.png",
-        "sha256": "034118d39876253b27d5238bae2bc34764b89116fa0a31942aee8b5843af0408",
+        "file": "native-words.png",
+        "sha256": "dae08a72b95d7b805653d7d6c7b96250b1c10aacd583ae66243912eaf009f702",
         "scope": "Explicitly selected emulator/app screenshot; no hardware claim"
       }
     ]
@@ -5304,7 +5681,7 @@
       "scope": "Stubbed commands, not physical hardware; no APK SHA binding assumed",
       "data": {
         "environment": "emulator-5554; stubbed stock command responses, not a physical MIX Flip",
-        "controller_sha256": "91c923d909f5c404480843ab5b006ab2503c87d88274cd4310c36b378163e853",
+        "controller_sha256": "eaf0f94cc6a57ba21cc342c7c7b7fe5914215ae540d38b583ab7315e4af5d06c",
         "results": [
           {
             "case": "start activates presentation",

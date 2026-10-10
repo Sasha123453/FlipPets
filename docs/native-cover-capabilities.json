@@ -1,23 +1,23 @@
 {
   "schemaVersion": 1,
   "scope": "Separate capability statuses; source/fixture evidence does not imply native/hardware compatibility",
-  "currentApkSha256": "cf4aeedaf7018ec59d20a610b719ee7f920d564d04ac8c8d5ceb31670d45763e",
+  "currentApkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
   "capabilities": {
     "openSessionShizuku": {
-      "status": "source and current controller fixtures verified; current APK phone behavior untested",
+      "status": "Unchanged controller fixtures and current six virtual-cover lifecycle checks passed; physical current APK untested",
       "evidence": "work/research/kernel-su-runtime-evidence.json",
       "historicalPhone": "0.7 observed shell startup/session/fold; old APK only"
     },
     "openSessionKernelSU": {
       "status": "experimental source/command fixtures only; root not installed or physically tested",
-      "moduleSha256": "515750d44ab6e3792112bab8d176d855706aedf866f7ff7cd6c015f72379d851",
+      "moduleSha256": "95e02bf4b589ed558bec0204c991ca7ac0f8f5a455c426422a2a1cdd3164563b",
       "evidence": "work/research/kernel-su-runtime-evidence.json"
     },
     "nativeLauncherApps": {
-      "status": "next app source milestone; EEA admission/continuity unknown",
+      "status": "App source and31 real emulator Activity/touch/isolation/lifecycle checks verified; actual EEA admission/continuity untested",
       "inspectedGlobalFlipHomeSha256": "e3c03f3307dae5b2799f9c62f27347b038f575acbc7f54c73270d54429433027",
       "exactEEAFlipHomeMatch": "not checked",
-      "evidence": "work/research/ruyi-fliphome-native-host-audit.json"
+      "evidence": "work/research/native-launch-cards-evidence.json"
     },
     "tinyKeyguard": {
       "status": "historical poster preview only; native motion/apply/exact restore unverified",

@@ -3,6 +3,11 @@ from device_qa import *
 import json, hashlib
 
 guard()
+assert shell('getprop ro.hardware').strip() in ('ranchu','goldfish')
+binary=hashlib.sha256((ROOT.parent/'outputs/FlipPets.apk').read_bytes()).hexdigest()
+installed=shell('pm path org.flippets.app').strip().removeprefix('package:')
+assert installed.startswith('/') and len(installed.splitlines())==1
+assert shell('sha256sum '+installed).split()[0]==binary,'Installed runtime APK differs'
 rows=[]
 def check(name, ok, detail):
     rows.append(dict(test=name,ok=bool(ok),detail=detail))
@@ -43,8 +48,10 @@ try:
     owned=[b for b in stacks() if 'displayId=0 ' in b and 'org.flippets.app.MainActivity' in b]
     assert len(owned)==1
     task=re.search(r'id=(\d+)',owned[0])[1]
-    shell('am stack remove '+task);time.sleep(1)
-    check('main_task_removed_cover_continues',cover_visible() and foreground() and not any('org.flippets.app.MainActivity' in b for b in stacks()),'Only own Main root task removed through Android task manager; cover survives')
+    shell('am stack remove '+task)
+    def retained_after_removal():return cover_visible() and foreground() and not any('org.flippets.app.MainActivity' in b for b in stacks())
+    retained=wait_for(retained_after_removal)
+    check('main_task_removed_cover_continues',retained,'Only own Main root task removed through Android task manager; wait up to8s for asynchronous removal, cover/service must survive; observed cover='+str(cover_visible())+' foreground='+str(foreground())+' mainAbsent='+str(not any('org.flippets.app.MainActivity' in b for b in stacks())))
     shell(f'screencap -d {physical} -p /sdcard/flip-cover.png');adb('pull','/sdcard/flip-cover.png',QA/'photo-battery-runtime-v110.png')
     shell('am broadcast -a org.flippets.app.STOP_COVER -n org.flippets.app/.StopCover');time.sleep(1)
     check('fold_close_retains_foreground_session',foreground() and not cover_visible(),'Simulated fold receiver closes owned cover task; no physical hinge claim')
@@ -67,5 +74,9 @@ except Exception as error:
 finally:
     shell('cmd statusbar collapse',check=False)
     shell('settings put global overlay_display_devices ""',check=False)
-    report=dict(apkSha256=hashlib.sha256((ROOT.parent/'outputs/FlipPets.apk').read_bytes()).hexdigest(),environment='Standard Android16 API36 x86_64 emulator; virtual cover1208x1392/520 and Main1224x2912/520, not HyperOS',tested=len(rows),failed=sum(not r['ok'] for r in rows),results=rows)
+    assert hashlib.sha256((ROOT.parent/'outputs/FlipPets.apk').read_bytes()).hexdigest()==binary,'Host APK changed during runtime QA'
+    current_installed=shell('pm path org.flippets.app').strip().removeprefix('package:')
+    assert current_installed.startswith('/') and len(current_installed.splitlines())==1
+    assert shell('sha256sum '+current_installed).split()[0]==binary,'Installed APK changed during runtime QA'
+    report=dict(apkSha256=binary,installedApkSha256=binary,environment='Standard Android16 API36 x86_64 emulator; virtual cover1208x1392/520 and Main1224x2912/520, not HyperOS',tested=len(rows),failed=sum(not r['ok'] for r in rows),results=rows)
     (QA/'runtime-v110.json').write_text(json.dumps(report,indent=2),encoding='utf8')

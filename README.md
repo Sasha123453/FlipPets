@@ -14,6 +14,12 @@ see [setup and migration](docs/kernel-su-module.md).
 
 ## Native folded-screen priority
 
+The development app also provides separate offline card navigation for ordinary
+native cover-app launches, with an explicit opt-in and conservative cover routing.
+It works through the same app on root and non-root. Xiaomi EEA launcher admission,
+widget-strip behavior and physical continuity still await phone verification.
+See [native card setup and limits](docs/native-launch-cards.md).
+
 The default folded path remains Xiaomi's own cover interface, secure lock screen and
 AOD. The next priority is optional animated cover-lock wallpaper through Xiaomi's
 stock wallpaper editor/engine, so the native system handles folding and persistence.
@@ -23,6 +29,8 @@ this folded-lock work is deferred at the user's request. See the
 [folded wallpaper research](docs/folded-wallpaper-options.md) and
 [donor-based roadmap](docs/cover-screen-research.md). Optional utility cards are a
 secondary addition; stock folded widgets already provide many comparable functions.
+
+The current native-card development APK (`b8fb78ce…`) passed374 APK checks,20 gallery and6 virtual-cover checks, with fresh independent code/pixel review. Routing and publication guards passed separately. It still requires actual MIX Flip testing. See [current evidence](work/research/native-launch-cards-evidence.json).
 
 ## Version 1.1
 

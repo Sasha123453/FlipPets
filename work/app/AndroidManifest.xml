@@ -22,6 +22,7 @@
       <meta-data android:name="miui.supportAppContinuity" android:value="true"/>
       <meta-data android:name="miui.continuity.policy" android:value="5"/>
     </activity>
+    <activity android:name=".CoverAppsActivity" android:exported="false" android:resizeableActivity="true" android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|density"/>
     <service android:name=".CoverGuard" android:exported="false" android:stopWithTask="false" android:foregroundServiceType="specialUse">
       <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User-enabled persistent presentation on the built-in cover display, independent of the settings task; waits while folded or asleep, without a wake lock or background rendering."/>
     </service>

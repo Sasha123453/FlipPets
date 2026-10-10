@@ -14,7 +14,8 @@ def ui(name='ui'):
     # Capture current accessibility windows without uiautomator's idle wait:
     # an animated WebView need not ever become globally idle.
     remote = '/sdcard/Android/data/org.flippets.uiqa/files/primary-ui.xml'
-    for attempt in range(3):
+    deadline=time.monotonic()+15
+    while time.monotonic()<deadline:
         shell('rm -f '+remote)
         output = shell('am instrument -w org.flippets.uiqa/.DumpUi')
         assert 'Own primary display UI captured.' in output, output
@@ -23,7 +24,7 @@ def ui(name='ui'):
         if tree.find('node') is not None:
             return tree
         time.sleep(.2)
-    raise RuntimeError('Own window accessibility root was not ready')
+    raise RuntimeError('Own window accessibility root was not ready within15s')
 
 
 device_qa.ui = ui
@@ -70,14 +71,15 @@ def main():
         images.append(dict(file=name+'.png', sha256=hashlib.sha256((QA/(name+'.png')).read_bytes()).hexdigest()))
 
     def start():
+        shell('input -d 0 keyevent KEYCODE_WAKEUP')
+        shell('wm dismiss-keyguard')
+        shell('cmd statusbar collapse')
         shell('am force-stop org.flippets.app')
-        # Clear only our stale Main QA task/launch extras.
-        for block in shell('am stack list').split('RootTask'):
-            tasks = [line for line in block.splitlines() if 'taskId=' in line]
-            identity = re.search(r'^\s+id=(\d+)\b', block)
-            if identity and tasks and all('org.flippets.app/.MainActivity' in line or 'org.flippets.app/org.flippets.app.MainActivity' in line for line in tasks):
-                shell('am stack remove '+identity[1])
-        shell('am start --display 0 -n org.flippets.app/.MainActivity -f 0x10008000')
+        # NEW_TASK|CLEAR_TASK clears our Main affinity's stale QA launch extras.
+        # Do not remove its RootTask: Android's deferred remove-task process kill
+        # can otherwise kill the newly launched Main process after shell returns.
+        launch_result=shell('am start -W --display 0 -n org.flippets.app/.MainActivity -f 0x10008000')
+        assert 'Error:' not in launch_result, 'Main launch failed'
         deadline = time.monotonic()+30
         while time.monotonic() < deadline:
             try:
@@ -88,6 +90,15 @@ def main():
                 # Retry a fresh snapshot within the launch deadline, never stale XML.
                 pass
             time.sleep(.3)
+        diagnostic=ROOT/'qa-final/native-gallery-timeout-ui.xml'
+        if (QA/'gallery-ready.xml').is_file():
+            diagnostic.write_bytes((QA/'gallery-ready.xml').read_bytes())
+        (ROOT/'qa-final/native-gallery-timeout-launch.txt').write_text(launch_result,encoding='utf-8')
+        own_stacks='\nRootTask'.join(block for block in shell('am stack list').split('RootTask') if 'org.flippets.app/' in block)
+        (ROOT/'qa-final/native-gallery-timeout-task.txt').write_text(own_stacks,encoding='utf-8')
+        pid=shell('pidof org.flippets.app',check=False).strip()
+        if pid.isdigit():
+            (ROOT/'qa-final/native-gallery-timeout-errors.txt').write_text(shell(f'logcat -d --pid={pid} -t 100 *:E',check=False),encoding='utf-8')
         raise TimeoutError('Main window did not become ready')
 
     def selected():
@@ -209,9 +220,14 @@ def main():
                 adb('pull', '/sdcard/flip-card-cover.png', QA/(name+'.png'))
                 images.append(dict(file=name+'.png', sha256=hashlib.sha256((QA/(name+'.png')).read_bytes()).hexdigest()))
             shell('settings put global overlay_display_devices ""')
+            deadline = time.monotonic()+15
+            while 'displayName="Overlay #1"' in shell('dumpsys SurfaceFlinger --display-id'):
+                assert time.monotonic()<deadline, 'Virtual cover removal did not complete'
+                time.sleep(.2)
             start()
-            select_title('Charlie')
-            check('pet_selection_clears_mini', selected() == 'Charlie')
+            alternate_pet='Bubbles' if original=='Charlie' else 'Charlie'
+            select_title(alternate_pet)
+            check('pet_selection_clears_mini', selected() == alternate_pet)
             # Original selection is restored by real gallery selection below.
             select_title(original, original in ('Pomodoro Xiaomi', 'Вода Xiaomi', 'Слова Xiaomi'))
             check('normal_selection_and_restore', selected() == original)

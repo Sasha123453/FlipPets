@@ -26,6 +26,7 @@ public class MainActivity extends Activity {
     boolean waitingSessionStart;
     boolean layoutQaStarted;
     boolean miniQaStarted;
+    boolean nativeQaStarted;
     boolean mainStarted;
     AlertDialog miniDialog;
     final android.content.SharedPreferences.OnSharedPreferenceChangeListener miniChanged=(p,key)->{if("selected".equals(key)&&!isDestroyed())refreshSelection();};
@@ -34,6 +35,7 @@ public class MainActivity extends Activity {
         boolean dark=(getResources().getConfiguration().uiMode&android.content.res.Configuration.UI_MODE_NIGHT_MASK)==android.content.res.Configuration.UI_MODE_NIGHT_YES;
         setTheme(dark?android.R.style.Theme_Material_NoActionBar:android.R.style.Theme_Material_Light_NoActionBar);
         super.onCreate(saved);if(saved!=null){pickPet=saved.getString("pickPet");pickFront=saved.getBoolean("pickFront");exported=saved.getString("exported");logExport=saved.getString("logExport");}ui=new UiTheme(this);ui.window(getWindow());
+        if(routeNativeCards())return;
         ScrollView scroll=new ScrollView(this);scroll.setFillViewport(true);body=new LinearLayout(this);body.setOrientation(1);body.setPadding(dp(20),dp(16),dp(20),dp(28));body.setBackgroundColor(ui.background);scroll.setBackgroundColor(ui.background);scroll.addView(body);setContentView(scroll);scroll.setOnApplyWindowInsetsListener((v,i)->{android.graphics.Insets bars=android.os.Build.VERSION.SDK_INT>=30?i.getInsets(android.view.WindowInsets.Type.systemBars()|android.view.WindowInsets.Type.displayCutout()):android.graphics.Insets.of(i.getSystemWindowInsetLeft(),i.getSystemWindowInsetTop(),i.getSystemWindowInsetRight(),i.getSystemWindowInsetBottom());v.setPadding(bars.left,bars.top,bars.right,bars.bottom);return i;});
         text("Flip Pets",34);text("Твой внешний экран",15);
         LinearLayout page=body,card=new LinearLayout(this);card.setOrientation(1);card.setPadding(dp(18),dp(18),dp(18),dp(18));ui.card(card,ui.surface,28);body.addView(card,ui.spaced());body=card;
@@ -47,6 +49,8 @@ public class MainActivity extends Activity {
         button("Своё фото",v->ownPhoto());body=page;
         text("Мини-приложения",22);text("Оригинальные карточки Xiaomi · Pomodoro, вода и слова",14);
         button("Выбрать мини-приложение",v->{if(miniDialog==null||!miniDialog.isShowing())miniDialog=MiniAppsDialog.show(this);});
+        button("Открыть карточки отдельно",v->startActivity(new Intent(this,CoverAppsActivity.class)));
+        button("Карточки в штатном внешнем меню",v->nativeCardsSettings());
         text("Два экрана",22);
         button("Включить через Shizuku",v->startSession());button("Выключить внешний сеанс",v->{waitingSessionStart=false;ShizukuBridge.stop(this);});
         text("При раскрытии — твоё оформление. При складывании — штатный экран и AOD Xiaomi.",14);
@@ -59,6 +63,19 @@ public class MainActivity extends Activity {
         refreshSelection();
     }
     void ownPhoto(){JSONArray catalog=Pets.catalog(this);for(int i=0;i<catalog.length();i++){JSONObject pet=catalog.optJSONObject(i);if("photo".equals(pet.optString("renderer"))){select(i);pickImage(pet.optString("id"),false);return;}}message("Оформление для своей фотографии не найдено.");}
+    boolean routeNativeCards(){
+        if(isFinishing()||getIntent().getBooleanExtra("nativeSettings",false)||!NativeCards.enabled(this)||!NativeCoverRoute.isCover(this))return false;
+        try{startActivity(new Intent(this,CoverAppsActivity.class));finish();return true;}catch(RuntimeException e){message("Карточки не удалось открыть на этом экране.");return false;}
+    }
+    void nativeCardsSettings(){
+        LinearLayout panel=new LinearLayout(this);panel.setOrientation(1);panel.setPadding(dp(24),dp(12),dp(24),dp(16));
+        TextView explanation=ui.label("Выбери Flip Pets в штатных настройках приложений внешнего экрана Xiaomi. Если прошивка допускает запуск, значок откроет отдельные карточки. Root для них не нужен. Доступность значка на этой прошивке ещё требует проверки.",14,true);panel.addView(explanation);
+        Switch choice=new Switch(this);choice.setText("Запускать карточки с внешнего меню");ui.toggle(choice);choice.setChecked(NativeCards.enabled(this));panel.addView(choice);
+        TextView note=ui.label("Выбор и данные карточек хранятся отдельно от внешнего сеанса с питомцем. Сон, блокировка и перенос между экранами остаются под управлением Xiaomi. Pomodoro не является фоновым будильником.",13,true);panel.addView(note);
+        new AlertDialog.Builder(this).setTitle("Карточки во внешнем меню").setView(panel).setPositiveButton("Применить",(d,w)->NativeCards.prefs(this).edit().putBoolean("coverLaunch",choice.isChecked()).apply()).setNegativeButton("Отмена",null).show();
+    }
+    public void onConfigurationChanged(android.content.res.Configuration c){super.onConfigurationChanged(c);routeNativeCards();}
+    protected void onNewIntent(Intent intent){super.onNewIntent(intent);setIntent(intent);routeNativeCards();}
     void startSession(){if(CoverGuard.notificationPermissionNeeded(this)){waitingSessionStart=true;CoverGuard.requestNotificationPermission(this);return;}ShizukuBridge.start(this);}
     void select(int index){MiniAppStore.select(this,"none");Pets.select(this,index);preview.reload();refreshSelection();}
     void refreshSelection(){JSONObject pet=Pets.current(this);String app=MiniAppStore.selected(this);boolean mini=MiniAppStore.valid(app);selectedName.setText(mini?MiniAppStore.title(app):pet.optString("name"));selectedInfo.setText(mini?"Оригинальная карточка · офлайн":GalleryDialog.group(pet)+(pet.optString("kind").equals("composition")?" · настройки ниже":" · сцен: "+pet.optJSONObject("clips").length()));layoutButton.setVisibility(!mini&&PetLayout.supported(pet)?View.VISIBLE:View.GONE);layoutButton.setText("Вариант и положение · "+(PetLayout.read(this,pet).clockless?"без часов":"с часами"));populateClips();refreshDetailsTitle();}
@@ -111,8 +128,19 @@ public class MainActivity extends Activity {
     void pickImage(String id,boolean front){pickPet=id;pickFront=front;startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT).addCategory(Intent.CATEGORY_OPENABLE).setType("image/*"),front?10:9);}
     protected void onSaveInstanceState(Bundle state){state.putString("exported",exported);state.putString("logExport",logExport);state.putString("pickPet",pickPet);state.putBoolean("pickFront",pickFront);super.onSaveInstanceState(state);}
     protected void onActivityResult(int request,int result,Intent data){super.onActivityResult(request,result,data);if((request==9||request==10)&&result==RESULT_OK&&data!=null&&pickPet!=null){final String id=pickPet;final boolean front=pickFront;final android.net.Uri uri=data.getData();new Thread(()->{try{SceneSettings.importImage(this,id,front,uri);runOnUiThread(()->{if(!isFinishing())preview.reload();});}catch(Exception e){runOnUiThread(()->{if(!isFinishing())message(e.toString());});}},"photo-import").start();}if((request==7||request==8)&&result==RESULT_OK&&data!=null)try(java.io.OutputStream s=getContentResolver().openOutputStream(data.getData())){String report=request==8?logExport:exported;if(report==null)report=Pets.displayReport(this)+AppLog.saved(this);s.write(report.getBytes(StandardCharsets.UTF_8));}catch(Exception e){message(e.toString());}}
-    protected void onStart(){super.onStart();mainStarted=true;MiniAppStore.prefs(this).registerOnSharedPreferenceChangeListener(miniChanged);if(preview!=null){refreshSelection();preview.start();}if(!miniQaStarted&&getIntent().getBooleanExtra("qaMiniApps",false)&&(Build.HARDWARE.contains("ranchu")||Build.HARDWARE.contains("goldfish"))){miniQaStarted=true;preview.postDelayed(()->MiniAppsQa.start(this),1200);}if(!layoutQaStarted&&getIntent().getBooleanExtra("qaPetLayout",false)&&(Build.HARDWARE.contains("ranchu")||Build.HARDWARE.contains("goldfish"))){layoutQaStarted=true;preview.postDelayed(()->PetLayoutQa.start(this),1200);}}
-    protected void onStop(){mainStarted=false;if(miniDialog!=null)miniDialog.dismiss();MiniAppStore.prefs(this).unregisterOnSharedPreferenceChangeListener(miniChanged);preview.stop();super.onStop();}
-    protected void onDestroy(){if(miniDialog!=null)miniDialog.dismiss();if(layoutDialog!=null)layoutDialog.dismiss();preview.destroy();super.onDestroy();}
+    protected void onStart(){
+        super.onStart();if(routeNativeCards())return;mainStarted=true;
+        MiniAppStore.prefs(this).registerOnSharedPreferenceChangeListener(miniChanged);
+        if(preview!=null){refreshSelection();preview.start();}
+        if(!nativeQaStarted&&NativeAppsQa.emulator()&&getIntent().getBooleanExtra("qaNativeApps",false)){
+            nativeQaStarted=true;Intent next=new Intent(this,CoverAppsActivity.class).putExtra("qaNativeApps",true).putExtra("qaOrigin",getIntent().getStringExtra("qaOrigin")).putExtra("qaToken",getIntent().getStringExtra("qaToken")).putExtra("qaPhase2",getIntent().getBooleanExtra("qaPhase2",false));
+            if(getIntent().getBooleanExtra("qaReturn",false))next.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivity(next);finish();return;
+        }
+        if(preview!=null&&!miniQaStarted&&getIntent().getBooleanExtra("qaMiniApps",false)&&NativeAppsQa.emulator()){miniQaStarted=true;preview.postDelayed(()->MiniAppsQa.start(this),1200);}
+        if(preview!=null&&!layoutQaStarted&&getIntent().getBooleanExtra("qaPetLayout",false)&&NativeAppsQa.emulator()){layoutQaStarted=true;preview.postDelayed(()->PetLayoutQa.start(this),1200);}
+    }
+    protected void onStop(){mainStarted=false;if(miniDialog!=null)miniDialog.dismiss();MiniAppStore.prefs(this).unregisterOnSharedPreferenceChangeListener(miniChanged);if(preview!=null)preview.stop();super.onStop();}
+    protected void onDestroy(){if(miniDialog!=null)miniDialog.dismiss();if(layoutDialog!=null)layoutDialog.dismiss();if(preview!=null)preview.destroy();super.onDestroy();}
     public void onRequestPermissionsResult(int request,String[] p,int[] results){super.onRequestPermissionsResult(request,p,results);if(request==3){preview.stop();preview.start();}if(request==CoverGuard.NOTIFICATION_PERMISSION_REQUEST&&waitingSessionStart){waitingSessionStart=false;ShizukuBridge.start(this);}}
 }

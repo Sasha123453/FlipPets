@@ -1,5 +1,65 @@
 # Flip Pets continuation — 2026-10-11
 
+## Current milestone — native-launch card activity (step 4)
+
+User instruction: finish source-feasible handoff steps; fresh independent review
+and automatic code/APK upload after each. Continue after uploading. Actual phone
+assembly testing is deferred; root installation/native Apply/generation are not
+part of this work. Optional MAML hooks are not requested.
+
+- Separate non-exported ordinary CoverAppsActivity reuses unchanged Xiaomi HTML,
+  offline restrictions and normal foreground lifecycle. Hidden WebViews are
+  destroyed. It has no controlled-cover membership, supervisor or keep-awake flag.
+- Native navigation/origin are separate from the supervised pet selection and data.
+  Real measured Canvas dimensions, rotation/recreation and actual insets are used.
+  Root and non-root use this same Activity. Main settings remain reachable.
+- Explicit off-by-default Main routing requires the observed ruyi cover mode,
+  public secure/protected/presentation flags, sufficient actual window bounds,
+  non-default display and awake/unlocked state. It never assumes display ID1.
+  Actual Xiaomi icon admission, strip behavior and physical continuity are unproven.
+- Current APK `b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75`; matching experimental module `95e02bf4b589ed558bec0204c991ca7ac0f8f5a455c426422a2a1cdd3164563b`.
+  Preserved signing certificate, asset bytes and ZIP/ELF16KiB alignment verified.
+  Lifecycle host verifies the active installed APK before/after, re-reading its
+  current package path; the six runtime assertions remain unchanged. A fixed1s
+  task-removal observation failed; the final run waits up to8s for actual removal
+  with the same cover/service/Main-absence conditions. Failed diagnostics stay private.
+- Fresh exact-SHA passes:374 APK checks (343 existing +31 native),20 gallery,
+  six virtual-cover lifecycle checks.14 source routing cases and five packager
+  fault cases passed. No skips. Full native PixelCopy captures independently reviewed.
+- Independent review found footer contrast and native publication test-set gaps;
+  both fixed. Main also replaces a reused SINGLE_TOP launch intent before routing;
+  the real same-Activity QA verifies the settings bypass is removed on a new launch.
+  Resize invalidates page readiness immediately; QA waits for a replacement page
+  and rechecks delayed predicates. Code, host synchronization and pixels reviewed with no
+  further actionable issues. Packager now requires the exact native test contract.
+- Initial gallery timeout and donor hide/fade-observation failures remain ignored
+  diagnostics, not passes. A deferred REMOVE_TASK process kill was isolated in the
+  gallery fixture; Main now clears its stale extras through NEW_TASK|CLEAR_TASK
+  without deleting a root task. Host awaits real Activity launches and asynchronous
+  virtual-display removal; donor assertions/progress/timings remain unchanged.
+  A later empty accessibility-root failure and failed cleanup are also retained
+  privately. InitialWater was restored via realUI before the finalfullrun. Fresh
+  root polling is bounded15s; the intermediate pet always differs from the original,
+  so the restoration check cannot silently become a no-op.
+  After an emulator reboot, the final same-APK donor run passed all23 checks.
+  Initial600s offscreen-render collection also timed out with an independent card
+  WebView active. Real Home released it; --resume-render collected the same running
+  exact-SHA176/68 passes, retaining every assertion/count. No phone performance claim.
+- Public scoped evidence:work/research/native-launch-cards-evidence.json. Step3's
+  151 controller fixtures +eight syntax checks retain identical tested source
+  hashes; they are not relabelled as new APK/hardware runs. No phone targeted.
+
+Steps1–3 are pushed and published at dev-controller-startup-20261011,
+dev-controller-ownership-20261011 and dev-controller-runtime-20261011. Step4
+publication target:dev-native-cards-20261011, with exact matching binary assets.
+Next:finish one known donor resource/decoded-poster bundle, inherited OEM playback
+trace and a guarded physical motion/restoration workflow. Native Apply remains
+blocked on real motion and exact restore. Exact EEA admission is a phone gate.
+
+## Historical milestones below
+
+# Flip Pets continuation — 2026-10-11
+
 ## Current milestone — private root state and backend lifetime (step 3)
 
 The user requested finishing the handoff, with a fresh independent review and

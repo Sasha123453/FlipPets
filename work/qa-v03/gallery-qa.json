@@ -1,9 +1,9 @@
 {
-  "apkSha256": "1d7d6181abe85b5056f432c6f37a849ed31f2ba7710768c6f06a666dcace2c37",
+  "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
   "environment": "Guarded Android emulator; real UI input and screencap, not physical MIX Flip",
   "originalSelection": "Вода Xiaomi",
-  "tested": 19,
-  "failed": 1,
+  "tested": 20,
+  "failed": 0,
   "results": [
     {
       "test": "all_collection",
@@ -78,43 +78,54 @@
       "ok": true
     },
     {
-      "test": "unexpected_error",
-      "ok": false,
-      "detail": "RuntimeError: Own window accessibility root was not ready"
+      "test": "large-font_grid_visible",
+      "ok": true
+    },
+    {
+      "test": "small-window_grid_visible",
+      "ok": true
     }
   ],
   "images": [
     {
       "file": "mini-dialog-focus.png",
-      "sha256": "e3f372f034362b1b7f2326c787e3933ae895b861f1cfa6ce149e3df27ec3bb47"
+      "sha256": "3fc8933113f48dedd5198fb0364e5dbf09ba88b76dd08cc9497b00ba0898cf60"
     },
     {
       "file": "mini-dialog-water.png",
-      "sha256": "3b5e7fa71ec69dd58bc9ad7cb02570e4dcf4b158537a9a0c51603f2380dbbde8"
+      "sha256": "e9b1647f9595766c004c3ada57a22ab020c80dfb21be722352a51a9933686c90"
     },
     {
       "file": "mini-dialog-words.png",
-      "sha256": "c1ed26c4de8798d4264287c15e62ed80d52163b0349bafca047fa10efcbbb637"
+      "sha256": "6725bb90133d90050daa797bb4210543674c5ec4d7179e04e7a80a83b60ca9fd"
     },
     {
       "file": "mini-applied-main.png",
-      "sha256": "178fb3525b413f052cc950a448ddf867197c6df96357a1748a06f84636477905"
+      "sha256": "d5ad6d4b60f048d2cadf1f6d2c696d401e6091eaac7192c198f9d9182587cca8"
     },
     {
       "file": "mini-virtual-cover-focus.png",
-      "sha256": "3207c43c0ec1f6a4a8b131cbec70f5edb389d1a270d5c1b18b52b4c7405e6c18"
+      "sha256": "4da2fb140e14e152bdc8ea78c93171d31d8fa4b92a90faf365ecedc3ef4358f5"
     },
     {
       "file": "mini-virtual-cover-water.png",
-      "sha256": "e705d4ab330ac64325e03d3e71fd544bab3a2e9b5c1779b4db6a986573e588ab"
+      "sha256": "06f933b62ba7221926b02bc809a1323ebb9378ddea7a280d10313375658b3a4a"
     },
     {
       "file": "mini-virtual-cover-words.png",
-      "sha256": "c0bf117979cde3937f77a329bb2be2a3a0e6919f9f923b9e75ecbf5b37f37cb6"
+      "sha256": "e60aabe5b120573dcc8cd5345c035a06cf92915949343a47b378ccb02d4378d4"
     },
     {
       "file": "gallery-main-18pro.png",
-      "sha256": "eb367c2945fb1ee671b375cb35e7b99ebff823497f92f912edba4bef093e93dd"
+      "sha256": "7fbafbc2f4ef8c9761aa3af41cfc9b14f2f10848258fbc9302ce2b68e97cf922"
+    },
+    {
+      "file": "gallery-large-font.png",
+      "sha256": "3fa6b5b5ca3c985667edefe7900bc5edb81248759de39908a1636dd423b9d786"
+    },
+    {
+      "file": "gallery-small-window.png",
+      "sha256": "e4c0826024cbb2a59441255634787686536cdc022cc6f3bbf15819e7e00acea2"
     }
   ],
   "cleanup": {
