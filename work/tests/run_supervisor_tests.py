@@ -1,5 +1,6 @@
 """Exercise detached supervisor with fixture commands, exclusively on our emulator."""
 import pathlib,subprocess,time,json,hashlib,argparse,zipfile
+from controller_test_support import STAT_STUB, root_paths, prepare_root
 r=pathlib.Path(__file__).resolve().parents[1];adb='C:/platform-tools/adb.exe';base='/data/local/tmp/flip-pets-fixture'
 (r/'qa-final').mkdir(exist_ok=True)
 parser=argparse.ArgumentParser(description=__doc__)
@@ -13,12 +14,12 @@ def call(*args,ok=True):
  p=subprocess.run([adb,'-s','emulator-5554',*args],capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=20)
  if ok and p.returncode:raise RuntimeError(p.stdout+p.stderr)
  return p
-def shell(command,ok=True):return call('shell',command,ok=ok)
+def shell(command,ok=True):return call('shell',root_paths(command) if args.kernel_su else command,ok=ok)
 assert shell('getprop ro.kernel.qemu').stdout.strip()=='1','Emulator required'
 fixture=(r/'tests/controller-fixture.sh').read_text(encoding='utf-8')
 fixture=fixture.replace('nohup() { :; }','sleep() { command sleep 0.1; }')
 fixture='FP_FIXTURE_ACTION=$1\n'+fixture
-if args.kernel_su: fixture='id() { [ "$1" = "-u" ] && echo 0; }\n'+fixture
+if args.kernel_su: fixture=STAT_STUB+root_paths(fixture)
 fixture=fixture.replace('pm() { echo package:/fixture/FlipPets.apk; }', '''pm() {
  if [ "$FP_FIXTURE_ACTION" = run ]; then
   [ ! -f "$TEST/slow_verify" ] || command sleep 0.5
@@ -30,6 +31,7 @@ fixture=fixture.replace('pm() { echo package:/fixture/FlipPets.apk; }', '''pm() 
 }''')
 wrapper=r/'qa-final/supervisor-fixture.sh';wrapper.write_text(fixture,encoding='utf-8',newline='\n')
 shell('mkdir -p '+base)
+if args.kernel_su: prepare_root(r,call,shell)
 for p,dest in [(controller,'control.sh'),(wrapper,'flip-pets-control.sh'),(r/'research/ruyi-display_layout_configuration.xml','layout')]:call('push',str(p),base+'/'+dest)
 def invoke(action,ok=True):return shell(f'sh {base}/flip-pets-control.sh {action}',ok=ok)
 def exists(path):return shell(f'test -f {path}',ok=False).returncode==0
@@ -39,7 +41,7 @@ def wait_for(test,label):
   if test():return
   time.sleep(.15)
  raise AssertionError(label)
-def state(n):return shell(f'cat {base}/state').stdout.strip()==str(n)
+def state(n):return shell(f'cat {base}/state').stdout.strip()==str(n) and (n!=5 or exists(base+'/app_active'))
 results=[]
 def check(condition,label):
  assert condition,label;results.append(dict(case=label,ok=True))

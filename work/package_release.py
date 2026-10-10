@@ -188,7 +188,7 @@ def source_entries():
             entries.append((path, path.relative_to(ROOT)))
     if (WORK / "tools/README.md").is_file():
         entries.append((WORK / "tools/README.md", "work/tools/README.md"))
-    for name in ["module.prop", "customize.sh", "action.sh", "boot-completed.sh", "uninstall.sh", "module-control.sh"]:
+    for name in ["module.prop", "customize.sh", "action.sh", "boot-completed.sh", "uninstall.sh", "module-control.sh", "module-state.sh"]:
         path = WORK / "kernel-su" / name
         require(path.is_file(), f"Missing KernelSU source: {name}")
         entries.append((path, path.relative_to(ROOT)))

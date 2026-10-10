@@ -1,5 +1,62 @@
 # Flip Pets continuation — 2026-10-11
 
+## Current milestone — private root state and backend lifetime (step 3)
+
+The user requested finishing the handoff, with a fresh independent review and
+automatic code/APK upload after each completed milestone. Continue after uploading;
+fully assembled physical phone testing is deferred. Root installation, native Apply,
+generation and optional native widget hooks are not authorized by this source work.
+
+- Root consent/receipt/cancellation use schema 1 under root-owned mode-0700
+  `/data/adb/flippets-controller`, outside replaceable module scripts. Fresh or
+  interrupted empty initialization does not opt in. Valid consent persists across
+  updates; unknown schemas and unsafe paths fail closed. Legacy module-local
+  consent is not silently migrated. Uninstall leaves bounded opted-out state.
+- Root runtime is private. A stable regular root/shell-owned 0644 file opened
+  read-only supplies a shared lifetime flock. FD8 survives supervisor/manual watcher
+  creation; the short module transition FD9 does not. Stop the other backend first.
+  Older pre-lease sessions also block root through their unchanged legacy markers.
+  Only fixed regular obsolete root diagnostic leaves can be unlinked under lease;
+  shell diagnostics are preserved and symlinks refused.
+- Root observes module disable/remove and cancellation during normal policy polling
+  and launch checks. Manual Start requires a watcher acknowledgement, rolls back
+  failures, and restores a stale request after watcher death before explicit retry.
+  Dead receipt-bound supervisor files are cleared before discarding their receipt;
+  live unverified identities remain untouched and return failure.
+- Final canonical/embedded bytes are identical and the preserved-key APK rebuilt.
+  APK: `cf4aeedaf7018ec59d20a610b719ee7f920d564d04ac8c8d5ceb31670d45763e`.
+  Module: `515750d44ab6e3792112bab8d176d855706aedf866f7ff7cd6c015f72379d851`.
+  Canonical: `eaf0f94cc6a57ba21cc342c7c7b7fe5914215ae540d38b583ab7315e4af5d06c`.
+- Fresh final verification: 151 command checks (15+23 shell, 15+23 generated root,
+  29 live backend/manual/legacy tests, 44 wrapper race/update/death tests, two fresh/
+  interrupted-state checks), eight Android shell syntax checks and current-APK
+  signature/certificate/assets/ZIP/ELF 16 KiB structure verification. Evidence:
+  `work/research/kernel-su-runtime-evidence.json`. Real emulator flock/processes;
+  root UID metadata and HyperOS commands are stubbed, not actual root/SELinux proof.
+- Fresh independent reviewers found the legacy pre-lease coexistence and manual
+  watcher lifetime gaps. Both were fixed and covered. Final code review found no
+  further actionable issues. Physical boot/unlock/fold/update behavior stays untested.
+- No phone was targeted. Full current-SHA APK visual/lifecycle suites are still
+  pending the assembled app milestone; historical 343+6 results are not reused.
+
+Steps 1 and 2 are already pushed and published with verified matching assets:
+`https://github.com/Sasha123453/FlipPets/releases/tag/dev-controller-startup-20261011`
+and `https://github.com/Sasha123453/FlipPets/releases/tag/dev-controller-ownership-20261011`.
+Step 3 publication uses `dev-controller-runtime-20261011` after this reviewed commit.
+
+Next: app-owned native-launch card activity, isolated navigation/storage, validated
+cover routing, normal foreground lifecycle and emulator touch/persistence/isolation
+QA. Exact EEA FlipHome policy/admission still needs actual read-only device evidence;
+do not invent a grant/boot restoration transaction without policy readback/restore.
+Then prepare one known native pet resource with a decoded matching poster and a
+guarded motion/restore proof workflow. Native Apply remains gated on actual motion
+and exact restoration; continue independent source work. Generation is deferred and
+small native widget hooks are optional, not required for the first full-screen cards.
+
+## Historical milestones below
+
+# Flip Pets continuation — 2026-10-11
+
 ## Current milestone — root ownership and module transitions (step 2)
 
 The user requested continued implementation, a fresh independent review and

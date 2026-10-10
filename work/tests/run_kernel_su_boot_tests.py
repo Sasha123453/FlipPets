@@ -22,8 +22,17 @@ def adb(*args, ok=True):
     return p
 
 
+def private_paths(text):
+    for prefix in (BASE, '$TEST'):
+        for name in ('session-enabled', 'session-owned', 'session-cancel', 'session-transition'):
+            text = text.replace(prefix + '/' + name, prefix + '/state/' + name)
+        for old, new in (('supervisor.lock', 'supervisor.lock'), ('runtime', 'enabled'), ('active', 'active')):
+            text = text.replace(prefix + '/' + old, prefix + '/state/runtime/' + new)
+    return text
+
+
 def shell(command, ok=True):
-    return adb('shell', 'umask 077\n' + command, ok=ok)
+    return adb('shell', 'umask 077\n' + private_paths(command), ok=ok)
 
 
 assert shell('getprop ro.kernel.qemu').stdout.strip() == '1', 'Emulator required'
@@ -31,9 +40,9 @@ source = ROOT / 'work/kernel-su/module-control.sh'
 raw = source.read_text(encoding='utf-8')
 replacements = {
     '/sdcard/Android/data/org.flippets.app/files/controller-stop': BASE + '/appfiles/controller-stop',
-    '/data/local/tmp/flip-pets-enabled': BASE + '/runtime',
-    '/data/local/tmp/flip-pets-active': BASE + '/active',
-    '/data/local/tmp/flip-pets-supervisor.lock': BASE + '/supervisor.lock',
+    '/data/local/tmp/flip-pets-enabled': BASE + '/legacy-enabled',
+    '/data/local/tmp/flip-pets-active': BASE + '/legacy-active',
+    '/data/local/tmp/flip-pets-supervisor.lock': BASE + '/legacy-lock',
     '/system/bin/sh "$CONTROLLER"': 'fixture_controller',
 }
 for old, new in replacements.items():
@@ -53,6 +62,7 @@ cat() {{
 stat() {{
  if [ "$1" = -c ] && [ "$2" = '%u' ]; then
   if [ -f "$TEST/wrong_uid" ] && [ "${{3#/proc/}}" != "$3" ]; then echo 2000; else echo 0; fi
+ elif [ "$2" = '%u:%a' ]; then command stat "$@" | sed 's/^2000:/0:/'
  else command stat "$@"; fi
 }}
 getprop() {{ cat "$TEST/device"; }}
@@ -102,16 +112,21 @@ fixture_controller() {{
 '''
 local = ROOT / 'work/ksu-check/module-boot-fixture.sh'
 local.parent.mkdir(exist_ok=True)
-local.write_text(preamble + raw, encoding='utf-8', newline='\n')
+local.write_text(private_paths(preamble) + raw, encoding='utf-8', newline='\n')
 shell(f'mkdir -p {BASE}\nchmod 755 {BASE}')
+helper = ROOT / 'work/ksu-check/module-state-fixture.sh'
+helper.write_text((ROOT/'work/kernel-su/module-state.sh').read_text(encoding='utf-8').replace('/data/adb/flippets-controller', BASE+'/state').replace('/data/adb', BASE+'/adb'), encoding='utf-8', newline='\n')
+shell(f'mkdir -p {BASE}/adb\nchmod 700 {BASE}/adb')
+adb('push', str(helper), BASE+'/module-state.sh')
+shell(f'chmod 644 {BASE}/module-state.sh')
 adb('push', str(local), BASE + '/wrapper.sh')
 fake_controller = ROOT / 'work/ksu-check/ownership-child.sh'
-fake_controller.write_text(f'''#!/system/bin/sh
+fake_controller.write_text(private_paths(f'''#!/system/bin/sh
 TEST={BASE}
 trap 'rm -f "$TEST/runtime" "$TEST/supervisor.lock/pid" "$TEST/supervisor.lock/ready"; rmdir "$TEST/supervisor.lock" 2>/dev/null' EXIT
 echo $$ > "$TEST/supervisor.lock/ready"
 while [ -f "$TEST/runtime" ] || [ -f "$TEST/hold_child" ]; do sleep 0.02; done
-''', encoding='utf-8', newline='\n')
+'''), encoding='utf-8', newline='\n')
 adb('push', str(fake_controller), BASE + '/flip-pets-control.sh')
 results = []
 
@@ -187,9 +202,9 @@ check(p.returncode == 0 and 'Verified owned root supervisor' in p.stdout, 'exact
 receipt = shell(f'cat {BASE}/session-owned').stdout.strip().split()
 check(len(receipt) == 3 and all(receipt[:2]), 'ownership is a process receipt rather than a Boolean marker')
 shell(f'echo {receipt[0]} 0 {receipt[2]} > {BASE}/session-owned'); p = invoke('disable')
-check(p.returncode == 0 and calls() == ['supervise', 'status'] and exists('runtime'), 'mismatched process start time cannot disable a live process')
+check(p.returncode != 0 and calls() == ['supervise', 'status'] and exists('runtime') and exists('session-owned'), 'mismatched process start time cannot disable a live process or discard its recovery receipt')
 reset(opted=False); invoke('toggle'); shell(f'touch {BASE}/wrong_uid'); p = invoke('disable')
-check(p.returncode == 0 and calls() == ['supervise'] and exists('runtime'), 'non-root process identity is never stopped')
+check(p.returncode != 0 and calls() == ['supervise'] and exists('runtime') and exists('session-owned'), 'non-root process identity is never stopped')
 reset(opted=False); invoke('toggle'); p = invoke('disable')
 check(p.returncode == 0 and not exists('runtime') and not exists('supervisor.lock') and not exists('session-owned'), 'owned disable waits for process cleanup before releasing the transition')
 reset(opted=False)
@@ -200,7 +215,7 @@ while not exists('supervisor.lock/ready'):
     time.sleep(.02)
 shell(f'pid=$(cat {BASE}/supervisor.lock/pid); started=$(sed "s/.*) //" /proc/$pid/stat | cut -d " " -f 20); echo "$pid $started $(cat /proc/sys/kernel/random/boot_id)" > {BASE}/session-owned')
 p = invoke('disable')
-check(p.returncode == 0 and not calls() and exists('runtime'), 'argv with extra arguments is rejected even when the old substring would match')
+check(p.returncode != 0 and not calls() and exists('runtime'), 'argv with extra arguments is rejected even when the old substring would match')
 reset(opted=False)
 foreign_pid = shell(f'nohup sleep 60 > {BASE}/foreign.log 2>&1 < /dev/null &\necho $!').stdout.strip()
 assert foreign_pid.isdigit()
@@ -264,9 +279,42 @@ reset(opted=False); shell(f'touch {BASE}/fail_receipt_write'); p = invoke('toggl
 check(p.returncode != 0 and not exists('session-enabled') and not exists('runtime') and not exists('supervisor.lock/pid') and calls() == ['supervise', 'disable'], 'receipt write failure after ACK stops only the exactly captured child')
 shell(f'rmdir {BASE}/session-owned.[0-9]*', ok=False)
 reset(opted=False)
+invoke('toggle'); dead_pid = shell(f'cat {BASE}/supervisor.lock/pid').stdout.strip()
+shell(f'kill -9 {dead_pid}')
+deadline = time.monotonic()+5
+while shell(f'kill -0 {dead_pid}', ok=False).returncode == 0:
+    assert time.monotonic()<deadline, 'killed fixture child exits'
+    time.sleep(.03)
+p=invoke('toggle')
+check(p.returncode == 0 and not exists('runtime') and not exists('supervisor.lock') and not exists('session-owned') and not exists('session-enabled'), 'Action Stop after process death clears receipt-bound stale runtime before discarding receipt')
+p=invoke('toggle')
+check(p.returncode == 0 and exists('runtime'), 'explicit Start works after process-death cleanup')
+reset(opted=False)
+for legacy in ('enabled', 'active', 'lock'):
+    shell(f'touch {BASE}/legacy-{legacy}')
+    p = invoke('toggle')
+    check(p.returncode != 0 and not calls() and exists('legacy-'+legacy), 'Action refuses and preserves legacy shared ' + legacy)
+    shell(f'rm -f {BASE}/legacy-{legacy}')
+reset(opted=False)
+# Module-local markers from an older package are deliberately not durable consent.
+# The preceding fixture API maps the canonical state path. Write the old path
+# literally through adb to distinguish an update's replaceable module directory.
+adb('shell', f'echo enabled > {BASE}/session-enabled')
+p = invoke()
+check(p.returncode == 0 and not calls() and not exists('session-enabled'), 'legacy module-local opt-in is not migrated into new consent')
+adb('shell', f'rm -f {BASE}/session-enabled')
+reset(); original_opt_in = shell(f'cat {BASE}/session-enabled').stdout
+shell(f'cp {BASE}/wrapper.sh {BASE}/wrapper.next\nmv {BASE}/wrapper.next {BASE}/wrapper.sh')
+p = invoke()
+check(p.returncode == 0 and calls() == ['resume'] and shell(f'cat {BASE}/session-enabled').stdout == original_opt_in, 'module script replacement preserves durable opt-in outside the module directory')
+reset(opted=False); shell(f'echo 99 > {BASE}/state/schema'); p = invoke('toggle')
+check(p.returncode != 0 and not calls() and shell(f'cat {BASE}/state/schema').stdout.strip() == '99', 'unknown persistent state schema is neither migrated nor overwritten')
+shell(f'echo 1 > {BASE}/state/schema')
+reset(opted=False)
 report = dict(environment='emulator-5554; UID0, storage availability and controller responses stubbed; no physical root proof',
               wrapperSha256=hashlib.sha256(source.read_bytes()).hexdigest(),
               fixtureSha256=hashlib.sha256(local.read_bytes()).hexdigest(),
+              stateHelperSha256=hashlib.sha256((ROOT/'work/kernel-su/module-state.sh').read_bytes()).hexdigest(),
               pathReplacements=replacements, results=results)
 out = ROOT / 'work/qa-final/kernel-su-boot-tests.json'
 out.write_text(json.dumps(report, indent=2), encoding='utf-8')

@@ -8,7 +8,39 @@ STOP=/sdcard/Android/data/org.flippets.app/files/controller-stop
 FADE=/sdcard/Android/data/org.flippets.app/files/hinge-fade-active
 STATUS=/data/local/tmp/flip-pets-status
 START_HISTORY=/data/local/tmp/flip-pets-start-failures.log
+LEASE=/data/local/tmp/flip-pets-backend.lock
+WATCH_READY=/data/local/tmp/flip-pets-watch-ready
 fail() { echo "ERROR: $*" >&2; exit 1; }
+# A read-only, stable inode serializes both backends for the session lifetime.
+# Never unlink it: waiters must continue to contend on the same inode.
+acquire_backend() {
+  command -v flock >/dev/null 2>&1 || fail "Android flock is required"
+  if [ ! -e "$LEASE" ] && [ ! -L "$LEASE" ]; then
+    (umask 022; set -C; : > "$LEASE") 2>/dev/null || :
+  fi
+  [ -f "$LEASE" ] && [ ! -L "$LEASE" ] || fail "Unsafe backend lease"
+  case "$(stat -c '%u:%a' "$LEASE")" in 0:644|2000:644) ;; *) fail "Unsafe backend lease owner/mode" ;; esac
+  exec 8< "$LEASE" || fail "Cannot open backend lease"
+  flock -n 8 8>&8 || fail "Another controller backend is active; Stop it first"
+}
+runtime_paths_safe() {
+  expected_uid=$(id -u)
+  for path in "$MARK" "$ENABLE" "$STATUS" "$START_HISTORY" "$WATCH_READY" "$LOCK/pid" "$LOCK/ready" /data/local/tmp/flip-pets-supervisor.log /data/local/tmp/flip-pets-watch.log; do
+    if [ -e "$path" ] || [ -L "$path" ]; then
+      [ -f "$path" ] && [ ! -L "$path" ] && [ "$(stat -c '%u' "$path")" = "$expected_uid" ] || fail "Unsafe or other-backend runtime file; Stop that backend first"
+    fi
+  done
+  if [ -e "$LOCK" ] || [ -L "$LOCK" ]; then
+    [ -d "$LOCK" ] && [ ! -L "$LOCK" ] && [ "$(stat -c '%u' "$LOCK")" = "$expected_uid" ] || fail "Unsafe or other-backend runtime directory"
+  fi
+}
+session_allowed() {
+  [ ! -e "$STOP" ] || return 1
+  if [ -n "${FP_MODULE_DIR:-}" ]; then
+    [ ! -e "$FP_MODULE_DIR/disable" ] && [ ! -e "$FP_MODULE_DIR/remove" ] || return 1
+    [ "$(cat "$FP_CANCEL_PATH" 2>/dev/null || echo none)" = "$FP_EXPECTED_GENERATION" ] || return 1
+  fi
+}
 state() { cmd device_state print-state 2>/dev/null | tr -d '\r\n '; }
 start_failure() {
   # Keep exact AM refusals independently of the supervisor's changing status.
@@ -48,7 +80,7 @@ diagnose)
   cmd display get-displays
   dumpsys display
   ;;
-stop|disable) rm -f "$ENABLE"; stop; echo "Stopped; supervisor disabled" ;;
+stop|disable) runtime_paths_safe; rm -f "$ENABLE"; stop; echo "Stopped; supervisor disabled" ;;
 status)
   if [ -f "$ENABLE" ] && [ -f "$LOCK/pid" ] && kill -0 "$(cat "$LOCK/pid")" 2>/dev/null; then echo "Supervisor running"; else echo "Supervisor stopped"; fi
   [ ! -f "$STATUS" ] || cat "$STATUS"
@@ -63,6 +95,7 @@ status)
   ;;
 supervise|resume)
   verify
+  runtime_paths_safe
   [ "$1" != resume ] || [ ! -e "$STOP" ] || fail "Stopped by user; explicit Start required"
   if [ -f "$LOCK/pid" ] && kill -0 "$(cat "$LOCK/pid")" 2>/dev/null; then
     tr '\000' ' ' < "/proc/$(cat "$LOCK/pid")/cmdline" | grep -q 'flip-pets-control.sh run' || fail "Existing PID is not this supervisor"
@@ -71,6 +104,7 @@ supervise|resume)
     [ ! -e "$STOP" ] || fail "Stopped during startup"
     echo "Supervisor already running"; exit 0
   fi
+  acquire_backend
   rm -f "$LOCK/pid" "$LOCK/ready"; rmdir "$LOCK" 2>/dev/null
   umask 077; mkdir "$LOCK" || fail "Cannot acquire supervisor lock"
   # If Stop wins this race, leave neither an enabled flag nor an empty lock.
@@ -78,7 +112,7 @@ supervise|resume)
   prepare_start "$1" || { rmdir "$LOCK"; fail "Cannot start: Stop remains or arrived during startup"; }
   echo enabled > "$ENABLE"
   command -v nohup >/dev/null 2>&1 || { rm -f "$ENABLE"; rmdir "$LOCK"; fail "nohup is unavailable"; }
-  nohup sh "$0" run >/data/local/tmp/flip-pets-supervisor.log 2>&1 </dev/null &
+  nohup sh "$0" run 8>&8 >/data/local/tmp/flip-pets-supervisor.log 2>&1 </dev/null &
   child=$!; echo "$child" > "$LOCK/pid"
   # Child acknowledges only after its own verify and cleanup trap are installed.
   tries=0
@@ -99,12 +133,16 @@ supervise|resume)
   ;;
 run)
   verify
+  runtime_paths_safe
+  # run is private plumbing, not a separate way to bypass backend ownership.
+  [ "$(stat -Lc '%d:%i' /proc/$$/fd/8 2>/dev/null)" = "$(stat -c '%d:%i' "$LEASE")" ] || fail "Missing inherited backend lease"
+  flock -n 8 8>&8 || fail "Backend lease unavailable"
   trap 'rm -f "$ENABLE"; stop; rm -f "$LOCK/pid" "$LOCK/ready"; rmdir "$LOCK" 2>/dev/null; exit' HUP INT TERM EXIT
-  [ -f "$ENABLE" ] && [ ! -e "$STOP" ] || exit 1
+  [ -f "$ENABLE" ] && session_allowed || exit 1
   echo "$$" > "$LOCK/ready" || exit 1
   misses=0; failures=0; probes=0
   while [ -f "$ENABLE" ]; do
-    [ ! -f "$STOP" ] || break
+    session_allowed || break
     status=$(cmd device_state state 2>/dev/null)
     if [ -f "$MARK" ] && ! echo "$status" | grep -q 'Override state:.*identifier=5'; then
       am broadcast --receiver-foreground -a org.flippets.app.STOP_COVER -p "$PKG" >/dev/null 2>&1; rm -f "$MARK"
@@ -119,7 +157,7 @@ run)
     elif echo "$status" | grep -q 'Override state:' && [ ! -f "$MARK" ]; then
       echo 'Another client owns an override; waiting without changing it' > "$STATUS"
     elif [ ! -f "$MARK" ]; then
-      if FP_SUPERVISED=1 sh "$0" start > "$STATUS" 2>&1; then failures=0; misses=0; else failures=$((failures+1)); sleep 10; fi
+      if FP_SUPERVISED=1 sh "$0" start 8>&8 > "$STATUS" 2>&1; then failures=0; misses=0; else failures=$((failures+1)); sleep 10; fi
       [ "$failures" -lt 3 ] || { echo 'Three launch failures; disabled. Collect diagnostics before trying again.' > "$STATUS"; break; }
     else
       # If our cover activity disappeared, retry with a bounded delay, not every poll.
@@ -136,6 +174,12 @@ run)
   trap - HUP INT TERM EXIT
   ;;
 watch)
+  # A manually started watcher inherits its parent's lifetime lease too.
+  [ "$(stat -Lc '%d:%i' /proc/$$/fd/8 2>/dev/null)" = "$(stat -c '%d:%i' "$LEASE")" ] || acquire_backend
+  runtime_paths_safe
+  trap 'stop >/dev/null; rm -f "$WATCH_READY"' EXIT
+  trap 'exit 1' HUP INT TERM
+  echo "$$" > "$WATCH_READY" || exit 1
   # Return stock at closed/tent/sleep. A sensor-backed fade may continue in HALF_OPENED.
   while [ -f "$MARK" ]; do
     status=$(cmd device_state state 2>/dev/null)
@@ -143,14 +187,28 @@ watch)
     if ! echo "$status" | grep -q 'Base state:.*identifier=3'; then
       if [ ! -f "$FADE" ] || ! echo "$status" | grep -q 'Base state:.*identifier=2'; then stop; break; fi
     fi
-    if ! awake; then stop; break; fi
+    if ! awake || ! unlocked || ! session_allowed; then stop; break; fi
     sleep 2
   done
   ;;
 start)
   verify
+  runtime_paths_safe
+  if [ "${FP_SUPERVISED:-0}" = 1 ]; then
+    [ "$(stat -Lc '%d:%i' /proc/$$/fd/8 2>/dev/null)" = "$(stat -c '%d:%i' "$LEASE")" ] && flock -n 8 8>&8 || fail "Missing supervisor backend lease"
+  else acquire_backend; fi
+  if [ "${FP_SUPERVISED:-0}" != 1 ]; then
+    command -v nohup >/dev/null 2>&1 || fail "nohup is required for the lifecycle watcher"
+    rm -f "$WATCH_READY" || fail "Cannot prepare lifecycle watcher"
+  fi
   current=$(state)
-  if [ "$current" = "5" ] && [ -f "$MARK" ]; then echo "Already active"; exit 0; fi
+  if [ "$current" = "5" ] && [ -f "$MARK" ]; then
+    if [ "${FP_SUPERVISED:-0}" = 1 ]; then echo "Already active"; exit 0; fi
+    # Acquiring a free lease while our request remains means the old watcher
+    # died. Restore stock rather than reporting an unmonitored session alive.
+    stop
+    fail "Stale manual session restored; use explicit Start again"
+  fi
   unlocked || fail "Unlock the phone first; if already unlocked collect diagnostics"
   [ "$current" = "3" ] || fail "Open and unlock the phone first (expected state 3, got $current)"
   cmd device_state state | grep 'Override state:' >/dev/null && fail "Another app already owns a state override"
@@ -171,7 +229,7 @@ start)
   }
   start_abort() { start_failure "$*"; rollback; fail "$*"; }
   still_open() {
-    [ -f "$MARK" ] && [ ! -f "$STOP" ] || return 1
+    [ -f "$MARK" ] && session_allowed || return 1
     active_state=$(cmd device_state state 2>/dev/null)
     echo "$active_state" | grep 'Override state:.*identifier=5' >/dev/null || return 1
     echo "$active_state" | grep 'Base state:.*identifier=3' >/dev/null || return 1
@@ -209,12 +267,16 @@ start)
     [ "$attempt" -ge 3 ] || sleep 0.5
   done
   [ "$launched" = 1 ] || start_abort "Activity launch was rejected after three bounded attempts"
-  trap - HUP INT TERM
-  if [ "${FP_SUPERVISED:-0}" = "1" ]; then :; elif command -v nohup >/dev/null 2>&1; then
-    nohup sh "$0" watch >/data/local/tmp/flip-pets-watch.log 2>&1 </dev/null &
-  else
-    echo "No nohup available: use Stop before folding or locking."
+  if [ "${FP_SUPERVISED:-0}" = "1" ]; then :; else
+    nohup sh "$0" watch 8>&8 >/data/local/tmp/flip-pets-watch.log 2>&1 </dev/null &
+    watcher=$!; tries=0
+    while [ "$tries" -lt 40 ] && kill -0 "$watcher" 2>/dev/null; do
+      [ "$(cat "$WATCH_READY" 2>/dev/null)" != "$watcher" ] || break
+      sleep 0.05; tries=$((tries+1))
+    done
+    [ "$(cat "$WATCH_READY" 2>/dev/null)" = "$watcher" ] && kill -0 "$watcher" 2>/dev/null && still_open || start_abort "Lifecycle watcher did not acknowledge startup"
   fi
+  trap - HUP INT TERM
   echo "Started on display $id. To restore normal folding: sh $0 stop"
   ;;
 *) fail "Usage: sh $0 diagnose|start|supervise|resume|status|stop" ;;

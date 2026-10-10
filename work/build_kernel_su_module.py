@@ -18,7 +18,41 @@ def main():
     assert script.count(UID_CHECK) == 1, 'Unexpected controller verify contract'
     script = script.replace(UID_CHECK, '[ "$(id -u)" = "0" ] || fail "This KernelSU controller requires root UID 0"')
     script = script.replace('# Temporary presentation mode, stock Android/Xiaomi commands only. No partition writes.', '# Generated KernelSU variant: same fold/lock/sleep policy; UID 0 instead of shell. No partition writes.')
-    allowed = {'module.prop', 'customize.sh', 'action.sh', 'boot-completed.sh', 'uninstall.sh', 'module-control.sh'}
+    # Policy comes from the canonical controller; only identity, private storage
+    # and module cancellation inputs differ. No root writes to shell runtime.
+    bootstrap = '''[ "$(id -u)" = 0 ] || { echo "Root required" >&2; exit 1; }
+FP_MODULE_DIR=${0%/*}
+for path in "$FP_MODULE_DIR" "$FP_MODULE_DIR/module-state.sh"; do
+  [ ! -L "$path" ] && [ "$(stat -c '%u' "$path")" = 0 ] || exit 1
+  mode=$(stat -c '%a' "$path")
+  case "$mode" in ''|*[!0-7]*|*[2367][0-7]|*[2367]) exit 1 ;; esac
+done
+. "$FP_MODULE_DIR/module-state.sh"
+FP_CANCEL_PATH=$STATE/session-cancel
+FP_EXPECTED_GENERATION=${FP_EXPECTED_GENERATION:-$(cat "$FP_CANCEL_PATH" 2>/dev/null || echo none)}
+export FP_MODULE_DIR FP_CANCEL_PATH FP_EXPECTED_GENERATION
+'''
+    script = script.replace('PKG=org.flippets.app', bootstrap + 'PKG=org.flippets.app', 1)
+    for name in ('active', 'enabled', 'supervisor.lock', 'status', 'start-failures.log', 'supervisor.log', 'watch.log', 'watch-ready'):
+        old = '/data/local/tmp/flip-pets-' + name
+        assert old in script, old
+        script = script.replace(old, '$STATE/runtime/' + name)
+    # Also protect direct invocation of the generated controller. Old released
+    # shell/root controllers do not know about the new shared flock.
+    script = script.replace('  flock -n 8 8>&8 || fail "Another controller backend is active; Stop it first"', '''  flock -n 8 8>&8 || fail "Another controller backend is active; Stop it first"
+  for legacy in /data/local/tmp/flip-pets-enabled /data/local/tmp/flip-pets-active /data/local/tmp/flip-pets-supervisor.lock; do
+    [ ! -e "$legacy" ] && [ ! -L "$legacy" ] || fail "Stop the legacy shared-runtime controller before enabling root"
+  done
+  # Old module logs alone can obstruct the next UID2000 invocation. With the
+  # lifetime lease held and no legacy session markers, unlink only these fixed
+  # regular root-owned diagnostic leaves. Never follow a link or reset a display.
+  for legacy in /data/local/tmp/flip-pets-status /data/local/tmp/flip-pets-start-failures.log /data/local/tmp/flip-pets-supervisor.log /data/local/tmp/flip-pets-watch.log; do
+    if [ -e "$legacy" ] || [ -L "$legacy" ]; then
+      [ ! -L "$legacy" ] && [ -f "$legacy" ] || fail "Unsafe legacy diagnostic path"
+      if [ "$(stat -c '%u' "$legacy")" = 0 ]; then rm -f "$legacy" || fail "Cannot remove obsolete root diagnostic"; fi
+    fi
+  done''')
+    allowed = {'module.prop', 'customize.sh', 'action.sh', 'boot-completed.sh', 'uninstall.sh', 'module-control.sh', 'module-state.sh'}
     files = {p.name: p.read_bytes().replace(b'\r\n', b'\n') for p in SOURCE.iterdir() if p.name in allowed}
     assert set(files) == allowed
     files['flip-pets-control.sh'] = script.encode('utf8').replace(b'\r\n', b'\n')

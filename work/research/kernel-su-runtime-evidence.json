@@ -1,0 +1,134 @@
+{
+  "date": "2026-10-11",
+  "scope": "Step 3: persistent private root state, lifetime backend serialization and acknowledged manual watchers; scoped development prerelease, no physical root proof",
+  "apkSha256": "cf4aeedaf7018ec59d20a610b719ee7f920d564d04ac8c8d5ceb31670d45763e",
+  "moduleZipSha256": "515750d44ab6e3792112bab8d176d855706aedf866f7ff7cd6c015f72379d851",
+  "canonicalControllerSha256": "eaf0f94cc6a57ba21cc342c7c7b7fe5914215ae540d38b583ab7315e4af5d06c",
+  "rootControllerSha256": "0355c90e6f35d7e2b0dbab10a37845eccfa2c9647822925bb01d1a7acd020eb8",
+  "wrapperSha256": "65c15a0204ccd55b2548b4de06a64eb25a6dbd47bbc682248518f846b095d61d",
+  "stateHelperSha256": "02ffc4549e264a89d529b0067a1163d1a348ddb429e65998de7826832956c447",
+  "commandChecksPassed": 151,
+  "syntaxChecksPassed": 8,
+  "reports": {
+    "controller-tests.json": {
+      "sha256": "300ba720d451c5858bca1b3be5c29bd437d47efe502683d375acc313e6f1b32b",
+      "checks": 15,
+      "allPassed": true,
+      "environment": "emulator-5554; stubbed stock command responses, not a physical MIX Flip"
+    },
+    "supervisor-tests-current.json": {
+      "sha256": "f481a96ce47783db48492ec9861b4aa1c3c1611ed767e91cf9d70892a92b6d5b",
+      "checks": 23,
+      "allPassed": true,
+      "environment": "emulator-5554, stubbed device-state/display/power/keyguard commands; no physical MIX Flip"
+    },
+    "kernel-su-controller-tests.json": {
+      "sha256": "8e5fc24bb3857302c2dab6464ee4b53f45238256420dfd82beb0fb30dc051753",
+      "checks": 15,
+      "allPassed": true,
+      "environment": "emulator-5554; stubbed stock command responses; root identity also stubbed, no actual UID0/SELinux proof, not a physical MIX Flip"
+    },
+    "kernel-su-supervisor-tests.json": {
+      "sha256": "4dfc0fa421e97ab82d047481d98d7a1567f3a9b7afe8a4fcb58935ad0ee4a172",
+      "checks": 23,
+      "allPassed": true,
+      "environment": "emulator-5554, stubbed device-state/display/power/keyguard commands; UID0 also stubbed; no physical MIX Flip"
+    },
+    "backend-tests.json": {
+      "sha256": "9a40cedb7dad64d2ca8469f51b00900bc4b1a3a7b68f7558905fc649e9e3b9c5",
+      "checks": 29,
+      "allPassed": true,
+      "environment": "emulator-5554; real flock and child processes, UID0 and HyperOS command responses stubbed; no physical root/SELinux proof"
+    },
+    "kernel-su-boot-tests.json": {
+      "sha256": "29d9d077fddefc9a5ab9955c3d12428950bf50893a7d2cb821b1c1d42deb0744",
+      "checks": 44,
+      "allPassed": true,
+      "environment": "emulator-5554; UID0, storage availability and controller responses stubbed; no physical root proof"
+    },
+    "kernel-su-state-tests.json": {
+      "sha256": "f8aa30bc2f1b7c23ad508a0f72cc7c922956dfa10bb8375c2b7c739ff403f5b2",
+      "checks": 2,
+      "allPassed": true,
+      "environment": "Identity-verified emulator-5554; root UID ownership metadata stubbed, not actual root/SELinux"
+    },
+    "kernel-su-runtime-syntax.json": {
+      "sha256": "a9d49d61c1e9cd4dba70116d8775c0916f90b25bb3d8231184c5b4be07bcafb6",
+      "checks": 8,
+      "allPassed": true,
+      "environment": "Identity-verified Android emulator-5554; sh -n syntax only"
+    }
+  },
+  "testRunnerSha256": {
+    "controller_test_support.py": "2d376df2e19ff06b5fd9ff52f6f929dff29b871aa4d866f963f5f0bb78522ac4",
+    "run_backend_tests.py": "0b3528d1dbe626b23c600cb0067d4ca0c60755567e904f39e64127470140dc05",
+    "run_controller_tests.py": "4458b8aa09f2024affca7571b55872814ce17bbb61adf25d6f9e5bbd44204af7",
+    "run_kernel_su_boot_tests.py": "1c414d06cec06845f0c67d837e4279bacc164eb9f70272e95ac5cc9fcbbffce5",
+    "run_supervisor_tests.py": "dce03fc1b1e117b2cce975f3e60ab5bb2f524fbb3b9606a96b36a10717cd0328",
+    "run_module_state_tests.py": "c58b61b20c4b916d9e9374dc00c982e707939b3f3243d7c27e57f292be4b6951"
+  },
+  "apkStructure": {
+    "package": "org.flippets.app",
+    "versionName": "1.1",
+    "versionCode": 12,
+    "signatureV3Verified": true,
+    "certificateSha256": "819b54a88b032712475060b68a6adcfff569366c86e9683c92934b36375391ba",
+    "zipalign16KiBVerified": true,
+    "allAssetsByteIdenticalToSources": true,
+    "nativeLibraries": [
+      {
+        "path": "lib/arm64-v8a/libffavc.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "1e214164a6c153f74f25018c1625f3e71d1d5ba601f6592c4dd89385dcc4b0bc"
+      },
+      {
+        "path": "lib/arm64-v8a/libpag.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "1178fe9a7fb345212e2a9ff0c386ce9772f03183686e1de87af84f89cbdf736f"
+      },
+      {
+        "path": "lib/x86_64/libffavc.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "5da4dea926ef43d7ac4535b5799afba00d9d0e0fd396e350486037de6843e7e2"
+      },
+      {
+        "path": "lib/x86_64/libpag.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "f013aead9e08a559326921a1f94df701814197bcc93592c50d93cd4285158d51"
+      }
+    ],
+    "apkSha256": "cf4aeedaf7018ec59d20a610b719ee7f920d564d04ac8c8d5ceb31670d45763e"
+  },
+  "independentReview": {
+    "requestedByUser": true,
+    "initialActionableFindings": 2,
+    "actionableCorrectnessFindings": 0,
+    "findingsFixed": [
+      "Legacy pre-lease controllers now block root startup without mutation",
+      "Manual watcher startup now acknowledged with rollback; real lifetime/death/failure fixtures added"
+    ],
+    "finalCodeReview": "Independent reviewer rechecked watcher, durable state, cancellation and process-death receipt paths; no further actionable findings"
+  },
+  "limitations": [
+    "UID0 and stock HyperOS command responses are fixture stubs; no actual root/SELinux compatibility proof",
+    "Current APK structural/signature/controller checks only; full assembled visual/lifecycle suites pending",
+    "Exact EEA FlipHome admission, native pet motion/apply/restore and physical folded behavior remain device-work gates; no phone mutations",
+    "Generation deferred; native widgets optional and not authorized for implementation"
+  ]
+}

@@ -5,6 +5,13 @@ MIX Flip. A guarded Shizuku shell controller enables both physical displays whil
 the phone is open and unlocked. Folding, sleep or lock returns the stock cover
 interface/AOD. No donor firmware is flashed.
 
+The reviewed development controller now keeps root consent in private persistent
+storage, separates root and Shizuku runtime files, and holds a shared lock for the
+whole session. Stop one backend before starting the other. Root observes module
+disable/remove while running. Manual Start also requires an acknowledged lifecycle
+watcher. The optional module remains experimental pending assembled phone testing;
+see [setup and migration](docs/kernel-su-module.md).
+
 ## Native folded-screen priority
 
 The default folded path remains Xiaomi's own cover interface, secure lock screen and
@@ -124,8 +131,8 @@ rear-screen power. The development controller now acknowledges child startup;
 unattended boot resume never clears Stop and waits up to ten minutes for unlocked
 app storage. The root wrapper additionally verifies exact process receipts and
 serializes module actions, preserving a newer disable request during startup.
-Shared root/shell file handling, update migration and physical root verification
-remain pending. The [photo-pet generation audit](docs/photo-pet-generation.md)
+Root now uses private durable state and a session-lifetime lock shared with Shizuku;
+physical root verification remains pending. The [photo-pet generation audit](docs/photo-pet-generation.md)
 documents the donor image/video service chain; a working generator is still required.
 
 ## Project layout

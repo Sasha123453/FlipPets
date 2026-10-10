@@ -2,19 +2,27 @@
 
 ## Unreleased controller hardening — 11 October 2026
 
+- Step 3: durable root consent with a versioned private schema outside module
+  updates; private root runtime and a read-only lifetime flock shared with Shizuku.
+  Refuse active legacy sessions; do not silently migrate their opt-in. Monitor
+  module disable/remove and newer cancellation after startup.
+- Require an acknowledged manual lifecycle watcher, roll back failed startup and
+  recover safely after watcher/supervisor death. Preserve recovery receipts when
+  process identity cannot be verified. Add live backend-switch/update/death tests.
+
 - Step 2: use exact process/boot receipts for root ownership; serialize module
   boot/Action/disable and preserve newer cancellation. Handle reused PID, stale
-  boot, stop timeout/retry and receipt-write failure. Shared runtime-file handling,
-  update migration and physical KernelSU verification remain pending.
+  boot, stop timeout/retry and receipt-write failure. Step 3 above completes the
+  source work for runtime isolation/update consent; physical verification is pending.
 - Separate explicit Start from unattended resume: boot cannot clear an app Stop
   request. Wait up to ten minutes for the primary user's unlocked app storage;
   opt-out and module disable/remove cancel that wait.
 - Wait for the detached supervisor to acknowledge its own verification and
   cleanup setup before reporting startup success. Preserve Stop arriving after
   explicit Start cleared the previous request or during unattended startup.
-- Add emulator command fixtures for module boot and startup races. Cross-backend
-  file ownership, update persistence and physical UID0/SELinux verification remain
-  unfinished. No native folded integration or generator is added.
+- Add emulator command fixtures for module boot and startup races. Physical
+  UID0/SELinux verification remains pending. No native folded integration or
+  generator is added by this controller milestone.
 
 ## 1.1
 

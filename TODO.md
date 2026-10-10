@@ -15,9 +15,11 @@
   unattended resume preserving Stop, and child startup acknowledgement.
 - [x] Step 2: exact root process/boot receipts, PID reuse protection and serialized
   module Action/boot/disable, with stale-boot and timeout/failure regression cases.
-- [ ] Finish shared root/shell runtime paths, cross-backend serialization, update
-  migration, post-start module-disable handling and physical root verification.
-  Keep the ZIP experimental.
+- [x] Step 3 source/fixture work: private persistent root state, root/shell lifetime
+  serialization, explicit legacy migration, live module-disable monitoring and
+  acknowledged manual watchers. Physical root verification remains separate.
+- [ ] Verify root UID/SELinux, boot/first unlock/update/disable/fold on an actual
+  rooted MIX Flip after assembly. Keep the ZIP experimental until that evidence.
 - [ ] Run full current-SHA APK/lifecycle QA before a new release; source changes
   to the embedded controller required an APK rebuild. Historical release QA stays
   bound to its original APK.

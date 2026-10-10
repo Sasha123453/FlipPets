@@ -1,5 +1,48 @@
 # KernelSU: экспериментальная альтернатива контроллера
 
+## Persistent state and backend switching — development step 3
+
+Root uses `/data/adb/flippets-controller` (root-owned, mode 0700), with schema 1,
+durable opt-in/cancellation/receipt and a private `runtime` directory. Module script
+replacement preserves valid consent; fresh installation creates no opt-in.
+Interrupted empty initialization is safe to retry. Unknown schemas, unsafe modes
+and symlinked control files fail closed without rewriting existing state.
+Uninstall disables the verified session and leaves opted-out bounded state; it
+does not unlink a transition lock while other invocations might still be waiting.
+
+The module's short transition lock and both controllers' session-lifetime lock
+are different. `/data/local/tmp/flip-pets-backend.lock` is a stable regular 0644
+file owned by root or shell, opened read-only by either UID and never removed.
+It is created atomically, never made world-writable. A supervisor/manual watcher
+inherits that lease; another backend refuses Start until teardown releases it.
+Android flock/SELinux interoperability still needs rooted hardware testing.
+
+Older released controllers do not hold that lease. Root therefore also refuses
+old shared runtime markers/lock without altering them. Stop the old session with
+its matching controller first, then use the new module Action for explicit consent.
+Legacy module-local enabled/owned files are not copied into new consent. Once no
+legacy session markers remain and the lease is held, the new root controller can
+unlink only four fixed regular root-owned diagnostic files; shell-owned files are
+preserved and symlinks refused. New root sessions never write shell runtime files.
+
+The running root controller checks module disable/remove and cancellation each
+normal two-second policy poll, and during launch readiness/retries. It closes its
+owned request and exits; there is no second watchdog or wake/power workaround.
+App Stop remains shared and unattended resume never clears it. Shizuku remains
+the default backend and its Binder authentication stays UID 2000 only.
+
+Manual Start now requires `nohup` before requesting presentation and a real watcher
+PID acknowledgement before success. Failed watcher startup rolls back. Watcher
+death leaves a stale request: the next explicit Start restores stock and asks for
+a retry rather than claiming the dead session is running. Receipt-bound dead root
+supervisors can be cleaned before discarding their recovery receipt; live processes
+whose identity does not match are left untouched and reported as a failure.
+
+Emulator fixtures verify shell branches, process identity and flock with stubbed
+UID0/HyperOS responses. They do not establish actual root, SELinux, boot mounts,
+physical hinge, AOD or independent display power compatibility. Fully assembled
+phone tests remain deferred. Earlier sections below describe historical steps.
+
 ## Ownership and module transitions — development step 2
 
 The root wrapper now stores PID, process start time and boot ID instead of a

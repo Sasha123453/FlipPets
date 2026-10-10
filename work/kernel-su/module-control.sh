@@ -2,15 +2,8 @@
 # First-stage root alternative only. Never change display layout, wakefulness or keyguard.
 MODDIR=${0%/*}
 CONTROLLER=$MODDIR/flip-pets-control.sh
-ENABLED=$MODDIR/session-enabled
-OWNED=$MODDIR/session-owned
-CANCEL=$MODDIR/session-cancel
-TRANSITION=$MODDIR/session-transition
 STOP=/sdcard/Android/data/org.flippets.app/files/controller-stop
 APPFILES=${STOP%/*}
-RUNTIME=/data/local/tmp/flip-pets-enabled
-MARK=/data/local/tmp/flip-pets-active
-LOCK=/data/local/tmp/flip-pets-supervisor.lock
 [ "$(id -u)" = 0 ] || { echo "KernelSU root required" >&2; exit 1; }
 umask 077
 not_publicly_writable() {
@@ -18,6 +11,15 @@ not_publicly_writable() {
   case "$permissions" in ''|*[!0-7]*|*[2367][0-7]|*[2367]) return 1 ;; esac
 }
 root_file() { [ -f "$1" ] && [ ! -L "$1" ] && [ "$(stat -c '%u' "$1")" = 0 ] && not_publicly_writable "$1"; }
+  [ -d "$MODDIR" ] && [ ! -L "$MODDIR" ] && [ "$(stat -c '%u' "$MODDIR")" = 0 ] && not_publicly_writable "$MODDIR" && root_file "$MODDIR/module-state.sh" || { echo 'Unsafe module state helper' >&2; exit 1; }
+. "$MODDIR/module-state.sh"
+ENABLED=$STATE/session-enabled
+OWNED=$STATE/session-owned
+CANCEL=$STATE/session-cancel
+TRANSITION=$STATE/session-transition
+RUNTIME=$STATE/runtime/enabled
+MARK=$STATE/runtime/active
+LOCK=$STATE/runtime/supervisor.lock
 secure_module() {
   [ -d "$MODDIR" ] && [ ! -L "$MODDIR" ] && [ "$(stat -c '%u' "$MODDIR")" = 0 ] || return 1
   # mksh does not consistently interpret a leading zero as octal.
@@ -146,6 +148,16 @@ disable_session() {
       [ "$waits" -lt 64 ] || { echo "Owned supervisor is still stopping; receipt retained" >&2; return 1; }
       sleep 0.25; waits=$((waits+1))
     done
+  elif [ -e "$RUNTIME" ] || [ -e "$MARK" ] || [ -e "$LOCK" ]; then
+    # SIGKILL/reboot may leave receipt-bound files. Do not discard the only
+    # recovery receipt before clearing those files. A live unverified process
+    # stays untouched and retains its receipt for diagnostics/retry.
+    if read_receipt && { [ "$(boot_id)" != "$owned_boot" ] || ! kill -0 "$owned_pid" 2>/dev/null; }; then
+      clear_stale_owned_lock || return 1
+    else
+      echo 'Cannot verify the remaining root session; receipt retained' >&2
+      return 1
+    fi
   fi
   rm -f "$OWNED"
 }
@@ -166,6 +178,11 @@ enable_session() {
   pm path org.flippets.app | grep -q '^package:' || { echo "Install FlipPets.apk first" >&2; return 1; }
   storage_ready || { echo "Open Flip Pets once and unlock storage first" >&2; return 1; }
   [ "$(cancel_generation)" = "$expected_generation" ] || { echo "Cancelled by a newer disable request"; return 1; }
+  # Published pre-lease controllers do not contend on the new lifetime flock.
+  # Never assume a free flock means their presentation request has ended.
+  for legacy in /data/local/tmp/flip-pets-enabled /data/local/tmp/flip-pets-active /data/local/tmp/flip-pets-supervisor.lock; do
+    [ ! -e "$legacy" ] && [ ! -L "$legacy" ] || { echo 'Stop the legacy shared-runtime controller before enabling root' >&2; return 1; }
+  done
   if [ "$launch" = resume ]; then
     [ -f "$ENABLED" ] || return 1
     [ ! -e "$STOP" ] || { rm -f "$ENABLED"; echo "Stopped by user"; return 1; }
@@ -177,7 +194,7 @@ enable_session() {
     }
   fi
   # resume is unattended and never clears Stop. supervise is explicit Action only.
-  /system/bin/sh "$CONTROLLER" "$launch" 9>&- || { rm -f "$ENABLED"; return 1; }
+  FP_EXPECTED_GENERATION=$expected_generation /system/bin/sh "$CONTROLLER" "$launch" 9>&- || { rm -f "$ENABLED"; return 1; }
   record_supervisor || {
     rm -f "$ENABLED"
     stop_captured_supervisor || echo "Cannot verify startup cleanup; use Flip Pets Stop before retrying" >&2
