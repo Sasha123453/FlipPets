@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 1,
+  "device": "ruyi",
+  "build": "OS3.0.303.0.WNIEUXM",
+  "scope": "Original system pet PAGs and AOD foregrounds only; no settings or private device data",
+  "sourceAodSha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+  "originalCatalogueEntriesPreserved": 33,
+  "addedEntries": 6,
+  "addedClipPaths": 18,
+  "pets": [
+    {
+      "id": "mixflip-dewen",
+      "name": "Девон-рекс",
+      "kind": "ambient",
+      "clips": {
+        "0": "pets/mixflip-dewen/pag_0.pag",
+        "1": "pets/mixflip-dewen/pag_1.pag",
+        "2": "pets/mixflip-dewen/pag_2.pag"
+      },
+      "extra": [],
+      "source": "Xiaomi MIX Flip OS3.0.303.0.WNIEUXM · встроенные питомцы",
+      "gradientFrom": "#EA4E73",
+      "gradientTo": "#EA4E73",
+      "timeColor": "#FFFFFF",
+      "touchSceneCount": 3,
+      "nativePetType": 1,
+      "nativeBackgroundDrawable": "mixflip_dewen"
+    },
+    {
+      "id": "mixflip-shuitun",
+      "name": "Капибара",
+      "kind": "ambient",
+      "clips": {
+        "0": "pets/mixflip-shuitun/pag_0.pag",
+        "1": "pets/mixflip-shuitun/pag_1.pag",
+        "2": "pets/mixflip-shuitun/pag_2.pag"
+      },
+      "extra": [],
+      "source": "Xiaomi MIX Flip OS3.0.303.0.WNIEUXM · встроенные питомцы",
+      "gradientFrom": "#323752",
+      "gradientTo": "#323752",
+      "timeColor": "#FFFFFF",
+      "touchSceneCount": 3,
+      "nativePetType": 2,
+      "nativeBackgroundDrawable": "mixflip_shuitun"
+    },
+    {
+      "id": "mixflip-shuita",
+      "name": "Выдра",
+      "kind": "ambient",
+      "clips": {
+        "0": "pets/mixflip-shuita/pag_0.pag",
+        "1": "pets/mixflip-shuita/pag_1.pag",
+        "2": "pets/mixflip-shuita/pag_2.pag"
+      },
+      "extra": [],
+      "source": "Xiaomi MIX Flip OS3.0.303.0.WNIEUXM · встроенные питомцы",
+      "gradientFrom": "#41ADC5",
+      "gradientTo": "#41ADC5",
+      "timeColor": "#FFFFFF",
+      "touchSceneCount": 3,
+      "nativePetType": 3,
+      "nativeBackgroundDrawable": "mixflip_shuita"
+    },
+    {
+      "id": "mixflip-bixiong",
+      "name": "Бишон-фризе",
+      "kind": "ambient",
+      "clips": {
+        "0": "pets/mixflip-bixiong/pag_0.pag",
+        "1": "pets/mixflip-bixiong/pag_1.pag",
+        "2": "pets/mixflip-bixiong/pag_2.pag"
+      },
+      "extra": [],
+      "source": "Xiaomi MIX Flip OS3.0.303.0.WNIEUXM · встроенные питомцы",
+      "gradientFrom": "#915D40",
+      "gradientTo": "#915D40",
+      "timeColor": "#FFFFFF",
+      "touchSceneCount": 3,
+      "nativePetType": 4,
+      "nativeBackgroundDrawable": "mixflip_bixiong"
+    },
+    {
+      "id": "mixflip-xianluo",
+      "name": "Сиамский кот",
+      "kind": "ambient",
+      "clips": {
+        "0": "pets/mixflip-xianluo/pag_0.pag",
+        "1": "pets/mixflip-xianluo/pag_1.pag",
+        "2": "pets/mixflip-xianluo/pag_2.pag"
+      },
+      "extra": [],
+      "source": "Xiaomi MIX Flip OS3.0.303.0.WNIEUXM · встроенные питомцы",
+      "gradientFrom": "#282827",
+      "gradientTo": "#282827",
+      "timeColor": "#FFFFFF",
+      "touchSceneCount": 3,
+      "nativePetType": 5,
+      "nativeBackgroundDrawable": "mixflip_xianluo"
+    },
+    {
+      "id": "mixflip-heibao",
+      "name": "Чёрная пантера",
+      "kind": "ambient",
+      "clips": {
+        "0": "pets/mixflip-heibao/pag_0.pag",
+        "1": "pets/mixflip-heibao/pag_1.pag",
+        "2": "pets/mixflip-heibao/pag_2.pag"
+      },
+      "extra": [],
+      "source": "Xiaomi MIX Flip OS3.0.303.0.WNIEUXM · встроенные питомцы",
+      "gradientFrom": "#173F2E",
+      "gradientTo": "#173F2E",
+      "timeColor": "#FFFFFF",
+      "touchSceneCount": 3,
+      "nativePetType": 6,
+      "nativeBackgroundDrawable": "mixflip_heibao"
+    }
+  ],
+  "assets": [
+    {
+      "assetPath": "pets/mixflip-dewen/pag_0.pag",
+      "sourcePath": "/system/media/wallpaper/wallpaper_group_animal_flip_outer/dewen_1.pag",
+      "sha256": "e8fcd8bf802583a922dbdde5c8eb5f4a3b0e8fe85abecf493ead36bd9dab1bd0",
+      "bytes": 4710783
+    },
+    {
+      "assetPath": "pets/mixflip-dewen/pag_1.pag",
+      "sourcePath": "/system/media/wallpaper/wallpaper_group_animal_flip_outer/dewen_2.pag",
+      "sha256": "7b1127242c687f00e38d9ca95bcb5acefdcd7597528c08ebb1f29b1d14ef880d",
+      "bytes": 5087098
+    },
+    {
+      "assetPath": "pets/mixflip-dewen/pag_2.pag",
+      "sourcePath": "/system/media/wallpaper/wallpaper_group_animal_flip_outer/dewen_3.pag",
+      "sha256": "5d942dafa346a3238f7e04b8e47a0f7f6a4ac2c03550310bbc6fb2a663f64341",
+      "bytes": 4464535
+    },
+    {
+      "resourcePath": "res/drawable/mixflip_dewen_0.xml",
+      "sourceApkSha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+      "sourceMember": "res/S28.xml",
+      "sourceCompiledXmlSha256": "ab1da922bdf33eba0cab39ed6ffd375fa61d638c4c1d919c4ff18a24398a7f16",
+      "sha256": "313b9449d84bcb9d423cb5bd8b596b48bcf72d7122761a72e3efaaa374fa9282",
+      "conversion": "Original Android vector paths/attributes transcribed by aapt2; no invented artwork"
+    },
+    {
+      "resourcePath": "res/drawable/mixflip_dewen_180.xml",
+      "sourceApkSha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+      "sourceMember": "res/Rce.xml",
+      "sourceCompiledXmlSha256": "46adc5caebce8ac6de8407824afd6585f78494c527e16c1e1b12ab00c9319300",
+      "sha256": "56b703503167eed9bf2da6c5a9dc240ee15876b930e7f50b4ac7dc766a069afe",
+      "conversion": "Original Android vector paths/attributes transcribed by aapt2; no invented artwork"
+    },
+    {
+      "assetPath": "pets/mixflip-shuitun/pag_0.pag",
+      "sourcePath": "/system/media/wallpaper/wallpaper_group_animal_flip_outer/shuitun_1.pag",
+      "sha256": "d9ecc8fa2c219148a896a5f035fd4dfd01a3d85c074b7d44997ec0a0be9a1435",
+      "bytes": 4826459
+    },
+    {
+      "assetPath": "pets/mixflip-shuitun/pag_1.pag",
+      "sourcePath": "/system/media/wallpaper/wallpaper_group_animal_flip_outer/shuitun_2.pag",
+      "sha256": "a4aacd14d3bd8f9b5027813d93cf9dcf0b692c5e420603f0004ffdd32e5389ca",
+      "bytes": 2712078
+    },
+    {
+      "assetPath": "pets/mixflip-shuitun/pag_2.pag",
+      "sourcePath": "/system/media/wallpaper/wallpaper_group_animal_flip_outer/shuitun_3.pag",
+      "sha256": "d0b86ffbd2f9b834e7c8a7a6e2b4406ba4cb124b16ed668df562353a9b160a0e",
+      "bytes": 5340824
+    },
+    {
+      "resourcePath": "res/drawable/mixflip_shuitun_0.xml",
+      "sourceApkSha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+      "sourceMember": "res/NYg.xml",
+      "sourceCompiledXmlSha256": "78b01b001caeb8606f4d1aa4193b684ab6c4b12cf5ebcaece8a08faf0f1d6702",
+      "sha256": "e8f8dd8c81f27c2bca3c70ed5ef6e9a656ecc8ae39db7f587111cf74e5c05ae5",
+      "conversion": "Original Android vector paths/attributes transcribed by aapt2; no invented artwork"
+    },
+    {
+      "resourcePath": "res/drawable/mixflip_shuitun_180.xml",
+      "sourceApkSha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+      "sourceMember": "res/k0q.xml",
+      "sourceCompiledXmlSha256": "729dc73c0597cbe0f529ce2c951b77d85e9b31a4655c2aec984b5b4ea9d69d59",
+      "sha256": "ac25f03db21181156038547a9899a0505db9e8a66c3486daec545a5d4b93bc83",
+      "conversion": "Original Android vector paths/attributes transcribed by aapt2; no invented artwork"
+    },
+    {
+      "assetPath": "pets/mixflip-shuita/pag_0.pag",
+      "sourcePath": "/system/media/wallpaper/wallpaper_group_animal_flip_outer/shuita_1.pag",
+      "sha256": "aa7592b187d70d92233349529616b88255aba9545e0e3d8568698acc634ae97e",
+      "bytes": 6616058
+    },
+    {
+      "assetPath": "pets/mixflip-shuita/pag_1.pag",
+      "sourcePath": "/system/media/wallpaper/wallpaper_group_animal_flip_outer/shuita_2.pag",
+      "sha256": "9df3f368d693bea301af2596b431fd008e8e7cf37838db354afac3add29896e2",
+      "bytes": 3692351
+    },
+    {
+      "assetPath": "pets/mixflip-shuita/pag_2.pag",
+      "sourcePath": "/system/media/wallpaper/wallpaper_group_animal_flip_outer/shuita_3.pag",
+      "sha256": "cc60fb8c816a2d68cc31f60bbd9a3d9be248abc9bc71f0491b7aad47b50db0c4",
+      "bytes": 4328077
+    },
+    {
+      "resourcePath": "res/drawable/mixflip_shuita_0.xml",
+      "sourceApkSha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+      "sourceMember": "res/nHQ.xml",
+      "sourceCompiledXmlSha256": "f08cec0e0fa0b51785d9690942be9227668c28f41fead81cd8cf89e25375d804",
+      "sha256": "af221221291a32b8bd14e70c30543a83dd52f59abdcf8f1253d9e9a45e2a787c",
+      "conversion": "Original Android vector paths/attributes transcribed by aapt2; no invented artwork"
+    },
+    {
+      "resourcePath": "res/drawable/mixflip_shuita_180.xml",
+      "sourceApkSha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+      "sourceMember": "res/VfI.xml",
+      "sourceCompiledXmlSha256": "aa4d3f391a868ebf070cf1dbcb3d89359559dd734701613a051e7051f1926cc5",
+      "sha256": "4cacb20592490d814e3f36606c9baf9dff1c4f6d3e78e1ded255e1a5e76844f0",
+      "conversion": "Original Android vector paths/attributes transcribed by aapt2; no invented artwork"
+    },
+    {
+      "assetPath": "pets/mixflip-bixiong/pag_0.pag",
+      "sourcePath": "/system/media/wallpaper/wallpaper_group_animal_flip_outer/bixiong_1.pag",
+      "sha256": "3018f45ebea391d33d942d7cb242f29c25b28a9e022c0946e53363198b2ac6b8",
+      "bytes": 2944407
+    },
+    {
+      "assetPath": "pets/mixflip-bixiong/pag_1.pag",
+      "sourcePath": "/system/media/wallpaper/wallpaper_group_animal_flip_outer/bixiong_2.pag",
+      "sha256": "d9cfa364277f6149be23e4e95af77f80e55b19e93f87918f697608340e1cc1d7",
+      "bytes": 2579078
+    },
+    {
+      "assetPath": "pets/mixflip-bixiong/pag_2.pag",
+      "sourcePath": "/system/media/wallpaper/wallpaper_group_animal_flip_outer/bixiong_3.pag",
+      "sha256": "01fd1ca27f140f94485e5bfec07fefa0be9cd47b1ebc4c9e355fd93c2b508ea2",
+      "bytes": 2495746
+    },
+    {
+      "resourcePath": "res/drawable/mixflip_bixiong_0.xml",
+      "sourceApkSha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+      "sourceMember": "res/kLq.xml",
+      "sourceCompiledXmlSha256": "d81fd30b6eb5c7dc2c5683aaebefd671245778096c5732219bb42bac6984b977",
+      "sha256": "5b381340b4ca84d6f60de08fc0b08a148dcde03841f6bc586ed0952a1a02297f",
+      "conversion": "Original Android vector paths/attributes transcribed by aapt2; no invented artwork"
+    },
+    {
+      "resourcePath": "res/drawable/mixflip_bixiong_180.xml",
+      "sourceApkSha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+      "sourceMember": "res/5KL.xml",
+      "sourceCompiledXmlSha256": "500a3c666875bb22ea7c452347ee1ecc7164fdcbafe7beb829b4f6993bb493a2",
+      "sha256": "112aa144a4673960c623b3e71570a2922ab2c81274ee964d4126db98033f374f",
+      "conversion": "Original Android vector paths/attributes transcribed by aapt2; no invented artwork"
+    },
+    {
+      "assetPath": "pets/mixflip-xianluo/pag_0.pag",
+      "sourcePath": "/system/media/wallpaper/wallpaper_group_animal_flip_outer/xianluo_1.pag",
+      "sha256": "48e6bc0255dd92f817862ab876060fb5cbaf6739534608e0e73b8ec172b897c9",
+      "bytes": 3135831
+    },
+    {
+      "assetPath": "pets/mixflip-xianluo/pag_1.pag",
+      "sourcePath": "/system/media/wallpaper/wallpaper_group_animal_flip_outer/xianluo_2.pag",
+      "sha256": "ccd7e186020e1d60a70ea6719a0341e351a38db33a8ffa42e330c0b37a6b1e1d",
+      "bytes": 2890148
+    },
+    {
+      "assetPath": "pets/mixflip-xianluo/pag_2.pag",
+      "sourcePath": "/system/media/wallpaper/wallpaper_group_animal_flip_outer/xianluo_3.pag",
+      "sha256": "d3e21521aaec85de0a76bb6199d7378cb966ce63ea9fd3605a195f988ff39e40",
+      "bytes": 3108374
+    },
+    {
+      "resourcePath": "res/drawable/mixflip_xianluo_0.xml",
+      "sourceApkSha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+      "sourceMember": "res/EDt.xml",
+      "sourceCompiledXmlSha256": "fe11bc7613df6a0daf909c4a25eb1e7d657d07f3a1856db0f5d73912bc28ad8b",
+      "sha256": "04a57cde803fe7cf94eebb001a94dc44576d57f54fffb6cb11542440e957fcbb",
+      "conversion": "Original Android vector paths/attributes transcribed by aapt2; no invented artwork"
+    },
+    {
+      "resourcePath": "res/drawable/mixflip_xianluo_180.xml",
+      "sourceApkSha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+      "sourceMember": "res/1m7.xml",
+      "sourceCompiledXmlSha256": "e60b799b91527a29b386b9c0f75ef54dc9031953e7d2560473834ac4ae8e65f7",
+      "sha256": "fc43fe9abcf431a85e275d68f77cb39a42b77a6d34d5e4dd8e417bea84394fcd",
+      "conversion": "Original Android vector paths/attributes transcribed by aapt2; no invented artwork"
+    },
+    {
+      "assetPath": "pets/mixflip-heibao/pag_0.pag",
+      "sourcePath": "/system/media/wallpaper/wallpaper_group_animal_flip_outer/heibao_1.pag",
+      "sha256": "25c71ac2b85376d979a2c5b2bafe7564a20c7e8bd90e9d50063996c3cae7794f",
+      "bytes": 2977456
+    },
+    {
+      "assetPath": "pets/mixflip-heibao/pag_1.pag",
+      "sourcePath": "/system/media/wallpaper/wallpaper_group_animal_flip_outer/heibao_2.pag",
+      "sha256": "ced78cbef3f36b7caf6b46ea04b6f81c587eaeeb18559793eed1444793233644",
+      "bytes": 3401347
+    },
+    {
+      "assetPath": "pets/mixflip-heibao/pag_2.pag",
+      "sourcePath": "/system/media/wallpaper/wallpaper_group_animal_flip_outer/heibao_3.pag",
+      "sha256": "8670e2cdb2b75c4a868b87274b9a2547025137a6ec6223d3877b1434bd4c4a84",
+      "bytes": 3103415
+    },
+    {
+      "resourcePath": "res/drawable/mixflip_heibao_0.xml",
+      "sourceApkSha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+      "sourceMember": "res/fhY.xml",
+      "sourceCompiledXmlSha256": "e38165d827a3b245eda1eb822899520cbd491a9c169dea099302102c7b0b9b3f",
+      "sha256": "280de348a651abc0bdf7eede306c8bd5f16507354809bd83492afe20b7a24924",
+      "conversion": "Original Android vector paths/attributes transcribed by aapt2; no invented artwork"
+    },
+    {
+      "resourcePath": "res/drawable/mixflip_heibao_180.xml",
+      "sourceApkSha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+      "sourceMember": "res/wp1.xml",
+      "sourceCompiledXmlSha256": "edf2906762481b8861c51864f3e23e717a7a5f361274ce174ecc7068a129b627",
+      "sha256": "104df91f7fae7659e57a16df66977d7c6c1cf11a9df0aabcd4345d7658317929",
+      "conversion": "Original Android vector paths/attributes transcribed by aapt2; no invented artwork"
+    }
+  ],
+  "rights": "Xiaomi artwork retains its owners rights; excluded from the MIT code license."
+}

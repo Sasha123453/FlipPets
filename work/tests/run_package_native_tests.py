@@ -10,19 +10,20 @@ sys.path.insert(0, str(ROOT / 'work'))
 import package_release as package
 
 current = json.loads((ROOT / 'work/qa-final/native-cards/native-cards-qa.json').read_text(encoding='utf-8'))
+count = package.COUNTS['native-cards-qa.json']
 rows = []
-package.native_qa_cases(current, 31)
+package.native_qa_cases(current, count)
 rows.append(dict(test='real_current_report', ok=True))
-for name, change, count in [
-    ('duplicate_case', lambda d: d['results'].__setitem__(0, d['results'][1]), 31),
-    ('foreign_case', lambda d: d['results'][0].update(test='unrelated_passing_case'), 31),
-    ('missing_case', lambda d: d['results'].pop(), 31),
-    ('wrong_expected_count', lambda d: None, 30),
+for name, change, expected_count in [
+    ('duplicate_case', lambda d: d['results'].__setitem__(0, d['results'][1]), count),
+    ('foreign_case', lambda d: d['results'][0].update(test='unrelated_passing_case'), count),
+    ('missing_case', lambda d: d['results'].pop(), count),
+    ('wrong_expected_count', lambda d: None, count-1),
 ]:
     data = copy.deepcopy(current)
     change(data)
     try:
-        package.native_qa_cases(data, count)
+        package.native_qa_cases(data, expected_count)
         passed = False
     except ValueError:
         passed = True

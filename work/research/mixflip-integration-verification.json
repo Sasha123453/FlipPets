@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-11",
+  "apkSha256": "b9e9fcfb041083f5c66068de95e1b086beb2a64aacbc71e98a1e08a99a85f03c",
+  "environment": "Identity-verified emulator-5554, fliptest, Android16/API36 x86_64, host GPU/4GB; not HyperOS",
+  "apkChecks": 375,
+  "galleryChecks": 9,
+  "virtualCoverChecks": 6,
+  "binaryChecks": {
+    "package": "org.flippets.app",
+    "versionName": "1.1",
+    "versionCode": 12,
+    "signatureV3Verified": true,
+    "certificateSha256": "819b54a88b032712475060b68a6adcfff569366c86e9683c92934b36375391ba",
+    "zipalign16KiBVerified": true,
+    "allAssetsByteIdenticalToSources": true,
+    "nativeLibraries": [
+      {
+        "path": "lib/arm64-v8a/libffavc.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "1e214164a6c153f74f25018c1625f3e71d1d5ba601f6592c4dd89385dcc4b0bc"
+      },
+      {
+        "path": "lib/arm64-v8a/libpag.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "1178fe9a7fb345212e2a9ff0c386ce9772f03183686e1de87af84f89cbdf736f"
+      },
+      {
+        "path": "lib/x86_64/libffavc.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "5da4dea926ef43d7ac4535b5799afba00d9d0e0fd396e350486037de6843e7e2"
+      },
+      {
+        "path": "lib/x86_64/libpag.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "f013aead9e08a559326921a1f94df701814197bcc93592c50d93cd4285158d51"
+      }
+    ]
+  },
+  "reports": [
+    {
+      "kind": "APK",
+      "path": "work/qa-v03/device-files/qa.json",
+      "sha256": "f69c9842d276f4aa211897b288943fba7210deb2422502e8c056af8cc08ddce8",
+      "tested": 194,
+      "failed": 0
+    },
+    {
+      "kind": "APK",
+      "path": "work/qa-v03/device-files/composition-qa.json",
+      "sha256": "d1531ca5ed88953311d9cddf9c184c36c324507eb47420758903cc2b84a6c5d0",
+      "tested": 68,
+      "failed": 0
+    },
+    {
+      "kind": "APK",
+      "path": "work/qa-v03/device-files/ui-switch-qa.json",
+      "sha256": "21c6286a9fbd4103e4ef1615180ae5bc37c9b30e9dcf7edc671fc4b9f5e4fdb3",
+      "tested": 15,
+      "failed": 0
+    },
+    {
+      "kind": "APK",
+      "path": "work/qa-v03/device-files/utility-qa.json",
+      "sha256": "e61faaf0d79449db340a29540d62088991f358480ae8ef23e4c78e75089504ca",
+      "tested": 15,
+      "failed": 0
+    },
+    {
+      "kind": "APK",
+      "path": "work/qa-v03/device-files/pet-layout-qa.json",
+      "sha256": "e44c6d5a383e12b2b799fdf6da1fb44f22d9999dd22b88d02028c34d0bf4c64d",
+      "tested": 19,
+      "failed": 0
+    },
+    {
+      "kind": "APK",
+      "path": "work/qa-v03/device-files/mixflip-qa.json",
+      "sha256": "ec92d8d3ad68a791fff2fc96bcd2b1b356ce06794372799600f25d4a42fe9f20",
+      "tested": 64,
+      "failed": 0
+    },
+    {
+      "kind": "gallery",
+      "path": "work/qa-v03/device-files/mixflip-gallery-qa.json",
+      "sha256": "0da2a6922ea7927f6d107a372132c083a0aa9cabda9f83f75e496cb91ade6f6f",
+      "tested": 9,
+      "failed": 0
+    },
+    {
+      "kind": "virtual-cover",
+      "path": "work/qa-v03/runtime-v110.json",
+      "sha256": "6bdb49f9c5464e1a3610273f2e501386841e6ae6746d0d488293fc1811cc9122",
+      "tested": 6,
+      "failed": 0
+    }
+  ],
+  "catalogue": {
+    "entries": 39,
+    "clipPaths": 194,
+    "baseline33CanonicalSha256": "cd49314203ab83a08263af0bf7fab17b714e267fdfbe526440cbf33d6f0a5b80",
+    "stockOriginalPag": 18,
+    "stockOriginalForegrounds": 12
+  },
+  "sourceEvidence": {
+    "stockDecodeSamples": 144,
+    "charlieSourceSamples": 8,
+    "calibratedFullResolutionSamples": 8,
+    "geometryCases": 72,
+    "nativeFlowHostTests": 35,
+    "provenanceGuardCases": 5
+  },
+  "notRerunForThisApk": [
+    "donor18-qa.json",
+    "mini-apps-qa.json",
+    "native-cards-qa.json"
+  ],
+  "physical": {
+    "phoneCommandsPerformed": false,
+    "phoneInstallPerformed": false,
+    "nativeUpdatePerformed": false,
+    "foldedCharlieFixed": false,
+    "exactRestoreProven": false,
+    "cameraClearanceProven": false
+  },
+  "publication": {
+    "requiredApkChecks": 463,
+    "releasePackaged": false,
+    "moduleRebuilt": false,
+    "commitPerformed": false,
+    "pushPerformed": false
+  }
+}

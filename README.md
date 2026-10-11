@@ -5,6 +5,16 @@ MIX Flip. A guarded Shizuku shell controller enables both physical displays whil
 the phone is open and unlocked. Folding, sleep or lock returns the stock cover
 interface/AOD. No donor firmware is flashed.
 
+The development build adds a **MIX Flip** collection: six stock pets,18 original
+PAG scenes, source foregrounds for both orientations and explicit Apply/Cancel.
+Stock clocks use the original C700 font, per-pet colors and signed TinyClock
+layout dimensions. Their camera-side layout follows the actual display cutout.
+Scenes finish once and advance on touch. Their placement and mirrors use the same
+camera-cutout rule as Xiaomi. The original33 catalogue entries retain their metadata;
+Charlie now shares its reviewed native size across all12 app scenes. Other donor
+placements are preserved. Main has a separate, guarded entry to Xiaomi's saved
+native pets. See [implementation and limits](docs/mixflip-pets-integration.md).
+
 The reviewed development controller now keeps root consent in private persistent
 storage, separates root and Shizuku runtime files, and holds a shared lock for the
 whole session. Stop one backend before starting the other. Root observes module
@@ -14,25 +24,47 @@ see [setup and migration](docs/kernel-su-module.md).
 
 ## Native folded-screen priority
 
+The user resumed **pets and the complete native flow**, deferring card work.
+Charlie was applied with Xiaomi's Add button after the user accepted manual
+restoration; the owned bizId and copied PAG SHA were read back. On the actual
+folded screen the calibrated replacement was subsequently applied through the
+existing-record «Готово» control. Resource hashes, unchanged slot counts and all
+other saved designs were verified; the user accepted its folded size. In the phone run, the user observed tap
+replay without notifications and no tap replay with notifications. This matches
+the inspected notification gate; it does not establish every wake/AOD condition.
+Exact automatic Restore remains unverified. Charlie's app and native AI clocks
+use different OEM designs; further Charlie work is deferred at the user's request.
+See [current pet flow and evidence](docs/native-pet-flow.md).
+
 The development app also provides separate offline card navigation for ordinary
 native cover-app launches, with an explicit opt-in and conservative cover routing.
 It works through the same app on root and non-root. Xiaomi EEA launcher admission,
 widget-strip behavior and physical continuity still await phone verification.
 See [native card setup and limits](docs/native-launch-cards.md).
 
-Source preparation is complete for one native Charlie proof:unchanged PAG, decoded poster, eight full-resolution samples and a traced inherited OEM playback path. This adds no native installer. See [proof and remaining phone gates](docs/native-pet-proof.md). The final development release includes the assembled APK, experimental module, source, verification and resource bundle.
+Source preparation includes the unchanged Charlie proof and a separate calibrated
+candidate with eight decoded full-resolution frames and a real poster. This adds
+no native installer. See [proof and remaining phone gates](docs/native-pet-proof.md).
+The shared geometry registry and guarded draft tool prepare future additions:
+[adding compatible pets](docs/adding-native-pets.md). A new profile does not itself
+prove native PAG-format compatibility or install a pet.
+Earlier release bundles retain their original SHA; this continuation rebuilt the
+development APK without regenerating release archives or the experimental module.
 
 The default folded path remains Xiaomi's own cover interface, secure lock screen and
-AOD. The next priority is optional animated cover-lock wallpaper through Xiaomi's
-stock wallpaper editor/engine, so the native system handles folding and persistence.
-Version1.1 does not implement that native export/apply path. The native tiny editor
-accepted a donor-based preview, but animation and safe apply/restore remain unverified;
-this folded-lock work is deferred at the user's request. See the
+AOD. General native wallpaper export/apply and exact automatic restoration remain
+future work. Charlie's explicitly authorized existing-record pet update is separately
+verified; it does not establish a general wallpaper importer. See the
 [folded wallpaper research](docs/folded-wallpaper-options.md) and
 [donor-based roadmap](docs/cover-screen-research.md). Optional utility cards are a
 secondary addition; stock folded widgets already provide many comparable functions.
 
-The current native-card development APK (`b8fb78ce…`) passed374 APK checks,20 gallery and6 virtual-cover checks, with fresh independent code/pixel review. Routing and publication guards passed separately. It still requires actual MIX Flip testing. See [current evidence](work/research/native-launch-cards-evidence.json).
+The current development APK (`57d39faa…`) has fresh regression evidence in
+[the verification report](work/research/mixflip-current-verification.json).
+All six MIX Flip pets passed actual phone motion/hold checks on this installed APK.
+Earlier native-card APKs and guarded launch measurements retain their own SHA-bound
+scope. Stock icon admission/full-screen layout remain unproven, and the user
+rejected the card appearance. Cards are deferred.
 
 ## Version 1.1
 
@@ -171,8 +203,9 @@ python -X utf8 work/package_release.py --qa-dir work/qa-v03/device-files
 ```
 
 Packaging refuses missing, failed, incorrectly counted or stale SHA-bound results.
-Version1.1 requires fresh176/68/15/15 renderer/UI/utility results,19 layout-dialog
-and23 donor18 runtime checks,27 mini-app checks against its exact APK SHA, plus virtual-cover lifecycle
+Version1.1 now requires fresh194/68/15/15 renderer/UI/utility results,19 layout-dialog
+and23 donor18 runtime checks,27 mini-app checks,38 native-card checks and64 MIX Flip
+checks against its exact APK SHA (463 total), plus virtual-cover lifecycle
 checks. Run these suites separately, while no other emulator UI QA is running:
 
 ```powershell

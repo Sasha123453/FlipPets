@@ -6,6 +6,14 @@ public final class CoverGeometry {
     public static final float CAMERA_FRACTION=.34f;
     public static final float SUBJECT_ZOOM=1.10f;
     private CoverGeometry(){}
+    /** A reviewed native composition transform, scaled once for the actual window. */
+    public static Placement calibrated(int width,int height,float scale,float x,float y,float subjectRight,float subjectBottom,PetLayoutProfile profile){
+        if(width<=0||height<=0||!finite(scale)||scale<=0||!finite(x)||!finite(y)||!finite(subjectRight)||!finite(subjectBottom))throw new IllegalArgumentException("Native transform");
+        float fit=Math.min(width/1208f,height/1392f),ox=(width-1208*fit)/2,oy=(height-1392*fit)/2;
+        float manual=profile==null?1:profile.scale,dx=profile==null?0:profile.x*width,dy=profile==null?0:profile.y*height;
+        return new Placement(scale*fit*manual,ox+(subjectRight+(x-subjectRight)*manual)*fit+dx,
+            oy+(subjectBottom+(y-subjectBottom)*manual)*fit+dy,0,0,width,height);
+    }
     public static int previewHeight(int width,int coverWidth,int coverHeight){
         if(width<=0||coverWidth<=0||coverHeight<=0)return 0;
         return Math.max(1,Math.round(width*(coverHeight/(float)coverWidth)));

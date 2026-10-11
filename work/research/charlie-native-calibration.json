@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "sourcePagSha256": "3bb7533fd7506cdfcd6b0ad48a7027fe8b37353ee7723547a18a6b7e5518dc14",
+  "referencePagSha256": "d9ecc8fa2c219148a896a5f035fd4dfd01a3d85c074b7d44997ec0a0be9a1435",
+  "reference": "Stock capybara action1 first decoded pose",
+  "referenceSourceBounds": [
+    110.0,
+    366.0,
+    1140.0,
+    1392.0
+  ],
+  "charlieSubjectGuide": [
+    365,
+    112,
+    812,
+    574
+  ],
+  "guideBasis": "Manually inspected original first pose; excludes branch/flowers; fixed across animation",
+  "transform": {
+    "scale": 2.220779220779221,
+    "x": -663.2727272727275,
+    "y": 117.27272727272725
+  },
+  "candidateSha256": "c9b740fb529fa2b65bb18cbc0fd1a78461eb6b2e20d1308a68a82ae09d8494ce",
+  "originalCompositionPayloadsPreserved": true,
+  "nativePlaybackProven": false,
+  "nativeUpdateProven": false,
+  "physicalCameraClearanceProven": false,
+  "sourceCrestRepaired": false,
+  "scope": "Local calibration candidate only. Does not change installed Charlie or old authorized Apply bundle.",
+  "rendererApkSha256": "b9e9fcfb041083f5c66068de95e1b086beb2a64aacbc71e98a1e08a99a85f03c",
+  "probeSha256": "33315338bff62561386b22c2a73f3153079b71364d034eae2693a996fda0393a",
+  "actualDecodedSamples": 8,
+  "fullyOpaqueSamples": 8,
+  "distinctSampleHashes": 8,
+  "posterSha256": "605fad1ba23e773233394c3317d6183e9e94967d6ccb8a8c2d1d1af64b5bb210",
+  "posterSize": [
+    1208,
+    1392
+  ],
+  "nativeUpdateRoute": "AOD EditActivity matches AI history by bizId; source-backed only, no phone update attempted"
+}

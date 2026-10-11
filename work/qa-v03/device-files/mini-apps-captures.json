@@ -1,20 +1,20 @@
 {
-  "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
+  "apkSha256": "57d39faa9cf1cd54a79fc50a6045214e325076a623efe131237123ac16e09778",
   "capture": "Android PixelCopy of composed Main window",
   "mainSize": "1224x2912",
   "density": 520,
   "images": [
     {
       "file": "mini-focus.png",
-      "sha256": "65d72f091daa3ff6414b11a04760bd0239f937ccd5875e4458abeeef50f5e913"
+      "sha256": "d755fca18f2a39d990d14cd078b71f9eff793317d39b8c58902719e099ab1a4d"
     },
     {
       "file": "mini-water.png",
-      "sha256": "d7f4be7467de4236abb48bb009b223cbd6168a80e3258b3380ddd1743d48424b"
+      "sha256": "e49a7da0d88594b3c9910cc4dedb9c3ef1332199216fcf97896f7561fda36bd8"
     },
     {
       "file": "mini-words.png",
-      "sha256": "bd6fd5922b09aa35a8f241b207f0f92f583fc5ae91762a05cad3e3baf952322f"
+      "sha256": "e1294ba33d4ef19981cf99ba3776e436a8704f138b2d4cf86cfb3692c0efec3d"
     }
   ],
   "limitation": "Emulator only; schematic camera overlay does not prove physical clearance"

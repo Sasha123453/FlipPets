@@ -1,0 +1,162 @@
+{
+  "apkSha256": "57d39faa9cf1cd54a79fc50a6045214e325076a623efe131237123ac16e09778",
+  "token": "6e4dfec9-73f2-4bce-9180-f62377a774a9",
+  "tested": 38,
+  "failed": 0,
+  "results": [
+    {
+      "test": "manifest_activity_admission_typed",
+      "ok": true
+    },
+    {
+      "test": "manifest_fullscreen_metadata_typed",
+      "ok": true
+    },
+    {
+      "test": "manifest_widget_property_scoped",
+      "ok": true
+    },
+    {
+      "test": "context_measured_bounds",
+      "ok": true
+    },
+    {
+      "test": "context_display_and_insets",
+      "ok": true
+    },
+    {
+      "test": "context_bounded_own_activities",
+      "ok": true
+    },
+    {
+      "test": "context_sha_and_no_side_effects",
+      "ok": true
+    },
+    {
+      "test": "native_origin",
+      "ok": true
+    },
+    {
+      "test": "foreground_only_flags",
+      "ok": true
+    },
+    {
+      "test": "no_cover_membership",
+      "ok": true
+    },
+    {
+      "test": "offline_settings",
+      "ok": true
+    },
+    {
+      "test": "no_native_bridge",
+      "ok": true
+    },
+    {
+      "test": "first_measured_canvas",
+      "ok": true
+    },
+    {
+      "test": "water_empty_qa_storage",
+      "ok": true
+    },
+    {
+      "test": "water_touch",
+      "ok": true
+    },
+    {
+      "test": "capture_native-water.png",
+      "ok": true
+    },
+    {
+      "test": "water_persistence",
+      "ok": true
+    },
+    {
+      "test": "nav_focus",
+      "ok": true
+    },
+    {
+      "test": "capture_native-focus.png",
+      "ok": true
+    },
+    {
+      "test": "focus_touch_start",
+      "ok": true
+    },
+    {
+      "test": "focus_touch_pause",
+      "ok": true
+    },
+    {
+      "test": "nav_words",
+      "ok": true
+    },
+    {
+      "test": "words_touch_unknown",
+      "ok": true
+    },
+    {
+      "test": "words_touch_known",
+      "ok": true
+    },
+    {
+      "test": "capture_native-words.png",
+      "ok": true
+    },
+    {
+      "test": "native_selection_isolated",
+      "ok": true
+    },
+    {
+      "test": "rotation_measured_canvas",
+      "ok": true
+    },
+    {
+      "test": "rotation_state",
+      "ok": true
+    },
+    {
+      "test": "recreate_selection_state",
+      "ok": true
+    },
+    {
+      "test": "stop_cover_preserves_native",
+      "ok": true
+    },
+    {
+      "test": "settings_hidden_release",
+      "ok": true
+    },
+    {
+      "test": "settings_back_state",
+      "ok": true
+    },
+    {
+      "test": "home_hidden_release",
+      "ok": true
+    },
+    {
+      "test": "home_resume_state",
+      "ok": true
+    },
+    {
+      "test": "native_process_recreation",
+      "ok": true
+    },
+    {
+      "test": "native_process_storage",
+      "ok": true
+    },
+    {
+      "test": "preferences_restored",
+      "ok": true
+    },
+    {
+      "test": "global_preferences_preserved",
+      "ok": true
+    }
+  ],
+  "skipped": [],
+  "environment": "Android emulator; app-owned Activity only, not Xiaomi admission/physical continuity proof"
+}

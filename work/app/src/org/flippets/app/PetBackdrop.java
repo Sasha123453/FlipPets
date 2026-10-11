@@ -11,21 +11,31 @@ import java.util.*;
 public final class PetBackdrop extends View {
     Bitmap[] digits=new Bitmap[10];Bitmap[][] desk=new Bitmap[4][10];Bitmap bg;String loaded="";Paint paint=new Paint(3);Typeface font;int cameraRight;final boolean clock;boolean clockLoaded;PetLayoutProfile layoutDraft;
     BitmapShader sceneShader;final Paint scenePaint=new Paint(3),skyPaint=new Paint(3);final Matrix sceneMatrix=new Matrix();int sourceWidth,sourceHeight;float sceneScale,sceneX,sceneY;
+    android.graphics.drawable.Drawable nativeForeground;String nativeForegroundKey="";int nativeRotation=2;
+    MixFlipClock nativeClock;int nativeClockRotation;
     public PetBackdrop(Context c,boolean clock){super(c);this.clock=clock;setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);}
-    void releaseClock(){for(int i=0;i<10;i++){if(digits[i]!=null)digits[i].recycle();digits[i]=null;}for(int i=0;i<4;i++)for(int j=0;j<10;j++){if(desk[i][j]!=null)desk[i][j].recycle();desk[i][j]=null;}font=null;clockLoaded=false;}
-    void release(){releaseClock();sceneShader=null;scenePaint.setShader(null);if(bg!=null)bg.recycle();bg=null;loaded="";}
+    void releaseClock(){for(int i=0;i<10;i++){if(digits[i]!=null)digits[i].recycle();digits[i]=null;}for(int i=0;i<4;i++)for(int j=0;j<10;j++){if(desk[i][j]!=null)desk[i][j].recycle();desk[i][j]=null;}font=null;nativeClock=null;clockLoaded=false;}
+    void release(){releaseClock();sceneShader=null;scenePaint.setShader(null);if(bg!=null)bg.recycle();bg=null;loaded="";nativeForeground=null;nativeForegroundKey="";}
     boolean clockEnabled(){JSONObject pet=Pets.current(getContext());return clock&&pet.optString("renderRole","pet").equals("pet")&&!(layoutDraft!=null?layoutDraft:PetLayout.read(getContext(),pet)).clockless;}
     void sceneTransform(int width,int height,float scale,float x,float y){if(sourceWidth==width&&sourceHeight==height&&sceneScale==scale&&sceneX==x&&sceneY==y)return;sourceWidth=width;sourceHeight=height;sceneScale=scale;sceneX=x;sceneY=y;updateSceneShader();invalidate();}
     void updateSceneShader(){if(bg==null||sourceWidth<=0||sourceHeight<=0||sceneScale<=0){scenePaint.setShader(null);return;}if(sceneShader==null)sceneShader=new BitmapShader(bg,Shader.TileMode.CLAMP,Shader.TileMode.CLAMP);sceneMatrix.setScale(sceneScale*sourceWidth/bg.getWidth(),sceneScale*sourceHeight/bg.getHeight());sceneMatrix.postTranslate(sceneX,sceneY);sceneShader.setLocalMatrix(sceneMatrix);float top=Math.max(0,sceneY);Shader fade=new LinearGradient(0,top,0,top+48,new int[]{0x00000000,0xff000000},null,Shader.TileMode.CLAMP);scenePaint.setShader(new ComposeShader(sceneShader,fade,PorterDuff.Mode.DST_IN));int sky1=bg.getPixel(bg.getWidth()/2,Math.min(bg.getHeight()-1,Math.round(bg.getHeight()*.20f))),sky2=bg.getPixel(bg.getWidth()/2,Math.min(bg.getHeight()-1,Math.round(bg.getHeight()*.40f)));skyPaint.setShader(new LinearGradient(0,0,0,Math.max(1,top+48),sky1,sky2,Shader.TileMode.CLAMP));}
     void load(){JSONObject pet=Pets.current(getContext());String id=pet.optString("id");
         if(!id.equals(loaded)){release();loaded=id;for(String name:new String[]{"bg.webp","bg.png"})try(java.io.InputStream s=getContext().getAssets().open("pets/"+id+"/"+name)){bg=BitmapFactory.decodeStream(s);break;}catch(Exception ignored){}updateSceneShader();}
         if(!clockEnabled()){if(clockLoaded)releaseClock();return;}if(clockLoaded)return;clockLoaded=true;
+        if(MixFlipGeometry.stock(id)){try{nativeClock=new MixFlipClock(getContext());}catch(Exception e){AppLog.error(getContext(),"STOCK_CLOCK_LOAD",e);}return;}
         for(int i=0;i<10;i++)try(java.io.InputStream stream=getContext().getAssets().open("pets/"+id+"/temp_"+i+".png")){digits[i]=BitmapFactory.decodeStream(stream);}catch(Exception ignored){}
         try{font=Typeface.createFromAsset(getContext().getAssets(),"pets/"+id+"/c700_regular.ttf");}catch(Exception e){font=Typeface.DEFAULT;}
         String[] slots={"hour_0","hour_1","minute_0","minute_1"};for(int i=0;i<4;i++)for(int j=0;j<10;j++)try(java.io.InputStream s=getContext().getAssets().open("pets/"+id+"/desk/"+slots[i]+"/temp_"+j+".png")){desk[i][j]=BitmapFactory.decodeStream(s);}catch(Exception ignored){}
     }
     protected void onDraw(Canvas canvas){super.onDraw(canvas);load();float w=getWidth(),h=getHeight();
+        String stem=Pets.current(getContext()).optString("nativeBackgroundDrawable");
+        if(!stem.isEmpty()){
+            String key=stem+"_"+(nativeRotation==0?0:180);
+            if(!key.equals(nativeForegroundKey)){nativeForegroundKey=key;int resource=getResources().getIdentifier(key,"drawable",getContext().getPackageName());nativeForeground=resource==0?null:getContext().getDrawable(resource);}
+            if(nativeForeground!=null){float scale=Math.min(w/372f,h/428f);int dw=Math.round(372*scale),dh=Math.round(428*scale),x=Math.round((w-dw)/2),y=Math.round((h-dh)/2);nativeForeground.setBounds(x,y,x+dw,y+dh);nativeForeground.draw(canvas);}
+        }
         if(bg!=null&&!(Pets.current(getContext()).optString("name").equals("Flowing glitter")&&SceneSettings.imageFile(getContext(),Pets.current(getContext()).optString("id"),false).exists())){if(scenePaint.getShader()!=null){canvas.drawRect(0,0,w,h,skyPaint);canvas.drawRect(0,0,w,h,scenePaint);}else canvas.drawBitmap(bg,null,new RectF(0,0,w,h),paint);}if(!clockEnabled())return;String time=new SimpleDateFormat("HHmm",Locale.US).format(new Date());
+        if(MixFlipGeometry.stock(Pets.current(getContext()).optString("id"))){drawNativeClock(canvas,false);return;}
         float left=Math.max(w*.31f,cameraRight+16);float available=w-left-16;
         if(Pets.current(getContext()).optString("clockStyle").equals("carp")&&desk[0][0]!=null){
             // Original 68x126 digits and 80/138 spacing, adapted above the cover subject.
@@ -37,5 +47,6 @@ public final class PetBackdrop extends View {
             for(int i=0;i<4;i++){Bitmap b=digits[time.charAt(i)-'0'];if(b!=null)canvas.drawBitmap(b,null,new RectF(x+i*digitW,y,x+(i+1)*digitW,y+digitH),paint);}
         }else{paint.setTypeface(font);paint.setColor(parse(Pets.current(getContext()).optString("timeColor","#DBFF5A")));paint.setTextSize(Math.min(available/3.4f,h*.32f));paint.setTextAlign(Paint.Align.CENTER);canvas.drawText(time.substring(0,2)+":"+time.substring(2),left+available/2,h*.29f,paint);}
     }
+    void drawNativeClock(Canvas canvas,boolean details){if(!clockEnabled()||!MixFlipGeometry.stock(Pets.current(getContext()).optString("id")))return;load();if(nativeClock!=null)try{nativeClock.draw(canvas,getWidth(),getHeight(),Pets.current(getContext()).optInt("nativePetType",1),nativeClockRotation,details);}catch(Exception e){AppLog.error(getContext(),"STOCK_CLOCK_DRAW",e);nativeClock=null;}}
     int parse(String color){try{return Color.parseColor(color);}catch(Exception e){return Color.WHITE;}}
 }

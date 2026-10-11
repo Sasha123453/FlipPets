@@ -7,6 +7,7 @@ public final class PlaybackPolicy {
             || id.startsWith("capybara-") || id.startsWith("otter-");
     }
     public static boolean repeats(String id, String kind, int scene, boolean calm) {
+        if(id.startsWith("mixflip-"))return false;
         if(kind.equals("finite-preview"))return false;
         if(classic(id)) return false;
         if(kind.equals("reactive")) return scene < 8 && !calm;

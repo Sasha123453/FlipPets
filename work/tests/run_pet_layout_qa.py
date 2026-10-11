@@ -13,8 +13,8 @@ NAME = "pet-layout-qa.json"
 REMOTE = f"/sdcard/Android/data/{PACKAGE}/files/{NAME}"
 EXPECTED = 19
 EXPECTED_NAMES = {
-    "default_clock_exact_legacy_matrix", "open_editor", "reuse_existing_stage",
-    "clockless_mode_button", "clockless_larger_rendered", "clockless_releases_digit_assets",
+    "default_clock_matches_native_matrix", "open_editor", "reuse_existing_stage",
+    "clockless_mode_button", "clockless_preserves_native_size", "clockless_releases_digit_assets",
     "draft_keeps_saved_mode", "manual_scale_accessibility", "manual_x_accessibility",
     "manual_y_accessibility", "manual_adjustments_rendered", "draft_no_preference_writes",
     "layout_does_not_replay_scene", "cancel_restores_preview_and_parent",

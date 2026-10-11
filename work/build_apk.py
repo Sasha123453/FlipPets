@@ -7,6 +7,10 @@ LIB=TOOLS/'libpag';SHIZUKU=list((TOOLS/'shizuku').glob('*.jar'));OUT=ROOT.parent
 def run(*args):
     print('RUN',str(args[0]),flush=True);subprocess.run([str(x) for x in args],check=True,cwd=ROOT)
 def build():
+    import sys
+    sys.path.insert(0,str(ROOT/'tests'))
+    from shared_pet_layout import validate_registry,REGISTRY
+    validate_registry(json.loads(REGISTRY.read_text(encoding='utf-8')))
     for sub in ['res','classes','dex']:
         folder=(BUILD/sub).resolve()
         assert folder.parent==BUILD.resolve() and BUILD.resolve().is_relative_to(ROOT.resolve())

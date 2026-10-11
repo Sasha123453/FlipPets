@@ -47,7 +47,7 @@ def main():
     destination = ROOT / 'work/phone-qa' / ('native-capabilities-' + uuid.uuid4().hex)
     destination.mkdir(parents=True)
     rows = []
-    for package in ('com.miui.fliphome', 'com.miui.aod'):
+    for package in ('com.miui.fliphome', 'com.miui.aod', 'com.android.systemui'):
         paths = adb('shell', 'pm path ' + package).splitlines()
         if not paths or any(not row.startswith('package:/') for row in paths):
             raise RuntimeError('Required native package missing: ' + package)
@@ -64,15 +64,17 @@ def main():
                 raise RuntimeError('Native APK changed during read-only capture')
             files.append(dict(file=local.name, sha256=expected, bytes=local.stat().st_size))
         rows.append(dict(package=package, files=files))
-    framework = '/system_ext/framework/miui-services.jar'
-    expected = adb('shell', 'sha256sum ' + framework).split()[0]
-    if not re.fullmatch('[0-9a-f]{64}', expected):
-        raise RuntimeError('Framework hash unavailable; do not assume Global policy reader matches')
-    local = destination / 'miui-services.jar'
-    adb('pull', framework, str(local))
-    if hashlib.sha256(local.read_bytes()).hexdigest() != expected:
-        raise RuntimeError('Framework changed during capture')
-    rows.append(dict(framework='miui-services.jar', sha256=expected, bytes=local.stat().st_size))
+    # The policy implementation is split across these JARs on the exact EEA build.
+    for name in ('miui-services.jar', 'miui-appcompat.jar', 'miui-appcompat.appcontinuity.jar'):
+        framework = '/system_ext/framework/' + name
+        expected = adb('shell', 'sha256sum ' + framework).split()[0]
+        if not re.fullmatch('[0-9a-f]{64}', expected):
+            raise RuntimeError('Framework hash unavailable; do not assume Global policy reader matches')
+        local = destination / name
+        adb('pull', framework, str(local))
+        if hashlib.sha256(local.read_bytes()).hexdigest() != expected:
+            raise RuntimeError('Framework changed during capture')
+        rows.append(dict(framework=name, sha256=expected, bytes=local.stat().st_size))
     report = dict(schemaVersion=1, device=device, build=build, artifacts=rows,
                   scope='Read-only package/framework identities; not policy, admission, playback or restore proof',
                   policyGrantPerformed=False, nativeApplyPerformed=False)

@@ -7,7 +7,7 @@ import org.json.JSONObject;
 /** Saved per-pet/per-mode profiles. Drafts belong only to the Main preview stage. */
 final class PetLayout {
     private PetLayout(){}
-    static boolean supported(JSONObject pet){return pet.optString("renderRole", "pet").equals("pet")&&!pet.optString("kind").equals("composition")&&!pet.optString("name").equals("Flowing glitter")&&!pet.optString("id").equals("system-effects");}
+    static boolean supported(JSONObject pet){return !MixFlipGeometry.stock(pet.optString("id"))&&pet.optString("renderRole", "pet").equals("pet")&&!pet.optString("kind").equals("composition")&&!pet.optString("name").equals("Flowing glitter")&&!pet.optString("id").equals("system-effects");}
     static PetLayoutProfile read(Context c,JSONObject pet){if(!supported(pet))return PetLayoutProfile.CLOCK;SharedPreferences p=SceneSettings.prefs(c,pet.optString("id"));return read(p,p.getBoolean("petClockless",false));}
     static PetLayoutProfile read(SharedPreferences p,boolean clockless){String k=clockless?"petLarge":"petClock";return new PetLayoutProfile(clockless,p.getFloat(k+"Scale",1),p.getFloat(k+"X",0),p.getFloat(k+"Y",0));}
     static void save(Context c,String id,boolean clockless,PetLayoutProfile clock,PetLayoutProfile large){

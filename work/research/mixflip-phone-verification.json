@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-11",
+  "deviceProfile": "Identity-verified physical Xiaomi MIX Flip / ruyi / EEA OS3.0.303.0.WNIEUXM / primary user / no root",
+  "apkSha256": "b8b28c61d774f7b051322d3cf8f1315ab83bf833bcad98f180fb463d04d452f5",
+  "installation": "Update using preserved signing key; installed APK SHA verified, no uninstall",
+  "initialChecks": {
+    "apkSha256": "b9e9fcfb041083f5c66068de95e1b086beb2a64aacbc71e98a1e08a99a85f03c",
+    "passed": 14,
+    "checks": [
+      {
+        "test": "physical_collection_six",
+        "ok": true
+      },
+      {
+        "test": "physical_explicit_apply_cancel",
+        "ok": true
+      },
+      {
+        "test": "physical_cancel_keeps_selection",
+        "ok": true
+      },
+      {
+        "test": "physical_gallery_keeps_native_state",
+        "ok": true
+      },
+      {
+        "test": "physical_native_dialog_separate",
+        "ok": true
+      },
+      {
+        "test": "physical_shizuku_native_summary",
+        "ok": true
+      },
+      {
+        "test": "physical_shizuku_opens_history",
+        "ok": true
+      },
+      {
+        "test": "physical_history_keeps_native_state",
+        "ok": true
+      },
+      {
+        "test": "physical_shizuku_opens_homepage",
+        "ok": true
+      },
+      {
+        "test": "physical_homepage_keeps_native_state",
+        "ok": true
+      },
+      {
+        "test": "physical_apply_selects_capybara",
+        "ok": true
+      },
+      {
+        "test": "physical_apply_does_not_change_native",
+        "ok": true
+      },
+      {
+        "test": "physical_explicit_stop_acknowledged",
+        "ok": true
+      },
+      {
+        "test": "physical_stop_keeps_native_state",
+        "ok": true
+      }
+    ]
+  },
+  "finalChecks": {
+    "passed": 13,
+    "unavailable": 1,
+    "attempts": [
+      {
+        "test": "final_installed_sha",
+        "ok": true
+      },
+      {
+        "test": "final_cover_foreground",
+        "ok": true
+      },
+      {
+        "test": "final_no_clock_or_pag_load_errors",
+        "ok": false
+      },
+      {
+        "test": "final_native_state_unchanged",
+        "ok": true
+      },
+      {
+        "test": "final_main_removal_keeps_cover",
+        "ok": true
+      },
+      {
+        "test": "final_power_closes_our_cover",
+        "ok": true
+      },
+      {
+        "test": "final_power_preserves_secure_keyguard",
+        "ok": true
+      },
+      {
+        "test": "final_unlock_returns_cover",
+        "ok": true
+      },
+      {
+        "test": "final_explicit_stop_acknowledged",
+        "ok": true
+      },
+      {
+        "test": "final_gallery_cancel_keeps_selection",
+        "ok": true
+      },
+      {
+        "test": "final_shizuku_native_summary",
+        "ok": true
+      },
+      {
+        "test": "final_original_roe_restored",
+        "ok": true
+      },
+      {
+        "test": "final_stop_closes_only_our_cover",
+        "ok": true
+      },
+      {
+        "test": "final_power_settings_preserved",
+        "ok": true
+      }
+    ],
+    "unavailableExplanation": "final_no_clock_or_pag_load_errors was false because bounded app-only logcat was empty. It is an unavailable diagnostic, not a passed no-errors assertion or an observed clock/PAG load error."
+  },
+  "manualObservations": [
+    {
+      "apkSha256": "b8b28c61d774f7b051322d3cf8f1315ab83bf833bcad98f180fb463d04d452f5",
+      "observation": "User confirmed all four stock clock digits visible after cutout-side selector correction. Physical capybara pose checked; other pets/orientations/full motion not established."
+    },
+    {
+      "apkSha256": "b9e9fcfb041083f5c66068de95e1b086beb2a64aacbc71e98a1e08a99a85f03c",
+      "observation": "User saw existing native Charlie after fold/lock/wake; no tap replay with notifications, working replay without notifications. ADB disconnected during clean manual trial; no native progress/layer measurement."
+    }
+  ],
+  "binaryChecks": {
+    "package": "org.flippets.app",
+    "versionName": "1.1",
+    "versionCode": 12,
+    "signatureV3Verified": true,
+    "certificateSha256": "819b54a88b032712475060b68a6adcfff569366c86e9683c92934b36375391ba",
+    "zipalign16KiBVerified": true,
+    "allAssetsByteIdenticalToSources": true,
+    "nativeLibraries": [
+      {
+        "path": "lib/arm64-v8a/libffavc.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "1e214164a6c153f74f25018c1625f3e71d1d5ba601f6592c4dd89385dcc4b0bc"
+      },
+      {
+        "path": "lib/arm64-v8a/libpag.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "1178fe9a7fb345212e2a9ff0c386ce9772f03183686e1de87af84f89cbdf736f"
+      },
+      {
+        "path": "lib/x86_64/libffavc.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "5da4dea926ef43d7ac4535b5799afba00d9d0e0fd396e350486037de6843e7e2"
+      },
+      {
+        "path": "lib/x86_64/libpag.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "f013aead9e08a559326921a1f94df701814197bcc93592c50d93cd4285158d51"
+      }
+    ]
+  },
+  "hostChecks": {
+    "stockGeometryAndPolicy": 72,
+    "stockCatalogueAndProvenance": 5,
+    "nativeFlow": 35,
+    "nativeUpdateGuards": 12
+  },
+  "nativeCharlie": {
+    "calibratedPagSha256": "c9b740fb529fa2b65bb18cbc0fd1a78461eb6b2e20d1308a68a82ae09d8494ce",
+    "previewUpdateControlVerified": true,
+    "controlText": "Готово",
+    "sourceEvidence": "Verified AOD EditorActionButton.a(1) uses tiny_kg_edit_activity_complete (0x7f120596, ru Готово); a(0) uses Add. Real enabled confirm found for same unique owned bizId.",
+    "originalResourcesBackedUp": 23,
+    "originalResourcesUnchangedInPreview": true,
+    "nativeSettingsUnchangedInPreview": true,
+    "newApplyPerformed": true,
+    "exactRestoreProven": false,
+    "status": "Existing-record update acknowledged; user accepted folded appearance",
+    "nativePagCopySha256": "c9b740fb529fa2b65bb18cbc0fd1a78461eb6b2e20d1308a68a82ae09d8494ce",
+    "nativePosterCopySha256": "605fad1ba23e773233394c3317d6183e9e94967d6ccb8a8c2d1d1af64b5bb210",
+    "otherSavedDesignsUnchanged": true,
+    "unrelatedResourcesUnchanged": 15,
+    "savedDesignCountUnchanged": true,
+    "userFoldedAppearanceAccepted": true,
+    "isolatedReplayCheckAfterUpdate": false,
+    "readbackNote": "First readback stopped on old-owned preview/crop files removed by OEM. Source and exact old-only references confirmed their ownership; readback resumed without a second confirmation. Other saved designs and their resource hashes preserved."
+  },
+  "finalAppState": {
+    "sessionStopped": true,
+    "originalSelectionRoeRestored": true,
+    "powerSettingsPreserved": {
+      "stayOnWhilePluggedIn": 0,
+      "screenOffTimeoutMs": 600000
+    },
+    "temporaryUiHelper": "Still installed pending completion of phone work"
+  },
+  "limitations": [
+    "No fresh emulator APK suites for the clock rebuild; 375 APK +9 gallery +6 virtual-cover results belong to earlier b9e9fcfb SHA.",
+    "Startup initially delayed; cause/timing not established. No promise of restart after reboot, force-stop or OEM restrictions.",
+    "No timeout, biometric/AOD, both physical orientations, all-six-pet camera clearance, reboot, battery or root verification.",
+    "Unfolded locked/main-off cover continuation remains deferred; stock Power and secure keyguard retained.",
+    "No release archives, commit or push performed. Raw device state and screenshots stay private in ignored work/phone-qa."
+  ],
+  "nextDevelopmentApkSha256": "57d39faa9cf1cd54a79fc50a6045214e325076a623efe131237123ac16e09778",
+  "historicalScope": "Earlier clock rebuild and native update milestone; finalAppState describes that earlier checkpoint only.",
+  "supersededBy": "work/research/mixflip-current-verification.json"
+}

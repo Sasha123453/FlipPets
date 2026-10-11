@@ -1,0 +1,148 @@
+{
+  "date": "2026-10-11",
+  "scope": "Source-only audit. Public upstream cloned for reading; no build/install, phone commands, permission grants, policy changes or application edits.",
+  "upstream": {
+    "repository": "https://github.com/parallelcc/MixFlipTool",
+    "commit": "79e84a7427e637494a5e1e3e35b9781fcdf3ca58",
+    "commit_date": "2024-10-24",
+    "app_version": "1.1.2",
+    "min_sdk": 33,
+    "target_sdk": 34,
+    "license": "GPL-3.0",
+    "source_sha256": {
+      "app/src/main/java/com/parallelc/mixfliptool/MainActivity.kt": "19479d5d88b138cea3fa4896e976a13e88e424f0a1c9954376388e67aacca46c",
+      "app/src/main/java/com/parallelc/mixfliptool/AppScaleManager.kt": "c2d26f2cd26978a5ab21350daea2bb2511983952a46498dad1e4fb30671cd606",
+      "app/src/main/AndroidManifest.xml": "f9cc85a1b2715f0f8c1fce6db424a26d79ce6378c9212e454e11a5332b008176",
+      "app/build.gradle.kts": "93b403a0bb27f442ee0f650b59bce82ae24f8082ccafad0c749933eb02c637f6",
+      "LICENSE": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809"
+    }
+  },
+  "firmware": {
+    "device": "ruyi",
+    "build": "OS3.0.303.0.WNIMIXM",
+    "region": "Global, not exact EEA phone",
+    "image_source": "Previously downloaded local system_ext image; no new firmware download",
+    "extracted": [
+      {
+        "path": "work/folded-research/mixfliptool-audit/system_ext/framework/miui-appcompat.appcontinuity.jar",
+        "sha256": "1513678c67c2254e6dad82534d57b7dd5c329eb34e3815d80add33bba813c313",
+        "bytes": 177450,
+        "crc_ok": true
+      },
+      {
+        "path": "work/folded-research/mixfliptool-audit/system_ext/framework/miui-appcompat.jar",
+        "sha256": "d2ded23d615794277bee81901bbaf24fb0b483048672244327def6c2caff7415",
+        "bytes": 64642,
+        "crc_ok": true
+      }
+    ],
+    "miui_services_sha256": "3ee0c554ec6f92da3176e258781bd5dca269fea921ba893a8af8bce4177a329b",
+    "decompiler": "JADX 1.5.6 CLI; selected sources inspected, no runtime proof"
+  },
+  "firmware_source_anchors": [
+    {
+      "path": "work/folded-research/mixfliptool-audit/appcompat/sources/com/android/server/wm/ApplicationCompatManager.java",
+      "sha256": "d7c9d9ff21a8f129e14dc60af1bca1bb1893747c52ea2631d1810529d62730fa",
+      "anchors": {
+        "public int getPropertyIntByApplication": [
+          460
+        ],
+        "public int getPropertyIntByActivity": [
+          476
+        ],
+        "private void getApplicationPackageNameProperty": [
+          743
+        ],
+        "getPackageInfoActivitiesProperty": [
+          92,
+          126,
+          667,
+          670,
+          676,
+          680,
+          688,
+          692,
+          697,
+          705,
+          710,
+          717,
+          722,
+          767
+        ]
+      }
+    },
+    {
+      "path": "work/folded-research/mixfliptool-audit/continuity/sources/com/android/server/wm/InterceptActivityController.java",
+      "sha256": "2806e00753edbbfd47bba8342cbc53286677cc9b32fdc107b030b10977a40c96",
+      "anchors": {
+        "Pair<Boolean, Boolean> isInterceptListForProperty": [
+          1215,
+          1234
+        ],
+        "boolean isInterceptList(": [
+          1187,
+          1194
+        ]
+      }
+    },
+    {
+      "path": "work/folded-research/mixfliptool-audit/continuity/sources/com/android/server/wm/ContinuityManagerService.java",
+      "sha256": "4a924c0cddffa2aff3baadae31e3f18708507ce7986c6ba681d3f2403dce1716",
+      "anchors": {
+        "public long getContinuityVersion": [
+          36
+        ],
+        "public List<String> getContinuityPackages": [
+          50
+        ],
+        "public List<String> getContinuityActivities": [
+          79
+        ]
+      }
+    },
+    {
+      "path": "work/folded-research/mixfliptool-audit/continuity/sources/com/android/server/wm/ContinuityPolicyService.java",
+      "sha256": "88b4a03fab645a6b7d02367f53a668aff49d60aceb1281523b6e2e9a96b33d6c",
+      "anchors": {
+        "private void handleClear": [
+          144
+        ],
+        "private void handleSet": [
+          167
+        ],
+        "private void listPolicy": [
+          193
+        ]
+      }
+    },
+    {
+      "path": "work/folded-research/mixfliptool-upstream/MiuiSizeCompatService.java",
+      "sha256": "dc2c8a6b185a27fbdcbaacc5500304978b5869215316f295ade44a8f2e8adb1f",
+      "anchors": {
+        "public void onShellCommand": [
+          242
+        ],
+        "private void dumpRule": [
+          330
+        ],
+        "private void updateRule": [
+          335
+        ]
+      }
+    }
+  ],
+  "findings": {
+    "property": "Integer miui.continuity.policy property value 5 is read by PackageManager.Property.getInteger; registered in package/activity allow lists and consulted by interception logic.",
+    "dump_permission": "Upstream grants DUMP via ADB/Shizuku once, then calls window Binder dump from app. Runtime compatibility permission and persisted app permission are distinct.",
+    "admission": "Upstream sends allowstart for colon-separated installed packages; FlipPets should target itself only.",
+    "scaling": "Separate MiuiSizeCompat reload-rule/update-rule path exists; global reload/default system app scaling should not be imported.",
+    "readback": "Continuity list reports selected configured lists, not full local command map/set state; MiuiSizeCompat dump-rule describes scaling, not admission restoration.",
+    "capture_gap": "Exact EEA capture should include miui-appcompat.jar and miui-appcompat.appcontinuity.jar in addition to miui-services.jar."
+  },
+  "limitations": [
+    "No exact EEA hashes or phone behavior established",
+    "No pet/lockscreen/PAG generation feature supplied by upstream",
+    "No exact restore established by upstream or list command",
+    "No upstream code copied into FlipPets"
+  ]
+}

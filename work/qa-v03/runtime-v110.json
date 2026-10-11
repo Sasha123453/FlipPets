@@ -1,6 +1,6 @@
 {
-  "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
-  "installedApkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
+  "apkSha256": "b9e9fcfb041083f5c66068de95e1b086beb2a64aacbc71e98a1e08a99a85f03c",
+  "installedApkSha256": "b9e9fcfb041083f5c66068de95e1b086beb2a64aacbc71e98a1e08a99a85f03c",
   "environment": "Standard Android16 API36 x86_64 emulator; virtual cover1208x1392/520 and Main1224x2912/520, not HyperOS",
   "tested": 6,
   "failed": 0,

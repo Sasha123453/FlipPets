@@ -1,0 +1,328 @@
+{
+  "apkSha256": "57d39faa9cf1cd54a79fc50a6045214e325076a623efe131237123ac16e09778",
+  "tested": 80,
+  "failed": 0,
+  "skipped": [],
+  "results": [
+    {
+      "test": "native_summary_fixed_labels",
+      "ok": true
+    },
+    {
+      "test": "native_summary_excludes_private_fields",
+      "ok": true
+    },
+    {
+      "test": "native_summary_refuses_unknown_history",
+      "ok": true
+    },
+    {
+      "test": "dewen_loaded_original_geometry",
+      "ok": true
+    },
+    {
+      "test": "dewen_busy_tap_ignored",
+      "ok": true
+    },
+    {
+      "test": "dewen_scene0_finite_hold",
+      "ok": true
+    },
+    {
+      "test": "dewen_scene0_tap_next",
+      "ok": true
+    },
+    {
+      "test": "dewen_scene1_finite_hold",
+      "ok": true
+    },
+    {
+      "test": "dewen_scene1_tap_next",
+      "ok": true
+    },
+    {
+      "test": "dewen_scene2_finite_hold",
+      "ok": true
+    },
+    {
+      "test": "dewen_scene2_tap_next",
+      "ok": true
+    },
+    {
+      "test": "dewen_stop_releases",
+      "ok": true
+    },
+    {
+      "test": "dewen_restart_plays_saved_scene",
+      "ok": true
+    },
+    {
+      "test": "shuitun_loaded_original_geometry",
+      "ok": true
+    },
+    {
+      "test": "shuitun_busy_tap_ignored",
+      "ok": true
+    },
+    {
+      "test": "shuitun_scene0_finite_hold",
+      "ok": true
+    },
+    {
+      "test": "shuitun_scene0_tap_next",
+      "ok": true
+    },
+    {
+      "test": "shuitun_scene1_finite_hold",
+      "ok": true
+    },
+    {
+      "test": "shuitun_scene1_tap_next",
+      "ok": true
+    },
+    {
+      "test": "shuitun_scene2_finite_hold",
+      "ok": true
+    },
+    {
+      "test": "shuitun_scene2_tap_next",
+      "ok": true
+    },
+    {
+      "test": "shuitun_stop_releases",
+      "ok": true
+    },
+    {
+      "test": "shuitun_restart_plays_saved_scene",
+      "ok": true
+    },
+    {
+      "test": "shuita_loaded_original_geometry",
+      "ok": true
+    },
+    {
+      "test": "shuita_busy_tap_ignored",
+      "ok": true
+    },
+    {
+      "test": "shuita_scene0_finite_hold",
+      "ok": true
+    },
+    {
+      "test": "shuita_scene0_tap_next",
+      "ok": true
+    },
+    {
+      "test": "shuita_scene1_finite_hold",
+      "ok": true
+    },
+    {
+      "test": "shuita_scene1_tap_next",
+      "ok": true
+    },
+    {
+      "test": "shuita_scene2_finite_hold",
+      "ok": true
+    },
+    {
+      "test": "shuita_scene2_tap_next",
+      "ok": true
+    },
+    {
+      "test": "shuita_stop_releases",
+      "ok": true
+    },
+    {
+      "test": "shuita_restart_plays_saved_scene",
+      "ok": true
+    },
+    {
+      "test": "bixiong_loaded_original_geometry",
+      "ok": true
+    },
+    {
+      "test": "bixiong_busy_tap_ignored",
+      "ok": true
+    },
+    {
+      "test": "bixiong_scene0_finite_hold",
+      "ok": true
+    },
+    {
+      "test": "bixiong_scene0_tap_next",
+      "ok": true
+    },
+    {
+      "test": "bixiong_scene1_finite_hold",
+      "ok": true
+    },
+    {
+      "test": "bixiong_scene1_tap_next",
+      "ok": true
+    },
+    {
+      "test": "bixiong_scene2_finite_hold",
+      "ok": true
+    },
+    {
+      "test": "bixiong_scene2_tap_next",
+      "ok": true
+    },
+    {
+      "test": "bixiong_stop_releases",
+      "ok": true
+    },
+    {
+      "test": "bixiong_restart_plays_saved_scene",
+      "ok": true
+    },
+    {
+      "test": "xianluo_loaded_original_geometry",
+      "ok": true
+    },
+    {
+      "test": "xianluo_busy_tap_ignored",
+      "ok": true
+    },
+    {
+      "test": "xianluo_scene0_finite_hold",
+      "ok": true
+    },
+    {
+      "test": "xianluo_scene0_tap_next",
+      "ok": true
+    },
+    {
+      "test": "xianluo_scene1_finite_hold",
+      "ok": true
+    },
+    {
+      "test": "xianluo_scene1_tap_next",
+      "ok": true
+    },
+    {
+      "test": "xianluo_scene2_finite_hold",
+      "ok": true
+    },
+    {
+      "test": "xianluo_scene2_tap_next",
+      "ok": true
+    },
+    {
+      "test": "xianluo_stop_releases",
+      "ok": true
+    },
+    {
+      "test": "xianluo_restart_plays_saved_scene",
+      "ok": true
+    },
+    {
+      "test": "heibao_loaded_original_geometry",
+      "ok": true
+    },
+    {
+      "test": "heibao_busy_tap_ignored",
+      "ok": true
+    },
+    {
+      "test": "heibao_scene0_finite_hold",
+      "ok": true
+    },
+    {
+      "test": "heibao_scene0_tap_next",
+      "ok": true
+    },
+    {
+      "test": "heibao_scene1_finite_hold",
+      "ok": true
+    },
+    {
+      "test": "heibao_scene1_tap_next",
+      "ok": true
+    },
+    {
+      "test": "heibao_scene2_finite_hold",
+      "ok": true
+    },
+    {
+      "test": "heibao_scene2_tap_next",
+      "ok": true
+    },
+    {
+      "test": "heibao_stop_releases",
+      "ok": true
+    },
+    {
+      "test": "heibao_restart_plays_saved_scene",
+      "ok": true
+    },
+    {
+      "test": "charlie_scene0_native_geometry",
+      "ok": true
+    },
+    {
+      "test": "charlie_scene1_native_geometry",
+      "ok": true
+    },
+    {
+      "test": "charlie_scene2_native_geometry",
+      "ok": true
+    },
+    {
+      "test": "charlie_scene3_native_geometry",
+      "ok": true
+    },
+    {
+      "test": "charlie_scene4_native_geometry",
+      "ok": true
+    },
+    {
+      "test": "charlie_scene5_native_geometry",
+      "ok": true
+    },
+    {
+      "test": "charlie_scene6_native_geometry",
+      "ok": true
+    },
+    {
+      "test": "charlie_scene7_native_geometry",
+      "ok": true
+    },
+    {
+      "test": "charlie_scene8_native_geometry",
+      "ok": true
+    },
+    {
+      "test": "charlie_scene9_native_geometry",
+      "ok": true
+    },
+    {
+      "test": "charlie_scene10_native_geometry",
+      "ok": true
+    },
+    {
+      "test": "charlie_scene11_native_geometry",
+      "ok": true
+    },
+    {
+      "test": "charlie_clockless_same_native_size",
+      "ok": true
+    },
+    {
+      "test": "charlie_manual_relative_to_native",
+      "ok": true
+    },
+    {
+      "test": "charlie_cancel_native_geometry",
+      "ok": true
+    },
+    {
+      "test": "charlie_stop_releases",
+      "ok": true
+    },
+    {
+      "test": "preferences_restored",
+      "ok": true
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-11",
+  "scope": "Historical native editor preview followed by authorized native Apply; exact Restore and folded animation acceptance remain unproven",
+  "priority": "Pets and complete native flow; cards deferred by user",
+  "profile": {
+    "device": "ruyi",
+    "build": "OS3.0.303.0.WNIEUXM",
+    "aodSha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+    "systemUiSha256": "bbb73370372d95707caa07bc00a6b2674afc5f433e5b074c4f8d6837b74ba757"
+  },
+  "apkSha256": "0cf89c0f3907c854cd3c73cf2e28d8f13ba413969cfd8ff1422fecbabac2a3a8",
+  "moduleSha256": "0ab2bd11805b6a7ddab02854178abf41c8ebd2b140cd57a888879c0b7316a874",
+  "unchangedProofBundleSha256": "e78cdfc3597f6592857c405160e59a6f76c110022b30490f8ec5b8aca5cb9842",
+  "adaptedPagSha256": "9d01a9b4f5b6563e23f7a13825c4fa0b739f8ef5342d676561c5597f8fe7296c",
+  "adaptedPosterSha256": "7000a01bed66fdc6b13fc8729a01399eaea6f17f6c9299921846793f49a76796",
+  "decoderApkSha256": "0cf89c0f3907c854cd3c73cf2e28d8f13ba413969cfd8ff1422fecbabac2a3a8",
+  "decoderProbeSha256": "d74b44bea69e1872a6fc2824c65aa914c76408caa32dff8f148f6de37b93e473",
+  "donorCompositionPayloadsUnchanged": true,
+  "birdTranslation": [
+    0,
+    796
+  ],
+  "opaqueDecodedSamples": 8,
+  "sourcePoseComparisons": [
+    {
+      "progress": 0,
+      "opaquePixels": 160863,
+      "outsideTolerance": 0
+    },
+    {
+      "progress": 0.1,
+      "opaquePixels": 163486,
+      "outsideTolerance": 0
+    },
+    {
+      "progress": 0.25,
+      "opaquePixels": 163580,
+      "outsideTolerance": 261
+    },
+    {
+      "progress": 0.4,
+      "opaquePixels": 168828,
+      "outsideTolerance": 0
+    },
+    {
+      "progress": 0.55,
+      "opaquePixels": 178795,
+      "outsideTolerance": 304
+    },
+    {
+      "progress": 0.7,
+      "opaquePixels": 145647,
+      "outsideTolerance": 0
+    },
+    {
+      "progress": 0.85,
+      "opaquePixels": 160508,
+      "outsideTolerance": 257
+    },
+    {
+      "progress": 0.999999,
+      "opaquePixels": 160685,
+      "outsideTolerance": 0
+    }
+  ],
+  "firstPoseMatchesDonorExactly": true,
+  "editorObservations": [
+    {
+      "editorOrientation": "rotation0",
+      "frames": 8,
+      "distinctLowerRegionPixelHashes": 7,
+      "restingBirdVisuallyObserved": true
+    },
+    {
+      "editorOrientation": "rotation180",
+      "frames": 8,
+      "distinctLowerRegionPixelHashes": 7,
+      "restingBirdVisuallyObserved": true
+    }
+  ],
+  "editorExited": true,
+  "selectionAndHistoryByteUnchangedAfterCancel": true,
+  "nativeEditorMotionObserved": true,
+  "nativeApplyPerformed": true,
+  "nativeRestoreProven": false,
+  "nativeFoldedLockscreenTested": false,
+  "physicalCameraClearanceProven": false,
+  "rootInstalled": false,
+  "limitations": [
+    "Editor camera geometry is not physical clearance or whole-animation-envelope proof.",
+    "Moving the donor source boundary inside the larger canvas exposes branch clipping.",
+    "The OEM AI-template label does not describe an AI generation operation by Flip Pets.",
+    "Stock launcher admission/full-screen and card appearance remain unaccepted and deferred.",
+    "Current APK has scoped checks only; earlier full-render attempt timed out on another intermediate SHA.",
+    "File-model restoration does not prove native filesystem access, observer/cache notifications or exact wallpaper restoration.",
+    "No serials, selection/history fingerprints, private resource hashes/paths or phone pixels are included."
+  ],
+  "historicalPreviewSourceHashes": {
+    "work/tests/prepare_native_template.py": "2567857a91d332b810fdd67a504a73ff1f0174ea45213c0c6e5a461ebbeb23df",
+    "work/tests/prepare_native_composite.py": "85bce67b3d152cc1a23845a83101db2879b2ddecc4b0d0d0b135e255f4b970bb",
+    "work/tests/probe_native_composite.py": "da846e9bc6adf669f0cf3992132d9bfaf0ad528b404ef849cb0e69bdd89d93a6",
+    "work/tests/NativePetProbe.java": "d74b44bea69e1872a6fc2824c65aa914c76408caa32dff8f148f6de37b93e473",
+    "work/tests/native_pet_geometry.py": "1b312c085cc5d4200369ad89b458d3b1c0c2d5fad8fa386fa16fcb030da5ae44",
+    "work/tests/native_pet_preview.py": "f1125c59ad3b05e7423971fca306934f3b55c71029e7591b1e2344a349fbacd4",
+    "work/tests/native_pet_transaction_model.py": "006ae2789e01dcc356b3b8aa7629a8dd2603d68e8bd9f07938fa4628b3ed9a6b",
+    "work/tests/run_native_pet_flow_tests.py": "1a47b848bcbd41e240f86720e83335066f575c9bee01a2cdef3ed2f3c9c200bb",
+    "work/tests/capture_native_capabilities.py": "0e1184b5c41e44ce2058e5665d01f44d696677bade06109e610a76a95acd98c0",
+    "docs/native-pet-flow.md": "5a5c7b82b7ec1b05c55083aeecfe513b208ba65b43695bd0e9e69dadc521db56"
+  },
+  "historicalVerification": {
+    "hostPetFlowMethodsPassed": 23,
+    "modelInterruptionSubcases": 16,
+    "modelLaterChoicePhases": 5,
+    "currentApkNativeCardChecksPassed": 38,
+    "pureRouteCasesPassed": 40,
+    "captureGuardsPassed": 20,
+    "contextGuardsPassed": 24,
+    "publicationGuardsPassed": 5
+  },
+  "historicalPreviewDependencyInventory": {
+    "count": 18,
+    "privateByteBackups": 18,
+    "shellWriteChecksDenied": 18,
+    "exactRestoreProven": false
+  },
+  "continuationCheckpoint": {
+    "date": "2026-10-11",
+    "stoppedAtUserRequest": true,
+    "userAcceptedManualRestoration": true,
+    "selectedSavedBuiltinPetReplacement": "Bichon",
+    "onlySelectedSavedProfileRemoved": true,
+    "otherFourSavedProfilesPreservedAfterApply": true,
+    "currentSelectionChangedByOemRemoval": true,
+    "stockBichonStillInPresetCatalogue": true,
+    "nativeAddConfirmed": true,
+    "ownedIdentityAndPagShaAcknowledged": true,
+    "applyReadbackRecoveredWithoutSecondAdd": true,
+    "nativeHistoryCount": 5,
+    "nativePetCount": 3,
+    "preRemovalPrivateResourceBackups": 20,
+    "postRemovalPrivateResourceBackups": 18,
+    "actualOuterWallpaperImageBackups": 2,
+    "signatureProviderReadQueryDeniedForShell": true,
+    "directOldTemplatePreviewFailedMissingMatrixArr": true,
+    "userReportsFoldedBirdNotMoving": true,
+    "userReportsPetSizeTooSmall": true,
+    "requestedSizeReference": "Comparable character size to the stock capybara, for all added pets",
+    "sizeAdjustmentImplemented": false,
+    "nativeAnimationFixImplemented": false,
+    "nativeManagementAndroidUiImplemented": false,
+    "mixFlipImport": {
+      "sourceOnly": true,
+      "pets": 6,
+      "pagClips": 18,
+      "vectorForegrounds": 12,
+      "original33EntriesUnchanged": true,
+      "catalogueEntries": 39,
+      "clipPaths": 194,
+      "galleryAndRendererIntegrationComplete": false
+    },
+    "currentApkPredatesImport": true,
+    "currentSourceHostSuiteRerun": false,
+    "lastExecutedPetHostMethods": 32,
+    "lastExecutedPetHostScope": "Before latest quota and apply/readback changes",
+    "noNewApkBuildInstallPackageCommitOrPush": true
+  },
+  "continuationSourceHashes": {
+    "work/tests/native_pet_preview.py": "938438c40bb604f0d6f58ea599b86ec7ed9b5769ab0aa1441b407e3b00993c9b",
+    "work/tests/native_pet_apply.py": "6e26554163e7594016cf3110cecdab1a48f2293c578264d8e66da32c36feacc6",
+    "work/tests/run_native_pet_flow_tests.py": "e2c8818018c5bbf2e0e8e13b0eeb1dd2b0cb20fbcaaa13ad03fc79466f6e73e9",
+    "work/import_mixflip_pets.py": "7c692d462176f09af53e73790f2acbc4a2509483b817654438da68d7fc2937b4",
+    "work/research/mixflip-pets-import.json": "e5ce29150dbadd0501d644fc6e3191e8be4312ec5bc47cb0e23c99b330c4e8be"
+  }
+}

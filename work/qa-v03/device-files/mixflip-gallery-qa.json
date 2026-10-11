@@ -1,0 +1,43 @@
+{
+  "apkSha256": "b9e9fcfb041083f5c66068de95e1b086beb2a64aacbc71e98a1e08a99a85f03c",
+  "tested": 9,
+  "failed": 0,
+  "results": [
+    {
+      "test": "collection_six",
+      "ok": true
+    },
+    {
+      "test": "source_search_scoped",
+      "ok": true
+    },
+    {
+      "test": "search_excludes_other_collection",
+      "ok": true
+    },
+    {
+      "test": "stock_opens_explicit_apply",
+      "ok": true
+    },
+    {
+      "test": "cancel_keeps_selection",
+      "ok": true
+    },
+    {
+      "test": "apply_selects_open_mode",
+      "ok": true
+    },
+    {
+      "test": "native_controls_separate",
+      "ok": true
+    },
+    {
+      "test": "native_dialog_does_not_select_pet",
+      "ok": true
+    },
+    {
+      "test": "selection_restored",
+      "ok": true
+    }
+  ]
+}

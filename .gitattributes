@@ -15,6 +15,7 @@
 *.jar filter=lfs diff=lfs merge=lfs -text
 *.so filter=lfs diff=lfs merge=lfs -text
 /work/app/assets/thumbs/*-hongkong.webp filter=lfs diff=lfs merge=lfs -text
+/work/app/assets/thumbs/mixflip-*.webp filter=lfs diff=lfs merge=lfs -text
 # Preserve exact upstream text bytes across Windows/Linux checkouts.
 /work/app/assets/miniapps/xiaomi/*.html -text -whitespace
 /work/research/hongkong-maml/*.xml -text -whitespace

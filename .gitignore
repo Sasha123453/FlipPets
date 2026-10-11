@@ -44,6 +44,7 @@ __pycache__/
 /outputs/*.apk
 /outputs/*.zip
 /outputs/*.png
+/outputs/native-pet/
 /outputs/checksums.sha256
 /outputs/FlipPets.sha256.txt
 /work/research/range-test.bin
@@ -57,3 +58,4 @@ __pycache__/
 !/work/qa-v02/
 /work/qa-v02/*
 !/work/qa-v02/supervisor-tests.json
+/.codex-remote-attachments/

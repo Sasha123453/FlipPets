@@ -1,0 +1,707 @@
+{
+  "schemaVersion": 1,
+  "sourceApkSha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+  "fonts": [
+    {
+      "assetPath": "clock/mixflip/c700_regular.ttf",
+      "sourceMember": "res/xcs.ttf",
+      "sha256": "b9e534b733350fcee689ed32dae3c21a625178a1eb7b6c4de3a616836945e466",
+      "bytes": 8540
+    }
+  ],
+  "signedDimensions": {
+    "tiny_pets_180_aod_battert_margin_start": {
+      "0": {
+        "dp": 14.0,
+        "rawComplex": "0xe01"
+      },
+      "372": {
+        "dp": 14.0,
+        "rawComplex": "0xe01"
+      }
+    },
+    "tiny_pets_180_aod_date_margin_start": {
+      "0": {
+        "dp": 14.0,
+        "rawComplex": "0xe01"
+      },
+      "372": {
+        "dp": 14.0,
+        "rawComplex": "0xe01"
+      }
+    },
+    "tiny_pets_180_aod_notification_margin_start": {
+      "0": {
+        "dp": 14.0,
+        "rawComplex": "0xe01"
+      },
+      "372": {
+        "dp": 14.0,
+        "rawComplex": "0xe01"
+      }
+    },
+    "tiny_pets_180_aod_week_margin_start": {
+      "0": {
+        "dp": 14.0,
+        "rawComplex": "0xe01"
+      },
+      "372": {
+        "dp": 14.0,
+        "rawComplex": "0xe01"
+      }
+    },
+    "tiny_pets_180_battery_margin_end": {
+      "0": {
+        "dp": 11.0,
+        "rawComplex": "0xb01"
+      },
+      "372": {
+        "dp": 11.0,
+        "rawComplex": "0xb01"
+      }
+    },
+    "tiny_pets_180_battery_margin_top": {
+      "0": {
+        "dp": 0.0,
+        "rawComplex": "0x1"
+      }
+    },
+    "tiny_pets_180_colon_container_margin_start": {
+      "0": {
+        "dp": -12.0,
+        "rawComplex": "0xfffff401"
+      },
+      "372": {
+        "dp": -12.0,
+        "rawComplex": "0xfffff401"
+      }
+    },
+    "tiny_pets_180_colon_container_margin_top": {
+      "0": {
+        "dp": 29.0,
+        "rawComplex": "0x1d01"
+      },
+      "372": {
+        "dp": 29.0,
+        "rawComplex": "0x1d01"
+      }
+    },
+    "tiny_pets_180_colon_margin_top": {
+      "0": {
+        "dp": 10.0,
+        "rawComplex": "0xa01"
+      },
+      "372": {
+        "dp": 10.0,
+        "rawComplex": "0xa01"
+      }
+    },
+    "tiny_pets_180_colon_size": {
+      "0": {
+        "dp": 24.0,
+        "rawComplex": "0x1801"
+      },
+      "372": {
+        "dp": 24.0,
+        "rawComplex": "0x1801"
+      }
+    },
+    "tiny_pets_180_date_margin_end": {
+      "0": {
+        "dp": 11.0,
+        "rawComplex": "0xb01"
+      },
+      "372": {
+        "dp": 11.0,
+        "rawComplex": "0xb01"
+      }
+    },
+    "tiny_pets_180_date_margin_top": {
+      "0": {
+        "dp": 123.0,
+        "rawComplex": "0x7b01"
+      },
+      "372": {
+        "dp": 123.0,
+        "rawComplex": "0x7b01"
+      }
+    },
+    "tiny_pets_180_date_margin_top_tibetan": {
+      "0": {
+        "dp": 121.0,
+        "rawComplex": "0x7901"
+      },
+      "372": {
+        "dp": 121.0,
+        "rawComplex": "0x7901"
+      }
+    },
+    "tiny_pets_180_date_text_size": {
+      "0": {
+        "dp": 20.0,
+        "rawComplex": "0x1401"
+      },
+      "372": {
+        "dp": 20.0,
+        "rawComplex": "0x1401"
+      }
+    },
+    "tiny_pets_180_hour1_margin_start": {
+      "0": {
+        "dp": 0.0,
+        "rawComplex": "0x1"
+      }
+    },
+    "tiny_pets_180_hour2_margin_start": {
+      "0": {
+        "dp": -5.0,
+        "rawComplex": "0xfffffb01"
+      },
+      "372": {
+        "dp": -5.0,
+        "rawComplex": "0xfffffb01"
+      }
+    },
+    "tiny_pets_180_minute1_margin_start": {
+      "0": {
+        "dp": -12.0,
+        "rawComplex": "0xfffff401"
+      },
+      "372": {
+        "dp": -12.0,
+        "rawComplex": "0xfffff401"
+      }
+    },
+    "tiny_pets_180_minute2_margin_end": {
+      "0": {
+        "dp": 6.0,
+        "rawComplex": "0x601"
+      },
+      "372": {
+        "dp": 6.0,
+        "rawComplex": "0x601"
+      }
+    },
+    "tiny_pets_180_minute2_margin_start": {
+      "0": {
+        "dp": -5.0,
+        "rawComplex": "0xfffffb01"
+      },
+      "372": {
+        "dp": -5.0,
+        "rawComplex": "0xfffffb01"
+      }
+    },
+    "tiny_pets_180_time_container_height": {
+      "0": {
+        "dp": 107.0,
+        "rawComplex": "0x6b01"
+      },
+      "372": {
+        "dp": 107.0,
+        "rawComplex": "0x6b01"
+      }
+    },
+    "tiny_pets_180_time_container_margin_top": {
+      "0": {
+        "dp": 12.0,
+        "rawComplex": "0xc01"
+      },
+      "372": {
+        "dp": 12.0,
+        "rawComplex": "0xc01"
+      }
+    },
+    "tiny_pets_180_time_text_size": {
+      "0": {
+        "dp": 128.0,
+        "rawComplex": "0x8001"
+      },
+      "372": {
+        "dp": 128.0,
+        "rawComplex": "0x8001"
+      }
+    },
+    "tiny_pets_180_week_margin_end": {
+      "0": {
+        "dp": 13.0,
+        "rawComplex": "0xd01"
+      },
+      "372": {
+        "dp": 13.0,
+        "rawComplex": "0xd01"
+      }
+    },
+    "tiny_pets_180_week_margin_top": {
+      "0": {
+        "dp": -2.0,
+        "rawComplex": "0xfffffe01"
+      },
+      "372": {
+        "dp": -2.0,
+        "rawComplex": "0xfffffe01"
+      }
+    },
+    "tiny_pets_aod_battert_margin_start": {
+      "0": {
+        "dp": 15.0,
+        "rawComplex": "0xf01"
+      },
+      "372": {
+        "dp": 15.0,
+        "rawComplex": "0xf01"
+      }
+    },
+    "tiny_pets_aod_date_margin_start": {
+      "0": {
+        "dp": 15.0,
+        "rawComplex": "0xf01"
+      },
+      "372": {
+        "dp": 15.0,
+        "rawComplex": "0xf01"
+      }
+    },
+    "tiny_pets_aod_notification_margin_start": {
+      "0": {
+        "dp": 15.0,
+        "rawComplex": "0xf01"
+      },
+      "372": {
+        "dp": 15.0,
+        "rawComplex": "0xf01"
+      }
+    },
+    "tiny_pets_aod_week_margin_start": {
+      "0": {
+        "dp": 15.0,
+        "rawComplex": "0xf01"
+      },
+      "372": {
+        "dp": 15.0,
+        "rawComplex": "0xf01"
+      }
+    },
+    "tiny_pets_battery_margin_end": {
+      "0": {
+        "dp": 19.0,
+        "rawComplex": "0x1301"
+      },
+      "372": {
+        "dp": 19.0,
+        "rawComplex": "0x1301"
+      }
+    },
+    "tiny_pets_battery_margin_top": {
+      "0": {
+        "dp": 0.0,
+        "rawComplex": "0x1"
+      }
+    },
+    "tiny_pets_battery_margin_top_tibetan": {
+      "0": {
+        "dp": 3.0,
+        "rawComplex": "0x301"
+      },
+      "372": {
+        "dp": 3.0,
+        "rawComplex": "0x301"
+      }
+    },
+    "tiny_pets_colon_container_margin_start": {
+      "0": {
+        "dp": -6.579986572265625,
+        "rawComplex": "0xfcb5c321"
+      },
+      "372": {
+        "dp": -6.579986572265625,
+        "rawComplex": "0xfcb5c321"
+      }
+    },
+    "tiny_pets_colon_container_margin_top": {
+      "0": {
+        "dp": 17.319976806640625,
+        "rawComplex": "0x8a8f521"
+      },
+      "372": {
+        "dp": 17.319976806640625,
+        "rawComplex": "0x8a8f521"
+      }
+    },
+    "tiny_pets_colon_margin_top": {
+      "0": {
+        "dp": 6.319976806640625,
+        "rawComplex": "0x328f521"
+      },
+      "372": {
+        "dp": 6.319976806640625,
+        "rawComplex": "0x328f521"
+      }
+    },
+    "tiny_pets_colon_size": {
+      "0": {
+        "dp": 15.15997314453125,
+        "rawComplex": "0x7947a21"
+      },
+      "372": {
+        "dp": 15.15997314453125,
+        "rawComplex": "0x7947a21"
+      }
+    },
+    "tiny_pets_date_margin_end": {
+      "0": {
+        "dp": 18.819976806640625,
+        "rawComplex": "0x968f521"
+      },
+      "372": {
+        "dp": 18.819976806640625,
+        "rawComplex": "0x968f521"
+      }
+    },
+    "tiny_pets_date_margin_left": {
+      "0": {
+        "dp": 21.0,
+        "rawComplex": "0x1501"
+      },
+      "372": {
+        "dp": 21.0,
+        "rawComplex": "0x1501"
+      }
+    },
+    "tiny_pets_date_margin_top": {
+      "0": {
+        "dp": 93.57998657226562,
+        "rawComplex": "0x2eca3d21"
+      },
+      "372": {
+        "dp": 93.57998657226562,
+        "rawComplex": "0x2eca3d21"
+      }
+    },
+    "tiny_pets_date_margin_top_tibetan": {
+      "0": {
+        "dp": 91.57998657226562,
+        "rawComplex": "0x2dca3d21"
+      },
+      "372": {
+        "dp": 91.57998657226562,
+        "rawComplex": "0x2dca3d21"
+      }
+    },
+    "tiny_pets_date_text_size": {
+      "0": {
+        "dp": 20.339996337890625,
+        "rawComplex": "0xa2b8521"
+      },
+      "372": {
+        "dp": 20.339996337890625,
+        "rawComplex": "0xa2b8521"
+      }
+    },
+    "tiny_pets_dot_height": {
+      "0": {
+        "dp": 40.149993896484375,
+        "rawComplex": "0x14133321"
+      },
+      "372": {
+        "dp": 40.149993896484375,
+        "rawComplex": "0x14133321"
+      }
+    },
+    "tiny_pets_dot_margin_left": {
+      "0": {
+        "dp": 182.0,
+        "rawComplex": "0xb601"
+      },
+      "372": {
+        "dp": 182.0,
+        "rawComplex": "0xb601"
+      }
+    },
+    "tiny_pets_dot_margin_top": {
+      "0": {
+        "dp": 48.189971923828125,
+        "rawComplex": "0x18185121"
+      },
+      "372": {
+        "dp": 48.189971923828125,
+        "rawComplex": "0x18185121"
+      }
+    },
+    "tiny_pets_dot_width": {
+      "0": {
+        "dp": 17.209991455078125,
+        "rawComplex": "0x89ae121"
+      },
+      "372": {
+        "dp": 17.209991455078125,
+        "rawComplex": "0x89ae121"
+      }
+    },
+    "tiny_pets_height": {
+      "0": {
+        "dp": 162.35000610351562,
+        "rawComplex": "0x512ccd21"
+      },
+      "372": {
+        "dp": 162.35000610351562,
+        "rawComplex": "0x512ccd21"
+      }
+    },
+    "tiny_pets_hour1_margin_start": {
+      "0": {
+        "dp": 1.259979248046875,
+        "rawComplex": "0xa14721"
+      },
+      "372": {
+        "dp": 1.259979248046875,
+        "rawComplex": "0xa14721"
+      }
+    },
+    "tiny_pets_hour2_margin_start": {
+      "0": {
+        "dp": -3.15997314453125,
+        "rawComplex": "0xfe6b8621"
+      },
+      "372": {
+        "dp": -3.15997314453125,
+        "rawComplex": "0xfe6b8621"
+      }
+    },
+    "tiny_pets_hour_right_margin_left": {
+      "0": {
+        "dp": 87.08999633789062,
+        "rawComplex": "0x2b8b8521"
+      },
+      "372": {
+        "dp": 87.08999633789062,
+        "rawComplex": "0x2b8b8521"
+      }
+    },
+    "tiny_pets_minute1_margin_start": {
+      "0": {
+        "dp": -7.579986572265625,
+        "rawComplex": "0xfc35c321"
+      },
+      "372": {
+        "dp": -7.579986572265625,
+        "rawComplex": "0xfc35c321"
+      }
+    },
+    "tiny_pets_minute2_margin_end": {
+      "0": {
+        "dp": 3.78997802734375,
+        "rawComplex": "0x1e51e21"
+      },
+      "372": {
+        "dp": 3.78997802734375,
+        "rawComplex": "0x1e51e21"
+      }
+    },
+    "tiny_pets_minute2_margin_start": {
+      "0": {
+        "dp": -3.78997802734375,
+        "rawComplex": "0xfe1ae221"
+      },
+      "372": {
+        "dp": -3.78997802734375,
+        "rawComplex": "0xfe1ae221"
+      }
+    },
+    "tiny_pets_minute_left_margin_top": {
+      "0": {
+        "dp": 44.3499755859375,
+        "rawComplex": "0x162ccc21"
+      },
+      "372": {
+        "dp": 44.3499755859375,
+        "rawComplex": "0x162ccc21"
+      }
+    },
+    "tiny_pets_minute_margin_left": {
+      "0": {
+        "dp": 191.08999633789062,
+        "rawComplex": "0x5f8b8521"
+      },
+      "372": {
+        "dp": 191.08999633789062,
+        "rawComplex": "0x5f8b8521"
+      }
+    },
+    "tiny_pets_minute_right_margin_left": {
+      "0": {
+        "dp": 75.01998901367188,
+        "rawComplex": "0x25828f21"
+      },
+      "372": {
+        "dp": 75.01998901367188,
+        "rawComplex": "0x25828f21"
+      }
+    },
+    "tiny_pets_minute_right_margin_top": {
+      "0": {
+        "dp": 22.3499755859375,
+        "rawComplex": "0xb2ccc21"
+      },
+      "372": {
+        "dp": 22.3499755859375,
+        "rawComplex": "0xb2ccc21"
+      }
+    },
+    "tiny_pets_rotation_0_margin_left": {
+      "0": {
+        "dp": 112.91000366210938,
+        "rawComplex": "0x38747b21"
+      },
+      "372": {
+        "dp": 112.91000366210938,
+        "rawComplex": "0x38747b21"
+      }
+    },
+    "tiny_pets_rotation_0_margin_top": {
+      "0": {
+        "dp": 16.379974365234375,
+        "rawComplex": "0x830a321"
+      },
+      "372": {
+        "dp": 16.379974365234375,
+        "rawComplex": "0x830a321"
+      }
+    },
+    "tiny_pets_rotation_180_margin_left": {
+      "0": {
+        "dp": 4.0,
+        "rawComplex": "0x401"
+      },
+      "372": {
+        "dp": 4.0,
+        "rawComplex": "0x401"
+      }
+    },
+    "tiny_pets_time_container_height": {
+      "0": {
+        "dp": 68.0,
+        "rawComplex": "0x4401"
+      },
+      "372": {
+        "dp": 68.0,
+        "rawComplex": "0x4401"
+      }
+    },
+    "tiny_pets_time_container_margin_end": {
+      "0": {
+        "dp": 7.0,
+        "rawComplex": "0x701"
+      },
+      "372": {
+        "dp": 7.0,
+        "rawComplex": "0x701"
+      }
+    },
+    "tiny_pets_time_container_margin_top": {
+      "0": {
+        "dp": 18.0,
+        "rawComplex": "0x1201"
+      },
+      "372": {
+        "dp": 18.0,
+        "rawComplex": "0x1201"
+      }
+    },
+    "tiny_pets_time_height": {
+      "0": {
+        "dp": 118.0,
+        "rawComplex": "0x7601"
+      },
+      "372": {
+        "dp": 118.0,
+        "rawComplex": "0x7601"
+      }
+    },
+    "tiny_pets_time_small_width": {
+      "0": {
+        "dp": 68.67999267578125,
+        "rawComplex": "0x22570a21"
+      },
+      "372": {
+        "dp": 68.67999267578125,
+        "rawComplex": "0x22570a21"
+      }
+    },
+    "tiny_pets_time_text_size": {
+      "0": {
+        "dp": 80.8599853515625,
+        "rawComplex": "0x286e1421"
+      },
+      "372": {
+        "dp": 80.8599853515625,
+        "rawComplex": "0x286e1421"
+      }
+    },
+    "tiny_pets_time_width": {
+      "0": {
+        "dp": 98.0,
+        "rawComplex": "0x6201"
+      },
+      "372": {
+        "dp": 98.0,
+        "rawComplex": "0x6201"
+      }
+    },
+    "tiny_pets_week_margin_end": {
+      "0": {
+        "dp": 20.279998779296875,
+        "rawComplex": "0xa23d721"
+      },
+      "372": {
+        "dp": 20.279998779296875,
+        "rawComplex": "0xa23d721"
+      }
+    },
+    "tiny_pets_week_margin_top": {
+      "0": {
+        "dp": -2.0,
+        "rawComplex": "0xfffffe01"
+      },
+      "372": {
+        "dp": -2.0,
+        "rawComplex": "0xfffffe01"
+      }
+    },
+    "tiny_pets_week_margin_top_tibetan": {
+      "0": {
+        "dp": 3.0,
+        "rawComplex": "0x301"
+      },
+      "372": {
+        "dp": 3.0,
+        "rawComplex": "0x301"
+      }
+    },
+    "tiny_pets_width": {
+      "0": {
+        "dp": 366.0,
+        "rawComplex": "0x16e01"
+      },
+      "372": {
+        "dp": 366.0,
+        "rawComplex": "0x16e01"
+      }
+    }
+  },
+  "implementationEvidence": [
+    "com.miui.clock.tiny.pets.PetsClockView.onFinishInflate: R.font.c700_regular; four separate TextViews",
+    "PetsClockView.initLayoutParams: TYPE_NORMAL=0, rotation2 uses tiny_pets_180 dimensions",
+    "com.miui.clock.utils.DeviceConfig.getRotationInCutout: nonempty right cutout selects 2, otherwise 0; not Display.rotation",
+    "PetsClockInfo.<clinit>: original per-pet time and colon colors",
+    "PetsClockTopView.updateTime: M/d and EE; date/week above the pet; battery remains optional"
+  ],
+  "sourceLayouts": [
+    "res/8IW.xml",
+    "res/glU.xml",
+    "res/waW.xml",
+    "res/eCs.xml"
+  ],
+  "parametersSha256": "bf9a73228aad7a83e8ad00a221d40f75abc227b5c702291fdb1362ad964df908",
+  "rights": "Xiaomi fonts and original resources remain excluded from the MIT code license."
+}

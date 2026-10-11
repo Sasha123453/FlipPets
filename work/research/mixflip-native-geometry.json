@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "sourceApkSha256": {
+    "aod": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+    "systemui": "bbb73370372d95707caa07bc00a6b2674afc5f433e5b074c4f8d6837b74ba757"
+  },
+  "translationsByTypeAndAction": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      100,
+      100,
+      0
+    ],
+    [
+      100,
+      100,
+      0
+    ],
+    [
+      90,
+      0,
+      0
+    ],
+    [
+      30,
+      30,
+      30
+    ],
+    [
+      90,
+      30,
+      30
+    ]
+  ],
+  "rotation0": "Translate -value then mirror, except combined action10: +90 without mirroring",
+  "rotation180": "Identity layer, no mirror",
+  "scaleMode": "Zoom",
+  "endProgress": 1,
+  "repeatCount": 1,
+  "foregroundOrder": "PetsBackgroundView in wallpaper layer behind depth/pet layer; not an overlay on top of pet",
+  "sourceHashes": {
+    "aodTranslationCfg": "be9eaa8db95fd60c0605a54adc5dfa7ae2931d3d00ae8685326a082759bfde25",
+    "systemuiTranslationCfg": "b6ea156a9cdf2e8038e32d3c82c30428bc5a47ff76d74afd20b7b1c9ea28fd0c"
+  },
+  "nativeBehaviorProven": false
+}

@@ -1,5 +1,430 @@
 # Flip Pets continuation — 2026-10-11
 
+## Current checkpoint — six MIX Flip pets complete; Charlie changes deferred
+
+The latest user request is to leave Charlie as it is, finish the existing MIX Flip
+pets and push the work. Do not resume clock experiments or native Charlie edits.
+All STOP/preview-only checkpoints below are historical.
+
+Current built AND installed APK SHA-256:
+`57d39faa9cf1cd54a79fc50a6045214e325076a623efe131237123ac16e09778`.
+Installed as an update with the preserved signing key; no app uninstall. Six MIX
+Flip entries have all18 original PAG scenes,12 original foregrounds, verified OEM
+Zoom/mirror/translation geometry, finite playback, tap scene changes and original
+C700 clock resources. Pet and clock orientation both follow the OEM cutout rule.
+The original33 catalogue entries retain their IDs and metadata.
+
+- Phone: all six pets selected through the real gallery and Apply controls;
+  actual cover screenshots proved scene0 body motion, subsequent hold and visible
+  nonblack held pixels:24/24 checks. All six held screenshots were inspected.
+  Other scenes and both cutout layouts are covered by emulator/source checks;
+  these screenshots do not prove physical camera clearance throughout animation.
+- Native Charlie: the explicitly authorized existing-record update succeeded.
+  Exact PAG/poster copies, unchanged five-design/three-pet count, other four saved
+  designs and15 unrelated resource hashes were acknowledged. User accepted the
+  folded appearance and described open/folded sizes as approximately matching.
+  Original crest clipping and different native/app clock styles remain.
+- Final phone readback matches the acknowledged native current/history bytes and
+  current installed APK SHA. Temporary `org.flippets.uiqa` was removed. Charlie
+  remains selected for the app cover session. Actual power values remain
+  stay_on_while_plugged_in=0 and screen_off_timeout=600000ms.
+- Shared Charlie placement covers12 decoded source scenes. The JSON registry and
+  guarded draft tool establish an extension workflow without Java per-pet switches:
+  [adding-native-pets.md](docs/adding-native-pets.md). Arbitrary native binary
+  import/update and exact Restore are still unimplemented/unproven.
+- All479 fresh APK checks pass without failures/skips:194 clips,68 compositions,
+  15 switching,15 utilities,19 layout,23 donor18,27 mini-app,80 MIX Flip/shared
+  and38 native cards. Regression and binary evidence for this exact SHA are in
+  `work/research/mixflip-current-verification.json`; historical reports retain their
+  original APK SHAs. Signature, source asset bytes and16KiB ZIP/ELF alignment pass.
+- Extra gallery reruns were interrupted by host UI-helper/window/scroll failures
+  and are not counted as passing current-APK evidence. The preceding attempt
+  restored its selection. No additional retries; the owned fliptest emulator on
+  emulator-5554 was identity-checked and shut down at the user's request.
+- No new release/module archives were generated. The requested source push is the
+  final operation of this turn; the final assistant message identifies its actual
+  commit and push result.
+
+Preserve rootless fully-open/awake/unlocked policy and stock secure Power/fold/AOD.
+Main-off/locked-unfolded continuation, further Charlie clock work, root, reboot,
+timeout and whole-animation camera-clearance verification remain deferred.
+Raw phone material and the user screenshot stay ignored/private. Continuation
+pointers are only under `work/phone-qa`; never publish their device identifiers.
+
+## Historical phone checkpoint — clock fix installed; native Charlie update preview
+
+The user requested a phone run, confirmed the corrected clock digits clear the
+physical cameras, and explicitly authorized continuing phone operations after
+deferring only the unfolded-locked display request. The earlier STOP and
+"no physical ADB command" paragraphs below are historical.
+
+Current built AND installed APK SHA-256:
+`b8b28c61d774f7b051322d3cf8f1315ab83bf833bcad98f180fb463d04d452f5`.
+Installed as an update with the existing certificate; private settings/photos
+retained. Final binary checks passed: v3 signature, matching source assets,
+16KiB ZIP and ELF alignment. No release archives, commit or push were made.
+
+- Stock clocks now use the verified OEM C700 font, signed resource dimensions,
+  individual digits, per-pet colors and separate date/week above the pet. The
+  OEM clock orientation comes from cutout side (right nonempty ->2, otherwise0),
+  independently of PAG Display.rotation. User confirmed all four digits visible.
+  Source/parameters/font provenance: `work/research/mixflip-clock-provenance.json`.
+- Initial phone APK b9e9fcfb… passed14 actual UI/native-management checks, including
+  real Shizuku summary and OEM History/Homepage navigation without native changes.
+  Final b8b28c61… passed13 checks: installed SHA, cover foreground, Main task removal,
+  physical Power -> our cover closed/secure keyguard retained, unlock recovery,
+  explicit Stop, Cancel, summary, original Roe restored and power settings retained.
+  One no-load-errors check failed to obtain app-only logcat (empty); it is an
+  unavailable diagnostic and must not be reported as passing or an observed load error.
+- Existing native Charlie replay works without notifications according to the
+  user's folded-screen trial; with notifications it did not replay. This agrees
+  with inspected OEM gating. ADB was disconnected for the clean trial: no native
+  layer/progress, all wake/biometric/AOD/orientation conditions or new size proven.
+- Test cover session is STOPPED and original app selection Roe restored. Native
+  current/history and23 backed-up resources remained unchanged through preview.
+  Preserve actual power values: stay_on_while_plugged_in=0, timeout600000ms.
+- Calibrated Charlie is open in the OEM editor with the SAME unique owned bizId
+  and a fresh staging child. Actual enabled `com.miui.aod:id/confirm` says «Готово».
+  Verified raw AOD DEX: EditorActionButton.a(1) ->tiny_kg_edit_activity_complete,
+  resource0x7f120596/ru «Готово»; a(0) is the separate Add branch. This proves update
+  preview recognition, not successful replacement. No new native confirmation yet.
+  An async question asks whether to update this reviewed Charlie and test folded
+  playback, acknowledging exact automatic Restore remains unproven. Wait for its
+  answer before Apply. Do not repeat Add or remove another design at full pet quota.
+- `native_pet_update.py` implements guarded unique-record preview, one authorized
+  OEM confirmation with a pre-tap journal, bounded convergent readback, exact
+  PAG/poster hashes and unchanged other history/resources/count. It also verifies
+  Cancel by Activity/task absence plus unchanged settings/resources.12 offline
+  guards pass, alongside35 native-flow and72+5 stock guard checks. Apply/readback
+  and Cancel verification are not yet physically exercised in this session.
+
+Private continuation pointers (do not publish contents/identifiers):
+`work/phone-qa/active-hardware-run.txt`, `active-charlie-update.txt`; latest inventory
+`pet-inventory-5c956db100014249a0ee71d5c23f5336`. Persistent foreground ADB server
+exec session46945 stabilizes connectivity; leave it while phone work continues.
+Temporary `org.flippets.uiqa` was absent initially and is still installed; remove
+only that helper after final QA. Preserve Flip Pets and Shizuku.
+
+Sanitized report: `work/research/mixflip-phone-verification.json`. The final clock
+APK has no fresh emulator suite;375 APK +9 gallery +6 virtual-cover results below
+belong ONLY to b9e9fcfb… . No main-off/locked-unfolded continuation, root, timeout,
+reboot or whole-animation camera-clearance claim. Original crest clipping remains.
+
+## Resumed by “read and keep going” — current local implementation
+
+The user resumed work from `docs/native-pets-next-agent-instructions.md`. The STOP
+checkpoint below is the earlier phone state, preserved as history. No phone serial
+was supplied in this continuation; no physical ADB command, native Apply, deletion,
+root installation, framework/power change, commit or push occurred.
+
+Current development APK SHA-256:
+`b9e9fcfb041083f5c66068de95e1b086beb2a64aacbc71e98a1e08a99a85f03c`.
+Built with the existing local certificate
+`819b54a88b032712475060b68a6adcfff569366c86e9683c92934b36375391ba`.
+APK assets match source bytes; v3 signature, ZIP16KiB and both ABI ELF LOAD16KiB
+checks passed. Installed only as an emulator update. Release archives and KernelSU
+ZIP were not regenerated; do not treat previous bundles as matching this APK.
+
+### Implemented and verified locally
+
+- StageA: baseline33 equals HEAD and its fixed canonical hash; all18 PAG/12 vectors
+  match import provenance.144 stock samples plus8 unchanged Charlie samples were
+  decoded. Surface is max696px, with original canvas sizes recorded separately.
+  Five stock scenes have transparent first frames; this is valid source behavior.
+  Each clip has at least3 distinct samples and a visible final pose.
+- Stock translation tables were compared in exact EEA AOD/SystemUI DEX, including
+  raw enum CFG because generated Java lost enum arguments. Original source widths
+  vary1208/1268/1308/1408/1409; never replace these by one universal canvas/zoom.
+- StageC:6 stock pets in a separate MIX Flip collection, original foregrounds
+  behind the pet for0/180, native Zoom/mirror/translations in an isolated branch.
+  Donor CoverGeometry and first33 catalogue entries stay unchanged. Finite scenes
+  hold, busy taps are ignored and later taps advance1→2→3→1. Stop frees resources;
+  restart replays saved scene. Manual donor placement controls are disabled for
+  stock pets. Static gallery previews require Apply/Cancel; native state is separate.
+- Exact current APK:64 named stock runtime cases passed with natural completion,
+  real MotionEvents, loaded matrices, resource release and preferences restored.
+ 9 real gallery cases passed, including search/Apply/Cancel/native dialog separation
+  and restored selection. Screenshot inspected: `work/qa-v03/mixflip-capybara-main.png`.
+  Schematic camera overlap is not a physical camera-clearance measurement.
+- StageB local candidate: body guide around Charlie, excluding branch/flowers,
+  scaled by stock capybara action1 first-pose silhouette. Constant transform
+  scale2.220779220779221, x−663.2727272727275, y117.27272727272725. All original donor
+  composition payloads are preserved.8 actual1208×1392 candidate frames are opaque
+  and moving; `outputs/native-pet/charlie-calibrated/poster.png` is decoded first pose.
+  Candidate SHA `c9b740fb529fa2b65bb18cbc0fd1a78461eb6b2e20d1308a68a82ae09d8494ce`.
+  Its full-resolution decode uses this current APK's libpag. It has NOT been applied.
+- In AOD, EditActivity calls `getHistoryTemplateInfoByAiPagId`, compares bizId,
+  and sets history index/Add flag. This is a source-backed update candidate, not
+  a physical update proof. `native_update_index` accepts exactly one owned Charlie
+  and never falls back to Add at full quota.35 native-flow host tests passed;
+ 72 stock geometry/policy cases and5 provenance guard cases also passed.
+- StageD partial: Main has “Питомцы на штатной блокировке”. Separate shell-only
+  UserService has3 fixed operations: sanitized native summary, OEM HistoryActivity,
+  OEM HomepageActivity. It checks owner/UID2000/user0/ruyi/EEA/both APK hashes;
+  bounded state is read twice. No arbitrary command interface, settings write,
+  resource import/delete or raw personal JSON/path logging. Actual Shizuku/OEM
+  operations are untested on the phone. Prepared import/update inside the app
+  remains unfinished; the UI says so.
+- Publication guards now require39 entries/194 paths and all463 APK cases,
+  preserving baseline33 and donor18 original serialization. Stock originals and
+  provenance are included by future packaging. No package was generated here.
+
+### Remaining work and evidence boundaries
+
+- General current-APK regression passed292 cases:194 clips,68 compositions,
+ 15 transitions and15 utility cases, zero failures.19 layout cases also passed.
+ With64 stock cases,375 APK cases are fresh for exact installed/current SHA
+ `b9e9fcfb…`, plus9 gallery cases and6 virtual-cover lifecycle cases, all passed.
+ Donor18/mini-app/native-card suites were not rerun; their older reports do not
+  validate this SHA. This is scoped verification, not all463 publication cases.
+- Physical Charlie diagnosis remains open: wake/tap with/without notifications,
+  biometric, sleep/AOD,0/180 and actual layer/load state. Do not remove others'
+  notifications or templates. Its installed small/still appearance is not fixed.
+- Verify an update of the unique owned bizId through actual OEM preview/confirm and
+  readback, preserving other history entries; no second Add or quota bypass.
+  The existing acceptance of manual restoration is historical authorization,
+  not permission to delete other saved designs. Exact automatic Restore is unproven.
+- Calibrated first-pose size is local evidence only. Full-motion clocks/cameras,
+  fold/unfold and secure Power/timeout need the physical phone. Source crest/branch
+  clipping remains. Do not mass-transfer other donors before the Charlie path works.
+- Verify native state and History/Homepage launches through Shizuku on the exact
+  phone profile; implement prepared preview/update from the app afterwards.
+- Main-off continuation and research root resource substitution remain deferred.
+
+Details and commands: `docs/mixflip-pets-integration.md`. Public research:
+`mixflip-pets-decoding.json`, `mixflip-native-geometry.json`,
+`charlie-native-calibration.json`. Raw phone snapshots were neither changed nor
+published. Existing dirty changes from before this continuation were preserved.
+Scoped SHA-bound summary: `work/research/mixflip-integration-verification.json`.
+
+Local QA notes: source probe initially failed with SIGKILL137 while insisting on
+visible first frames. The corrected probe accepts a stable transparent start,
+still requires real movement, and uses isolated processes per sample. Four earlier
+completed clips retain their actual older probe hashes/snapshots; the remaining
+clips identify the corrected probe. No failed clip was counted as passed.
+The first development APK `dedad4c5…` had one premature finite-hold test observation;
+the QA now waits for actual terminal progress before its hold interval. Current
+`b9e9fcfb…` passed all64, with no production placement change between those builds.
+QA-AVD fliptest was restarted with host GPU/4GB RAM, preserving its data and config
+file. Do not present emulator memory or timing as phone/battery evidence.
+After completed QA, Flip Pets was force-stopped and this continuation's verified
+fliptest emulator was shut down. No QA process or privileged service is left running.
+
+## STOP checkpoint — пользователь попросил handoff и закончить пока что
+
+**Работа остановлена по прямой просьбе пользователя 11 октября 2026.**
+Не продолжать изменения телефона, удаление оформлений или сборку автоматически.
+Раздел ниже — актуальнее всех прежних утверждений «Apply не выполнялся».
+
+### Последние решения пользователя
+
+- Приоритет: питомцы и полный native flow. Карточки отложены.
+- Пользователь явно разрешил применить Charlie **без гарантии точного отката**,
+  приняв ручное восстановление. Повторно спрашивать это же согласие не нужно.
+- Для освобождения одного из трёх native-мест выбрал **бишона**, затем подтвердил
+  продолжение после пояснения: встроенный питомец остаётся в каталоге Xiaomi,
+  удаляется сохранённое оформление; индивидуальные настройки могут потребовать
+  ручного восстановления. Другие сохранённые оформления удалять не разрешал.
+- Потребовал удобное управление штатным набором **из нашего приложения**.
+- Попросил перенести встроенных питомцев MIX Flip в наш раскрытый режим.
+- Последняя правка размеров: **все добавленные питомцы должны иметь сопоставимый
+  размер со штатной капибарой**. Это заменяет промежуточную идею просто увеличить
+  Charlie на 25%. Новую геометрию ещё не реализовали.
+- Сообщил: на внешнем экране **сложенного** телефона Charlie маленький и не
+  двигается. Не списывать это на статичную миниатюру основного экрана.
+- Root не установлен; разрешения на его установку нет. Независимое питание
+  дисплеев остаётся отложенным. Политика rootless-контроллера не менялась.
+
+### Что реально сделано в последнем продолжении
+
+1. Дополнен `work/tests/native_pet_preview.py`: полный известный снимок включает
+   не только JSON/ресурсы истории, но и два фактических изображения из
+   `small_lock.xml` для outer target8. До удаления бишона сохранены **20** файлов,
+   оба settings JSON и метаданные. Все20 доступны для чтения, shell write-checks
+   отказали. Старый снимок18 был неполным: не включал два outer-wallpaper файла.
+2. Найден `com.miui.keyguard.editor.data.template.TemplateFileProvider`:
+   умеет выдавать writable FD, но защищён signature-разрешением
+   `miui.keyguard.editor.WRITE_EDITOR_FILE`. Реальный read-only query от UID2000
+   получил Permission Denial. Это проверка конкретного входа, не доказательство
+   невозможности любого rootless writer. Никаких grants/spoofing не было.
+3. Прямой JSON-вход с прежним splicing-шаблоном вызвал native NPE в
+   `EditorImagePreview.refresh`: `positionInfo.matrixArr` отсутствует в текущем
+   settings JSON. Добавлен отказ до запуска при такой матрице. Не придумывать
+   геометрию для «точного Restore». У сохранённой splicing-записи истории матрицы
+   есть, но текущий JSON отличается ещё несколькими полями; их согласование
+   остаётся потенциальным исследованием, не проверенным восстановлением.
+4. Первый штатный Add был отклонён: лимит **3 питомца** уже занимали капибара,
+   бишон и девон-рекс. Прослежен реальный `EditViewModel.invalidTemplate`, добавлен
+   guard native pet/total-history quota; лимит не обходили через extras.
+5. После выбора пользователя через native History UI удалено **только сохранённое
+   оформление бишона**. Четыре остальные записи побайтно по разобранным JSON
+   сохранились, включая оба оформления с фотографиями. OEM при подтверждении
+   автоматически переключил текущую настройку: её byte equality=false.
+   **Не утверждать, что текущий выбор остался прежним.** Исходный бишон в системе
+   и в preset-каталоге AOD остаётся; для повторного добавления нужно свободное
+   место из трёх. Источник каталога проверен в фактическом APK.
+6. **Charlie применён штатной кнопкой «Добавить».** Новый host-tool
+   `work/tests/native_pet_apply.py` проверяет profile/hash, baseline, квоту,
+   staging, реальный UI control и пишет журнал до единственного native tap.
+   Первый readback попал между native current/history writes; повторного Add
+   не было. `--readback-only` подтвердил свой `bizId` и **точный SHA копии PAG**.
+   После Apply история содержит5 записей /3 питомца; четыре предыдущие записи
+   сохранены без изменений. Точный Restore и физическая анимация не доказаны.
+7. Добавлен и выполнен `work/import_mixflip_pets.py`: **6 встроенных питомцев,
+   18 неизменённых системных PAG, 12 исходных векторных foreground** для0/180.
+   Векторы AOD имеют обфусцированные APK member names; aapt2 разрешает их resource
+   ID/name и переносит исходные pathData/цвета в Android vector XML.
+   `work/research/mixflip-pets-import.json` хранит источник и хэши без серийника
+   и личных данных. Каталог теперь **39 записей /194 уникальных clip paths**;
+   первые33 записи проверены на полное равенство HEAD.
+
+### Незавершённая интеграция / конкретные следующие действия
+
+1. **Разобраться с движением Charlie на folded lockscreen.** В проверенном
+   `SystemUI-AiPetsTemplateView.handleSingleClick` анимация блокируется при
+   `getHasNotifies()`; `PetsTemplateView.startWakingUp` тоже передаёт autoplay=false
+   при уведомлениях и пропускает playback при biometric unlock. Это вероятная
+   причина, но фактическое значение флага на телефоне не измерено. Не объявлять
+   проблему решённой. Для чистого опыта попросить пользователя самому убрать
+   внешние уведомления, сложить, обычным способом заблокировать/разбудить и
+   коснуться питомца. Не очищать чужие уведомления через ADB без разрешения,
+   не менять framework, не будить экран циклом. Native PAG может воспроизводиться
+   коротко, а сон/AOD его приостанавливают; постоянную AOD-анимацию не обещать.
+2. **Размеры всех питомцев от штатной капибары.** Снять/декодировать native
+   `shuitun_1.pag` (petType2, action1) и учесть исходный host1208×1392,
+   `PetsTranslationENUM`/rotation/mirror. Единый сырой масштаб не равен одинаковому
+   размеру персонажа. Подобрать постоянные subject guides и проверить обе
+   ориентации/камеры/часы и всё движение. Текущий native Charlie всё ещё использует
+   старую адаптацию: bird translation(0,796), без нового увеличения. Source crest
+   и край ветки остаются обрезанными. При обновлении Charlie не удалять новых
+   чужих питомцев; его собственное место уже занято. Корректный update/replace
+   native-пути ещё предстоит реализовать, JSON extra не принимает position.
+3. **Управление native-набором в приложении ещё НЕ написано.** Нет новых Android
+   `NativePet*.java`. Нужны понятные занятые/свободные3 места, текущий native выбор,
+   осмысленный выбор замены, native preview/Add, управление сохранёнными
+   оформлениями и повторное добавление встроенного бишона. Отделять родной набор
+   от обычного выбора раскрытого режима и не менять Main/cover lifecycle.
+   Предпочтение: фиксированные scoped операции через Shizuku UID2000, чтение
+   bounded JSON без AppLog с личными данными; штатный редактор подтверждает Apply.
+   Не выдавать экспортированность `TemplateFileProvider` за доступ на запись.
+   Нет проверенного автоматического Restore: UI должен честно объяснять это.
+4. **Импорт MIX Flip пока только в source/assets.** Новые IDs:
+   `mixflip-dewen`, `mixflip-shuitun`, `mixflip-shuita`, `mixflip-bixiong`,
+   `mixflip-xianluo`, `mixflip-heibao`. Имена: девон-рекс, капибара, выдра,
+   бишон-фризе, сиамский кот, чёрная пантера. Требуется:
+   - добавить коллекцию MIX Flip в GalleryDialog (сейчас source попадает в Архив);
+   - подключить `nativeBackgroundDrawable` к PetBackdrop: векторы ещё не рисуются;
+   - декодировать18 PAG, получить duration/размеры/постоянные subject guides,
+     сделать thumbnails; проверить настоящий native finite/tap playback;
+     сейчас `PlaybackPolicy.classic` не знает `mixflip-`, и они будут loop;
+   - сохранить оригинальные33 IDs/metadata и права Xiaomi на графику/векторы.
+5. После интеграции собрать APK тем же ключом, выполнить scoped QA exact SHA и
+   установить update без uninstall. Обновить README/CHANGELOG/START-HERE.
+   Package guard всё ещё требует33/176: расширить проверки с сохранением
+   baseline33 и новых provenance, а не просто убрать guard. QA/галерею/donor
+   проверки с фиксированными counts также пересмотреть. Release пока не готов.
+
+### Проверки, сборки и частные receipts на момент паузы
+
+- Последний APK и установленная версия: SHA
+  `0cf89c0f3907c854cd3c73cf2e28d8f13ba413969cfd8ff1422fecbabac2a3a8`.
+  **Он собран до нового импорта39/194 и не соответствует нынешним source/assets.**
+  Matching экспериментальный root ZIP остаётся старым, не установлен.
+- Последний выполненный pet host suite:32 методов прошли **до** добавления quota
+  case и последних apply/readback правок. Нынешний набор33 повторно не запускали.
+  Не заявлять current-source pass. Исторические38 native-card APK checks и40/20/
+  24/5 host guards относятся к прежнему APK/соответствующим исходникам.
+- В этой части не было APK rebuild/install, package, commit или push. Git dirty;
+  сохранить все ранее существовавшие и сторонние изменения. Новые PAG под LFS.
+- Полный private before snapshot:
+  `work/phone-qa/pet-inventory-6f4ad0c519dc4ba594f01cc98fd0bd1d` (20файлов).
+- Native restore-preview crash:
+  `work/phone-qa/pet-preview-d4e133449ba5426480704866b7f17bbf`.
+- Rejected quota Add / exited unchanged:
+  `work/phone-qa/pet-preview-bc72b71330b84e91a26c3f3747554c16`.
+- Bichon-only native removal:
+  `work/phone-qa/pet-replace-a25e91b5decd455da90422f9b0b5daaf`.
+- Fresh baseline after removal:
+  `work/phone-qa/pet-inventory-e4d2692937b543d692a09be555d6ff0a` (18файлов).
+- **Успешный Apply Charlie**:
+  `work/phone-qa/pet-preview-edafad93b5cc4535aed0340e19743dd2`;
+  `native-apply.json`, `receipt.json`, `*.applied.json`, `small-lock.applied.xml`.
+- Не запускать старый private `write-native-pet-followup.py` вслепую: он описывает
+  исторический preview-only этап и может затереть новые Apply outcomes. Старый
+  adapted-preview ZIP также исторический, не finished installer/release.
+- Raw phone state/логи/снимки/backup bytes остаются только в ignored phone-qa.
+  Не публиковать серийник, личные фото, уведомления или fingerprint настроек.
+  Последнее read-only состояние было OPENED/awake/unlocked; оно могло измениться.
+  Для продолжения определить explicit serial и заново проверить MIX Flip identity.
+  Не менять stay_on_while_plugged_in=0 и наблюдённый timeout600000ms.
+
+## Latest user priority — pets and the complete native flow
+
+**Historical preview-stage notes below; see STOP checkpoint above for actual Apply.**
+
+The user resumed authorized phone work, then deferred cards after rejecting their
+appearance. Continue pets/full flow from docs/native-pet-flow.md and
+work/research/native-pet-phone-followup.json. Do not repeat the earlier card setup.
+
+- Actual EEA AOD/SystemUI hashes match the inspected source. Charlie motion was
+  observed in the OEM editor. Original transparent PAG + bird poster doubled on
+  a gray background; the compatibility wrapper uses unchanged donor compositions
+  and original MAML background with an opaque full-cover canvas.
+- An initial background-only first snapshot caused disappearance after the native
+  fade. The probe now waits for actual donor-pose pixels, requires exact first
+  opaque-pixel correspondence and checks eight real source poses. Current poster
+  contains the bird. Final native placement is `(0,796)`, with both editor
+  orientations inspected. Source branch clipping remains visible inside the
+  wider canvas; camera schemes do not prove physical clearance.
+- All previews were exited without Apply. The final receipt confirms editor exit
+  and byte-identical selection/history.18 dependencies were privately backed up;
+  all18 shell write checks failed. These are backups/checks, not exact restoration
+  evidence. Need a verified OEM writer/cache/wallpaper restore path before Apply.
+- Added validated JSON/resource preparation, guarded preview/cancel/inventory,
+  geometry model and interruption/later-choice file model.23 host methods pass,
+  including16 interruption subcases and five later-choice phases. No native
+  installer/UI, secure-setting writes, root installation or lockscreen overlay.
+- Current APK `0cf89c0f3907c854cd3c73cf2e28d8f13ba413969cfd8ff1422fecbabac2a3a8`;
+  same-key phone update and ordinary launcher redirect observed earlier in this
+  session.38 native-card emulator checks passed for this SHA.40 pure route,
+  20 capture,24 context and five packaging guards passed. Full render QA on an
+  earlier intermediate SHA timed out; no new full-release pass/package claimed.
+- Matching experimental module regenerated, not installed:
+  `0ab2bd11805b6a7ddab02854178abf41c8ebd2b140cd57a888879c0b7316a874`.
+  Canonical/embedded controller unchanged. New pet preparation is host tooling;
+  no APK rebuild was needed after the current app build.
+- Earlier measurements corrected cover identity/window separation: physical fold
+  becomes logical Display0, flags16523, compatibility scale0.8 and API window
+  1011×1740 on this exact EEA build. Typed Main/Card admission properties now use
+  integer5; card fullscreen metadata integer0 and widget property Boolean false.
+  Stock App management search still returned no Flip Pets result after reboot;
+  no temporary admission grant was made. Cards remain compact and unaccepted.
+- Raw captures, state, resource bytes and serial remain only in ignored
+  work/phone-qa. Public evidence omits selection/history fingerprints and private
+  resource hashes/paths. Phone stay-awake remains0; the actual current timeout was
+  600000ms and was preserved, rather than replacing it with historical60000ms.
+
+Next: trace/prove narrow resource + outer-wallpaper/cache restore with later-choice
+protection. Then one reversible native Apply and the real folded/locked matrix.
+Root installation stays separate; independent display power remains deferred.
+No new multi-agent delegation or publishing was performed in this continuation.
+
+## Previous review baseline
+
+## Follow-up code review and proposed next work
+
+Read `docs/post-implementation-review-and-next-steps.md` for the review of
+`c548bc8`. The assembled source work is present and artifact/evidence hashes match.
+39 host checks were rerun successfully; no device was contacted or implementation
+changed. A fresh Java probe found that native routing rejects Xiaomi's documented
+809x1392 basic cover app region while accepting full-cover bounds. Exact EEA
+metrics still need measurement; resolve cover identity versus window size before
+claiming native-launch support. Existing open-session controller allowstart calls
+must also be accounted for when establishing the native admission baseline.
+Recommended next milestone: unrooted native launcher/geometry/continuity proof,
+then one native pet motion/restore proof; root hardware QA after separate root
+installation. Generation, optional MAML hooks and independent power stay deferred.
+
 ## Assembled source milestones complete; physical gates remain
 
 The user requested finishing the handoff, fresh independent review and automatic

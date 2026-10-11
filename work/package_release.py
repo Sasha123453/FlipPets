@@ -21,17 +21,18 @@ ROOT = WORK.parent
 OUT = ROOT / "outputs"
 VERSION = "1.1"
 VERSION_CODE = 12
-COUNTS = {"qa.json": 176, "composition-qa.json": 68,
+COUNTS = {"qa.json": 194, "composition-qa.json": 68,
           "ui-switch-qa.json": 15, "utility-qa.json": 15,
           "pet-layout-qa.json": 19, "donor18-qa.json": 23,
-          "mini-apps-qa.json": 27, "native-cards-qa.json": 31}
+          "mini-apps-qa.json": 27, "mixflip-qa.json": 80, "native-cards-qa.json": len(runpy.run_path(str(WORK / "tests/native_apps_contract.py"))["NAMES"])}
 RESEARCH = ["MRC-coverage.json", "composition-provenance.json", "font-provenance.json",
             "portable-resource-provenance.json", "native-playback-evidence.json",
             "pandora-rearscreen-inventory.json", "ruyi-display_layout_configuration.xml",
             "ruyi-product-device_state_configuration.xml", "ruyi-device_state_configuration.xml",
             "ruyi-DeviceStateManagerShellCommand.java", "hongkong-readonly-findings.json",
             "hongkong-selected-port-provenance.json", "hongkong-mini-app-runtime.json",
-            "xiaomi-mini-apps-provenance.json"]
+            "xiaomi-mini-apps-provenance.json", "mixflip-pets-import.json", "mixflip-pets-decoding.json",
+            "mixflip-native-geometry.json", "charlie-native-calibration.json", "mixflip-integration-verification.json"]
 HISTORICAL = {"hardware-validation.json": "Physical MIX Flip version 0.5; not current hardware QA",
               "resource-profile.json": "Earlier emulator resource profile; not a current profile",
               "lifecycle.json": "Earlier emulator lifecycle/wallpaper/reboot evidence; no new run claimed",
@@ -74,6 +75,23 @@ def dump(path, data):
 def require(condition, message):
     if not condition:
         raise ValueError(message)
+
+
+def validate_mixflip_import(catalog):
+    """Keep the reviewed original catalogue and bind each stock file to its provenance."""
+    canonical=json.dumps(catalog[:33],ensure_ascii=False,sort_keys=True,separators=(',', ':')).encode('utf-8')
+    require(hashlib.sha256(canonical).hexdigest()=='cd49314203ab83a08263af0bf7fab17b714e267fdfbe526440cbf33d6f0a5b80','Original 33 entries changed')
+    provenance=read(WORK/'research/mixflip-pets-import.json')
+    require(catalog[33:]==provenance['pets'] and len(catalog[33:])==6,'MIX Flip catalogue differs from import')
+    assets=provenance['assets']
+    require(len(assets)==30 and len({a.get('assetPath',a.get('resourcePath')) for a in assets})==30,'MIX Flip resource set incomplete or duplicated')
+    require({a['assetPath'] for a in assets if 'assetPath' in a}=={p for pet in catalog[33:] for p in pet['clips'].values()},'MIX Flip clip coverage differs')
+    require({a['resourcePath'] for a in assets if 'resourcePath' in a}=={'res/drawable/'+pet['nativeBackgroundDrawable']+'_'+str(rotation)+'.xml' for pet in catalog[33:] for rotation in (0,180)},'MIX Flip foreground coverage differs')
+    for asset in assets:
+        root=WORK/'app/assets' if 'assetPath' in asset else WORK/'app'
+        path=asset.get('assetPath',asset.get('resourcePath'));resolved=(root/path).resolve()
+        require(root.resolve() in resolved.parents,'MIX Flip path outside assets')
+        require(sha(resolved)==asset['sha256'],'MIX Flip asset hash mismatch')
 
 
 def native_qa_cases(data, count):
@@ -127,6 +145,8 @@ def pack(destination, entries):
 
 
 def apk_checks(apk, catalog, paths):
+    shared=runpy.run_path(str(WORK/'tests/shared_pet_layout.py'))
+    shared['validate_registry'](read(WORK/'app/assets/native-pet-layout.json'))
     tools = WORK / "tools"
     bt = tools / "sdk/build-tools/android-16"
     java = tools / "jdk/jdk-17.0.20.1+1/bin/java.exe"
@@ -240,6 +260,19 @@ def original_entries():
         entries.append((path, "hongkong/" + row["assetPath"]))
     entries.append((WORK / "research/hongkong-selected-port-provenance.json", "hongkong/provenance.json"))
     entries += [(p, "hongkong/maml/" + p.name) for p in (WORK / "research/hongkong-maml").glob("*.xml")]
+    stock=read(WORK/'research/mixflip-pets-import.json')
+    for asset in stock['assets']:
+        root=WORK/'app/assets' if 'assetPath' in asset else WORK/'app'
+        path=asset.get('assetPath',asset.get('resourcePath'));source=root/path
+        require(sha(source)==asset['sha256'],'Stock MIX Flip original resource differs')
+        entries.append((source,'mixflip/'+path))
+    entries.append((WORK/'research/mixflip-pets-import.json','mixflip/provenance.json'))
+    stock_clock=read(WORK/'research/mixflip-clock-provenance.json')
+    for font in stock_clock['fonts']:
+        source=WORK/'app/assets'/font['assetPath']
+        require(sha(source)==font['sha256'],'Stock MIX Flip clock font differs')
+        entries.append((source,'mixflip/'+font['assetPath']))
+    entries.append((WORK/'research/mixflip-clock-provenance.json','mixflip/clock-provenance.json'))
     return entries
 
 
@@ -264,7 +297,7 @@ def report(verification, catalog):
     history = ''.join(f'<li>{e(item["file"])} — {e(item["scope"])}; исходный SHA: <code>{e(item.get("originalApkSha256") or "не указан / unbound")}</code>.</li>' for item in verification["historicalEvidence"])
     return f'''<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Flip Pets {VERSION} — проверенный пакет</title><style>
 *{{box-sizing:border-box}}body{{margin:0;background:#151218;color:#e9e0e9;font:16px/1.55 system-ui,sans-serif}}main{{max-width:1150px;margin:auto;padding:32px 20px}}h1{{font-size:clamp(30px,5vw,52px);line-height:1.15}}a{{color:#d7baff}}p,li{{color:#cdc2d3}}nav{{display:flex;gap:18px;flex-wrap:wrap}}.hero,article{{background:#211e26;border-radius:24px;padding:20px}}.notice{{background:#39333f;border-radius:18px;padding:18px}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}}article img{{width:100%;height:170px;object-fit:contain}}h3{{font-size:17px}}article p{{font-size:13px}}code{{word-break:break-all}}table{{border-collapse:collapse;width:100%}}td,th{{border-bottom:1px solid #514658;padding:10px;text-align:left}}
-</style><main><section class="hero"><p>XIAOMI 17/18 PRO → MIX FLIP · ROOTLESS</p><h1>Flip Pets {VERSION}<br>33 оформления, исходная графика.</h1><p>176 оригинальных PAG/MP4-клипов и 11 адаптированных композиций. Material You, приватные фото, поиск и избранное.</p><nav><a href="FlipPets.apk">APK</a><a href="START-HERE.txt">Инструкция</a><a href="FlipPets-Source.zip">Исходники</a><a href="Verification.zip">Доказательства</a></nav></section>
+</style><main><section class="hero"><p>XIAOMI 17/18 PRO → MIX FLIP · ROOTLESS</p><h1>Flip Pets {VERSION}<br>{len(catalog)} оформлений, исходная графика.</h1><p>{len({path for pet in catalog for path in pet["clips"].values()})} оригинальных PAG/MP4-клипов и 11 адаптированных композиций. Material You, приватные фото, поиск и избранное.</p><nav><a href="FlipPets.apk">APK</a><a href="START-HERE.txt">Инструкция</a><a href="FlipPets-Source.zip">Исходники</a><a href="Verification.zip">Доказательства</a></nav></section>
 <p class="notice">{e(notice)}</p>
 <h2>Сложенный экран: нативная интеграция</h2><p>По умолчанию остаются родной внешний интерфейс, защищённый экран блокировки и AOD Xiaomi. Следующий приоритет — опциональные анимированные обои через штатный редактор/движок Xiaomi; в 0.8 этот export/apply ещё не реализован. Исследование: sourceZIP/docs/folded-wallpaper-options.md. Повторная попытка запуска после раскрытия ограничена по времени и проверяет готовность state5; устойчивое поведение0.8 на HyperOS требует своего аппаратного отчёта. Utility-карточки второстепенны, включаются явно и не подменяют штатные виджеты.</p><h2>Что нового</h2><p>Настройки/галерея используют системные цвета и светлую/тёмную тему. Optional карточки батареи, медиаплеера или визуального таймера выключены по умолчанию; это наши дополнения, а не заявленная копия виджетов17Pro. Одновременно показывается одна компактная карточка. Таймер/секундомер без звука и точного фонового alarm; музыка через опубликованные MediaSession и поддерживаемые плеером действия.</p>
 <p>Внешний сеанс отделён от задачи настроек и поддерживается user-enabled foreground-службой с тихим уведомлением/Stop. Закрытие настроек не является командой выключения сеанса. Wake lock и скрытый рендер не добавлены. HyperOS всё ещё может принудительно остановить приложение. Затухание работает по exposed hinge angle либо дискретному flip-state; дискретное состояние не называется измеренным углом.</p>
@@ -294,7 +327,8 @@ def main():
     binary = sha(apk)
     catalog = read(WORK / "app/assets/catalog.json")
     paths = {value for pet in catalog for value in pet["clips"].values()}
-    require(len(catalog) == 33 and len(paths) == 176, "Catalogue count changed; review required")
+    require(len(catalog) == 39 and len(paths) == 194, "Catalogue count changed; review required")
+    validate_mixflip_import(catalog)
     selected = read(WORK / "research/hongkong-selected-port-provenance.json")
     baseline = json.dumps(catalog[:30], ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8')
     require(hashlib.sha256(baseline).hexdigest() == selected["baselineCatalogueCanonicalSha256"], "Original 1.0 entries changed")
@@ -307,7 +341,8 @@ def main():
     # Donor media/HTML and the APK/source assets still require identical bytes.
     catalogue_bytes = (WORK / "app/assets/catalog.json").read_bytes()
     catalogue_lf_sha = hashlib.sha256(catalogue_bytes.replace(b"\r\n", b"\n")).hexdigest()
-    require(catalogue_lf_sha == selected["resultCatalogueSha256"], "Donor18 result catalogue differs")
+    original33_lf = (json.dumps(catalog[:33], ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+    require(hashlib.sha256(original33_lf).hexdigest() == selected["resultCatalogueSha256"], "Original 33-entry donor catalogue differs")
     qa, evidence = {}, []
     for name, count in COUNTS.items():
         path = public_input(args.native_qa if name == "native-cards-qa.json" else args.qa_dir / name)
@@ -320,6 +355,9 @@ def main():
         require(not data.get("skipped"), f"Skipped required QA: {name}")
         if name == "native-cards-qa.json":
             native_qa_cases(data, count)
+        if name == "mixflip-qa.json":
+            names=runpy.run_path(str(WORK/'tests/run_mixflip_qa.py'))['NAMES']
+            require({row.get('test') for row in data['results']}==names,'MIX Flip QA case coverage differs')
         qa[name] = data
         evidence.append((path, "current/emulator/" + name))
     require({row["path"] for row in qa["qa.json"]["results"]} == paths, "Clip QA coverage differs from catalogue")
@@ -408,9 +446,9 @@ def main():
                                    "emulatorQa": qa, "qaChecks": sum(COUNTS.values()),
                                    "binaryChecks": checked, "compositionImageHashesVerified": True,
                                    "resourceProfile": profile, "physicalEvidence": physical, "additionalEvidence": extras, "screenshots": screenshots},
-                    "catalogue": {"sets": 33, "sourceBytesSha256": hashlib.sha256(catalogue_bytes).hexdigest(),
+                    "catalogue": {"sets": len(catalog), "sourceBytesSha256": hashlib.sha256(catalogue_bytes).hexdigest(),
                                   "importerLfSerializationSha256": catalogue_lf_sha,
-                                  "originalClips": 176, "uniqueMediaSha256": len({sha(WORK / "app/assets" / p) for p in paths}), "pagClips": sum(p.endswith('.pag') for p in paths),
+                                  "originalClips": len(paths), "uniqueMediaSha256": len({sha(WORK / "app/assets" / p) for p in paths}), "pagClips": sum(p.endswith('.pag') for p in paths),
                                   "mp4Clips": sum(p.endswith('.mp4') for p in paths), "offlineCompositions": 11,
                                   "originalImages": 497, "compiledNinePatches": 110, "originalFonts": 5},
                     "historicalEvidence": historical, "controllerFixtures": fixtures,

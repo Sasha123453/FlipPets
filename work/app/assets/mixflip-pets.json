@@ -1,0 +1,318 @@
+{
+  "schemaVersion": 1,
+  "pets": {
+    "mixflip-dewen": {
+      "nativePetType": 1,
+      "playback": "finite-tap-cycle",
+      "rotationTable": "PetsPagView 0/180, special action10 retained",
+      "scenes": [
+        {
+          "index": 0,
+          "sourceSha256": "e8fcd8bf802583a922dbdde5c8eb5f4a3b0e8fe85abecf493ead36bd9dab1bd0",
+          "width": 1208,
+          "height": 1392,
+          "durationUs": 7400000,
+          "sampledSubjectEnvelope": [
+            0.0,
+            0.08620689655172414,
+            0.9139072847682119,
+            1.0
+          ],
+          "emptyFirstFrame": true,
+          "emptyLastFrame": false
+        },
+        {
+          "index": 1,
+          "sourceSha256": "7b1127242c687f00e38d9ca95bcb5acefdcd7597528c08ebb1f29b1d14ef880d",
+          "width": 1208,
+          "height": 1392,
+          "durationUs": 8033334,
+          "sampledSubjectEnvelope": [
+            0.0,
+            0.06609195402298851,
+            0.9735099337748344,
+            1.0
+          ],
+          "emptyFirstFrame": false,
+          "emptyLastFrame": false
+        },
+        {
+          "index": 2,
+          "sourceSha256": "5d942dafa346a3238f7e04b8e47a0f7f6a4ac2c03550310bbc6fb2a663f64341",
+          "width": 1208,
+          "height": 1392,
+          "durationUs": 6933334,
+          "sampledSubjectEnvelope": [
+            0.0,
+            0.0,
+            0.9917218543046358,
+            1.0
+          ],
+          "emptyFirstFrame": true,
+          "emptyLastFrame": false
+        }
+      ]
+    },
+    "mixflip-shuitun": {
+      "nativePetType": 2,
+      "playback": "finite-tap-cycle",
+      "rotationTable": "PetsPagView 0/180, special action10 retained",
+      "scenes": [
+        {
+          "index": 0,
+          "sourceSha256": "d9ecc8fa2c219148a896a5f035fd4dfd01a3d85c074b7d44997ec0a0be9a1435",
+          "width": 1208,
+          "height": 1392,
+          "durationUs": 7433334,
+          "sampledSubjectEnvelope": [
+            0.08443708609271523,
+            0.0,
+            0.9486754966887417,
+            1.0
+          ],
+          "emptyFirstFrame": false,
+          "emptyLastFrame": false
+        },
+        {
+          "index": 1,
+          "sourceSha256": "a4aacd14d3bd8f9b5027813d93cf9dcf0b692c5e420603f0004ffdd32e5389ca",
+          "width": 1208,
+          "height": 1392,
+          "durationUs": 5766667,
+          "sampledSubjectEnvelope": [
+            0.019867549668874173,
+            0.23132183908045978,
+            0.9751655629139073,
+            1.0
+          ],
+          "emptyFirstFrame": false,
+          "emptyLastFrame": false
+        },
+        {
+          "index": 2,
+          "sourceSha256": "d0b86ffbd2f9b834e7c8a7a6e2b4406ba4cb124b16ed668df562353a9b160a0e",
+          "width": 1208,
+          "height": 1392,
+          "durationUs": 10000000,
+          "sampledSubjectEnvelope": [
+            0.0,
+            0.15373563218390804,
+            1.0,
+            1.0
+          ],
+          "emptyFirstFrame": false,
+          "emptyLastFrame": false
+        }
+      ]
+    },
+    "mixflip-shuita": {
+      "nativePetType": 3,
+      "playback": "finite-tap-cycle",
+      "rotationTable": "PetsPagView 0/180, special action10 retained",
+      "scenes": [
+        {
+          "index": 0,
+          "sourceSha256": "aa7592b187d70d92233349529616b88255aba9545e0e3d8568698acc634ae97e",
+          "width": 1208,
+          "height": 1392,
+          "durationUs": 7100000,
+          "sampledSubjectEnvelope": [
+            0.0,
+            0.07183908045977011,
+            1.0,
+            1.0
+          ],
+          "emptyFirstFrame": true,
+          "emptyLastFrame": false
+        },
+        {
+          "index": 1,
+          "sourceSha256": "9df3f368d693bea301af2596b431fd008e8e7cf37838db354afac3add29896e2",
+          "width": 1408,
+          "height": 1392,
+          "durationUs": 5833334,
+          "sampledSubjectEnvelope": [
+            0.06321839080459771,
+            0.18459302325581395,
+            1.0,
+            1.0
+          ],
+          "emptyFirstFrame": false,
+          "emptyLastFrame": false
+        },
+        {
+          "index": 2,
+          "sourceSha256": "cc60fb8c816a2d68cc31f60bbd9a3d9be248abc9bc71f0491b7aad47b50db0c4",
+          "width": 1208,
+          "height": 1392,
+          "durationUs": 5666667,
+          "sampledSubjectEnvelope": [
+            0.0,
+            0.14942528735632185,
+            1.0,
+            1.0
+          ],
+          "emptyFirstFrame": true,
+          "emptyLastFrame": false
+        }
+      ]
+    },
+    "mixflip-bixiong": {
+      "nativePetType": 4,
+      "playback": "finite-tap-cycle",
+      "rotationTable": "PetsPagView 0/180, special action10 retained",
+      "scenes": [
+        {
+          "index": 0,
+          "sourceSha256": "3018f45ebea391d33d942d7cb242f29c25b28a9e022c0946e53363198b2ac6b8",
+          "width": 1308,
+          "height": 1392,
+          "durationUs": 5000000,
+          "sampledSubjectEnvelope": [
+            0.06574923547400612,
+            0.21839080459770116,
+            0.9495412844036697,
+            1.0
+          ],
+          "emptyFirstFrame": false,
+          "emptyLastFrame": false
+        },
+        {
+          "index": 1,
+          "sourceSha256": "d9cfa364277f6149be23e4e95af77f80e55b19e93f87918f697608340e1cc1d7",
+          "width": 1208,
+          "height": 1392,
+          "durationUs": 5000000,
+          "sampledSubjectEnvelope": [
+            0.023178807947019868,
+            0.14655172413793102,
+            1.0,
+            1.0
+          ],
+          "emptyFirstFrame": true,
+          "emptyLastFrame": false
+        },
+        {
+          "index": 2,
+          "sourceSha256": "01fd1ca27f140f94485e5bfec07fefa0be9cd47b1ebc4c9e355fd93c2b508ea2",
+          "width": 1208,
+          "height": 1392,
+          "durationUs": 5000000,
+          "sampledSubjectEnvelope": [
+            0.0,
+            0.17672413793103448,
+            1.0,
+            1.0
+          ],
+          "emptyFirstFrame": false,
+          "emptyLastFrame": false
+        }
+      ]
+    },
+    "mixflip-xianluo": {
+      "nativePetType": 5,
+      "playback": "finite-tap-cycle",
+      "rotationTable": "PetsPagView 0/180, special action10 retained",
+      "scenes": [
+        {
+          "index": 0,
+          "sourceSha256": "48e6bc0255dd92f817862ab876060fb5cbaf6739534608e0e73b8ec172b897c9",
+          "width": 1268,
+          "height": 1392,
+          "durationUs": 5000000,
+          "sampledSubjectEnvelope": [
+            0.0,
+            0.06321839080459771,
+            1.0,
+            1.0
+          ],
+          "emptyFirstFrame": false,
+          "emptyLastFrame": false
+        },
+        {
+          "index": 1,
+          "sourceSha256": "ccd7e186020e1d60a70ea6719a0341e351a38db33a8ffa42e330c0b37a6b1e1d",
+          "width": 1268,
+          "height": 1392,
+          "durationUs": 5000000,
+          "sampledSubjectEnvelope": [
+            0.00473186119873817,
+            0.11350574712643678,
+            0.9495268138801262,
+            1.0
+          ],
+          "emptyFirstFrame": false,
+          "emptyLastFrame": false
+        },
+        {
+          "index": 2,
+          "sourceSha256": "d3e21521aaec85de0a76bb6199d7378cb966ce63ea9fd3605a195f988ff39e40",
+          "width": 1268,
+          "height": 1392,
+          "durationUs": 5000000,
+          "sampledSubjectEnvelope": [
+            0.0,
+            0.022988505747126436,
+            0.998422712933754,
+            1.0
+          ],
+          "emptyFirstFrame": false,
+          "emptyLastFrame": false
+        }
+      ]
+    },
+    "mixflip-heibao": {
+      "nativePetType": 6,
+      "playback": "finite-tap-cycle",
+      "rotationTable": "PetsPagView 0/180, special action10 retained",
+      "scenes": [
+        {
+          "index": 0,
+          "sourceSha256": "25c71ac2b85376d979a2c5b2bafe7564a20c7e8bd90e9d50063996c3cae7794f",
+          "width": 1409,
+          "height": 1392,
+          "durationUs": 5000000,
+          "sampledSubjectEnvelope": [
+            0.0,
+            0.17732558139534885,
+            0.9339080459770115,
+            1.0
+          ],
+          "emptyFirstFrame": false,
+          "emptyLastFrame": false
+        },
+        {
+          "index": 1,
+          "sourceSha256": "ced78cbef3f36b7caf6b46ea04b6f81c587eaeeb18559793eed1444793233644",
+          "width": 1268,
+          "height": 1392,
+          "durationUs": 5000000,
+          "sampledSubjectEnvelope": [
+            0.0,
+            0.015804597701149427,
+            1.0,
+            1.0
+          ],
+          "emptyFirstFrame": false,
+          "emptyLastFrame": false
+        },
+        {
+          "index": 2,
+          "sourceSha256": "8670e2cdb2b75c4a868b87274b9a2547025137a6ec6223d3877b1434bd4c4a84",
+          "width": 1268,
+          "height": 1392,
+          "durationUs": 5000000,
+          "sampledSubjectEnvelope": [
+            0.0,
+            0.11350574712643678,
+            1.0,
+            1.0
+          ],
+          "emptyFirstFrame": false,
+          "emptyLastFrame": false
+        }
+      ]
+    }
+  },
+  "rights": "Xiaomi artwork retains its owners rights; excluded from the MIT code license."
+}

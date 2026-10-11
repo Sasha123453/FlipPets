@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-11",
+  "scope": "Static native folded-lockscreen path; no phone access, native Apply, root or app code changes",
+  "sources": {
+    "systemui": {
+      "path": "work/folded-research/MiuiSystemUI.apk",
+      "sha256": "bbb73370372d95707caa07bc00a6b2674afc5f433e5b074c4f8d6837b74ba757",
+      "role": "Downloaded ruyi Global OS3.0.303.0.WNIMIXM; exact EEA SystemUI hash not compared"
+    },
+    "aod": {
+      "sha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+      "role": "Previously preserved EEA AOD; current phone version not recaptured"
+    }
+  },
+  "decompiled_source_sha256": {
+    "Aod-TinyKeyguardBackupDelegate.java": "97c309cd463c1f28b0ea9ec3d5e24095317f44fc29f33383b7a763ae4a19714b",
+    "SystemUI-AiPetsTemplateView.java": "350b691b16cf60b2ecb79dce9b3ba746c3f4cd8ec1f220659375e13d52dc78e1",
+    "SystemUI-PetsTemplateView.java": "0aabbaefc0cbdd22589c9c9dd29ac0859e51c3573282b2d7281f2843314e828e",
+    "SystemUI-TinyKeyguardPanelViewControllerImpl.java": "7e5a6b8f418681db4604cd9340765b1b11ef08cf4ce01291b116a9e68c020046",
+    "SystemUI-TinyKeyguardTemplateAdapter.java": "c9638b85c520e5d6528de2a200bd7d08d3b527d77ac67e78f947b892824e9821",
+    "SystemUI-TinyTemplateItemContainer.java": "7fbc8395be0e2fd3cb74d156af0553834562575683297c4a861eed9ed13c4e35",
+    "SystemUI-TinyTemplateViewFactory.java": "ce6592a4b5789e90b0182d2e32f0c9251d7ce93d0aa98b887c94a85b914c45d1"
+  },
+  "findings": [
+    "SystemUI factory supports ai_pets and AiPetsTemplateView binds custom resourcePag from persisted template data",
+    "SystemUI observes current_tiny_keyguard_info and all_tiny_keyguard_info; native template data is shared with AOD editor",
+    "AiPetsTemplateView initial binding requests no autoplay; parent wake path can play, subject to notifications and biometric unlock",
+    "Single-click can replay; AOD touch path returns without handling click; fold path hides PAG layer",
+    "AiPetsTemplateView uses explicit wallpaper position translations when both orientations exist; otherwise first-frame axes fallback",
+    "AOD apply source copies resources before current selection write; optional history insertion follows; history list may be truncated",
+    "rollbackAiPetsByBizId filters history and may select first remaining item; it is not exact transaction restoration",
+    "Native backup delegate handles both secure settings and resource archives but is internal FullBackupAgent plumbing, not a verified public rollback API"
+  ],
+  "decompiler_caveats": {
+    "SystemUI-TinyKeyguardPanelViewControllerImpl.java": "2 reported errors; large unverified methods not treated as exact",
+    "Aod-TinyKeyguardBackupDelegate.java": "40 reported errors; only readable backup structure used as clues",
+    "other_selected_systemui_classes": "JADX 1.5.6 reported done; no physical validation"
+  },
+  "physical_gates": [
+    "Exact EEA SystemUI/AOD identities",
+    "Native preview PAG read/load and actual motion",
+    "User-specific position geometry and camera clearance",
+    "Exact complete backup and interruption-safe restore",
+    "Folded locked awake versus native AOD behavior"
+  ],
+  "recommendation": "OEM editor -> native resource copy/selection -> existing SystemUI renderer first; root only for validated missing staging/backup/install capabilities, no lockscreen activity overlay"
+}

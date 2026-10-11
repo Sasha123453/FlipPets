@@ -41,7 +41,7 @@ def collect(name,count,timeout=600):
 if not args.resume_render:
     fresh(['qa.json','composition-qa.json'])
     shell('am start -n org.flippets.app/.PetActivity --ei qaPet 26 --ez qa true --ez qaComposition true')
-collect('qa.json',176);collect('composition-qa.json',68)
+collect('qa.json',194);collect('composition-qa.json',68)
 for name,count,extra in [('ui-switch-qa.json',15,'qaSwitch'),('utility-qa.json',15,'qaUtilities')]:
     fresh([name]);shell(f'am start -n org.flippets.app/.PetActivity --ei qaPet 26 --ez {extra} true');collect(name,count)
-print('274 current APK checks passed',binary,flush=True)
+print('292 current APK checks passed',binary,flush=True)

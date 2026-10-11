@@ -1,5 +1,12 @@
 # One native pet: prepared resources and physical proof gates
 
+Follow-up on11 October2026: the exact EEA AOD/SystemUI were captured and Charlie
+motion was observed in the OEM editor. A source-backed opaque adaptation fixes
+the transparent-PAG/poster mismatch. Native Apply, exact Restore and the real
+folded lockscreen remain unproven. See [current full-flow work](native-pet-flow.md).
+The preparation description and proof bundle below retain their historical APK
+binding; they are not relabelled as new decoder or phone results.
+
 The first resource is Charlie (`bird-pandora`, `pag_0.pag`), unchanged from the
 verified 17 Pro container. The inspected 18 Pro copy is byte-identical. This is
 resource preparation for MIX Flip's existing tiny-keyguard host. It does not add

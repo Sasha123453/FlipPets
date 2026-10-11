@@ -1,5 +1,66 @@
 # Changes
 
+## Completed MIX Flip collection and phone verification — 11 October 2026
+
+- Six original MIX Flip pets:18 source scenes, finite playback/tap cycling,
+  original backgrounds, C700 clocks/date/week and per-pet source colors.
+  Both clock and pet mirroring now select orientation by actual camera-cutout side.
+- Calibrated native Charlie updated in place with exact resource readback and
+  unchanged other designs/slot counts. Its12 app scenes now use the same shared
+  transform. Further Charlie clock work is deferred; existing native AI clocks
+  and donor app clocks remain different.
+- Add a declarative layout registry, source/decode-bound draft preparation and
+  build validation for future compatible PAG pets. Preserve manual drafts/Cancel
+  and unrelated donor geometry; clockless Charlie retains its shared body size.
+- Current APK SHA and fresh verification are recorded at the top of HANDOFF.
+  All479 current-APK regression cases pass, including80 MIX Flip/shared and19
+  layout checks. All six pets also pass24 physical UI/motion/hold checks.
+
+## Phone run and stock MIX Flip clocks — 11 October 2026
+
+- Install development updates with the retained signing certificate and exact
+  installed SHA checks. Verify stock gallery Cancel and separate Shizuku native
+  summary/history/catalogue operations on the inspected MIX Flip EEA profile.
+- Replace the generic MIX Flip clock with original C700 digits, source colors,
+  signed margins, date/week layers and source camera-cutout selection. Raw display
+  rotation is not the TinyClock camera-side selector. Battery remains optional.
+- User observes native Charlie tap replay without notifications; with notifications
+  it did not replay. This describes the trial before the subsequent calibrated update.
+- Current SHA and scoped checks are in HANDOFF. Earlier full emulator results do
+  not validate these rebuilt APKs; release/module bundles were not regenerated.
+
+## MIX Flip pet integration and Charlie calibration — 11 October 2026
+
+- Add six stock pets as a separate MIX Flip collection, preserving all33 earlier
+  entries. Verify18 unchanged PAG and12 original foreground vectors; decode144
+  stock sample frames and8 Charlie source frames, allowing valid empty starts.
+- Use original stock canvas/rotation translations and finite1→2→3 touch playback;
+  release hidden resources. New stock previews require Apply/Cancel and affect
+  only the open-phone app mode.
+- Add a separate Shizuku native-state summary and fixed OEM management entrypoints,
+  with exact EEA/APK guards and no raw private JSON or file paths in the UI/logs.
+  Physical operation and prepared Charlie update from the app remain unverified.
+- Prepare a separate2.220779× Charlie composition by capybara subject size, preserving
+  donor payloads; decode8 full-resolution opaque moving frames and its real poster.
+  Do not replace the installed Charlie, claim repaired crest or physical clearance.
+- Extend publication to39 entries/194 clips and463 named APK checks while retaining
+  baseline33/provenance guards. Current verification and SHA are in HANDOFF.
+
+## Native pet phone follow-up — 11 October 2026
+
+- Resume pets/full-flow work; defer cards. Verify actual EEA AOD/SystemUI hashes
+  and observe Charlie motion in Xiaomi's own editor, without native Apply.
+- Prepare validated TemplateItem/resource manifests and a Charlie compatibility
+  composition using unchanged donor compositions and the verified MAML background.
+  Cover the static poster opaquely to avoid doubling; await actual bird pixels
+  before accepting a resting poster. Inspect both editor orientations.
+- Add guarded preview/cancel/dependency capture, native geometry models and an
+  interruption/restore file model. Native write/cache restoration and real folded
+  lockscreen acceptance remain unproven. See docs/native-pet-flow.md.
+- Earlier in the session, measure folded logical Display0/OEM-scaled bounds,
+  narrow routing to the exact EEA profile, correct typed activity properties and
+  add bounded own-window diagnostics. Current APK has scoped QA, not a full release pass.
+
 ## Native pet preparation — 11 October 2026
 
 - Prepare unchanged Charlie PAG, exact decoded first-frame poster and eight source-resolution sample PNGs with RGBA hash verification.

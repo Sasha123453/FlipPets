@@ -1138,5 +1138,113 @@
     "durationMs": {
       "0": 1000
     }
+  },
+  {
+    "id": "mixflip-dewen",
+    "name": "Девон-рекс",
+    "kind": "ambient",
+    "clips": {
+      "0": "pets/mixflip-dewen/pag_0.pag",
+      "1": "pets/mixflip-dewen/pag_1.pag",
+      "2": "pets/mixflip-dewen/pag_2.pag"
+    },
+    "extra": [],
+    "source": "Xiaomi MIX Flip OS3.0.303.0.WNIEUXM · встроенные питомцы",
+    "gradientFrom": "#EA4E73",
+    "gradientTo": "#EA4E73",
+    "timeColor": "#FFFFFF",
+    "touchSceneCount": 3,
+    "nativePetType": 1,
+    "nativeBackgroundDrawable": "mixflip_dewen"
+  },
+  {
+    "id": "mixflip-shuitun",
+    "name": "Капибара",
+    "kind": "ambient",
+    "clips": {
+      "0": "pets/mixflip-shuitun/pag_0.pag",
+      "1": "pets/mixflip-shuitun/pag_1.pag",
+      "2": "pets/mixflip-shuitun/pag_2.pag"
+    },
+    "extra": [],
+    "source": "Xiaomi MIX Flip OS3.0.303.0.WNIEUXM · встроенные питомцы",
+    "gradientFrom": "#323752",
+    "gradientTo": "#323752",
+    "timeColor": "#FFFFFF",
+    "touchSceneCount": 3,
+    "nativePetType": 2,
+    "nativeBackgroundDrawable": "mixflip_shuitun"
+  },
+  {
+    "id": "mixflip-shuita",
+    "name": "Выдра",
+    "kind": "ambient",
+    "clips": {
+      "0": "pets/mixflip-shuita/pag_0.pag",
+      "1": "pets/mixflip-shuita/pag_1.pag",
+      "2": "pets/mixflip-shuita/pag_2.pag"
+    },
+    "extra": [],
+    "source": "Xiaomi MIX Flip OS3.0.303.0.WNIEUXM · встроенные питомцы",
+    "gradientFrom": "#41ADC5",
+    "gradientTo": "#41ADC5",
+    "timeColor": "#FFFFFF",
+    "touchSceneCount": 3,
+    "nativePetType": 3,
+    "nativeBackgroundDrawable": "mixflip_shuita"
+  },
+  {
+    "id": "mixflip-bixiong",
+    "name": "Бишон-фризе",
+    "kind": "ambient",
+    "clips": {
+      "0": "pets/mixflip-bixiong/pag_0.pag",
+      "1": "pets/mixflip-bixiong/pag_1.pag",
+      "2": "pets/mixflip-bixiong/pag_2.pag"
+    },
+    "extra": [],
+    "source": "Xiaomi MIX Flip OS3.0.303.0.WNIEUXM · встроенные питомцы",
+    "gradientFrom": "#915D40",
+    "gradientTo": "#915D40",
+    "timeColor": "#FFFFFF",
+    "touchSceneCount": 3,
+    "nativePetType": 4,
+    "nativeBackgroundDrawable": "mixflip_bixiong"
+  },
+  {
+    "id": "mixflip-xianluo",
+    "name": "Сиамский кот",
+    "kind": "ambient",
+    "clips": {
+      "0": "pets/mixflip-xianluo/pag_0.pag",
+      "1": "pets/mixflip-xianluo/pag_1.pag",
+      "2": "pets/mixflip-xianluo/pag_2.pag"
+    },
+    "extra": [],
+    "source": "Xiaomi MIX Flip OS3.0.303.0.WNIEUXM · встроенные питомцы",
+    "gradientFrom": "#282827",
+    "gradientTo": "#282827",
+    "timeColor": "#FFFFFF",
+    "touchSceneCount": 3,
+    "nativePetType": 5,
+    "nativeBackgroundDrawable": "mixflip_xianluo"
+  },
+  {
+    "id": "mixflip-heibao",
+    "name": "Чёрная пантера",
+    "kind": "ambient",
+    "clips": {
+      "0": "pets/mixflip-heibao/pag_0.pag",
+      "1": "pets/mixflip-heibao/pag_1.pag",
+      "2": "pets/mixflip-heibao/pag_2.pag"
+    },
+    "extra": [],
+    "source": "Xiaomi MIX Flip OS3.0.303.0.WNIEUXM · встроенные питомцы",
+    "gradientFrom": "#173F2E",
+    "gradientTo": "#173F2E",
+    "timeColor": "#FFFFFF",
+    "touchSceneCount": 3,
+    "nativePetType": 6,
+    "nativeBackgroundDrawable": "mixflip_heibao"
   }
 ]

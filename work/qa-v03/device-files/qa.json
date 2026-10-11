@@ -1,6 +1,6 @@
 {
-  "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
-  "tested": 176,
+  "apkSha256": "57d39faa9cf1cd54a79fc50a6045214e325076a623efe131237123ac16e09778",
+  "tested": 194,
   "failed": 0,
   "results": [
     {
@@ -2638,6 +2638,276 @@
       "frameHashes": [
         "27361755b31bf1adf14e8a2ba10847771c533229497a194bb74ebd8a08f06ecc",
         "2fbbddc40629b49b9a31e1f748e8cc494efd541eb4e310363df59c9ebb9dc456"
+      ],
+      "visible": true,
+      "framesDiffer": true,
+      "ok": true
+    },
+    {
+      "pet": "\u0414\u0435\u0432\u043e\u043d-\u0440\u0435\u043a\u0441",
+      "clip": "0",
+      "path": "pets/mixflip-dewen/pag_0.pag",
+      "width": 1208,
+      "height": 1392,
+      "durationUs": 7400000,
+      "frameHashes": [
+        "07b02520b4d1f1831417211b34d575b3f77e38e9d726c57c2f2c80581d6691f4",
+        "0f45f1c52eef7835dd028017f3f7e249bf1b85c88af0793702612b9769d1b016"
+      ],
+      "visible": true,
+      "framesDiffer": true,
+      "ok": true
+    },
+    {
+      "pet": "\u0414\u0435\u0432\u043e\u043d-\u0440\u0435\u043a\u0441",
+      "clip": "1",
+      "path": "pets/mixflip-dewen/pag_1.pag",
+      "width": 1208,
+      "height": 1392,
+      "durationUs": 8033334,
+      "frameHashes": [
+        "0642cdea45e8c29fc409f90fe8b0ae479dfcd488b58bd8715afa5ee8d9d57838",
+        "069994ca8c58ada805576288ba74dcdb568f28bcd4ec740caa455c99975c52b9"
+      ],
+      "visible": true,
+      "framesDiffer": true,
+      "ok": true
+    },
+    {
+      "pet": "\u0414\u0435\u0432\u043e\u043d-\u0440\u0435\u043a\u0441",
+      "clip": "2",
+      "path": "pets/mixflip-dewen/pag_2.pag",
+      "width": 1208,
+      "height": 1392,
+      "durationUs": 6933334,
+      "frameHashes": [
+        "d92963945d765a5c55f79376bf60e48acce111f46a1d5639c6d3220ec5b1cde8",
+        "dd89f01170576526e1fb8273a962321e724f8bd71e0385f79ddc79e8b5939a90"
+      ],
+      "visible": true,
+      "framesDiffer": true,
+      "ok": true
+    },
+    {
+      "pet": "\u041a\u0430\u043f\u0438\u0431\u0430\u0440\u0430",
+      "clip": "0",
+      "path": "pets/mixflip-shuitun/pag_0.pag",
+      "width": 1208,
+      "height": 1392,
+      "durationUs": 7433334,
+      "frameHashes": [
+        "a6e713943fe79365c7c7da2fe02bbd4c85aba4a8af49136d654ca405f83682c0",
+        "1ec90281dcaf1d4edb3898766b02aa78a3d3bea56d05d3a6f2cb49f37bf5c9c9"
+      ],
+      "visible": true,
+      "framesDiffer": true,
+      "ok": true
+    },
+    {
+      "pet": "\u041a\u0430\u043f\u0438\u0431\u0430\u0440\u0430",
+      "clip": "1",
+      "path": "pets/mixflip-shuitun/pag_1.pag",
+      "width": 1208,
+      "height": 1392,
+      "durationUs": 5766667,
+      "frameHashes": [
+        "5b62ec4546d8d84f59e8764bdcfa250618a6e5b4dded4bb291d6b338547c1ad1",
+        "7399f3bca557a88cb1eb758b186ed4d556b2c10d431faab63e896535e6552b62"
+      ],
+      "visible": true,
+      "framesDiffer": true,
+      "ok": true
+    },
+    {
+      "pet": "\u041a\u0430\u043f\u0438\u0431\u0430\u0440\u0430",
+      "clip": "2",
+      "path": "pets/mixflip-shuitun/pag_2.pag",
+      "width": 1208,
+      "height": 1392,
+      "durationUs": 10000000,
+      "frameHashes": [
+        "1649804f788af739b123c9404c04b173ca6f0c64c4f08369c1f940fef5a4175d",
+        "c1736cd5a17a25d9ab2f303f1d8ca1d5d78666aa09602a57c23aaef3f09cec77"
+      ],
+      "visible": true,
+      "framesDiffer": true,
+      "ok": true
+    },
+    {
+      "pet": "\u0412\u044b\u0434\u0440\u0430",
+      "clip": "0",
+      "path": "pets/mixflip-shuita/pag_0.pag",
+      "width": 1208,
+      "height": 1392,
+      "durationUs": 7100000,
+      "frameHashes": [
+        "a6973a6fb1ac2d29bc4b851468e96751a00fc5ec297485a3e2a412c142a9734c",
+        "8d3296698bb9373798ef1a01aa7c507d338d5059cf37addea26be25a6f214b5b"
+      ],
+      "visible": true,
+      "framesDiffer": true,
+      "ok": true
+    },
+    {
+      "pet": "\u0412\u044b\u0434\u0440\u0430",
+      "clip": "1",
+      "path": "pets/mixflip-shuita/pag_1.pag",
+      "width": 1408,
+      "height": 1392,
+      "durationUs": 5833334,
+      "frameHashes": [
+        "9dc819aeb8d5f5866a899a2aebdbacad753ab193ebe130c634f75fcc17fc582d",
+        "492c72c5d99e07504dc32d8754ab4151dbe680a8406ca643ea67357b7eba4d1e"
+      ],
+      "visible": true,
+      "framesDiffer": true,
+      "ok": true
+    },
+    {
+      "pet": "\u0412\u044b\u0434\u0440\u0430",
+      "clip": "2",
+      "path": "pets/mixflip-shuita/pag_2.pag",
+      "width": 1208,
+      "height": 1392,
+      "durationUs": 5666667,
+      "frameHashes": [
+        "b317c9d3cbc2d4587c7424e8b081876d810da856728df626c83ee83931cb49dc",
+        "46d0a375d5d2463a9831210f6749595d16869984f5b33f20af5a98e403529794"
+      ],
+      "visible": true,
+      "framesDiffer": true,
+      "ok": true
+    },
+    {
+      "pet": "\u0411\u0438\u0448\u043e\u043d-\u0444\u0440\u0438\u0437\u0435",
+      "clip": "0",
+      "path": "pets/mixflip-bixiong/pag_0.pag",
+      "width": 1308,
+      "height": 1392,
+      "durationUs": 5000000,
+      "frameHashes": [
+        "133ffa0b3c76fb50c9e4e4fde9c10cbd0e6e6ebbe658b774e6dd83d82f8bc16b",
+        "905f8d9cd26946c8ad18c3aa072dbc8d02d2b4e2378dfbe349db5e50f565dac9"
+      ],
+      "visible": true,
+      "framesDiffer": true,
+      "ok": true
+    },
+    {
+      "pet": "\u0411\u0438\u0448\u043e\u043d-\u0444\u0440\u0438\u0437\u0435",
+      "clip": "1",
+      "path": "pets/mixflip-bixiong/pag_1.pag",
+      "width": 1208,
+      "height": 1392,
+      "durationUs": 5000000,
+      "frameHashes": [
+        "37b1baf412b362086b731eb259b39a4ccb534b44c7ee7cb722f05ee977808ab2",
+        "033d041b400b3415e0af8e8b9e273c92994ec73b0a56508fefb4768328519e9b"
+      ],
+      "visible": true,
+      "framesDiffer": true,
+      "ok": true
+    },
+    {
+      "pet": "\u0411\u0438\u0448\u043e\u043d-\u0444\u0440\u0438\u0437\u0435",
+      "clip": "2",
+      "path": "pets/mixflip-bixiong/pag_2.pag",
+      "width": 1208,
+      "height": 1392,
+      "durationUs": 5000000,
+      "frameHashes": [
+        "84af1b6356ad6ee48e5eaf38a47785c6b0606db2a9c836d0f46148dd0d937fc4",
+        "215e030c9489b82dfe7f16a7fe1b45e801c4a177c0d53f0cb9292dfd1fc2bbd2"
+      ],
+      "visible": true,
+      "framesDiffer": true,
+      "ok": true
+    },
+    {
+      "pet": "\u0421\u0438\u0430\u043c\u0441\u043a\u0438\u0439 \u043a\u043e\u0442",
+      "clip": "0",
+      "path": "pets/mixflip-xianluo/pag_0.pag",
+      "width": 1268,
+      "height": 1392,
+      "durationUs": 5000000,
+      "frameHashes": [
+        "733d5c7866c7ae5f5d507ab2f7c4daa44ea103599c03142fc017ccd8a08bd8d4",
+        "8c2e88f4ceddab78a787e91d5daebb329e6bb1e806ca6c460cd4546d3cc1d4e6"
+      ],
+      "visible": true,
+      "framesDiffer": true,
+      "ok": true
+    },
+    {
+      "pet": "\u0421\u0438\u0430\u043c\u0441\u043a\u0438\u0439 \u043a\u043e\u0442",
+      "clip": "1",
+      "path": "pets/mixflip-xianluo/pag_1.pag",
+      "width": 1268,
+      "height": 1392,
+      "durationUs": 5000000,
+      "frameHashes": [
+        "97855ee8db837f4f531b260632bbbff305855750828b90005f2c3cba6136dfcf",
+        "424e077f31af6e7258e1e1035fbe61aa556ad3afc98ab955725e1fcdc0935d8e"
+      ],
+      "visible": true,
+      "framesDiffer": true,
+      "ok": true
+    },
+    {
+      "pet": "\u0421\u0438\u0430\u043c\u0441\u043a\u0438\u0439 \u043a\u043e\u0442",
+      "clip": "2",
+      "path": "pets/mixflip-xianluo/pag_2.pag",
+      "width": 1268,
+      "height": 1392,
+      "durationUs": 5000000,
+      "frameHashes": [
+        "d6d75a453ecfd4dfd39a9d0eb36fe1055aa617c56ff2b462eb99f2c2c8b5007f",
+        "5e42a81df70070f716a93fac254ca1f4537ff2480788f573a7a7a73d2ca205da"
+      ],
+      "visible": true,
+      "framesDiffer": true,
+      "ok": true
+    },
+    {
+      "pet": "\u0427\u0451\u0440\u043d\u0430\u044f \u043f\u0430\u043d\u0442\u0435\u0440\u0430",
+      "clip": "0",
+      "path": "pets/mixflip-heibao/pag_0.pag",
+      "width": 1409,
+      "height": 1392,
+      "durationUs": 5000000,
+      "frameHashes": [
+        "a371006ceb8905032070bd80417f1ead16f34a2921f206bcc9f40fd2741036be",
+        "5f6458c51849b9ffc2b421afcfba07a3ac5feaa87419be99e4a2b335a736e91c"
+      ],
+      "visible": true,
+      "framesDiffer": true,
+      "ok": true
+    },
+    {
+      "pet": "\u0427\u0451\u0440\u043d\u0430\u044f \u043f\u0430\u043d\u0442\u0435\u0440\u0430",
+      "clip": "1",
+      "path": "pets/mixflip-heibao/pag_1.pag",
+      "width": 1268,
+      "height": 1392,
+      "durationUs": 5000000,
+      "frameHashes": [
+        "09b95e61521871770d988e910ab886fe0bfc1090650bcfd3a63471deecd3533e",
+        "c86afca677c8477e825af2d3e97d865be5469e14999e4cb20be647ed6dcf57d8"
+      ],
+      "visible": true,
+      "framesDiffer": true,
+      "ok": true
+    },
+    {
+      "pet": "\u0427\u0451\u0440\u043d\u0430\u044f \u043f\u0430\u043d\u0442\u0435\u0440\u0430",
+      "clip": "2",
+      "path": "pets/mixflip-heibao/pag_2.pag",
+      "width": 1268,
+      "height": 1392,
+      "durationUs": 5000000,
+      "frameHashes": [
+        "f5f9a83b52bc4f7cfa3994463819a3d447c51b9c47e175441669f691ad8893af",
+        "df984495990d4a50f0360715a40c1292d9ff6cf04874085302e8ce00454c223f"
       ],
       "visible": true,
       "framesDiffer": true,

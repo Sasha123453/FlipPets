@@ -27,6 +27,7 @@ public class MainActivity extends Activity {
     boolean layoutQaStarted;
     boolean miniQaStarted;
     boolean nativeQaStarted;
+    boolean mixFlipQaStarted;
     boolean mainStarted;
     AlertDialog miniDialog;
     final android.content.SharedPreferences.OnSharedPreferenceChangeListener miniChanged=(p,key)->{if("selected".equals(key)&&!isDestroyed())refreshSelection();};
@@ -51,7 +52,9 @@ public class MainActivity extends Activity {
         button("Выбрать мини-приложение",v->{if(miniDialog==null||!miniDialog.isShowing())miniDialog=MiniAppsDialog.show(this);});
         button("Открыть карточки отдельно",v->startActivity(new Intent(this,CoverAppsActivity.class)));
         button("Карточки в штатном внешнем меню",v->nativeCardsSettings());
+        button("Диагностика запуска карточек",v->NativeLaunchContext.show(this));
         text("Два экрана",22);
+        button("Питомцы на штатной блокировке",v->NativePetManager.show(this));
         button("Включить через Shizuku",v->startSession());button("Выключить внешний сеанс",v->{waitingSessionStart=false;ShizukuBridge.stop(this);});
         text("При раскрытии — твоё оформление. При складывании — штатный экран и AOD Xiaomi.",14);
         button("Полноэкранный просмотр",v->startActivity(new Intent(this,PetActivity.class)));
@@ -64,6 +67,7 @@ public class MainActivity extends Activity {
     }
     void ownPhoto(){JSONArray catalog=Pets.catalog(this);for(int i=0;i<catalog.length();i++){JSONObject pet=catalog.optJSONObject(i);if("photo".equals(pet.optString("renderer"))){select(i);pickImage(pet.optString("id"),false);return;}}message("Оформление для своей фотографии не найдено.");}
     boolean routeNativeCards(){
+        NativeLaunchContext.record(this,"main_route_check");
         if(isFinishing()||getIntent().getBooleanExtra("nativeSettings",false)||!NativeCards.enabled(this)||!NativeCoverRoute.isCover(this))return false;
         try{startActivity(new Intent(this,CoverAppsActivity.class));finish();return true;}catch(RuntimeException e){message("Карточки не удалось открыть на этом экране.");return false;}
     }
@@ -74,6 +78,7 @@ public class MainActivity extends Activity {
         TextView note=ui.label("Выбор и данные карточек хранятся отдельно от внешнего сеанса с питомцем. Сон, блокировка и перенос между экранами остаются под управлением Xiaomi. Pomodoro не является фоновым будильником.",13,true);panel.addView(note);
         new AlertDialog.Builder(this).setTitle("Карточки во внешнем меню").setView(panel).setPositiveButton("Применить",(d,w)->NativeCards.prefs(this).edit().putBoolean("coverLaunch",choice.isChecked()).apply()).setNegativeButton("Отмена",null).show();
     }
+    public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);if(focused)NativeLaunchContext.record(this,"main_focus");}
     public void onConfigurationChanged(android.content.res.Configuration c){super.onConfigurationChanged(c);routeNativeCards();}
     protected void onNewIntent(Intent intent){super.onNewIntent(intent);setIntent(intent);routeNativeCards();}
     void startSession(){if(CoverGuard.notificationPermissionNeeded(this)){waitingSessionStart=true;CoverGuard.requestNotificationPermission(this);return;}ShizukuBridge.start(this);}
@@ -139,6 +144,7 @@ public class MainActivity extends Activity {
         }
         if(preview!=null&&!miniQaStarted&&getIntent().getBooleanExtra("qaMiniApps",false)&&NativeAppsQa.emulator()){miniQaStarted=true;preview.postDelayed(()->MiniAppsQa.start(this),1200);}
         if(preview!=null&&!layoutQaStarted&&getIntent().getBooleanExtra("qaPetLayout",false)&&NativeAppsQa.emulator()){layoutQaStarted=true;preview.postDelayed(()->PetLayoutQa.start(this),1200);}
+        if(preview!=null&&!mixFlipQaStarted&&getIntent().getBooleanExtra("qaMixFlip",false)&&NativeAppsQa.emulator()){mixFlipQaStarted=true;preview.postDelayed(()->MixFlipQa.start(this),1200);}
     }
     protected void onStop(){mainStarted=false;if(miniDialog!=null)miniDialog.dismiss();MiniAppStore.prefs(this).unregisterOnSharedPreferenceChangeListener(miniChanged);if(preview!=null)preview.stop();super.onStop();}
     protected void onDestroy(){if(miniDialog!=null)miniDialog.dismiss();if(layoutDialog!=null)layoutDialog.dismiss();if(preview!=null)preview.destroy();super.onDestroy();}

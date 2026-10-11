@@ -24,12 +24,13 @@ public final class PetStage extends FrameLayout implements SensorEventListener {
     boolean gravityRegistered;
     final TextView clock;
     final PetBackdrop backdrop;
+    final View stockClockDetails;
     final UtilityCardView utility;
     final MiniAppView mini;
     boolean miniVisible;
     final boolean full;
     final View.OnClickListener mediaClicked;
-    boolean previewSurface;int previewCameraRight;
+    boolean previewSurface;int previewCameraRight,previewRotation=2,previewClockRotation;
     private PetLayoutProfile layoutDraft;
     final Handler handler=new Handler(Looper.getMainLooper());
     final SensorManager sensors;
@@ -55,12 +56,13 @@ public final class PetStage extends FrameLayout implements SensorEventListener {
         video=new PetVideo(c);addView(video,new LayoutParams(-1,-1));video.setVisibility(GONE);
         front=new PhotoLayer(c,true);addView(front,new LayoutParams(-1,-1));front.setVisibility(GONE);
         composition=new CompositionView(c);addView(composition,new LayoutParams(-1,-1));composition.setVisibility(GONE);
+        stockClockDetails=new View(c){protected void onDraw(android.graphics.Canvas canvas){if(running&&!miniVisible&&backdrop.getVisibility()==VISIBLE)backdrop.drawNativeClock(canvas,true);}};stockClockDetails.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);addView(stockClockDetails,new LayoutParams(-1,-1));
         clock=new TextView(c);clock.setTextColor(Color.WHITE);clock.setTextSize(34);clock.setGravity(Gravity.CENTER);clock.setShadowLayer(4,0,1,0x33000000);
         LayoutParams cp=new LayoutParams(-1,-2,Gravity.TOP|Gravity.CENTER_HORIZONTAL);cp.topMargin=24;addView(clock,cp);clock.setVisibility(GONE);
         utility=new UtilityCardView(c,true);addView(utility,new LayoutParams(-2,-2,Gravity.RIGHT|Gravity.BOTTOM));
         mini=new MiniAppView(c,true,id->MiniAppStore.select(c,id));addView(mini,new LayoutParams(-1,-1));mini.setVisibility(GONE);
         setOnApplyWindowInsetsListener((v,insets)->{android.view.DisplayCutout cutout=previewSurface?null:insets.getDisplayCutout();backdrop.cameraRight=previewSurface?previewCameraRight:0;if(cutout!=null)for(android.graphics.Rect rect:cutout.getBoundingRects())if(rect.left==0)backdrop.cameraRight=Math.max(backdrop.cameraRight,rect.right);composition.renderer.cameraRight=backdrop.cameraRight;mini.camera(backdrop.cameraRight);utility.windowBounds(getWidth(),full?Math.max(backdrop.cameraRight,getWidth()*.34f):0);requestLayout();return insets;});
-        mediaClicked=v->{JSONObject pet=Pets.current(c);if(carpPolicy(pet)){int current=carp==null?Pets.stageIndex(c):carp.scene();Pets.choose(c,(Math.max(0,Math.min(3,current))+1+carpRandom.nextInt(3))%4);}else if(pet.optString("kind").equals("reactive")){if(Pets.stageIndex(c)>=8&&pag.isPlaying())return;Pets.override(c,12+(tap++%3),4500);}else{JSONObject clips=pet.optJSONObject("clips");int count=clips==null?0:clips.length();if(PlaybackPolicy.classic(pet.optString("id"))){if(pag.isPlaying())return;count=pet.optInt("touchSceneCount",count);int current=Pets.stageIndex(c),next=current;if(!pet.optString("id").startsWith("bird-")&&count>1)next=(current+1+new Random().nextInt(count-1))%count;Pets.choose(c,next);}else if(count>0)Pets.choose(c,(Pets.scene+1)%count);}};
+        mediaClicked=v->{JSONObject pet=Pets.current(c);if(MixFlipGeometry.stock(pet.optString("id"))){if(!running||pag.isPlaying())return;Pets.choose(c,(Math.max(0,Math.min(2,Pets.stageIndex(c)))+1)%3);}else if(carpPolicy(pet)){int current=carp==null?Pets.stageIndex(c):carp.scene();Pets.choose(c,(Math.max(0,Math.min(3,current))+1+carpRandom.nextInt(3))%4);}else if(pet.optString("kind").equals("reactive")){if(Pets.stageIndex(c)>=8&&pag.isPlaying())return;Pets.override(c,12+(tap++%3),4500);}else{JSONObject clips=pet.optJSONObject("clips");int count=clips==null?0:clips.length();if(PlaybackPolicy.classic(pet.optString("id"))){if(pag.isPlaying())return;count=pet.optInt("touchSceneCount",count);int current=Pets.stageIndex(c),next=current;if(!pet.optString("id").startsWith("bird-")&&count>1)next=(current+1+new Random().nextInt(count-1))%count;Pets.choose(c,next);}else if(count>0)Pets.choose(c,(Pets.scene+1)%count);}};
         pag.setOnClickListener(mediaClicked);video.setOnClickListener(mediaClicked);
         setContentDescription("Анимированный питомец. Коснись для реакции.");
     }
@@ -102,7 +104,7 @@ public final class PetStage extends FrameLayout implements SensorEventListener {
             mediaGeometry="";requestLayout();
         }
         if(pag.getVisibility()==VISIBLE&&pag.getComposition()!=null){pag.setRepeatCount(repeats(selected,index)?0:1);if(lastPlayRevision!=Pets.playRevision){lastPlayRevision=Pets.playRevision;pag.setProgress(0);pag.play();}}
-        long minute=System.currentTimeMillis()/60000;if(glitter||(backdrop.clockEnabled()&&minute!=lastBackdropMinute)){backdrop.invalidate();lastBackdropMinute=minute;}
+        long minute=System.currentTimeMillis()/60000;if(glitter||(backdrop.clockEnabled()&&minute!=lastBackdropMinute)){backdrop.invalidate();stockClockDetails.invalidate();lastBackdropMinute=minute;}
         if(full)configureMediaGeometry(getWidth(),getHeight());
         if(sequence){if(carpPending>=0&&carp.needsNextScene()&&path.equals(loaded)&&pag.getComposition()!=null){carp.loaded(carpPending,SystemClock.elapsedRealtime());carpPending=-1;pag.setAlpha(0);}carpFrame();}
     }
@@ -125,13 +127,24 @@ public final class PetStage extends FrameLayout implements SensorEventListener {
         if(isVideo&&(sourceW<=0||sourceH<=0)){int[] size=PetEnvelopes.videoSize(getContext(),loaded);sourceW=size[0];sourceH=size[1];}
         if(sourceW<=0||sourceH<=0)return;
         PetLayoutProfile profile=layoutProfile(pet);
-        String key=w+"/"+h+"/"+camera+"/"+fraction+"/"+sourceW+"/"+sourceH+"/"+loaded+"/"+profile.key();
+        android.view.DisplayCutout nativeCutout=getDisplay()==null?null:getDisplay().getCutout();
+        // OEM PagViewBase and clocks both use DeviceConfig.getRotationInCutout.
+        int stockRotation=previewSurface?previewClockRotation:nativeCutout!=null&&!nativeCutout.getBoundingRectRight().isEmpty()?2:0;
+        String key=w+"/"+h+"/"+camera+"/"+fraction+"/"+sourceW+"/"+sourceH+"/"+loaded+"/"+profile.key()+"/"+stockRotation;
         if(key.equals(mediaGeometry))return;mediaGeometry=key;
+        if(MixFlipGeometry.stock(pet.optString("id"))&&!isVideo){
+            backdrop.nativeClockRotation=stockRotation;
+            int scene=0;JSONObject clips=pet.optJSONObject("clips");if(clips!=null)for(int i=0;i<3;i++)if(loaded.equals(clips.optString(""+i)))scene=i;
+            float[] m=MixFlipGeometry.matrix(w,h,sourceW,sourceH,pet.optInt("nativePetType"),scene,stockRotation);
+            pagFrame.topFeather(-1);backdrop.sceneTransform(0,0,0,0,0);backdrop.nativeRotation=stockRotation;backdrop.invalidate();stockClockDetails.invalidate();
+            pag.layout(0,0,w,h);pag.setScaleMode(PAGScaleMode.None);android.graphics.Matrix matrix=new android.graphics.Matrix();matrix.setScale(m[0],m[1]);matrix.postTranslate(m[2],m[3]);pag.setMatrix(matrix);return;
+        }
         if(glitter){pagFrame.topFeather(-1);backdrop.sceneTransform(0,0,0,0,0);LayoutParams params=(LayoutParams)pag.getLayoutParams();if(params.width!=-1||params.height!=-1||params.leftMargin!=0||params.topMargin!=0)pag.setLayoutParams(new LayoutParams(-1,-1));pag.setScaleMode(PAGScaleMode.LetterBox);pag.layout(0,0,w,h);return;}
         float[] envelope=isVideo?null:PetEnvelopes.get(getContext(),pet.optString("id"),loaded);
         PetLayoutProfile geometryProfile=loaded.contains("nfc_")||loaded.contains("pin_show")?PetLayoutProfile.CLOCK:profile;
         boolean canvasRole=!pet.optString("renderRole","pet").equals("pet");
-        CoverGeometry.Placement placement=canvasRole?CoverGeometry.canvas(w,h,sourceW,sourceH):CoverGeometry.profile(w,h,sourceW,sourceH,envelope,camera,fraction,pet.optString("id"),geometryProfile);backdrop.invalidate();
+        CoverGeometry.Placement shared=!isVideo&&!canvasRole&&!loaded.contains("nfc_")&&!loaded.contains("pin_show")?NativePetGeometry.placement(getContext(),w,h,sourceW,sourceH,pet.optString("id"),geometryProfile):null;
+        CoverGeometry.Placement placement=shared!=null?shared:canvasRole?CoverGeometry.canvas(w,h,sourceW,sourceH):CoverGeometry.profile(w,h,sourceW,sourceH,envelope,camera,fraction,pet.optString("id"),geometryProfile);backdrop.invalidate();
         boolean scenery=!isVideo&&PetEnvelopes.opaqueScenery(pet.optString("id"));
         backdrop.sceneTransform(scenery?sourceW:0,scenery?sourceH:0,placement.scale,placement.x,placement.y);pagFrame.topFeather(scenery?placement.y:-1);
         if(isVideo){if(canvasRole)video.layout(0,0,w,h);else{int vw=Math.max(1,Math.round(sourceW*placement.scale)),vh=Math.max(1,Math.round(sourceH*placement.scale));video.layout(Math.round(placement.x),Math.round(placement.y),Math.round(placement.x)+vw,Math.round(placement.y)+vh);}video.fit();}

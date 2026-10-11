@@ -17,8 +17,10 @@ def ui(name='ui'):
     deadline=time.monotonic()+15
     while time.monotonic()<deadline:
         shell('rm -f '+remote)
-        output = shell('am instrument -w org.flippets.uiqa/.DumpUi')
-        assert 'Own primary display UI captured.' in output, output
+        output = shell('am instrument -w org.flippets.uiqa/.DumpUi',check=False)
+        if 'Own primary display UI captured.' not in output:
+            time.sleep(.2)
+            continue
         adb('pull', remote, QA/(name+'.xml'))
         tree = ET.parse(QA/(name+'.xml')).getroot()
         if tree.find('node') is not None:
@@ -181,7 +183,7 @@ def main():
         shell('settings put system font_scale 1.0')
         if not args.windows_only:
             start(); original = selected(); open_gallery()
-            count('all_collection', 36)
+            count('all_collection', 42)
             for name, expected in [('18 Pro', 6), ('Свои', 4), ('Архив Xiaomi', 8), ('17 Pro', 18)]:
                 choose(name); count('collection_'+name, expected)
             choose('18 Pro'); choose('Мини-приложения', 1); count('18pro_mini_intersection', 3)

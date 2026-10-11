@@ -1,5 +1,30 @@
 Flip Pets 1.1 — Xiaomi 17/18 Pro → MIX Flip, без root
 
+ПИТОМЦЫ MIX FLIP — 11 октября 2026
+39 оформлений /194 клипа; первые33 записи сохранены. В коллекции MIX Flip —
+6 штатных питомцев с исходными фонами и конечными сценами. Открой карточку,
+нажми «Применить»; «Отмена» сохраняет прежний выбор. После окончания анимации
+касание включает следующую сцену. Ручное увеличение штатных питомцев отключено.
+
+«Питомцы на штатной блокировке» — отдельный набор Xiaomi, не выбор раскрытого
+режима. Для чтения мест и открытия штатных экранов нужен Shizuku UID2000 и
+проверенная EEA3.0.303 с исходными APK. Ничего не удаляется автоматически.
+На проверенном MIX Flip EEA чтение набора и переходы в историю/каталог Xiaomi
+проверены. Квота: 3/3 питомца и 5/9 оформлений; история сохранена.
+
+Charlie уже был применён штатной кнопкой «Добавить» с принятым пользователем
+ручным восстановлением. Позднее Charlie обновлён штатной кнопкой «Готово» без нового места и удаления других оформлений. Размер на сложенном экране принят пользователем. В телефонном опыте касания
+запускали анимацию без уведомлений; при уведомлениях повтора не было.
+12 сцен Charlie в приложении используют общий с native трансформ. Дальнейшая работа над Charlie отложена; его часы в двух режимах пока различаются.
+Точное восстановление не доказано. Root не устанавливался.
+Часы MIX Flip: исходный C700, цвета, дата/день недели и раскладка по вырезу
+камер. Установи APK обновлением поверх прежней версии; не удаляй приложение.
+Новая сборка: 57d39faa9cf1cd54a79fc50a6045214e325076a623efe131237123ac16e09778.
+Точный объём свежей проверки: HANDOFF.md; это development APK, не готовый release.
+KernelSU ZIP и release-архивы здесь не пересобирались под новый SHA.
+Инструкции и ограничения: docs/mixflip-pets-integration.md.
+Основа для новых питомцев: docs/adding-native-pets.md.
+
 DEVELOPMENT CONTROLLER UPDATE — 11 October 2026
 The experimental KernelSU module waits up to ten minutes for unlocked app storage
 and never clears Stop during boot. Startup now waits for a child acknowledgement.
@@ -16,7 +41,7 @@ again to explicitly start. Current native-card APK b8fb78ce… passed374 APK che
 20 gallery and6 virtual-cover checks. Actual phone/root/native admission testing
 remains pending; historical hardware observations retain their original hashes.
 
-33 оформления: 176 исходных PAG/MP4-клипов и 11 адаптированных композиций.
+39 оформлений:194 исходных PAG/MP4-клипа и11 адаптированных композиций.
 Графика Xiaomi сохранена; полного системного HyperOS 17 Pro здесь нет.
 
 1. Установи FlipPets.apk, открой Flip Pets и выбери оформление в галерее.
@@ -173,10 +198,11 @@ service и регистрация реального hinge-angle sensor — 5 о
 камерные отступы и батарея требуют своих физических проверок.
 
 Эмулятор — стандартный Android16, не HyperOS. Актуальные результаты конкретного
-APK публикуются в Verification.json/zip только при совпадении SHA-256: 176 клипов,
+APK публикуются в Verification.json/zip только при совпадении SHA-256:194 клипа,
 68 композиционных проверок, 15 переходов, 15 utility-проверок и 19 проверок
 диалога размеров/положения,23 проверки реальных новых проигрывателей и переходов
-и27 проверок оригинальных мини-приложений (всего343). Старые результаты
+и27 проверок оригинальных мини-приложений,38 отдельных карточек и64 MIX Flip
+проверки (всего463). Старые результаты
 ресурсов/CPU/памяти/железа хранят свой исходный SHA и явно помечены historical.
 Текущий прогон должен совпадать с SHA APK; результаты прошлых версий — historical.
 CPU процесса не является замером батареи или энергопотребления GPU/декодера.
@@ -209,6 +235,7 @@ KernelSU ZIP описан выше; его работа на телефоне е
 
 NATIVE CHARLIE PROOF
 FlipPets-native-Charlie-proof.zip contains original PAG, decoded poster and eight
-source-resolution samples. This is preparation only; it does not install a native
-pet. OEM motion, Apply and exact restoration remain unproven. See
-docs/native-pet-proof.md. No root installation or phone change was performed.
+source-resolution samples. This proof bundle itself does not install a native
+pet. A previous native Add/readback succeeded with accepted manual restoration;
+the folded small/still report remains unresolved. The new calibrated candidate
+was not applied. See docs/mixflip-pets-integration.md. Exact Restore is unproven.

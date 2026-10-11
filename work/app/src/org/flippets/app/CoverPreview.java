@@ -25,12 +25,12 @@ public final class CoverPreview extends FrameLayout implements DisplayManager.Di
         cameras.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);addView(cameras);setClipChildren(true);refreshGeometry();
     }
     private void refreshGeometry(){
-        int width=CoverGeometry.WIDTH,height=CoverGeometry.HEIGHT,inset=0;
+        int width=CoverGeometry.WIDTH,height=CoverGeometry.HEIGHT,inset=0,oldRotation=stage.previewRotation,oldClockRotation=stage.previewClockRotation;stage.previewRotation=2;stage.previewClockRotation=0;
         for(Display display:displays.getDisplays())if(display.getDisplayId()!=Display.DEFAULT_DISPLAY){
             Point size=new Point();display.getRealSize(size);
-            if(Math.min(size.x,size.y)==CoverGeometry.WIDTH&&Math.max(size.x,size.y)==CoverGeometry.HEIGHT){width=size.x;height=size.y;DisplayCutout cutout=display.getCutout();if(cutout!=null)for(Rect rect:cutout.getBoundingRects())if(rect.left==0)inset=Math.max(inset,rect.right);break;}
+            if(Math.min(size.x,size.y)==CoverGeometry.WIDTH&&Math.max(size.x,size.y)==CoverGeometry.HEIGHT){width=size.x;height=size.y;stage.previewRotation=display.getRotation()==0?0:2;DisplayCutout cutout=display.getCutout();stage.previewClockRotation=cutout!=null&&!cutout.getBoundingRectRight().isEmpty()?2:0;if(cutout!=null)for(Rect rect:cutout.getBoundingRects())if(rect.left==0)inset=Math.max(inset,rect.right);break;}
         }
-        boolean changed=width!=coverWidth||height!=coverHeight||inset!=cameraRight;coverWidth=width;coverHeight=height;cameraRight=inset;stage.previewCameraRight=inset;if(changed){stage.requestApplyInsets();stage.requestLayout();requestLayout();}
+        boolean changed=width!=coverWidth||height!=coverHeight||inset!=cameraRight||oldRotation!=stage.previewRotation||oldClockRotation!=stage.previewClockRotation;coverWidth=width;coverHeight=height;cameraRight=inset;stage.previewCameraRight=inset;if(changed){stage.requestApplyInsets();stage.requestLayout();requestLayout();}
     }
     protected void onMeasure(int widthSpec,int heightSpec){
         int max=Math.round(300*getResources().getDisplayMetrics().density);

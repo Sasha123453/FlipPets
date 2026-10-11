@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-11",
+  "apkSha256": "57d39faa9cf1cd54a79fc50a6045214e325076a623efe131237123ac16e09778",
+  "scope": "Current development APK, not a regenerated release archive",
+  "emulator": {
+    "identity": "Explicit emulator-5554, fliptest, Android16/API36 x86_64; not HyperOS",
+    "apkChecks": 479,
+    "failed": 0,
+    "skipped": 0,
+    "reports": [
+      {
+        "path": "work/qa-v03/device-files/qa.json",
+        "sha256": "b543070e98f464ef25c5e504ab67daf35fca2870ee0ff2b8ff635718cc51a695",
+        "tested": 194,
+        "failed": 0
+      },
+      {
+        "path": "work/qa-v03/device-files/composition-qa.json",
+        "sha256": "1e0722beb7a1a7675d70be2fc17f6ee11bbf64265627345ac10d76e077c5b965",
+        "tested": 68,
+        "failed": 0
+      },
+      {
+        "path": "work/qa-v03/device-files/ui-switch-qa.json",
+        "sha256": "74cd611aefbb0d0c231f4cff81f08a0052f8d6ef17fd766818b6ffbc111a01ae",
+        "tested": 15,
+        "failed": 0
+      },
+      {
+        "path": "work/qa-v03/device-files/utility-qa.json",
+        "sha256": "675db55c145ff0d0fe014dde15cfb5e9b19990d8b2eb5ebed12cca921d34d64b",
+        "tested": 15,
+        "failed": 0
+      },
+      {
+        "path": "work/qa-v03/device-files/pet-layout-qa.json",
+        "sha256": "ea709fc80bd0245229111e8b582a945c0c53c62511d1e7c39a907429957e90ef",
+        "tested": 19,
+        "failed": 0
+      },
+      {
+        "path": "work/qa-v03/device-files/donor18-qa.json",
+        "sha256": "5afcca43391e3f34fcfa43d3b3dcd042295d4e1ea93b644ef09051b6140c5032",
+        "tested": 23,
+        "failed": 0
+      },
+      {
+        "path": "work/qa-v03/device-files/mini-apps-qa.json",
+        "sha256": "1d0bc26ba241250915fa5411db855b37d73779ea79800d3b8f6c964b638f0ae7",
+        "tested": 27,
+        "failed": 0
+      },
+      {
+        "path": "work/qa-v03/device-files/mixflip-qa.json",
+        "sha256": "76f156b4fce234afc7c4e02a3dc38676b0a4a4c489397245dad86943607a3361",
+        "tested": 80,
+        "failed": 0
+      },
+      {
+        "path": "work/qa-v03/device-files/native-cards-qa.json",
+        "sha256": "226f73156a04a359a09b852cd80604abf45c955447fa1f1b8b4af74ced126764",
+        "tested": 38,
+        "failed": 0
+      }
+    ],
+    "additionalChecks": []
+  },
+  "binaryChecks": {
+    "package": "org.flippets.app",
+    "versionName": "1.1",
+    "versionCode": 12,
+    "signatureV3Verified": true,
+    "certificateSha256": "819b54a88b032712475060b68a6adcfff569366c86e9683c92934b36375391ba",
+    "zipalign16KiBVerified": true,
+    "allAssetsByteIdenticalToSources": true,
+    "nativeLibraries": [
+      {
+        "path": "lib/arm64-v8a/libffavc.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "1e214164a6c153f74f25018c1625f3e71d1d5ba601f6592c4dd89385dcc4b0bc"
+      },
+      {
+        "path": "lib/arm64-v8a/libpag.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "1178fe9a7fb345212e2a9ff0c386ce9772f03183686e1de87af84f89cbdf736f"
+      },
+      {
+        "path": "lib/x86_64/libffavc.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "5da4dea926ef43d7ac4535b5799afba00d9d0e0fd396e350486037de6843e7e2"
+      },
+      {
+        "path": "lib/x86_64/libpag.so",
+        "loadAlignments": [
+          16384,
+          16384,
+          16384
+        ],
+        "sha256": "f013aead9e08a559326921a1f94df701814197bcc93592c50d93cd4285158d51"
+      }
+    ]
+  },
+  "physical": {
+    "identity": "Explicit identity-verified physical MIX Flip / ruyi / EEA OS3.0.303.0.WNIEUXM / primary user",
+    "installedAsUpdate": true,
+    "installedShaVerified": true,
+    "scene": 0,
+    "tested": 24,
+    "failed": 0,
+    "results": [
+      {
+        "petId": "mixflip-dewen",
+        "selectedThroughRealUi": true,
+        "bodyPixelsMove": true,
+        "bodyPixelsHold": true,
+        "heldBodyNotBlack": true
+      },
+      {
+        "petId": "mixflip-shuitun",
+        "selectedThroughRealUi": true,
+        "bodyPixelsMove": true,
+        "bodyPixelsHold": true,
+        "heldBodyNotBlack": true
+      },
+      {
+        "petId": "mixflip-shuita",
+        "selectedThroughRealUi": true,
+        "bodyPixelsMove": true,
+        "bodyPixelsHold": true,
+        "heldBodyNotBlack": true
+      },
+      {
+        "petId": "mixflip-bixiong",
+        "selectedThroughRealUi": true,
+        "bodyPixelsMove": true,
+        "bodyPixelsHold": true,
+        "heldBodyNotBlack": true
+      },
+      {
+        "petId": "mixflip-xianluo",
+        "selectedThroughRealUi": true,
+        "bodyPixelsMove": true,
+        "bodyPixelsHold": true,
+        "heldBodyNotBlack": true
+      },
+      {
+        "petId": "mixflip-heibao",
+        "selectedThroughRealUi": true,
+        "bodyPixelsMove": true,
+        "bodyPixelsHold": true,
+        "heldBodyNotBlack": true
+      }
+    ],
+    "heldScreenshotsVisuallyReviewed": 6,
+    "finalReadback": {
+      "apkSha256": "57d39faa9cf1cd54a79fc50a6045214e325076a623efe131237123ac16e09778",
+      "nativeSettingsMatchAcknowledgedUpdate": true,
+      "preservedPluggedStayAwake": "0",
+      "preservedScreenTimeoutMs": 600000,
+      "temporaryOwnQaHelperRemoved": true
+    }
+  },
+  "nativeCharlie": {
+    "authorizedExistingRecordUpdateAcknowledged": true,
+    "otherFourSavedDesignsPreserved": true,
+    "unrelatedResourcesHashesPreserved": 15,
+    "userFoldedAppearanceAccepted": true,
+    "userOpenFoldedSizeApproximatelyMatches": true,
+    "furtherClockWorkDeferred": true,
+    "exactAutomaticRestoreProven": false
+  },
+  "hostChecks": {
+    "stockGeometryAndPolicy": 72,
+    "catalogueAndProvenance": 5,
+    "nativeFlow": 35,
+    "nativeUpdate": 12,
+    "sharedLayoutTestMethods": 5
+  },
+  "limitations": [
+    "Physical pet checks cover scene0 per pet; all18 scenes and both cutout layouts have emulator/source coverage, not full physical clearance proof.",
+    "Native AOD, biometric, timeout, reboot, battery, root and main-off/locked-unfolded continuation are not newly verified.",
+    "Original Charlie crest clipping and different native/app AI clock styles remain; further Charlie changes deferred by user.",
+    "General native import/update from app and exact automatic Restore remain future work.",
+    "Earlier physical lifecycle and historical reports remain bound to their original APK SHA."
+  ],
+  "publication": {
+    "releaseArchivesRegenerated": false,
+    "moduleRebuilt": false,
+    "sourcePushRequested": true
+  },
+  "additionalGalleryAttempt": {
+    "status": "Incomplete host UI-helper run; not counted as passing QA",
+    "reason": "Transient instrumentation/accessibility window and scrolling failures; selection restored in the preceding attempt. No further retries.",
+    "historicalGalleryReportReused": false
+  }
+}

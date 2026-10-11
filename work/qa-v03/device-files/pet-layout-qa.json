@@ -1,13 +1,13 @@
 {
-  "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
+  "apkSha256": "57d39faa9cf1cd54a79fc50a6045214e325076a623efe131237123ac16e09778",
   "environment": "Android emulator; no physical camera\/HyperOS claim",
   "tested": 19,
   "failed": 0,
   "results": [
     {
-      "test": "default_clock_exact_legacy_matrix",
+      "test": "default_clock_matches_native_matrix",
       "ok": true,
-      "detail": "Actual PAGView matrix and app clock; existing focused placement"
+      "detail": "Actual PAGView uses shared native Charlie placement"
     },
     {
       "test": "open_editor",
@@ -25,9 +25,9 @@
       "detail": "Actual radio-button event selected checkedId101 and clockless preview draft"
     },
     {
-      "test": "clockless_larger_rendered",
+      "test": "clockless_preserves_native_size",
       "ok": true,
-      "detail": "Actual Charlie PAGView matrix scale increased; clock disabled"
+      "detail": "Shared native Charlie size retained; clock disabled"
     },
     {
       "test": "clockless_releases_digit_assets",
@@ -72,7 +72,7 @@
     {
       "test": "cancel_restores_preview_and_parent",
       "ok": true,
-      "detail": "Bounded real settling after Cancel (max5000ms); parent=true clock=true preferences=true matrixScale=true matrixX=true matrixY=true attached=true pagSurface=true pagComposition=true stage=1208x1392 expectedMatrix=[1.6136005, 0.0, -139.0542, 0.0, 1.6136005, 430.29413, 0.0, 0.0, 1.0] actualMatrix=[1.6136005, 0.0, -139.0542, 0.0, 1.6136005, 430.29413, 0.0, 0.0, 1.0]"
+      "detail": "Bounded real settling after Cancel (max5000ms); parent=true clock=true preferences=true matrixScale=true matrixX=true matrixY=true attached=true pagSurface=true pagComposition=true stage=1208x1392 expectedMatrix=[2.2207792, 0.0, -663.2727, 0.0, 2.2207792, 117.272705, 0.0, 0.0, 1.0] actualMatrix=[2.2207792, 0.0, -663.2727, 0.0, 2.2207792, 117.272705, 0.0, 0.0, 1.0]"
     },
     {
       "test": "apply_saves_selected_pet_mode",

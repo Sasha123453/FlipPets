@@ -12,6 +12,7 @@ public final class CoverAppsActivity extends Activity {
     protected void onCreate(Bundle saved){
         setTheme(android.R.style.Theme_Material_NoActionBar);super.onCreate(saved);
         getWindow().setStatusBarColor(Color.BLACK);getWindow().setNavigationBarColor(Color.BLACK);
+        WindowManager.LayoutParams attributes=getWindow().getAttributes();attributes.layoutInDisplayCutoutMode=WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS;getWindow().setAttributes(attributes);
         if(Build.VERSION.SDK_INT>=30)getWindow().setDecorFitsSystemWindows(false);
         cards=new MiniAppView(this,true,this::select,true);
         if(NativeAppsQa.emulator()&&getIntent().getBooleanExtra("qaNativeApps",false)){
@@ -39,8 +40,8 @@ public final class CoverAppsActivity extends Activity {
     }
     protected void onResume(){super.onResume();resumed=true;updateActive();if(!qaStarted&&NativeAppsQa.emulator()&&getIntent().getBooleanExtra("qaNativeApps",false)){qaStarted=true;NativeAppsQa.start(this);}}
     protected void onPause(){resumed=false;cards.stop();super.onPause();}
-    public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);updateActive();}
+    public void onWindowFocusChanged(boolean focused){super.onWindowFocusChanged(focused);updateActive();if(focused)NativeLaunchContext.record(this,"cards_focus");}
     protected void onDestroy(){cards.stop();super.onDestroy();}
     protected void onSaveInstanceState(Bundle state){state.putString("card",cards.mode);super.onSaveInstanceState(state);}
-    public void onConfigurationChanged(Configuration c){super.onConfigurationChanged(c);cards.requestApplyInsets();cards.requestLayout();}
+    public void onConfigurationChanged(Configuration c){super.onConfigurationChanged(c);cards.requestApplyInsets();cards.requestLayout();NativeLaunchContext.record(this,"cards_configuration");}
 }

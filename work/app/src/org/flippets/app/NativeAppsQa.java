@@ -48,6 +48,26 @@ final class NativeAppsQa {
         a.select("water");ready("water",this::water);
     }catch(Exception e){check("begin_error",false);finish();}}
     void water(){
+        try{
+            android.content.pm.PackageManager pm=a.getPackageManager();
+            android.content.pm.PackageManager.Property mainPolicy=pm.getProperty("miui.continuity.policy",new ComponentName(a,MainActivity.class)),cardPolicy=pm.getProperty("miui.continuity.policy",a.getComponentName());
+            boolean applicationPolicyAbsent=false;try{pm.getProperty("miui.continuity.policy",a.getPackageName());}catch(android.content.pm.PackageManager.NameNotFoundException expected){applicationPolicyAbsent=true;}
+            check("manifest_activity_admission_typed",mainPolicy.isInteger()&&mainPolicy.getInteger()==5&&cardPolicy.isInteger()&&cardPolicy.getInteger()==5&&applicationPolicyAbsent);
+            Object fullscreen=pm.getActivityInfo(a.getComponentName(),android.content.pm.PackageManager.GET_META_DATA).metaData.get("miui.supportFlipFullScreen");
+            check("manifest_fullscreen_metadata_typed",fullscreen instanceof Integer&&((Integer)fullscreen)==0);
+            android.content.pm.PackageManager.Property overlay=pm.getProperty("miui.supportFlipWatchOverlayGroupView",a.getComponentName());boolean mainOverlayAbsent=false;try{pm.getProperty("miui.supportFlipWatchOverlayGroupView",new ComponentName(a,MainActivity.class));}catch(android.content.pm.PackageManager.NameNotFoundException expected){mainOverlayAbsent=true;}
+            check("manifest_widget_property_scoped",overlay.isBoolean()&&!overlay.getBoolean()&&mainOverlayAbsent);
+            JSONObject context=NativeLaunchContext.snapshot(a,"qa_context");
+            JSONObject bounds=context.getJSONObject("currentWindowBounds"),max=context.getJSONObject("maximumWindowBounds");
+            android.graphics.Rect actual=a.getWindowManager().getCurrentWindowMetrics().getBounds();
+            check("context_measured_bounds",bounds.getInt("right")-bounds.getInt("left")==actual.width()&&bounds.getInt("bottom")-bounds.getInt("top")==actual.height()&&max.getInt("right")>max.getInt("left"));
+            check("context_display_and_insets",context.getInt("displayId")==a.getDisplay().getDisplayId()&&context.getInt("rotation")==a.getDisplay().getRotation()&&context.has("currentWindowInsets")&&context.has("decorInsets"));
+            for(int i=0;i<NativeLaunchContext.LIMIT+3;i++)NativeLaunchContext.record(a,"qa_context");
+            JSONObject report=NativeLaunchContext.report(a,binary);JSONArray observations=report.getJSONArray("observations");
+            boolean own=true;for(int i=0;i<observations.length();i++){String name=observations.getJSONObject(i).getString("activity");own&=name.equals("MainActivity")||name.equals("CoverAppsActivity");}
+            check("context_bounded_own_activities",observations.length()==NativeLaunchContext.LIMIT&&own);
+            check("context_sha_and_no_side_effects",binary.equals(report.getString("apkSha256"))&&!report.getBoolean("policyGrantPerformed")&&!report.getBoolean("nativeApplyPerformed")&&globalBefore.equals(fingerprint()));
+        }catch(Exception e){check("context_capture_error",false);}
         check("native_origin",a.cards.nativeLaunch&&a.cards.web.getUrl().startsWith("https://"+origin+"/"));
         int forbidden=WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON|WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON|WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED;
         check("foreground_only_flags",(a.getWindow().getAttributes().flags&forbidden)==0);

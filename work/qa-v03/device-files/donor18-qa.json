@@ -1,112 +1,98 @@
 {
-  "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
+  "apkSha256": "57d39faa9cf1cd54a79fc50a6045214e325076a623efe131237123ac16e09778",
   "environment": "Standard Android emulator; real app players/view properties, not compositor-frame or HyperOS/physical camera proof",
   "tested": 23,
   "failed": 0,
-  "durationMs": 59317,
+  "durationMs": 40164,
   "cycles": [
     {
       "cycle": 1,
-      "scene": 0,
+      "scene": 2,
       "minimumPollAlpha": 0,
-      "outMs": 13934,
-      "sourceChangeMs": 15079,
-      "loadAckMs": 15074,
-      "nativeHiddenObservationMs": 15079,
-      "firstFadeInViewStateMs": 15609,
-      "ackToFadeInMs": 535,
-      "completeMs": 16665
+      "outMs": 12777,
+      "sourceChangeMs": 13312,
+      "loadAckMs": 13311,
+      "nativeHiddenObservationMs": 13312,
+      "firstFadeInViewStateMs": 13507,
+      "ackToFadeInMs": 196,
+      "completeMs": 13772
     },
     {
       "cycle": 2,
       "scene": 1,
       "minimumPollAlpha": 0,
-      "outMs": 27859,
-      "sourceChangeMs": 28874,
-      "loadAckMs": 28874,
-      "nativeHiddenObservationMs": 28874,
-      "firstFadeInViewStateMs": 29408,
-      "ackToFadeInMs": 534,
-      "completeMs": 30614
+      "outMs": 22958,
+      "sourceChangeMs": 23490,
+      "loadAckMs": 23443,
+      "nativeHiddenObservationMs": 23444,
+      "firstFadeInViewStateMs": 23717,
+      "ackToFadeInMs": 274,
+      "completeMs": 23979
     }
   ],
   "phaseObservations": [
     {
-      "elapsedMs": 4336,
-      "scene": 3,
+      "elapsedMs": 1623,
+      "scene": 1,
       "phase": "PLAYING",
       "alpha": 1,
-      "progress": 0.05553691275167785
+      "progress": 0.029346314325452018
     },
     {
-      "elapsedMs": 13853,
-      "scene": 3,
+      "elapsedMs": 12720,
+      "scene": 1,
       "phase": "FADING_OUT",
       "alpha": 1,
-      "progress": 1
+      "progress": 0.9584144645340751
     },
     {
-      "elapsedMs": 14428,
-      "scene": 3,
-      "phase": "AWAITING_LOAD",
+      "elapsedMs": 13312,
+      "scene": 2,
+      "phase": "HIDDEN_DELAY",
       "alpha": 0,
-      "progress": 1
+      "progress": 0.0001666666666666667
     },
     {
-      "elapsedMs": 15079,
-      "scene": 0,
+      "elapsedMs": 13507,
+      "scene": 2,
+      "phase": "FADING_IN",
+      "alpha": 0.19333332777023315,
+      "progress": 0.010166666666666666
+    },
+    {
+      "elapsedMs": 13772,
+      "scene": 2,
+      "phase": "PLAYING",
+      "alpha": 1,
+      "progress": 0.03516666666666667
+    },
+    {
+      "elapsedMs": 22958,
+      "scene": 2,
+      "phase": "FADING_OUT",
+      "alpha": 0.9459999799728394,
+      "progress": 0.9551666666666667
+    },
+    {
+      "elapsedMs": 23490,
+      "scene": 1,
       "phase": "HIDDEN_DELAY",
       "alpha": 0,
       "progress": 0.00013908205841446454
     },
     {
-      "elapsedMs": 15609,
-      "scene": 0,
+      "elapsedMs": 23717,
+      "scene": 1,
       "phase": "FADING_IN",
-      "alpha": 0.046666666865348816,
+      "alpha": 0.17666666209697723,
       "progress": 0.004311543810848401
     },
     {
-      "elapsedMs": 16665,
-      "scene": 0,
-      "phase": "PLAYING",
-      "alpha": 1,
-      "progress": 0.09610570236439499
-    },
-    {
-      "elapsedMs": 27859,
-      "scene": 0,
-      "phase": "FADING_OUT",
-      "alpha": 0.9980000257492065,
-      "progress": 1
-    },
-    {
-      "elapsedMs": 28314,
-      "scene": 0,
-      "phase": "AWAITING_LOAD",
-      "alpha": 0,
-      "progress": 1
-    },
-    {
-      "elapsedMs": 28874,
-      "scene": 1,
-      "phase": "HIDDEN_DELAY",
-      "alpha": 0,
-      "progress": 0.00013908205841446454
-    },
-    {
-      "elapsedMs": 29408,
-      "scene": 1,
-      "phase": "FADING_IN",
-      "alpha": 0.21666666865348816,
-      "progress": 0.008484005563282337
-    },
-    {
-      "elapsedMs": 30614,
+      "elapsedMs": 23979,
       "scene": 1,
       "phase": "PLAYING",
       "alpha": 1,
-      "progress": 0.07941585535465925
+      "progress": 0.033518776077885955
     }
   ],
   "results": [
@@ -138,7 +124,7 @@
     {
       "test": "carp_hidden_delay_alpha_zero",
       "ok": true,
-      "detail": "Loaded PAGView observed HIDDEN_DELAY alpha0 via native start or50ms sample; first actual fade-in observation>=100ms after model load acknowledgement, not callback delivery. Load-ack/view-property evidence, not compositor-frame proof. [{\"cycle\":1,\"scene\":0,\"minimumPollAlpha\":0,\"outMs\":13934,\"sourceChangeMs\":15079,\"loadAckMs\":15074,\"nativeHiddenObservationMs\":15079,\"firstFadeInViewStateMs\":15609,\"ackToFadeInMs\":535,\"completeMs\":16665},{\"cycle\":2,\"scene\":1,\"minimumPollAlpha\":0,\"outMs\":27859,\"sourceChangeMs\":28874,\"loadAckMs\":28874,\"nativeHiddenObservationMs\":28874,\"firstFadeInViewStateMs\":29408,\"ackToFadeInMs\":534,\"completeMs\":30614}]"
+      "detail": "Loaded PAGView observed HIDDEN_DELAY alpha0 via native start or50ms sample; first actual fade-in observation>=100ms after model load acknowledgement, not callback delivery. Load-ack/view-property evidence, not compositor-frame proof. [{\"cycle\":1,\"scene\":2,\"minimumPollAlpha\":0,\"outMs\":12777,\"sourceChangeMs\":13312,\"loadAckMs\":13311,\"nativeHiddenObservationMs\":13312,\"firstFadeInViewStateMs\":13507,\"ackToFadeInMs\":196,\"completeMs\":13772},{\"cycle\":2,\"scene\":1,\"minimumPollAlpha\":0,\"outMs\":22958,\"sourceChangeMs\":23490,\"loadAckMs\":23443,\"nativeHiddenObservationMs\":23444,\"firstFadeInViewStateMs\":23717,\"ackToFadeInMs\":274,\"completeMs\":23979}]"
     },
     {
       "test": "carp_fade_in_alpha_path",

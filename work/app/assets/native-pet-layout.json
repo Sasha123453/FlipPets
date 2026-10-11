@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "canvas": [1208, 1392],
+  "layouts": {
+    "bird-pandora": {
+      "sourceCanvas": [976, 596],
+      "referenceSourceSha256": "3bb7533fd7506cdfcd6b0ad48a7027fe8b37353ee7723547a18a6b7e5518dc14",
+      "scale": 2.220779220779221,
+      "x": -663.2727272727275,
+      "y": 117.27272727272725,
+      "subjectRight": 1140,
+      "subjectBottom": 1392
+    }
+  }
+}
