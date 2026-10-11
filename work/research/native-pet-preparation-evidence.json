@@ -1,0 +1,462 @@
+{
+  "date": "2026-10-11",
+  "scope": "Step5 source preparation and static inherited OEM playback trace; assembled APK unchanged from reviewed step4",
+  "apkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
+  "moduleZipSha256": "95e02bf4b589ed558bec0204c991ca7ac0f8f5a455c426422a2a1cdd3164563b",
+  "canonicalControllerSha256": "eaf0f94cc6a57ba21cc342c7c7b7fe5914215ae540d38b583ab7315e4af5d06c",
+  "rootControllerSha256": "0355c90e6f35d7e2b0dbab10a37845eccfa2c9647822925bb01d1a7acd020eb8",
+  "commandChecksPassed": 0,
+  "syntaxChecksPassed": 0,
+  "reports": {
+    "qa.json": {
+      "path": "work/qa-v03/device-files/qa.json",
+      "sha256": "4c6ccac87b21adff8b0e5bedd49b194d125e40afcf56a520903e479b099b4e69",
+      "checks": 176,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "composition-qa.json": {
+      "path": "work/qa-v03/device-files/composition-qa.json",
+      "sha256": "e62401f79c876b89a16707a7258e2e830df444745edfccd5c1ee3a343894d7ef",
+      "checks": 68,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "ui-switch-qa.json": {
+      "path": "work/qa-v03/device-files/ui-switch-qa.json",
+      "sha256": "ccd2b80a92eab9c8a076aab29d5282e42388c0a91d5655f5c6b9aa470187a35e",
+      "checks": 15,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "utility-qa.json": {
+      "path": "work/qa-v03/device-files/utility-qa.json",
+      "sha256": "e499707c1c8fe1e12f7c95f78490bf67f4c0dc5bea45a98052c2753028ca5728",
+      "checks": 15,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "pet-layout-qa.json": {
+      "path": "work/qa-v03/device-files/pet-layout-qa.json",
+      "sha256": "80a30d6366d6781b92761a06bd9f922ce58dfa1b6afc41bccbc64edc084ac451",
+      "checks": 19,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "donor18-qa.json": {
+      "path": "work/qa-v03/device-files/donor18-qa.json",
+      "sha256": "86de8a93002c190f763211c52e0c2a0ebf806d77249ae7e19a1677431c2e0fb3",
+      "checks": 23,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "mini-apps-qa.json": {
+      "path": "work/qa-v03/device-files/mini-apps-qa.json",
+      "sha256": "029d3e092af64f8390f901e8557e5ca89b35db89e6701409c8f01d9347d000c6",
+      "checks": 27,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "native-cards-qa.json": {
+      "path": "work/qa-final/native-cards/native-cards-qa.json",
+      "sha256": "f44ec2a5cc7802550a7a2bf3534d8e6d27c41f57a6f049b571fa7d33fca9c6d4",
+      "checks": 31,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "gallery-qa.json": {
+      "path": "work/qa-v03/gallery-qa.json",
+      "sha256": "0535d0ce32669d7c19989573e996b64a79ee53174b87e6b1bb6f63e93a5a2d18",
+      "checks": 20,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "runtime-v110.json": {
+      "path": "work/qa-v03/runtime-v110.json",
+      "sha256": "0bb54522ec8378711488276b2aed60adcddd87378797aefcc78d82fdc6e8032b",
+      "checks": 6,
+      "allPassed": true,
+      "binding": "current APK"
+    },
+    "native-route-tests.json": {
+      "path": "work/qa-final/native-route-tests.json",
+      "sha256": "8aa3cde5a365b3f8f6122a7583ccacd842e86ca4be511bdc1f504d119ab18ec7",
+      "checks": 14,
+      "allPassed": true,
+      "binding": "source"
+    },
+    "native-package-guards.json": {
+      "path": "work/qa-final/native-package-guards.json",
+      "sha256": "9d440de09e6c49b72ba7d91d29ac30856716c5d5a0b5dcee19b51e4ff41af0aa",
+      "checks": 5,
+      "allPassed": true,
+      "binding": "source"
+    },
+    "native-capture-guards.json": {
+      "path": "work/qa-final/native-capture-guards.json",
+      "sha256": "ea93bd00a1a2d231c7638a34079e54846005a5b27eaca2ee306002a2d1cf7fb3",
+      "checks": 20,
+      "allPassed": true,
+      "binding": "host source guards; no phone operations"
+    },
+    "native-pet-manifest.json": {
+      "path": "work/qa-final/native-pet-source/manifest.json",
+      "sha256": "a62d4439c14080db71be561624212c98cb02d396ea0b201d39353524508465dd",
+      "checks": 8,
+      "allPassed": true,
+      "binding": "eight full-resolution source-decoder samples; not OEM playback"
+    }
+  },
+  "apkChecksPassed": 374,
+  "additionalEmulatorChecksPassed": 26,
+  "source_sha256": {
+    "work/tests/NativePetProbe.java": "d7cdc7d776f6023d54a15f16826047265cedcedf9f3318805e3b3c31c4a420ad",
+    "work/tests/prepare_native_pet.py": "f4fc9ce2739e39371b67d132b0dbc7f4fb4bfb68e0234e8dfdef632eb1dae7c7",
+    "work/tests/capture_native_capabilities.py": "c590505c0980b54d75cd924f5a084af42423daebeeefe51fe10c643fb3864a29",
+    "work/tests/run_native_capture_guard_tests.py": "aa62b6c1338488242858cdff2a12310ae95d19be4fa1cf5fbf37db4cc3b2b6b6",
+    "work/research/native-pet-playback-trace.json": "1999ba23d10028b525e7c70ab75bcadf1afe56697f0e0caa3f2d5d673249d793",
+    "docs/native-pet-proof.md": "8c79226b4a3e52caaa31cf6dbb9423d874a720daa36563bb0443ed3da2c69065"
+  },
+  "sourceSampleReview": {
+    "currentRgbaPngHashesVerified": true,
+    "priorMatchingSamples": [
+      0,
+      1,
+      3,
+      5,
+      7
+    ],
+    "freshDifferingSamplesReviewed": [
+      2,
+      4,
+      6
+    ],
+    "posterMatchesPrior": true,
+    "findings": "No new issue; source crest clipping remains"
+  },
+  "captureGuardVerification": {
+    "environment": "Host-only pure identity/CLI guard fixtures; no ADB or phone operations",
+    "sourceSha256": "c590505c0980b54d75cd924f5a084af42423daebeeefe51fe10c643fb3864a29",
+    "tested": 20,
+    "failed": 0,
+    "results": [
+      {
+        "test": "verified_profile",
+        "ok": true
+      },
+      {
+        "test": "explicit_zero_qemu",
+        "ok": true
+      },
+      {
+        "test": "missing_serial",
+        "ok": true
+      },
+      {
+        "test": "emulator_serial",
+        "ok": true
+      },
+      {
+        "test": "malformed_serial",
+        "ok": true
+      },
+      {
+        "test": "option_serial",
+        "ok": true
+      },
+      {
+        "test": "wrong_device",
+        "ok": true
+      },
+      {
+        "test": "global_build",
+        "ok": true
+      },
+      {
+        "test": "unknown_build",
+        "ok": true
+      },
+      {
+        "test": "emulator_property",
+        "ok": true
+      },
+      {
+        "test": "unknown_qemu_property",
+        "ok": true
+      },
+      {
+        "test": "system_apk_path",
+        "ok": true
+      },
+      {
+        "test": "updated_apk_path",
+        "ok": true
+      },
+      {
+        "test": "path_traversal",
+        "ok": true
+      },
+      {
+        "test": "path_semicolon",
+        "ok": true
+      },
+      {
+        "test": "path_space",
+        "ok": true
+      },
+      {
+        "test": "path_substitution",
+        "ok": true
+      },
+      {
+        "test": "path_relative",
+        "ok": true
+      },
+      {
+        "test": "cli_serial_required",
+        "ok": true
+      },
+      {
+        "test": "cli_emulator_refused",
+        "ok": true
+      }
+    ]
+  },
+  "resourceBundle": {
+    "file": "FlipPets-native-Charlie-proof.zip",
+    "sha256": "e78cdfc3597f6592857c405160e59a6f76c110022b30490f8ec5b8aca5cb9842",
+    "manifest": {
+      "sourceSha256": "3bb7533fd7506cdfcd6b0ad48a7027fe8b37353ee7723547a18a6b7e5518dc14",
+      "width": 976,
+      "height": 596,
+      "durationUs": 6000000,
+      "alphaThreshold": 8,
+      "sampledUnionBounds": [
+        163,
+        0,
+        976,
+        596
+      ],
+      "frames": [
+        {
+          "progress": 0,
+          "png": "samples/frame-00.png",
+          "rgbaSha256": "fa28e86dc50658d0524beaa08fc1438013bed2ab2a648f415859160f3993e545",
+          "alphaBounds": [
+            164,
+            112,
+            976,
+            596
+          ],
+          "pngSha256": "3b901844e3acda2b7bf9a6208d8b9df43f0eab9a8e2d9fdc66b24eddcbfee3cc",
+          "pngDecodedRgbaSha256": "fa28e86dc50658d0524beaa08fc1438013bed2ab2a648f415859160f3993e545"
+        },
+        {
+          "progress": 0.1,
+          "png": "samples/frame-01.png",
+          "rgbaSha256": "4a4274295fda316991129b7081a1d9806a5ab50323fc6565c65956bcd2ec8b1c",
+          "alphaBounds": [
+            163,
+            0,
+            976,
+            596
+          ],
+          "pngSha256": "cd2f00de23c0e56d50a841829321566a2e1748c33781841b0675e6a9f21d3f0c",
+          "pngDecodedRgbaSha256": "4a4274295fda316991129b7081a1d9806a5ab50323fc6565c65956bcd2ec8b1c"
+        },
+        {
+          "progress": 0.25,
+          "png": "samples/frame-02.png",
+          "rgbaSha256": "a1ede494dee79fb65e0b220a1af9fb6140ffb522ef932648f965c766464d0afa",
+          "alphaBounds": [
+            163,
+            0,
+            976,
+            596
+          ],
+          "pngSha256": "e16c5f7292d9f14fb64c77bfe37a142e2b54ffc1e41820ddd15a792d0faa7abc",
+          "pngDecodedRgbaSha256": "a1ede494dee79fb65e0b220a1af9fb6140ffb522ef932648f965c766464d0afa"
+        },
+        {
+          "progress": 0.4,
+          "png": "samples/frame-03.png",
+          "rgbaSha256": "3e3601ba9ac87b6a692fea5c53102cbfaea92131509597a8494a1cb68242f292",
+          "alphaBounds": [
+            163,
+            0,
+            976,
+            596
+          ],
+          "pngSha256": "a0cdf7b480d324da05ac21a2b585d1286301329c39667b78f3ad22887fac6d61",
+          "pngDecodedRgbaSha256": "3e3601ba9ac87b6a692fea5c53102cbfaea92131509597a8494a1cb68242f292"
+        },
+        {
+          "progress": 0.55,
+          "png": "samples/frame-04.png",
+          "rgbaSha256": "70bfb7863fb1acc5d1ed62f892c102d2124a2d80d6aefdd4de5cfa4ab5db0843",
+          "alphaBounds": [
+            167,
+            0,
+            976,
+            596
+          ],
+          "pngSha256": "1d1c876a20e6234255015f8d375fff29b6f0a6d72abc549570ec2efbef01adf2",
+          "pngDecodedRgbaSha256": "70bfb7863fb1acc5d1ed62f892c102d2124a2d80d6aefdd4de5cfa4ab5db0843"
+        },
+        {
+          "progress": 0.7,
+          "png": "samples/frame-05.png",
+          "rgbaSha256": "403423212ce841a0a430a446ac4524b6818676c9a3544bf4ac987fa1f8abfe79",
+          "alphaBounds": [
+            163,
+            0,
+            976,
+            596
+          ],
+          "pngSha256": "d27103afcaaffb491bf93262aa3e5c97dd4277f5d847695595f90b01d3da5b52",
+          "pngDecodedRgbaSha256": "403423212ce841a0a430a446ac4524b6818676c9a3544bf4ac987fa1f8abfe79"
+        },
+        {
+          "progress": 0.85,
+          "png": "samples/frame-06.png",
+          "rgbaSha256": "f5b50919e2037461ea874dbb100096c74e2271124a8ef168d64466a6b4c64cb5",
+          "alphaBounds": [
+            167,
+            0,
+            976,
+            596
+          ],
+          "pngSha256": "b56899f9d2979bb7120afbb470868069aaf714e39e0358e2ecf55ca9fcbb0b2e",
+          "pngDecodedRgbaSha256": "f5b50919e2037461ea874dbb100096c74e2271124a8ef168d64466a6b4c64cb5"
+        },
+        {
+          "progress": 0.999999,
+          "png": "samples/frame-07.png",
+          "rgbaSha256": "2f146236e60fb335bb763b2c4a5e19bc0d998d8532e5488e8a8872b0f943606e",
+          "alphaBounds": [
+            163,
+            104,
+            976,
+            596
+          ],
+          "pngSha256": "d05980f1f7a65df74b65fdd341fe840422b7cfb0d4cbd15477ca49df01c31319",
+          "pngDecodedRgbaSha256": "2f146236e60fb335bb763b2c4a5e19bc0d998d8532e5488e8a8872b0f943606e"
+        }
+      ],
+      "schemaVersion": 1,
+      "rendererApkSha256": "b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75",
+      "sourceAsset": "pets/bird-pandora/pag_0.pag",
+      "originalPag": {
+        "file": "original.pag",
+        "sha256": "3bb7533fd7506cdfcd6b0ad48a7027fe8b37353ee7723547a18a6b7e5518dc14"
+      },
+      "environment": "Identity-verified Android emulator; actual APK libpag decoding at original resolution",
+      "nativePlaybackProven": false,
+      "nativeApplyAllowed": false,
+      "exactRestoreProven": false,
+      "poster": {
+        "file": "poster.png",
+        "progress": 0,
+        "sha256": "3b901844e3acda2b7bf9a6208d8b9df43f0eab9a8e2d9fdc66b24eddcbfee3cc",
+        "rgbaSha256": "fa28e86dc50658d0524beaa08fc1438013bed2ab2a648f415859160f3993e545"
+      },
+      "nativeAxesCandidate": {
+        "first": [
+          164,
+          112,
+          976,
+          596
+        ],
+        "last": [
+          163,
+          104,
+          976,
+          596
+        ],
+        "status": "Sampled original-pixel bounds only; native placement/camera clearance unverified"
+      },
+      "sourceLimit": "Original Charlie crest is clipped in intermediate source frames; this export does not repair it",
+      "provenance": {
+        "donor": "17 Pro pandora; also byte-identical in inspected 18 Pro resource",
+        "donorBuild": "OS3.0.319.0.WBLCNXM",
+        "sourceContainer": "26f4a446-8125-407d-a255-3dbcd8c12eae.mrc",
+        "sourceContainerSha256": "9147868c42edcec122dfb5c5e497506bc2d7dd487b27110cc8bb32b9a6c6e52e",
+        "matchingSourceMembers": [
+          "assets/bird/pag_0.pag"
+        ],
+        "rights": "Xiaomi artwork retains its owners rights; excluded from MIT code license"
+      },
+      "probeSha256": "d7cdc7d776f6023d54a15f16826047265cedcedf9f3318805e3b3c31c4a420ad"
+    }
+  },
+  "inheritedPlaybackTrace": {
+    "schemaVersion": 1,
+    "scope": "Static inherited OEM playback trace from preserved historical EEA AOD; not current device motion or installation evidence",
+    "nativeAodSha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+    "dexSha256": {
+      "classes2.dex": "b24833f5dc68407f4de120adcf8b91c272a7dcd850e2ec4aa970aba8fdc9e842",
+      "classes3.dex": "82d734a299ca753d7afa76fdafeb631bc544798bbd6ede2962e4a75b1a1383c9"
+    },
+    "extractedSourceSha256": {
+      "Tiny-PetsPagView.java": "fcfde4c85d82234f191952ac4701d4a9ba6d7f03808a97b93c4431fe87df28ac",
+      "Tiny-PagViewBase.java": "e28a9ed34c4468990d41bcc193ece0b6015968e660adb522b3d3b0a0794bc330",
+      "Tiny-AiPetsPagView.java": "ed1adfb1c252ac0be08a277982beea0633f9a0d3858742f38464f280ab9fe6b3",
+      "Aod-TinyEditorPetsPagView.java": "c534805d3593683f70a4f5c33ffabd6e246adfee2f97c46bc1f655ca5f06464f",
+      "Tiny-TinyEditorAiPetsView.java": "ad13c396f846e755d15db0982a38cb765241a285033f7dbe310daf1c4e6a4e25"
+    },
+    "rawDexInstructionGraphSha256": {
+      "native-pet-cfg/com/miui/clock/tiny/pets/PagViewBase_graphs/initStatus(IZZ)V.raw.dot": "f258102ad869b7e7435ae051451e7c0594bdafbc8e9f8bc11af207888fdbb9c9",
+      "native-pet-cfg/com/miui/clock/tiny/pets/PagViewBase_graphs/loadPagFile(Ljava_lang_String_)V.raw.dot": "3f42f0517adc5705b7865da4acff3b6471bf5d1b33be4a999ee43932bfc2f4ec",
+      "native-pet-cfg/com/miui/clock/tiny/pets/PagViewBase_graphs/lambda_new_0(Lorg_libpag_PAGFile_)V.raw.dot": "45a5c2eb88e48d47aead718c0b0c9aec1dfbfafc2393d4005ab25e9dcd24b720",
+      "native-pet-cfg/com/miui/clock/tiny/pets/PetsPagView_graphs/init(IIZ)V.raw.dot": "8e809cf845404f2974fd33de20b03c6755ba97c4d80bff688a7b1c91b5379dec",
+      "native-pet-cfg/com/miui/clock/tiny/pets/PetsPagView_graphs/init(IIZZ)V.raw.dot": "ad46d75a6b38262a869a8e812e5983e3bd4d5a784c21d53f32bdab7c7864d570",
+      "native-pet-cfg/com/miui/clock/tiny/pets/PetsPagView_graphs/initCompositionToPlay(Lorg_libpag_PAGComposition_Lorg_libpag_PAGFile_)V.raw.dot": "26c05061f4cbfd3c86fe2b666e94ed5edfea2e0b9a02a13bfbbb4148e31e8bad",
+      "native-pet-editor-cfg/com/miui/tinykeyguard/editor/view/TinyEditorPetsPagView_graphs/initView(Lcom_miui_tinykeyguard_editor_data_template_TemplateItem_)V.raw.dot": "4994e300d00b4bc29f2c4d58f71cc1024d4ce05dd06b48aa2e1902eb29fc9b44"
+    },
+    "inspectedMethods": [
+      "TinyEditorPetsPagView.initView requests init(type,action,true)",
+      "PetsPagView.init forwards autoplay and seek flags into PagViewBase.initStatus",
+      "PagViewBase.initStatus assigns mIsAutoPlay; loadPagFile uses LoadAsync for /system,/data,/sdcard paths",
+      "PagViewBase load callback dispatches loadFileComplete; AiPetsPagView builds1208x1392 composition",
+      "PetsPagView.initCompositionToPlay rejects null inputs, sets repeatCount1 and plays from0 only when autoplay requested",
+      "AiPetsPagView.rePlayPag restarts or flushes/pauses frame0 according to autoplay; rotation applies translation only"
+    ],
+    "inference": "An inherited source path requests one playback after successful loading. Accepted poster preview alone cannot establish successful native PAG load or visible animation.",
+    "decompiler": "JADX1.5.6; PagViewBase single-class decompile reported one error; critical inherited dataflow cross-checked using raw DEX instruction graphs. Whole output is not claimed error-free.",
+    "nativeMotionProven": false,
+    "nativeApplyPerformed": false,
+    "exactRestoreProven": false
+  },
+  "nativeMotionProven": false,
+  "nativeApplyAllowed": false,
+  "exactRestoreProven": false,
+  "phoneTargeted": false,
+  "unchangedApkVerification": {
+    "evidence": "work/research/native-launch-cards-evidence.json",
+    "scope": "Exact same APK bytes:374 APK checks,20 gallery and6 virtual-cover checks; not rerun for host tools/docs only"
+  },
+  "independentReview": {
+    "requestedByUser": true,
+    "actionableCorrectnessFindings": 0,
+    "findingsFixed": [
+      "Accept safe updated /data/app/~~ package paths",
+      "Losslessly serialize decoded RGBA to PNG, verify decoded pixels and canonical bundle paths"
+    ],
+    "finalReview": "Fresh independent resource, guard, static-trace and assembled source/package review completed; fresh differing samples02/04/06 visually re-reviewed, other five and poster match prior samples"
+  },
+  "limitations": [
+    "Standard emulator source decoding does not establish native editor or lockscreen motion",
+    "Exact EEA launcher admission/readback/restoration and OEM native resource writer/Apply/exact restore need deferred phone work",
+    "KernelSU root UID/SELinux/boot/fold compatibility remains untested",
+    "Eight samples are not a full animation envelope or camera-clearance proof; original Charlie crest clipping remains",
+    "Generation deferred; native MAML hooks optional"
+  ],
+  "releaseTitle": "Assembled build and native Charlie preparation",
+  "releaseSummary": "Reviewed assembled candidate with matching APK/module, source and verification archives. Charlie preparation contains the unchanged original PAG, a decoded first-frame poster and eight full-resolution samples with verified RGBA hashes. The inherited historical EEA OEM autoplay path is traced against source and raw DEX instructions. Guarded read-only future capability capture has20 host guard checks.\n\nExact unchanged APK passed374 renderer/UI/card checks,20 gallery and6 virtual-cover checks;14 route and5 package guards passed separately. Independent review completed. No phone targeted.\n\nNative admission, OEM pet motion, Apply and exact restoration remain physical-device gates. Root is experimental. No folded lockscreen/AOD/independent cover-power or camera-clearance claim. Generation remains deferred.",
+  "extraAssets": [
+    {
+      "name": "FlipPets-native-Charlie-proof.zip",
+      "sha256": "e78cdfc3597f6592857c405160e59a6f76c110022b30490f8ec5b8aca5cb9842"
+    }
+  ]
+}

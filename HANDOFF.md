@@ -1,5 +1,59 @@
 # Flip Pets continuation — 2026-10-11
 
+## Assembled source milestones complete; physical gates remain
+
+The user requested finishing the handoff, fresh independent review and automatic
+code/APK upload after each milestone. Steps1–5 source-feasible work is complete.
+Actual phone testing remains deferred until the assembled build. No phone was
+targeted, root installed, native admission changed or native Apply performed.
+
+- Steps1–3 hardened the optional canonical-script KernelSU backend. Shizuku
+  remains the default; both retain open/awake/unlocked-only policy. The private
+  state, exact ownership, lifetime backend serialization, Stop/disable/update and
+  watcher work is source/fixture verified, not physical root/SELinux evidence.
+- Step4 adds ordinary foreground Water, Words and Focus cards with separate
+  selection/storage and explicit off-by-default observed-cover routing. Actual
+  Xiaomi launcher admission, metadata/strip handling and continuity need the exact
+  EEA device artifacts and policy reader/readback/restoration before a grant.
+- Step5 prepares unchanged Charlie PAG, a matching decoded poster and eight
+  original-resolution sample PNGs. The source decoder's RGBA bytes match decoded
+  PNG pixels. Bundle SHA:`e78cdfc3597f6592857c405160e59a6f76c110022b30490f8ec5b8aca5cb9842`. Eight samples do not establish every-frame
+  bounds or camera clearance; source crest clipping remains.
+- Historical EEA AOD inherited editor autoplay/load/composition/play branches were
+  checked against decompiled methods and raw DEX instructions. This establishes a
+  code path requesting playback, not actual OEM motion. The native host translates
+  the donor and does not use our app's CoverGeometry scaling.
+- A future read-only capture helper requires an explicit physical serial, ruyi
+  and exact observed EEA build. It hashes/pulls only relevant FlipHome/AOD/framework
+  artifacts into ignored private storage.20 host identity/path/CLI guards pass;
+  this helper has not been run on a phone.
+- Native motion, OEM writer/copy semantics, an exact interruption-safe restore
+  transaction and later-manual-choice protection remain mandatory before implementing
+  native Apply/Restore. See docs/native-pet-proof.md. Do not invent a native writer
+  or use clear as an inverse to unknown admission overrides.
+- Final APK:`b8fb78cea3e4fe9142106137e28b6f724c40a92f15c0be6428b4304cd03a9a75`. Matching experimental module:`95e02bf4b589ed558bec0204c991ca7ac0f8f5a455c426422a2a1cdd3164563b`.
+  These are identical to step4's fully verified bytes.374 APK checks,20 gallery,
+  six virtual-cover lifecycle checks,14 source route and five package fault cases
+  passed. Step5 additionally verified eight source samples and20 capture guards.
+  Preserved signing certificate, original assets and ZIP/ELF16KiB alignment pass.
+- Fresh independent reviews covered app lifecycle/intent/rotation, controller,
+  resource preparation, static trace, guarded capture, final package and pixels.
+  All actionable findings were fixed and verified. Public scoped evidence:
+  work/research/native-pet-preparation-evidence.json and native-launch-cards-evidence.json.
+- Automatic releases:dev-controller-startup-20261011,
+  dev-controller-ownership-20261011,dev-controller-runtime-20261011,
+  dev-native-cards-20261011 and final dev-native-pet-preparation-20261011.
+  Final release includes APK,module,Charlie proof,source and verification archives.
+
+Next authorized work is the user's later assembled-build phone test. Root installation
+is separate. Native Apply/restoration needs its own proven transaction before UI work.
+Power/timeout continuation and folded wallpaper remain deferred. Generation remains
+deferred and native MAML hooks optional; neither blocks these completed source steps.
+
+## Historical milestones below
+
+# Flip Pets continuation — 2026-10-11
+
 ## Current milestone — native-launch card activity (step 4)
 
 User instruction: finish source-feasible handoff steps; fresh independent review

@@ -1,5 +1,12 @@
 # Changes
 
+## Native pet preparation — 11 October 2026
+
+- Prepare unchanged Charlie PAG, exact decoded first-frame poster and eight source-resolution sample PNGs with RGBA hash verification.
+- Trace inherited historical EEA editor autoplay/load/play code against raw DEX; actual native motion remains unproven.
+- Add guarded read-only future device artifact capture and20 host guard cases. No phone targeted or native Apply/Restore added.
+- Publish assembled reviewed APK/module plus source, verification and Charlie resource archives. Physical testing remains deferred.
+
 ## Unreleased native-launch cards — 11 October 2026
 
 - Add an ordinary foreground card activity with separate selection/storage from

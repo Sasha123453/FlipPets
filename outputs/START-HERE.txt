@@ -206,3 +206,9 @@ ADB — ДОПОЛНИТЕЛЬНЫЙ СПОСОБ
 сохраняют права владельцев. Полный rootless research/roadmap: docs/cover-screen-research.md
 в исходниках. Для rootless пути KernelSU не нужен. Отдельный экспериментальный
 KernelSU ZIP описан выше; его работа на телефоне ещё не проверена.
+
+NATIVE CHARLIE PROOF
+FlipPets-native-Charlie-proof.zip contains original PAG, decoded poster and eight
+source-resolution samples. This is preparation only; it does not install a native
+pet. OEM motion, Apply and exact restoration remain unproven. See
+docs/native-pet-proof.md. No root installation or phone change was performed.

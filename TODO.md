@@ -22,6 +22,7 @@
   rooted MIX Flip after assembly. Keep the ZIP experimental until that evidence.
 - [x] Step4 current APK:374 renderer/UI/native-card checks,20 gallery and6 virtual-cover checks passed, plus14 route and5 packager cases. Physical testing remains deferred.
 - [x] Native-launch card Activity, separate storage/navigation and opt-in observed-context routing. Actual EEA policy/admission/continuity remains a device gate.
+- [x] Step5:unchanged Charlie resource/poster/eight-sample bundle, inherited OEM playback trace and20 guarded read-only capture cases. Native motion/Apply/exact restore remains unproven.
 - [ ] Exact EEA FlipHome/continuity contract and native pet motion/restore proof
   remain device-work gates. No generation backend work is required.
 

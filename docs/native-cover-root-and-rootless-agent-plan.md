@@ -4,9 +4,9 @@ Research date: 10 October 2026. Repository: `E:\FlipPets`.
 
 **Status: planning only.** The user requested investigation and this Markdown handoff, not implementation. The phone is still unrooted. Do not install root, flash, alter the phone, apply a native template or implement these proposals until implementation is requested. Pet generation and alternative generation backends are deferred. Use known donor assets for the first native pet proof.
 
-**Update — 11 October 2026:** the user resumed implementation. The boot/startup
-part of step 1 is now implemented; see `HANDOFF.md` for its exact artifacts,
-verification and remaining ownership/migration work. The original planning status
+**Update — 11 October 2026:** the user resumed implementation. The source-feasible controller, native-launch card and known-pet preparation steps are
+implemented and independently reviewed; see `HANDOFF.md` for exact artifacts,
+verification and the remaining device admission/motion/restoration gates. The original planning status
 above describes the research session. Physical device changes, native Apply and
 generation remain outside the resumed source-work milestone.
 

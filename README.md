@@ -20,6 +20,8 @@ It works through the same app on root and non-root. Xiaomi EEA launcher admissio
 widget-strip behavior and physical continuity still await phone verification.
 See [native card setup and limits](docs/native-launch-cards.md).
 
+Source preparation is complete for one native Charlie proof:unchanged PAG, decoded poster, eight full-resolution samples and a traced inherited OEM playback path. This adds no native installer. See [proof and remaining phone gates](docs/native-pet-proof.md). The final development release includes the assembled APK, experimental module, source, verification and resource bundle.
+
 The default folded path remains Xiaomi's own cover interface, secure lock screen and
 AOD. The next priority is optional animated cover-lock wallpaper through Xiaomi's
 stock wallpaper editor/engine, so the native system handles folding and persistence.

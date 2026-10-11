@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "scope": "Static inherited OEM playback trace from preserved historical EEA AOD; not current device motion or installation evidence",
+  "nativeAodSha256": "31c6dd09226e24f13f519822425a0b3f2a6d4fb8d6bf565bbd3a0568ee494d5d",
+  "dexSha256": {
+    "classes2.dex": "b24833f5dc68407f4de120adcf8b91c272a7dcd850e2ec4aa970aba8fdc9e842",
+    "classes3.dex": "82d734a299ca753d7afa76fdafeb631bc544798bbd6ede2962e4a75b1a1383c9"
+  },
+  "extractedSourceSha256": {
+    "Tiny-PetsPagView.java": "fcfde4c85d82234f191952ac4701d4a9ba6d7f03808a97b93c4431fe87df28ac",
+    "Tiny-PagViewBase.java": "e28a9ed34c4468990d41bcc193ece0b6015968e660adb522b3d3b0a0794bc330",
+    "Tiny-AiPetsPagView.java": "ed1adfb1c252ac0be08a277982beea0633f9a0d3858742f38464f280ab9fe6b3",
+    "Aod-TinyEditorPetsPagView.java": "c534805d3593683f70a4f5c33ffabd6e246adfee2f97c46bc1f655ca5f06464f",
+    "Tiny-TinyEditorAiPetsView.java": "ad13c396f846e755d15db0982a38cb765241a285033f7dbe310daf1c4e6a4e25"
+  },
+  "rawDexInstructionGraphSha256": {
+    "native-pet-cfg/com/miui/clock/tiny/pets/PagViewBase_graphs/initStatus(IZZ)V.raw.dot": "f258102ad869b7e7435ae051451e7c0594bdafbc8e9f8bc11af207888fdbb9c9",
+    "native-pet-cfg/com/miui/clock/tiny/pets/PagViewBase_graphs/loadPagFile(Ljava_lang_String_)V.raw.dot": "3f42f0517adc5705b7865da4acff3b6471bf5d1b33be4a999ee43932bfc2f4ec",
+    "native-pet-cfg/com/miui/clock/tiny/pets/PagViewBase_graphs/lambda_new_0(Lorg_libpag_PAGFile_)V.raw.dot": "45a5c2eb88e48d47aead718c0b0c9aec1dfbfafc2393d4005ab25e9dcd24b720",
+    "native-pet-cfg/com/miui/clock/tiny/pets/PetsPagView_graphs/init(IIZ)V.raw.dot": "8e809cf845404f2974fd33de20b03c6755ba97c4d80bff688a7b1c91b5379dec",
+    "native-pet-cfg/com/miui/clock/tiny/pets/PetsPagView_graphs/init(IIZZ)V.raw.dot": "ad46d75a6b38262a869a8e812e5983e3bd4d5a784c21d53f32bdab7c7864d570",
+    "native-pet-cfg/com/miui/clock/tiny/pets/PetsPagView_graphs/initCompositionToPlay(Lorg_libpag_PAGComposition_Lorg_libpag_PAGFile_)V.raw.dot": "26c05061f4cbfd3c86fe2b666e94ed5edfea2e0b9a02a13bfbbb4148e31e8bad",
+    "native-pet-editor-cfg/com/miui/tinykeyguard/editor/view/TinyEditorPetsPagView_graphs/initView(Lcom_miui_tinykeyguard_editor_data_template_TemplateItem_)V.raw.dot": "4994e300d00b4bc29f2c4d58f71cc1024d4ce05dd06b48aa2e1902eb29fc9b44"
+  },
+  "inspectedMethods": [
+    "TinyEditorPetsPagView.initView requests init(type,action,true)",
+    "PetsPagView.init forwards autoplay and seek flags into PagViewBase.initStatus",
+    "PagViewBase.initStatus assigns mIsAutoPlay; loadPagFile uses LoadAsync for /system,/data,/sdcard paths",
+    "PagViewBase load callback dispatches loadFileComplete; AiPetsPagView builds1208x1392 composition",
+    "PetsPagView.initCompositionToPlay rejects null inputs, sets repeatCount1 and plays from0 only when autoplay requested",
+    "AiPetsPagView.rePlayPag restarts or flushes/pauses frame0 according to autoplay; rotation applies translation only"
+  ],
+  "inference": "An inherited source path requests one playback after successful loading. Accepted poster preview alone cannot establish successful native PAG load or visible animation.",
+  "decompiler": "JADX1.5.6; PagViewBase single-class decompile reported one error; critical inherited dataflow cross-checked using raw DEX instruction graphs. Whole output is not claimed error-free.",
+  "nativeMotionProven": false,
+  "nativeApplyPerformed": false,
+  "exactRestoreProven": false
+}
